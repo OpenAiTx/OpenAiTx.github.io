@@ -34,8 +34,8 @@
   },
   "url": "https://OpenAiTx.github.io/projects/argon-lab/argon/README-ko.html",
   "sameAs": "https://raw.githubusercontent.com/argon-lab/argon/master/README.md",
-  "datePublished": "2025-07-18",
-  "dateModified": "2025-07-18"
+  "datePublished": "2025-07-20",
+  "dateModified": "2025-07-20"
 }
     </script>
     
@@ -228,136 +228,78 @@
         </div>
         
         <div class="content">
-            <p><translate-content># 아르곤 🚀</p><p><strong>ML/AI 워크플로우를 위한 Git 유사 MongoDB 브랜칭</strong></p><p><a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
-<a href="https://golang.org" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Go-1.24+-00ADD8?logo=go" alt="Go"></a>
-<a href="https://python.org" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Python-3.11+-3776AB?logo=python" alt="Python"></a>
-<a href="https://mongodb.com" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/MongoDB-7.0+-47A248?logo=mongodb" alt="MongoDB"></a></p><blockquote><strong>🎉 지금 사용 가능!</strong> 아르곤은 500ms 미만의 작업 속도, ML 네이티브 기능, 하이브리드 Go+Python 아키텍처를 갖춘 엔터프라이즈급 MongoDB 브랜칭을 제공합니다.</blockquote></p><h2>아르곤이란?</h2></p><p>아르곤은 ML/AI 워크플로우에 최적화된 Git 유사 데이터베이스 작업을 제공하는 MongoDB 브랜칭 시스템입니다. 데이터 과학 팀을 위한 일류 지원을 제공하는 "MongoDB용 네온"이라 생각하세요.</p><h3>주요 기능</h3></p><ul><li><strong>⚡ 즉시 브랜칭</strong>: 크기와 상관없이 500ms 미만에 데이터베이스 브랜치 생성</li>
-<li><strong>🔄 쓰기 시 복사</strong>: 전체 복사 대비 90% 이상 공간 절약하는 효율적 저장  </li>
-<li><strong>🧠 ML 네이티브</strong>: MLflow, DVC, Weights & Biases 내장 통합</li>
-<li><strong>🌐 실시간</strong>: 라이브 변경 스트림과 WebSocket 기반 대시보드</li>
-<li><strong>☁️ 멀티 클라우드</strong>: AWS S3, 구글 클라우드 스토리지, Azure Blob 지원</li>
-<li><strong>🔒 엔터프라이즈</strong>: 인증, RBAC, 감사 로그, 컴플라이언스 기능</li></p><p></ul><h2>아키텍처</h2></p><p>아르곤은 성능과 개발자 생산성 모두를 최적화하는 하이브리드 아키텍처를 사용합니다:</p><pre><code class="language-">┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   CLI Tool      │    │  Web Dashboard  │    │ ML Integrations │
-│   (Go Binary)   │    │   (Next.js)     │    │ (Python APIs)   │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-         │                       │                       │
-         └───────────────────────┼───────────────────────┘
-                                 │
-                    ┌─────────────────┐
-                    │  Python API     │
-                    │  (FastAPI)      │
-                    └─────────────────┘
-                                 │
-                    ┌─────────────────┐
-                    │  Go Engine      │
-                    │ (Performance)   │
-                    └─────────────────┘
-                                 │
-                    ┌─────────────────┐
-                    │    MongoDB      │
-                    │ + Change Streams│
-                    └─────────────────┘</code></pre>
-<translate-content>
-<strong>성능 계층 (Go)</strong>: 변경 스트림, 분기 엔진, CLI, 저장소  
-<strong>생산성 계층 (Python)</strong>: 웹 API, ML 통합, 관리자 기능  </p><h2>빠른 시작  </h2></p><h3>설치  </h3></p><p>선호하는 설치 방법을 선택하세요:  </p><p>#### 빠른 설치 (소스에서)  
-</translate-content>
-<pre><code class="language-bash"># Clone and build latest version
-git clone https://github.com/argon-lab/argon.git
-cd argon/cli
-go build -o argon .
-sudo mv argon /usr/local/bin/</code></pre>
-#### Homebrew (macOS/Linux)</p><pre><code class="language-bash">brew install argon-lab/tap/argonctl</code></pre>
-#### npm (크로스 플랫폼)</p><pre><code class="language-bash">npm install -g argonctl</code></pre>
-#### 직접 다운로드</p><pre><code class="language-bash"># Linux (x64)
-curl -L https://github.com/argon-lab/argon/releases/latest/download/argon-linux-amd64 -o argon
-chmod +x argon && sudo mv argon /usr/local/bin/</p><h1>macOS (Intel)</h1>
-curl -L https://github.com/argon-lab/argon/releases/latest/download/argon-darwin-amd64 -o argon
-chmod +x argon && sudo mv argon /usr/local/bin/</p><h1>macOS (Apple Silicon)</h1>
-curl -L https://github.com/argon-lab/argon/releases/latest/download/argon-darwin-arm64 -o argon
-chmod +x argon && sudo mv argon /usr/local/bin/</code></pre>
-#### 출처에서부터</p><pre><code class="language-bash">git clone https://github.com/argon-lab/argon.git
-cd argon/cli
-go build -o argon .</code></pre>
-<h3>설치 확인</translate-content></h3></p><pre><code class="language-bash">argon --version
-<h1>argon version 1.0.0</code></pre></h1>
-<h3>개발 환경 설정 (기여자)</h3></p><pre><code class="language-bash"># Clone the repository
-git clone https://github.com/argon-lab/argon.git
-cd argon</p><h1>Start the development environment</h1>
-docker compose up -d</p><h1>Verify services are running</h1>
-curl http://localhost:8080/health  # Go engine
-curl http://localhost:3000/health  # Python API</code></pre>
-<h3>기본 사용법</h3></p><pre><code class="language-bash"># Verify installation
-argon --version</p><h1>Get help</h1>
-argon --help</p><h1>Create a new project (requires running services)</h1>
-argon projects create --name my-ml-project --mongodb-uri mongodb://localhost:27017</p><h1>List your projects</h1>
-argon projects list</p><h1>Note: Full functionality requires the Argon services to be running</h1>
-<h1>See Development Setup below for starting the complete system</code></pre></h1>
-<h2>What Works Now</h2></p><p>✅ <strong>CLI 설치</strong> - <code>argon</code> 명령어를 전역으로 설치  
-✅ <strong>핵심 아키텍처</strong> - 하이브리드 Go+Python 시스템 준비 완료  
-✅ <strong>스토리지 엔진</strong> - 42% 압축률의 S3 백엔드  
-✅ <strong>로컬 개발</strong> - 완전한 Docker 환경  </p><h2>Coming Soon</h2></p><p>✅ <strong>Homebrew</strong> - <code>brew install argon-lab/tap/argonctl</code> (현재 사용 가능!)  
-✅ <strong>npm 패키지</strong> - <code>npm install -g argonctl</code> (현재 사용 가능!)  
-🚧 <strong>호스팅 서비스</strong> - 즉시 사용 가능한 클라우드 호스팅 Argon  
-🚧 <strong>웹 대시보드</strong> - 시각적 브랜치 관리  
-🚧 <strong>ML 통합</strong> - MLflow, DVC, Weights & Biases  </p><h2>Current Status</h2></p><p><strong>CLI 및 핵심 시스템은 프로덕션 준비 완료</strong> 상태입니다. 패키지 관리자 배포 및 호스팅 서비스는 공개 출시를 준비 중입니다.</p><h2>Performance Targets</h2></p><p>| 지표 | 목표 | 현재 상태 |
-|--------|--------|----------------|
-| 브랜치 생성 | <500ms | 🟢 구현 완료 |
-| 변경 처리 | 10,000+ 작업/초 | 🟢 구현 완료 |
-| 스토리지 효율 | 40%+ 압축 | 🟢 달성 (42.40%) |
-| CLI 시작 시간 | <50ms | 🟢 달성 |</p><h2>Use Cases</h2></p><h3>데이터 사이언스 팀</h3></p><pre><code class="language-python"># In Jupyter notebook
-import argon</p><h1>Create experiment branch</h1>
-argon.branch.create("model-v2-experiment")</p><h1>Train model with versioned data</h1>
-model = train_model(argon.data.get_collection("training_data"))</p><h1>Track experiment metadata</h1>
-argon.experiment.log(model_accuracy=0.95, dataset_version="v2.1")</p><h1>Merge successful experiment</h1>
-argon.branch.merge("model-v2-experiment", "main")</code></pre>
-<h3>개발 팀</translate-content></h3></p><pre><code class="language-bash"># Create feature branch with production data copy
-argon branch create feature-new-analytics --from production</p><h1>Develop and test against real data</h1>
-<h1>... make database schema changes ...</h1></p><h1>Review changes before merge</h1>
-argon diff main..feature-new-analytics</p><h1>Deploy to production</h1>
-argon branch merge feature-new-analytics main</code></pre>
-<h2>기여하기</h2></p><p>기여를 환영합니다! 이 프로젝트는 커뮤니티를 위해 만들어진 오픈 소스 프로젝트입니다.</p><h3>개발 워크플로우</h3></p><ul><li><strong>저장소를 포크하세요</strong></li>
-<li><strong>개발 환경 설정</strong>: <code>docker-compose up -d</code></li>
-<li><strong>적절한 서비스에서 변경 작업 수행</strong>:</li>
-   <li>Go 엔진: <code>services/engine/</code></li>
-   <li>Python API: <code>services/api/</code></li>
-   <li>웹 대시보드: <code>services/web/</code></li>
-<li><strong>변경 사항 테스트</strong>: 테스트 스위트 실행</li>
-<li><strong>풀 리퀘스트 제출</strong></li></p><p></ul><h3>프로젝트 구조</h3></p><pre><code class="language-">argon/
-├── services/
-│   ├── engine/          # Go performance engine
-│   ├── api/             # Python FastAPI service
-│   └── web/             # Next.js web dashboard
-├── docs/                # Documentation
-├── examples/            # Example usage and tutorials
-├── scripts/             # Development and deployment scripts
-└── docker-compose.yml   # Development environment</code></pre>
-<h2>로드맵</h2></p><h3>v1.0 (현재) - 프로덕션 준비 완료</h3>
-<ul><li>하이브리드 Go+Python 아키텍처</li>
-<li>핵심 브랜치 작업</li>
-<li>MongoDB 변경 스트림</li>
-<li>CLI 및 API 인터페이스</li>
-<li>압축된 S3 스토리지</li></p><p></ul><h3>v1.1 - ML 통합</h3>
-<ul><li>MLflow 커넥터</li>
-<li>DVC 통합</li>
-<li>Weights & Biases 지원</li>
-<li>주피터 노트북 예제</li></p><p></ul><h3>v1.2 - 엔터프라이즈 기능</h3>
-<ul><li>사용자 인증 및 RBAC</li>
-<li>팀 협업 기능</li>
-<li>고급 브랜치 작업</li>
-<li>성능 최적화</li></p><p></ul><h3>v1.3 - 확장 및 다듬기</h3>
-<ul><li>멀티 리전 배포</li>
-<li>고급 분석</li>
-<li>플러그인 아키텍처</li>
-<li>엔터프라이즈 지원</li></p><p></ul><h2>아키텍처 심층 분석</h2></p><p>자세한 기술 문서는 다음을 참조하세요:
-<ul><li><a href="https://raw.githubusercontent.com/argon-lab/argon/master/docs/architecture.md" target="_blank" rel="noopener noreferrer">아키텍처 개요</a></li>
-<li><a href="https://raw.githubusercontent.com/argon-lab/argon/master/docs/api.md" target="_blank" rel="noopener noreferrer">API 문서</a></li>
-<li><a href="https://raw.githubusercontent.com/argon-lab/argon/master/docs/development.md" target="_blank" rel="noopener noreferrer">개발 가이드</a></li>
-<li><a href="https://raw.githubusercontent.com/argon-lab/argon/master/docs/deployment.md" target="_blank" rel="noopener noreferrer">배포 가이드</a></li></p><p></ul><h2>커뮤니티</h2></p><ul><li><strong>GitHub 토론</strong>: 질문하고 아이디어 공유하기</li>
-<li><strong>Discord</strong>: 커뮤니티와 실시간 채팅 (링크 곧 제공)</li>
-<li><strong>Twitter</strong>: 업데이트를 위해 <a href="https://twitter.com/argondb" target="_blank" rel="noopener noreferrer">@argondb</a> 팔로우하기</li></p><p></ul><h2>라이선스</h2></p><p>이 프로젝트는 MIT 라이선스 하에 배포됩니다 - 자세한 내용은 <a href="LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a> 파일을 참조하세요.</p><h2>MongoDB 엔지니어들이 만든 프로젝트</h2></p><p>Argon은 MongoDB 전문 지식을 바탕으로 구축되었으며, 변경 스트림, 최적화된 집계 파이프라인, 프로덕션 배포에서 얻은 성능 최적화 모범 사례 등의 고급 기능을 활용합니다.</p><hr></p><p><strong>⭐ 이 저장소가 유용하다면 스타를 눌러주세요!</strong></p><p><a href="https://github.com/argon-lab/argon" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/stars/argon-lab/argon?style=social" alt="GitHub stars"></a></p><p>
+            <p><div align="right">
+  <details>
+    <summary >🌐 언어</summary>
+    <div>
+      <div align="center">
+        <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=en">English</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=zh-CN">简体中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=zh-TW">繁體中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=ja">日本語</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=ko">한국어</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=hi">हिन्दी</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=th">ไทย</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=fr">Français</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=de">Deutsch</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=es">Español</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=it">Italiano</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=ru">Русский</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=pt">Português</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=nl">Nederlands</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=pl">Polski</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=ar">العربية</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=fa">فارسی</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=tr">Türkçe</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=vi">Tiếng Việt</a>
+        | <a href="https://openaitx.github.io/view.html?user=argon-lab&project=argon&lang=id">Bahasa Indonesia</a>
+      </div>
+    </div>
+  </details>
+</div></p><h1>아르곤 - MongoDB 타임머신 🚀</h1></p><p><a href="https://github.com/argon-lab/argon/actions/workflows/ci.yml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/argon-lab/argon/actions/workflows/ci.yml/badge.svg" alt="Build Status"></a>
+<a href="https://goreportcard.com/report/github.com/argon-lab/argon" target="_blank" rel="noopener noreferrer"><img src="https://goreportcard.com/badge/github.com/argon-lab/argon" alt="Go Report"></a>
+<a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></p><p><a href="https://github.com/argon-lab/homebrew-tap" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Homebrew-argonctl-orange?logo=homebrew" alt="Homebrew"></a>
+<a href="https://www.npmjs.com/package/argonctl" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/v/argonctl?logo=npm&label=npm" alt="npm"></a>
+<a href="https://pypi.org/project/argon-mongodb/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/pypi/v/argon-mongodb?logo=pypi&label=PyPI" alt="PyPI"></a></p><p><strong>MongoDB 데이터베이스에서 시간 여행을 하세요. 브랜치를 만들고, 복원하며, 두려움 없이 실험하세요.</strong></p><h2>아르곤(Argon)이란?</h2></p><p>아르곤은 MongoDB에 <strong>Git과 같은 브랜칭</strong>과 <strong>타임 트래블</strong> 기능을 제공합니다. 즉시 데이터베이스 브랜치를 만들고, 원하는 시점으로 복원하며, 데이터를 잃지 않습니다.</p><h3>🎯 주요 장점</h3></p><ul><li><strong>⚡ 즉시 브랜치</strong> - 전체 데이터베이스를 1ms 만에 복제 (수 시간이 아님)</li>
+<li><strong>⏰ 타임 트래블</strong> - 원하는 과거 시점의 데이터를 쿼리</li>
+<li><strong>🔄 안전한 복원</strong> - 복원 전 변경사항 미리보기</li>
+<li><strong>💾 제로 스토리지 비용</strong> - 브랜치 간 데이터를 효율적으로 공유</li>
+<li><strong>🔌 완벽한 호환성</strong> - 기존 MongoDB 코드와 바로 사용 가능</li></p><p></ul><h2>빠른 데모</h2></p><pre><code class="language-bash"># Install
+brew install argon-lab/tap/argonctl    # macOS
+npm install -g argonctl                 # Cross-platform</p><h1>Create a time-travel enabled database</h1>
+export ENABLE_WAL=true
+argon projects create myapp</p><h1>Your app crashed after bad migration? No problem!</h1>
+argon restore preview --time "1 hour ago"
+argon restore reset --time "before disaster"</p><h1>Need a test environment? Branch instantly!</h1>
+argon branches create test-env
+<h1>Full database copy created in 1ms 🚀</code></pre></h1>
+<h2>실제 사용 사례</h2></p><h3>🚨 <strong>재해 복구</strong></h3></p><pre><code class="language-bash"># "Someone deleted all users!"
+argon restore reset --time "5 minutes ago"
+<h1>Crisis averted in seconds, not hours</code></pre></h1>
+<h3>🧪 <strong>안전한 테스트</strong></h3></p><pre><code class="language-bash"># Test with real production data
+argon branches create staging --from production
+<h1>Run risky migrations fearlessly</code></pre></h1>
+<h3>📊 <strong>데이터 분석</strong></h3></p><pre><code class="language-bash"># Compare data across time
+argon time-travel diff --from "last week" --to "today"
+<h1>See exactly what changed</code></pre></h1>
+<h2>작동 원리</h2></p><p>Argon은 MongoDB 작업을 가로채어 <strong>Write-Ahead Log (WAL)</strong>에 기록하여 다음을 가능하게 합니다:
+<ul><li>메타데이터 포인터를 통한 즉각적인 브랜칭</li>
+<li>작업 재생을 통한 시점 복원</li>
+<li>제로-카피 효율성</li></p><p></ul>기존 MongoDB 코드는 변경 없이 작동합니다 - 단지 <code>ENABLE_WAL=true</code>만 추가하세요.</p><h2>설치</h2></p><pre><code class="language-bash"># CLI
+brew install argon-lab/tap/argonctl    # macOS
+npm install -g argonctl                 # Node.js
+pip install argon-mongodb               # Python SDK</p><h1>From Source</h1>
+git clone https://github.com/argon-lab/argon
+cd argon/cli && go build -o argon</code></pre>
+<h2>문서</h2></p><ul><li>📖 <a href="https://raw.githubusercontent.com/argon-lab/argon/master/./docs/QUICK_START.md" target="_blank" rel="noopener noreferrer">빠른 시작 가이드</a></li>
+<li>🛠️ <a href="https://raw.githubusercontent.com/argon-lab/argon/master/./docs/API_REFERENCE.md" target="_blank" rel="noopener noreferrer">API 레퍼런스</a></li>
+<li>💡 <a href="https://raw.githubusercontent.com/argon-lab/argon/master/./docs/USE_CASES.md" target="_blank" rel="noopener noreferrer">사용 사례</a></li>
+<li>🏗️ <a href="https://raw.githubusercontent.com/argon-lab/argon/master/./docs/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">아키텍처</a></li></p><p></ul><h2>커뮤니티</h2></p><ul><li>🐛 <a href="https://github.com/argon-lab/argon/issues" target="_blank" rel="noopener noreferrer">이슈 신고</a></li>
+<li>💬 <a href="https://github.com/argon-lab/argon/discussions" target="_blank" rel="noopener noreferrer">토론</a></li>
+<li>📧 <a href="https://www.argonlabs.tech" target="_blank" rel="noopener noreferrer">문의하기</a></li></p><p></ul>---</p><p><div align="center"></p><p><strong>MongoDB에 타임머신을 제공합니다. 데이터 손실을 방지하세요.</strong></p><p>⭐ Argon이 도움이 되었다면 <strong>별표</strong>를 눌러주세요!</p><p><a href="https://raw.githubusercontent.com/argon-lab/argon/master/docs/QUICK_START.md" target="_blank" rel="noopener noreferrer">시작하기 →</a> | <a href="https://console.argonlabs.tech" target="_blank" rel="noopener noreferrer">라이브 데모 →</a></p><p></div></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-18
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-20
 
 ---</p>
         </div>
@@ -369,7 +311,7 @@ argon branch merge feature-new-analytics main</code></pre>
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-07-18 
+        Last updated: 2025-07-20 
     </div>
     
 </body>
