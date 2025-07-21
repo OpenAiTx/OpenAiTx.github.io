@@ -34,8 +34,8 @@
   },
   "url": "https://OpenAiTx.github.io/projects/argon-lab/argon/README-id.html",
   "sameAs": "https://raw.githubusercontent.com/argon-lab/argon/master/README.md",
-  "datePublished": "2025-07-20",
-  "dateModified": "2025-07-20"
+  "datePublished": "2025-07-21",
+  "dateModified": "2025-07-21"
 }
     </script>
     
@@ -260,28 +260,37 @@
 <a href="https://goreportcard.com/report/github.com/argon-lab/argon" target="_blank" rel="noopener noreferrer"><img src="https://goreportcard.com/badge/github.com/argon-lab/argon" alt="Go Report"></a>
 <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></p><p><a href="https://github.com/argon-lab/homebrew-tap" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Homebrew-argonctl-orange?logo=homebrew" alt="Homebrew"></a>
 <a href="https://www.npmjs.com/package/argonctl" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/v/argonctl?logo=npm&label=npm" alt="npm"></a>
-<a href="https://pypi.org/project/argon-mongodb/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/pypi/v/argon-mongodb?logo=pypi&label=PyPI" alt="PyPI"></a></p><p><strong>Menjelajah waktu di database MongoDB Anda. Buat cabang, pulihkan, dan bereksperimen tanpa rasa takut.</strong></p><h2>Apa itu Argon?</h2></p><p>Argon memberikan kekuatan super pada MongoDB dengan <strong>branching seperti Git</strong> dan <strong>perjalanan waktu</strong>. Buat cabang database instan, pulihkan ke titik mana pun dalam sejarah, dan jangan pernah kehilangan data lagi.</p><h3>🎯 Manfaat Utama</h3></p><ul><li><strong>⚡ Cabang Instan</strong> - Kloning seluruh database Anda dalam 1ms (bukan jam)</li>
-<li><strong>⏰ Perjalanan Waktu</strong> - Query data Anda dari titik mana pun dalam sejarah</li>
-<li><strong>🔄 Pemulihan Aman</strong> - Pratinjau perubahan sebelum memulihkan</li>
-<li><strong>💾 Biaya Penyimpanan Nol</strong> - Cabang berbagi data secara efisien</li>
-<li><strong>🔌 Kompatibel Langsung</strong> - Bekerja dengan kode MongoDB yang sudah ada</li></p><p></ul><h2>Demo Singkat</h2></p><pre><code class="language-bash"># Install
+<a href="https://pypi.org/project/argon-mongodb/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/pypi/v/argon-mongodb?logo=pypi&label=PyPI" alt="PyPI"></a></p><p><strong>Menjelajahi waktu di database MongoDB Anda. Membuat cabang, mengembalikan, dan bereksperimen tanpa rasa takut.</strong></p><h2>Apa itu Argon?</h2></p><p>Argon memberikan kekuatan super pada MongoDB dengan <strong>branching seperti Git</strong> dan <strong>perjalanan waktu</strong>. Buat cabang database secara instan, kembalikan ke titik mana pun dalam sejarah, dan jangan pernah kehilangan data lagi.</p><h3>🎯 Keuntungan Utama</h3></p><ul><li><strong>⚡ Cabang Instan</strong> - Kloning seluruh database Anda dalam 1ms (bukan jam)</li>
+<li><strong>⏰ Perjalanan Waktu</strong> - Query data Anda dari titik mana saja dalam sejarah dengan <strong>220.000+ query/detik</strong></li>
+<li><strong>🔄 Pemulihan Aman</strong> - Pratinjau perubahan sebelum mengembalikan</li>
+<li><strong>💾 Tanpa Biaya Penyimpanan</strong> - Cabang berbagi data secara efisien dengan kompresi 90%</li>
+<li><strong>🔌 Kompatibel Plug-and-Play</strong> - Bekerja dengan kode MongoDB yang sudah ada</li>
+<li><strong>🚀 Performa Enterprise</strong> - Query perjalanan waktu 26x lebih cepat setelah optimasi terbaru</li>
+<li><strong>✅ Pengujian Komprehensif</strong> - Cakupan pengujian luas untuk memastikan keandalan</li>
+<li><strong>🗜️ Kompresi Cerdas</strong> - Kompresi WAL otomatis mengurangi penyimpanan 80-90%</li></p><p></ul><h2>Demo Cepat</h2></p><pre><code class="language-bash"># Install
 brew install argon-lab/tap/argonctl    # macOS
-npm install -g argonctl                 # Cross-platform</p><h1>Create a time-travel enabled database</h1>
-export ENABLE_WAL=true
-argon projects create myapp</p><h1>Your app crashed after bad migration? No problem!</h1>
+npm install -g argonctl                 # Cross-platform</p><h1>Step 1: Import your existing MongoDB (like "git clone")</h1>
+argon import database --uri "mongodb://localhost:27017" --database myapp --project myapp
+<h1>✅ Your data now has time travel capabilities!</h1></p><h1>Step 2: Use Argon like Git for your database</h1>
+argon branches create test-env           # Branch like "git checkout -b"
+argon time-travel query --project myapp --branch main --lsn 1000</p><h1>Step 3: Disaster recovery made simple</h1>
 argon restore preview --time "1 hour ago"
-argon restore reset --time "before disaster"</p><h1>Need a test environment? Branch instantly!</h1>
-argon branches create test-env
-<h1>Full database copy created in 1ms 🚀</code></pre></h1>
-<h2>Kasus Penggunaan di Dunia Nyata</h2></p><h3>🚨 <strong>Pemulihan Bencana</strong></h3></p><pre><code class="language-bash"># "Someone deleted all users!"
+argon restore reset --time "before disaster"</code></pre>
+<h2>Alur Kerja Mirip Git untuk MongoDB</h2></p><h3>🔄 <strong>Langkah 1: Impor ("git clone" untuk basis data)</strong></h3></p><pre><code class="language-bash"># Bring your existing MongoDB into Argon
+argon import preview --uri "mongodb://localhost:27017" --database myapp
+argon import database --uri "mongodb://localhost:27017" --database myapp --project myapp
+<h1>✅ Your existing data now has time travel capabilities!</code></pre></h1>
+<h3>🧪 <strong>Langkah 2: Cabang ("git checkout -b")</strong></h3></p><pre><code class="language-bash"># Create branches for testing, staging, experiments
+argon branches create staging --project myapp
+argon branches create experiment-v2 --project myapp
+<h1>Full database copies created instantly 🚀</code></pre></h1>
+<h3>📊 <strong>Langkah 3: Perjalanan Waktu ("git log" untuk data)</strong></h3></p><pre><code class="language-bash"># See your data's history
+argon time-travel info --project myapp --branch main
+argon time-travel query --project myapp --branch main --lsn 1000
+<h1>Compare data across time like Git commits</code></pre></h1>
+<h3>🚨 <strong>Langkah 4: Pulihkan ("git reset" untuk bencana)</strong></h3></p><pre><code class="language-bash"># "Someone deleted all users!"
 argon restore reset --time "5 minutes ago"
 <h1>Crisis averted in seconds, not hours</code></pre></h1>
-<h3>🧪 <strong>Pengujian Aman</strong></h3></p><pre><code class="language-bash"># Test with real production data
-argon branches create staging --from production
-<h1>Run risky migrations fearlessly</code></pre></h1>
-<h3>📊 <strong>Analisis Data</strong></h3></p><pre><code class="language-bash"># Compare data across time
-argon time-travel diff --from "last week" --to "today"
-<h1>See exactly what changed</code></pre></h1>
 <h2>Cara Kerjanya</h2></p><p>Argon mencegat operasi MongoDB dan mencatatnya ke <strong>Write-Ahead Log (WAL)</strong>, memungkinkan:
 <ul><li>Percabangan instan melalui penunjuk metadata</li>
 <li>Perjalanan waktu dengan memutar ulang operasi</li>
@@ -293,13 +302,16 @@ git clone https://github.com/argon-lab/argon
 cd argon/cli && go build -o argon</code></pre>
 <h2>Dokumentasi</h2></p><ul><li>📖 <a href="https://raw.githubusercontent.com/argon-lab/argon/master/./docs/QUICK_START.md" target="_blank" rel="noopener noreferrer">Panduan Mulai Cepat</a></li>
 <li>🛠️ <a href="https://raw.githubusercontent.com/argon-lab/argon/master/./docs/API_REFERENCE.md" target="_blank" rel="noopener noreferrer">Referensi API</a></li>
-<li>💡 <a href="https://raw.githubusercontent.com/argon-lab/argon/master/./docs/USE_CASES.md" target="_blank" rel="noopener noreferrer">Studi Kasus</a></li>
-<li>🏗️ <a href="https://raw.githubusercontent.com/argon-lab/argon/master/./docs/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">Arsitektur</a></li></p><p></ul><h2>Komunitas</h2></p><ul><li>🐛 <a href="https://github.com/argon-lab/argon/issues" target="_blank" rel="noopener noreferrer">Laporkan Masalah</a></li>
+<li>💡 <a href="https://raw.githubusercontent.com/argon-lab/argon/master/./docs/USE_CASES.md" target="_blank" rel="noopener noreferrer">Kasus Penggunaan</a></li>
+<li>🏗️ <a href="https://raw.githubusercontent.com/argon-lab/argon/master/./docs/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">Arsitektur</a></li></p><p></ul><h2>Komunitas</h2></p><ul><li>🤝 <a href="https://raw.githubusercontent.com/argon-lab/argon/master/./COMMUNITY.md" target="_blank" rel="noopener noreferrer">Panduan Komunitas</a> - Bergabunglah!</li>
+<li>📋 <a href="https://raw.githubusercontent.com/argon-lab/argon/master/./ROADMAP.md" target="_blank" rel="noopener noreferrer">Peta Jalan</a> - Lihat yang akan datang</li>
+<li>🐛 <a href="https://github.com/argon-lab/argon/issues" target="_blank" rel="noopener noreferrer">Laporkan Masalah</a></li>
 <li>💬 <a href="https://github.com/argon-lab/argon/discussions" target="_blank" rel="noopener noreferrer">Diskusi</a></li>
-<li>📧 <a href="https://www.argonlabs.tech" target="_blank" rel="noopener noreferrer">Kontak</a></li></p><p></ul>---</p><p><div align="center"></p><p><strong>Beri MongoDB Anda mesin waktu. Tidak pernah kehilangan data lagi.</strong></p><p>⭐ <strong>Beri bintang</strong> jika Argon menyelamatkan hari Anda!</p><p><a href="https://raw.githubusercontent.com/argon-lab/argon/master/docs/QUICK_START.md" target="_blank" rel="noopener noreferrer">Mulai Sekarang →</a> | <a href="https://console.argonlabs.tech" target="_blank" rel="noopener noreferrer">Demo Langsung →</a></p><p></div></p><p>
+<li>🏗️ <a href="https://raw.githubusercontent.com/argon-lab/argon/master/./CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Berkontribusi</a> - Bantu bangun Argon</li>
+<li>📧 <a href="https://www.argonlabs.tech" target="_blank" rel="noopener noreferrer">Kontak</a></li></p><p></ul>---</p><p><div align="center"></p><p><strong>Beri MongoDB Anda mesin waktu. Jangan pernah kehilangan data lagi.</strong></p><p>⭐ <strong>Beri bintang</strong> jika Argon membantu Anda hari ini!</p><p><a href="https://raw.githubusercontent.com/argon-lab/argon/master/docs/QUICK_START.md" target="_blank" rel="noopener noreferrer">Mulai Sekarang →</a> | <a href="https://console.argonlabs.tech" target="_blank" rel="noopener noreferrer">Demo Langsung →</a></p><p></div></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-20
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-21
 
 ---</p>
         </div>
@@ -311,7 +323,7 @@ cd argon/cli && go build -o argon</code></pre>
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-07-20 
+        Last updated: 2025-07-21 
     </div>
     
 </body>
