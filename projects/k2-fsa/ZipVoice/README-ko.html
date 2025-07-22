@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZipVoice - Korean Documentation</title>
-    <meta name="description" content="Read ZipVoice documentation in Korean. This project has 278 stars on GitHub.">
+    <meta name="description" content="Read ZipVoice documentation in Korean. This project has 308 stars on GitHub.">
     <meta name="keywords" content="ZipVoice, Korean, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 278
+    "ratingCount": 308
   },
   "url": "https://OpenAiTx.github.io/projects/k2-fsa/ZipVoice/README-ko.html",
   "sameAs": "https://raw.githubusercontent.com/k2-fsa/ZipVoice/master/README.md",
-  "datePublished": "2025-07-17",
-  "dateModified": "2025-07-17"
+  "datePublished": "2025-07-22",
+  "dateModified": "2025-07-22"
 }
     </script>
     
@@ -221,7 +221,7 @@
         <div class="header">
             <h1 class="project-title">ZipVoice</h1>
             <div class="project-meta">
-                <span class="stars">⭐ 278 stars</span>
+                <span class="stars">⭐ 308 stars</span>
                 <span class="language">Korean</span>
                 <span>by k2-fsa</span>
             </div>
@@ -292,12 +292,11 @@
 <h3>2. (선택 사항) 파이썬 가상 환경 만들기</h3></p><pre><code class="language-bash">python3 -m venv zipvoice
 source zipvoice/bin/activate</code></pre>
 <h3>3. 필요한 패키지 설치하기</h3></p><pre><code class="language-bash">pip install -r requirements.txt</code></pre>
-<h3>4. (선택 사항) 학습 또는 효율적인 추론을 위해 k2 설치</h3></p><p>k2는 학습에 필요하며 추론 속도를 향상시킬 수 있습니다. 그럼에도 불구하고, k2를 설치하지 않고도 ZipVoice의 추론 모드를 사용할 수 있습니다.</p><blockquote><strong>참고:</strong> 사용 중인 PyTorch 및 CUDA 버전에 맞는 k2 버전을 반드시 설치하세요. 예를 들어, pytorch 2.5.1과 CUDA 12.1을 사용 중이라면 다음과 같이 k2를 설치할 수 있습니다:</blockquote></p><pre><code class="language-bash">pip install k2==1.24.4.dev20250208+cuda12.1.torch2.5.1 -f https://k2-fsa.github.io/k2/cuda.html</code></pre>
-<translate-content>
-자세한 내용은 https://k2-fsa.org/get-started/k2/ 를 참조하십시오.  
-중국 본토 사용자는 https://k2-fsa.org/zh-CN/get-started/k2/ 를 참조할 수 있습니다.  </p><h2>사용법</h2></p><h3>1. 단일 화자 음성 생성</h3></p><p>사전 학습된 ZipVoice 또는 ZipVoice-Distill 모델로 단일 화자 음성을 생성하려면 다음 명령어를 사용하십시오 (필요한 모델은 HuggingFace에서 다운로드됩니다):</p><p>#### 1.1 단일 문장 추론
-</translate-content>
-<pre><code class="language-bash">python3 -m zipvoice.bin.infer_zipvoice \
+<h3>4. 학습 또는 효율적인 추론을 위해 k2 설치하기</h3></p><p><strong>k2는 학습에 필수적</strong>이며 추론 속도를 높일 수 있습니다. 하지만 k2를 설치하지 않아도 ZipVoice의 추론 모드는 사용할 수 있습니다.</p><blockquote><strong>참고:</strong>  사용하는 PyTorch 및 CUDA 버전에 맞는 k2 버전을 설치해야 합니다. 예를 들어, pytorch 2.5.1과 CUDA 12.1을 사용 중이라면, 다음과 같이 k2를 설치할 수 있습니다.</blockquote></p><pre><code class="language-bash">pip install k2==1.24.4.dev20250208+cuda12.1.torch2.5.1 -f https://k2-fsa.github.io/k2/cuda.html</code></pre>
+자세한 내용은 https://k2-fsa.org/get-started/k2/ 를 참조하십시오.
+중국 본토 사용자는 https://k2-fsa.org/zh-CN/get-started/k2/ 를 참조할 수 있습니다.</p><ul><li>k2 설치를 확인하려면:</li></p><p>
+</ul><pre><code class="language-">python3 -c "import k2; print(k2.__file__)"</code></pre>
+<h2>사용법</h2></p><h3>1. 단일 화자 음성 생성</h3></p><p>사전 학습된 ZipVoice 또는 ZipVoice-Distill 모델을 사용하여 단일 화자 음성을 생성하려면 다음 명령어를 사용하십시오(HuggingFace에서 필요한 모델이 다운로드됩니다):</p><p>#### 1.1 단일 문장 추론</p><pre><code class="language-bash">python3 -m zipvoice.bin.infer_zipvoice \
     --model-name zipvoice \
     --prompt-wav prompt.wav \
     --prompt-text "I am the transcription of the prompt wav." \
@@ -312,7 +311,7 @@ source zipvoice/bin/activate</code></pre>
     --model-name zipvoice \
     --test-list test.tsv \
     --res-dir results</code></pre>
-<ul><li></code>test.tsv<code>의 각 행은 </code>{wav_name}\t{prompt_transcription}\t{prompt_wav}\t{text}<code> 형식입니다.</li></p><p></ul><h3>2. 음성 대화 생성</h3></p><p>#### 2.1 추론 명령어</p><p>사전 학습된 ZipVoice-Dialogue 또는 ZipVoice-Dialogue-Stereo 모델을 사용하여 양방향 음성 대화를 생성하려면 다음 명령어를 사용하세요 (필요한 모델은 HuggingFace에서 다운로드됩니다):</p><pre><code class="language-bash">python3 -m zipvoice.bin.infer_zipvoice_dialog \
+<ul><li></code>test.tsv<code>의 각 라인은 </code>{wav_name}\t{prompt_transcription}\t{prompt_wav}\t{text}<code> 형식입니다.</li></p><p></ul><h3>2. 대화 음성 생성</h3></p><p>#### 2.1 추론 명령</p><p>사전 학습된 ZipVoice-Dialogue 또는 ZipVoice-Dialogue-Stereo 모델로 양자 대화 음성을 생성하려면 다음 명령어를 사용하세요(필요한 모델은 HuggingFace에서 다운로드됩니다):</p><pre><code class="language-bash">python3 -m zipvoice.bin.infer_zipvoice_dialog \
     --model-name "zipvoice_dialog" \
     --test-list test.tsv \
     --res-dir results</code></pre>
@@ -324,15 +323,15 @@ source zipvoice/bin/activate</code></pre>
 <li></code>prompt_transcription<code> 은 대화형 프롬프트 wav의 전사이며, 예를 들어 "[S1] 안녕하세요. [S2] 어떻게 지내세요?" 입니다.  </li>
 <li></code>prompt_wav<code> 는 프롬프트 wav의 경로입니다.  </li>
 <li></code>text<code> 는 합성할 텍스트이며, 예를 들어 "[S1] 저는 괜찮아요. [S2] 이름이 뭐에요?" 입니다.  </li></p><p></ul>(2) <strong>분리된 프롬프트 형식</strong>으로, 두 화자의 오디오와 전사가 별도의 파일에 존재합니다:</p><pre><code class="language-">{wav_name}\t{spk1_prompt_transcription}\t{spk2_prompt_transcription}\t{spk1_prompt_wav}\t{spk2_prompt_wav}\t{text}'</code></pre>
-<ul><li></code>wav_name<code> 은 출력 wav 파일의 이름입니다.</li>
-<li></code>spk1_prompt_transcription<code> 은 첫 번째 화자의 프롬프트 wav 전사본입니다, 예: "Hello"</li>
-<li></code>spk2_prompt_transcription<code> 은 두 번째 화자의 프롬프트 wav 전사본입니다, 예: "How are you?"</li>
-<li></code>spk1_prompt_wav<code> 은 첫 번째 화자의 프롬프트 wav 파일 경로입니다.</li>
-<li></code>spk2_prompt_wav<code> 은 두 번째 화자의 프롬프트 wav 파일 경로입니다.</li>
-<li></code>text<code> 는 합성할 텍스트입니다, 예: "[S1] I'm fine. [S2] What's your name?"</li></p><p></ul><h3>3. 기타 기능</h3></p><p>#### 3.1 잘못 발음된 중국어 다음소리 문자 수정</p><p>우리는 <a href="https://github.com/mozillazg/python-pinyin" target="_blank" rel="noopener noreferrer">pypinyin</a> 을 사용하여 한자를 병음으로 변환합니다. 하지만 가끔 <strong>다음소리 문자</strong>(多音字)를 잘못 발음할 수 있습니다.</p><p>이러한 잘못된 발음을 수동으로 수정하려면, <strong>수정된 병음</strong>을 꺾쇠 괄호 </code>< ><code> 안에 넣고 <strong>성조 표시</strong>를 포함하세요.</p><p><strong>예시:</strong></p><ul><li>원본 텍스트: </code>这把剑长三十公分<code></li>
-<li></code>长<code>의 병음 수정:  </code>这把剑<chang2>三十公分<code></li></p><p></ul>> <strong>참고:</strong> 여러 개의 병음을 수동으로 지정하려면 각 병음을 </code><><code>로 감싸세요, 예: </code>这把<jian4><chang2><san1>十公分`</p><h2>자신만의 모델 훈련하기</h2></p><p>훈련 및 미세 조정 예시는 <a href="egs" target="_blank" rel="noopener noreferrer">egs</a> 디렉토리를 참조하세요.</p><h2>토론 및 소통</h2></p><p>직접 <a href="https://github.com/k2-fsa/ZipVoice/issues" target="_blank" rel="noopener noreferrer">Github Issues</a> 에서 토론할 수 있습니다.</p><p>또한 QR 코드를 스캔하여 우리 위챗 그룹에 참여하거나 공식 위챗 계정을 팔로우할 수 있습니다.</p><p>| 위챗 그룹 | 위챗 공식 계정 |
-| --------- | -------------- |
-|<img src="https://k2-fsa.org/zh-CN/assets/pic/wechat_group.jpg" alt="wechat"> |<img src="https://k2-fsa.org/zh-CN/assets/pic/wechat_account.jpg" alt="wechat"> |</p><h2>인용문헌</h2></p><pre><code class="language-bibtex">@article{zhu2025zipvoice,
+<ul><li></code>wav_name<code>은 출력 wav 파일의 이름입니다.</li>
+<li></code>spk1_prompt_transcription<code>은 첫 번째 화자의 프롬프트 wav의 전사본입니다. 예: "Hello"</li>
+<li></code>spk2_prompt_transcription<code>은 두 번째 화자의 프롬프트 wav의 전사본입니다. 예: "How are you?"</li>
+<li></code>spk1_prompt_wav<code>는 첫 번째 화자의 프롬프트 wav 파일 경로입니다.</li>
+<li></code>spk2_prompt_wav<code>는 두 번째 화자의 프롬프트 wav 파일 경로입니다.</li>
+<li></code>text<code>는 합성할 텍스트입니다. 예: "[S1] I'm fine. [S2] What's your name?"</li></p><p></ul><h3>3. 기타 기능</h3></p><p>#### 3.1 중국어 다음자(다음음절자) 발음 오류 교정</p><p>중국어 문자를 <a href="https://github.com/mozillazg/python-pinyin" target="_blank" rel="noopener noreferrer">pypinyin</a>으로 병음으로 변환합니다. 하지만, 가끔 <strong>다음자(多音字)</strong>의 발음을 잘못 인식할 수 있습니다.</p><p>이러한 발음 오류를 수동으로 교정하려면, <strong>교정된 병음</strong>을 꺾쇠 괄호 </code>< ><code>로 감싸고 <strong>성조</strong>를 포함하세요.</p><p><strong>예시:</strong></p><ul><li>원본 텍스트: </code>这把剑长三十公分<code></li>
+<li></code>长<code>의 병음을 교정:  </code>这把剑<chang2>三十公分<code></li></p><p></ul>> <strong>참고:</strong> 여러 병음을 수동으로 지정하려면 각 병음을 </code><><code>로 감싸세요. 예: </code>这把<jian4><chang2><san1>十公分`</p><h2>사용자 모델 학습</h2></p><p>학습, 파인튜닝, 평가 예시는 <a href="egs" target="_blank" rel="noopener noreferrer">egs</a> 디렉토리를 참고하세요.</p><h2>토론 및 소통</h2></p><p><a href="https://github.com/k2-fsa/ZipVoice/issues" target="_blank" rel="noopener noreferrer">Github Issues</a>에서 직접 토론할 수 있습니다.</p><p>또한 QR 코드를 스캔하여 위챗 그룹에 참여하거나 공식 위챗 계정을 팔로우할 수 있습니다.</p><p>| 위챗 그룹 | 위챗 공식 계정 |
+| ------------ | ----------------------- |
+|<img src="https://k2-fsa.org/zh-CN/assets/pic/wechat_group.jpg" alt="wechat"> |<img src="https://k2-fsa.org/zh-CN/assets/pic/wechat_account.jpg" alt="wechat"> |</p><h2>인용 안내</h2></p><pre><code class="language-bibtex">@article{zhu2025zipvoice,
       title={ZipVoice: Fast and High-Quality Zero-Shot Text-to-Speech with Flow Matching},
       author={Zhu, Han and Kang, Wei and Yao, Zengwei and Guo, Liyong and Kuang, Fangjun and Li, Zhaoqing and Zhuang, Weiji and Lin, Long and Povey, Daniel},
       journal={arXiv preprint arXiv:2506.13053},
@@ -347,7 +346,7 @@ source zipvoice/bin/activate</code></pre>
 
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-17
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-22
 
 ---</p>
         </div>
@@ -359,7 +358,7 @@ source zipvoice/bin/activate</code></pre>
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-07-17 
+        Last updated: 2025-07-22 
     </div>
     
 </body>

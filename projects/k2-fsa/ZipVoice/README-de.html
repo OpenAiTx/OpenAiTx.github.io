@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZipVoice - German Documentation</title>
-    <meta name="description" content="Read ZipVoice documentation in German. This project has 278 stars on GitHub.">
+    <meta name="description" content="Read ZipVoice documentation in German. This project has 308 stars on GitHub.">
     <meta name="keywords" content="ZipVoice, German, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 278
+    "ratingCount": 308
   },
   "url": "https://OpenAiTx.github.io/projects/k2-fsa/ZipVoice/README-de.html",
   "sameAs": "https://raw.githubusercontent.com/k2-fsa/ZipVoice/master/README.md",
-  "datePublished": "2025-07-17",
-  "dateModified": "2025-07-17"
+  "datePublished": "2025-07-22",
+  "dateModified": "2025-07-22"
 }
     </script>
     
@@ -221,7 +221,7 @@
         <div class="header">
             <h1 class="project-title">ZipVoice</h1>
             <div class="project-meta">
-                <span class="stars">⭐ 278 stars</span>
+                <span class="stars">⭐ 308 stars</span>
                 <span class="language">German</span>
                 <span>by k2-fsa</span>
             </div>
@@ -243,7 +243,7 @@
         | <a href="https://openaitx.github.io/view.html?user=k2-fsa&project=ZipVoice&lang=fr">Français</a>
         | <a href="https://openaitx.github.io/view.html?user=k2-fsa&project=ZipVoice&lang=de">Deutsch</a>
         | <a href="https://openaitx.github.io/view.html?user=k2-fsa&project=ZipVoice&lang=es">Español</a>
-        | <a href="https://openaitx.github.io/view.html?user=k2-fsa&project=ZipVoice&lang=it">Italiano</a>
+        | <a href="https://openaitx.github.io/view.html?user=k2-fsa&project=ZipVoice&lang=it">Itapano</a>
         | <a href="https://openaitx.github.io/view.html?user=k2-fsa&project=ZipVoice&lang=ru">Русский</a>
         | <a href="https://openaitx.github.io/view.html?user=k2-fsa&project=ZipVoice&lang=pt">Português</a>
         | <a href="https://openaitx.github.io/view.html?user=k2-fsa&project=ZipVoice&lang=nl">Nederlands</a>
@@ -292,9 +292,11 @@
 <h3>2. (Optional) Erstellen Sie eine Python-virtuelle Umgebung</h3></p><pre><code class="language-bash">python3 -m venv zipvoice
 source zipvoice/bin/activate</code></pre>
 <h3>3. Installieren Sie die erforderlichen Pakete</h3></p><pre><code class="language-bash">pip install -r requirements.txt</code></pre>
-<h3>4. (Optional) Installieren Sie k2 für das Training oder effizientes Inferenzieren</h3></p><p>k2 ist für das Training notwendig und kann die Inferenz beschleunigen. Dennoch können Sie den Inferenzmodus von ZipVoice auch ohne die Installation von k2 verwenden.</p><blockquote><strong>Hinweis:</strong>  Stellen Sie sicher, dass Sie die k2-Version installieren, die zu Ihrer PyTorch- und CUDA-Version passt. Wenn Sie zum Beispiel pytorch 2.5.1 und CUDA 12.1 verwenden, können Sie k2 wie folgt installieren:</blockquote></p><pre><code class="language-bash">pip install k2==1.24.4.dev20250208+cuda12.1.torch2.5.1 -f https://k2-fsa.github.io/k2/cuda.html</code></pre>
+<h3>4. Installieren Sie k2 für das Training oder effizientes Inferenzieren</h3></p><p><strong>k2 ist für das Training notwendig</strong> und kann die Inferenz beschleunigen. Dennoch können Sie den Inferenzmodus von ZipVoice auch ohne die Installation von k2 verwenden.</p><blockquote><strong>Hinweis:</strong> Stellen Sie sicher, dass Sie die k2-Version installieren, die zu Ihrer PyTorch- und CUDA-Version passt. Wenn Sie beispielsweise pytorch 2.5.1 und CUDA 12.1 verwenden, können Sie k2 wie folgt installieren:</blockquote></p><pre><code class="language-bash">pip install k2==1.24.4.dev20250208+cuda12.1.torch2.5.1 -f https://k2-fsa.github.io/k2/cuda.html</code></pre>
 Bitte beachten Sie https://k2-fsa.org/get-started/k2/ für weitere Details.
-Benutzer auf dem chinesischen Festland können https://k2-fsa.org/zh-CN/get-started/k2/ konsultieren.</p><h2>Verwendung</h2></p><h3>1. Einzelsprecher-Sprachsynthese</h3></p><p>Um Einzelsprecher-Sprachsynthese mit unseren vortrainierten ZipVoice- oder ZipVoice-Distill-Modellen zu erzeugen, verwenden Sie die folgenden Befehle (erforderliche Modelle werden von HuggingFace heruntergeladen):</p><p>#### 1.1 Inferenz eines einzelnen Satzes</p><pre><code class="language-bash">python3 -m zipvoice.bin.infer_zipvoice \
+Nutzer in Festlandchina können https://k2-fsa.org/zh-CN/get-started/k2/ nutzen.</p><ul><li>Um die k2-Installation zu überprüfen:</li></p><p>
+</ul><pre><code class="language-">python3 -c "import k2; print(k2.__file__)"</code></pre>
+<h2>Verwendung</h2></p><h3>1. Sprachgenerierung mit einem Sprecher</h3></p><p>Um Sprachaufnahmen mit nur einem Sprecher mithilfe unserer vortrainierten ZipVoice- oder ZipVoice-Distill-Modelle zu erzeugen, verwenden Sie die folgenden Befehle (Erforderliche Modelle werden von HuggingFace heruntergeladen):</p><p>#### 1.1 Inferenz eines einzelnen Satzes</p><pre><code class="language-bash">python3 -m zipvoice.bin.infer_zipvoice \
     --model-name zipvoice \
     --prompt-wav prompt.wav \
     --prompt-text "I am the transcription of the prompt wav." \
@@ -309,7 +311,7 @@ python3 -m zipvoice.bin.infer_zipvoice \
     --model-name zipvoice \
     --test-list test.tsv \
     --res-dir results
-<pre><code class="language-">- Jede Zeile von </code>test.tsv<code> hat das Format </code>{wav_name}\t{prompt_transcription}\t{prompt_wav}\t{text}<code>.</p><h3>2. Generierung gesprochener Dialoge</h3></p><p>#### 2.1 Inferenzbefehl</p><p>Um gesprochene Dialoge zwischen zwei Parteien mit unseren vortrainierten ZipVoice-Dialogue- oder ZipVoice-Dialogue-Stereo-Modellen zu erzeugen, verwenden Sie die folgenden Befehle (Erforderliche Modelle werden von HuggingFace heruntergeladen):</p><p></code></pre>bash
+<pre><code class="language-">- Jede Zeile von </code>test.tsv<code> hat das Format </code>{wav_name}\t{prompt_transcription}\t{prompt_wav}\t{text}<code>.</p><h3>2. Dialog-Sprachgenerierung</h3></p><p>#### 2.1 Inferenzbefehl</p><p>Um Zwei-Parteien-Dialoge mit unseren vortrainierten ZipVoice-Dialogue oder ZipVoice-Dialogue-Stereo Modellen zu generieren, verwenden Sie die folgenden Befehle (Die benötigten Modelle werden von HuggingFace heruntergeladen):</p><p></code></pre>bash
 python3 -m zipvoice.bin.infer_zipvoice_dialog \
     --model-name "zipvoice_dialog" \
     --test-list test.tsv \
@@ -324,12 +326,12 @@ python3 -m zipvoice.bin.infer_zipvoice_dialog \
 <li></code>text<code> ist der zu synthetisierende Text, z. B. "[S1] Mir geht es gut. [S2] Wie heißt du?"</li></p><p></ul>(2) <strong>Geteiltes Prompt-Format</strong>, bei dem die Audiodateien und Transkriptionen der beiden Sprecher in separaten Dateien vorliegen:</p><p></code></pre>
 {wav_name}\t{spk1_prompt_transcription}\t{spk2_prompt_transcription}\t{spk1_prompt_wav}\t{spk2_prompt_wav}\t{text}'
 <pre><code class="language-">- </code>wav_name<code> ist der Name der Ausgabedatei im wav-Format.
-<ul><li></code>spk1_prompt_transcription<code> ist die Transkription des Prompt-wav des ersten Sprechers, z. B. "Hallo"</li>
-<li></code>spk2_prompt_transcription<code> ist die Transkription des Prompt-wav des zweiten Sprechers, z. B. "Wie geht's?"</li>
+<ul><li></code>spk1_prompt_transcription<code> ist die Transkription der Prompt-wav des ersten Sprechers, z. B. "Hallo"</li>
+<li></code>spk2_prompt_transcription<code> ist die Transkription der Prompt-wav des zweiten Sprechers, z. B. "Wie geht's?"</li>
 <li></code>spk1_prompt_wav<code> ist der Pfad zur Prompt-wav-Datei des ersten Sprechers.</li>
 <li></code>spk2_prompt_wav<code> ist der Pfad zur Prompt-wav-Datei des zweiten Sprechers.</li>
-<li></code>text<code> ist der zu synthetisierende Text, z. B. "[S1] Mir geht's gut. [S2] Wie heißt du?"</li></p><p></ul><h3>3. Weitere Funktionen</h3></p><p>#### 3.1 Korrektur von falsch ausgesprochenen chinesischen Polyphonen</p><p>Wir verwenden <a href="https://github.com/mozillazg/python-pinyin" target="_blank" rel="noopener noreferrer">pypinyin</a>, um chinesische Schriftzeichen in Pinyin umzuwandeln. Gelegentlich kann es jedoch <strong>Polyphone Zeichen</strong> (多音字) falsch aussprechen.</p><p>Um diese Falschaussprache manuell zu korrigieren, setzen Sie das <strong>korrigierte Pinyin</strong> in spitze Klammern </code>< ><code> und geben Sie das <strong>Tonzeichen</strong> an.</p><p><strong>Beispiel:</strong></p><ul><li>Originaltext: </code>这把剑长三十公分<code></li>
-<li>Korrigieren Sie das Pinyin von </code>长<code>:  </code>这把剑<chang2>三十公分<code></li></p><p></ul>> <strong>Hinweis:</strong> Wenn Sie mehrere Pinyins manuell zuweisen möchten, setzen Sie jedes Pinyin in </code><><code>, z. B. </code>这把<jian4><chang2><san1>十公分<code></p><h2>Eigenes Modell trainieren</h2></p><p>Siehe das Verzeichnis <a href="egs" target="_blank" rel="noopener noreferrer">egs</a> für Trainings- und Fine-Tuning-Beispiele.</p><h2>Diskussion & Kommunikation</h2></p><p>Sie können direkt auf <a href="https://github.com/k2-fsa/ZipVoice/issues" target="_blank" rel="noopener noreferrer">Github Issues</a> diskutieren.</p><p>Sie können auch den QR-Code scannen, um unserer WeChat-Gruppe beizutreten oder unserem offiziellen WeChat-Account zu folgen.</p><p>| WeChat-Gruppe | Offizieller WeChat-Account |
+<li></code>text<code> ist der zu synthetisierende Text, z. B. "[S1] Mir geht's gut. [S2] Wie heißt du?"</li></p><p></ul><h3>3. Weitere Funktionen</h3></p><p>#### 3.1 Korrektur falsch ausgesprochener chinesischer Polyphon-Zeichen</p><p>Wir verwenden <a href="https://github.com/mozillazg/python-pinyin" target="_blank" rel="noopener noreferrer">pypinyin</a>, um chinesische Zeichen in Pinyin umzuwandeln. Allerdings kann es gelegentlich <strong>Polyphon-Zeichen</strong> (多音字) falsch aussprechen.</p><p>Um diese Fehlinterpretationen manuell zu korrigieren, setzen Sie das <strong>korrigierte Pinyin</strong> in spitze Klammern </code>< ><code> und fügen Sie die <strong>Tonmarkierung</strong> hinzu.</p><p><strong>Beispiel:</strong></p><ul><li>Originaltext: </code>这把剑长三十公分<code></li>
+<li>Korrigiere das Pinyin von </code>长<code>:  </code>这把剑<chang2>三十公分<code></li></p><p></ul>> <strong>Hinweis:</strong> Wenn Sie mehreren Zeichen manuell Pinyin zuweisen möchten, setzen Sie jedes Pinyin in </code><><code>, z. B. </code>这把<jian4><chang2><san1>十公分<code></p><h2>Eigenes Modell trainieren</h2></p><p>Siehe das Verzeichnis <a href="egs" target="_blank" rel="noopener noreferrer">egs</a> für Trainings-, Feinabstimmungs- und Bewertungsbeispiele.</p><h2>Diskussion & Kommunikation</h2></p><p>Sie können direkt auf <a href="https://github.com/k2-fsa/ZipVoice/issues" target="_blank" rel="noopener noreferrer">Github Issues</a> diskutieren.</p><p>Sie können auch den QR-Code scannen, um unserer WeChat-Gruppe beizutreten oder unserem offiziellen WeChat-Account zu folgen.</p><p>| WeChat-Gruppe | Offizieller WeChat-Account |
 | ------------- | -------------------------- |
 |<img src="https://k2-fsa.org/zh-CN/assets/pic/wechat_group.jpg" alt="wechat"> |<img src="https://k2-fsa.org/zh-CN/assets/pic/wechat_account.jpg" alt="wechat"> |</p><h2>Zitation</h2></p><p></code></pre>bibtex
 @article{zhu2025zipvoice,
@@ -348,7 +350,7 @@ python3 -m zipvoice.bin.infer_zipvoice_dialog \
 
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-17
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-22
 
 ---</p>
         </div>
@@ -360,7 +362,7 @@ python3 -m zipvoice.bin.infer_zipvoice_dialog \
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-07-17 
+        Last updated: 2025-07-22 
     </div>
     
 </body>
