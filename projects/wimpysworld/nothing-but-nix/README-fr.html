@@ -1,11 +1,11 @@
 ﻿<!DOCTYPE html>
-<html lang="ja">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nothing-but-nix - Japanese Documentation</title>
-    <meta name="description" content="Read nothing-but-nix documentation in Japanese. This project has 111 stars on GitHub.">
-    <meta name="keywords" content="nothing-but-nix, Japanese, documentation, GitHub, open source">
+    <title>nothing-but-nix - French Documentation</title>
+    <meta name="description" content="Read nothing-but-nix documentation in French. This project has 111 stars on GitHub.">
+    <meta name="keywords" content="nothing-but-nix, French, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
     
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "nothing-but-nix",
-  "description": "Documentation for nothing-but-nix in Japanese",
+  "description": "Documentation for nothing-but-nix in French",
   "author": {
     "@type": "Person",
     "name": "wimpysworld"
@@ -32,7 +32,7 @@
     "ratingValue": "5",
     "ratingCount": 111
   },
-  "url": "https://OpenAiTx.github.io/projects/wimpysworld/nothing-but-nix/README-ja.html",
+  "url": "https://OpenAiTx.github.io/projects/wimpysworld/nothing-but-nix/README-fr.html",
   "sameAs": "https://raw.githubusercontent.com/wimpysworld/nothing-but-nix/main/README.md",
   "datePublished": "2025-07-24",
   "dateModified": "2025-07-24"
@@ -222,7 +222,7 @@
             <h1 class="project-title">nothing-but-nix</h1>
             <div class="project-meta">
                 <span class="stars">⭐ 111 stars</span>
-                <span class="language">Japanese</span>
+                <span class="language">French</span>
                 <span>by wimpysworld</span>
             </div>
         </div>
@@ -231,7 +231,7 @@
             <p>
 <div align="right">
   <details>
-    <summary >🌐 言語</summary>
+    <summary >🌐 Langue</summary>
     <div>
       <div align="center">
         <a href="https://openaitx.github.io/view.html?user=wimpysworld&project=nothing-but-nix&lang=en">English</a>
@@ -257,8 +257,8 @@
       </div>
     </div>
   </details>
-</div></p><h1>Nothing but Nix</h1></p><p><strong><a href="https://zero-to-nix.com/concepts/nix/" target="_blank" rel="noopener noreferrer">Nix</a> ❄️ のみを使用するパワフルな GitHub Actions ランナーへ変身し、事前インストールされた不要なソフトウェアを徹底的に排除します。</strong></p><p>GitHub Actions ランナーには Nix 用のディスク容量がわずか約 20GB しかありません。
-<em>Nothing but Nix</em> は不要なソフトウェアを<strong>徹底的に削除</strong>し、Nix ストア用に<strong>65GB～130GB</strong>の空き容量を確保します！💪</p><h2>使い方 🔧</h2></p><p>Nix をワークフローにインストールする<strong>前に</strong>このアクションを追加してください：</p><pre><code class="language-yaml">jobs:
+</div></p><h1>Nothing but Nix</h1></p><p><strong>Transformez votre runner GitHub Actions en une centrale <a href="https://zero-to-nix.com/concepts/nix/" target="_blank" rel="noopener noreferrer">Nix</a> ❄️ en supprimant sans pitié les logiciels préinstallés superflus.</strong></p><p>Les runners GitHub Actions offrent très peu d’espace disque pour Nix – à peine ~20 Go.
+<em>Nothing but Nix</em> <strong>purge radicalement</strong> les logiciels inutiles, vous offrant <strong>65 Go à 130 Go</strong> pour votre store Nix ! 💪</p><h2>Utilisation 🔧</h2></p><p>Ajoutez cette action <strong>avant</strong> d’installer Nix dans votre workflow :</p><pre><code class="language-yaml">jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
@@ -272,56 +272,52 @@
       <ul><li>name: Run Nix</li>
         </ul>run: |
           nix --version
-          # Your Nix-powered steps here...</code></pre>
-<h3>要件 ️✔️</h3></p><ul><li>公式の<strong>Ubuntu</strong> GitHub Actionsランナーのみ対応</li>
-<li>Nixがインストールされる<strong>前に</strong>実行する必要あり</li></p><p></ul><h2>問題点: Nixが快適に動作する空間を確保する 🌱</h2></p><p>標準のGitHub Actionsランナーは、Nixワークフローでは決して使わない<em>「不要なソフト」</em>で溢れています：</p><ul><li>🌍 ウェブブラウザが大量に。全部揃ってます！</li>
-<li>🐳 ギガバイト単位のディスク容量を消費するDockerイメージ</li>
-<li>💻 不要な言語ランタイム（.NET、Ruby、PHP、Javaなど）</li>
-<li>📦 使われないパッケージマネージャー</li>
-<li>📚 誰も読まないドキュメント</li></p><p></ul>この不要なもののせいで、Nixストアには約20GBしか残らず、本格的なNixビルドにはほとんど足りません！😞</p><h2>解決策: Nixだけの環境 ️❄️</h2></p><p><strong>Nothing but Nix</strong>は、GitHub Actionsランナーに対して徹底的な掃討戦を仕掛け、二段階の攻撃でディスク容量を容赦なく奪い返します：</p><ul><li><strong>初期削減:</strong> <code>/mnt</code>の空き容量を利用して即座に大容量の<code>/nix</code>ボリューム（約65GB）を作成</li>
-<li><strong>バックグラウンド掃討:</strong> ワークフローが続行している間に不要なソフトを容赦なく排除し、<code>/nix</code>ボリュームを最大約130GBまで拡張</li>
-   <li>ウェブブラウザ？ なし ⛔</li>
-   <li>Dockerイメージ？ 削除済み 🗑️</li>
-   <li>言語ランタイム？ 完全消滅 💥</li>
-   <li>パッケージマネージャー？ 壊滅 💣</li>
-   <li>ドキュメント？ 蒸発️👻</li></p><p></ul>ファイルシステムの掃除は、<a href="https://github.com/SUPERCILEX/fuc" target="_blank" rel="noopener noreferrer">Fast Unix Commands (FUC)</a>プロジェクトの<code>rmz</code>を使用しています。<code>rm</code>の高速代替で、容量回収が超高速！⚡
-   <ul><li>標準の<code>rm</code>より桁違いに高速</li>
-   <li>削除処理を並列化して最大効率化</li>
-   <li><strong>数分ではなく数秒でディスク容量を回復！</strong>️⏱️</li></p><p></ul>結果は？ GitHub Actionsランナーに<strong>65GBから130GB</strong>のNix対応スペースが確保されます！😁</p><h3>動的なボリューム成長</h3></p><p>他の解決策と違い、<strong>Nothing but Nix</strong>は<code>/nix</code>ボリュームを動的に拡張します：</p><ul><li><strong>初期ボリューム作成（1〜10秒）:</strong>（Hatchet Protocolに依存）</li>
-   <li><code>/mnt</code>の空き容量からループデバイスを作成</li>
-   <li>RAID0構成のBTRFSファイルシステムをセットアップ</li>
-   <li>圧縮とパフォーマンス調整をしてマウント</li>
-   <li>掃除開始前でも即座に65GBの<code>/nix</code>を提供</li></p><p><li><strong>バックグラウンド拡張（30〜180秒）:</strong>（Hatchet Protocolに依存）</li>
-   <li>掃除処理を実行</li>
-   <li>不要物が削除されて空き容量が増えるのを監視</li>
-   <li><code>/nix</code>ボリュームに拡張用ディスクを動的に追加</li>
-   <li>新容量を取り込むためにファイルシステムを再調整</li></p><p></ul><code>/nix</code>ボリュームはワークフロー実行中に<strong>自動的に拡大</strong>します 🎩🪄</p><h3>武器を選べ: Hatchet Protocol 🪓</h3></p><p><code>hatchet-protocol</code>入力で破壊レベルを制御できます 💥:</p><pre><code class="language-yaml">- uses: wimpysworld/nothing-but-nix@main
+          # Your Nix-powered steps here...</code></pre></p><h3>Exigences ️✔️</h3></p><ul><li>Prend uniquement en charge les runners GitHub Actions officiels <strong>Ubuntu</strong></li>
+<li>Doit s'exécuter <strong>avant</strong> l'installation de Nix</li></p><p></ul><h2>Le problème : faire de la place pour que Nix prospère 🌱</h2></p><p>Les runners GitHub Actions standards sont remplis de <em>"bloatware"</em> que vous n'utiliserez jamais dans un workflow Nix :</p><ul><li>🌍 Navigateurs web. Plein. Ils y sont tous !</li>
+<li>🐳 Images Docker consommant des gigaoctets d'espace disque précieux</li>
+<li>💻 Runtimes de langages inutiles (.NET, Ruby, PHP, Java...)</li>
+<li>📦 Gestionnaires de paquets prenant la poussière numérique</li>
+<li>📚 Documentation que personne ne lira jamais</li></p><p></ul>Cette surcharge ne laisse qu'environ ~20 Go pour votre magasin Nix - à peine assez pour des builds Nix sérieux ! 😞</p><h2>La solution : Rien que Nix ️❄️</h2></p><p><strong>Rien que Nix</strong> adopte une approche radicale sur les runners GitHub Actions et récupère sans pitié l'espace disque grâce à une attaque en deux phases :</p><ul><li><strong>Coupe initiale :</strong> Crée instantanément un grand volume <code>/nix</code> (~65 Go) en réclamant l'espace libre de <code>/mnt</code></li>
+<li><strong>Nettoyage en arrière-plan :</strong> Pendant que votre workflow continue, nous éliminons impitoyablement les logiciels inutiles pour étendre votre volume <code>/nix</code> jusqu'à ~130 Go</li>
+   <li>Navigateurs web ? Non ⛔</li>
+   <li>Images Docker ? Supprimées 🗑️</li>
+   <li>Runtimes de langages ? Anéantis 💥</li>
+   <li>Gestionnaires de paquets ? Éradiqués 💣</li>
+   <li>Documentation ? Volatilisée ️👻</li></p><p></ul>Le nettoyage du système de fichiers est propulsé par <code>rmz</code> (du projet <a href="https://github.com/SUPERCILEX/fuc" target="_blank" rel="noopener noreferrer">Fast Unix Commands (FUC)</a>) - une alternative haute performance à <code>rm</code> qui accélère la libération d'espace ! ⚡
+   <ul><li>Surpasse le <code>rm</code> standard d'un ordre de grandeur</li>
+   <li>Supprime en parallèle pour une efficacité maximale</li>
+   <li><strong>Récupère l'espace disque en quelques secondes au lieu de minutes !</strong> ️⏱️</li></p><p></ul>Le résultat final ? Un runner GitHub Actions avec <strong>65 Go à 130 Go</strong> d'espace prêt pour Nix ! 😁</p><h3>Croissance dynamique du volume</h3></p><p>Contrairement à d'autres solutions, <strong>Rien que Nix</strong> fait croître dynamiquement votre volume <code>/nix</code> :</p><ul><li><strong>Création initiale du volume (1-10 secondes) :</strong> (<em>selon le protocole Hatchet</em>)</li>
+   <li>Crée un périphérique de boucle à partir de l'espace libre de <code>/mnt</code></li>
+   <li>Met en place un système de fichiers BTRFS en configuration RAID0</li>
+   <li>Monte avec compression et optimisation des performances</li>
+   <li>Fournit un <code>/nix</code> de 65 Go immédiatement, même avant le début du nettoyage</li></p><p><li><strong>Expansion en arrière-plan (30-180 secondes) :</strong> (<em>selon le protocole Hatchet</em>)</li>
+   <li>Lance les opérations de purge</li>
+   <li>Surveille l'espace libéré au fur et à mesure que la surcharge est éliminée</li>
+   <li>Ajoute dynamiquement un disque d'expansion au volume <code>/nix</code></li>
+   <li>Rééquilibre le système de fichiers pour intégrer le nouvel espace</li></p><p></ul>Le volume <code>/nix</code> <strong>s'agrandit automatiquement pendant l'exécution du workflow</strong> 🎩🪄</p><h3>Choisissez votre arme : Le protocole Hatchet 🪓</h3></p><p>Contrôlez le niveau d'annihilation 💥 avec l'entrée <code>hatchet-protocol</code> :</p><pre><code class="language-yaml">- uses: wimpysworld/nothing-but-nix@main
   with:
-    hatchet-protocol: 'cleave'  # Options: holster, carve, cleave (default), rampage</code></pre>
-#### プロトコル比較 ⚖️</p><p>| プロトコル | <code>/nix</code> | 説明                                             | aptの削除   | dockerの削除 | snapの削除 | 削除されるファイルシステム  |
-|------------|--------|--------------------------------------------------|------------|--------------|------------|-----------------------------|
-| Holster    | 約65GB | 斧を鞘に収め、<code>/mnt</code> のスペースを使用               | いいえ     | いいえ       | いいえ     | なし                        |
-| Carve      | 約85GB | <code>/</code> と <code>/mnt</code> の空きスペースを作成・結合            | いいえ     | いいえ       | いいえ     | なし                        |
-| Cleave     | 約115GB| 大きなパッケージに強力で決定的な切断を行う          | 最小限     | はい         | はい       | <code>/opt</code> と <code>/usr/local</code>      |
-| Rampage    | 約130GB| 容赦ない、徹底的な無駄の排除                        | 積極的     | はい         | はい       | ムハハハ！ 🔥🌎              |</p><p>賢く選択してください：
-<ul><li><strong>Holster</strong> はランナーのツールを完全に機能させたい場合</li>
-<li><strong>Carve</strong> は機能的なランナーツールを維持しつつ、Nixのために全ての空きスペースを確保したい場合</li>
-<li><strong>Cleave</strong> （<em>デフォルト</em>）はスペースと機能のバランスが良い場合</li>
-<li><strong>Rampage</strong> は最大のNixスペースが必要で、何が壊れても気にしない場合 <code>#nix-is-life</code></li></p><p></ul><h3>大虐殺の目撃者 🩸</h3></p><p>デフォルトでは、削除プロセスはバックグラウンドで静かに実行され、ワークフローは継続されます。ですが、リアルタイムで虐殺を見たい場合は：</p><pre><code class="language-yaml">- uses: wimpysworld/nothing-but-nix@main
+    hatchet-protocol: 'cleave'  # Options: holster, carve, cleave (default), rampage</code></pre></p><p>#### Comparaison des Protocoles ⚖️</p><p>| Protocole | <code>/nix</code> | Description                                        | Purger apt  | Purger docker | Purger snap | Systèmes de fichiers purgés   |
+|-----------|--------|----------------------------------------------------|-------------|---------------|-------------|-------------------------------|
+| Holster   | ~65Go  | Garder la hache dans son fourreau, utiliser <code>/mnt</code> | Non         | Non           | Non         | Aucun                         |
+| Carve     | ~85Go  | Fusionner l’espace libre de <code>/</code> et <code>/mnt</code>          | Non         | Non           | Non         | Aucun                         |
+| Cleave    | ~115Go | Couper puissamment les gros paquets                | Minimal     | Oui           | Oui         | <code>/opt</code> et <code>/usr/local</code>        |
+| Rampage   | ~130Go | Élimination brutale et implacable de tout surplus  | Agressif    | Oui           | Oui         | Mouahahaha ! 🔥🌎             |</p><p>Choisissez judicieusement :
+<ul><li><strong>Holster</strong> si vous avez besoin que tous les outils du runner restent fonctionnels</li>
+<li><strong>Carve</strong> pour préserver les outils du runner mais libérer tout l’espace pour Nix</li>
+<li><strong>Cleave</strong> (<em>par défaut</em>) pour un bon équilibre entre espace et fonctionnalité</li>
+<li><strong>Rampage</strong> si vous voulez un maximum d’espace Nix sans souci de casse <code>#nix-is-life</code></li></p><p></ul><h3>Soyez témoin du carnage 🩸</h3></p><p>Par défaut, le processus de purge s’exécute silencieusement en arrière-plan pendant que votre workflow continue. Mais si vous souhaitez assister au massacre en temps réel :</p><pre><code class="language-yaml">- uses: wimpysworld/nothing-but-nix@main
   with:
     ️hatchet-protocol: 'cleave'
-    witness-carnage: true  # Default: false</code></pre>
-<h3>セーフヘイブンのカスタマイズ 🛡️</h3></p><p>カスタムセーフヘイブンのサイズでNixストアの土地取得からどれだけのスペースを確保するかを制御します：</p><pre><code class="language-yaml">- uses: wimpysworld/nothing-but-nix@main
+    witness-carnage: true  # Default: false</code></pre></p><h3>Personnalisez les zones sûres 🛡️</h3></p><p>Contrôlez l’espace à préserver de l’appropriation du Nix store grâce à des tailles de zones sûres personnalisées :</p><pre><code class="language-yaml">- uses: wimpysworld/nothing-but-nix@main
   with:
     ️hatchet-protocol: 'cleave'
     root-safe-haven: '3072'   # Reserve 3GB on the / filesystem
-    mnt-safe-haven: '2048'    # Reserve 2GB on the /mnt filesystem</code></pre></p><p>
-これらのセーフヘイブンは、スペース回収時にどれだけの容量（MB単位）が慈悲深く確保されるかを定義します：
-<ul><li>デフォルトの <code>root-safe-haven</code> は2048MB（2GB）</li>
-<li>デフォルトの <code>mnt-safe-haven</code> は1024MB（1GB）</li></p><p></ul>ファイルシステムにもっと余裕が必要な場合はこれらの値を増やし、容赦なくスペースを確保したい場合は減らしてください！😈</p><h3>/nixのユーザー所有権を付与する（Nixパーミッション布告）🧑‍⚖️</h3></p><p>一部のNixインストーラーや設定では、<code>/nix</code> ディレクトリが現在のユーザーによって書き込み可能であることを想定しています。デフォルトでは <code>/nix</code> はroot所有です。ユーザー所有権が必要な場合（例：<code>/nix</code> 内で全操作に <code>sudo</code> を使わない特定のNixインストーラースクリプトなど）、<code>nix-permission-edict</code> を有効にできます：</p><pre><code class="language-yaml">- uses: wimpysworld/nothing-but-nix@main
+    mnt-safe-haven: '2048'    # Reserve 2GB on the /mnt filesystem</code></pre></p><p>Ces refuges sûrs définissent combien d’espace (en Mo) sera gracieusement épargné lors de la récupération d’espace :
+<ul><li>Le <code>root-safe-haven</code> par défaut est de 2048 Mo (2 Go)</li>
+<li>Le <code>mnt-safe-haven</code> par défaut est de 1024 Mo (1 Go)</li></p><p></ul>Augmentez ces valeurs si vous avez besoin de plus d’espace libre sur vos systèmes de fichiers, ou diminuez-les pour ne faire preuve d’aucune pitié ! 😈</p><h3>Accorder la propriété utilisateur de /nix (Édit de permission Nix) 🧑‍⚖️</h3></p><p>Certains installateurs ou configurations Nix attendent que le répertoire <code>/nix</code> soit accessible en écriture par l’utilisateur courant. Par défaut, <code>/nix</code> appartient à root. Si vous avez besoin de la propriété utilisateur (par exemple, pour certains scripts d’installation Nix qui n’utilisent pas <code>sudo</code> pour toutes les opérations dans <code>/nix</code>), vous pouvez activer le <code>nix-permission-edict</code> :</p><pre><code class="language-yaml">- uses: wimpysworld/nothing-but-nix@main
   with:
-    nix-permission-edict: true  # Default: false</code></pre>
-<code>nix-permission-edict</code> が <code>true</code> に設定されている場合、アクションは <code>/nix</code> をマウントした後に <code>sudo chown -R "$(id --user)":"$(id --group)" /nix</code> を実行します。</p><p>さあ、その素晴らしい Nix ストアのスペースを使って何か素敵なものを作りましょう！ ❄️</p><p>
+    nix-permission-edict: true  # Default: false</code></pre></p><p>Lorsque <code>nix-permission-edict</code> est défini sur <code>true</code>, l’action exécutera <code>sudo chown -R "$(id --user)":"$(id --group)" /nix</code> après avoir monté <code>/nix</code>.</p><p>Allez maintenant construire quelque chose d’incroyable avec tout cet espace glorieux du store Nix ! ❄️
+
 ---
 
 Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-24
