@@ -1,0 +1,440 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRTMonitor - 12306 잔여표 모니터링 프로그램</title>
+    <meta name="description" content="12306 잔여표 모니터링 프로그램">
+    <meta name="keywords" content="CRTMonitor, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "CRTMonitor",
+  "description": "12306 잔여표 모니터링 프로그램",
+  "author": {
+    "@type": "Person",
+    "name": "wxory"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 194
+  },
+  "url": "https://OpenAiTx.github.io/projects/wxory/CRTMonitor/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/wxory/CRTMonitor/main/README.md",
+  "datePublished": "2025-07-25",
+  "dateModified": "2025-07-25"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/wxory/CRTMonitor" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    CRTMonitor
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 194 stars</span>
+                <span class="language">Korean</span>
+                <span>by wxory</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>🚄 China Railway Ticket Monitor</h1></p><p>간결하고 효율적인 12306 잔여표 모니터링 도구로, 잔여표가 있을 때 다양한 방식으로 알림을 전송할 수 있습니다.  
+감사합니다 원저자: https://github.com/BobLiu0518/CRTicketMonitor</p><blockquote>⚠️ 면책 조항  </blockquote>
+<blockquote>본 프로그램은 12306 공식 사이트의 잔여표 정보를 학습 및 모니터링하기 위한 용도로만 사용되며, 티켓抢票 소프트웨어가 아니며 티켓抢票 관련 기능을 추가하지 않습니다. 프로그램 저자는 모니터링 결과의 정확성에 대해 어떠한 보장도 하지 않으며, 본 프로그램 사용으로 인해 발생하는 상업적 또는 법적 분쟁에 대해 책임을 지지 않습니다.</blockquote></p><h2>🆕 대화형 구성 기능</h2></p><p>대화형 인터페이스를 통해 다음을 할 수 있습니다:</p><ul><li>🔍 출발지, 목적지, 날짜를 입력하여 실시간으로 열차 목록 조회  </li>
+<li>📋 전체 열차 정보와 잔여표 상황 확인  </li>
+<li>⚙️ 모니터링할 열차 및 좌석 종류 동적 선택  </li>
+<li>📲 알림 전송 방식을 설정  </li>
+<li>💾 자동으로 구성 파일 생성 및 저장  </li>
+<li>🚀 원클릭으로 모니터링 프로그램 시작</li></p><p></ul>자세한 사용법은 <a href="https://raw.githubusercontent.com/wxory/CRTMonitor/main/CLI_GUIDE.md" target="_blank" rel="noopener noreferrer">CLI_GUIDE.md</a>를 참고하세요.</p><h1>배포</h1></p><h2>방법 1: 사전 컴파일된 프로그램 사용 (권장)</h2></p><h3>다운로드</h3></p><p>프로젝트의 Releases 페이지에서 운영 체제에 맞는 최신 버전을 다운로드하세요.  
+<a href="https://cnb.cool/wxory/CRTMonitor/-/releases" target="_blank" rel="noopener noreferrer">CNB(권장)</a>  
+<a href="https://github.com/wxory/CRTMonitor/releases" target="_blank" rel="noopener noreferrer">Github</a></p><h3>구성</h3></p><p>프로그램을 처음 실행하면 config.yml 템플릿 파일이 자동으로 생성됩니다.  
+<a href="#配置-1" target="_blank" rel="noopener noreferrer">파라미터 구성</a> 설명에 따라 해당 파일을 수정하세요.</p><h3>실행</h3></p><p>구성된 config.yml 파일을 실행 파일과 동일한 디렉터리에 두고, 바로 실행하면 됩니다.</p><h2>수동 배포</h2></p><h3>1. Node.js 설치</h3></p><p><a href="https://nodejs.org/zh-cn" target="_blank" rel="noopener noreferrer">Node.js 공식 사이트</a>에서 다운로드 및 설치하거나, <a href="https://nodejs.org/zh-cn/download/package-manager" target="_blank" rel="noopener noreferrer">패키지 관리자</a>를 사용하세요.</p><h3>2. 코드 다운로드</h3></p><p>직접 <a href="https://github.com/wxory/CRTicketMonitor/archive/refs/heads/main.zip" target="_blank" rel="noopener noreferrer">Zip 파일 다운로드</a> 하거나 Git을 사용하세요:
+<pre><code class="language-bash">$ git clone https://github.com/wxory/CRTMonitor.git
+$ git clone https://cnb.cool/wxory/CRTMonitor.git</code></pre>
+<h3>3. 의존성 설치</h3></p><pre><code class="language-bash">$ npm i</code></pre></p><h3>4. 运行</h3></p><p>#### 前台运行 (适用于所有系统):</p><pre><code class="language-">npm start</code></pre>
+#### 백그라운드 실행 (Linux 서버에 적합):</p><p>프로젝트에는 run.sh 스크립트가 내장되어 있으며, screen을 사용하여 백그라운드에서 지속적으로 실행됩니다.</p><pre><code class="language-"># 确保已安装 screen: sudo apt install screen (Debian/Ubuntu)
+./run.sh</code></pre></p><h2>구성</h2></p><p>프로그램 시작 시 동일 디렉터리 내의 config.yml 파일을 찾습니다. 파일이 없으면 템플릿이 자동으로 생성됩니다.</p><p>다음은 완전한 구성 예시입니다:</p><p>config.yml 예시:</p><pre><code class="language-yaml"># 🚄 China Railway Ticket Monitor 配置文件
+<h1>详细配置说明请参考 README.md</h1></p><h1>查询列表 - 可添加多个查询条件</h1>
+watch:
+  <ul><li># 基础信息</li>
+    </ul>from: "上海" # 起点站（包含同城站）
+    to: "北京" # 终点站（包含同城站）
+    date: "20241001" # 日期（YYYYMMDD 格式）</p><p>    # 车次列表（可选）- 不填时默认为全部车次
+    trains:
+      <ul><li>code: "G2" # 车次号</li>
+        </ul>from: "上海" # 指定起点站（可选）
+        to: "北京南" # 指定终点站（可选）
+        seatCategory: # 限定席别（可选，详见下文）
+          <ul><li>"二等座"</li>
+        </ul>checkRoundTrip: true # 查询全程车票情况（可选）</p><h1>推送配置 - 支持多种推送方式（详见下文）</h1>
+notifications:
+  <ul><li># 飞书推送</li>
+    </ul>type: "Lark"
+    webhook: "" # 飞书机器人 Webhook URL</p><ul><li># Telegram推送</li>
+    </ul>type: "Telegram"
+    botToken: "" # Telegram机器人Token
+    chatId: "" # 接收消息的Chat ID</p><ul><li># Bark推送</li>
+    </ul>type: "Bark"
+    deviceKey: "" # Bark 设备密钥
+    serverUrl: "https://api.day.app" # 服务器地址（可选）
+    group: "火车票监控" # 推送分组（可选）</p><ul><li># SMTP邮件推送</li>
+    </ul>type: "SMTP"
+    host: "smtp.gmail.com" # SMTP服务器地址
+    port: 587 # SMTP端口号
+    user: "your-email@gmail.com" # 邮箱用户名
+    pass: "your-app-password" # 邮箱密码
+    to: "recipient@example.com" # 收件人邮箱</p><h1>刷新间隔（分钟，可选，默认 15 分钟）</h1>
+interval: 15</p><h1>访问延迟（秒，可选，默认 5 秒）</h1>
+delay: 5</code></pre></p><h2>푸시 알림</h2></p><p>현재 Feishu 푸시, Telegram 푸시, 기업 WeChat 푸시, Bark 푸시 및 SMTP 이메일 푸시 알림을 지원합니다.</p><h3>Feishu 푸시 구성</h3></p><p>Feishu 봇의 webhook 주소를 얻으려면 <a href="https://open.feishu.cn/document/client-docs/bot-v3/add-custom-bot" target="_blank" rel="noopener noreferrer">Feishu 개발 문서</a>를 참조하세요.</p><p>#### 기본 구성</p><p><code>config.yml</code>에 Feishu 봇의 Webhook 주소를 입력하면 됩니다. 예를 들면:</p><pre><code class="language-yaml">notifications:
+  <ul><li>type: "Lark"</li>
+    </ul>webhook: "https://open.feishu.cn/open-apis/bot/v2/hook/your-webhook-url"</code></pre>
+#### 서명 검증 설정(권장)</p><p>보안을 강화하기 위해, Feishu 봇의 서명 검증 기능을 활성화할 것을 권장합니다:</p><ul><li>Feishu 그룹에서 맞춤형 봇 설정 페이지로 이동합니다</li>
+<li>보안 설정에서 "서명 검증"을 선택합니다</li>
+<li>생성된 비밀키를 복사합니다</li>
+<li>구성 파일에 <code>secret</code> 필드를 추가합니다:</li></p><p>
+</ul><pre><code class="language-yaml">notifications:
+  <ul><li>type: "Lark"</li>
+    </ul>webhook: "https://open.feishu.cn/open-apis/bot/v2/hook/your-webhook-url"
+    secret: "your-secret-key" # 签名密钥（可选，启用签名校验时必填）</code></pre>
+<strong>주의 사항:</strong></p><ul><li>서명 키는 메시지 출처의 신뢰성을 검증하고 악의적 호출을 방지하는 데 사용됩니다.</li>
+<li>서명 검증을 활성화하면 모든 요청은 서명 검증을 통과해야 합니다.</li>
+<li>서명 알고리즘은 HmacSHA256 + Base64 인코딩을 사용합니다.</li></p><p></ul><h3>텔레그램 푸시 설정</h3></p><p>텔레그램 푸시를 사용하려면 먼저 텔레그램 봇을 생성하고 관련 정보를 얻어야 합니다:</p><ul><li>텔레그램에서 <a href="https://t.me/BotFather" target="_blank" rel="noopener noreferrer">@BotFather</a>를 찾아 <code>/newbot</code>을 보내 새 봇을 생성합니다.</li>
+<li>안내에 따라 봇 이름과 사용자 이름을 설정하고 봇 토큰을 획득합니다.</li>
+<li>봇을 채팅에 추가하거나 봇과 직접 개인 채팅을 시작합니다.</li>
+<li>채팅 ID 획득:</li>
+   <li>봇에게 메시지를 보낸 후, <code>https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates</code>에 접속합니다.</li>
+   <li>반환된 JSON에서 <code>chat.id</code> 필드를 찾습니다.</li></p><p></ul><code>config.yml</code>에서 텔레그램 푸시를 다음과 같이 설정합니다:</p><pre><code class="language-yaml">notifications:
+  <ul><li>type: "Telegram"</li>
+    </ul>botToken: "123456789:ABCdefGHIjklMNOpqrsTUVwxyz" # 机器人Token
+    chatId: "123456789" # Chat ID（可以是个人ID或群组ID）</code></pre>
+<h3>기업 위챗 푸시 설정</h3></p><p>기업 위챗 푸시를 사용하려면 먼저 기업 위챗 그룹 봇을 생성해야 합니다:</p><ul><li>기업 위챗 그룹에서, 그룹 설정 → 그룹 봇 → 봇 추가 클릭</li>
+<li>봇 이름과 프로필 사진 설정, Webhook URL 획득</li>
+<li>Webhook URL 전체 복사 (key 매개변수 포함)</li></p><p></ul><code>config.yml</code>에서 기업 위챗 푸시 설정:</p><pre><code class="language-yaml">notifications:
+  <ul><li>type: "WechatWork"</li>
+    </ul>webhook: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=your-webhook-key"</code></pre>
+<h3>Bark 푸시 설정</h3></p><p>Bark는 iOS 푸시 알림 앱으로, API를 통해 iPhone/iPad로 푸시를 보낼 수 있습니다.</p><p>#### Bark 디바이스 키 가져오기</p><ul><li>App Store에서 <a href="https://apps.apple.com/app/bark-customed-notifications/id1403753865" target="_blank" rel="noopener noreferrer">Bark</a> 앱을 다운로드하고 설치합니다.</li>
+<li>앱을 열고 표시된 디바이스 키(Device Key)를 복사합니다.</li>
+<li>선택 사항: 자체 Bark 서버가 있는 경우 서버 주소를 수정할 수도 있습니다.</li></p><p></ul>#### Bark 푸시 설정</p><p><code>config.yml</code>에서 Bark 푸시를 설정합니다:</p><pre><code class="language-yaml">notifications:
+  <ul><li>type: "Bark"</li>
+    </ul>deviceKey: "your-device-key" # 必填：设备密钥
+    serverUrl: "https://api.day.app" # 可选：服务器地址，默认官方服务器
+    group: "火车票监控" # 可选：推送分组
+    sound: "default" # 可选：推送声音
+    # 高级选项（可选）
+    level: "active" # 推送级别：active(默认)/critical(重要)/timeSensitive(时效)/passive(静默)
+    icon: "https://example.com/icon.png" # 自定义图标URL
+    url: "https://example.com" # 点击推送后跳转的URL
+    autoCopy: false # 是否自动复制推送内容
+    isArchive: true # 是否保存到推送历史</code></pre></p><p>#### Bark 푸시 레벨 설명</p><ul><li><code>active</code>（기본값）：시스템이 즉시 화면을 켜고 알림을 표시합니다.</li>
+<li><code>critical</code>：중요 경고, 무음 모드에서도 벨소리가 울립니다.</li>
+<li><code>timeSensitive</code>：시기적절한 알림으로 집중 모드에서도 표시할 수 있습니다.</li>
+<li><code>passive</code>：알림 목록에만 알림을 추가하며 화면을 켜지 않습니다.</li></p><p></ul><h3>SMTP 이메일 푸시 구성</h3></p><p>SMTP 이메일 푸시는 표준 메일 서버를 통해 잔여 표 알림 메일을 보낼 수 있습니다.</p><p>#### SMTP 이메일 푸시 구성</p><p><code>config.yml</code>에서 SMTP 이메일 푸시를 구성합니다:</p><pre><code class="language-yaml">notifications:
+  <ul><li>type: "SMTP"</li>
+    </ul>host: "smtp.gmail.com" # 必填：SMTP服务器地址
+    port: 587 # 必填：SMTP端口号
+    user: "your-email@gmail.com" # 必填：邮箱用户名
+    pass: "your-app-password" # 必填：邮箱密码或应用密码
+    to: "recipient@example.com" # 必填：收件人邮箱地址
+    # 可选配置
+    from: "12306监控 <your-email@gmail.com>" # 发件人显示名称
+    cc: "cc@example.com" # 抄送邮箱
+    bcc: "bcc@example.com" # 密送邮箱
+    replyTo: "noreply@example.com" # 回复邮箱
+    secure: true # 是否使用SSL/TLS (465端口使用true，587端口使用false)</code></pre></p><p>#### 자주 사용하는 이메일 서버 구성</p><p><strong>Gmail:</strong></p><pre><code class="language-yaml">host: "smtp.gmail.com"
+port: 587
+secure: false # 使用STARTTLS
+<h1>需要开启两步验证并生成应用密码</code></pre></h1></p><p><strong>QQ 이메일:</strong></p><pre><code class="language-yaml">host: "smtp.qq.com"
+port: 587
+secure: false
+<h1>需要开启SMTP服务并使用授权码</code></pre></h1></p><p><strong>163 邮箱:</strong></p><pre><code class="language-yaml">host: "smtp.163.com"
+port: 587
+secure: false
+<h1>需要开启SMTP服务并使用授权码</code></pre></h1></p><p><strong>전망:</strong></p><pre><code class="language-yaml">host: "smtp-mail.outlook.com"
+port: 587
+secure: false</code></pre>
+#### 이메일 보안 설정</p><ul><li><strong>Gmail</strong>: 2단계 인증을 활성화하고 앱 전용 비밀번호를 생성해야 합니다.</li>
+<li><strong>QQ 이메일</strong>: 설정에서 SMTP 서비스를 활성화하고 인증 코드를 비밀번호로 사용해야 합니다.</li>
+<li><strong>163 이메일</strong>: SMTP 서비스를 활성화하고 인증 코드를 비밀번호로 사용해야 합니다.</li>
+<li><strong>기업 이메일</strong>: 기업 이메일 서비스 제공자의 요구에 따라 구성합니다.</li></p><p></ul>#### 포트 번호 설명</p><ul><li><code>25</code>: 표준 SMTP 포트 (일반적으로 ISP에 의해 차단됨)</li>
+<li><code>587</code>: STARTTLS 암호화 포트 (권장)</li>
+<li><code>465</code>: SSL/TLS 암호화 포트</li></p><p></ul>이렇게 하면 잔여 좌석이 있을 때 프로그램이 해당 플랫폼을 통해 알림을 보냅니다.</p><h2>좌석 종류 설정</h2></p><p>선택 가능한 좌석 종류는 다음과 같습니다:</p><ul><li>침대차:</li>
+  <li><code>고급 연철 침대</code></li>
+  <li><code>연철 침대</code> (동차 1등 침대 포함)</li>
+  <li><code>경철 침대</code> (2등 침대 포함)</li>
+<li>좌석표:</li>
+  <li><code>비즈니스석</code></li>
+  <li><code>특등석</code></li>
+  <li><code>우선 1등석</code></li>
+  <li><code>1등석</code></li>
+  <li><code>2등석</code></li>
+  <li><code>연철 좌석</code></li>
+  <li><code>경철 좌석</code></li>
+  <li><code>무좌석</code></li>
+<li>기타:</li>
+  <li><code>기타</code> (객실 연철 침대 등 포함)</li>
+  <li><code>YB</code> (알 수 없는 유형)</li>
+  <li><code>SRRB</code> (알 수 없는 유형)</li></p><p>
+
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-25
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/wxory/CRTMonitor/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-07-25 
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,396 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gitignore.nvim - 一个用于生成 .gitignore 文件的 neovim 插件。</title>
+    <meta name="description" content="一个用于生成 .gitignore 文件的 neovim 插件。">
+    <meta name="keywords" content="gitignore.nvim, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "gitignore.nvim",
+  "description": "一个用于生成 .gitignore 文件的 neovim 插件。",
+  "author": {
+    "@type": "Person",
+    "name": "wintermute-cell"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 148
+  },
+  "url": "https://OpenAiTx.github.io/projects/wintermute-cell/gitignore.nvim/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/wintermute-cell/gitignore.nvim/master/README.md",
+  "datePublished": "2025-07-25",
+  "dateModified": "2025-07-25"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/wintermute-cell/gitignore.nvim" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    gitignore.nvim
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 148 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by wintermute-cell</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><!-- LTeX: language=en-US -->
+<h1>gitignore.nvim</h1>
+<img src="https://github.com/wintermute-cell/gitignore.nvim/blob/resources/_resources/banner.webp" alt="gitignore.nvim 标志横幅"></p><p>一个用于快速生成 .gitignore 文件的 neovim 插件，允许你
+从大量不同的技术中进行选择。</p><p>该插件在功能上与
+<a href="https://www.toptal.com/developers/gitignore/" target="_blank" rel="noopener noreferrer">gitignore.io</a> 提供的服务
+完全相同，但能够离线生成 <code>.gitignore</code> 文件，并且直接在 neovim 中完成。</p><ul><li><a href="#installation--dependencies" target="_blank" rel="noopener noreferrer">安装</a></li>
+<li><a href="#usage" target="_blank" rel="noopener noreferrer">使用</a></li>
+<li><a href="#demo" target="_blank" rel="noopener noreferrer">演示</a></li>
+<li><a href="#credits" target="_blank" rel="noopener noreferrer">致谢</a></li></p><p></ul><h2>安装与依赖</h2>
+<em></em><code>gitignore.nvim</code> 可选依赖于
+<a href="https://github.com/nvim-telescope/telescope.nvim" target="_blank" rel="noopener noreferrer">telescope.nvim</a> 来提供
+<a href="#selecting-multiple-items" target="_blank" rel="noopener noreferrer">多选功能</a>。如果不<a href="https://github.com/nvim-telescope/telescope.nvim#installation" target="_blank" rel="noopener noreferrer">安装
+telescope</a>，
+你将无法选择多个技术。<em></em></p><p>安装 <code>telescope.nvim</code> 后，可以这样安装 <code>gitignore.nvim</code>：</p><p>使用 <a href="https://github.com/folke/lazy.nvim" target="_blank" rel="noopener noreferrer">lazy.nvim</a>
+<pre><code class="language-lua">{"wintermute-cell/gitignore.nvim",
+    config = function()
+        require('gitignore')
+    end,
+}</code></pre></p><p>使用 <a href="https://github.com/wbthomason/packer.nvim" target="_blank" rel="noopener noreferrer">packer.nvim</a>：
+<pre><code class="language-lua">use({
+     "wintermute-cell/gitignore.nvim",
+     requires = {
+        "nvim-telescope/telescope.nvim" -- optional: for multi-select
+     }
+})</code></pre></p><h2>用法</h2>
+该插件只包含一个命令，运行时，
+它将创建一个包含 <code>.gitignore</code> 内容的缓冲区：
+<pre><code class="language-">:Gitignore [path]</code></pre>
+如果找到现有的 <code>.gitignore</code>，生成的内容将附加到现有行的末尾。缓冲区不会自动保存，因此不会有覆盖现有 <code>.gitignore</code> 的风险。</p><p>您可以<strong>可选地</strong>传递一个 <code>path</code> 参数来指向特定目录（例如，如果您有嵌套的 <code>.gitignore</code> 文件）。</p><p>或者，您可以直接使用相应的 <code>lua</code> 函数，例如用于创建键映射：</p><pre><code class="language-lua">local gitignore = require("gitignore")
+vim.keymap.set("n", "<leader>gi", gitignore.generate)</code></pre>
+或者带路径的：</p><pre><code class="language-lua">local gitignore = require("gitignore")
+local my_path = "./some/path"
+vim.keymap.set("n", "<leader>gi",
+    function ()
+        gitignore.generate(my_path)
+    end
+)</code></pre>
+<h3>选择多个项目</h3>
+没有 telescope，<code>gitignore.nvim</code> 不允许你为你的 <code>.gitignore</code> 选择多个
+技术，因为回退选择器 <code>vim.ui.select()</code> 只能选择一个项目。
+因此，如果你想能够选择多个技术，你必须
+要么<a href="https://github.com/nvim-telescope/telescope.nvim#installation" target="_blank" rel="noopener noreferrer">安装
+telescope.nvim</a>
+（你可以在
+<a href="#installation--dependencies" target="_blank" rel="noopener noreferrer">安装</a> 部分找到使用 <code>packer.nvim</code> 的示例），
+要么用你自己的实现覆盖提供的
+<code>generate</code> 方法（<a href="#custom-picker" target="_blank" rel="noopener noreferrer">参见下面的部分</a>）。</p><p><code>gitignore.nvim</code> 会检测是否安装了 <code>telescope.nvim</code> 并自动使用，
+无需进一步配置。</p><h3>安装 telescope.nvim 后选择多个项目</h3>
+<code>gitignore.nvim</code> 利用 <code>telescope.nvim</code> 的多选快捷键绑定。
+这意味着默认情况下，你可以用 <code><Tab></code> （取消）选择多个关键字，
+并用 <code><CR></code>（回车）确认选择。
+如果选择了多个关键字，你按 <code><CR></code> 时高亮的关键字 <strong>不会</strong> 被加入选择！</p><p>为了方便起见，当未做多选而直接按 <code><CR></code> 时，
+<code><CR></code> 会将高亮项目加入选择，并为该单个关键字创建 <code>.gitignore</code> 文件。</p><h2>配置</h2>
+如果你希望 <code>:Gitignore</code> 命令覆盖当前的 <code>.gitignore</code>，
+而不是追加，可以设置：</p><pre><code class="language-lua">vim.g.gitignore_nvim_overwrite = true</code></pre>
+如果此变量设置为 <code>false</code>，或根本未设置，<code>:Gitignore</code> 将考虑现有的 <code>.gitignore</code>。</p><p>或者，您也可以使用感叹号调用该命令，如下所示：</p><pre><code class="language-">:Gitignore! [path]</code></pre>
+这将与为单次调用设置 <code>vim.g.gitignore_nvim_overwrite = true</code> 具有相同的效果。</p><h3>自定义选择器</h3></p><p>您可以不使用 <code>telescope.nvim</code> 或原生的 <code>vim.ui.select()</code>，  
+而是根据以下约定实现自己的解决方案：
+<ul><li><code>gitignore.nvim</code> 提供模板名称列表以及两个方法 <code>generate</code> 和 <code>createGitignoreBuffer</code>。</li>
+<li><code>generate</code> 方法的第一个参数是一个包含 <code>.gitignore</code> 目标路径的 <code>opts</code> 表，路径位于 <code>opts.args</code> 中。</li>
+<li>必须将 <code>opts.args</code> 和选中的模板名称列表传递给 <code>createGitignoreBuffer</code>。</li></p><p></ul>以下是使用 fzf-lua 的示例实现：
+<pre><code class="language-lua">local gitignore = require("gitignore")
+local fzf = require("fzf-lua")</p><p>gitignore.generate = function(opts)
+    local picker_opts = {
+        -- the content of opts.args may also be displayed here for example.
+        prompt = "Select templates for gitignore file> ",
+        winopts = {
+            width = 0.4,
+            height = 0.3,
+        },
+        actions = {
+            default = function(selected, _)
+                -- as stated in point (3) of the contract above, opts.args and
+                -- a list of selected templateNames are passed.
+                gitignore.createGitignoreBuffer(opts.args, selected)
+            end,
+        },
+    }
+    fzf.fzf_exec(function(fzf_cb)
+        for _, prefix in ipairs(gitignore.templateNames) do
+            fzf_cb(prefix)
+        end
+        fzf_cb()
+    end, picker_opts)
+end</code></pre>
+<blockquote>__注意__</blockquote>
+<blockquote>请注意，上述操作不会覆盖 <code>:Gitignore</code> 命令。</blockquote>
+<blockquote>若要覆盖该命令，请在定义完你的生成函数后重新创建该命令，方法如下：</blockquote>
+<blockquote></blockquote>
+<pre><code class="language-lua">vim.api.nvim_create_user_command("Gitignore", gitignore.generate, { nargs = "?", complete = "file" })</code></pre></p><h2>演示</h2>
+<a href="https://asciinema.org/a/GOHXDt4kYsR8pzrxTEOIridTf" target="_blank" rel="noopener noreferrer"><img src="https://asciinema.org/a/GOHXDt4kYsR8pzrxTEOIridTf.svg" alt="asciicast"></a></p><h2>致谢</h2>
+感谢 <a href="https://github.com/toptal/gitignore" target="_blank" rel="noopener noreferrer">Toptal</a> 提供了大量的忽略模板列表！</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-25
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/wintermute-cell/gitignore.nvim/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-07-25 
+    </div>
+    
+</body>
+</html>

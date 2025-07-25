@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>luminet - Luminet (1979)에서 제시된 방법을 기반으로 슈바르츠실트 블랙홀 시뮬레이션하기</title>
+    <meta name="description" content="Luminet (1979)에서 제시된 방법을 기반으로 슈바르츠실트 블랙홀 시뮬레이션하기">
+    <meta name="keywords" content="luminet, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "luminet",
+  "description": "Luminet (1979)에서 제시된 방법을 기반으로 슈바르츠실트 블랙홀 시뮬레이션하기",
+  "author": {
+    "@type": "Person",
+    "name": "bgmeulem"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 109
+  },
+  "url": "https://OpenAiTx.github.io/projects/bgmeulem/luminet/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/bgmeulem/luminet/master/README.md",
+  "datePublished": "2025-07-25",
+  "dateModified": "2025-07-25"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/bgmeulem/luminet" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    luminet
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 109 stars</span>
+                <span class="language">Korean</span>
+                <span>by bgmeulem</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><div align="center">
+  
+<h1>luminet</h1>
+<img src="https://img.shields.io/appveyor/build/bgmeulem/luminet?label=ci&style=flat-square" alt="ci-badge"> <a href="https://pypi.org/project/luminet" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/pypi/v/luminet?pypiBaseUrl=https%3A%2F%2Fpypi.org&style=flat-square&logo=pypi&logoColor=white&link=https%3A%2F%2Fpypi.org%2Fproject%2Fluminet%2F" alt="PyPI-badge"></a> <a href="https://luminet.readthedocs.io/en/latest/?badge=latest" target="_blank" rel="noopener noreferrer"><img src="https://readthedocs.org/projects/luminet/badge/?version=latest&style=flat-square" alt="Documentation Status"></a> <img src="https://img.shields.io/codecov/c/github/bgmeulem/Luminet?style=flat-square" alt="coverage"> <img src="https://img.shields.io/github/stars/bgmeulem/Luminet?style=flat-square" alt="stars-badge"> <img src="https://img.shields.io/github/license/bgmeulem/Luminet?style=flat-square" alt="license"> <a href="https://pixi.sh" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/prefix-dev/pixi/main/assets/badge/v0.json&style=flat-square" alt="Pixi Badge"></a></p><p>Luminet(1979)에 기술된 방법을 기반으로 한 슈바르츠실트 블랙홀 시뮬레이션 및 시각화.</p><p><img src="https://raw.githubusercontent.com/bgmeulem/luminet/master/assets/bh_plot.png" alt="Example plot of a black hole">
+</div></p><h2>⚡ 설치</h2>
+<code>luminet</code>은 PyPI에서 사용할 수 있습니다:</p><pre><code class="language-shell">pip install luminet</code></pre>
+<h2>📖 <a href="https://luminet.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener noreferrer">문서</a></h2></p><h2>🔩 사용법</h2></p><p>이 저장소의 모든 변수는 자연 단위계입니다: $G=c=1$</p><pre><code class="language-python">from luminet.black_hole import BlackHole
+bh = BlackHole(
+    mass=1,
+    incl=1.5,           # inclination in radians
+    acc=1,              # accretion rate
+    outer_edge=40
+)</code></pre>
+이미지를 생성하려면:
+<pre><code class="language-python">ax = bh.plot()          # Create image like above</code></pre></p><p>강착 원반에서 광자를 샘플링하려면:
+<pre><code class="language-python">bh.sample_photons(100)
+bh.photons</code></pre>
+<pre><code class="language-">radius  alpha   impact_parameter    z_factor    flux_o
+10.2146 5.1946  1.8935              1.1290      1.8596e-05
+... (99 more)</code></pre>
+샘플링은 대부분의 광도가 발생하는 블랙홀 중심 쪽으로 편향되어 있음을 유의하세요.</p><h2>📝 배경</h2>
+슈바르츠실트 블랙홀은 가장 안쪽 안정 궤도가 $6M$이고, 광자 구면이 $3M$에 있습니다. 이는 블랙홀을 도는 강착 원반이 반지름 $r>6M$에서 광자를 방출한다는 것을 의미합니다. 휘어진 공간에서 광자의 근지점이 $3M$(광자 구면)보다 크면, 광자는 블랙홀에 포획되지 않고 이론적으로 어떤 관찰자 좌표계 $(b, \alpha)$에서 볼 수 있습니다. 시공간 곡률은 블랙홀 좌표계 $(r, \alpha)$와 관찰자 좌표계 $(b, \alpha)$ 사이의 렌즈 효과로 가장 쉽게 해석할 수 있습니다. 전자는 강착 원반 영역을 덮는 2차원 극좌표이고, 후자는 관찰자 좌표계의 "사진판"을 덮는 2차원 극좌표입니다. 후자를 문자 그대로 CCD 카메라로 생각하세요. 광자 궤도 근지점과 관찰자 좌표계 반지름 $b$는 다음과 같이 직접적으로 관련됩니다:</p><p>$$b^2 = \frac{P^3}{P-2M}$$</p><p>이는 많은 방정식을 훨씬 간단하게 만듭니다. 
+왼쪽에 제곱이 있는 이 방정식이 Luminet (1979)과 대조적임을 알 수 있을 것입니다. 원 논문에는 약간의 표기 오류가 있습니다. 필자는 이에 대해 저자에게 연락했고, 저자는 다음과 같이 친절히 응답했습니다:</p><blockquote>"[...] 당시에는 교정을 아주 꼼꼼히 재검토하는 경험이 없었어요. 하지만 다행히도 계산은 올바른 공식으로 했기에 시각적 결과는 정확했답니다!"</blockquote>
+>
+>"Back in the day, I did not have the habit of carefully double-checking my proofs. Luckily, I did calculate the results with the correct formulas, otherwise the image wouldn't be right!".</p><p>참고하시길 바랍니다. 본 코드는 논문과 다른 부분을 주의 깊게 기록하려 노력했습니다.</p><p>두 좌표계 각도의 관계는 자명하지만, 두 기준계의 반지름 관계는 엄청난 식 13으로 주어집니다:</p><p>$$\frac{1}{r} = - \frac{Q - P + 2M}{4MP} + \frac{Q-P+6M}{4MP}{sn}^2\left( \frac{\gamma}{2}\sqrt{\frac{Q}{P}} + F(\zeta_\infty, k) \right)$$</p><p>여기서 $F$는 첫 번째 종류의 불완전 야코비 타원 적분이고, $k$와 $Q$는 근지점 $P$의 함수이며, $\zeta$는 $P$의 삼각함수이고, $\gamma$는 다음을 만족합니다:</p><p>$$\cos(\gamma) = \frac{\cos(\alpha)}{\sqrt{\cos^2\alpha + \cot^2\theta_0}}$$</p><p>휘어진 시공간에서는 보통 같은 좌표에서 출발해 관찰자 좌표계로 투영되는 광자 궤도가 여러 개 있습니다(예: 중력 렌즈 효과와 아인슈타인 십자형 참조). 블랙홀 주변을 휘어 돌며 관찰자 좌표계에 도달하는 광자 궤도를 "고차" 영상 또는 "유령" 영상이라 합니다. 이 경우, $\gamma$는 다음을 만족합니다:</p><p>$$2n\pi - \gamma = 2\sqrt{\frac{Q}{P}} \left( 2K(k) - F(\zeta_\infty, k) - F(\zeta_r, k)  \right)$$</p><p>이 유령 광자는 위 이미지 하단과 광자 구면을 얇게 둘러싼 거의 보이지 않는 빛의 후광에서 볼 수 있습니다. 경사각이 덜 가장자리 쪽일수록 이 유령 영상은 덜 뚜렷합니다.</p><p>이 저장소는 <code>scipy.optimize.brentq</code>를 사용해 이 방정식들을 풉니다. Luminet (1979)에서 제시된 개념을 편리하게 사용할 수 있는 API도 제공합니다. <code>BlackHole</code> 클래스가 가장 명확하지만, 예를 들어 <code>Isoradial</code> 클래스로 놀면서 배우는 것도 좋습니다: 블랙홀 좌표계에서 같은 반지름에서 방출된 광자를 관찰자 좌표계에서 나타내는 선입니다. <code>Isoredshift</code> 클래스는 관찰자 좌표계에서 동일 적색편이 선을 제공합니다.</p><h2>📕 참고문헌</h2>
+[1] Luminet, J.-P., <a href="https://ui.adsabs.harvard.edu/abs/1979A%26A....75..228L/abstract" target="_blank" rel="noopener noreferrer">“Image of a spherical black hole with thin accretion disk.”</a>, <i>Astronomy and Astrophysics</i>, vol. 75, pp. 228–235, 1979.</p><p>[2] J.-P. Luminet, <a href="https://arxiv.org/abs/1902.11196" target="_blank" rel="noopener noreferrer">“An Illustrated History of Black Hole Imaging : Personal Recollections (1972-2002).”</a> arXiv, 2019. doi: 10.48550/ARXIV.1902.11196. </p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-25
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/bgmeulem/luminet/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-07-25 
+    </div>
+    
+</body>
+</html>

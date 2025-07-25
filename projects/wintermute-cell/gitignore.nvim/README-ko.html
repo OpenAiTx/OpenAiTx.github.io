@@ -1,0 +1,392 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gitignore.nvim - .gitignore 파일 생성을 위한 neovim 플러그인입니다.</title>
+    <meta name="description" content=".gitignore 파일 생성을 위한 neovim 플러그인입니다.">
+    <meta name="keywords" content="gitignore.nvim, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "gitignore.nvim",
+  "description": ".gitignore 파일 생성을 위한 neovim 플러그인입니다.",
+  "author": {
+    "@type": "Person",
+    "name": "wintermute-cell"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 148
+  },
+  "url": "https://OpenAiTx.github.io/projects/wintermute-cell/gitignore.nvim/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/wintermute-cell/gitignore.nvim/master/README.md",
+  "datePublished": "2025-07-25",
+  "dateModified": "2025-07-25"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/wintermute-cell/gitignore.nvim" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    gitignore.nvim
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 148 stars</span>
+                <span class="language">Korean</span>
+                <span>by wintermute-cell</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><!-- LTeX: language=en-US -->
+<h1>gitignore.nvim</h1>
+<img src="https://github.com/wintermute-cell/gitignore.nvim/blob/resources/_resources/banner.webp" alt="gitignore.nvim 로고 배너"></p><p>수많은 다양한 기술 중에서 선택하여 몇 초 만에 .gitignore 파일을 생성할 수 있는 네오빔 플러그인입니다.</p><p>이 플러그인은 <a href="https://www.toptal.com/developers/gitignore/" target="_blank" rel="noopener noreferrer">gitignore.io</a>에서 제공하는 서비스와 기능적으로 동일하지만, 오프라인에서 그리고 네오빔 내부에서 직접 <code>.gitignore</code> 파일을 생성할 수 있습니다.</p><ul><li><a href="#installation--dependencies" target="_blank" rel="noopener noreferrer">설치</a></li>
+<li><a href="#usage" target="_blank" rel="noopener noreferrer">사용법</a></li>
+<li><a href="#demo" target="_blank" rel="noopener noreferrer">데모</a></li>
+<li><a href="#credits" target="_blank" rel="noopener noreferrer">크레딧</a></li></p><p></ul><h2>설치 및 의존성</h2>
+<strong><code>gitignore.nvim</code>은 선택적으로 <a href="https://github.com/nvim-telescope/telescope.nvim" target="_blank" rel="noopener noreferrer">telescope.nvim</a>에 의존하여 <a href="#selecting-multiple-items" target="_blank" rel="noopener noreferrer">다중 선택</a>을 제공합니다. <a href="https://github.com/nvim-telescope/telescope.nvim#installation" target="_blank" rel="noopener noreferrer">telescope</a>를 설치하지 않으면 여러 기술을 선택할 수 없습니다.</strong></p><p><code>telescope.nvim</code>을 설치한 후, 다음과 같이 <code>gitignore.nvim</code>을 설치할 수 있습니다:</p><p><a href="https://github.com/folke/lazy.nvim" target="_blank" rel="noopener noreferrer">lazy.nvim</a> 사용하기</p><pre><code class="language-lua">{"wintermute-cell/gitignore.nvim",
+    config = function()
+        require('gitignore')
+    end,
+}</code></pre></p><p><a href="https://github.com/wbthomason/packer.nvim" target="_blank" rel="noopener noreferrer">packer.nvim</a> 사용:
+<pre><code class="language-lua">use({
+     "wintermute-cell/gitignore.nvim",
+     requires = {
+        "nvim-telescope/telescope.nvim" -- optional: for multi-select
+     }
+})</code></pre></p><h2>사용법</h2>
+이 플러그인은 하나의 명령어만 제공하며 실행 시,
+<code>.gitignore</code> 내용이 담긴 버퍼를 생성합니다:
+<pre><code class="language-">:Gitignore [path]</code></pre>
+기존 <code>.gitignore</code> 파일이 발견되면, 생성된 내용은 기존 줄 뒤에 추가됩니다. 버퍼는 자동으로 저장되지 않으므로 기존 <code>.gitignore</code> 파일이 덮어써질 위험이 없습니다.</p><p>명령어에 <code>path</code> 인수를 <strong>선택적으로</strong> 전달하여 특정 디렉토리를 지정할 수 있습니다 (예: 중첩된 <code>.gitignore</code> 파일이 있는 경우).</p><p>또는 대응하는 <code>lua</code> 함수를 직접 사용할 수도 있습니다. 예를 들어 키맵을 생성하려면:</p><pre><code class="language-lua">local gitignore = require("gitignore")
+vim.keymap.set("n", "<leader>gi", gitignore.generate)</code></pre>
+또는 경로와 함께:</p><pre><code class="language-lua">local gitignore = require("gitignore")
+local my_path = "./some/path"
+vim.keymap.set("n", "<leader>gi",
+    function ()
+        gitignore.generate(my_path)
+    end
+)</code></pre>
+<h3>여러 항목 선택하기</h3>
+텔레스코프 없이 <code>gitignore.nvim</code>은 <code>.gitignore</code>에 대해 여러
+기술을 선택할 수 없습니다. 이는 대체 선택기인 <code>vim.ui.select()</code>가
+한 항목만 선택할 수 있기 때문입니다.
+따라서 여러 기술을 선택하려면
+<a href="https://github.com/nvim-telescope/telescope.nvim#installation" target="_blank" rel="noopener noreferrer">telescope.nvim을 설치</a>
+해야 하며(예시는
+<a href="#installation--dependencies" target="_blank" rel="noopener noreferrer">설치</a> 섹션에서 <code>packer.nvim</code>을 사용하는 예를 찾을 수 있습니다),
+또는 제공된 <code>generate</code> 메서드를 직접 구현으로
+재정의해야 합니다(<a href="#custom-picker" target="_blank" rel="noopener noreferrer">아래 섹션 참조</a>).</p><p><code>gitignore.nvim</code>은 <code>telescope.nvim</code>이 설치되어 있으면 자동으로 감지하여
+사용하므로 추가 구성이 필요 없습니다.</p><h3>telescope.nvim 설치 시 여러 항목 선택하기</h3>
+<code>gitignore.nvim</code>은 <code>telescope.nvim</code>의 다중 선택 키 바인딩을 사용합니다.
+즉, 기본적으로 <code><Tab></code>으로 여러 키워드를 (선택/선택 해제)할 수 있고,
+<code><CR></code>(엔터)로 선택을 확정할 수 있습니다.
+여러 키워드가 선택된 경우, <code><CR></code>을 누른 강조 표시된 키워드는
+선택에 <strong>추가되지 않습니다</strong>!</p><p>편의를 위해 <code><CR></code>을 누르기 전 다중 선택이 없으면,
+<code><CR></code>이 강조된 항목을 선택에 추가하고 단일 키워드에 대한
+<code>.gitignore</code> 파일을 생성합니다.</p><h2>설정</h2>
+<code>:Gitignore</code> 명령어가 현재 <code>.gitignore</code>에 덧붙이는 대신
+덮어쓰기를 하도록 하려면 다음을 설정할 수 있습니다:</p><pre><code class="language-lua">vim.g.gitignore_nvim_overwrite = true</code></pre>
+이 변수가 <code>false</code>로 설정되었거나 전혀 설정되지 않은 경우, <code>:Gitignore</code>는  
+기존 <code>.gitignore</code>를 고려합니다.  </p><p>또는, 명령어를 느낌표와 함께 호출할 수도 있습니다, 다음과 같이:
+<pre><code class="language-">:Gitignore! [path]</code></pre>
+이것은 단일 호출에 대해 <code>vim.g.gitignore_nvim_overwrite = true</code>를 설정하는 것과 동일한 효과를 가집니다.</p><h3>사용자 지정 선택기</h3></p><p><code>telescope.nvim</code> 또는 기본 <code>vim.ui.select()</code> 대신,
+다음 계약에 따라 자신의 솔루션을 구현할 수 있습니다:
+<ul><li><code>gitignore.nvim</code>은 템플릿 이름 목록과 두 가지 메서드 <code>generate</code> 및 <code>createGitignoreBuffer</code>를 제공합니다.</li>
+<li><code>generate</code> 메서드는 첫 번째 매개변수로 <code>.gitignore</code>의 대상 경로가 <code>opts.args</code>에 포함된 <code>opts</code> 테이블을 받습니다.</li>
+<li><code>createGitignoreBuffer</code>에는 <code>opts.args</code>와 선택된 템플릿 이름 목록을 전달해야 합니다.</li></p><p></ul>다음은 fzf-lua를 사용한 예제 구현입니다:
+<pre><code class="language-lua">local gitignore = require("gitignore")
+local fzf = require("fzf-lua")</p><p>gitignore.generate = function(opts)
+    local picker_opts = {
+        -- the content of opts.args may also be displayed here for example.
+        prompt = "Select templates for gitignore file> ",
+        winopts = {
+            width = 0.4,
+            height = 0.3,
+        },
+        actions = {
+            default = function(selected, _)
+                -- as stated in point (3) of the contract above, opts.args and
+                -- a list of selected templateNames are passed.
+                gitignore.createGitignoreBuffer(opts.args, selected)
+            end,
+        },
+    }
+    fzf.fzf_exec(function(fzf_cb)
+        for _, prefix in ipairs(gitignore.templateNames) do
+            fzf_cb(prefix)
+        end
+        fzf_cb()
+    end, picker_opts)
+end</code></pre>
+<blockquote>__참고__</blockquote>
+<blockquote>위의 방법은 <code>:Gitignore</code> 명령어를 덮어쓰지 않습니다.</blockquote>
+<blockquote>그렇게 하려면, generate 함수를 정의한 후에 명령어를 다시 생성하세요.</blockquote>
+<blockquote>다음과 같이:</blockquote>
+<pre><code class="language-lua">vim.api.nvim_create_user_command("Gitignore", gitignore.generate, { nargs = "?", complete = "file" })</code></pre></p><h2>데모</h2>
+<a href="https://asciinema.org/a/GOHXDt4kYsR8pzrxTEOIridTf" target="_blank" rel="noopener noreferrer"><img src="https://asciinema.org/a/GOHXDt4kYsR8pzrxTEOIridTf.svg" alt="asciicast"></a></p><h2>크레딧</h2>
+거대한 무시 템플릿 목록을 제공해 주신 <a href="https://github.com/toptal/gitignore" target="_blank" rel="noopener noreferrer">Toptal</a> 에 감사드립니다!</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-25
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/wintermute-cell/gitignore.nvim/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-07-25 
+    </div>
+    
+</body>
+</html>
