@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>luminet - Simulate Swarzschild black holes based on the methods presented in Luminet (1979)</title>
-    <meta name="description" content="Simulate Swarzschild black holes based on the methods presented in Luminet (1979)">
+    <title>luminet - Luminet (1979)&#39;da sunulan y&#246;ntemlere dayalı olarak Schwarzschild kara deliklerini sim&#252;le edin.</title>
+    <meta name="description" content="Luminet (1979)&#39;da sunulan y&#246;ntemlere dayalı olarak Schwarzschild kara deliklerini sim&#252;le edin.">
     <meta name="keywords" content="luminet, Turkish, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "luminet",
-  "description": "Simulate Swarzschild black holes based on the methods presented in Luminet (1979)",
+  "description": "Luminet (1979)'da sunulan yöntemlere dayalı olarak Schwarzschild kara deliklerini simüle edin.",
   "author": {
     "@type": "Person",
     "name": "bgmeulem"
@@ -34,8 +34,8 @@
   },
   "url": "https://OpenAiTx.github.io/projects/bgmeulem/luminet/README-tr.html",
   "sameAs": "https://raw.githubusercontent.com/bgmeulem/luminet/master/README.md",
-  "datePublished": "2025-07-25",
-  "dateModified": "2025-07-25"
+  "datePublished": "2025-07-26",
+  "dateModified": "2025-07-26"
 }
     </script>
     
@@ -282,11 +282,34 @@
         </div>
         
         <div class="content">
-            <h2>OpenAiTx projeye aktarıldıktan sonra diğer diller kilidi açılacak</h2>
+            <p><div align="center">
+  
+<h1>luminet</h1>
+<img src="https://img.shields.io/appveyor/build/bgmeulem/luminet?label=ci&style=flat-square" alt="ci-badge"> <a href="https://pypi.org/project/luminet" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/pypi/v/luminet?pypiBaseUrl=https%3A%2F%2Fpypi.org&style=flat-square&logo=pypi&logoColor=white&link=https%3A%2F%2Fpypi.org%2Fproject%2Fluminet%2F" alt="PyPI-badge"></a> <a href="https://luminet.readthedocs.io/en/latest/?badge=latest" target="_blank" rel="noopener noreferrer"><img src="https://readthedocs.org/projects/luminet/badge/?version=latest&style=flat-square" alt="Documentation Status"></a> <img src="https://img.shields.io/codecov/c/github/bgmeulem/Luminet?style=flat-square" alt="coverage"> <img src="https://img.shields.io/github/stars/bgmeulem/Luminet?style=flat-square" alt="stars-badge"> <img src="https://img.shields.io/github/license/bgmeulem/Luminet?style=flat-square" alt="license"> <a href="https://pixi.sh" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/prefix-dev/pixi/main/assets/badge/v0.json&style=flat-square" alt="Pixi Badge"></a></p><p>Luminet (1979)'da açıklanan yöntemlere dayanarak Swarzschild kara deliklerini simüle edin ve görselleştirin.</p><p><img src="https://raw.githubusercontent.com/bgmeulem/luminet/master/assets/bh_plot.png" alt="Bir kara deliğin örnek grafiği">
+</div></p><h2>⚡ Kurulum</h2>
+<code>luminet</code> PyPI üzerinden kullanılabilir:</p><pre><code class="language-shell">pip install luminet</code></pre></p><h2>📖 <a href="https://luminet.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener noreferrer">Dokümantasyon</a></h2></p><h2>🔩 Kullanım</h2></p><p>Bu depodaki tüm değişkenler doğal birimlerle verilmiştir: $G=c=1$</p><pre><code class="language-python">from luminet.black_hole import BlackHole
+bh = BlackHole(
+    mass=1,
+    incl=1.5,           # inclination in radians
+    acc=1,              # accretion rate
+    outer_edge=40
+)</code></pre>
+Bir görüntü oluşturmak için:
+<pre><code class="language-python">ax = bh.plot()          # Create image like above</code></pre>
+Yığılma diski üzerinde foton örneklemek için:</p><pre><code class="language-python">bh.sample_photons(100)
+bh.photons</code></pre>
+<pre><code class="language-">radius  alpha   impact_parameter    z_factor    flux_o
+10.2146 5.1946  1.8935              1.1290      1.8596e-05
+... (99 more)</code></pre></p><p>Örneklemenin kara deliğin merkezine doğru önyargılı olduğunu unutmayın, çünkü ışınımın büyük kısmı buradan gelir.</p><h2>📝 Arka Plan</h2>
+Swarzschild kara deliklerinde en içteki kararlı yörünge $6M$'dir ve bir foton küresi $3M$'de bulunur. Bu, kara deliğin etrafında dönen akresyon diskinden fotonların $r>6M$ yarıçaplarında yayıldığı anlamına gelir. Eğri uzayda fotonun yerberi noktası $3M$'den (foton küresi de denir) büyük kaldığı sürece, foton kara delik tarafından yakalanmaz ve teorik olarak bir gözlemci çerçevesinden $(b, \alpha)$ görülebilir. Uzayzaman eğriliği, en kolay kara delik çerçevesi $(r, \alpha)$ ile gözlemci çerçevesi $(b, \alpha)$ arasındaki bir mercek etkisi olarak yorumlanabilir. İlki, akresyon diski alanını kapsayan 2 boyutlu kutupsal koordinatlardır ve ikincisi, gözlemci çerçevesinin "fotoğraf plakası"nı kapsayan 2 boyutlu kutupsal koordinatlardır. Bunu gerçek bir CCD kamera olarak düşünebilirsiniz. Foton yörüngesinin yerberi noktası ile gözlemci çerçevesindeki yarıçap $b$ doğrudan ilişkilidir:</p><p>$$b^2 = \frac{P^3}{P-2M}$$</p><p>Bu, birçok denklemi önemli ölçüde daha basit hale getirir.
+Bu denklemin sol tarafında bir kare olduğunu fark edebilirsiniz, bu Luminet (1979)'dan farklıdır. Orijinal makalede bir dizi gösterim hatası vardır. Bununla ilgili olarak yazarla iletişime geçtim, kendisi nazikçe şöyle yanıtladı:</p><blockquote>"[...] à l’époque je n'avais pas encore l’expérience de relire très soigneusement les épreuves. Mais mes calculs avaient  heureusement été faits avec les bonnes formules, sinon le résultat visuel n’aurait pas été correct!" </blockquote>
+>
+>"O zamanlar provaları dikkatlice tekrar kontrol etme alışkanlığım yoktu. Neyse ki sonuçları doğru formüllerle hesaplamıştım, aksi takdirde görsel sonuç doğru olmazdı!".</p><p>Bilginiz olsun. Bu kodun makaleden nerede farklılaştığını not etmeye özen gösterdim.</p><p>Her iki koordinat sisteminin açıları arasındaki ilişki önemsizdir, ancak iki referans çerçevesindeki yarıçaplar arasındaki ilişki, korkunç 13. Denklemle verilir:</p><p>$$\frac{1}{r} = - \frac{Q - P + 2M}{4MP} + \frac{Q-P+6M}{4MP}{sn}^2\left( \frac{\gamma}{2}\sqrt{\frac{Q}{P}} + F(\zeta_\infty, k) \right)$$</p><p>Burada $F$, birinci türden eksik Jacobian eliptik integralidir, $k$ ve $Q$ yerberi noktası $P$'nin bir fonksiyonudur, $\zeta$ ise $P$'nin trigonometrik fonksiyonlarıdır ve $\gamma$ şunu sağlar:</p><p>$$\cos(\gamma) = \frac{\cos(\alpha)}{\sqrt{\cos^2\alpha + \cot^2\theta_0}}$$</p><p>Eğri uzayzamanda, genellikle aynı koordinattan kaynaklanıp gözlemci çerçevesine yansıtılan birden fazla foton yörüngesi vardır (bkz. örn. kütleçekimsel merceklenme ve Einstein haçları). Kara deliğin etrafında kıvrılıp gözlemci çerçevesine ulaşan foton yörüngelerine "daha yüksek mertebeden" görüntüler veya "hayalet" görüntüler denir. Bu durumda, $\gamma$ şunu sağlar:</p><p>$$2n\pi - \gamma = 2\sqrt{\frac{Q}{P}} \left( 2K(k) - F(\zeta_\infty, k) - F(\zeta_r, k)  \right)$$</p><p>Bu hayalet fotonlar, yukarıdaki görüntünün alt yarısında gördüğünüz şeydir ve ayrıca foton küresinin etrafını ince bir şekilde saran zar zor görülebilen ışık halesidir. Daha az kenardan bakılan eğimlerde bu hayalet görüntü daha az belirgindir.</p><p>Bu depo, bu denklemleri çözmek için <code>scipy.optimize.brentq</code> kullanır ve Luminet (1979)'da sunulan kavramlara uygun API sağlar. En belirgin olanı <code>BlackHole</code> sınıfıdır, ancak örneğin <code>Isoradial</code> sınıfı ile oynamak da öğreticidir: kara delik çerçevesinde aynı yarıçaptan yayılan fotonları tanımlayan gözlemci çerçevesindeki çizgiler. <code>Isoredshift</code> sınıfı, gözlemci çerçevesinde eşit kırmızıya kayma çizgileri sağlar.</p><h2>📕 Kaynakça</h2>
+[1] Luminet, J.-P., <a href="https://ui.adsabs.harvard.edu/abs/1979A%26A....75..228L/abstract" target="_blank" rel="noopener noreferrer">“Image of a spherical black hole with thin accretion disk.”</a>, <i>Astronomy and Astrophysics</i>, cilt 75, ss. 228–235, 1979.</p><p>[2] J.-P. Luminet, <a href="https://arxiv.org/abs/1902.11196" target="_blank" rel="noopener noreferrer">“An Illustrated History of Black Hole Imaging : Personal Recollections (1972-2002).”</a> arXiv, 2019. doi: 10.48550/ARXIV.1902.11196. </p><p>
 
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-25
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-26
 
 ---</p>
         </div>
@@ -298,7 +321,7 @@
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-07-25 
+        Last updated: 2025-07-26 
     </div>
     
 </body>

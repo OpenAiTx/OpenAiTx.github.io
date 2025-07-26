@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>luminet - Simulate Swarzschild black holes based on the methods presented in Luminet (1979)</title>
-    <meta name="description" content="Simulate Swarzschild black holes based on the methods presented in Luminet (1979)">
+    <title>luminet - M&#244; phỏng c&#225;c lỗ đen Schwarzschild dựa tr&#234;n c&#225;c phương ph&#225;p được tr&#236;nh b&#224;y trong Luminet (1979)</title>
+    <meta name="description" content="M&#244; phỏng c&#225;c lỗ đen Schwarzschild dựa tr&#234;n c&#225;c phương ph&#225;p được tr&#236;nh b&#224;y trong Luminet (1979)">
     <meta name="keywords" content="luminet, Vietnamese, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "luminet",
-  "description": "Simulate Swarzschild black holes based on the methods presented in Luminet (1979)",
+  "description": "Mô phỏng các lỗ đen Schwarzschild dựa trên các phương pháp được trình bày trong Luminet (1979)",
   "author": {
     "@type": "Person",
     "name": "bgmeulem"
@@ -34,8 +34,8 @@
   },
   "url": "https://OpenAiTx.github.io/projects/bgmeulem/luminet/README-vi.html",
   "sameAs": "https://raw.githubusercontent.com/bgmeulem/luminet/master/README.md",
-  "datePublished": "2025-07-25",
-  "dateModified": "2025-07-25"
+  "datePublished": "2025-07-26",
+  "dateModified": "2025-07-26"
 }
     </script>
     
@@ -282,11 +282,36 @@
         </div>
         
         <div class="content">
-            <h2>Các ngôn ngữ khác sẽ được mở khóa sau khi nhập OpenAiTx vào dự án</h2>
+            <p><div align="center">
+  
+<h1>luminet</h1>
+<img src="https://img.shields.io/appveyor/build/bgmeulem/luminet?label=ci&style=flat-square" alt="ci-badge"> <a href="https://pypi.org/project/luminet" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/pypi/v/luminet?pypiBaseUrl=https%3A%2F%2Fpypi.org&style=flat-square&logo=pypi&logoColor=white&link=https%3A%2F%2Fpypi.org%2Fproject%2Fluminet%2F" alt="PyPI-badge"></a> <a href="https://luminet.readthedocs.io/en/latest/?badge=latest" target="_blank" rel="noopener noreferrer"><img src="https://readthedocs.org/projects/luminet/badge/?version=latest&style=flat-square" alt="Documentation Status"></a> <img src="https://img.shields.io/codecov/c/github/bgmeulem/Luminet?style=flat-square" alt="coverage"> <img src="https://img.shields.io/github/stars/bgmeulem/Luminet?style=flat-square" alt="stars-badge"> <img src="https://img.shields.io/github/license/bgmeulem/Luminet?style=flat-square" alt="license"> <a href="https://pixi.sh" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/prefix-dev/pixi/main/assets/badge/v0.json&style=flat-square" alt="Pixi Badge"></a></p><p>Mô phỏng và trực quan hóa lỗ đen Swarzschild, dựa trên các phương pháp được mô tả trong Luminet (1979).</p><p><img src="https://raw.githubusercontent.com/bgmeulem/luminet/master/assets/bh_plot.png" alt="Ví dụ biểu đồ của một lỗ đen">
+</div></p><h2>⚡ Cài đặt</h2>
+<code>luminet</code> có sẵn trên PyPI:</p><pre><code class="language-shell">pip install luminet</code></pre></p><h2>📖 <a href="https://luminet.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener noreferrer">Tài liệu</a></h2></p><h2>🔩 Cách sử dụng</h2></p><p>Tất cả các biến trong kho lưu trữ này đều sử dụng đơn vị tự nhiên: $G=c=1$</p><pre><code class="language-python">from luminet.black_hole import BlackHole
+bh = BlackHole(
+    mass=1,
+    incl=1.5,           # inclination in radians
+    acc=1,              # accretion rate
+    outer_edge=40
+)</code></pre>
+Để tạo một hình ảnh:
+<pre><code class="language-python">ax = bh.plot()          # Create image like above</code></pre>
+Để lấy mẫu các photon trên đĩa bồi tụ:</p><pre><code class="language-python">bh.sample_photons(100)
+bh.photons</code></pre>
+<pre><code class="language-">radius  alpha   impact_parameter    z_factor    flux_o
+10.2146 5.1946  1.8935              1.1290      1.8596e-05
+... (99 more)</code></pre>
+Lưu ý rằng việc lấy mẫu bị lệch về phía trung tâm của lỗ đen, vì đây là nơi phát ra phần lớn độ sáng.</p><h2>📝 Bối cảnh</h2>
+Lỗ đen Schwarzschild có quỹ đạo ổn định trong cùng ở $6M$, và có một mặt cầu photon tại $3M$. Điều này có nghĩa là
+đĩa bồi tụ quay quanh lỗ đen phát ra photon tại bán kính $r>6M$. Miễn là cận điểm quỹ đạo của photon trong không-thời gian cong vẫn lớn hơn $3M$ (còn gọi là mặt cầu photon), photon sẽ không bị lỗ đen nuốt chửng và về mặt lý thuyết có thể được nhìn thấy từ một hệ quy chiếu của quan sát viên $(b, \alpha)$. Độ cong không-thời gian dễ dàng được hiểu là hiệu ứng thấu kính giữa hệ quy chiếu lỗ đen $(r, \alpha)$ và hệ quy chiếu quan sát viên $(b, \alpha)$. Hệ đầu tiên là tọa độ cực 2D trải rộng trên vùng đĩa bồi tụ, và hệ thứ hai là tọa độ cực 2D trải rộng trên "mặt ảnh" của hệ quy chiếu quan sát viên. Hãy tưởng tượng hệ thứ hai như một máy ảnh CCD thật sự. Cận điểm quỹ đạo photon và bán kính trong hệ quy chiếu quan sát viên $b$ có liên hệ trực tiếp:</p><p>$$b^2 = \frac{P^3}{P-2M}$$</p><p>Điều này làm cho nhiều phương trình trở nên đơn giản hơn đáng kể.
+Bạn có thể nhận thấy phương trình này có bình phương ở vế trái, khác với Luminet (1979). Bản thảo gốc có một vài lỗi ký hiệu. Tôi đã liên hệ với tác giả về điều này, và ông ấy đã phản hồi thân thiện:</p><blockquote>"[...] à l’époque je n'avais pas encore l’expérience de relire très soigneusement les épreuves. Mais mes calculs avaient  heureusement été faits avec les bonnes formules, sinon le résultat visuel n’aurait pas été correct!" </blockquote>
+>
+>"Ngày đó, tôi chưa có thói quen kiểm tra kỹ lưỡng các bản in thử. May mắn thay, tôi đã thực hiện các phép tính với công thức đúng, nếu không thì hình ảnh sẽ không đúng!"</p><p>Chỉ để bạn biết thôi. Tôi đã cố gắng ghi chú cẩn thận về những điểm mã này khác với bài báo.</p><p>Quan hệ giữa các góc của hai hệ tọa độ là đơn giản, nhưng quan hệ giữa các bán kính trong hai hệ quy chiếu được cho bởi Phương trình 13 khủng khiếp:</p><p>$$\frac{1}{r} = - \frac{Q - P + 2M}{4MP} + \frac{Q-P+6M}{4MP}{sn}^2\left( \frac{\gamma}{2}\sqrt{\frac{Q}{P}} + F(\zeta_\infty, k) \right)$$</p><p>Ở đây, $F$ là tích phân elliptic Jacobi chưa hoàn chỉnh loại một, $k$ và $Q$ là hàm của cận điểm $P$, $\zeta$ là các hàm lượng giác của $P$, và $\gamma$ thỏa mãn:</p><p>$$\cos(\gamma) = \frac{\cos(\alpha)}{\sqrt{\cos^2\alpha + \cot^2\theta_0}}$$</p><p>Trong không-thời gian cong, thường có nhiều quỹ đạo photon bắt đầu từ cùng một tọa độ và chiếu lên hệ quy chiếu quan sát viên (xem ví dụ: thấu kính hấp dẫn và thập tự Einstein). Quỹ đạo photon uốn quanh lỗ đen và đến được hệ quy chiếu quan sát viên được gọi là ảnh "bậc cao hơn" hoặc ảnh "ma". Trong trường hợp này, $\gamma$ thỏa mãn:</p><p>$$2n\pi - \gamma = 2\sqrt{\frac{Q}{P}} \left( 2K(k) - F(\zeta_\infty, k) - F(\zeta_r, k)  \right)$$</p><p>Những photon ma này là những gì bạn thấy ở nửa dưới của hình ảnh trên, cũng như quầng sáng mờ bao quanh sát mặt cầu photon. Với góc nghiêng ít nghiêng hơn, ảnh ma này cũng kém rõ nét hơn.</p><p>Repo này sử dụng <code>scipy.optimize.brentq</code> để giải các phương trình này, và cung cấp API thuận tiện cho các khái niệm được trình bày trong Luminet (1979). Lớp <code>BlackHole</code> là lớp rõ ràng nhất, nhưng cũng rất bổ ích khi thử nghiệm với ví dụ như lớp <code>Isoradial</code>: các đường trong hệ quy chiếu quan sát viên mô tả các photon phát ra từ cùng một bán kính trong hệ quy chiếu lỗ đen. Lớp <code>Isoredshift</code> cung cấp các đường cùng dịch chuyển đỏ trong hệ quy chiếu quan sát viên.</p><h2>📕 Tài liệu tham khảo</h2>
+[1] Luminet, J.-P., <a href="https://ui.adsabs.harvard.edu/abs/1979A%26A....75..228L/abstract" target="_blank" rel="noopener noreferrer">“Image of a spherical black hole with thin accretion disk.”</a>, <i>Astronomy and Astrophysics</i>, tập 75, trang 228–235, 1979.</p><p>[2] J.-P. Luminet, <a href="https://arxiv.org/abs/1902.11196" target="_blank" rel="noopener noreferrer">“An Illustrated History of Black Hole Imaging : Personal Recollections (1972-2002).”</a> arXiv, 2019. doi: 10.48550/ARXIV.1902.11196. </p><p>
 
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-25
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-26
 
 ---</p>
         </div>
@@ -298,7 +323,7 @@
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-07-25 
+        Last updated: 2025-07-26 
     </div>
     
 </body>

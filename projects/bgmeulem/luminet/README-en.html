@@ -34,8 +34,8 @@
   },
   "url": "https://OpenAiTx.github.io/projects/bgmeulem/luminet/README-en.html",
   "sameAs": "https://raw.githubusercontent.com/bgmeulem/luminet/master/README.md",
-  "datePublished": "2025-07-25",
-  "dateModified": "2025-07-25"
+  "datePublished": "2025-07-26",
+  "dateModified": "2025-07-26"
 }
     </script>
     
@@ -295,21 +295,21 @@ bh = BlackHole(
     outer_edge=40
 )</code></pre>
 To create an image:
-<pre><code class="language-python">ax = bh.plot()          # Create image like above</code></pre>
-To sample photons on the accretion disk:</p><pre><code class="language-python">bh.sample_photons(100)
+<pre><code class="language-python">ax = bh.plot()          # Create image like above</code></pre></p><p>To sample photons on the accretion disk:
+<pre><code class="language-python">bh.sample_photons(100)
 bh.photons</code></pre>
 <pre><code class="language-">radius  alpha   impact_parameter    z_factor    flux_o
 10.2146 5.1946  1.8935              1.1290      1.8596e-05
 ... (99 more)</code></pre></p><p>Note that sampling is biased towards the center of the black hole, since this is where most of the luminosity comes from.</p><h2>📝 Background</h2>
-Swarzschild black holes have an innermost stable orbit of $6M$, and a photon sphere at $3M$. This means that
-the accretion disk orbiting the black hole emits photons at radii $r>6M$. As long as the photon perigee in curved space remains larger than $3M$ (also called the photon sphere), the photon is not captured by the black hole and can in theory be seen from some observer frame $(b, \alpha)$. The spacetime curvature is most easily interpreted as a lensing effect between the black hole frame $(r, \alpha)$ and the observer frame $(b, \alpha)$. The former are 2D polar coordinates that span the accretion disk area, and the latter are 2D polar coordinates that span the "photographic plate" of the observer frame. Think of the latter as a literal CCD camera. The photon orbit perigee and the radius in observer frame $b$ are directly related:</p><p>$$b^2 = \frac{P^3}{P-2M}$$</p><p>This makes many equations significantly more straightforward. 
-You may notice this equation has a square on the left hand side, in contrast to Luminet (1979). The original manuscript has a handful of notation errors. I've contacted the author about this, to which he kindly responded:</p><blockquote>"[...] à l’époque je n'avais pas encore l’expérience de relire très soigneusement les épreuves. Mais mes calculs avaient  heureusement été faits avec les bonnes formules, sinon le résultat visuel n’aurait pas été correct!" </blockquote>
+Schwarzschild black holes have an innermost stable orbit at $6M$, and a photon sphere at $3M$. This means that
+the accretion disk orbiting the black hole emits photons at radii $r>6M$. As long as the photon perigee in curved space remains larger than $3M$ (also called the photon sphere), the photon is not captured by the black hole and can in theory be seen from some observer frame $(b, \alpha)$. The spacetime curvature is most easily interpreted as a lensing effect between the black hole frame $(r, \alpha)$ and the observer frame $(b, \alpha)$. The former are 2D polar coordinates spanning the accretion disk area, and the latter are 2D polar coordinates spanning the observer frame's "photographic plate". Think of the latter as a literal CCD camera. The photon orbit perigee and the radius in observer frame $b$ are directly related:</p><p>$$b^2 = \frac{P^3}{P-2M}$$</p><p>This makes many equations significantly more straightforward. 
+You may notice this equation has a square on the left hand side, in contrast to Luminet (1979). The original manuscript contains a handful of notation errors. I've contacted the author about this, to which he kindly responded:</p><blockquote>"[...] at the time I did not yet have the habit of carefully rereading the proofs. But luckily, my calculations had been done with the correct formulas, otherwise the visual result would not have been correct!" </blockquote>
 >
->"Back in the day, I did not have the habit of carefully double-checking my proofs. Luckily, I did calculate the results with the correct formulas, otherwise the image wouldn't be right!".</p><p>Just so you know. I tried to be diligent about noting where this code differs from the paper. </p><p>The relationship between the angles of both coordinate systems is trivial, but the relationship between the radii in the two reference frames is given by the monstruous Equation 13:</p><p>$$\frac{1}{r} = - \frac{Q - P + 2M}{4MP} + \frac{Q-P+6M}{4MP}{sn}^2\left( \frac{\gamma}{2}\sqrt{\frac{Q}{P}} + F(\zeta_\infty, k) \right)$$</p><p>Here, $F$ is an incomplete Jacobian elliptic integral of the first kind, $k$ and $Q$ are a function of the perigee $P$, $\zeta$ are trigonometric functions of $P$, and $\gamma$ satisfies:</p><p>$$\cos(\gamma) = \frac{\cos(\alpha)}{\sqrt{\cos^2\alpha + \cot^2\theta_0}}$$</p><p>In curved spacetime, there are usually multiple photon orbits that originate from the same coordinate and project to the ibserver frame (see e.g. gravitational lensing and Einstein crosses). Photon orbits that curve around the black hole and reach the observer frame are called "higher order" images, or "ghost" images. In this case, $\gamma$ satisfies:</p><p>$$2n\pi - \gamma = 2\sqrt{\frac{Q}{P}} \left( 2K(k) - F(\zeta_\infty, k) - F(\zeta_r, k)  \right)$$</p><p>These ghost photons are what you see on the lower half of the image above, as well as the barely visible halo of light that wraps thinly around the photon sphere. For inclinations that are less edge-on, this ghost image is less pronounced though. </p><p>This repo uses <code>scipy.optimize.brentq</code> to solve these equations, and provides convenient API to the concepts presented in Luminet (1979). The <code>BlackHole</code> class is the most obvious one, but it's also educative to play around with e.g. the <code>Isoradial</code> class: lines in observer frame describing photons emitted from the same radius in the black hole frame. The <code>Isoredshift</code> class provides lines of equal redshift in the observer frame.</p><h2>📕 Bibliography</h2>
+>"Back in the day, I did not have the habit of carefully double-checking my proofs. Luckily, I did calculate the results with the correct formulas, otherwise the image wouldn't be right!".</p><p>Just so you know. I tried to be diligent about noting where this code differs from the paper. </p><p>The relationship between the angles of both coordinate systems is trivial, but the relationship between the radii in the two reference frames is given by the monstrous Equation 13:</p><p>$$\frac{1}{r} = - \frac{Q - P + 2M}{4MP} + \frac{Q-P+6M}{4MP}{sn}^2\left( \frac{\gamma}{2}\sqrt{\frac{Q}{P}} + F(\zeta_\infty, k) \right)$$</p><p>Here, $F$ is an incomplete Jacobian elliptic integral of the first kind, $k$ and $Q$ are functions of the perigee $P$, $\zeta$ are trigonometric functions of $P$, and $\gamma$ satisfies:</p><p>$$\cos(\gamma) = \frac{\cos(\alpha)}{\sqrt{\cos^2\alpha + \cot^2\theta_0}}$$</p><p>In curved spacetime, there are usually multiple photon orbits that originate from the same coordinate and project to the observer frame (see e.g. gravitational lensing and Einstein crosses). Photon orbits that curve around the black hole and reach the observer frame are called "higher order" images, or "ghost" images. In this case, $\gamma$ satisfies:</p><p>$$2n\pi - \gamma = 2\sqrt{\frac{Q}{P}} \left( 2K(k) - F(\zeta_\infty, k) - F(\zeta_r, k)  \right)$$</p><p>These ghost photons are what you see on the lower half of the image above, as well as the barely visible halo of light that wraps thinly around the photon sphere. For inclinations that are less edge-on, this ghost image is less pronounced though. </p><p>This repo uses <code>scipy.optimize.brentq</code> to solve these equations, and provides a convenient API to the concepts presented in Luminet (1979). The <code>BlackHole</code> class is the most obvious one, but it's also instructive to play around with e.g. the <code>Isoradial</code> class: lines in observer frame describing photons emitted from the same radius in the black hole frame. The <code>Isoredshift</code> class provides lines of equal redshift in the observer frame.</p><h2>📕 Bibliography</h2>
 [1] Luminet, J.-P., <a href="https://ui.adsabs.harvard.edu/abs/1979A%26A....75..228L/abstract" target="_blank" rel="noopener noreferrer">“Image of a spherical black hole with thin accretion disk.”</a>, <i>Astronomy and Astrophysics</i>, vol. 75, pp. 228–235, 1979.</p><p>[2] J.-P. Luminet, <a href="https://arxiv.org/abs/1902.11196" target="_blank" rel="noopener noreferrer">“An Illustrated History of Black Hole Imaging : Personal Recollections (1972-2002).”</a> arXiv, 2019. doi: 10.48550/ARXIV.1902.11196. </p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-25
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-26
 
 ---</p>
         </div>
@@ -321,7 +321,7 @@ You may notice this equation has a square on the left hand side, in contrast to 
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-07-25 
+        Last updated: 2025-07-26 
     </div>
     
 </body>

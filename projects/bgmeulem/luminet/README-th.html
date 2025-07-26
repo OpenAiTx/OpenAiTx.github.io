@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>luminet - Simulate Swarzschild black holes based on the methods presented in Luminet (1979)</title>
-    <meta name="description" content="Simulate Swarzschild black holes based on the methods presented in Luminet (1979)">
+    <title>luminet - จำลองหลุมดำชวาร์เซิลด์โดยอิงตามวิธีที่นำเสนอใน Luminet (1979)</title>
+    <meta name="description" content="จำลองหลุมดำชวาร์เซิลด์โดยอิงตามวิธีที่นำเสนอใน Luminet (1979)">
     <meta name="keywords" content="luminet, Thai, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "luminet",
-  "description": "Simulate Swarzschild black holes based on the methods presented in Luminet (1979)",
+  "description": "จำลองหลุมดำชวาร์เซิลด์โดยอิงตามวิธีที่นำเสนอใน Luminet (1979)",
   "author": {
     "@type": "Person",
     "name": "bgmeulem"
@@ -34,8 +34,8 @@
   },
   "url": "https://OpenAiTx.github.io/projects/bgmeulem/luminet/README-th.html",
   "sameAs": "https://raw.githubusercontent.com/bgmeulem/luminet/master/README.md",
-  "datePublished": "2025-07-25",
-  "dateModified": "2025-07-25"
+  "datePublished": "2025-07-26",
+  "dateModified": "2025-07-26"
 }
     </script>
     
@@ -282,11 +282,36 @@
         </div>
         
         <div class="content">
-            <h2>ภาษาอื่นๆ จะปลดล็อกหลังจากนำเข้า OpenAiTx ในโครงการ</h2>
+            <p><div align="center">
+  
+<h1>luminet</h1>
+<img src="https://img.shields.io/appveyor/build/bgmeulem/luminet?label=ci&style=flat-square" alt="ci-badge"> <a href="https://pypi.org/project/luminet" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/pypi/v/luminet?pypiBaseUrl=https%3A%2F%2Fpypi.org&style=flat-square&logo=pypi&logoColor=white&link=https%3A%2F%2Fpypi.org%2Fproject%2Fluminet%2F" alt="PyPI-badge"></a> <a href="https://luminet.readthedocs.io/en/latest/?badge=latest" target="_blank" rel="noopener noreferrer"><img src="https://readthedocs.org/projects/luminet/badge/?version=latest&style=flat-square" alt="Documentation Status"></a> <img src="https://img.shields.io/codecov/c/github/bgmeulem/Luminet?style=flat-square" alt="coverage"> <img src="https://img.shields.io/github/stars/bgmeulem/Luminet?style=flat-square" alt="stars-badge"> <img src="https://img.shields.io/github/license/bgmeulem/Luminet?style=flat-square" alt="license"> <a href="https://pixi.sh" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/prefix-dev/pixi/main/assets/badge/v0.json&style=flat-square" alt="Pixi Badge"></a></p><p>โปรแกรมจำลองและแสดงภาพหลุมดำชวาร์ซชิลด์ โดยอิงจากวิธีการที่อธิบายไว้ใน Luminet (1979)</p><p><img src="https://raw.githubusercontent.com/bgmeulem/luminet/master/assets/bh_plot.png" alt="ตัวอย่างกราฟของหลุมดำ">
+</div></p><h2>⚡ การติดตั้ง</h2>
+<code>luminet</code> มีให้ใช้งานใน PyPI:</p><pre><code class="language-shell">pip install luminet</code></pre></p><h2>📖 <a href="https://luminet.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener noreferrer">เอกสารประกอบ</a></h2></p><h2>🔩 การใช้งาน</h2></p><p>ตัวแปรทั้งหมดในที่เก็บนี้อยู่ในหน่วยธรรมชาติ: $G=c=1$</p><pre><code class="language-python">from luminet.black_hole import BlackHole
+bh = BlackHole(
+    mass=1,
+    incl=1.5,           # inclination in radians
+    acc=1,              # accretion rate
+    outer_edge=40
+)</code></pre>
+ในการสร้างภาพ:
+<pre><code class="language-python">ax = bh.plot()          # Create image like above</code></pre>
+เพื่อสุ่มโฟตอนบนจานสะสมมวล:</p><pre><code class="language-python">bh.sample_photons(100)
+bh.photons</code></pre>
+<pre><code class="language-">radius  alpha   impact_parameter    z_factor    flux_o
+10.2146 5.1946  1.8935              1.1290      1.8596e-05
+... (99 more)</code></pre>
+โปรดทราบว่าการสุ่มตัวอย่างจะมีความเอนเอียงไปยังศูนย์กลางของหลุมดำ เนื่องจากบริเวณนี้เป็นแหล่งกำเนิดความส่องสว่างส่วนใหญ่</p><h2>📝 พื้นหลัง</h2>
+หลุมดำชวาร์ซชิลด์มีวงโคจรเสถียรใกล้สุดที่ $6M$ และมีทรงกลมโฟตอนที่ $3M$ นี่หมายความว่า
+จานสะสมมวลที่โคจรรอบหลุมดำจะปล่อยโฟตอนออกมาที่รัศมี $r>6M$ ตราบเท่าที่ระยะใกล้สุดของโฟตอนในปริภูมิโค้งยังมากกว่า $3M$ (หรือที่เรียกว่าทรงกลมโฟตอน) โฟตอนจะไม่ถูกหลุมดำจับไว้และในทางทฤษฎีสามารถถูกสังเกตได้จากกรอบผู้สังเกตการณ์ $(b, \alpha)$ ความโค้งของปริภูมิ-เวลาอธิบายง่ายที่สุดในฐานะเอฟเฟกต์เลนส์ระหว่างกรอบหลุมดำ $(r, \alpha)$ กับกรอบผู้สังเกตการณ์ $(b, \alpha)$ กรอบแรกคือพิกัดเชิงขั้ว 2D ที่ครอบคลุมพื้นที่ของจานสะสมมวล และกรอบหลังคือพิกัดเชิงขั้ว 2D ที่ครอบคลุม "แผ่นถ่ายภาพ" ของกรอบผู้สังเกตการณ์ ให้นึกถึงกรอบหลังเป็นกล้อง CCD จริงๆ จุดใกล้สุดของวงโคจรโฟตอนและรัศมีในกรอบผู้สังเกตการณ์ $b$ มีความสัมพันธ์กันโดยตรง:</p><p>$$b^2 = \frac{P^3}{P-2M}$$</p><p>สิ่งนี้ทำให้สมการหลายสมการง่ายขึ้นอย่างมีนัยสำคัญ
+คุณอาจสังเกตว่าสมการนี้มีการยกกำลังสองที่ด้านซ้าย ซึ่งต่างจาก Luminet (1979) ต้นฉบับมีข้อผิดพลาดด้านสัญลักษณ์อยู่บ้าง ผมได้ติดต่อผู้เขียนเกี่ยวกับเรื่องนี้ ซึ่งเขาได้ตอบกลับมาอย่างสุภาพว่า:</p><blockquote>"[...] à l’époque je n'avais pas encore l’expérience de relire très soigneusement les épreuves. Mais mes calculs avaient  heureusement été faits avec les bonnes formules, sinon le résultat visuel n’aurait pas été correct!" </blockquote>
+>
+>"ในสมัยนั้นผมยังไม่มีนิสัยตรวจทานงานอย่างละเอียด โชคดีที่ผมคำนวณด้วยสูตรที่ถูกต้อง มิฉะนั้นภาพที่ได้คงไม่ถูกต้อง!"</p><p>แจ้งไว้เพื่อทราบ ผมพยายามระบุไว้อย่างรอบคอบว่าโค้ดนี้ต่างจากบทความตรงไหน</p><p>ความสัมพันธ์ระหว่างมุมของทั้งสองระบบพิกัดนั้นตรงไปตรงมา แต่ความสัมพันธ์ระหว่างรัศมีในสองกรอบอ้างอิงจะให้โดยสมการที่ซับซ้อน Equation 13:</p><p>$$\frac{1}{r} = - \frac{Q - P + 2M}{4MP} + \frac{Q-P+6M}{4MP}{sn}^2\left( \frac{\gamma}{2}\sqrt{\frac{Q}{P}} + F(\zeta_\infty, k) \right)$$</p><p>ที่นี่ $F$ คืออินทิกรัลเอลลิปติกของจาโคเบียนชนิดไม่สมบูรณ์อันดับหนึ่ง, $k$ และ $Q$ เป็นฟังก์ชันของระยะใกล้สุด $P$, $\zeta$ เป็นฟังก์ชันตรีโกณของ $P$, และ $\gamma$ เป็นไปตาม:</p><p>$$\cos(\gamma) = \frac{\cos(\alpha)}{\sqrt{\cos^2\alpha + \cot^2\theta_0}}$$</p><p>ในปริภูมิโค้ง มักจะมีวงโคจรโฟตอนหลายวงที่มีจุดกำเนิดเดียวกันและฉายไปยังกรอบผู้สังเกตการณ์ (ดูเช่น เลนส์ความโน้มถ่วงและ Einstein crosses) วงโคจรโฟตอนที่โค้งรอบหลุมดำและไปถึงกรอบผู้สังเกตการณ์เรียกว่า "ภาพลำดับสูง" หรือ "ภาพผี" ในกรณีนี้ $\gamma$ เป็นไปตาม:</p><p>$$2n\pi - \gamma = 2\sqrt{\frac{Q}{P}} \left( 2K(k) - F(\zeta_\infty, k) - F(\zeta_r, k)  \right)$$</p><p>โฟตอนผีเหล่านี้คือสิ่งที่คุณเห็นในครึ่งล่างของภาพด้านบน รวมถึงเฮโล่ของแสงที่บางมากซึ่งล้อมรอบทรงกลมโฟตอน สำหรับมุมเอียงที่ไม่ขนานขอบมาก ภาพผีนี้จะไม่เด่นชัดนัก</p><p>รีโปนี้ใช้ <code>scipy.optimize.brentq</code> ในการแก้สมการเหล่านี้ และมี API ที่สะดวกสำหรับแนวคิดที่นำเสนอใน Luminet (1979) คลาส <code>BlackHole</code> เป็นคลาสหลักที่ชัดเจน แต่ก็ให้ความรู้หากลองใช้คลาสอื่นๆ เช่น <code>Isoradial</code> : เส้นในกรอบผู้สังเกตการณ์ที่อธิบายโฟตอนที่ปล่อยจากรัศมีเดียวกันในกรอบหลุมดำ คลาส <code>Isoredshift</code> ให้เส้นของเรดชิฟต์เท่ากันในกรอบผู้สังเกตการณ์</p><h2>📕 บรรณานุกรม</h2>
+[1] Luminet, J.-P., <a href="https://ui.adsabs.harvard.edu/abs/1979A%26A....75..228L/abstract" target="_blank" rel="noopener noreferrer">“Image of a spherical black hole with thin accretion disk.”</a>, <i>Astronomy and Astrophysics</i>, vol. 75, pp. 228–235, 1979.</p><p>[2] J.-P. Luminet, <a href="https://arxiv.org/abs/1902.11196" target="_blank" rel="noopener noreferrer">“An Illustrated History of Black Hole Imaging : Personal Recollections (1972-2002).”</a> arXiv, 2019. doi: 10.48550/ARXIV.1902.11196. </p><p>
 
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-25
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-26
 
 ---</p>
         </div>
@@ -298,7 +323,7 @@
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-07-25 
+        Last updated: 2025-07-26 
     </div>
     
 </body>

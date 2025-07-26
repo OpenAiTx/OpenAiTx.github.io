@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>luminet - Simulate Swarzschild black holes based on the methods presented in Luminet (1979)</title>
-    <meta name="description" content="Simulate Swarzschild black holes based on the methods presented in Luminet (1979)">
+    <title>luminet - Simule buracos negros de Schwarzschild com base nos m&#233;todos apresentados em Luminet (1979)</title>
+    <meta name="description" content="Simule buracos negros de Schwarzschild com base nos m&#233;todos apresentados em Luminet (1979)">
     <meta name="keywords" content="luminet, Portuguese, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "luminet",
-  "description": "Simulate Swarzschild black holes based on the methods presented in Luminet (1979)",
+  "description": "Simule buracos negros de Schwarzschild com base nos métodos apresentados em Luminet (1979)",
   "author": {
     "@type": "Person",
     "name": "bgmeulem"
@@ -34,8 +34,8 @@
   },
   "url": "https://OpenAiTx.github.io/projects/bgmeulem/luminet/README-pt.html",
   "sameAs": "https://raw.githubusercontent.com/bgmeulem/luminet/master/README.md",
-  "datePublished": "2025-07-25",
-  "dateModified": "2025-07-25"
+  "datePublished": "2025-07-26",
+  "dateModified": "2025-07-26"
 }
     </script>
     
@@ -282,11 +282,34 @@
         </div>
         
         <div class="content">
-            <h2>Outros idiomas serão desbloqueados após importar OpenAiTx para o projeto</h2>
-
+            <p><div align="center">
+  
+<h1>luminet</h1>
+<img src="https://img.shields.io/appveyor/build/bgmeulem/luminet?label=ci&style=flat-square" alt="ci-badge"> <a href="https://pypi.org/project/luminet" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/pypi/v/luminet?pypiBaseUrl=https%3A%2F%2Fpypi.org&style=flat-square&logo=pypi&logoColor=white&link=https%3A%2F%2Fpypi.org%2Fproject%2Fluminet%2F" alt="PyPI-badge"></a> <a href="https://luminet.readthedocs.io/en/latest/?badge=latest" target="_blank" rel="noopener noreferrer"><img src="https://readthedocs.org/projects/luminet/badge/?version=latest&style=flat-square" alt="Documentation Status"></a> <img src="https://img.shields.io/codecov/c/github/bgmeulem/Luminet?style=flat-square" alt="coverage"> <img src="https://img.shields.io/github/stars/bgmeulem/Luminet?style=flat-square" alt="stars-badge"> <img src="https://img.shields.io/github/license/bgmeulem/Luminet?style=flat-square" alt="license"> <a href="https://pixi.sh" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/prefix-dev/pixi/main/assets/badge/v0.json&style=flat-square" alt="Pixi Badge"></a></p><p>Simule e visualize buracos negros de Schwarzschild, com base nos métodos descritos em Luminet (1979).</p><p><img src="https://raw.githubusercontent.com/bgmeulem/luminet/master/assets/bh_plot.png" alt="Exemplo de gráfico de um buraco negro">
+</div></p><h2>⚡ Instalação</h2>
+<code>luminet</code> está disponível no PyPI:</p><pre><code class="language-shell">pip install luminet</code></pre></p><h2>📖 <a href="https://luminet.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener noreferrer">Documentação</a></h2></p><h2>🔩 Uso</h2></p><p>Todas as variáveis neste repositório estão em unidades naturais: $G=c=1$</p><pre><code class="language-python">from luminet.black_hole import BlackHole
+bh = BlackHole(
+    mass=1,
+    incl=1.5,           # inclination in radians
+    acc=1,              # accretion rate
+    outer_edge=40
+)</code></pre>
+Para criar uma imagem:
+<pre><code class="language-python">ax = bh.plot()          # Create image like above</code></pre>
+Para amostrar fótons no disco de acreção:</p><pre><code class="language-python">bh.sample_photons(100)
+bh.photons</code></pre>
+<pre><code class="language-">radius  alpha   impact_parameter    z_factor    flux_o
+10.2146 5.1946  1.8935              1.1290      1.8596e-05
+... (99 more)</code></pre>
+Observe que a amostragem é tendenciosa em relação ao centro do buraco negro, pois é de lá que vem a maior parte da luminosidade.</p><h2>📝 Contexto</h2>
+Buracos negros de Schwarzschild possuem uma órbita estável mais interna em $6M$ e uma esfera de fótons em $3M$. Isso significa que o disco de acreção orbitando o buraco negro emite fótons em raios $r>6M$. Enquanto o periélio do fóton no espaço curvo permanecer maior que $3M$ (também chamado de esfera de fótons), o fóton não é capturado pelo buraco negro e pode, em teoria, ser visto de algum referencial do observador $(b, \alpha)$. A curvatura do espaço-tempo é mais facilmente interpretada como um efeito de lente entre o referencial do buraco negro $(r, \alpha)$ e o referencial do observador $(b, \alpha)$. Os primeiros são coordenadas polares 2D que abrangem a área do disco de acreção, e os últimos são coordenadas polares 2D que abrangem a "placa fotográfica" do referencial do observador. Pense nestes últimos como uma câmera CCD literal. O periélio da órbita do fóton e o raio no referencial do observador $b$ estão diretamente relacionados:</p><p>$$b^2 = \frac{P^3}{P-2M}$$</p><p>Isso torna muitas equações consideravelmente mais diretas.
+Você pode notar que essa equação tem um quadrado no lado esquerdo, em contraste com Luminet (1979). O manuscrito original tem alguns erros de notação. Entrei em contato com o autor sobre isso, ao que ele gentilmente respondeu:</p><blockquote>"[...] à l’époque je n'avais pas encore l’expérience de relire très soigneusement les épreuves. Mais mes calculs avaient  heureusement été faits avec les bonnes formules, sinon le résultat visuel n’aurait pas été correct!" </blockquote>
+>
+>"Na época, eu ainda não tinha o hábito de reler cuidadosamente as provas. Felizmente, fiz os cálculos com as fórmulas corretas, senão a imagem não estaria certa!".</p><p>Apenas para você saber. Procurei ser diligente ao apontar onde este código difere do artigo.</p><p>A relação entre os ângulos de ambos os sistemas de coordenadas é trivial, mas a relação entre os raios nos dois referenciais é dada pela monstruosa Equação 13:</p><p>$$\frac{1}{r} = - \frac{Q - P + 2M}{4MP} + \frac{Q-P+6M}{4MP}{sn}^2\left( \frac{\gamma}{2}\sqrt{\frac{Q}{P}} + F(\zeta_\infty, k) \right)$$</p><p>Aqui, $F$ é uma integral elíptica incompleta de Jacobi do primeiro tipo, $k$ e $Q$ são funções do periélio $P$, $\zeta$ são funções trigonométricas de $P$, e $\gamma$ satisfaz:</p><p>$$\cos(\gamma) = \frac{\cos(\alpha)}{\sqrt{\cos^2\alpha + \cot^2\theta_0}}$$</p><p>No espaço-tempo curvo, normalmente há múltiplas órbitas de fótons que se originam da mesma coordenada e se projetam no referencial do observador (ver, por exemplo, lente gravitacional e cruz de Einstein). Órbitas de fótons que contornam o buraco negro e chegam ao referencial do observador são chamadas de imagens de "ordem superior" ou imagens "fantasmas". Neste caso, $\gamma$ satisfaz:</p><p>$$2n\pi - \gamma = 2\sqrt{\frac{Q}{P}} \left( 2K(k) - F(\zeta_\infty, k) - F(\zeta_r, k)  \right)$$</p><p>Esses fótons fantasmas são o que você vê na metade inferior da imagem acima, assim como o halo de luz quase invisível que se enrola finamente ao redor da esfera de fótons. Para inclinações menos próximas da linha de visão, essa imagem fantasma é menos pronunciada.</p><p>Este repositório usa <code>scipy.optimize.brentq</code> para resolver essas equações e fornece uma API conveniente para os conceitos apresentados em Luminet (1979). A classe <code>BlackHole</code> é a mais óbvia, mas também é educativo brincar, por exemplo, com a classe <code>Isoradial</code>: linhas no referencial do observador descrevendo fótons emitidos do mesmo raio no referencial do buraco negro. A classe <code>Isoredshift</code> fornece linhas de igual desvio para o vermelho no referencial do observador.</p><h2>📕 Bibliografia</h2>
+[1] Luminet, J.-P., <a href="https://ui.adsabs.harvard.edu/abs/1979A%26A....75..228L/abstract" target="_blank" rel="noopener noreferrer">“Image of a spherical black hole with thin accretion disk.”</a>, <i>Astronomy and Astrophysics</i>, vol. 75, pp. 228–235, 1979.</p><p>[2] J.-P. Luminet, <a href="https://arxiv.org/abs/1902.11196" target="_blank" rel="noopener noreferrer">“An Illustrated History of Black Hole Imaging : Personal Recollections (1972-2002).”</a> arXiv, 2019. doi: 10.48550/ARXIV.1902.11196. </p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-25
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-26
 
 ---</p>
         </div>
@@ -298,7 +321,7 @@
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-07-25 
+        Last updated: 2025-07-26 
     </div>
     
 </body>
