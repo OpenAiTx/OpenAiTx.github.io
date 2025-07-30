@@ -1,0 +1,406 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gitignore.nvim - A Neovim plugin for generating .gitignore files.</title>
+    <meta name="description" content="A Neovim plugin for generating .gitignore files.">
+    <meta name="keywords" content="gitignore.nvim, English, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "gitignore.nvim",
+  "description": "A Neovim plugin for generating .gitignore files.",
+  "author": {
+    "@type": "Person",
+    "name": "wintermute-cell"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 148
+  },
+  "url": "https://OpenAiTx.github.io/projects/wintermute-cell/gitignore.nvim/README-en.html",
+  "sameAs": "https://raw.githubusercontent.com/wintermute-cell/gitignore.nvim/master/README.md",
+  "datePublished": "2025-07-25",
+  "dateModified": "2025-07-25"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/wintermute-cell/gitignore.nvim" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    gitignore.nvim
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 148 stars</span>
+                <span class="language">English</span>
+                <span>by wintermute-cell</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><!-- LTeX: language=en-US -->
+<h1>gitignore.nvim</h1>
+<img src="https://github.com/wintermute-cell/gitignore.nvim/blob/resources/_resources/banner.webp" alt="gitignore.nvim logo banner"></p><p>A neovim plugin for generating .gitignore files in seconds, by allowing you to
+select from a huge number of different technologies.</p><p>This plugin is functionally identical to the service offered by
+<a href="https://www.toptal.com/developers/gitignore/" target="_blank" rel="noopener noreferrer">gitignore.io</a>, but capable of
+generating <code>.gitignore</code> files offline, and directly from within neovim.</p><ul><li><a href="#installation--dependencies" target="_blank" rel="noopener noreferrer">Installation</a></li>
+<li><a href="#usage" target="_blank" rel="noopener noreferrer">Usage</a></li>
+<li><a href="#demo" target="_blank" rel="noopener noreferrer">Demo</a></li>
+<li><a href="#credits" target="_blank" rel="noopener noreferrer">Credits</a></li></p><p></ul><h2>Installation & Dependencies</h2>
+<em></em><code>gitignore.nvim</code> optionally depends on
+<a href="https://github.com/nvim-telescope/telescope.nvim" target="_blank" rel="noopener noreferrer">telescope.nvim</a> to provide
+<a href="#selecting-multiple-items" target="_blank" rel="noopener noreferrer">multi-selection</a>. Without <a href="https://github.com/nvim-telescope/telescope.nvim#installation" target="_blank" rel="noopener noreferrer">installing
+telescope</a> you
+will not be able to select multiple technologies.<em></em></p><p>After installing <code>telescope.nvim</code>, you can install <code>gitignore.nvim</code> like this:</p><p>Using <a href="https://github.com/folke/lazy.nvim" target="_blank" rel="noopener noreferrer">lazy.nvim</a>
+<pre><code class="language-lua">{"wintermute-cell/gitignore.nvim",
+    config = function()
+        require('gitignore')
+    end,
+}</code></pre></p><p>Using <a href="https://github.com/wbthomason/packer.nvim" target="_blank" rel="noopener noreferrer">packer.nvim</a>:
+<pre><code class="language-lua">use({
+     "wintermute-cell/gitignore.nvim",
+     requires = {
+        "nvim-telescope/telescope.nvim" -- optional: for multi-select
+     }
+})</code></pre></p><h2>Usage</h2>
+This plugin ships with only one command which when run,
+it will create a buffer with the <code>.gitignore</code> contents:
+<pre><code class="language-">:Gitignore [path]</code></pre>
+If an existing <code>.gitignore</code> is found, the generated contents will be appended  
+to the existing lines. The buffer will not save automatically, so there is no  
+risk of overwriting an existing <code>.gitignore</code>.  </p><p>You can <strong>optionally</strong> pass a <code>path</code> argument to point the command to a  
+specific directory (for example if you have nested <code>.gitignore</code> files).  </p><p>Alternatively, you can use the corresponding <code>lua</code> function directly, for  
+example to create a keymap:
+<pre><code class="language-lua">local gitignore = require("gitignore")
+vim.keymap.set("n", "<leader>gi", gitignore.generate)</code></pre></p><p>Or with a path:
+<pre><code class="language-lua">local gitignore = require("gitignore")
+local my_path = "./some/path"
+vim.keymap.set("n", "<leader>gi",
+    function ()
+        gitignore.generate(my_path)
+    end
+)</code></pre></p><h3>Selecting multiple items</h3>
+Without telescope, <code>gitignore.nvim</code> does not allow you to select multiple
+technologies for your <code>.gitignore</code>, since the fallback picker, <code>vim.ui.select()</code>,
+can only select one item.
+Therefore, if you want to be able to select multiple technologies, you must
+either <a href="https://github.com/nvim-telescope/telescope.nvim#installation" target="_blank" rel="noopener noreferrer">install
+telescope.nvim</a>
+(you may find an example using <code>packer.nvim</code> in the
+<a href="#installation--dependencies" target="_blank" rel="noopener noreferrer">Installation</a> section), or override the provided
+<code>generate</code> method with your own implementation (<a href="#custom-picker" target="_blank" rel="noopener noreferrer">see section
+below</a>).</p><p><code>gitignore.nvim</code> will detect if <code>telescope.nvim</code> is installed and use it
+automatically, there is no further configuration required.</p><h3>Selecting multiple items with telescope.nvim installed</h3>
+<code>gitignore.nvim</code> makes use of <code>telescope.nvim</code>'s multi-selection keybinds.
+This means that by default, you can (de-)select multiple keywords with <code><Tab></code>,
+and confirm your selection with <code><CR></code> (Enter).
+In case of multiple selected keywords, the keyword highlighted you press <code><CR></code>
+on will <strong>not</strong> be added to the selection!</p><p>For convenience, when no multi-selection is made before pressing <code><CR></code>,
+<code><CR></code> will actually add the highlighted item to the selection, and create
+a <code>.gitignore</code> file for the single keyword.</p><h2>Configuration</h2>
+If you want the <code>:Gitignore</code> command to overwrite your current <code>.gitignore</code>
+instead of appending to it, you can set:
+<pre><code class="language-lua">vim.g.gitignore_nvim_overwrite = true</code></pre>
+If this variable is set to <code>false</code>, or not set at all, <code>:Gitignore</code> will take
+into account an existing <code>.gitignore</code>.</p><p>Alternatively, you may call the command with a bang, like this:
+<pre><code class="language-">:Gitignore! [path]</code></pre>
+This will have the same effect as setting <code>vim.g.gitignore_nvim_overwrite = true</code> for a single call.</p><h3>Custom Picker</h3></p><p>Instead of using <code>telescope.nvim</code> or the native <code>vim.ui.select()</code>, you may
+implement your own solution according to the following contract:
+<ul><li><code>gitignore.nvim</code> provides list of templateNames and two methods <code>generate</code> and <code>createGitignoreBuffer</code>.</li>
+<li>As its first parameter, the <code>generate</code> method will receive an <code>opts</code> table, containing the target path for the <code>.gitignore</code> in <code>opts.args</code>.</li>
+<li>One must pass on <code>opts.args</code>, and a list of selected templateNames to <code>createGitignoreBuffer</code>.</li></p><p></ul>Here's an example implementation using fzf-lua:
+<pre><code class="language-lua">local gitignore = require("gitignore")
+local fzf = require("fzf-lua")</p><p>gitignore.generate = function(opts)
+    local picker_opts = {
+        -- the content of opts.args may also be displayed here for example.
+        prompt = "Select templates for gitignore file> ",
+        winopts = {
+            width = 0.4,
+            height = 0.3,
+        },
+        actions = {
+            default = function(selected, _)
+                -- as stated in point (3) of the contract above, opts.args and
+                -- a list of selected templateNames are passed.
+                gitignore.createGitignoreBuffer(opts.args, selected)
+            end,
+        },
+    }
+    fzf.fzf_exec(function(fzf_cb)
+        for _, prefix in ipairs(gitignore.templateNames) do
+            fzf_cb(prefix)
+        end
+        fzf_cb()
+    end, picker_opts)
+end</code></pre>
+<blockquote>__Note__</blockquote>
+<blockquote>Note that the above will not overwrite the <code>:Gitignore</code> command.</blockquote>
+<blockquote>To do that, recreate the command after defining your generate function as</blockquote>
+<blockquote>follows:</blockquote>
+<pre><code class="language-lua">vim.api.nvim_create_user_command("Gitignore", gitignore.generate, { nargs = "?", complete = "file" })</code></pre></p><h2>Demo</h2>
+<a href="https://asciinema.org/a/GOHXDt4kYsR8pzrxTEOIridTf" target="_blank" rel="noopener noreferrer"><img src="https://asciinema.org/a/GOHXDt4kYsR8pzrxTEOIridTf.svg" alt="asciicast"></a></p><h2>Credits</h2>
+Thanks to <a href="https://github.com/toptal/gitignore" target="_blank" rel="noopener noreferrer">Toptal</a> for providing a huge
+list of ignore-templates!</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-25
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/wintermute-cell/gitignore.nvim/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-07-25 
+    </div>
+    
+</body>
+</html>
