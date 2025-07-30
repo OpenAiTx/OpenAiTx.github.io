@@ -1,0 +1,335 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ventoy-cpio - Ventoy 的替代内存盘</title>
+    <meta name="description" content="Ventoy 的替代内存盘">
+    <meta name="keywords" content="ventoy-cpio, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ventoy-cpio",
+  "description": "Ventoy 的替代内存盘",
+  "author": {
+    "@type": "Person",
+    "name": "fnr1r"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 128
+  },
+  "url": "https://OpenAiTx.github.io/projects/fnr1r/ventoy-cpio/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/fnr1r/ventoy-cpio/main/README.md",
+  "datePublished": "2025-07-30",
+  "dateModified": "2025-07-30"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/fnr1r/ventoy-cpio" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    ventoy-cpio
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 128 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by fnr1r</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Ventoy CPIO</h1></p><p>Ventoy 的替代 ramdisk。</p><p>文档可见 <a href="https://github.com/fnr1r/ventoy-meta/tree/main/docs" target="_blank" rel="noopener noreferrer">这里</a>
+发布版可见 <a href="https://github.com/fnr1r/ventoy-cpio/releases" target="_blank" rel="noopener noreferrer">这里</a>。</p><p>注意：这只是我尝试为 Ventoy 添加一个合理（-ish）构建系统的一小部分。
+所有与 Ventoy 相关项目的索引见
+<a href="https://github.com/fnr1r/ventoy-meta" target="_blank" rel="noopener noreferrer">这里</a>。</p><h2>目标</h2></p><p>制作一个 Ventoy 的替代 ramdisk</p><ul><li>[?] 具有更合理的构建系统</li>
+<li>[x] 可启动的</li>
+<li>[ ] 功能上相同的  </li>
+  </ul>（即能做与上游相同的事情）
+<ul><li>[x] 更小的</li></p><p></ul><h3>非目标</h3></p><ul><li>❌ 与官方完全二进制相同的 ramdisk</li>
+  <li>按照给出的说明编译完全相同的二进制几乎不可能，且毫无意义</li>
+  <li>但用该项目构建的 ramdisk 应该是可重现的</li></p><p></ul><h3>可能的未来改动</h3></p><ul><li>去掉二进制文件的后缀（它们只是烦人且不一致）  </li>
+  </ul>（不需要上游改动）
+<ul><li>将 ramdisk 分为 x86 32 位和 64 位  </li>
+  </ul>（需要 grub 方面改动）
+<ul><li>清理 ramdisk 中的 shell 脚本  </li>
+  </ul>（不需要上游改动）</p><h2>进展</h2></p><p>可以启动，但某些功能可能无法正常工作。</p><h3>ventoy.cpio</h3></p><p>100%，因为它实际上只是对一堆文件进行 xz 压缩。</p><p>大小比例：</p><ul><li>du - 1 (64 / 64)</li>
+<li>ls -l - 1 (62976 / 62976)</li></p><p></ul><h3>ventoy_ARCH.cpio</h3></p><p>约 75%</p><p>所有工具都在这里（大部分），以各种方式编译完成。现在剩下的就是优化。</p><p>大小比例（x86）：</p><ul><li>du - 0.8540245566166439 (2504 / 2932)</li>
+<li>ls -l - 0.8624375107740045 (2561536 / 2970112)</li></p><p></ul>大小比例（arm64）：</p><ul><li>du - 0.8159806295399516 (1348 / 1652)</li>
+<li>ls -l - 0.8159490600363857 (1377792 / 1688576)</li></p><p></ul>大小比例（mips64）：</p><ul><li>du - 0.9816849816849817 (1072 / 1092)</li>
+<li>ls -l - 0.981642955484167 (1095168 / 1115648)</li></p><p></ul><h3>vtloopex.cpio</h3></p><p>待办：添加此项</p><h2>使用</h2></p><h3>构建</h3></p><pre><code class="language-sh">docker compose build</code></pre></p><pre><code class="language-sh">docker compose up</code></pre></p><p>提示：</p><p>如果您不想每次重建容器时都重新下载归档文件，
+请进入 <code>docker/base/{dietlibc,musl,toolchains}</code>，查看安装脚本
+并手动使用 <code>wget</code> 下载文件。</p><p>您也可以运行此命令进入容器：</p><pre><code class="language-sh">docker run -it --rm \
+  -v ".:/build" \
+  ventoy-cpio-builder:latest \
+  bash</code></pre>
+<h3>设置</h3></p><p>一旦你获得了 <code>ventoy*.cpio</code> 文件：</p><ul><li>挂载 Ventoy USB 上的第二个分区</li>
+<li>!!! 备份原始的 <code>ventoy*.cpio</code> 文件 !!!</li>
+<li>复制你想尝试的 cpio 文件。（提示：如果你不知道是哪一个，</li>
+  </ul>那很可能是 <code>ventoy_x86.cpio</code>）</p><h2>小任务清单</h2></p><ul><li>使用较旧版本的 Linux 头文件进行构建以提高兼容性</li></p><p></ul><h2>备注</h2></p><ul><li><a href="https://gcc.gnu.org/onlinedocs/gccint/Configure-Terms.html" target="_blank" rel="noopener noreferrer">在 GCC 术语中</a>：</li>
+  <li>构建假设为 x86_64 *nix</li>
+  <li>主机（用于 ventoy 安装工具）假设为 x86_64</li>
+  <li>目标为 x86_64、i386、aarch64 和 mips64el</li></p><p>
+
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-30
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/fnr1r/ventoy-cpio/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-07-30 
+    </div>
+    
+</body>
+</html>

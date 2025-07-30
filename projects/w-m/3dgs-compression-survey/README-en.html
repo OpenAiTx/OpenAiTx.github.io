@@ -1,0 +1,404 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3dgs-compression-survey - An open survey on 3D Gaussian Splatting compression methods</title>
+    <meta name="description" content="An open survey on 3D Gaussian Splatting compression methods">
+    <meta name="keywords" content="3dgs-compression-survey, English, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "3dgs-compression-survey",
+  "description": "An open survey on 3D Gaussian Splatting compression methods",
+  "author": {
+    "@type": "Person",
+    "name": "w-m"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 181
+  },
+  "url": "https://OpenAiTx.github.io/projects/w-m/3dgs-compression-survey/README-en.html",
+  "sameAs": "https://raw.githubusercontent.com/w-m/3dgs-compression-survey/main/README.md",
+  "datePublished": "2025-07-30",
+  "dateModified": "2025-07-30"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/w-m/3dgs-compression-survey" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    3dgs-compression-survey
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 181 stars</span>
+                <span class="language">English</span>
+                <span>by w-m</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>3DGS.zip: A survey on 3D Gaussian Splatting Compression Methods</h1>
+This repository contains a comprehensive survey of 3D Gaussian Splatting (3DGS) compression methods. You can view the full survey table and comparison plots at <a href="https://w-m.github.io/3dgs-compression-survey/" target="_blank" rel="noopener noreferrer">w-m.github.io/3dgs-compression-survey/</a>.</p><h2>Installation</h2>
+To run the scripts in this repository, ensure you have all necessary dependencies installed. You can install them using the following command:</p><p><code>pip install -r requirements.txt</code></p><h2>Building the Site</h2>
+To build the site, use the following command: </p><p><code>python data_extraction/build_html.py</code></p><p>This scrips also runs automatically to rebuild the site whenever changes are pushed to the main branch.</p><h2>Fetching Results</h2>
+You can fetch the results automatically by running: </p><p><code>python data_extraction/data_extraction.py</code></p><p>This script attempts to fetch data from the relevant papers and update the tables in the <code>results</code> folder. To add a new paper, create an entry in <code>data_extraction/data_source.yaml</code>. </p><h2>Including your own Results</h2></p><p>Authors are kindly requested to upload their per-scene results in a designated folder within their GitHub repository. This ensures accurate data retrieval and allows for consistent and fair comparisons. The expected folder structure is:</p><pre><code class="language-">results
+├── DeepBlending
+│   ├── drjohnson.csv
+│   └── playroom.csv
+├── MipNeRF360
+│   ├── bicycle.csv
+│   ├── bonsai.csv
+│   ├── counter.csv
+│   ├── flowers.csv
+│   ├── garden.csv
+│   ├── kitchen.csv
+│   ├── room.csv
+│   ├── stump.csv
+│   └── treehill.csv
+├── SyntheticNeRF
+│   ├── chair.csv
+│   ├── drums.csv
+│   ├── ficus.csv
+│   ├── hotdog.csv
+│   ├── lego.csv 
+│   ├── materials.csv
+│   ├── mic.csv
+│   └── ship.csv
+└── TanksAndTemples
+    ├── train.csv
+    └── truck.csv</code></pre>
+The folder should include all datasets on which your method was evaluated and cover all scenes specified in the folder structure.</p><p>Each CSV file should be structured as follows:</p><pre><code class="language-">Submethod,PSNR,SSIM,LPIPS,Size [Bytes],#Gaussians
+Baseline,xx.xx,0.xxx,0.xxx,xxxxxxxx,xxxxxxxx
+-SubmethodName,xx.xx,0.xxx,0.xxx,xxxxxxxx,xxxxxxxx
+,xx.xx,0.xxx,0.xxx,xxxxxxxx,xxxxxxxx
+,xx.xx,0.xxx,0.xxx,xxxxxxxx,xxxxxxxx
+,xx.xx,0.xxx,0.xxx,xxxxxxxx,xxxxxxxx
+</code></pre></p><p>Please ensure that the PSNR results are reported with a precision of at least two decimal places, and that SSIM and LPIPS results are reported with a precision of at least three decimal places. Authors are encouraged to provide results with full precision, as these will be rounded before inclusion in our survey.</p><p>Include up to two consistent submethod names for your results across all files to ensure they appear in the survey table. These names will then be concatenated with the name of your approach in the table. If the submethod specifier should be separated from the method name with a space, make sure to include that space in front of the submethod name. If you prefer only the name of your approach to be displayed in the table, you can use "Baseline" as a submethod name for those results. Results without a submethod name will only be displayed in the plots.</p><p>You can view an example <a href="https://github.com/fraunhoferhhi/Self-Organizing-Gaussians/tree/main/results" target="_blank" rel="noopener noreferrer">here</a>.</p><h3>Important: 3DGS testing conventions</h3></p><p>Authors are required to adhere to the testing conventions established in the original <a href="https://github.com/graphdeco-inria/gaussian-splatting" target="_blank" rel="noopener noreferrer">3DGS project</a>. Specifically, this includes:</p><ul><li>Using all 9 scenes from the MipNeRF360 dataset, including the <a href="https://storage.googleapis.com/gresearch/refraw360/360_extra_scenes.zip" target="_blank" rel="noopener noreferrer">extra scenes</a> "flowers" and "treehill".</li>
+<li>Evaluating images at full resolution up to a maximum side length of 1600px. Larger test images should be downscaled so that the longest dimension equals 1600px (applicable only to MipNeRF360). Make sure the resizing aligns with 3DGS, which applies the standard PIL ``<code>.resize()</code>`<code> method with bicubic resampling.  </li>
+<li>For the 3 COLMAP datasets (Tanks and Temples, Deep Blending, MipNeRF360), use every 8th image for testing. Concretly, the test images are those where </code>`<code>idx % 8 == 0</code>``.</li>
+<li>For the Blender dataset (SyntheticNeRF), follow the predefined train/eval split.</li></p><p>
+</ul><h2>LaTeX Table</h2></p><p>Up-to-date LaTeX versions of the survey tables are available for <a href="https://github.com/w-m/3dgs-compression-survey/blob/main/data_extraction/latex/3dgs_table_compression.tex" target="_blank" rel="noopener noreferrer">compression</a> and <a href="https://github.com/w-m/3dgs-compression-survey/blob/main/data_extraction/latex/3dgs_table_densification.tex" target="_blank" rel="noopener noreferrer">compaction</a>. Feel free to copy a line from the table into your research if you want to compare to the approach. Should you wish to copy the whole table you might need the following packages and definitions in your LaTeX preamble:
+<pre><code class="language-">\usepackage{booktabs}
+\usepackage[table]{xcolor}
+% colors for table
+\definecolor{lightred}{HTML}{FF9999}
+\definecolor{lightyellow}{HTML}{FFFF99}
+\definecolor{lightorange}{HTML}{FFCC99}
+\usepackage{makecell}
+\usepackage{adjustbox}
+% make text the same size even when its bold in a table
+\newsavebox\CBox
+\def\textBF#1{\sbox\CBox{#1}\resizebox{\wd\CBox}{\ht\CBox}{\textbf{#1}}}</code></pre></p><h2>Citation</h2></p><p>If you use our survey in your research, please cite our work. You can use the following BibTeX entry:</p><pre><code class="language-bibtex">@article{3DGSzip2025,
+author = {Bagdasarian, M. T. and Knoll, P. and Li, Y. and Barthel, F. and Hilsmann, A. and Eisert, P. and Morgenstern, W.},
+title = {{3DGS.zip}: A {Survey} on {3D} {Gaussian} {Splatting} {Compression} {Methods}},
+journal = {Computer Graphics Forum},
+pages = {e70078},
+year = {2025},
+keywords = {CCS Concepts, • Information systems → Data compression, • Computing methodologies → Rasterization, • General and reference → Surveys and overviews},
+doi = {https://doi.org/10.1111/cgf.70078},
+url = {https://onlinelibrary.wiley.com/doi/abs/10.1111/cgf.70078},
+eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1111/cgf.70078},
+note = {\url{https://w-m.github.io/3dgs-compression-survey/}},
+} </code></pre></p><h2>Updates</h2>
+<ul><li>2025-04-29: Article published, updated bibtex in Readme and on website</li>
+<li>2025-03-04: Added GaussianSpa Summary (provided by authors).</li>
+<li>2025-02-26: Added HEMGS</li>
+<li>2025-02-25: Added GaussianSpa</li>
+<li>2025-02-25: Added HAC++</li>
+<li>2025-02-25: Added FCGS</li>
+<li>2025-02-10: Removed IGS as the publication is withdrawn</li>
+<li>2025-02-05: Added CodecGS</li>
+<li>2024-11-21: Added ContextGS</li>
+<li>2024-11-07: Added CompGS</li>
+<li>2024-11-05: Updated <a href="https://arxiv.org/abs/2407.09510" target="_blank" rel="noopener noreferrer">arXiv</a> version with compression and compaction methods and a fundamentals of 3DGS compression</li>
+<li>2024-10-21: Officially rename "densification" methods to "compaction" methods on website to align with survey paper</li>
+<li>2024-10-17: Add GaussiansPro, AtomGS and Taming3DGS to densification/compaction methods</li>
+<li>2024-10-14: Add MesonGS to compression methods</li>
+<li>2024-09-30: Add densification methods to survey</li>
+<li>2024-09-17: Updated Morgenstern et al. results and reverted HAC results because of <a href="https://github.com/YihangChen-ee/HAC/issues/14" target="_blank" rel="noopener noreferrer">confusion about testing conventions</a></li>
+<li>2024-09-05: Update Scaffold-GS MipNeRF-360 results to include all 9 scenes</li>
+<li>2024-08-27: Add IGS method to survey</li>
+<li>2024-08-26: Add gsplat method to survey</li>
+<li>2024-08-14: Adaptive ranks based on attribute and dataset selection</li>
+<li>2024-08-12: New plots to show metrics over number of Gaussians instead of model size</li>
+<li>2024-08-08: Add checkboxes to select metrics and datasets to be shown in table</li>
+<li>2024-08-07: Include number of Gaussians in survey, include bits per Gaussian in table</li>
+<li>2024-08-02: Show conferences of published papers</li>
+<li>2024-06-19: New rank calculation with all available datasets</li>
+<li>2024-06-17: Include ranks of methods</li>
+<li>2024-06-17: Initial publication of survey on <a href="https://arxiv.org/abs/2407.09510" target="_blank" rel="noopener noreferrer">arXiv</a></li>
+<li>2024-06-13: Add plots of metrics over model size</li>
+<li>2024-06-10: First draft of survey page with interactive table</li></p><p>
+</ul><!-- - 2024-08-22: Released pre-trained, <a href="https://github.com/fraunhoferhhi/Self-Organizing-Gaussians/releases/tag/eccv-2024-data" target="_blank" rel="noopener noreferrer">compressed scenes</a>
+<ul><li>2024-07-09: Project website updated with TLDR, contributions, insights and comparison to concurrent methods</li>
+<li>2024-07-01: Our work was accepted at <strong>ECCV 2024</strong> 🥳</li>
+<li>2024-06-13: Training code available</li>
+<li>2024-05-14: Improved compression scores! New results for paper v2 available on the <a href="https://fraunhoferhhi.github.io/Self-Organizing-Gaussians/" target="_blank" rel="noopener noreferrer">project website</a></li>
+<li>2024-05-02: Revised <a href="https://arxiv.org/pdf/2312.13299" target="_blank" rel="noopener noreferrer">paper v2</a> on arXiv: Added compression of spherical harmonics, updated compression method with improved results (all attributes compressed with JPEG XL now), added qualitative comparison of additional scenes, moved compression explanation and comparison to main paper, added comparison with "Making Gaussian Splats smaller".</li>
+<li>2024-02-22: The code for the sorting algorithm is now available at <a href="https://github.com/fraunhoferhhi/PLAS" target="_blank" rel="noopener noreferrer">fraunhoferhhi/PLAS</a></li>
+<li>2024-02-21: Video comparisons for different scenes available on the <a href="https://fraunhoferhhi.github.io/Self-Organizing-Gaussians/" target="_blank" rel="noopener noreferrer">project website</a></li>
+<li>2023-12-19: Preprint available on <a href="https://arxiv.org/abs/2312.13299" target="_blank" rel="noopener noreferrer">arXiv</a> --></li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-30
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/w-m/3dgs-compression-survey/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-07-30 
+    </div>
+    
+</body>
+</html>

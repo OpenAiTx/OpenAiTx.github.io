@@ -1,0 +1,334 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaylorSeer - [ICCV2025] 재사용에서 예측으로: TaylorSeers로 확산 모델 가속화하기</title>
+    <meta name="description" content="[ICCV2025] 재사용에서 예측으로: TaylorSeers로 확산 모델 가속화하기">
+    <meta name="keywords" content="TaylorSeer, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "TaylorSeer",
+  "description": "[ICCV2025] 재사용에서 예측으로: TaylorSeers로 확산 모델 가속화하기",
+  "author": {
+    "@type": "Person",
+    "name": "Shenyi-Z"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 241
+  },
+  "url": "https://OpenAiTx.github.io/projects/Shenyi-Z/TaylorSeer/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/Shenyi-Z/TaylorSeer/main/README.md",
+  "datePublished": "2025-07-29",
+  "dateModified": "2025-07-29"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Shenyi-Z/TaylorSeer" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    TaylorSeer
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 241 stars</span>
+                <span class="language">Korean</span>
+                <span>by Shenyi-Z</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><div align=center>
+  
+<h1>[ICCV 2025] <em>TaylorSeer</em>: 재사용에서 예측으로: <em>TaylorSeers</em>로 확산 모델 가속화</h1></p><p><p>
+<a href='https://arxiv.org/abs/2503.06923'><img src='https://img.shields.io/badge/Paper-arXiv-red'></a>
+<a href='https://taylorseer.github.io/TaylorSeer/'><img src='https://img.shields.io/badge/Project-Page-blue'></a>
+</p></p><p></div></p><h2>🔥 뉴스</h2></p><ul><li><code>2025/06/26</code> 💥💥 TaylorSeer가 ICCV 2025에 채택되어 영광입니다!</li></p><p><li><code>2025/05/03</code> 🚀🚀 HiDream용 TaylorSeer가 출시되었습니다.</li></p><p><li><code>2025/03/30</code> 🚀🚀 Wan2.1용 TaylorSeer가 출시되었습니다.</li></p><p><li><code>2025/03/30</code> 🚀🚀 TaylorSeers용 Diffusers 추론 스크립트와 멀티 GPU 병렬 추론에 적용 가능한 xDiT 스크립트가 공식 출시되었습니다.</li></p><p></ul><em> <code>2025/03/10</code> 🚀🚀 최신 연구 "재사용에서 예측으로: TaylorSeers로 확산 모델 가속화"가 발표되었습니다! 코드는 <a href="https://github.com/Shenyi-Z/TaylorSeer" target="_blank" rel="noopener noreferrer">TaylorSeer</a>에서 확인 가능합니다! TaylorSeer는 FLUX.1-dev에서 4.99배 무손실 압축(지연 시간 3.53배 가속)과 HunyuanVideo에서 5.00배 압축률의 고품질 가속(지연 시간 4.65배 가속)을 지원합니다! </em>TaylorSeer*가 기능 캐싱 방법의 패러다임을 재사용에서 예측으로 전환할 수 있길 기대합니다. 자세한 내용은 최신 연구 논문을 참고해주세요.
+<ul><li><code>2025/02/19</code> 🚀🚀 <strong>FLUX</strong>용 ToCa 솔루션이 조정 후 공식 출시되어 최대 <strong>3.14× 무손실 가속</strong>(FLOPs 기준)을 달성했습니다!</li>
+<li><code>2025/01/22</code> 💥💥 ToCa가 ICLR 2025에 채택되어 영광입니다!</li>
+<li><code>2024/12/29</code> 🚀🚀 확산 변환기 가속을 위한 연구 <a href="https://arxiv.org/abs/2412.18911" target="_blank" rel="noopener noreferrer">DuCa</a>를 무료로 공개했습니다. OpenSora에서 거의 무손실 가속 <strong>2.50×</strong>를 달성했습니다! 🎉 <strong>DuCa는 FlashAttention을 완전히 지원하여 ToCa의 한계를 극복하고 호환성과 효율성을 넓혔습니다.</strong></li>
+<li><code>2024/12/24</code> 🤗🤗 최신 우수 토큰 축소 논문들을 모은 오픈소스 "<a href="https://github.com/xuyang-liu16/Awesome-Token-Reduction-for-Model-Compression" target="_blank" rel="noopener noreferrer">Awesome-Token-Reduction-for-Model-Compression</a>" 저장소를 공개했습니다! 여러분의 제안도 환영합니다!</li>
+<li><code>2024/12/10</code> 💥💥 우리 팀의 최신 연구 <strong>SiTo</strong> (https://github.com/EvelynZhang-epiclab/SiTo)가 <strong>AAAI 2025</strong>에 채택되었습니다. 적응형 <strong>토큰 프루닝</strong>을 통해 확산 모델을 가속합니다.</li>
+<li><code>2024/07/15</code> 🤗🤗 최신 우수 생성 가속 논문들을 모은 오픈소스 "<a href="https://github.com/xuyang-liu16/Awesome-Generation-Acceleration" target="_blank" rel="noopener noreferrer">Awesome-Generation-Acceleration</a>" 저장소를 공개했습니다! 여러분의 제안도 환영합니다!</li></p><p></ul><details>
+  <summary><strong>초록</strong></summary></p><p>  확산 변환기(DiT)는 고화질 이미지 및 비디오 합성을 혁신했지만, 실시간 적용에는 계산 비용이 매우 높습니다. 이를 해결하기 위해, 이전 타임스텝의 특징을 캐싱하고 이후 타임스텝에서 재사용하는 특징 캐싱 방법이 제안되었습니다. 그러나 간격이 큰 타임스텝에서는 확산 모델 내 특징 유사도가 크게 감소하여, 특징 캐싱으로 인한 오차가 크게 증가하고 생성 품질이 심각하게 저하됩니다. 이를 해결하기 위해, 우리는 미래 타임스텝의 확산 모델 특징을 이전 타임스텝 값 기반으로 예측할 수 있음을 보여주는 TaylorSeer를 제안합니다. 특징이 타임스텝 간 천천히 연속적으로 변화한다는 사실에 기반해, TaylorSeer는 미분 방법을 사용해 특징의 고차 도함수를 근사하고 Taylor 급수 전개로 미래 타임스텝의 특징을 예측합니다. 광범위한 실험에서 이미지 및 비디오 합성에서 특히 높은 가속 비율에서 뛰어난 효과를 입증했습니다. 예를 들어, 추가 훈련 없이 FLUX에서 4.99배 거의 무손실 가속, HunyuanVideo에서 5.00배 가속을 달성했습니다. DiT에서는 이전 SOTA 대비 4.53배 가속 시 $3.41$ 낮은 FID를 기록했습니다.</p><p></details></p><h2>🧩 커뮤니티 기여</h2></p><p>강력한 지원을 해주신 모든 오픈소스 기여자분들께 감사드립니다! 여러분의 의견을 기다립니다!</p><ul><li>ComfyUI-TaylorSeer-philipy1219 (FLUX에서 FP8 추론, 더 많은 비디오 모델 예정): <a href="https://github.com/philipy1219/ComfyUI-TaylorSeer" target="_blank" rel="noopener noreferrer">ComfyUI-TaylorSeer-philipy1219</a> by <a href="https://github.com/philipy1219" target="_blank" rel="noopener noreferrer">philipy1219</a>.</li></p><p></ul><h2>🛠 설치</h2></p><p>``<code> cmd
+git clone https://github.com/Shenyi-Z/TaylorSeer.git
+<pre><code class="language-">## TaylorSeer-FLUX</p><p>TaylorSeer는 FLUX.1-dev에서 4.99배의 무손실 연산 압축과 3.53배의 지연 시간 속도 향상을 달성했으며, 이는 종합 품질 평가를 위한 <a href="https://github.com/THUDM/ImageReward" target="_blank" rel="noopener noreferrer">ImageReward</a>에 의해 측정되었습니다. TaylorSeer-FLUX 실행 방법은 <a href="https://raw.githubusercontent.com/Shenyi-Z/TaylorSeer/main/TaylorSeer-FLUX.md" target="_blank" rel="noopener noreferrer">TaylorSeer-FLUX</a>를 참조하세요.</p><p>또한, <strong>diffusers 버전</strong>에 대한 추론 스크립트 예제와 다중 GPU 병렬 <strong>xDiT 추론 스크립트</strong>도 제공하고 있습니다. 각각 <a href="./TaylorSeers-Diffusers" target="_blank" rel="noopener noreferrer">TaylorSeers-Diffusers</a>와 <a href="./TaylorSeers-xDiT" target="_blank" rel="noopener noreferrer">TaylorSeers-xDiT</a>에서 기반으로 테스트를 진행할 수 있습니다.</p><h2>TaylorSeer-HunyuanVideo</h2></p><p>TaylorSeer는 HunyuanVideo에서 5.00배의 연산 압축과 4.65배의 놀라운 지연 시간 속도 향상을 달성했으며, 이는 <a href="https://github.com/Vchitect/VBench" target="_blank" rel="noopener noreferrer">VBench</a> 지표로 종합 평가되었습니다. 기존 방법들과 비교하여 가속 효율과 품질 모두에서 크게 향상된 결과를 보여주었습니다. TaylorSeer-HunyuanVideo 실행 방법은 <a href="https://raw.githubusercontent.com/Shenyi-Z/TaylorSeer/main/TaylorSeer-HunyuanVideo.md" target="_blank" rel="noopener noreferrer">TaylorSeer-HunyuanVideo</a>를 참조하세요.</p><p>추가로, 당사의 스크립트는 HunyuanVideo가 xDiT를 이용해 구현한 다중 GPU 병렬 가속도 지원합니다. 이 경우, 캐시로 인한 가속 효과와 다중 GPU 병렬 가속 효과는 서로 독립적이며 곱해져 매우 높은 가속 효과를 달성합니다.</p><h2>TayorSeer-DiT</h2></p><p>TaylorSeer는 기본 모델 DiT에서 2.77배의 무손실 연산 압축을 달성했으며, FID 등 다양한 지표로 종합 평가되었습니다. 여러 가속 비율에서의 성능이 기존 방법들을 크게 능가했습니다. 예를 들어, 4.53배 압축이라는 극한 상황에서 TaylorSeer의 FID는 비가속 기준 2.32에서 0.33만 증가한 2.65를 기록한 반면, ToCa와 DuCa는 동일 조건에서 FID가 6.0 이상을 기록했습니다. TaylorSeer-DiT 실행 방법은 <a href="https://raw.githubusercontent.com/Shenyi-Z/TaylorSeer/main/TaylorSeer-DiT.md" target="_blank" rel="noopener noreferrer">TaylorSeer-DiT</a>를 참조하세요.</p><h2>TaylorSeer-Wan2.1</h2></p><p>TaylorSeer 가속 방법을 Wan2.1에 구현했으며, 다중 GPU 병렬 추론을 지원합니다. TaylorSeer-Wan2.1의 설치 및 추론 명령어는 Wan2.1과 완전히 호환됩니다. TaylorSeer-Wan2.1 실행 방법은 <a href="https://raw.githubusercontent.com/Shenyi-Z/TaylorSeer/main/TaylorSeer-Wan2.1.md" target="_blank" rel="noopener noreferrer">TaylorSeer-Wan2.1</a>를 참조하세요.</p><h2>TaylorSeer-HiDream</h2></p><p>최근 오픈소스된 이미지 생성 모델 <strong>HiDream</strong>은 뛰어난 출력 품질에도 불구하고 긴 추론 시간으로 인해 가속 요구가 증가하고 있습니다. 우리는 <strong>TaylorSeer</strong>를 적용해 HiDream 추론을 가속화하여 <strong>72%의 실행 시간 감소</strong>를 달성했습니다. 자세한 내용은 <a href="https://raw.githubusercontent.com/Shenyi-Z/TaylorSeer/main/TaylorSeer-HiDream.md" target="_blank" rel="noopener noreferrer">TaylorSeer-HiDream</a>를 참조하세요.</p><h2>👍 감사의 글</h2></p><ul><li>TaylorSeer-DiT를 구축하는 데 기반이 된 훌륭한 작업과 코드베이스를 제공한 <a href="https://github.com/facebookresearch/DiT" target="_blank" rel="noopener noreferrer">DiT</a> 팀에 감사드립니다.</li>
+<li>TaylorSeer-FLUX를 구축하는 데 기반이 된 훌륭한 작업과 코드베이스를 제공한 <a href="https://github.com/black-forest-labs/flux" target="_blank" rel="noopener noreferrer">FLUX</a> 팀에 감사드립니다.</li>
+<li>TaylorSeer-HiDream를 구축하는 데 기반이 된 훌륭한 작업과 코드베이스를 제공한 <a href="https://github.com/HiDream-ai/HiDream-I1" target="_blank" rel="noopener noreferrer">HiDream</a> 팀에 감사드립니다.</li>
+<li>TaylorSeer-HunyuanVideo를 구축하는 데 기반이 된 훌륭한 작업과 코드베이스를 제공한 <a href="https://github.com/Tencent/HunyuanVideo" target="_blank" rel="noopener noreferrer">HunyuanVideo</a> 팀에 감사드립니다.</li>
+<li>TaylorSeer-Wan2.1을 구축하는 데 기반이 된 훌륭한 작업과 코드베이스를 제공한 <a href="https://github.com/Wan-Video/Wan2.1" target="_blank" rel="noopener noreferrer">Wan2.1</a> 팀에 감사드립니다.</li>
+<li>텍스트-투-이미지 품질 평가를 위한 <a href="https://github.com/THUDM/ImageReward" target="_blank" rel="noopener noreferrer">ImageReward</a>에 감사드립니다.</li>
+<li>텍스트-투-비디오 품질 평가를 위한 <a href="https://github.com/Vchitect/VBench" target="_blank" rel="noopener noreferrer">VBench</a>에 감사드립니다.</li></p><p>
+</ul><h2>📌 인용문헌</h2></p><p>
+</code></pre>bibtex
+@article{TaylorSeer2025,
+  title={From Reusing to Forecasting: Accelerating Diffusion Models with TaylorSeers},
+  author={Liu, Jiacheng and Zou, Chang and Lyu, Yuanhuiyi and Chen, Junjie and Zhang, Linfeng},
+  journal={arXiv preprint arXiv:2503.06923},
+  year={2025}
+}
+</code>`<code></p><h2>:e-mail: 연락처</h2></p><p>질문이 있으시면, <a href="https://raw.githubusercontent.com/Shenyi-Z/TaylorSeer/main/mailto:shenyizou@outlook.com" target="_blank" rel="noopener noreferrer"></code>shenyizou@outlook.com`</a>으로 이메일을 보내주세요.</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-29
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Shenyi-Z/TaylorSeer/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-07-29 
+    </div>
+    
+</body>
+</html>

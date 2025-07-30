@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>httpc - 최소한의 코드와 종단 간 타입 안전성을 갖춘 함수 기반 API 구축</title>
+    <meta name="description" content="최소한의 코드와 종단 간 타입 안전성을 갖춘 함수 기반 API 구축">
+    <meta name="keywords" content="httpc, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "httpc",
+  "description": "최소한의 코드와 종단 간 타입 안전성을 갖춘 함수 기반 API 구축",
+  "author": {
+    "@type": "Person",
+    "name": "giuseppelt"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 194
+  },
+  "url": "https://OpenAiTx.github.io/projects/giuseppelt/httpc/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/giuseppelt/httpc/master/README.md",
+  "datePublished": "2025-07-29",
+  "dateModified": "2025-07-29"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/giuseppelt/httpc" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    httpc
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 194 stars</span>
+                <span class="language">Korean</span>
+                <span>by giuseppelt</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>httpc</h1>
+httpc는 최소한의 코드와 종단 간 타입 안전성으로 함수 기반 API를 구축하기 위한 자바스크립트/타입스크립트 프레임워크입니다.
+<ul><li><a href="https://httpc.dev/docs" target="_blank" rel="noopener noreferrer">문서 및 튜토리얼</a></li>
+<li><a href="https://httpc.dev/discord" target="_blank" rel="noopener noreferrer">커뮤니티</a></li>
+<li><a href="https://httpc.dev/issues" target="_blank" rel="noopener noreferrer">이슈 및 기능 요청</a></li></p><p></ul><h2>빠른 개요</h2>
+함수를 작성하고 내보내기만 하면 됩니다. 서버가 이를 어떻게 실행할지 걱정할 필요가 없습니다.
+<pre><code class="language-ts">function add(a: number, b: number) {
+    return a + b;
+}</p><p>function greet(name: string) {
+    return <code>Hello ${name}</code>;
+}</p><p>export default {
+    add,
+    greet,
+}</code></pre>
+클라이언트에서는 자연스러운 문법으로 일반 자바스크립트 함수처럼 서버 함수를 호출할 수 있습니다.</p><pre><code class="language-ts">import createClient from "@your-package/api-client";</p><p>const client = createClient({
+    endpoint: "http://api.domain.com"
+});</p><p>let result = await client.add(1, 2);
+// result: 3</p><p>let message = await client.greet("Edith");
+// message: "Hello Edith"</code></pre>
+<h2>핵심 원칙</h2>
+<strong>httpc</strong>는 표준 HTTP 프로토콜 위에 구축된 추상화입니다. <strong>httpc</strong>를 사용하면 HTTP 동사, 헤더, 리소스 경로, 데이터 직렬화가 아닌 함수, 인수 및 반환 값을 사용하는 API를 구축할 수 있습니다.</p><p><strong>httpc</strong> 프레임워크는 기본 HTTP의 모든 복잡성을 숨기면서 중요한 것에 집중할 수 있게 합니다: 함수 로직입니다.</p><h2>주요 기능</h2>
+<h3>미들웨어</h3>
+미들웨어를 통해 공통 로직을 실행합니다.</p><pre><code class="language-ts">import { httpCall } from "@httpc/server";</p><p>const getPostById = httpCall(
+    Authenticated(),    // <-- authentication check
+    Validate(String),   // <-- parameters validation
+    Cache("5m"),        // <-- result caching
+    async (postId: string) => {
+        const post = await db.select("posts").where("id", postId);
+        if (!post) {
+            throw new NotFoundError();
+        }</p><p>        return post;
+    }
+);</code></pre>
+<h3>컨텍스트의 편재성</h3>
+애플리케이션 어디에서나 요청 컨텍스트에 접근할 수 있습니다. 핸들러, 미들웨어 또는 서비스 로직에 있든지 간에, 컨텍스트는 매개변수를 전달할 필요 없이 항상 사용할 수 있습니다.</p><pre><code class="language-ts">async function getPosts() {
+    const { user } = useContext();</p><p>    let category = "news";
+    if (user) {
+        category = user.preferredCategory;
+        trace("Getting user preferred posts");
+    }
+    
+    return await db.select("posts").where("category", category);
+}</p><p>function trace(message: string) {
+    const { requestId } = useContext();
+    console.log(<code>[req:${requestId}] ${message}</code>);
+}</code></pre></p><h3>훅(Hooks)</h3>
+훅은 요청 컨텍스트 주변의 공통 로직을 캡슐화합니다. 관례적으로 훅은 <code>use</code> 접두사를 사용합니다.
+<pre><code class="language-ts">async function addNewComment(postId: string, message: string) {
+    const user = useUser();</p><p>    if (!useIsAuthorized("comment:create")) {
+        throw new ForbiddenError("Cannot add comments");
+    }</p><p>    return await db.createComment({
+        userId: user.id,
+        postId,
+        message
+    });
+}</code></pre>
+<strong>@httpc/kit</strong>는 데이터를 캐시하고, 권한 검사를 수행하며, 트랜잭션을 처리하기 위한 여러 내장 훅을 제공합니다…</p><h3>서버리스</h3>
+Vercel, AWS Lambda 또는 Netlify 함수와 같은 서버리스 환경 내에 전체 <strong>httpc</strong> API를 호스팅할 수 있습니다.
+이는 전체 API를 처리하는 단일 서버리스 함수를 배포하는 이점을 제공합니다.</p><p>예를 들어 Vercel을 사용하면 모든 API 함수를 노출할 수 있습니다:
+<pre><code class="language-ts">//file: api/index.ts</p><p>import { createHttpCVercelAdapter } from "@httpc/adapter-vercel";
+import calls from "../calls";</p><p>export default createHttpCVercelAdapter({
+    calls,
+    log: "info"
+});</code></pre></p><p>그런 다음, 전체 타입 검사를 통해 페이지에서 API 함수를 호출할 수 있습니다:
+<pre><code class="language-ts">//file: pages/home.tsx</p><p>import { createClient, ClientDef } from "@httpc/client";
+import { useQuery, useMutation } from "react-query";
+import type calls from "../calls"; // <-- import calls definition</p><p>// create a typed client
+const client = createClient<ClientDef<typeof calls>>();</p><p>export default function Home() {
+  const posts = useQuery(["posts"], () => client.posts.getLatest());</p><p>  return (
+    <div class="container">
+      {posts.data.map(post =>
+        <div class="post">
+          <h2>{post.title}</h2>{post.text}</p>
+        </div>
+      )}
+    </div>
+  );
+}</code></pre>    </p><h3>광범위한 타입 안전성</h3>
+자동 완성과 타입 검사를 유지하면서 내장 객체를 필요에 맞게 사용자 정의하세요.</p><p>요청 컨텍스트를 확장할 수 있습니다:
+<pre><code class="language-ts">/// <reference types="@httpc/kit/env" /></p><p>interface IHttpCContext {
+    // example custom property
+    environment: string</p><p>    // other custom properties here
+    // ...
+}</code></pre>
+확장할 수 있는 엔터티가 많이 있습니다. 예를 들어 사용자 객체를 사용자 정의 속성으로 재정의할 수 있습니다:
+<pre><code class="language-ts">interface IUser {
+    firstName: string
+    lastName: string
+}</code></pre>
+내장 함수 및 훅은 사용자 정의를 받아 타입 검사를 통해 사용할 수 있습니다.
+<pre><code class="language-ts">const { firstName } = useUser();</code></pre></p><h3>맞춤 클라이언트 생성</h3>
+<strong>@httpc/cli</strong>를 사용하면 API에 맞는 특정 클라이언트를 생성할 수 있습니다. 생성된 클라이언트는 타입 안전성을 보장하며 개발자가 익숙한 자연스러운 문법으로 원활한 사용 경험을 제공합니다.
+<pre><code class="language-ts">const user = await client.users.search("some@email.com");
+const posts = await client.posts.getByUser(user.id);
+const newComment = await client.posts.addComment(posts[0].id, {
+    text: "Hello",
+    userId: user.id
+});</code></pre>
+<h3>httpc를 넘어서  </h3>
+httpc 서버는 함수 호출에 국한되지 않습니다. 브라우저 폼 제출, 웹훅 콜백, 표준 리디렉션 등 일반적으로 모든 http 요청을 처리할 수 있습니다. <code>Parsers</code> (내장된 것이 많음)를 사용하여 서버가 요청을 처리하는 방식을 사용자 정의할 수 있습니다.  </p><p>표준 http 요청 처리는 클라이언트를 제어할 수 없는 시나리오에서 필수적입니다. <strong>httpc 서버</strong>는 함수 호출과 일반 http 요청 모두에 응답할 수 있습니다.  </p><h2>httpc 패밀리  </h2>
+<strong>@httpc/server</strong>: 표준 http 프로토콜을 통한 함수 호출을 가능하게 하는 httpc 핵심 컴포넌트  </p><p><strong>@httpc/client</strong>: httpc 서버가 노출한 함수와 안전하게 상호작용하기 위해 소비자가 사용하는 타입화된 인터페이스  </p><p><strong>@httpc/kit</strong>: 인증, 검증, 캐싱, 로깅 같은 일반적인 사용 사례와 비즈니스 문제를 관리하기 위한 풍부한 내장 컴포넌트 툴박스  </p><p><strong>@httpc/cli</strong>: 프로젝트 설정, 클라이언트 생성, 버전 관리 및 일반 작업 지원을 위한 명령어 집합  </p><p><strong>@httpc/adapter-\</strong>*: vercel, netlify functions, aws lambda 등 환경 내에서 httpc API를 호스팅하기 위한 다양한 <a href="https://httpc.dev/docs/adapters" target="_blank" rel="noopener noreferrer">어댑터</a>  </p><h2>프로젝트 상태  </h2>
+<strong>httpc</strong>는 실험 단계입니다. 아직 초기 단계입니다. 시도해보고, 개인 프로젝트에 적용할 수 있습니다. 하지만 프로덕션용으로는 준비되지 않았습니다.  
+<br />  
+API는 아직 안정적이지 않습니다. 파괴적 변경이 발생할 수 있습니다.  
+<br />  
+<strong>httpc</strong>는 활발히 개발 중입니다. 향후 기능에 대해서는 <a href="https://httpc.dev/changelog" target="_blank" rel="noopener noreferrer">변경 로그</a>와 <a href="https://httpc.dev/roadmap" target="_blank" rel="noopener noreferrer">로드맵</a>을 확인할 수 있습니다.  </p><h2>참여  </h2>
+<h3>커뮤니티  </h3>
+<a href="https://httpc.dev/discord" target="_blank" rel="noopener noreferrer">Discord</a>에서 참여하여 개발 상황을 팔로우하고, 기여를 논의하며, 지원을 받거나 도움을 요청할 수 있습니다. <a href="https://httpc.dev/discuss" target="_blank" rel="noopener noreferrer">Github 토론</a> 참여도 가능합니다.  </p><h3>이슈 제기  </h3>
+버그, 기능 요청 또는 제안 사항이 있으면 <a href="https://httpc.dev/issues/new" target="_blank" rel="noopener noreferrer">이슈를 등록</a>할 수 있습니다. 모든 이슈는 <a href="https://httpc.dev/issues" target="_blank" rel="noopener noreferrer">Github</a>에서 확인할 수 있습니다.  </p><h3>기여  </h3>
+모든 기여를 환영합니다. 모든 PR, 이슈, 피드백은 소중히 다룹니다. <a href="https://httpc.dev/contribute" target="_blank" rel="noopener noreferrer">기여 가이드</a>를 확인하세요.  </p><h2>라이선스  </h2>
+MIT © <a href="https://github.com/giuseppelt" target="_blank" rel="noopener noreferrer">Giuseppe La Torre</a></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-29
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/giuseppelt/httpc/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-07-29 
+    </div>
+    
+</body>
+</html>
