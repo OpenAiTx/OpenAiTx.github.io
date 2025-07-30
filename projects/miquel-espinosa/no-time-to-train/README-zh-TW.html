@@ -1,0 +1,512 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>no-time-to-train - 「No time to train! Training-Free Reference-Based Instance Segmentation」官方程式碼</title>
+    <meta name="description" content="「No time to train! Training-Free Reference-Based Instance Segmentation」官方程式碼">
+    <meta name="keywords" content="no-time-to-train, Traditional Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "no-time-to-train",
+  "description": "「No time to train! Training-Free Reference-Based Instance Segmentation」官方程式碼",
+  "author": {
+    "@type": "Person",
+    "name": "miquel-espinosa"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 145
+  },
+  "url": "https://OpenAiTx.github.io/projects/miquel-espinosa/no-time-to-train/README-zh-TW.html",
+  "sameAs": "https://raw.githubusercontent.com/miquel-espinosa/no-time-to-train/main/README.md",
+  "datePublished": "2025-07-24",
+  "dateModified": "2025-07-24"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/miquel-espinosa/no-time-to-train" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    no-time-to-train
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 145 stars</span>
+                <span class="language">Traditional Chinese</span>
+                <span>by miquel-espinosa</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><div align="right">
+  <details>
+    <summary >🌐 語言</summary>
+    <div>
+      <div align="center">
+        <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=en">English</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=zh-CN">简体中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=zh-TW">繁體中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=ja">日本語</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=ko">한국어</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=hi">हिन्दी</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=th">ไทย</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=fr">Français</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=de">Deutsch</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=es">Español</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=it">Italiano</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=ru">Русский</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=pt">Português</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=nl">Nederlands</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=pl">Polski</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=ar">العربية</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=fa">فارسی</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=tr">Türkçe</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=vi">Tiếng Việt</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=id">Bahasa Indonesia</a>
+      </div>
+    </div>
+  </details>
+</div></p><p><div align="center"></p><h1>🚀 沒有時間訓練！</h1>
+<h3>無需訓練的參考式實例分割</h3>
+<a href="https://github.com/miquel-espinosa/no-time-to-train" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/%E2%80%8B-No%20Time%20To%20Train-black?logo=github" alt="GitHub"></a>
+<a href="https://miquel-espinosa.github.io/no-time-to-train/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/🌐-Project%20Page-grey" alt="Website"></a>
+<a href="https://arxiv.org/abs/2507.02798" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/arXiv-2507.02798-b31b1b" alt="arXiv"></a></p><p><strong>最先進技術（Papers with Code）</strong></p><p><a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-1-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><strong>_SOTA 1-shot_</strong></a> | <a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-1-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/State%20of%20the%20Art-Few--Shot%20Object%20Detection%20on%20MS--COCO%20(1--shot" alt="PWC">-21CBCE?style=flat&logo=paperswithcode)</a></p><p><a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-10-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><strong>_SOTA 10-shot_</strong></a> | <a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-10-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/State%20of%20the%20Art-Few--Shot%20Object%20Detection%20on%20MS--COCO%20(10--shot" alt="PWC">-21CBCE?style=flat&logo=paperswithcode)</a></p><p><a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-30-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><strong>_SOTA 30-shot_</strong></a> | <a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-30-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/State%20of%20the%20Art-Few--Shot%20Object%20Detection%20on%20MS--COCO%20(30--shot" alt="PWC">-21CBCE?style=flat&logo=paperswithcode)</a></p><p><!-- <a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-1-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><strong>_SOTA 1-shot_</strong></a> | <a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-1-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/no-time-to-train-training-free-reference/few-shot-object-detection-on-ms-coco-1-shot" alt="PWC"></a></p><p><a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-10-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><strong>_SOTA 10-shot_</strong></a> | <a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-10-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/no-time-to-train-training-free-reference/few-shot-object-detection-on-ms-coco-10-shot" alt="PWC"></a></p><p><a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-30-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><strong>_SOTA 30-shot_</strong></a> | <a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-30-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/no-time-to-train-training-free-reference/few-shot-object-detection-on-ms-coco-30-shot" alt="PWC"></a> --></p><p></div></p><hr></p><blockquote>🚨 <strong>更新（2025年7月22日）：</strong> 已新增自定義資料集的使用說明！</blockquote>
+<blockquote></blockquote>
+<blockquote>🔔 <strong>更新（2025年7月16日）：</strong> 程式碼已更新並附上說明！</blockquote></p><hr></p><h2>📋 目錄</h2></p><ul><li><a href="#-highlights" target="_blank" rel="noopener noreferrer">🎯 亮點</a></li>
+<li><a href="#-abstract" target="_blank" rel="noopener noreferrer">📜 摘要</a></li>
+<li><a href="#-architecture" target="_blank" rel="noopener noreferrer">🧠 架構</a></li>
+<li><a href="#️-installation-instructions" target="_blank" rel="noopener noreferrer">🛠️ 安裝說明</a></li>
+  <li><a href="#1-clone-the-repository" target="_blank" rel="noopener noreferrer">1. 複製程式庫</a></li>
+  <li><a href="#2-create-conda-environment" target="_blank" rel="noopener noreferrer">2. 建立 conda 環境</a></li>
+  <li><a href="#3-install-sam2-and-dinov2" target="_blank" rel="noopener noreferrer">3. 安裝 SAM2 與 DinoV2</a></li>
+  <li><a href="#4-download-datasets" target="_blank" rel="noopener noreferrer">4. 下載資料集</a></li>
+  <li><a href="#5-download-sam2-and-dinov2-checkpoints" target="_blank" rel="noopener noreferrer">5. 下載 SAM2 與 DinoV2 權重檔</a></li>
+<li><a href="#-inference-code" target="_blank" rel="noopener noreferrer">📊 推論程式：重現 Few-shot COCO 30-shot SOTA 結果</a></li>
+  <li><a href="#0-create-reference-set" target="_blank" rel="noopener noreferrer">0. 建立參考集</a></li>
+  <li><a href="#1-fill-memory-with-references" target="_blank" rel="noopener noreferrer">1. 以參考資料填充記憶體</a></li>
+  <li><a href="#2-post-process-memory-bank" target="_blank" rel="noopener noreferrer">2. 後處理記憶體庫</a></li>
+  <li><a href="#3-inference-on-target-images" target="_blank" rel="noopener noreferrer">3. 目標影像推論</a></li>
+  <li><a href="#results" target="_blank" rel="noopener noreferrer">結果</a></li>
+<li><a href="#-custom-dataset" target="_blank" rel="noopener noreferrer">🔍 自定義資料集</a></li>
+  <li><a href="#0-prepare-a-custom-dataset" target="_blank" rel="noopener noreferrer">0. 準備自定義資料集 ⛵🐦</a></li>
+  <li><a href="#01-if-only-bbox-annotations-are-available" target="_blank" rel="noopener noreferrer">0.1 僅有 bbox 標註時</a></li>
+  <li><a href="#02-convert-coco-annotations-to-pickle-file" target="_blank" rel="noopener noreferrer">0.2 將 coco 標註轉為 pickle 檔案</a></li>
+  <li><a href="#1-fill-memory-with-references" target="_blank" rel="noopener noreferrer">1. 以參考資料填充記憶體</a></li>
+  <li><a href="#2-post-process-memory-bank" target="_blank" rel="noopener noreferrer">2. 後處理記憶體庫</a></li>
+<li><a href="#-citation" target="_blank" rel="noopener noreferrer">📚 參考文獻</a></li></p><p>
+</ul><h2>🎯 亮點</h2>
+<ul><li>💡 <strong>無需訓練</strong>：無需微調，無需提示工程—只需一張參考圖片。</li>
+<li>🖼️ <strong>參考式方法</strong>：僅用幾個範例即可分割新對象。</li>
+<li>🔥 <strong>最先進表現</strong>：於 COCO、PASCAL VOC 及跨領域 FSOD 上超越既有無訓練方法。</li></p><p></ul><strong>連結：</strong>
+<ul><li>🧾 <a href="https://arxiv.org/abs/2507.02798" target="_blank" rel="noopener noreferrer"><strong>arXiv 論文</strong></a>  </li>
+<li>🌐 <a href="https://miquel-espinosa.github.io/no-time-to-train/" target="_blank" rel="noopener noreferrer"><strong>專案網站</strong></a>  </li>
+<li>📈 <a href="https://paperswithcode.com/paper/no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><strong>Papers with Code</strong></a></li></p><p></ul><h2>📜 摘要</h2></p><blockquote>The performance of image segmentation models has historically been constrained by the high cost of collecting large-scale annotated data. The Segment Anything Model (SAM) alleviates this original problem through a promptable, semantics-agnostic, segmentation paradigm and yet still requires manual visual-prompts or complex domain-dependent prompt-generation rules to process a new image. Towards reducing this new burden, our work investigates the task of object segmentation when provided with, alternatively, only a small set of reference images. Our key insight is to leverage strong semantic priors, as learned by foundation models, to identify corresponding regions between a reference and a target image. We find that correspondences enable automatic generation of instance-level segmentation masks for downstream tasks and instantiate our ideas via a multi-stage, training-free method incorporating (1) memory bank construction; (2) representation aggregation and (3) semantic-aware feature matching. Our experiments show significant improvements on segmentation metrics, leading to state-of-the-art performance on COCO FSOD (36.8% nAP), PASCAL VOC Few-Shot (71.2% nAP50) and outperforming existing training-free approaches on the Cross-Domain FSOD benchmark (22.4% nAP).</blockquote></p><p><img src="https://github.com/user-attachments/assets/ab302c02-c080-4042-99fc-0e181ba8abb9" alt="cdfsod-results-final-comic-sans-min"></p><h2>🧠 Architecture</h2></p><p><img src="https://github.com/user-attachments/assets/d84dd83a-505e-45a0-8ce3-98e1838017f9" alt="training-free-architecture-comic-sans-min"></p><h2>🛠️ Installation instructions</h2></p><h3>1. Clone the repository</h3></p><pre><code class="language-bash">git clone https://github.com/miquel-espinosa/no-time-to-train.git
+cd no-time-to-train</code></pre>
+<h3>2. 建立 conda 環境</h3></p><p>我們將建立一個包含所需套件的 conda 環境。</p><pre><code class="language-bash">conda env create -f environment.yml
+conda activate no-time-to-train</code></pre>
+<h3>3. 安裝 SAM2 和 DinoV2</h3></p><p>我們將從原始碼安裝 SAM2 和 DinoV2。</p><pre><code class="language-bash">pip install -e .
+cd dinov2
+pip install -e .
+cd ..</code></pre>
+<h3>4. 下載數據集</h3></p><p>請下載 COCO 數據集並將其放置於 <code>data/coco</code></p><h3>5. 下載 SAM2 和 DinoV2 權重檔</h3></p><p>我們將下載論文中使用的 SAM2 權重檔。
+（但請注意，SAM2.1 權重檔已經可用，且可能有更好的表現。）</p><pre><code class="language-bash">mkdir -p checkpoints/dinov2
+cd checkpoints
+wget https://dl.fbaipublicfiles.com/segment_anything_2/072824/sam2_hiera_large.pt
+cd dinov2
+wget https://dl.fbaipublicfiles.com/dinov2/dinov2_vitl14/dinov2_vitl14_pretrain.pth
+cd ../..</code></pre>
+<h2>📊 推論程式碼</h2></p><p>⚠️ 免責聲明：這是研究用程式碼——請預期會有一些混亂！</p><h3>在 Few-shot COCO 中重現 30-shot SOTA 結果</h3></p><p>定義有用的變數並為結果建立資料夾：</p><pre><code class="language-bash">CONFIG=./no_time_to_train/new_exps/coco_fewshot_10shot_Sam2L.yaml
+CLASS_SPLIT="few_shot_classes"
+RESULTS_DIR=work_dirs/few_shot_results
+SHOTS=30
+SEED=33
+GPUS=4</p><p>mkdir -p $RESULTS_DIR
+FILENAME=few_shot_${SHOTS}shot_seed${SEED}.pkl</code></pre>
+#### 0. 建立參考集</p><pre><code class="language-bash">python no_time_to_train/dataset/few_shot_sampling.py \
+        --n-shot $SHOTS \
+        --out-path ${RESULTS_DIR}/${FILENAME} \
+        --seed $SEED \
+        --dataset $CLASS_SPLIT</code></pre>
+#### 1. 用參考填充記憶體</p><pre><code class="language-bash">python run_lightening.py test --config $CONFIG \
+                              --model.test_mode fill_memory \
+                              --out_path ${RESULTS_DIR}/memory.ckpt \
+                              --model.init_args.model_cfg.memory_bank_cfg.length $SHOTS \
+                              --model.init_args.dataset_cfgs.fill_memory.memory_pkl ${RESULTS_DIR}/${FILENAME} \
+                              --model.init_args.dataset_cfgs.fill_memory.memory_length $SHOTS \
+                              --model.init_args.dataset_cfgs.fill_memory.class_split $CLASS_SPLIT \
+                              --trainer.logger.save_dir ${RESULTS_DIR}/ \
+                              --trainer.devices $GPUS</code></pre>
+#### 2. 後處理記憶體庫</p><pre><code class="language-bash">python run_lightening.py test --config $CONFIG \
+                              --model.test_mode postprocess_memory \
+                              --model.init_args.model_cfg.memory_bank_cfg.length $SHOTS \
+                              --ckpt_path ${RESULTS_DIR}/memory.ckpt \
+                              --out_path ${RESULTS_DIR}/memory_postprocessed.ckpt \
+                              --trainer.devices 1</code></pre>
+#### 3. 在目標影像上進行推論</p><pre><code class="language-bash">python run_lightening.py test --config $CONFIG  \
+                              --ckpt_path ${RESULTS_DIR}/memory_postprocessed.ckpt \
+                              --model.init_args.test_mode test \
+                              --model.init_args.model_cfg.memory_bank_cfg.length $SHOTS \
+                              --model.init_args.model_cfg.dataset_name $CLASS_SPLIT \
+                              --model.init_args.dataset_cfgs.test.class_split $CLASS_SPLIT \
+                              --trainer.logger.save_dir ${RESULTS_DIR}/ \
+                              --trainer.devices $GPUS</code></pre>
+如果您希望即時查看推論結果（在計算時），請取消註解 <code>no_time_to_train/models/Sam2MatchingBaseline_noAMG.py</code> 中第 1746-1749 行 <a href="https://github.com/miquel-espinosa/no-time-to-train/blob/main/no_time_to_train/models/Sam2MatchingBaseline_noAMG.py#L1746" target="_blank" rel="noopener noreferrer">這裡</a>。
+根據需要調整分數門檻參數 <code>score_thr</code>，以顯示更多或更少的分割實例。
+影像將會儲存在 <code>results_analysis/few_shot_classes/</code>。左側的影像顯示真實標註，右側的影像顯示我們無需訓練方法所找到的分割實例。</p><p>請注意，在本範例中我們使用的是 <code>few_shot_classes</code> 分割，因此，我們僅應期望看到屬於此分割中的類別的分割實例（而非 COCO 的所有類別）。</p><p>#### 結果</p><p>在對驗證集中的所有影像執行後，您應該會得到：</p><pre><code class="language-">BBOX RESULTS:
+  Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.368</p><p>SEGM RESULTS:
+  Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.342</code></pre>
+<hr></p><h2>🔍 自訂資料集</h2></p><p>我們提供了在自訂資料集上運行我們流程的操作說明。註釋格式一律採用 COCO 格式。</p><blockquote><strong>總結；</strong> 若要直接查看如何在<em>自訂資料集</em>上運行完整流程，請參考 <code>scripts/matching_cdfsod_pipeline.sh</code> 以及 CD-FSOD 資料集的範例腳本（例如 <code>scripts/dior_fish.sh</code>）</blockquote></p><h3>0. 準備自訂資料集 ⛵🐦</h3></p><p>假設我們想在自訂資料集中偵測<strong>船隻</strong>⛵和<strong>鳥類</strong>🐦。要使用我們的方法，您需要：
+<ul><li>每個類別至少 1 張<em>已註釋</em>的參考圖片（即 1 張船的參考圖片和 1 張鳥的參考圖片）</li>
+<li>多張目標圖片，用以尋找我們目標類別的實例。</li></p><p></ul>我們已準備了一個簡易腳本，能夠以 coco 圖片創建自訂資料集，適用於<strong>1-shot</strong>設置。
+<pre><code class="language-bash">python scripts/make_custom_dataset.py</code></pre>
+這將會建立一個具有以下資料夾結構的自訂資料集：
+<pre><code class="language-">data/my_custom_dataset/
+    ├── annotations/
+    │   ├── custom_references.json
+    │   ├── custom_targets.json
+    │   └── references_visualisations/
+    │       ├── bird_1.jpg
+    │       └── boat_1.jpg
+    └── images/
+        ├── 429819.jpg
+        ├── 101435.jpg
+        └── (all target and reference images)</code></pre>
+<strong>參考圖片視覺化（1-shot）：</strong></p><p>| BIRD 🐦 的 1-shot 參考圖片 | BOAT ⛵ 的 1-shot 參考圖片 |
+|:---------------------------:|:----------------------------:|
+| <img src="https://github.com/user-attachments/assets/e59e580d-a7db-42ac-b386-892af211fc85" alt="bird_1" width="500"/> | <img src="https://github.com/user-attachments/assets/f94ee025-ae37-4a45-9c3e-0cfe8f8cd2bc" alt="boat_1" width="500"/> |</p><h3>0.1 僅有 bbox 標註時</h3></p><p>我們也提供一個腳本，利用 SAM2 生成實例級分割遮罩。這在僅有參考圖片的邊界框標註時非常有用。</p><pre><code class="language-bash"># Download sam_h checkpoint. Feel free to use more recent checkpoints (note: code might need to be adapted)
+wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth -O checkpoints/sam_vit_h_4b8939.pth
+<h1>Run automatic instance segmentation from ground truth bounding boxes.</h1>
+python no_time_to_train/dataset/sam_bbox_to_segm_batch.py \
+    --input_json data/my_custom_dataset/annotations/custom_references.json \
+    --image_dir data/my_custom_dataset/images \
+    --sam_checkpoint checkpoints/sam_vit_h_4b8939.pth \
+    --model_type vit_h \
+    --device cuda \
+    --batch_size 8 \
+    --visualize</code></pre>
+<strong>帶有實例級分割遮罩的參考圖像（由 SAM2 根據 gt 邊界框生成，1-shot）：</strong></p><p>產生的分割遮罩視覺化結果已儲存在 <code>data/my_custom_dataset/annotations/custom_references_with_SAM_segm/references_visualisations/</code>。</p><p>| BIRD 🐦 的 1-shot 參考圖像（使用 SAM 自動分割） | BOAT ⛵ 的 1-shot 參考圖像（使用 SAM 自動分割） |
+|:---------------------------------:|:----------------------------------:|
+| <img src="https://github.com/user-attachments/assets/65d38dc4-1454-43cd-9600-e8efc67b3a82" alt="bird_1_with_SAM_segm" width="500"/> | <img src="https://github.com/user-attachments/assets/43a558ad-50ca-4715-8285-9aa3268843c6" alt="boat_1_with_SAM_segm" width="500"/> |</p><h3>0.2 將 coco 標註轉換為 pickle 檔案</h3></p><pre><code class="language-bash">python no_time_to_train/dataset/coco_to_pkl.py \
+    data/my_custom_dataset/annotations/custom_references_with_segm.json \
+    data/my_custom_dataset/annotations/custom_references_with_segm.pkl \
+    1</code></pre>
+<h3>1. 以參考資料填充記憶體</h3></p><p>首先，定義有用的變數並建立一個用於儲存結果的資料夾。為了正確顯示標籤，類別名稱應按照 json 檔案中出現的類別 id 順序排列。例如，<code>bird</code> 的類別 id 為 <code>16</code>，<code>boat</code> 的類別 id 為 <code>9</code>。因此，<code>CAT_NAMES=boat,bird</code>。</p><pre><code class="language-bash">DATASET_NAME=my_custom_dataset
+DATASET_PATH=data/my_custom_dataset
+CAT_NAMES=boat,bird
+CATEGORY_NUM=2
+SHOT=1
+YAML_PATH=no_time_to_train/pl_configs/matching_cdfsod_template.yaml
+PATH_TO_SAVE_CKPTS=./tmp_ckpts/my_custom_dataset
+mkdir -p $PATH_TO_SAVE_CKPTS</code></pre>
+執行步驟 1：</p><pre><code class="language-bash">python run_lightening.py test --config $YAML_PATH \
+    --model.test_mode fill_memory \
+    --out_path $PATH_TO_SAVE_CKPTS/$DATASET_NAME\_$SHOT\_refs_memory.pth \
+    --model.init_args.dataset_cfgs.fill_memory.root $DATASET_PATH/images \
+    --model.init_args.dataset_cfgs.fill_memory.json_file $DATASET_PATH/annotations/custom_references_with_segm.json \
+    --model.init_args.dataset_cfgs.fill_memory.memory_pkl $DATASET_PATH/annotations/custom_references_with_segm.pkl \
+    --model.init_args.dataset_cfgs.fill_memory.memory_length $SHOT \
+    --model.init_args.dataset_cfgs.fill_memory.cat_names $CAT_NAMES \
+    --model.init_args.model_cfg.dataset_name $DATASET_NAME \
+    --model.init_args.model_cfg.memory_bank_cfg.length $SHOT \
+    --model.init_args.model_cfg.memory_bank_cfg.category_num $CATEGORY_NUM \
+    --trainer.devices 1</code></pre>
+<h3>2. 後處理記憶體庫</h3></p><pre><code class="language-bash">python run_lightening.py test --config $YAML_PATH \
+    --model.test_mode postprocess_memory \
+    --ckpt_path $PATH_TO_SAVE_CKPTS/$DATASET_NAME\_$SHOT\_refs_memory.pth \
+    --out_path $PATH_TO_SAVE_CKPTS/$DATASET_NAME\_$SHOT\_refs_memory_postprocessed.pth \
+    --model.init_args.model_cfg.dataset_name $DATASET_NAME \
+    --model.init_args.model_cfg.memory_bank_cfg.length $SHOT \
+    --model.init_args.model_cfg.memory_bank_cfg.category_num $CATEGORY_NUM \
+    --trainer.devices 1</code></pre>
+<h3>3. 對目標圖像進行推論</h3></p><p>如果將 <code>ONLINE_VIS</code> 設為 True，預測結果將會儲存在 <code>results_analysis/my_custom_dataset/</code>，並在計算時即時顯示。請注意，啟用線上視覺化會使運行速度變慢許多。</p><p>您可以自由調整分數閾值 <code>VIS_THR</code>，以查看更多或更少的分割實例。</p><pre><code class="language-bash">ONLINE_VIS=True
+VIS_THR=0.4
+python run_lightening.py test --config $YAML_PATH \
+    --model.test_mode test \
+    --ckpt_path $PATH_TO_SAVE_CKPTS/$DATASET_NAME\_$SHOT\_refs_memory_postprocessed.pth \
+    --model.init_args.model_cfg.dataset_name $DATASET_NAME \
+    --model.init_args.model_cfg.memory_bank_cfg.length $SHOT \
+    --model.init_args.model_cfg.memory_bank_cfg.category_num $CATEGORY_NUM \
+    --model.init_args.model_cfg.test.imgs_path $DATASET_PATH/images \
+    --model.init_args.model_cfg.test.online_vis $ONLINE_VIS \
+    --model.init_args.model_cfg.test.vis_thr $VIS_THR \
+    --model.init_args.dataset_cfgs.test.root $DATASET_PATH/images \
+    --model.init_args.dataset_cfgs.test.json_file $DATASET_PATH/annotations/custom_targets.json \
+    --model.init_args.dataset_cfgs.test.cat_names $CAT_NAMES \
+    --trainer.devices 1</code></pre>
+<h3>結果</h3></p><p>性能指標（使用與上述指令完全相同的參數）應如下所示：</p><pre><code class="language-">BBOX RESULTS:
+  Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.478</p><p>SEGM RESULTS:
+  Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.458</code></pre>
+視覺結果已儲存在 <code>results_analysis/my_custom_dataset/</code>。請注意，我們的方法適用於偽陰性，也就是那些不包含任何目標類別實例的影像。</p><p><em>點擊圖片以放大 ⬇️</em></p><p>| 含有船隻的目標影像 ⛵（左為GT，右為預測） | 含有鳥類的目標影像 🐦（左為GT，右為預測） |
+|:----------------------:|:----------------------:|
+| <img src="https://github.com/user-attachments/assets/678dc15a-dd3b-49d5-9287-6290da16aa6b" alt="000000459673"> | <img src="https://github.com/user-attachments/assets/fe306e48-af49-4d83-ac82-76fac6c456d1" alt="000000407180"> |</p><p>| 含有船隻與鳥類的目標影像 ⛵🐦（左為GT，右為預測） | 不含船隻或鳥類的目標影像 🚫（左為GT，右為預測） |
+|:---------------------------------:|:----------------------------------:|
+| <img src="https://github.com/user-attachments/assets/9849b227-7f43-43d7-81ea-58010a623ad5" alt="000000517410"> | <img src="https://github.com/user-attachments/assets/7587700c-e09d-4cf6-8590-3df129c2568e" alt="000000460598"> |</p><h2>📚 引用</h2></p><p>如果您使用本研究，請引用我們：</p><pre><code class="language-bibtex">@article{espinosa2025notimetotrain,
+  title={No time to train! Training-Free Reference-Based Instance Segmentation},
+  author={Miguel Espinosa and Chenhongyi Yang and Linus Ericsson and Steven McDonagh and Elliot J. Crowley},
+  journal={arXiv preprint arXiv:2507.02798},
+  year={2025},
+  primaryclass={cs.CV}
+}</code></pre></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-24
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/miquel-espinosa/no-time-to-train/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-07-24 
+    </div>
+    
+</body>
+</html>

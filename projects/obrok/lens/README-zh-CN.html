@@ -1,0 +1,348 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lens - 一个用于处理嵌套数据结构的工具。</title>
+    <meta name="description" content="一个用于处理嵌套数据结构的工具。">
+    <meta name="keywords" content="lens, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "lens",
+  "description": "一个用于处理嵌套数据结构的工具。",
+  "author": {
+    "@type": "Person",
+    "name": "obrok"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 196
+  },
+  "url": "https://OpenAiTx.github.io/projects/obrok/lens/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/obrok/lens/master/README.md",
+  "datePublished": "2025-07-24",
+  "dateModified": "2025-07-24"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/obrok/lens" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    lens
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 196 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by obrok</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Lens</h1></p><p><a href="https://hex.pm/packages/lens" target="_blank" rel="noopener noreferrer"><img src="http://img.shields.io/hexpm/v/lens.svg" alt="Hex.pm"></a> <a href="https://hex.pm/packages/lens" target="_blank" rel="noopener noreferrer"><img src="http://img.shields.io/hexpm/dt/lens.svg" alt="Hex.pm"></a></p><p>一个用于处理嵌套数据结构的工具。请查看
+<a href="https://yapee.svbtle.com/nested-data-structures-with-lens" target="_blank" rel="noopener noreferrer">Nested data structures with functional lenses</a>
+以获得更温和的介绍。请注意，该博客文章使用的是版本 <code>0.3.1</code> 撰写的，自那以后 API 有一些变更——详情请参见<a href="#upgrading" target="_blank" rel="noopener noreferrer">升级</a>。</p><h2>安装</h2></p><p>该包可以通过在 <code>mix.exs</code> 中的依赖列表中添加 <code>lens</code> 来安装：</p><pre><code class="language-elixir">def deps do
+  [
+    {:lens, "~> 1.0.0"}
+  ]
+end</code></pre>
+<h2>升级指南</h2></p><h3>从 0.6.0 之前版本升级</h3></p><p>在 0.6.0 版本中，函数 <code>Lens.get</code> 被移除。原因是它很容易导致将列表当作单个元素处理，反之亦然的错误。无论何处使用 <code>Lens.get</code>，现在应改用 <code>Lens.one!</code>，如果调用应始终返回且仅返回一个元素（如果元素数量不是一个则会崩溃），或者使用 <code>Lens.to_list</code> 并根据结果进行匹配，以便对不同数量的元素做不同处理。</p><h3>从 0.5.0 之前版本升级</h3></p><p>在 0.5.0 版本中，函数 <code>satisfy</code> 被重命名为 <code>filter</code>，而之前版本的 <code>filter</code> 被移除。原因是新的安排中，<code>filter</code> 和 <code>reject</code> 形成了一对匹配的函数，这样更直观。无论何处使用 <code>Lens.filter(predicate)</code>，现在可以使用 <code>Lens.filter(Lens.all(), predicate)</code>。</p><h2>示例</h2></p><p>Lens 允许你将复杂数据结构中需要处理的部分与实际处理过程分离。示例如下：</p><pre><code class="language-elixir">data = %{
+  main_widget: %{size: 200.5, subwidgets: [%{size: 120, subwidgets: [%{size: 200, subwidgets: []}]}]},
+  other_widgets: [
+    %{size: 16.5, subwidgets: [%{size: 120, subwidgets: []}]},
+    %{size: 160.5, subwidgets: []},
+    %{size: 121.9, subwidgets: []},
+  ]
+}</code></pre></p><p>假设我们对所有大于100的部件（无论是主部件还是其他部件）的大小感兴趣。  
+我们可以构造一个 <code>Lens</code> 对象，以以下方式描述数据结构中的这些位置：  </p><pre><code class="language-elixir">lens = Lens.both(
+  Lens.key(:main_widget),
+  Lens.key(:other_widgets) |> Lens.all
+)
+|> Lens.seq_both(Lens.recur(Lens.key(:subwidgets) |> Lens.all))
+|> Lens.key(:size)
+|> Lens.filter(&(&1 > 100))</code></pre></p><p>鉴于我们可以：</p><ul><li>提取所有相关数据</li></p><p></ul><pre><code class="language-elixir">iex> Lens.to_list(lens, data)
+[200.5, 160.5, 121.9, 120, 200, 120]</code></pre></p><ul><li>更新数据结构中描述的位置</li></p><p></ul><pre><code class="language-elixir">iex> Lens.map(lens, data, &round/1)
+%{main_widget: %{size: 201,
+    subwidgets: [%{size: 120, subwidgets: [%{size: 200, subwidgets: []}]}]},
+  other_widgets: [%{size: 16.5, subwidgets: [%{size: 120, subwidgets: []}]},
+   %{size: 161, subwidgets: []}, %{size: 122, subwidgets: []}]}</code></pre></p><ul><li>同时更新并从数据中的每个位置返回内容</li></p><p></ul><pre><code class="language-elixir">iex> Lens.get_and_map(lens, data, fn size -> {size, round(size)} end)
+{[200.5, 160.5, 121.9, 120, 200, 120],
+ %{main_widget: %{size: 201,
+     subwidgets: [%{size: 120, subwidgets: [%{size: 200, subwidgets: []}]}]},
+   other_widgets: [%{size: 16.5, subwidgets: [%{size: 120, subwidgets: []}]},
+    %{size: 161, subwidgets: []}, %{size: 122, subwidgets: []}]}}</code></pre>
+镜头也兼容 <code>Access</code> 及相关的 <code>Kernel</code> 函数：</p><pre><code class="language-elixir">iex> get_in([1, 2, 3], [Lens.all() |> Lens.filter(&Integer.is_odd/1)])
+[1, 3]
+iex> update_in([1, 2, 3], [Lens.all() |> Lens.filter(&Integer.is_odd/1)], fn x -> x + 1 end)
+[2, 2, 4]
+iex> get_and_update_in([1, 2, 3], [Lens.all() |> Lens.filter(&Integer.is_odd/1)], fn x -> {x - 1, x + 1} end)
+{[0, 2], [2, 2, 4]}</code></pre></p><h2>格式化</h2></p><p>通常，<code>mix format</code> 会更改如下定义： </p><pre><code class="language-elixir">deflens a_lens(), do: some() |> implementation()
+deflensp a_private_lens(), do: some() |> implementation()</code></pre>
+进入：</p><pre><code class="language-elixir">deflens(a_lens(), do: some() |> implementation())
+deflensp(a_private_lens(), do: some() |> implementation())</code></pre>
+为了避免这种情况，您可以在 <code>formatter.exs</code> 中导入 lens 的格式化设置：</p><pre><code class="language-elixir"># my_app/.formatter.exs
+[
+  import_deps: [:lens]
+]</code></pre></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-24
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/obrok/lens/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-07-24 
+    </div>
+    
+</body>
+</html>

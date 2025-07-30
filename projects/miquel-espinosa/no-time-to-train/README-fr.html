@@ -1,0 +1,514 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>no-time-to-train - Code officiel pour &quot;No time to train! Training-Free Reference-Based Instance Segmentation&quot;</title>
+    <meta name="description" content="Code officiel pour &quot;No time to train! Training-Free Reference-Based Instance Segmentation&quot;">
+    <meta name="keywords" content="no-time-to-train, French, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "no-time-to-train",
+  "description": "Code officiel pour \"No time to train! Training-Free Reference-Based Instance Segmentation\"",
+  "author": {
+    "@type": "Person",
+    "name": "miquel-espinosa"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 145
+  },
+  "url": "https://OpenAiTx.github.io/projects/miquel-espinosa/no-time-to-train/README-fr.html",
+  "sameAs": "https://raw.githubusercontent.com/miquel-espinosa/no-time-to-train/main/README.md",
+  "datePublished": "2025-07-24",
+  "dateModified": "2025-07-24"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/miquel-espinosa/no-time-to-train" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    no-time-to-train
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 145 stars</span>
+                <span class="language">French</span>
+                <span>by miquel-espinosa</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>
+<div align="right">
+  <details>
+    <summary >🌐 Langue</summary>
+    <div>
+      <div align="center">
+        <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=en">English</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=zh-CN">简体中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=zh-TW">繁體中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=ja">日本語</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=ko">한국어</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=hi">हिन्दी</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=th">ไทย</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=fr">Français</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=de">Deutsch</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=es">Español</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=it">Italiano</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=ru">Русский</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=pt">Português</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=nl">Nederlands</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=pl">Polski</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=ar">العربية</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=fa">فارسی</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=tr">Türkçe</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=vi">Tiếng Việt</a>
+        | <a href="https://openaitx.github.io/view.html?user=miquel-espinosa&project=no-time-to-train&lang=id">Bahasa Indonesia</a>
+      </div>
+    </div>
+  </details>
+</div></p><p><div align="center"></p><h1>🚀 Pas le temps d’entraîner !  </h1>
+<h3>Segmentation d’instance basée sur la référence sans entraînement  </h3>
+<a href="https://github.com/miquel-espinosa/no-time-to-train" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/%E2%80%8B-No%20Time%20To%20Train-black?logo=github" alt="GitHub"></a>
+<a href="https://miquel-espinosa.github.io/no-time-to-train/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/🌐-Project%20Page-grey" alt="Website"></a>
+<a href="https://arxiv.org/abs/2507.02798" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/arXiv-2507.02798-b31b1b" alt="arXiv"></a></p><p><strong>État de l’art (Papers with Code)</strong></p><p><a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-1-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><strong>_SOTA 1-shot_</strong></a> | <a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-1-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/State%20of%20the%20Art-Few--Shot%20Object%20Detection%20on%20MS--COCO%20(1--shot" alt="PWC">-21CBCE?style=flat&logo=paperswithcode)</a></p><p><a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-10-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><strong>_SOTA 10-shot_</strong></a> | <a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-10-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/State%20of%20the%20Art-Few--Shot%20Object%20Detection%20on%20MS--COCO%20(10--shot" alt="PWC">-21CBCE?style=flat&logo=paperswithcode)</a></p><p><a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-30-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><strong>_SOTA 30-shot_</strong></a> | <a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-30-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/State%20of%20the%20Art-Few--Shot%20Object%20Detection%20on%20MS--COCO%20(30--shot" alt="PWC">-21CBCE?style=flat&logo=paperswithcode)</a></p><p><!-- <a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-1-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><strong>_SOTA 1-shot_</strong></a> | <a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-1-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/no-time-to-train-training-free-reference/few-shot-object-detection-on-ms-coco-1-shot" alt="PWC"></a></p><p><a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-10-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><strong>_SOTA 10-shot_</strong></a> | <a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-10-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/no-time-to-train-training-free-reference/few-shot-object-detection-on-ms-coco-10-shot" alt="PWC"></a></p><p><a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-30-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><strong>_SOTA 30-shot_</strong></a> | <a href="https://paperswithcode.com/sota/few-shot-object-detection-on-ms-coco-30-shot?p=no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/no-time-to-train-training-free-reference/few-shot-object-detection-on-ms-coco-30-shot" alt="PWC"></a> --></p><p></div></p><hr></p><blockquote>🚨 <strong>Mise à jour (22 juillet 2025) :</strong> Instructions pour les jeux de données personnalisés ajoutées !</blockquote>
+<blockquote></blockquote>
+<blockquote>🔔 <strong>Mise à jour (16 juillet 2025) :</strong> Le code a été mis à jour avec les instructions !</blockquote></p><hr></p><h2>📋 Table des matières</h2></p><ul><li><a href="#-highlights" target="_blank" rel="noopener noreferrer">🎯 Points forts</a></li>
+<li><a href="#-abstract" target="_blank" rel="noopener noreferrer">📜 Résumé</a></li>
+<li><a href="#-architecture" target="_blank" rel="noopener noreferrer">🧠 Architecture</a></li>
+<li><a href="#️-installation-instructions" target="_blank" rel="noopener noreferrer">🛠️ Instructions d’installation</a></li>
+  <li><a href="#1-clone-the-repository" target="_blank" rel="noopener noreferrer">1. Cloner le dépôt</a></li>
+  <li><a href="#2-create-conda-environment" target="_blank" rel="noopener noreferrer">2. Créer l’environnement conda</a></li>
+  <li><a href="#3-install-sam2-and-dinov2" target="_blank" rel="noopener noreferrer">3. Installer SAM2 et DinoV2</a></li>
+  <li><a href="#4-download-datasets" target="_blank" rel="noopener noreferrer">4. Télécharger les jeux de données</a></li>
+  <li><a href="#5-download-sam2-and-dinov2-checkpoints" target="_blank" rel="noopener noreferrer">5. Télécharger les checkpoints SAM2 et DinoV2</a></li>
+<li><a href="#-inference-code" target="_blank" rel="noopener noreferrer">📊 Code d’inférence : Reproduire les résultats SOTA 30-shot sur Few-shot COCO</a></li>
+  <li><a href="#0-create-reference-set" target="_blank" rel="noopener noreferrer">0. Créer un ensemble de références</a></li>
+  <li><a href="#1-fill-memory-with-references" target="_blank" rel="noopener noreferrer">1. Remplir la mémoire avec des références</a></li>
+  <li><a href="#2-post-process-memory-bank" target="_blank" rel="noopener noreferrer">2. Post-traiter la banque de mémoire</a></li>
+  <li><a href="#3-inference-on-target-images" target="_blank" rel="noopener noreferrer">3. Inférence sur les images cibles</a></li>
+  <li><a href="#results" target="_blank" rel="noopener noreferrer">Résultats</a></li>
+<li><a href="#-custom-dataset" target="_blank" rel="noopener noreferrer">🔍 Jeu de données personnalisé</a></li>
+  <li><a href="#0-prepare-a-custom-dataset" target="_blank" rel="noopener noreferrer">0. Préparer un jeu de données personnalisé ⛵🐦</a></li>
+  <li><a href="#01-if-only-bbox-annotations-are-available" target="_blank" rel="noopener noreferrer">0.1 Si seules des annotations bbox sont disponibles</a></li>
+  <li><a href="#02-convert-coco-annotations-to-pickle-file" target="_blank" rel="noopener noreferrer">0.2 Convertir les annotations coco en fichier pickle</a></li>
+  <li><a href="#1-fill-memory-with-references" target="_blank" rel="noopener noreferrer">1. Remplir la mémoire avec des références</a></li>
+  <li><a href="#2-post-process-memory-bank" target="_blank" rel="noopener noreferrer">2. Post-traiter la banque de mémoire</a></li>
+<li><a href="#-citation" target="_blank" rel="noopener noreferrer">📚 Citation</a></li></p><p>
+</ul><h2>🎯 Points forts</h2>
+<ul><li>💡 <strong>Sans entraînement</strong> : Aucun fine-tuning, aucune ingénierie de prompt — juste une image de référence.  </li>
+<li>🖼️ <strong>Basé sur la référence</strong> : Segmentez de nouveaux objets avec seulement quelques exemples.  </li>
+<li>🔥 <strong>Performance SOTA</strong> : Surpasse les approches sans entraînement précédentes sur COCO, PASCAL VOC et Cross-Domain FSOD.</li></p><p></ul><strong>Liens :</strong>
+<ul><li>🧾 <a href="https://arxiv.org/abs/2507.02798" target="_blank" rel="noopener noreferrer"><strong>Article arXiv</strong></a>  </li>
+<li>🌐 <a href="https://miquel-espinosa.github.io/no-time-to-train/" target="_blank" rel="noopener noreferrer"><strong>Site du projet</strong></a>  </li>
+<li>📈 <a href="https://paperswithcode.com/paper/no-time-to-train-training-free-reference" target="_blank" rel="noopener noreferrer"><strong>Papers with Code</strong></a></li></p><p></ul><h2>📜 Résumé</h2></p><blockquote>The performance of image segmentation models has historically been constrained by the high cost of collecting large-scale annotated data. The Segment Anything Model (SAM) alleviates this original problem through a promptable, semantics-agnostic, segmentation paradigm and yet still requires manual visual-prompts or complex domain-dependent prompt-generation rules to process a new image. Towards reducing this new burden, our work investigates the task of object segmentation when provided with, alternatively, only a small set of reference images. Our key insight is to leverage strong semantic priors, as learned by foundation models, to identify corresponding regions between a reference and a target image. We find that correspondences enable automatic generation of instance-level segmentation masks for downstream tasks and instantiate our ideas via a multi-stage, training-free method incorporating (1) memory bank construction; (2) representation aggregation and (3) semantic-aware feature matching. Our experiments show significant improvements on segmentation metrics, leading to state-of-the-art performance on COCO FSOD (36.8% nAP), PASCAL VOC Few-Shot (71.2% nAP50) and outperforming existing training-free approaches on the Cross-Domain FSOD benchmark (22.4% nAP).</blockquote></p><p><img src="https://github.com/user-attachments/assets/ab302c02-c080-4042-99fc-0e181ba8abb9" alt="cdfsod-results-final-comic-sans-min"></p><h2>🧠 Architecture</h2></p><p><img src="https://github.com/user-attachments/assets/d84dd83a-505e-45a0-8ce3-98e1838017f9" alt="training-free-architecture-comic-sans-min"></p><h2>🛠️ Installation instructions</h2></p><h3>1. Clone the repository</h3></p><pre><code class="language-bash">git clone https://github.com/miquel-espinosa/no-time-to-train.git
+cd no-time-to-train</code></pre>
+<h3>2. Créer un environnement conda</h3></p><p>Nous allons créer un environnement conda avec les paquets requis.</p><pre><code class="language-bash">conda env create -f environment.yml
+conda activate no-time-to-train</code></pre>
+<h3>3. Installer SAM2 et DinoV2</h3></p><p>Nous allons installer SAM2 et DinoV2 à partir du code source.</p><pre><code class="language-bash">pip install -e .
+cd dinov2
+pip install -e .
+cd ..</code></pre>
+<h3>4. Télécharger les jeux de données</h3></p><p>Veuillez télécharger le jeu de données COCO et le placer dans <code>data/coco</code></p><h3>5. Télécharger les points de contrôle SAM2 et DinoV2</h3></p><p>Nous allons télécharger exactement les points de contrôle SAM2 utilisés dans l'article.
+(Notez cependant que les points de contrôle SAM2.1 sont déjà disponibles et pourraient offrir de meilleures performances.)</p><pre><code class="language-bash">mkdir -p checkpoints/dinov2
+cd checkpoints
+wget https://dl.fbaipublicfiles.com/segment_anything_2/072824/sam2_hiera_large.pt
+cd dinov2
+wget https://dl.fbaipublicfiles.com/dinov2/dinov2_vitl14/dinov2_vitl14_pretrain.pth
+cd ../..</code></pre>
+<h2>📊 Code d'inférence</h2></p><p>⚠️ Avertissement : Ceci est un code de recherche — attendez-vous à un peu de chaos !</p><h3>Reproduire les résultats SOTA à 30 essais sur Few-shot COCO</h3></p><p>Définissez des variables utiles et créez un dossier pour les résultats :</p><pre><code class="language-bash">CONFIG=./no_time_to_train/new_exps/coco_fewshot_10shot_Sam2L.yaml
+CLASS_SPLIT="few_shot_classes"
+RESULTS_DIR=work_dirs/few_shot_results
+SHOTS=30
+SEED=33
+GPUS=4</p><p>mkdir -p $RESULTS_DIR
+FILENAME=few_shot_${SHOTS}shot_seed${SEED}.pkl</code></pre>
+#### 0. Créer un ensemble de référence</p><pre><code class="language-bash">python no_time_to_train/dataset/few_shot_sampling.py \
+        --n-shot $SHOTS \
+        --out-path ${RESULTS_DIR}/${FILENAME} \
+        --seed $SEED \
+        --dataset $CLASS_SPLIT</code></pre>
+#### 1. Remplir la mémoire avec des références</p><pre><code class="language-bash">python run_lightening.py test --config $CONFIG \
+                              --model.test_mode fill_memory \
+                              --out_path ${RESULTS_DIR}/memory.ckpt \
+                              --model.init_args.model_cfg.memory_bank_cfg.length $SHOTS \
+                              --model.init_args.dataset_cfgs.fill_memory.memory_pkl ${RESULTS_DIR}/${FILENAME} \
+                              --model.init_args.dataset_cfgs.fill_memory.memory_length $SHOTS \
+                              --model.init_args.dataset_cfgs.fill_memory.class_split $CLASS_SPLIT \
+                              --trainer.logger.save_dir ${RESULTS_DIR}/ \
+                              --trainer.devices $GPUS</code></pre>
+#### 2. Post-traitement de la banque de mémoire</p><pre><code class="language-bash">python run_lightening.py test --config $CONFIG \
+                              --model.test_mode postprocess_memory \
+                              --model.init_args.model_cfg.memory_bank_cfg.length $SHOTS \
+                              --ckpt_path ${RESULTS_DIR}/memory.ckpt \
+                              --out_path ${RESULTS_DIR}/memory_postprocessed.ckpt \
+                              --trainer.devices 1</code></pre>
+#### 3. Inférence sur les images cibles</p><pre><code class="language-bash">python run_lightening.py test --config $CONFIG  \
+                              --ckpt_path ${RESULTS_DIR}/memory_postprocessed.ckpt \
+                              --model.init_args.test_mode test \
+                              --model.init_args.model_cfg.memory_bank_cfg.length $SHOTS \
+                              --model.init_args.model_cfg.dataset_name $CLASS_SPLIT \
+                              --model.init_args.dataset_cfgs.test.class_split $CLASS_SPLIT \
+                              --trainer.logger.save_dir ${RESULTS_DIR}/ \
+                              --trainer.devices $GPUS</code></pre>
+Si vous souhaitez voir les résultats d'inférence en ligne (au fur et à mesure qu'ils sont calculés), décommentez les lignes 1746-1749 dans <code>no_time_to_train/models/Sam2MatchingBaseline_noAMG.py</code> <a href="https://github.com/miquel-espinosa/no-time-to-train/blob/main/no_time_to_train/models/Sam2MatchingBaseline_noAMG.py#L1746" target="_blank" rel="noopener noreferrer">ici</a>.
+Ajustez le paramètre du seuil de score <code>score_thr</code> selon vos besoins pour voir plus ou moins d'instances segmentées.
+Les images seront désormais enregistrées dans <code>results_analysis/few_shot_classes/</code>. L'image de gauche montre la vérité terrain, celle de droite montre les instances segmentées trouvées par notre méthode sans entraînement.</p><p>Notez que dans cet exemple, nous utilisons la division <code>few_shot_classes</code>, nous ne devons donc nous attendre qu'à voir des instances segmentées des classes de cette division (et non pas toutes les classes de COCO).</p><p>#### Résultats</p><p>Après avoir traité toutes les images du jeu de validation, vous devriez obtenir :</p><pre><code class="language-">BBOX RESULTS:
+  Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.368</p><p>SEGM RESULTS:
+  Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.342</code></pre>
+<hr></p><h2>🔍 Jeu de données personnalisé</h2></p><p>Nous fournissons les instructions pour exécuter notre pipeline sur un jeu de données personnalisé. Les formats d'annotation sont toujours au format COCO.</p><blockquote><strong>TLDR ;</strong> Pour voir directement comment exécuter le pipeline complet sur des <em>jeux de données personnalisés</em>, consultez <code>scripts/matching_cdfsod_pipeline.sh</code> ainsi que des exemples de scripts pour les jeux de données CD-FSOD (par exemple <code>scripts/dior_fish.sh</code>)</blockquote></p><h3>0. Préparer un jeu de données personnalisé ⛵🐦</h3></p><p>Imaginons que nous voulons détecter des <strong>bateaux</strong>⛵ et des <strong>oiseaux</strong>🐦 dans un jeu de données personnalisé. Pour utiliser notre méthode, il nous faudra :
+<ul><li>Au moins 1 image de référence <em>annotée</em> pour chaque classe (c'est-à-dire 1 image de référence pour bateau et 1 image de référence pour oiseau)</li>
+<li>Plusieurs images cibles pour trouver des instances des classes souhaitées.</li></p><p></ul>Nous avons préparé un script d'exemple pour créer un jeu de données personnalisé avec des images coco, pour un scénario <strong>1-shot</strong>.
+<pre><code class="language-bash">python scripts/make_custom_dataset.py</code></pre>
+Cela créera un jeu de données personnalisé avec la structure de dossiers suivante :
+<pre><code class="language-">data/my_custom_dataset/
+    ├── annotations/
+    │   ├── custom_references.json
+    │   ├── custom_targets.json
+    │   └── references_visualisations/
+    │       ├── bird_1.jpg
+    │       └── boat_1.jpg
+    └── images/
+        ├── 429819.jpg
+        ├── 101435.jpg
+        └── (all target and reference images)</code></pre>
+<strong>Visualisation des images de référence (1-shot) :</strong></p><p>| Image de référence 1-shot pour OISEAU 🐦 | Image de référence 1-shot pour BATEAU ⛵ |
+|:---------------------------------------:|:----------------------------------------:|
+| <img src="https://github.com/user-attachments/assets/e59e580d-a7db-42ac-b386-892af211fc85" alt="bird_1" width="500"/> | <img src="https://github.com/user-attachments/assets/f94ee025-ae37-4a45-9c3e-0cfe8f8cd2bc" alt="boat_1" width="500"/> |</p><h3>0.1 Si seules des annotations bbox sont disponibles</h3></p><p>Nous fournissons également un script pour générer des masques de segmentation au niveau instance en utilisant SAM2. Ceci est utile si vous ne disposez que d’annotations de boîtes englobantes pour les images de référence.</p><pre><code class="language-bash"># Download sam_h checkpoint. Feel free to use more recent checkpoints (note: code might need to be adapted)
+wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth -O checkpoints/sam_vit_h_4b8939.pth
+<h1>Run automatic instance segmentation from ground truth bounding boxes.</h1>
+python no_time_to_train/dataset/sam_bbox_to_segm_batch.py \
+    --input_json data/my_custom_dataset/annotations/custom_references.json \
+    --image_dir data/my_custom_dataset/images \
+    --sam_checkpoint checkpoints/sam_vit_h_4b8939.pth \
+    --model_type vit_h \
+    --device cuda \
+    --batch_size 8 \
+    --visualize</code></pre>
+<strong>Images de référence avec masques de segmentation au niveau des instances (générés par SAM2 à partir des boîtes englobantes gt, 1-shot) :</strong></p><p>La visualisation des masques de segmentation générés est enregistrée dans <code>data/my_custom_dataset/annotations/custom_references_with_SAM_segm/references_visualisations/</code>.</p><p>
+| Image de référence 1-shot pour OISEAU 🐦 (segmentée automatiquement avec SAM) | Image de référence 1-shot pour BATEAU ⛵ (segmentée automatiquement avec SAM) |
+|:---------------------------------:|:----------------------------------:|
+| <img src="https://github.com/user-attachments/assets/65d38dc4-1454-43cd-9600-e8efc67b3a82" alt="bird_1_with_SAM_segm" width="500"/> | <img src="https://github.com/user-attachments/assets/43a558ad-50ca-4715-8285-9aa3268843c6" alt="boat_1_with_SAM_segm" width="500"/> |</p><h3>0.2 Convertir les annotations coco en fichier pickle</h3></p><pre><code class="language-bash">python no_time_to_train/dataset/coco_to_pkl.py \
+    data/my_custom_dataset/annotations/custom_references_with_segm.json \
+    data/my_custom_dataset/annotations/custom_references_with_segm.pkl \
+    1</code></pre>
+<h3>1. Remplir la mémoire avec des références</h3></p><p>Tout d'abord, définissez les variables utiles et créez un dossier pour les résultats. Pour une visualisation correcte des étiquettes, les noms de classes doivent être ordonnés par identifiant de catégorie comme dans le fichier json. Par exemple, <code>bird</code> a l'identifiant de catégorie <code>16</code>, <code>boat</code> a l'identifiant de catégorie <code>9</code>. Ainsi, <code>CAT_NAMES=boat,bird</code>.</p><pre><code class="language-bash">DATASET_NAME=my_custom_dataset
+DATASET_PATH=data/my_custom_dataset
+CAT_NAMES=boat,bird
+CATEGORY_NUM=2
+SHOT=1
+YAML_PATH=no_time_to_train/pl_configs/matching_cdfsod_template.yaml
+PATH_TO_SAVE_CKPTS=./tmp_ckpts/my_custom_dataset
+mkdir -p $PATH_TO_SAVE_CKPTS</code></pre>
+Exécutez l’étape 1 :</p><pre><code class="language-bash">python run_lightening.py test --config $YAML_PATH \
+    --model.test_mode fill_memory \
+    --out_path $PATH_TO_SAVE_CKPTS/$DATASET_NAME\_$SHOT\_refs_memory.pth \
+    --model.init_args.dataset_cfgs.fill_memory.root $DATASET_PATH/images \
+    --model.init_args.dataset_cfgs.fill_memory.json_file $DATASET_PATH/annotations/custom_references_with_segm.json \
+    --model.init_args.dataset_cfgs.fill_memory.memory_pkl $DATASET_PATH/annotations/custom_references_with_segm.pkl \
+    --model.init_args.dataset_cfgs.fill_memory.memory_length $SHOT \
+    --model.init_args.dataset_cfgs.fill_memory.cat_names $CAT_NAMES \
+    --model.init_args.model_cfg.dataset_name $DATASET_NAME \
+    --model.init_args.model_cfg.memory_bank_cfg.length $SHOT \
+    --model.init_args.model_cfg.memory_bank_cfg.category_num $CATEGORY_NUM \
+    --trainer.devices 1</code></pre>
+<h3>2. Banque de mémoire post-traitement</h3></p><pre><code class="language-bash">python run_lightening.py test --config $YAML_PATH \
+    --model.test_mode postprocess_memory \
+    --ckpt_path $PATH_TO_SAVE_CKPTS/$DATASET_NAME\_$SHOT\_refs_memory.pth \
+    --out_path $PATH_TO_SAVE_CKPTS/$DATASET_NAME\_$SHOT\_refs_memory_postprocessed.pth \
+    --model.init_args.model_cfg.dataset_name $DATASET_NAME \
+    --model.init_args.model_cfg.memory_bank_cfg.length $SHOT \
+    --model.init_args.model_cfg.memory_bank_cfg.category_num $CATEGORY_NUM \
+    --trainer.devices 1</code></pre>
+<h3>3. Inférence sur les images cibles</h3></p><p>Si <code>ONLINE_VIS</code> est réglé sur True, les résultats de prédiction seront sauvegardés dans <code>results_analysis/my_custom_dataset/</code> et affichés au fur et à mesure de leur calcul. NOTEZ que l'exécution avec la visualisation en ligne est beaucoup plus lente.</p><p>N'hésitez pas à modifier le seuil de score <code>VIS_THR</code> pour voir plus ou moins d'instances segmentées.</p><pre><code class="language-bash">ONLINE_VIS=True
+VIS_THR=0.4
+python run_lightening.py test --config $YAML_PATH \
+    --model.test_mode test \
+    --ckpt_path $PATH_TO_SAVE_CKPTS/$DATASET_NAME\_$SHOT\_refs_memory_postprocessed.pth \
+    --model.init_args.model_cfg.dataset_name $DATASET_NAME \
+    --model.init_args.model_cfg.memory_bank_cfg.length $SHOT \
+    --model.init_args.model_cfg.memory_bank_cfg.category_num $CATEGORY_NUM \
+    --model.init_args.model_cfg.test.imgs_path $DATASET_PATH/images \
+    --model.init_args.model_cfg.test.online_vis $ONLINE_VIS \
+    --model.init_args.model_cfg.test.vis_thr $VIS_THR \
+    --model.init_args.dataset_cfgs.test.root $DATASET_PATH/images \
+    --model.init_args.dataset_cfgs.test.json_file $DATASET_PATH/annotations/custom_targets.json \
+    --model.init_args.dataset_cfgs.test.cat_names $CAT_NAMES \
+    --trainer.devices 1</code></pre>
+<h3>Résultats</h3></p><p>Les métriques de performance (avec exactement les mêmes paramètres que les commandes ci-dessus) devraient être :</p><pre><code class="language-">BBOX RESULTS:
+  Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.478</p><p>SEGM RESULTS:
+  Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.458</code></pre>
+Les résultats visuels sont enregistrés dans <code>results_analysis/my_custom_dataset/</code>. Notez que notre méthode fonctionne pour les faux négatifs, c'est-à-dire les images qui ne contiennent aucune instance des classes souhaitées.</p><p><em>Cliquez sur les images pour agrandir ⬇️</em></p><p>| Image cible avec des bateaux ⛵ (gauche GT, droite prédictions) | Image cible avec des oiseaux 🐦 (gauche GT, droite prédictions) |
+|:----------------------:|:----------------------:|
+| <img src="https://github.com/user-attachments/assets/678dc15a-dd3b-49d5-9287-6290da16aa6b" alt="000000459673"> | <img src="https://github.com/user-attachments/assets/fe306e48-af49-4d83-ac82-76fac6c456d1" alt="000000407180"> |</p><p>| Image cible avec des bateaux et des oiseaux ⛵🐦 (gauche GT, droite prédictions) | Image cible sans bateaux ni oiseaux 🚫 (gauche GT, droite prédictions) |
+|:---------------------------------:|:----------------------------------:|
+| <img src="https://github.com/user-attachments/assets/9849b227-7f43-43d7-81ea-58010a623ad5" alt="000000517410"> | <img src="https://github.com/user-attachments/assets/7587700c-e09d-4cf6-8590-3df129c2568e" alt="000000460598"> |</p><h2>📚 Citation</h2></p><p>Si vous utilisez ce travail, veuillez nous citer :</p><pre><code class="language-bibtex">@article{espinosa2025notimetotrain,
+  title={No time to train! Training-Free Reference-Based Instance Segmentation},
+  author={Miguel Espinosa and Chenhongyi Yang and Linus Ericsson and Steven McDonagh and Elliot J. Crowley},
+  journal={arXiv preprint arXiv:2507.02798},
+  year={2025},
+  primaryclass={cs.CV}
+}</code></pre></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-24
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/miquel-espinosa/no-time-to-train/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-07-24 
+    </div>
+    
+</body>
+</html>
