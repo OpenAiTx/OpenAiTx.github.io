@@ -1,0 +1,475 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>paperless-mcp - Paperless-NGX APIサーバーと連携するためのMCP（Model Context Protocol）サーバーです。このサーバーは、Paperless-NGXインスタンス内のドキュメント、タグ、対応者、ドキュメントタイプの管理ツールを提供します。</title>
+    <meta name="description" content="Paperless-NGX APIサーバーと連携するためのMCP（Model Context Protocol）サーバーです。このサーバーは、Paperless-NGXインスタンス内のドキュメント、タグ、対応者、ドキュメントタイプの管理ツールを提供します。">
+    <meta name="keywords" content="paperless-mcp, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "paperless-mcp",
+  "description": "Paperless-NGX APIサーバーと連携するためのMCP（Model Context Protocol）サーバーです。このサーバーは、Paperless-NGXインスタンス内のドキュメント、タグ、対応者、ドキュメントタイプの管理ツールを提供します。",
+  "author": {
+    "@type": "Person",
+    "name": "nloui"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 66
+  },
+  "url": "https://OpenAiTx.github.io/projects/nloui/paperless-mcp/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/nloui/paperless-mcp/main/README.md",
+  "datePublished": "2025-08-05",
+  "dateModified": "2025-08-05"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/nloui/paperless-mcp" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    paperless-mcp
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 66 stars</span>
+                <span class="language">Japanese</span>
+                <span>by nloui</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><a href="https://mseep.ai/app/nloui-paperless-mcp" target="_blank" rel="noopener noreferrer"><img src="https://mseep.net/pr/nloui-paperless-mcp-badge.png" alt="MseeP.ai セキュリティ評価バッジ"></a></p><h1>Paperless-NGX MCP サーバー</h1></p><p><a href="https://smithery.ai/server/@nloui/paperless-mcp" target="_blank" rel="noopener noreferrer"><img src="https://smithery.ai/badge/@nloui/paperless-mcp" alt="smithery バッジ"></a></p><p>Paperless-NGX API サーバーと連携するための MCP（モデルコンテキストプロトコル）サーバーです。このサーバーは、Paperless-NGX インスタンス内のドキュメント、タグ、宛先、およびドキュメントタイプの管理ツールを提供します。</p><h2>クイックスタート</h2></p><h3>Smithery 経由でのインストール</h3></p><p><a href="https://smithery.ai/server/@nloui/paperless-mcp" target="_blank" rel="noopener noreferrer">Smithery</a> を使って Claude Desktop 向けに Paperless NGX MCP サーバーを自動インストールするには:</p><pre><code class="language-bash">npx -y @smithery/cli install @nloui/paperless-mcp --client claude</code></pre></p><h3>手動インストール</h3>
+<ul><li>MCPサーバーをインストールします:</li>
+</ul><pre><code class="language-bash">npm install -g paperless-mcp</code></pre></p><ul><li>ClaudeのMCP設定に追加します：</li></p><p></ul>VSCode拡張機能の場合、<code>~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json</code> を編集してください：
+<pre><code class="language-json">{
+  "mcpServers": {
+    "paperless": {
+      "command": "npx",
+      "args": ["paperless-mcp", "http://your-paperless-instance:8000", "your-api-token"]
+    }
+  }
+}</code></pre></p><p>Claudeデスクトップアプリの場合、<code>~/Library/Application Support/Claude/claude_desktop_config.json</code> を編集してください：
+<pre><code class="language-json">{
+  "mcpServers": {
+    "paperless": {
+      "command": "npx",
+      "args": ["paperless-mcp", "http://your-paperless-instance:8000", "your-api-token"]
+    }
+  }
+}</code></pre>
+<ul><li>APIトークンを取得する:  </li>
+   <li>Paperless-NGXインスタンスにログインする  </li>
+   <li>右上のユーザー名をクリックする  </li>
+   <li>「マイプロフィール」を選択する  </li>
+   <li>新しいトークンを生成するために円形の矢印ボタンをクリックする  </li></p><p><li>MCP設定内のプレースホルダーを置き換える:  </li>
+   <li><code>http://your-paperless-instance:8000</code> をあなたのPaperless-NGXのURLに  </li>
+   <li><code>your-api-token</code> を先ほど生成したトークンに  </li></p><p></ul>以上です！これでClaudeにPaperless-NGXのドキュメント管理を手伝ってもらえます。  </p><h2>使用例  </h2></p><p>Claudeに依頼できることの例をいくつか紹介します:  </p><ul><li>「'Invoice'タグが付いたすべてのドキュメントを表示して」  </li>
+<li>「'tax return'を含むドキュメントを検索して」  </li>
+<li>「色#FF0000で'Receipts'という新しいタグを作成して」  </li>
+<li>「ドキュメント#123をダウンロードして」  </li>
+<li>「すべての対応者を一覧表示して」  </li>
+<li>「'Bank Statement'という新しいドキュメントタイプを作成して」  </li></p><p></ul><h2>利用可能なツール  </h2></p><h3>ドキュメント操作  </h3></p><p>#### list_documents  
+すべてのドキュメントのページネーションされたリストを取得します。  </p><p>パラメータ:  
+<ul><li>page（任意）: ページ番号  </li>
+<li>page_size（任意）: 1ページあたりのドキュメント数  </li></p><p>
+</ul><pre><code class="language-typescript">list_documents({
+  page: 1,
+  page_size: 25
+})</code></pre></p><p>#### get_document
+IDで特定のドキュメントを取得します。</p><p>パラメータ:
+<ul><li>id: ドキュメントID</li></p><p></ul><pre><code class="language-typescript">get_document({
+  id: 123
+})</code></pre></p><p>#### search_documents
+ドキュメント全体の全文検索。</p><p>パラメーター:
+<ul><li>query: 検索クエリ文字列</li></p><p></ul><pre><code class="language-typescript">search_documents({
+  query: "invoice 2024"
+})</code></pre></p><p>#### download_document
+IDでドキュメントファイルをダウンロードします。</p><p>パラメータ:
+<ul><li>id: ドキュメントID</li>
+<li>original (オプション): trueの場合、アーカイブ版ではなく元のファイルをダウンロードします。</li></p><p></ul><pre><code class="language-typescript">download_document({
+  id: 123,
+  original: false
+})</code></pre>
+#### bulk_edit_documents
+複数の文書に対して一括操作を実行します。</p><p>パラメータ:
+<ul><li>documents: 文書IDの配列</li>
+<li>method: 以下のいずれか:</li>
+  <li>set_correspondent: 文書の担当者を設定</li>
+  <li>set_document_type: 文書の種類を設定</li>
+  <li>set_storage_path: 文書の保存パスを設定</li>
+  <li>add_tag: 文書にタグを追加</li>
+  <li>remove_tag: 文書からタグを削除</li>
+  <li>modify_tags: 複数のタグを追加および/または削除</li>
+  <li>delete: 文書を削除</li>
+  <li>reprocess: 文書を再処理</li>
+  <li>set_permissions: 文書の権限を設定</li>
+  <li>merge: 複数の文書を結合</li>
+  <li>split: 文書を複数に分割</li>
+  <li>rotate: 文書のページを回転</li>
+  <li>delete_pages: 文書の特定ページを削除</li>
+<li>methodに応じた追加パラメータ:</li>
+  <li>correspondent: set_correspondent用のID</li>
+  <li>document_type: set_document_type用のID</li>
+  <li>storage_path: set_storage_path用のID</li>
+  <li>tag: add_tag/remove_tag用のID</li>
+  <li>add_tags: modify_tags用のタグID配列</li>
+  <li>remove_tags: modify_tags用のタグID配列</li>
+  <li>permissions: set_permissions用のオブジェクト（所有者、権限、結合フラグ含む）</li>
+  <li>metadata_document_id: mergeでメタデータ元を指定するID</li>
+  <li>delete_originals: merge/split用のブール値</li>
+  <li>pages: split用 "[1,2-3,4,5-7]" または delete_pages用 "[2,3,4]" の文字列</li>
+  <li>degrees: rotate用の数値（90、180、または270）</li></p><p></ul>例:</p><pre><code class="language-typescript">// Add a tag to multiple documents
+bulk_edit_documents({
+  documents: [1, 2, 3],
+  method: "add_tag",
+  tag: 5
+})</p><p>// Set correspondent and document type
+bulk_edit_documents({
+  documents: [4, 5],
+  method: "set_correspondent",
+  correspondent: 2
+})</p><p>// Merge documents
+bulk_edit_documents({
+  documents: [6, 7, 8],
+  method: "merge",
+  metadata_document_id: 6,
+  delete_originals: true
+})</p><p>// Split document into parts
+bulk_edit_documents({
+  documents: [9],
+  method: "split",
+  pages: "[1-2,3-4,5]"
+})</p><p>// Modify multiple tags at once
+bulk_edit_documents({
+  documents: [10, 11],
+  method: "modify_tags",
+  add_tags: [1, 2],
+  remove_tags: [3, 4]
+})</code></pre>
+#### post_document
+Paperless-NGXに新しい文書をアップロードします。</p><p>Parameters:
+<ul><li>file: Base64エンコードされたファイル内容</li>
+<li>filename: ファイル名</li>
+<li>title (optional): 文書のタイトル</li>
+<li>created (optional): 文書が作成された日時（例："2024-01-19" または "2024-01-19 06:15:00+02:00"）</li>
+<li>correspondent (optional): 対応者のID</li>
+<li>document_type (optional): 文書タイプのID</li>
+<li>storage_path (optional): 保管場所のID</li>
+<li>tags (optional): タグIDの配列</li>
+<li>archive_serial_number (optional): アーカイブシリアル番号</li>
+<li>custom_fields (optional): カスタムフィールドIDの配列</li></p><p>
+</ul><pre><code class="language-typescript">post_document({
+  file: "base64_encoded_content",
+  filename: "invoice.pdf",
+  title: "January Invoice",
+  created: "2024-01-19",
+  correspondent: 1,
+  document_type: 2,
+  tags: [1, 3],
+  archive_serial_number: "2024-001"
+})</code></pre></p><h3>タグ操作</h3></p><p>#### list_tags
+すべてのタグを取得します。</p><pre><code class="language-typescript">list_tags()</code></pre></p><p>#### create_tag
+新しいタグを作成します。</p><p>パラメーター:
+<ul><li>name: タグ名</li>
+<li>color (オプション): 16進カラーコード（例："#ff0000"）</li>
+<li>match (オプション): 一致させるテキストパターン</li>
+<li>matching_algorithm (オプション): "any"、"all"、"exact"、"regular expression"、"fuzzy" のいずれか</li></p><p></ul><pre><code class="language-typescript">create_tag({
+  name: "Invoice",
+  color: "#ff0000",
+  match: "invoice",
+  matching_algorithm: "fuzzy"
+})</code></pre></p><h3>対応者操作</h3></p><p>#### list_correspondents
+すべての対応者を取得します。</p><pre><code class="language-typescript">list_correspondents()</code></pre></p><p>#### create_correspondent
+新しい通信者を作成します。</p><p>パラメータ:
+<ul><li>name: 通信者の名前</li>
+<li>match (オプション): 一致させるテキストパターン</li>
+<li>matching_algorithm (オプション): "any", "all", "exact", "regular expression", "fuzzy" のいずれか</li></p><p></ul><pre><code class="language-typescript">create_correspondent({
+  name: "ACME Corp",
+  match: "ACME",
+  matching_algorithm: "fuzzy"
+})</code></pre></p><h3>ドキュメントタイプ操作</h3></p><p>#### list_document_types
+すべてのドキュメントタイプを取得します。</p><pre><code class="language-typescript">list_document_types()</code></pre></p><p>#### create_document_type
+新しいドキュメントタイプを作成します。</p><p>パラメータ:
+<ul><li>name: ドキュメントタイプ名</li>
+<li>match (省略可能): 一致させるテキストパターン</li>
+<li>matching_algorithm (省略可能): "any", "all", "exact", "regular expression", "fuzzy" のいずれか</li></p><p></ul><pre><code class="language-typescript">create_document_type({
+  name: "Invoice",
+  match: "invoice total amount due",
+  matching_algorithm: "any"
+})</code></pre></p><h2>エラーハンドリング</h2></p><p>サーバーは以下の場合に明確なエラーメッセージを表示します：
+<ul><li>Paperless-NGX の URL または API トークンが正しくない場合</li>
+<li>Paperless-NGX サーバーに接続できない場合</li>
+<li>要求された操作が失敗した場合</li>
+<li>提供されたパラメータが無効な場合</li></p><p></ul><h2>開発</h2></p><p>サーバーに貢献したい、または変更したいですか？知っておくべきことは以下の通りです：</p><ul><li>リポジトリをクローンする</li>
+<li>依存関係をインストールする：</li>
+</ul><pre><code class="language-bash">npm install</code></pre></p><ul><li>server.js に変更を加えます</li>
+<li>ローカルでテストします：</li>
+</ul><pre><code class="language-bash">node server.js http://localhost:8000 your-test-token</code></pre>
+サーバーは以下で構築されています：
+<ul><li><a href="https://github.com/wong2/litemcp" target="_blank" rel="noopener noreferrer">litemcp</a>：MCPサーバー構築用のTypeScriptフレームワーク</li>
+<li><a href="https://github.com/colinhacks/zod" target="_blank" rel="noopener noreferrer">zod</a>：TypeScript優先のスキーマバリデーション</li></p><p></ul><h2>APIドキュメント</h2></p><p>このMCPサーバーはPaperless-NGX REST APIのエンドポイントを実装しています。基盤となるAPIの詳細については、<a href="https://docs.paperless-ngx.com/api/" target="_blank" rel="noopener noreferrer">公式ドキュメント</a>をご覧ください。</p><h2>MCPサーバーの実行</h2></p><p>MCPサーバーは2つのモードで実行できます：</p><h3>1. stdio（デフォルト）</h3></p><p>これはデフォルトのモードです。サーバーはstdioを介して通信し、CLIや直接統合に適しています。</p><pre><code class="language-">npm run start -- <baseUrl> <token></code></pre></p><h3>2. HTTP（ストリーム可能なHTTPトランスポート）</h3></p><p>サーバーをHTTPサービスとして実行するには、<code>--http</code>フラグを使用します。<code>--port</code>でポートを指定することもできます（デフォルト：3000）。このモードでは<a href="https://expressjs.com/" target="_blank" rel="noopener noreferrer">Express</a>のインストールが必要です（依存関係として含まれています）。</p><pre><code class="language-">npm run start -- <baseUrl> <token> --http --port 3000</code></pre></p><ul><li>MCP APIは指定されたポートの<code>POST /mcp</code>で利用可能です。</li>
+<li>各リクエストは<a href="https://github.com/modelcontextprotocol/typescript-sdk" target="_blank" rel="noopener noreferrer">StreamableHTTPServerTransport</a>パターンに従いステートレスに処理されます。</li>
+<li><code>/mcp</code>へのGETおよびDELETEリクエストは405 Method Not Allowedを返します。</li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-05
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/nloui/paperless-mcp/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-05 
+    </div>
+    
+</body>
+</html>
