@@ -1,0 +1,418 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SongGen - [ICML 2025] SongGen：一种用于文本到歌曲生成的单阶段自回归变换器</title>
+    <meta name="description" content="[ICML 2025] SongGen：一种用于文本到歌曲生成的单阶段自回归变换器">
+    <meta name="keywords" content="SongGen, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "SongGen",
+  "description": "[ICML 2025] SongGen：一种用于文本到歌曲生成的单阶段自回归变换器",
+  "author": {
+    "@type": "Person",
+    "name": "LiuZH-19"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 251
+  },
+  "url": "https://OpenAiTx.github.io/projects/LiuZH-19/SongGen/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/LiuZH-19/SongGen/master/README.md",
+  "datePublished": "2025-08-07",
+  "dateModified": "2025-08-07"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/LiuZH-19/SongGen" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    SongGen
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 251 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by LiuZH-19</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>SongGen：一个用于文本到歌曲生成的单阶段自回归变换器</h1></p><p>🚀🚀🚀 <strong>SongGen：一个用于文本到歌曲生成的单阶段自回归变换器</strong> 官方实现  
+<p align="center" style="font-size: 1 em; margin-top: -1em">
+<a href="https://scholar.google.com/citations?user=iELd-Q0AAAAJ">刘子涵</a>,  
+<a href="https://mark12ding.github.io/">丁爽锐</a>,  
+<a href="https://github.com/rookiexiong7/">张智雄</a>, 
+<a href="https://lightdxy.github.io/">董晓毅</a>,  
+<a href="https://panzhang0212.github.io/">张攀</a>,
+<a href="https://yuhangzang.github.io/">臧宇航</a>,  
+<a href="https://scholar.google.com/citations?user=sJkqsqkAAAAJ">曹宇航</a>, </br>  
+<a href="http://dahua.site/">林大华</a>,  
+<a href="https://myownskyw7.github.io/">王佳琦</a> 
+</p></p><p><p align="center" style="font-size: 5 em; margin-top: 0.5em">
+<a href="https://arxiv.org/abs/2502.13128"><img src="https://img.shields.io/badge/arXiv-<color>"></a>
+<a href="https://github.com/LiuZH-19/SongGen"><img src="https://img.shields.io/badge/Code-red"></a>
+<a href="https://liuzh-19.github.io/SongGen/"><img src="https://img.shields.io/badge/Demo-20d67c"></a>
+<a href="https://huggingface.co/collections/LiuZH-19/songgen-a-single-stage-auto-regressive-transformer-for-text-6867ec21169d808034f6d252">
+    <img src="https://img.shields.io/badge/HF-Collection-yellow"></a>
+</p></p><h2>📜 新闻</h2>
+🚀 [2025/7/4] 我们发布了训练代码及详细的<a href="https://raw.githubusercontent.com/LiuZH-19/SongGen/master/./training/README.md" target="_blank" rel="noopener noreferrer">训练指南</a> 。</p><p>🚀 [2025/6/30] MusicCaps 测试集现已在 <a href="https://huggingface.co/datasets/LiuZH-19/MusicCaps_Test_Song" target="_blank" rel="noopener noreferrer">Huggingface🤗</a> 上可用于文本到歌曲的评估。</p><p>🚀 [2025/6/27] 我们发布了 SongGen 交错模式（视听）检查点，位于 <a href="https://huggingface.co/LiuZH-19/SongGen_interleaving_A_V" target="_blank" rel="noopener noreferrer">Huggingface🤗</a>。</p><p>🎉 [2025/5/1] SongGen 被 ICML 2025 接收！</p><p>🚀 [2025/3/18] 我们发布了 SongGen 混合专业版检查点，位于 <a href="https://huggingface.co/LiuZH-19/SongGen_mixed_pro" target="_blank" rel="noopener noreferrer">Huggingface🤗</a>。</p><p>🚀 [2025/2/19] 论文(<a href="https://arxiv.org/abs/2502.13128" target="_blank" rel="noopener noreferrer">paper</a>) 和 <a href="https://liuzh-19.github.io/SongGen/" target="_blank" rel="noopener noreferrer">演示页面</a> 正式发布！</p><h2>💡 亮点</h2>
+<ul><li>🔥 我们推出了 SongGen，一款用于<strong>文本到歌曲</strong>生成的<strong>单阶段</strong>自回归变换器，支持通过歌词、描述文本及可选的参考声音实现多样化控制。</li>
+<li>🔥 SongGen 支持<strong>混合</strong>及<strong>双轨模式</strong>以满足不同需求。我们的实验为两种模式的优化提供了<strong>宝贵见解</strong>。</li>
+<li>🔥 通过发布<strong>模型权重</strong>、<strong>代码</strong>、<strong>标注数据</strong>及<strong>预处理流程</strong>，我们旨在为未来的歌曲生成研究建立一个简单而有效的基线。</li>
+</ul><!-- <img align="center" src="https://raw.githubusercontent.com/LiuZH-19/SongGen/master/assets/imgs/motivation1.jpg" style="  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;" /> --></p><h2>👨‍💻 待办事项</h2>
+<ul><li>[ ] 发布标注数据和预处理流程</li>
+<li>[x] 发布 Musiccaps 测试集</li>
+<li>[x] 发布 SongGen 训练代码</li>
+<li>[x] 发布 SongGen（交错视听）检查点</li>
+<li>[x] 发布 SongGen 混合专业版检查点</li>
+<li>[x] 发布 SongGen 推理代码 </li>
+<li>[x] SongGen 演示</li></p><p></ul><h2>🛠️ 使用说明</h2></p><h3>1. 安装环境和依赖</h3>
+<pre><code class="language-bash">git clone https://github.com/LiuZH-19/SongGen.git
+cd SongGen
+<h1>We recommend using conda to create a new environment.</h1>
+conda create -n songgen_env python=3.9.18 
+conda activate songgen_env
+<h1>Install CUDA >= 11.8 and PyTorch, e.g.,</h1>
+pip install torch==2.3.0 torchvision==0.18.0 torchaudio==2.3.0 --index-url https://download.pytorch.org/whl/cu118
+pip install flash-attn==2.6.1 --no-build-isolation</code></pre>
+仅在推理模式下使用 SongGen，请使用以下命令安装：
+<pre><code class="language-bash">pip install -e .</code></pre>
+<h3>2. 下载 xcodec</h3></p><p>从 <a href="https://raw.githubusercontent.com/LiuZH-19/SongGen/master/
+https://huggingface.co/ZhenYe234/xcodec/blob/main/xcodec_hubert_general_audio_v2.pth" target="_blank" rel="noopener noreferrer">🤗</a> 下载 X-Codec 检查点，并将其放置在以下目录：SongGen/songgen/xcodec_wrapper/xcodec_infer/ckpts/general_more</p><pre><code class="language-">xcodec_infer
+    ├── ckpts
+    │   └── general_more
+    │       ├── config_hubert_general.yaml
+    │       └── xcodec_hubert_general_audio_v2.pth
+</code></pre></p><h3>3. 运行推理</h3></p><p>#### (1). 混合专业模式</p><pre><code class="language-python">import torch
+import os
+from songgen import (
+    VoiceBpeTokenizer,
+    SongGenMixedForConditionalGeneration,
+    SongGenProcessor
+)
+import soundfile as sf</p><p>ckpt_path = "LiuZH-19/SongGen_mixed_pro" # Path to the pretrained model
+device = "cuda:0" if torch.cuda.is_available() else "cpu"
+model = SongGenMixedForConditionalGeneration.from_pretrained(
+    ckpt_path,
+    attn_implementation='sdpa').to(device)
+processor = SongGenProcessor(ckpt_path, device)</p><h1>Define input text and lyrics</h1>
+lyrics = "..." # The lyrics text
+text = "..." # The music description text
+ref_voice_path = 'path/to/your/reference_audio.wav' # Path to reference audio, optional
+separate= True # Whether to separate the vocal track from the reference voice audio</p><p>model_inputs = processor(text=text, lyrics=lyrics, ref_voice_path=ref_voice_path, separate=separate) 
+generation = model.generate(<em></em>model_inputs,
+                do_sample=True,
+            )
+audio_arr = generation.cpu().numpy().squeeze()
+sf.write("songgen_out.wav", audio_arr, model.config.sampling_rate)</code></pre></p><p>#### (2). Interleaving A-V  (Dual-track mode)
+<pre><code class="language-python">import torch
+import os
+from songgen import (
+    VoiceBpeTokenizer,
+    SongGenDualTrackForConditionalGeneration,
+    SongGenProcessor
+)
+import soundfile as sf</p><p>ckpt_path = "LiuZH-19/SongGen_interleaving_A_V" # Path to the pretrained model
+device = "cuda:0" if torch.cuda.is_available() else "cpu"
+model = SongGenDualTrackForConditionalGeneration.from_pretrained(
+    ckpt_path,
+    attn_implementation='sdpa').to(device)
+processor = SongGenProcessor(ckpt_path, device)</p><h1>Define input text and lyrics</h1>
+lyrics = "..." # The lyrics text
+text = "..." # The music description text
+ref_voice_path = 'path/to/your/reference_audio.wav' # Path to reference audio, optional
+separate= True # Whether to separate the vocal track from the reference voice audio</p><p>model_inputs = processor(text=text, lyrics=lyrics, ref_voice_path=ref_voice_path, separate=True) 
+generation = model.generate(<em></em>model_inputs,
+                do_sample=True,
+            )</p><p>acc_array = generation[0].cpu().numpy()
+vocal_array = generation[1].cpu().numpy()
+min_len =min(vocal_array.shape[0], acc_array.shape[0])
+acc_array = acc_array[:min_len]
+vocal_array = vocal_array[:min_len]
+audio_arr = vocal_array + acc_array
+sf.write("songgen_out.wav", audio_arr, model.config.sampling_rate)</code></pre>
+<h3>4. 训练</h3></p><p><a href="./training" target="_blank" rel="noopener noreferrer">训练文件夹</a> 包含了训练或微调您自己的 SongGen 模型的所有信息。请参阅<a href="https://raw.githubusercontent.com/LiuZH-19/SongGen/master/./training/README.md" target="_blank" rel="noopener noreferrer">训练指南</a>以获取逐步说明。</p><h2>❤️ 致谢</h2>
+本库基于多个开源巨头的工作，感谢他们提供的工具！</p><p>特别感谢：</p><ul><li><a href="https://github.com/huggingface/parler-tts" target="_blank" rel="noopener noreferrer">Parler-tts</a>：我们构建的代码库基础。</li>
+<li><a href="https://github.com/zhenye234/xcodec" target="_blank" rel="noopener noreferrer">X-Codec</a>：我们研究中使用的音频编解码器。</li>
+<li><a href="https://github.com/seungheondoh/lp-music-caps" target="_blank" rel="noopener noreferrer">lp-music-caps</a>：一个生成音乐字幕的项目。</li></p><p></ul>我们衷心感谢一路以来得到的支持。</p><h2>☎️ 限制与未来工作</h2></p><p>这是一个专注于<strong>文本到歌曲</strong>生成的<strong>研究工作</strong>。由于当前训练数据集的限制，我们的模型目前仅限于生成最长30秒的英文歌曲。
+然而，尽管仅用<strong>2千小时</strong>数据和<strong>13亿</strong>参数模型训练，我们的方法已展示出强大的有效性和生成连贯富有表现力歌曲的潜力。我们相信，扩大数据量和模型规模将进一步提升歌词对齐和音乐性。
+话虽如此，扩展数据集既耗时又具挑战性。我们欢迎合作和讨论，共同探索改进模型和扩展其能力的新途径。
+如有任何疑问或潜在合作意向，欢迎联系：刘子涵 (liuzihan@pjlab.org.cn) 和 王佳琦 (wangjiaqi@pjlab.org.cn)。</p><h2>✒️ 引用</h2>
+如果我们的工作对您的研究有所帮助，欢迎点赞 ⭐ 并引用 📝</p><pre><code class="language-bibtex">@misc{liu2025songgen,
+      title={SongGen: A Single Stage Auto-regressive Transformer for Text-to-Song Generation}, 
+      author={Zihan Liu and Shuangrui Ding and Zhixiong Zhang and Xiaoyi Dong and Pan Zhang and Yuhang Zang and Yuhang Cao and Dahua Lin and Jiaqi Wang},
+      year={2025},
+      eprint={2502.13128},
+      archivePrefix={arXiv},
+      primaryClass={cs.SD},
+      url={https://arxiv.org/abs/2502.13128}, 
+}
+</code></pre></p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-07
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/LiuZH-19/SongGen/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-07 
+    </div>
+    
+</body>
+</html>
