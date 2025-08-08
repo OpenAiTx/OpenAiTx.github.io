@@ -1,0 +1,583 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>agents - Claude Code 的一组可用于生产环境的子代理集合</title>
+    <meta name="description" content="Claude Code 的一组可用于生产环境的子代理集合">
+    <meta name="keywords" content="agents, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "agents",
+  "description": "Claude Code 的一组可用于生产环境的子代理集合",
+  "author": {
+    "@type": "Person",
+    "name": "wshobson"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 7462
+  },
+  "url": "https://OpenAiTx.github.io/projects/wshobson/agents/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/wshobson/agents/main/README.md",
+  "datePublished": "2025-08-08",
+  "dateModified": "2025-08-08"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/wshobson/agents" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    agents
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 7462 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by wshobson</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><div align="right">
+  <details>
+    <summary >🌐 语言</summary>
+    <div>
+      <div align="center">
+        <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=en">English</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=zh-CN">简体中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=zh-TW">繁體中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=ja">日本語</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=ko">한국어</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=hi">हिन्दी</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=th">ไทย</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=fr">Français</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=de">Deutsch</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=es">Español</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=it">Italiano</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=ru">Русский</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=pt">Português</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=nl">Nederlands</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=pl">Polski</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=ar">العربية</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=fa">فارسی</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=tr">Türkçe</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=vi">Tiếng Việt</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=id">Bahasa Indonesia</a>
+        | <a href="https://openaitx.github.io/view.html?user=wshobson&project=agents&lang=as">অসমীয়া</
+      </div>
+    </div>
+  </details>
+</div></p><h1>Claude Code 子代理集合</h1></p><p>一个为 <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank" rel="noopener noreferrer">Claude Code</a> 设计的专业 AI 子代理综合集合，用于以领域专长提升开发工作流。</p><h2>概述</h2></p><p>本仓库包含 57 个专业子代理，扩展了 Claude Code 的功能。每个子代理都是某一领域的专家，可根据上下文自动调用，或在需要时显式调用。所有代理根据任务复杂度配置特定 Claude 模型，以实现最佳性能和成本效益。</p><h2>可用子代理</h2></p><h3>开发与架构</h3>
+<ul><li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/backend-architect.md" target="_blank" rel="noopener noreferrer">backend-architect</a></strong> - 设计RESTful API、微服务边界和数据库模式</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/frontend-developer.md" target="_blank" rel="noopener noreferrer">frontend-developer</a></strong> - 构建React组件，实现响应式布局，并处理客户端状态管理</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/ui-ux-designer.md" target="_blank" rel="noopener noreferrer">ui-ux-designer</a></strong> - 创建界面设计、线框图和设计系统</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/mobile-developer.md" target="_blank" rel="noopener noreferrer">mobile-developer</a></strong> - 开发带有原生集成的React Native或Flutter应用</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/graphql-architect.md" target="_blank" rel="noopener noreferrer">graphql-architect</a></strong> - 设计GraphQL模式、解析器和联邦架构</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/architect-review.md" target="_blank" rel="noopener noreferrer">architect-reviewer</a></strong> - 审查代码变更以确保架构一致性和模式</li></p><p></ul><h3>语言专家</h3>
+<ul><li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/python-pro.md" target="_blank" rel="noopener noreferrer">python-pro</a></strong> - 编写惯用的Python代码，具备高级特性和优化</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/golang-pro.md" target="_blank" rel="noopener noreferrer">golang-pro</a></strong> - 编写惯用Go代码，利用goroutine、通道和接口</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/rust-pro.md" target="_blank" rel="noopener noreferrer">rust-pro</a></strong> - 编写惯用的Rust代码，应用所有权模式、生命周期和trait实现</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/c-pro.md" target="_blank" rel="noopener noreferrer">c-pro</a></strong> - 编写高效的C代码，具备正确的内存管理和系统调用</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/cpp-pro.md" target="_blank" rel="noopener noreferrer">cpp-pro</a></strong> - 编写现代C++惯用代码，使用RAII、智能指针和STL算法</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/javascript-pro.md" target="_blank" rel="noopener noreferrer">javascript-pro</a></strong> - 精通现代JavaScript，包括ES6+、异步模式和Node.js API</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/typescript-pro.md" target="_blank" rel="noopener noreferrer">typescript-pro</a></strong> - 精通TypeScript，掌握高级类型、泛型和严格类型安全</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/php-pro.md" target="_blank" rel="noopener noreferrer">php-pro</a></strong> - 编写惯用PHP代码，具备现代特性和性能优化</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/java-pro.md" target="_blank" rel="noopener noreferrer">java-pro</a></strong> - 精通现代Java，使用流、并发和JVM优化</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/elixir-pro.md" target="_blank" rel="noopener noreferrer">elixir-pro</a></strong> - 编写惯用Elixir代码，应用OTP模式、函数式编程和Phoenix框架</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/csharp-pro.md" target="_blank" rel="noopener noreferrer">csharp-pro</a></strong> - 编写现代C#代码，具备高级特性和.NET优化</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/unity-developer.md" target="_blank" rel="noopener noreferrer">unity-developer</a></strong> - 构建Unity游戏，优化脚本和性能调优</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/minecraft-bukkit-pro.md" target="_blank" rel="noopener noreferrer">minecraft-bukkit-pro</a></strong> - 精通Minecraft服务器插件开发，使用Bukkit、Spigot和Paper API</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/ios-developer.md" target="_blank" rel="noopener noreferrer">ios-developer</a></strong> - 使用Swift/SwiftUI开发原生iOS应用</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/sql-pro.md" target="_blank" rel="noopener noreferrer">sql-pro</a></strong> - 编写复杂SQL查询，优化执行计划，设计规范化模式</li></p><p></ul><h3>基础设施与运维</h3>
+<ul><li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/devops-troubleshooter.md" target="_blank" rel="noopener noreferrer">devops-troubleshooter</a></strong> - 排查生产问题，分析日志并修复部署故障</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/deployment-engineer.md" target="_blank" rel="noopener noreferrer">deployment-engineer</a></strong> - 配置CI/CD流水线、Docker容器和云部署</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/cloud-architect.md" target="_blank" rel="noopener noreferrer">cloud-architect</a></strong> - 设计AWS/Azure/GCP基础设施并优化云成本</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/database-optimizer.md" target="_blank" rel="noopener noreferrer">database-optimizer</a></strong> - 优化SQL查询，设计高效索引，处理数据库迁移</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/database-admin.md" target="_blank" rel="noopener noreferrer">database-admin</a></strong> - 管理数据库运维、备份、复制与监控</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/terraform-specialist.md" target="_blank" rel="noopener noreferrer">terraform-specialist</a></strong> - 编写高级Terraform模块，管理状态文件，实施IaC最佳实践</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/incident-responder.md" target="_blank" rel="noopener noreferrer">incident-responder</a></strong> - 以紧急和精确的方式处理生产事故</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/network-engineer.md" target="_blank" rel="noopener noreferrer">network-engineer</a></strong> - 排查网络连接问题，配置负载均衡，分析流量模式</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/dx-optimizer.md" target="_blank" rel="noopener noreferrer">dx-optimizer</a></strong> - 开发者体验专家，提升工具链、环境配置和工作流</li></p><p></ul><h3>质量与安全</h3>
+<ul><li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/code-reviewer.md" target="_blank" rel="noopener noreferrer">code-reviewer</a></strong> - 专业代码审查，专注配置安全与生产可靠性</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/security-auditor.md" target="_blank" rel="noopener noreferrer">security-auditor</a></strong> - 审查代码漏洞并确保符合OWASP标准</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/test-automator.md" target="_blank" rel="noopener noreferrer">test-automator</a></strong> - 创建包含单元测试、集成测试和端到端测试的综合测试套件</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/performance-engineer.md" target="_blank" rel="noopener noreferrer">performance-engineer</a></strong> - 分析应用性能、优化瓶颈并实施缓存策略</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/debugger.md" target="_blank" rel="noopener noreferrer">debugger</a></strong> - 错误、测试失败和异常行为的调试专家</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/error-detective.md" target="_blank" rel="noopener noreferrer">error-detective</a></strong> - 检索日志和代码库中的错误模式、堆栈跟踪和异常</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/search-specialist.md" target="_blank" rel="noopener noreferrer">search-specialist</a></strong> - 使用高级搜索技术和综合能力的网页研究专家</li></p><p></ul><h3>数据与人工智能</h3>
+<ul><li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/data-scientist.md" target="_blank" rel="noopener noreferrer">data-scientist</a></strong> - SQL查询、大数据操作和数据洞察的分析专家</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/data-engineer.md" target="_blank" rel="noopener noreferrer">data-engineer</a></strong> - 构建ETL流程、数据仓库和流处理架构</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/ai-engineer.md" target="_blank" rel="noopener noreferrer">ai-engineer</a></strong> - 构建LLM应用、RAG系统和提示流程</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/ml-engineer.md" target="_blank" rel="noopener noreferrer">ml-engineer</a></strong> - 实现机器学习流程、模型部署和特征工程</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/mlops-engineer.md" target="_blank" rel="noopener noreferrer">mlops-engineer</a></strong> - 构建机器学习流程、实验追踪和模型注册</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/prompt-engineer.md" target="_blank" rel="noopener noreferrer">prompt-engineer</a></strong> - 优化LLM和AI系统的提示词</li></p><p></ul><h3>专业领域</h3>
+<ul><li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/api-documenter.md" target="_blank" rel="noopener noreferrer">api-documenter</a></strong> - 创建OpenAPI/Swagger规范并编写开发文档</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/payment-integration.md" target="_blank" rel="noopener noreferrer">payment-integration</a></strong> - 集成Stripe、PayPal和支付处理器</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/quant-analyst.md" target="_blank" rel="noopener noreferrer">quant-analyst</a></strong> - 构建金融模型、回测交易策略并分析市场数据</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/risk-manager.md" target="_blank" rel="noopener noreferrer">risk-manager</a></strong> - 监控投资组合风险、R倍数和持仓限额</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/legacy-modernizer.md" target="_blank" rel="noopener noreferrer">legacy-modernizer</a></strong> - 重构遗留代码库并实施渐进式现代化</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/context-manager.md" target="_blank" rel="noopener noreferrer">context-manager</a></strong> - 管理多代理和长周期任务的上下文</li></p><p></ul><h3>文档</h3>
+<ul><li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/docs-architect.md" target="_blank" rel="noopener noreferrer">docs-architect</a></strong> - 基于现有代码库创建完整的技术文档</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/reference-builder.md" target="_blank" rel="noopener noreferrer">reference-builder</a></strong> - 创建详尽的技术参考和API文档</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/tutorial-engineer.md" target="_blank" rel="noopener noreferrer">tutorial-engineer</a></strong> - 从代码中创建分步教程和教育内容</li></p><p></ul><h3>商业与市场营销</h3>
+<ul><li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/business-analyst.md" target="_blank" rel="noopener noreferrer">business-analyst</a></strong> - 分析指标、制作报告并跟踪关键绩效指标</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/content-marketer.md" target="_blank" rel="noopener noreferrer">content-marketer</a></strong> - 撰写博客、社交媒体内容和邮件简讯</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/sales-automator.md" target="_blank" rel="noopener noreferrer">sales-automator</a></strong> - 草拟冷邮件、跟进邮件和提案模板</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/customer-support.md" target="_blank" rel="noopener noreferrer">customer-support</a></strong> - 处理支持工单、常见问题回复和客户邮件</li>
+<li><strong><a href="https://raw.githubusercontent.com/wshobson/agents/main/legal-advisor.md" target="_blank" rel="noopener noreferrer">legal-advisor</a></strong> - 起草隐私政策、服务条款、免责声明和法律通知</li></p><p></ul><h2>模型分配</h2></p><p>所有57个子代理根据任务复杂度配置了特定的Claude模型：</p><h3>🚀 Haiku（快速且高性价比） - 9个代理</h3>
+<strong>模型：</strong> <code>haiku</code>
+<ul><li><code>data-scientist</code> - SQL查询和数据分析</li>
+<li><code>api-documenter</code> - OpenAPI/Swagger文档</li>
+<li><code>reference-builder</code> - 全面的技术参考和API文档</li>
+<li><code>business-analyst</code> - 指标和KPI追踪</li>
+<li><code>content-marketer</code> - 博客文章和社交媒体</li>
+<li><code>customer-support</code> - 支持工单和常见问题解答</li>
+<li><code>sales-automator</code> - 冷邮件和提案</li>
+<li><code>search-specialist</code> - 网络调研和信息收集</li>
+<li><code>legal-advisor</code> - 隐私政策和合规文件</li></p><p></ul><h3>⚡ Sonnet（均衡性能）- 35位代理</h3>
+<strong>模型:</strong> <code>sonnet</code></p><p><strong>开发与语言:</strong>
+<ul><li><code>python-pro</code> - 具备高级功能的Python开发</li>
+<li><code>javascript-pro</code> - 现代JavaScript与Node.js</li>
+<li><code>typescript-pro</code> - 具备类型系统的高级TypeScript</li>
+<li><code>golang-pro</code> - Go并发与惯用模式</li>
+<li><code>rust-pro</code> - Rust内存安全与系统编程</li>
+<li><code>c-pro</code> - C编程与嵌入式系统</li>
+<li><code>cpp-pro</code> - 现代C++，含STL与模板</li>
+<li><code>php-pro</code> - 具备高级功能的现代PHP</li>
+<li><code>java-pro</code> - 现代Java流与并发</li>
+<li><code>elixir-pro</code> - 搭配OTP模式与Phoenix的Elixir</li>
+<li><code>csharp-pro</code> - 现代C#，含.NET框架与模式</li>
+<li><code>unity-developer</code> - Unity游戏开发与优化</li>
+<li><code>minecraft-bukkit-pro</code> - 使用Bukkit/Spigot/Paper进行Minecraft插件开发</li>
+<li><code>ios-developer</code> - 使用Swift/SwiftUI进行原生iOS开发</li>
+<li><code>frontend-developer</code> - React组件与UI</li>
+<li><code>ui-ux-designer</code> - 界面设计与线框图</li>
+<li><code>backend-architect</code> - API设计与微服务</li>
+<li><code>mobile-developer</code> - React Native/Flutter应用</li>
+<li><code>sql-pro</code> - 复杂SQL优化</li>
+<li><code>graphql-architect</code> - GraphQL模式与解析器</li></p><p></ul><strong>基础设施与运维:</strong>
+<ul><li><code>devops-troubleshooter</code> - 生产调试</li>
+<li><code>deployment-engineer</code> - CI/CD流水线</li>
+<li><code>database-optimizer</code> - 查询优化</li>
+<li><code>database-admin</code> - 数据库运维</li>
+<li><code>terraform-specialist</code> - 基础设施即代码</li>
+<li><code>network-engineer</code> - 网络配置</li>
+<li><code>dx-optimizer</code> - 开发者体验优化</li>
+<li><code>data-engineer</code> - ETL 数据管道</li></p><p></ul><strong>质量与支持：</strong>
+<ul><li><code>test-automator</code> - 测试套件创建</li>
+<li><code>code-reviewer</code> - 代码质量分析</li>
+<li><code>debugger</code> - 错误排查</li>
+<li><code>error-detective</code> - 日志分析</li>
+<li><code>ml-engineer</code> - 机器学习模型部署</li>
+<li><code>legacy-modernizer</code> - 框架迁移</li>
+<li><code>payment-integration</code> - 支付处理</li></p><p></ul><h3>🧠 Opus（最大能力）- 13 个代理</h3>
+<strong>模型：</strong> <code>opus</code>
+<ul><li><code>ai-engineer</code> - 大语言模型应用与 RAG 系统</li>
+<li><code>security-auditor</code> - 漏洞分析</li>
+<li><code>performance-engineer</code> - 应用优化</li>
+<li><code>incident-responder</code> - 生产事故处理</li>
+<li><code>mlops-engineer</code> - 机器学习基础设施</li>
+<li><code>architect-reviewer</code> - 架构一致性</li>
+<li><code>cloud-architect</code> - 云基础设施设计</li>
+<li><code>prompt-engineer</code> - LLM 提示优化</li>
+<li><code>context-manager</code> - 多代理协调</li>
+<li><code>quant-analyst</code> - 金融建模</li>
+<li><code>risk-manager</code> - 投资组合风险管理</li>
+<li><code>docs-architect</code> - 基于代码库的全面技术文档</li>
+<li><code>tutorial-engineer</code> - 分步教程与教育内容</li></p><p></ul><h2>安装</h2></p><p>当这些子代理被放置在 <code>~/.claude/agents/</code> 目录时会自动启用。</p><pre><code class="language-bash">cd ~/.claude
+git clone https://github.com/wshobson/agents.git</code></pre></p><h2>使用方法</h2></p><h3>自动调用</h3>
+Claude Code 会根据任务上下文和子代理的描述自动委派给适当的子代理。</p><h3>显式调用</h3>
+在请求中提及子代理的名称：
+<pre><code class="language-">"Use the code-reviewer to check my recent changes"
+"Have the security-auditor scan for vulnerabilities"
+"Get the performance-engineer to optimize this bottleneck"</code></pre></p><h2>使用示例</h2></p><h3>单智能体任务</h3>
+<pre><code class="language-bash"># Code quality and review
+"Use code-reviewer to analyze this component for best practices"
+"Have code-reviewer scrutinize these configuration changes"
+"Have security-auditor check for OWASP compliance issues"</p><h1>Development tasks  </h1>
+"Get backend-architect to design a user authentication API"
+"Use frontend-developer to create a responsive dashboard layout"</p><h1>Infrastructure and operations</h1>
+"Have devops-troubleshooter analyze these production logs"
+"Use cloud-architect to design a scalable AWS architecture"
+"Get network-engineer to debug SSL certificate issues"
+"Use database-admin to set up backup and replication"</p><h1>Data and AI</h1>
+"Get data-scientist to analyze this customer behavior dataset"
+"Use ai-engineer to build a RAG system for document search"
+"Have mlops-engineer set up MLflow experiment tracking"</p><h1>Business and marketing</h1>
+"Have business-analyst create investor deck with growth metrics"
+"Use content-marketer to write SEO-optimized blog post"
+"Get sales-automator to create cold email sequence"
+"Have customer-support draft FAQ documentation"</code></pre></p><h3>多代理工作流</h3></p><p>这些子代理无缝协作，对于更复杂的编排，您可以使用 <strong><a href="https://github.com/wshobson/commands" target="_blank" rel="noopener noreferrer">Claude Code Commands</a></strong> 集合，该集合提供了52个预构建的斜杠命令，利用这些子代理实现复杂的工作流。</p><pre><code class="language-bash"># Feature development workflow
+"Implement user authentication feature"
+<h1>Automatically uses: backend-architect → frontend-developer → test-automator → security-auditor</h1></p><h1>Performance optimization workflow  </h1>
+"Optimize the checkout process performance"
+<h1>Automatically uses: performance-engineer → database-optimizer → frontend-developer</h1></p><h1>Production incident workflow</h1>
+"Debug high memory usage in production"
+<h1>Automatically uses: incident-responder → devops-troubleshooter → error-detective → performance-engineer</h1></p><h1>Network connectivity workflow</h1>
+"Fix intermittent API timeouts"
+<h1>Automatically uses: network-engineer → devops-troubleshooter → performance-engineer</h1></p><h1>Database maintenance workflow</h1>
+"Set up disaster recovery for production database"
+<h1>Automatically uses: database-admin → database-optimizer → incident-responder</h1></p><h1>ML pipeline workflow</h1>
+"Build end-to-end ML pipeline with monitoring"
+<h1>Automatically uses: mlops-engineer → ml-engineer → data-engineer → performance-engineer</h1></p><h1>Product launch workflow</h1>
+"Launch new feature with marketing campaign"
+<h1>Automatically uses: business-analyst → content-marketer → sales-automator → customer-support</code></pre></h1></p><h3>使用斜杠命令的高级工作流</h3></p><p>对于更复杂的多子代理编排，请使用配套的<a href="https://github.com/wshobson/commands" target="_blank" rel="noopener noreferrer">Commands 仓库</a>：</p><pre><code class="language-bash"># Complex feature development (8+ subagents)
+/full-stack-feature Build user dashboard with real-time analytics</p><h1>Production incident response (5+ subagents) </h1>
+/incident-response Database connection pool exhausted</p><h1>ML infrastructure setup (6+ subagents)</h1>
+/ml-pipeline Create recommendation engine with A/B testing</p><h1>Security-focused implementation (7+ subagents)</h1>
+/security-hardening Implement OAuth2 with zero-trust architecture</code></pre></p><h2>子代理格式</h2></p><p>每个子代理遵循以下结构：
+<pre><code class="language-markdown">---
+name: subagent-name
+description: When this subagent should be invoked
+model: haiku  # Optional - specify which model to use (haiku/sonnet/opus)
+tools: tool1, tool2  # Optional - defaults to all tools
+<hr></p><p>System prompt defining the subagent's role and capabilities</code></pre></p><h3>模型配置</h3></p><p>自 Claude Code v1.0.64 起，子代理可以指定应使用的 Claude 模型。这样可以根据复杂度实现成本效益的任务分配：</p><ul><li><strong>低复杂度（Haiku）</strong>：简单任务，如基础数据分析、文档生成和标准响应</li>
+<li><strong>中等复杂度（Sonnet）</strong>：开发任务、代码审查、测试和标准工程工作  </li>
+<li><strong>高复杂度（Opus）</strong>：关键任务，如安全审计、架构评审、事件响应和 AI/ML 工程</li></p><p></ul>可用模型（使用 Claude Code v1.0.64 起的简化命名）：
+<ul><li><code>haiku</code> - 适合简单任务的快速且经济高效模型</li>
+<li><code>sonnet</code> - 适用于大多数开发工作的平衡性能模型</li>
+<li><code>opus</code> - 适合复杂分析和关键任务的最强模型</li></p><p></ul>如果未指定模型，子代理将使用系统默认模型。</p><h2>代理编排模式</h2></p><p>Claude Code 使用以下常见模式自动协调代理：</p><h3>顺序工作流</h3>
+<pre><code class="language-">User Request → Agent A → Agent B → Agent C → Result</p><p>Example: "Build a new API feature"
+backend-architect → frontend-developer → test-automator → security-auditor</code></pre></p><h3>Parallel Execution</h3>
+<pre><code class="language-">User Request → Agent A + Agent B (simultaneously) → Merge Results</p><p>Example: "Optimize application performance" 
+performance-engineer + database-optimizer → Combined recommendations</code></pre></p><h3>条件分支</h3>
+<pre><code class="language-">User Request → Analysis → Route to appropriate specialist</p><p>Example: "Fix this bug"
+debugger (analyzes) → Routes to: backend-architect OR frontend-developer OR devops-troubleshooter</code></pre></p><h3>审核与验证</h3>
+<pre><code class="language-">Primary Agent → Review Agent → Final Result</p><p>Example: "Implement payment processing"
+payment-integration → security-auditor → Validated implementation</code></pre>
+<h2>何时使用哪个代理</h2></p><h3>🏗️ 规划与架构</h3>
+<ul><li><strong>backend-architect</strong>：API 设计、数据库模式、系统架构</li>
+<li><strong>frontend-developer</strong>：UI/UX 规划、组件架构</li>
+<li><strong>ui-ux-designer</strong>：界面设计、线框图、设计系统、用户研究</li>
+<li><strong>cloud-architect</strong>：基础设施设计、可扩展性规划</li></p><p></ul><h3>🔧 实现与开发  </h3>
+<ul><li><strong>python-pro</strong>：Python 相关开发任务</li>
+<li><strong>golang-pro</strong>：Go 相关开发任务</li>
+<li><strong>rust-pro</strong>：Rust 相关开发、内存安全、系统编程</li>
+<li><strong>c-pro</strong>：C 编程、嵌入式系统、性能关键代码</li>
+<li><strong>javascript-pro</strong>：现代 JavaScript、异步模式、Node.js/浏览器代码</li>
+<li><strong>typescript-pro</strong>：高级 TypeScript、泛型、类型推断、企业模式</li>
+<li><strong>java-pro</strong>：现代 Java 开发、流、并发、Spring Boot</li>
+<li><strong>elixir-pro</strong>：Elixir 开发、OTP 模式、Phoenix 框架、函数式编程</li>
+<li><strong>csharp-pro</strong>：现代 C# 开发、.NET 框架、企业模式</li>
+<li><strong>unity-developer</strong>：Unity 游戏开发、C# 脚本编写、性能优化</li>
+<li><strong>minecraft-bukkit-pro</strong>：Minecraft 插件开发、事件系统、服务器端功能</li>
+<li><strong>ios-developer</strong>：使用 Swift/SwiftUI 的原生 iOS 开发</li>
+<li><strong>sql-pro</strong>：数据库查询、模式设计、查询优化</li>
+<li><strong>mobile-developer</strong>：React Native/Flutter 开发</li></p><p></ul><h3>🛠️ 运维与维护</h3>
+<ul><li><strong>devops-troubleshooter</strong>：生产环境问题、部署故障</li>
+<li><strong>incident-responder</strong>：需要立即响应的严重故障</li>
+<li><strong>database-optimizer</strong>：查询性能、索引策略</li>
+<li><strong>database-admin</strong>：备份策略、复制、用户管理、灾难恢复</li>
+<li><strong>terraform-specialist</strong>：基础设施即代码、Terraform 模块、状态管理</li>
+<li><strong>network-engineer</strong>：网络连接、负载均衡、SSL/TLS、DNS 调试</li></p><p></ul><h3>📊 分析与优化</h3>
+<ul><li><strong>performance-engineer</strong>：应用瓶颈、优化</li>
+<li><strong>security-auditor</strong>：漏洞扫描、合规检查</li>
+<li><strong>data-scientist</strong>：数据分析、洞察、报告</li>
+<li><strong>mlops-engineer</strong>：机器学习基础设施、实验追踪、模型注册、流水线自动化</li></p><p></ul><h3>🧪 质量保障</h3></p><ul><li><strong>代码审查员</strong>：代码质量，配置安全，生产可靠性</li>
+<li><strong>测试自动化工程师</strong>：测试策略，测试套件创建</li>
+<li><strong>调试员</strong>：漏洞调查，错误解决</li>
+<li><strong>错误侦探</strong>：日志分析，错误模式识别，根因分析</li>
+<li><strong>搜索专家</strong>：深度网络研究，竞争分析，事实核查</li></p><p></ul><h3>📚 文档</h3>
+<ul><li><strong>API文档员</strong>：OpenAPI/Swagger规范，API文档</li>
+<li><strong>文档架构师</strong>：全面技术文档，架构指南，系统手册</li>
+<li><strong>参考资料构建者</strong>：详尽API参考，配置指南，参数文档</li>
+<li><strong>教程工程师</strong>：分步教程，学习路径，教育内容</li></p><p></ul><h3>💼 商业与战略</h3>
+<ul><li><strong>业务分析师</strong>：关键绩效指标，收益模型，增长预测，投资者指标</li>
+<li><strong>风险经理</strong>：投资组合风险，对冲策略，R倍数，仓位管理</li>
+<li><strong>内容营销专员</strong>：SEO内容，博客文章，社交媒体，邮件营销</li>
+<li><strong>销售自动化专员</strong>：冷邮件，跟进，提案，线索培育</li>
+<li><strong>客户支持</strong>：支持工单，常见问题，帮助文档，故障排查</li>
+<li><strong>法律顾问</strong> - 起草隐私政策，服务条款，免责声明及法律声明</li></p><p></ul><h2>最佳实践</h2></p><h3>🎯 任务分配</h3>
+<ul><li><strong>让Claude Code自动分配</strong>——主代理分析上下文并选择最佳代理</li>
+<li><strong>明确需求</strong>——包含约束、技术栈和质量要求</li>
+<li><strong>信任代理专长</strong>——每个代理都针对其领域优化</li></p><p></ul><h3>🔄 多代理工作流</h3>
+<ul><li><strong>从高层请求开始</strong>——让代理协调复杂多步骤任务</li>
+<li><strong>在代理之间提供上下文</strong>——确保代理拥有所需的背景信息</li>
+<li><strong>检查集成点</strong>——检查不同代理的输出如何协作</li></p><p></ul><h3>🎛️ 显式控制</h3>
+<ul><li><strong>针对特定需求使用显式调用</strong>——当你需要特定专家的观点时</li>
+<li><strong>战略性地组合多个代理</strong>——不同专家可相互验证成果</li>
+<li><strong>请求特定审核模式</strong>——“让安全审计员审核后端架构师的API设计”</li></p><p></ul><h3>📈 优化</h3>
+<ul><li><strong>监控代理有效性</strong>——了解哪些代理最适合你的用例</li>
+<li><strong>迭代复杂任务</strong>——利用代理反馈优化需求</li>
+<li><strong>利用代理优势</strong> - 将任务复杂度与代理能力相匹配</li></p><p></ul><h2>贡献</h2></p><p>要添加新的子代理：
+<ul><li>创建一个新的 <code>.md</code> 文件，遵循上述格式</li>
+<li>使用小写、连字符分隔的名称</li>
+<li>明确描述何时应使用该子代理</li>
+<li>在系统提示中包含具体指令</li></p><p></ul><h2>故障排除</h2></p><h3>常见问题</h3></p><p><strong>代理未自动调用：</strong>
+<ul><li>确保您的请求明确指示领域（例如，“性能问题” → performance-engineer）</li>
+<li>明确任务类型（例如，“审核代码” → code-reviewer）</li></p><p></ul><strong>意外的代理选择：</strong>
+<ul><li>提供更多关于您的技术栈和需求的背景信息</li>
+<li>如果需要特定代理，请使用显式调用</li></p><p></ul><strong>多个代理给出相互冲突的建议：</strong>
+<ul><li>这是正常现象 - 不同专家可能有不同优先级</li>
+<li>请求澄清：“协调 security-auditor 和 performance-engineer 的建议”</li></p><p></ul><strong>代理似乎缺乏上下文：</strong>
+<ul><li>在您的请求中提供背景信息</li>
+<li>参考之前的对话或既定模式</li></p><p></ul><h3>获取帮助</h3></p><p>如果代理未按预期工作：
+<ul><li>检查各自文件中的代理描述</li>
+<li>在您的请求中尝试更具体的语言</li>
+<li>使用显式调用测试特定代理</li>
+<li>提供更多关于您的项目和目标的背景信息</li></p><p></ul><h2>许可证</h2></p><p>该项目遵循 MIT 许可证 - 详情请参阅 <a href="LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a> 文件。</p><h2>了解更多</h2></p><ul><li><a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank" rel="noopener noreferrer">Claude Code 文档</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/sub-agents" target="_blank" rel="noopener noreferrer">子代理文档</a></li>
+<li><a href="https://github.com/anthropics/claude-code" target="_blank" rel="noopener noreferrer">Claude Code GitHub</a></li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-08
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/wshobson/agents/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-08 
+    </div>
+    
+</body>
+</html>
