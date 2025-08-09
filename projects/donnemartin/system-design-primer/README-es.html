@@ -1,0 +1,1004 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>system-design-primer - Aprende a dise&#241;ar sistemas a gran escala. Prep&#225;rate para la entrevista de dise&#241;o de sistemas. Incluye tarjetas Anki.</title>
+    <meta name="description" content="Aprende a dise&#241;ar sistemas a gran escala. Prep&#225;rate para la entrevista de dise&#241;o de sistemas. Incluye tarjetas Anki.">
+    <meta name="keywords" content="system-design-primer, Spanish, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "system-design-primer",
+  "description": "Aprende a diseñar sistemas a gran escala. Prepárate para la entrevista de diseño de sistemas. Incluye tarjetas Anki.",
+  "author": {
+    "@type": "Person",
+    "name": "donnemartin"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 314773
+  },
+  "url": "https://OpenAiTx.github.io/projects/donnemartin/system-design-primer/README-es.html",
+  "sameAs": "https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README.md",
+  "datePublished": "2025-08-09",
+  "dateModified": "2025-08-09"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    system-design-primer
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 314773 stars</span>
+                <span class="language">Spanish</span>
+                <span>by donnemartin</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><em><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README.md" target="_blank" rel="noopener noreferrer">English</a> ∙ <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README-ja.md" target="_blank" rel="noopener noreferrer">日本語</a> ∙ <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README-zh-Hans.md" target="_blank" rel="noopener noreferrer">简体中文</a> ∙ <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README-zh-TW.md" target="_blank" rel="noopener noreferrer">繁體中文</a> | <a href="https://github.com/donnemartin/system-design-primer/issues/170" target="_blank" rel="noopener noreferrer">العَرَبِيَّة‎</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/220" target="_blank" rel="noopener noreferrer">বাংলা</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/40" target="_blank" rel="noopener noreferrer">Português do Brasil</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/186" target="_blank" rel="noopener noreferrer">Deutsch</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/130" target="_blank" rel="noopener noreferrer">ελληνικά</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/272" target="_blank" rel="noopener noreferrer">עברית</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/104" target="_blank" rel="noopener noreferrer">Italiano</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/102" target="_blank" rel="noopener noreferrer">한국어</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/110" target="_blank" rel="noopener noreferrer">فارسی</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/68" target="_blank" rel="noopener noreferrer">Polski</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/87" target="_blank" rel="noopener noreferrer">русский язык</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/136" target="_blank" rel="noopener noreferrer">Español</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/187" target="_blank" rel="noopener noreferrer">ภาษาไทย</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/39" target="_blank" rel="noopener noreferrer">Türkçe</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/127" target="_blank" rel="noopener noreferrer">tiếng Việt</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/250" target="_blank" rel="noopener noreferrer">Français</a> | <a href="https://github.com/donnemartin/system-design-primer/issues/28" target="_blank" rel="noopener noreferrer">Add Translation</a></em></p><p><strong>¡Ayuda a <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/TRANSLATIONS.md" target="_blank" rel="noopener noreferrer">traducir</a> esta guía!</strong></p><h1>El Manual de Diseño de Sistemas</h1></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/jj3A5N8.png">
+  <br/>
+</p></p><h2>Motivación</h2></p><blockquote>Aprende cómo diseñar sistemas a gran escala.</blockquote>
+>
+<blockquote>Prepárate para la entrevista de diseño de sistemas.</blockquote></p><h3>Aprende cómo diseñar sistemas a gran escala</h3></p><p>Aprender a diseñar sistemas escalables te ayudará a convertirte en un mejor ingeniero.</p><p>El diseño de sistemas es un tema amplio. Hay una <strong>gran cantidad de recursos dispersos por la web</strong> sobre principios de diseño de sistemas.</p><p>Este repositorio es una <strong>colección organizada</strong> de recursos para ayudarte a aprender cómo construir sistemas a escala.</p><h3>Aprende de la comunidad de código abierto</h3></p><p>Este es un proyecto de código abierto, actualizado continuamente.</p><p>¡<a href="#contributing" target="_blank" rel="noopener noreferrer">Contribuciones</a> son bienvenidas!</p><h3>Prepárate para la entrevista de diseño de sistemas</h3></p><p>Además de las entrevistas de programación, el diseño de sistemas es un <strong>componente requerido</strong> del <strong>proceso técnico de entrevistas</strong> en muchas empresas tecnológicas.</p><p><strong>Practica preguntas comunes de entrevistas de diseño de sistemas</strong> y <strong>compara</strong> tus resultados con <strong>soluciones de ejemplo</strong>: discusiones, código y diagramas.</p><p>Temas adicionales para la preparación de entrevistas:</p><ul><li><a href="#study-guide" target="_blank" rel="noopener noreferrer">Guía de estudio</a></li>
+<li><a href="#how-to-approach-a-system-design-interview-question" target="_blank" rel="noopener noreferrer">Cómo abordar una pregunta de entrevista de diseño de sistemas</a></li>
+<li><a href="#system-design-interview-questions-with-solutions" target="_blank" rel="noopener noreferrer">Preguntas de entrevista sobre diseño de sistemas, <strong>con soluciones</strong></a></li>
+<li><a href="#object-oriented-design-interview-questions-with-solutions" target="_blank" rel="noopener noreferrer">Preguntas de entrevista sobre diseño orientado a objetos, <strong>con soluciones</strong></a></li>
+<li><a href="#additional-system-design-interview-questions" target="_blank" rel="noopener noreferrer">Preguntas adicionales de entrevista sobre diseño de sistemas</a></li></p><p></ul><h2>Tarjetas Anki</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/zdCAkB3.png">
+  <br/>
+</p></p><p>Los <a href="https://apps.ankiweb.net/" target="_blank" rel="noopener noreferrer">mazos de tarjetas Anki</a> proporcionados usan repetición espaciada para ayudarte a retener conceptos clave de diseño de sistemas.</p><ul><li><a href="https://github.com/donnemartin/system-design-primer/tree/master/resources/flash_cards/System%20Design.apkg" target="_blank" rel="noopener noreferrer">Mazo de diseño de sistemas</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer/tree/master/resources/flash_cards/System%20Design%20Exercises.apkg" target="_blank" rel="noopener noreferrer">Mazo de ejercicios de diseño de sistemas</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer/tree/master/resources/flash_cards/OO%20Design.apkg" target="_blank" rel="noopener noreferrer">Mazo de ejercicios de diseño orientado a objetos</a></li></p><p></ul>Ideal para usar mientras estás en movimiento.</p><h3>Recurso de codificación: Desafíos de codificación interactivos</h3></p><p>¿Buscas recursos para ayudarte a prepararte para la <a href="https://github.com/donnemartin/interactive-coding-challenges" target="_blank" rel="noopener noreferrer"><strong>Entrevista de codificación</strong></a>?</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/b4YtAEN.png">
+  <br/>
+</p></p><p>Consulta el repositorio hermano <a href="https://github.com/donnemartin/interactive-coding-challenges" target="_blank" rel="noopener noreferrer"><strong>Desafíos de codificación interactivos</strong></a>, que contiene un mazo adicional de Anki:</p><ul><li><a href="https://github.com/donnemartin/interactive-coding-challenges/tree/master/anki_cards/Coding.apkg" target="_blank" rel="noopener noreferrer">Mazo de codificación</a></li></p><p></ul><h2>Contribuciones</h2></p><blockquote>Aprende de la comunidad.</blockquote></p><p>No dudes en enviar pull requests para ayudar a:</p><ul><li>Corregir errores</li>
+<li>Mejorar secciones</li>
+<li>Añadir nuevas secciones  </li>
+<li><a href="https://github.com/donnemartin/system-design-primer/issues/28" target="_blank" rel="noopener noreferrer">Traducir</a>  </li></p><p></ul>El contenido que necesita pulirse está colocado <a href="#under-development" target="_blank" rel="noopener noreferrer">en desarrollo</a>.  </p><p>Revise las <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Pautas para contribuir</a>.  </p><h2>Índice de temas de diseño de sistemas  </h2></p><blockquote>Resúmenes de varios temas de diseño de sistemas, incluyendo pros y contras.  <strong>Todo es un compromiso</strong>.  </blockquote>
+<blockquote> </blockquote>
+<blockquote>Cada sección contiene enlaces a recursos más profundos.  </blockquote></p><p><p align="center">  
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/jrUBAF7.png">  
+  <br/>  
+</p>  </p><ul><li><a href="#system-design-topics-start-here" target="_blank" rel="noopener noreferrer">Temas de diseño de sistemas: empezar aquí</a>  </li>
+    <li><a href="#step-1-review-the-scalability-video-lecture" target="_blank" rel="noopener noreferrer">Paso 1: Revisar la conferencia en video sobre escalabilidad</a>  </li>
+    <li><a href="#step-2-review-the-scalability-article" target="_blank" rel="noopener noreferrer">Paso 2: Revisar el artículo sobre escalabilidad</a>  </li>
+    <li><a href="#next-steps" target="_blank" rel="noopener noreferrer">Próximos pasos</a>  </li>
+<li><a href="#performance-vs-scalability" target="_blank" rel="noopener noreferrer">Rendimiento vs escalabilidad</a>  </li>
+<li><a href="#latency-vs-throughput" target="_blank" rel="noopener noreferrer">Latencia vs rendimiento</a>  </li>
+<li><a href="#availability-vs-consistency" target="_blank" rel="noopener noreferrer">Disponibilidad vs consistencia</a>  </li>
+    <li><a href="#cap-theorem" target="_blank" rel="noopener noreferrer">Teorema CAP</a>  </li>
+        <li><a href="#cp---consistency-and-partition-tolerance" target="_blank" rel="noopener noreferrer">CP - consistencia y tolerancia a particiones</a>  </li>
+        <li><a href="#ap---availability-and-partition-tolerance" target="_blank" rel="noopener noreferrer">AP - disponibilidad y tolerancia a particiones</a>  </li>
+<li><a href="#consistency-patterns" target="_blank" rel="noopener noreferrer">Patrones de consistencia</a>  </li>
+    <li><a href="#weak-consistency" target="_blank" rel="noopener noreferrer">Consistencia débil</a>  </li>
+    <li><a href="#eventual-consistency" target="_blank" rel="noopener noreferrer">Consistencia eventual</a>  </li>
+    <li><a href="#strong-consistency" target="_blank" rel="noopener noreferrer">Consistencia fuerte</a>  </li>
+<li><a href="#availability-patterns" target="_blank" rel="noopener noreferrer">Patrones de disponibilidad</a>  </li>
+    <li><a href="#fail-over" target="_blank" rel="noopener noreferrer">Conmutación por error</a>  </li>
+    <li><a href="#replication" target="_blank" rel="noopener noreferrer">Replicación</a>  </li>
+    <li><a href="#availability-in-numbers" target="_blank" rel="noopener noreferrer">Disponibilidad en números</a>  </li>
+<li><a href="#domain-name-system" target="_blank" rel="noopener noreferrer">Sistema de nombres de dominio</a>  </li>
+<li><a href="#content-delivery-network" target="_blank" rel="noopener noreferrer">Red de entrega de contenido</a>  </li>
+    <li><a href="#push-cdns" target="_blank" rel="noopener noreferrer">CDNs push</a>  </li>
+    <li><a href="#pull-cdns" target="_blank" rel="noopener noreferrer">CDNs pull</a></li>
+<li><a href="#load-balancer" target="_blank" rel="noopener noreferrer">Balanceador de carga</a></li>
+    <li><a href="#active-passive" target="_blank" rel="noopener noreferrer">Activo-pasivo</a></li>
+    <li><a href="#active-active" target="_blank" rel="noopener noreferrer">Activo-activo</a></li>
+    <li><a href="#layer-4-load-balancing" target="_blank" rel="noopener noreferrer">Balanceo de carga en capa 4</a></li>
+    <li><a href="#layer-7-load-balancing" target="_blank" rel="noopener noreferrer">Balanceo de carga en capa 7</a></li>
+    <li><a href="#horizontal-scaling" target="_blank" rel="noopener noreferrer">Escalado horizontal</a></li>
+<li><a href="#reverse-proxy-web-server" target="_blank" rel="noopener noreferrer">Proxy inverso (servidor web)</a></li>
+    <li><a href="#load-balancer-vs-reverse-proxy" target="_blank" rel="noopener noreferrer">Balanceador de carga vs proxy inverso</a></li>
+<li><a href="#application-layer" target="_blank" rel="noopener noreferrer">Capa de aplicación</a></li>
+    <li><a href="#microservices" target="_blank" rel="noopener noreferrer">Microservicios</a></li>
+    <li><a href="#service-discovery" target="_blank" rel="noopener noreferrer">Descubrimiento de servicios</a></li>
+<li><a href="#database" target="_blank" rel="noopener noreferrer">Base de datos</a></li>
+    <li><a href="#relational-database-management-system-rdbms" target="_blank" rel="noopener noreferrer">Sistema de gestión de bases de datos relacionales (RDBMS)</a></li>
+        <li><a href="#master-slave-replication" target="_blank" rel="noopener noreferrer">Replicación maestro-esclavo</a></li>
+        <li><a href="#master-master-replication" target="_blank" rel="noopener noreferrer">Replicación maestro-maestro</a></li>
+        <li><a href="#federation" target="_blank" rel="noopener noreferrer">Federación</a></li>
+        <li><a href="#sharding" target="_blank" rel="noopener noreferrer">Fragmentación (Sharding)</a></li>
+        <li><a href="#denormalization" target="_blank" rel="noopener noreferrer">Desnormalización</a></li>
+        <li><a href="#sql-tuning" target="_blank" rel="noopener noreferrer">Optimización de SQL</a></li>
+    <li><a href="#nosql" target="_blank" rel="noopener noreferrer">NoSQL</a></li>
+        <li><a href="#key-value-store" target="_blank" rel="noopener noreferrer">Almacén clave-valor</a></li>
+        <li><a href="#document-store" target="_blank" rel="noopener noreferrer">Almacén de documentos</a></li>
+        <li><a href="#wide-column-store" target="_blank" rel="noopener noreferrer">Almacén de columnas anchas</a></li>
+        <li><a href="#graph-database" target="_blank" rel="noopener noreferrer">Base de datos de grafos</a></li>
+    <li><a href="#sql-or-nosql" target="_blank" rel="noopener noreferrer">SQL o NoSQL</a></li>
+<li><a href="#cache" target="_blank" rel="noopener noreferrer">Caché</a></li>
+    <li><a href="#client-caching" target="_blank" rel="noopener noreferrer">Caché del cliente</a></li>
+    <li><a href="#cdn-caching" target="_blank" rel="noopener noreferrer">Caché de CDN</a></li>
+    <li><a href="#web-server-caching" target="_blank" rel="noopener noreferrer">Caché del servidor web</a></li>
+    <li><a href="#database-caching" target="_blank" rel="noopener noreferrer">Caché de la base de datos</a></li>
+    <li><a href="#application-caching" target="_blank" rel="noopener noreferrer">Caché de la aplicación</a></li>
+    <li><a href="#caching-at-the-database-query-level" target="_blank" rel="noopener noreferrer">Caché a nivel de consulta de base de datos</a></li>
+    <li><a href="#caching-at-the-object-level" target="_blank" rel="noopener noreferrer">Caché a nivel de objeto</a></li>
+    <li><a href="#when-to-update-the-cache" target="_blank" rel="noopener noreferrer">Cuándo actualizar la caché</a></li>
+        <li><a href="#cache-aside" target="_blank" rel="noopener noreferrer">Cache-aside</a></li>
+        <li><a href="#write-through" target="_blank" rel="noopener noreferrer">Write-through</a></li>
+        <li><a href="#write-behind-write-back" target="_blank" rel="noopener noreferrer">Write-behind (escritura diferida)</a></li>
+        <li><a href="#refresh-ahead" target="_blank" rel="noopener noreferrer">Refresh-ahead</a></li>
+<li><a href="#asynchronism" target="_blank" rel="noopener noreferrer">Asincronismo</a></li>
+    <li><a href="#message-queues" target="_blank" rel="noopener noreferrer">Colas de mensajes</a></li>
+    <li><a href="#task-queues" target="_blank" rel="noopener noreferrer">Colas de tareas</a></li>
+    <li><a href="#back-pressure" target="_blank" rel="noopener noreferrer">Presión de retorno</a></li>
+<li><a href="#communication" target="_blank" rel="noopener noreferrer">Comunicación</a></li>
+    <li><a href="#transmission-control-protocol-tcp" target="_blank" rel="noopener noreferrer">Protocolo de control de transmisión (TCP)</a></li>
+    <li><a href="#user-datagram-protocol-udp" target="_blank" rel="noopener noreferrer">Protocolo de datagramas de usuario (UDP)</a></li>
+    <li><a href="#remote-procedure-call-rpc" target="_blank" rel="noopener noreferrer">Llamada a procedimiento remoto (RPC)</a></li>
+    <li><a href="#representational-state-transfer-rest" target="_blank" rel="noopener noreferrer">Transferencia de estado representacional (REST)</a></li>
+<li><a href="#security" target="_blank" rel="noopener noreferrer">Seguridad</a></li>
+<li><a href="#appendix" target="_blank" rel="noopener noreferrer">Apéndice</a></li>
+    <li><a href="#powers-of-two-table" target="_blank" rel="noopener noreferrer">Tabla de potencias de dos</a></li>
+    <li><a href="#latency-numbers-every-programmer-should-know" target="_blank" rel="noopener noreferrer">Números de latencia que todo programador debería conocer</a></li>
+    <li><a href="#additional-system-design-interview-questions" target="_blank" rel="noopener noreferrer">Preguntas adicionales para entrevistas de diseño de sistemas</a></li>
+    <li><a href="#real-world-architectures" target="_blank" rel="noopener noreferrer">Arquitecturas del mundo real</a></li>
+    <li><a href="#company-architectures" target="_blank" rel="noopener noreferrer">Arquitecturas de empresas</a></li>
+    <li><a href="#company-engineering-blogs" target="_blank" rel="noopener noreferrer">Blogs de ingeniería de empresas</a></li>
+<li><a href="#under-development" target="_blank" rel="noopener noreferrer">En desarrollo</a></li>
+<li><a href="#credits" target="_blank" rel="noopener noreferrer">Créditos</a></li>
+<li><a href="#contact-info" target="_blank" rel="noopener noreferrer">Información de contacto</a></li>
+<li><a href="#license" target="_blank" rel="noopener noreferrer">Licencia</a></li></p><p></ul><h2>Guía de estudio</h2></p><blockquote>Temas sugeridos para revisar según tu cronograma de entrevistas (corto, medio, largo).</blockquote></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/OfVllex.png" alt="Imgur"></p><p><strong>P: Para las entrevistas, ¿necesito saber todo lo que está aquí?</strong></p><p><strong>R: No, no necesitas saber todo esto para prepararte para la entrevista</strong>.</p><p>Lo que te pregunten en una entrevista depende de variables como:</p><ul><li>Cuánta experiencia tienes</li>
+<li>Cuál es tu formación técnica</li>
+<li>Para qué puestos estás entrevistando</li>
+<li>Con qué empresas estás entrevistando</li>
+<li>Suerte</li></p><p></ul>Generalmente se espera que los candidatos con más experiencia sepan más sobre diseño de sistemas. Los arquitectos o líderes de equipo podrían esperarse que sepan más que los colaboradores individuales. Las principales empresas tecnológicas probablemente tengan una o más rondas de entrevistas de diseño.</p><p>Comienza de forma amplia y profundiza en algunas áreas. Ayuda conocer un poco sobre varios temas clave de diseño de sistemas. Ajusta la siguiente guía según tu cronograma, experiencia, los puestos para los que estás entrevistando y las empresas con las que estás en proceso de selección.</p><ul><li><strong>Cronograma corto</strong> - Apunta a la <strong>amplitud</strong> en temas de diseño de sistemas. Practica resolviendo <strong>algunas</strong> preguntas de entrevista.</li>
+<li><strong>Cronograma medio</strong> - Apunta a la <strong>amplitud</strong> y <strong>algo de profundidad</strong> en temas de diseño de sistemas. Practica resolviendo <strong>muchas</strong> preguntas de entrevista.</li>
+<li><strong>Cronograma largo</strong> - Apunta a la <strong>amplitud</strong> y <strong>más profundidad</strong> en temas de diseño de sistemas. Practica resolviendo <strong>la mayoría</strong> de preguntas de entrevista.</li></p><p></ul>| | Corto | Medio | Largo |
+|---|---|---|---|
+| Lee los <a href="#index-of-system-design-topics" target="_blank" rel="noopener noreferrer">Temas de diseño de sistemas</a> para obtener una comprensión amplia de cómo funcionan los sistemas | :+1: | :+1: | :+1: |
+| Lee algunos artículos en los <a href="#company-engineering-blogs" target="_blank" rel="noopener noreferrer">Blogs de ingeniería de empresas</a> para las empresas con las que estás entrevistando | :+1: | :+1: | :+1: |
+| Lee algunas <a href="#real-world-architectures" target="_blank" rel="noopener noreferrer">Arquitecturas del mundo real</a> | :+1: | :+1: | :+1: |
+| Revisa <a href="#how-to-approach-a-system-design-interview-question" target="_blank" rel="noopener noreferrer">Cómo abordar una pregunta de entrevista de diseño de sistemas</a> | :+1: | :+1: | :+1: |
+| Trabaja con <a href="#system-design-interview-questions-with-solutions" target="_blank" rel="noopener noreferrer">Preguntas de entrevistas de diseño de sistemas con soluciones</a> | Algunas | Muchas | La mayoría |
+| Trabaja con <a href="#object-oriented-design-interview-questions-with-solutions" target="_blank" rel="noopener noreferrer">Preguntas de entrevistas de diseño orientado a objetos con soluciones</a> | Algunas | Muchas | La mayoría |
+| Revisa <a href="#additional-system-design-interview-questions" target="_blank" rel="noopener noreferrer">Preguntas adicionales de entrevistas de diseño de sistemas</a> | Algunas | Muchas | La mayoría |</p><h2>Cómo abordar una pregunta de entrevista de diseño de sistemas</h2></p><blockquote>Cómo enfrentar una pregunta de entrevista de diseño de sistemas.</blockquote></p><p>La entrevista de diseño de sistemas es una <strong>conversación abierta</strong>. Se espera que tú la lideres.</p><p>Puedes usar los siguientes pasos para guiar la discusión. Para ayudar a consolidar este proceso, trabaja la sección de <a href="#system-design-interview-questions-with-solutions" target="_blank" rel="noopener noreferrer">Preguntas de entrevistas de diseño de sistemas con soluciones</a> usando los siguientes pasos.</p><h3>Paso 1: Delimitar casos de uso, restricciones y suposiciones</h3></p><p>Reúne los requisitos y define el alcance del problema. Haz preguntas para clarificar casos de uso y restricciones. Discute las suposiciones.</p><ul><li>¿Quién lo va a usar?</li>
+<li>¿Cómo lo van a usar?</li>
+<li>¿Cuántos usuarios hay?</li>
+<li>¿Qué hace el sistema?</li>
+<li>¿Cuáles son las entradas y salidas del sistema?</li>
+<li>¿Cuánta información esperamos manejar?</li>
+<li>¿Cuántas solicitudes por segundo esperamos?</li>
+<li>¿Cuál es la proporción esperada de lectura a escritura?</li></p><p></ul><h3>Paso 2: Crear un diseño a alto nivel</h3></p><p>Esboza un diseño a alto nivel con todos los componentes importantes.
+<ul><li>Esboza los componentes principales y las conexiones  </li>
+<li>Justifica tus ideas  </li></p><p></ul><h3>Paso 3: Diseñar los componentes centrales  </h3></p><p>Profundiza en los detalles de cada componente central. Por ejemplo, si te piden <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/pastebin/README.md" target="_blank" rel="noopener noreferrer">diseñar un servicio de acortamiento de URLs</a>, discute:  </p><ul><li>Generar y almacenar un hash de la URL completa  </li>
+    <li><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/pastebin/README.md" target="_blank" rel="noopener noreferrer">MD5</a> y <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/pastebin/README.md" target="_blank" rel="noopener noreferrer">Base62</a>  </li>
+    <li>Colisiones de hash  </li>
+    <li>SQL o NoSQL  </li>
+    <li>Esquema de base de datos  </li>
+<li>Traducir una URL hasheada a la URL completa  </li>
+    <li>Consulta en base de datos  </li>
+<li>Diseño de API y orientado a objetos  </li></p><p></ul><h3>Paso 4: Escalar el diseño  </h3></p><p>Identifica y soluciona los cuellos de botella, dadas las restricciones. Por ejemplo, ¿necesitas lo siguiente para abordar problemas de escalabilidad?  </p><ul><li>Balanceador de carga  </li>
+<li>Escalado horizontal  </li>
+<li>Caché  </li>
+<li>Fragmentación de base de datos  </li></p><p></ul>Discute posibles soluciones y compensaciones. Todo es una compensación. Resuelve los cuellos de botella usando <a href="#index-of-system-design-topics" target="_blank" rel="noopener noreferrer">principios de diseño de sistemas escalables</a>.  </p><h3>Cálculos aproximados  </h3></p><p>Podrías necesitar hacer algunas estimaciones a mano. Consulta el <a href="#appendix" target="_blank" rel="noopener noreferrer">Apéndice</a> para los siguientes recursos:  </p><ul><li><a href="http://highscalability.com/blog/2011/1/26/google-pro-tip-use-back-of-the-envelope-calculations-to-choo.html" target="_blank" rel="noopener noreferrer">Usar cálculos aproximados</a>  </li>
+<li><a href="#powers-of-two-table" target="_blank" rel="noopener noreferrer">Tabla de potencias de dos</a>  </li>
+<li><a href="#latency-numbers-every-programmer-should-know" target="_blank" rel="noopener noreferrer">Números de latencia que todo programador debería conocer</a>  </li></p><p></ul><h3>Fuente(s) y lectura adicional  </h3></p><p>Consulta los siguientes enlaces para tener una mejor idea de qué esperar:</p><ul><li><a href="https://www.palantir.com/2011/10/how-to-rock-a-systems-design-interview/" target="_blank" rel="noopener noreferrer">Cómo triunfar en una entrevista de diseño de sistemas</a></li>
+<li><a href="http://www.hiredintech.com/system-design" target="_blank" rel="noopener noreferrer">La entrevista de diseño de sistemas</a></li>
+<li><a href="https://www.youtube.com/watch?v=ZgdS0EUmn70" target="_blank" rel="noopener noreferrer">Introducción a la arquitectura y entrevistas de diseño de sistemas</a></li>
+<li><a href="https://leetcode.com/discuss/career/229177/My-System-Design-Template" target="_blank" rel="noopener noreferrer">Plantilla de diseño de sistemas</a></li></p><p></ul><h2>Preguntas de entrevistas de diseño de sistemas con soluciones</h2></p><blockquote>Preguntas comunes de entrevistas de diseño de sistemas con discusiones de ejemplo, código y diagramas.</blockquote>
+>
+<blockquote>Soluciones enlazadas al contenido en la carpeta <code>solutions/</code>.</blockquote></p><p>| Pregunta | |
+|---|---|
+| Diseñar Pastebin.com (o Bit.ly) | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/pastebin/README.md" target="_blank" rel="noopener noreferrer">Solución</a> |
+| Diseñar la línea de tiempo y búsqueda de Twitter (o el feed y búsqueda de Facebook) | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/twitter/README.md" target="_blank" rel="noopener noreferrer">Solución</a> |
+| Diseñar un rastreador web | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/web_crawler/README.md" target="_blank" rel="noopener noreferrer">Solución</a> |
+| Diseñar Mint.com | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/mint/README.md" target="_blank" rel="noopener noreferrer">Solución</a> |
+| Diseñar las estructuras de datos para una red social | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/social_graph/README.md" target="_blank" rel="noopener noreferrer">Solución</a> |
+| Diseñar un almacén clave-valor para un motor de búsqueda | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/query_cache/README.md" target="_blank" rel="noopener noreferrer">Solución</a> |
+| Diseñar la función de clasificación de ventas por categoría de Amazon | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/sales_rank/README.md" target="_blank" rel="noopener noreferrer">Solución</a> |
+| Diseñar un sistema que escale a millones de usuarios en AWS | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/scaling_aws/README.md" target="_blank" rel="noopener noreferrer">Solución</a> |
+| Añadir una pregunta de diseño de sistemas | <a href="#contributing" target="_blank" rel="noopener noreferrer">Contribuir</a> |</p><h3>Diseñar Pastebin.com (o Bit.ly)</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/pastebin/README.md" target="_blank" rel="noopener noreferrer">Ver ejercicio y solución</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/4edXG0T.png" alt="Imgur"></p><h3>Diseñar la línea de tiempo y búsqueda de Twitter (o el feed y búsqueda de Facebook)</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/twitter/README.md" target="_blank" rel="noopener noreferrer">Ver ejercicio y solución</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/jrUBAF7.png" alt="Imgur"></p><h3>Diseñar un rastreador web</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/web_crawler/README.md" target="_blank" rel="noopener noreferrer">Ver ejercicio y solución</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/bWxPtQA.png" alt="Imgur"></p><h3>Design Mint.com</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/mint/README.md" target="_blank" rel="noopener noreferrer">View exercise and solution</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/V5q57vU.png" alt="Imgur"></p><h3>Design the data structures for a social network</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/social_graph/README.md" target="_blank" rel="noopener noreferrer">View exercise and solution</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/cdCv5g7.png" alt="Imgur"></p><h3>Design a key-value store for a search engine</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/query_cache/README.md" target="_blank" rel="noopener noreferrer">View exercise and solution</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/4j99mhe.png" alt="Imgur"></p><h3>Design Amazon's sales ranking by category feature</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/sales_rank/README.md" target="_blank" rel="noopener noreferrer">View exercise and solution</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/MzExP06.png" alt="Imgur"></p><h3>Design a system that scales to millions of users on AWS</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/scaling_aws/README.md" target="_blank" rel="noopener noreferrer">View exercise and solution</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/jj3A5N8.png" alt="Imgur"></p><h2>Object-oriented design interview questions with solutions</h2></p><blockquote>Common object-oriented design interview questions with sample discussions, code, and diagrams.</blockquote>
+>
+<blockquote>Solutions linked to content in the <code>solutions/</code> folder.</blockquote></p><p>><strong>Note: This section is under development</strong></p><p>| Question | |
+|---|---|
+| Diseñar un mapa hash | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/object_oriented_design/hash_table/hash_map.ipynb" target="_blank" rel="noopener noreferrer">Solución</a>  |
+| Diseñar una caché LRU (menos recientemente usada) | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/object_oriented_design/lru_cache/lru_cache.ipynb" target="_blank" rel="noopener noreferrer">Solución</a>  |
+| Diseñar un centro de llamadas | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/object_oriented_design/call_center/call_center.ipynb" target="_blank" rel="noopener noreferrer">Solución</a>  |
+| Diseñar una baraja de cartas | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/object_oriented_design/deck_of_cards/deck_of_cards.ipynb" target="_blank" rel="noopener noreferrer">Solución</a>  |
+| Diseñar un estacionamiento | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/object_oriented_design/parking_lot/parking_lot.ipynb" target="_blank" rel="noopener noreferrer">Solución</a>  |
+| Diseñar un servidor de chat | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/object_oriented_design/online_chat/online_chat.ipynb" target="_blank" rel="noopener noreferrer">Solución</a>  |
+| Diseñar un arreglo circular | <a href="#contributing" target="_blank" rel="noopener noreferrer">Contribuir</a>  |
+| Añadir una pregunta de diseño orientado a objetos | <a href="#contributing" target="_blank" rel="noopener noreferrer">Contribuir</a> |</p><h2>Temas de diseño de sistemas: comienza aquí</h2></p><p>¿Nuevo en diseño de sistemas?</p><p>Primero, necesitarás una comprensión básica de principios comunes, aprendiendo qué son, cómo se usan y sus pros y contras.</p><h3>Paso 1: Revisar la clase magistral sobre escalabilidad</h3></p><p><a href="https://www.youtube.com/watch?v=-W9F__D3oY4" target="_blank" rel="noopener noreferrer">Clase sobre escalabilidad en Harvard</a></p><ul><li>Temas cubiertos:</li>
+    <li>Escalado vertical</li>
+    <li>Escalado horizontal</li>
+    <li>Caché</li>
+    <li>Balanceo de carga</li>
+    <li>Replicación de bases de datos</li>
+    <li>Particionamiento de bases de datos</li></p><p></ul><h3>Paso 2: Revisar el artículo sobre escalabilidad</h3></p><p><a href="https://web.archive.org/web/20221030091841/http://www.lecloud.net/tagged/scalability/chrono" target="_blank" rel="noopener noreferrer">Escalabilidad</a></p><ul><li>Temas cubiertos:</li>
+    <li><a href="https://web.archive.org/web/20220530193911/https://www.lecloud.net/post/7295452622/scalability-for-dummies-part-1-clones" target="_blank" rel="noopener noreferrer">Clones</a></li>
+    <li><a href="https://web.archive.org/web/20220602114024/https://www.lecloud.net/post/7994751381/scalability-for-dummies-part-2-database" target="_blank" rel="noopener noreferrer">Bases de datos</a></li>
+    <li><a href="https://web.archive.org/web/20230126233752/https://www.lecloud.net/post/9246290032/scalability-for-dummies-part-3-cache" target="_blank" rel="noopener noreferrer">Cachés</a></li>
+    <li><a href="https://web.archive.org/web/20220926171507/https://www.lecloud.net/post/9699762917/scalability-for-dummies-part-4-asynchronism" target="_blank" rel="noopener noreferrer">Asincronismo</a></li></p><p></ul><h3>Próximos pasos</h3></p><p>A continuación, analizaremos las compensaciones a alto nivel:</p><ul><li><strong>Rendimiento</strong> vs <strong>escalabilidad</strong></li>
+<li><strong>Latencia</strong> vs <strong>rendimiento</strong></li>
+<li><strong>Disponibilidad</strong> vs <strong>consistencia</strong></li></p><p></ul>Ten en cuenta que <strong>todo es una compensación</strong>.</p><p>Luego profundizaremos en temas más específicos como DNS, CDN y balanceadores de carga.</p><h2>Rendimiento vs escalabilidad</h2></p><p>Un servicio es <strong>escalable</strong> si resulta en un aumento del <strong>rendimiento</strong> de manera proporcional a los recursos añadidos. Generalmente, aumentar el rendimiento significa servir más unidades de trabajo, pero también puede ser para manejar unidades de trabajo más grandes, como cuando los conjuntos de datos crecen.<sup><a href=http://www.allthingsdistributed.com/2006/03/a_word_on_scalability.html>1</a></sup></p><p>Otra forma de ver rendimiento vs escalabilidad:</p><ul><li>Si tienes un problema de <strong>rendimiento</strong>, tu sistema es lento para un solo usuario.</li>
+<li>Si tienes un problema de <strong>escalabilidad</strong>, tu sistema es rápido para un solo usuario pero lento bajo una carga pesada.</li></p><p></ul><h3>Fuente(s) y lectura adicional</h3></p><ul><li><a href="http://www.allthingsdistributed.com/2006/03/a_word_on_scalability.html" target="_blank" rel="noopener noreferrer">Una palabra sobre escalabilidad</a></li>
+<li><a href="http://www.slideshare.net/jboner/scalability-availability-stability-patterns/" target="_blank" rel="noopener noreferrer">Escalabilidad, disponibilidad, estabilidad, patrones</a></li></p><p></ul><h2>Latencia vs rendimiento</h2></p><p><strong>Latencia</strong> es el tiempo para realizar alguna acción o producir algún resultado.</p><p><strong>Rendimiento</strong> es el número de tales acciones o resultados por unidad de tiempo.</p><p>Generalmente, debes apuntar a un <strong>rendimiento máximo</strong> con una <strong>latencia aceptable</strong>.</p><h3>Fuente(s) y lectura adicional</h3></p><ul><li><a href="https://community.cadence.com/cadence_blogs_8/b/fv/posts/understanding-latency-vs-throughput" target="_blank" rel="noopener noreferrer">Entendiendo latencia vs rendimiento</a></li></p><p></ul><h2>Disponibilidad vs consistencia</h2></p><h3>Teorema CAP</h3></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/bgLMI2u.png">
+  <br/>
+  <i><a href=http://robertgreiner.com/2014/08/cap-theorem-revisited>Fuente: Teorema CAP revisitado</a></i>
+</p></p><p>En un sistema informático distribuido, solo puedes soportar dos de las siguientes garantías:</p><ul><li><strong>Consistencia</strong> - Cada lectura recibe la escritura más reciente o un error</li>
+<li><strong>Disponibilidad</strong> - Cada solicitud recibe una respuesta, sin garantía de que contenga la versión más reciente de la información</li>
+<li><strong>Tolerancia a particiones</strong> - El sistema continúa operando a pesar de particionamientos arbitrarios debido a fallos en la red</li></p><p></ul><em>Las redes no son confiables, por lo que necesitarás soportar tolerancia a particiones. Tendrás que hacer un compromiso en el software entre consistencia y disponibilidad.</em></p><p>#### CP - consistencia y tolerancia a particiones</p><p>Esperar una respuesta del nodo particionado podría resultar en un error de tiempo de espera. CP es una buena opción si las necesidades de tu negocio requieren lecturas y escrituras atómicas.</p><p>#### AP - disponibilidad y tolerancia a particiones</p><p>Las respuestas devuelven la versión más fácilmente disponible de los datos en cualquier nodo, que podría no ser la más reciente. Las escrituras podrían tardar en propagarse cuando se resuelve la partición.</p><p>AP es una buena opción si el negocio necesita permitir la <a href="#eventual-consistency" target="_blank" rel="noopener noreferrer">consistencia eventual</a> o cuando el sistema debe continuar funcionando a pesar de errores externos.</p><h3>Fuente(s) y lectura adicional</h3></p><ul><li><a href="http://robertgreiner.com/2014/08/cap-theorem-revisited/" target="_blank" rel="noopener noreferrer">Teorema CAP revisitado</a></li>
+<li><a href="http://ksat.me/a-plain-english-introduction-to-cap-theorem" target="_blank" rel="noopener noreferrer">Una introducción sencilla al teorema CAP</a></li>
+<li><a href="https://github.com/henryr/cap-faq" target="_blank" rel="noopener noreferrer">FAQ del teorema CAP</a></li>
+<li><a href="https://www.youtube.com/watch?v=k-Yaq8AHlFA" target="_blank" rel="noopener noreferrer">El teorema CAP</a></li></p><p></ul><h2>Patrones de consistencia</h2></p><p>Con múltiples copias de los mismos datos, enfrentamos opciones sobre cómo sincronizarlas para que los clientes tengan una vista consistente de los datos. Recuerda la definición de consistencia del <a href="#cap-theorem" target="_blank" rel="noopener noreferrer">teorema CAP</a>: cada lectura recibe la escritura más reciente o un error.</p><h3>Consistencia débil</h3></p><p>Después de una escritura, las lecturas pueden o no verla. Se adopta un enfoque de mejor esfuerzo.</p><p>Este enfoque se observa en sistemas como memcached. La consistencia débil funciona bien en casos de uso en tiempo real como VoIP, chat de video y juegos multijugador en tiempo real. Por ejemplo, si estás en una llamada telefónica y pierdes la señal por unos segundos, cuando recuperas la conexión no escuchas lo que se dijo durante la pérdida de conexión.</p><h3>Consistencia eventual</h3></p><p>Después de una escritura, las lecturas eventualmente la verán (normalmente en milisegundos). Los datos se replican de forma asincrónica.</p><p>Este enfoque se observa en sistemas como DNS y correo electrónico. La consistencia eventual funciona bien en sistemas altamente disponibles.</p><h3>Consistencia fuerte</h3></p><p>Después de una escritura, las lecturas la verán. Los datos se replican de forma sincrónica.</p><p>Este enfoque se observa en sistemas de archivos y RDBMS. La consistencia fuerte funciona bien en sistemas que necesitan transacciones.</p><h3>Fuente(s) y lectura adicional</h3></p><ul><li><a href="http://snarfed.org/transactions_across_datacenters_io.html" target="_blank" rel="noopener noreferrer">Transacciones entre centros de datos</a></li></p><p></ul><h2>Patrones de disponibilidad</h2></p><p>Existen dos patrones complementarios para soportar alta disponibilidad: <strong>fail-over</strong> y <strong>replicación</strong>.</p><h3>Fail-over</h3></p><p>#### Activo-pasivo</p><p>Con fail-over activo-pasivo, se envían latidos entre el servidor activo y el servidor pasivo en espera. Si el latido se interrumpe, el servidor pasivo toma la dirección IP del activo y reanuda el servicio.</p><p>La duración del tiempo de inactividad depende de si el servidor pasivo ya está funcionando en espera "caliente" o si necesita arrancar desde una espera "fría". Solo el servidor activo maneja el tráfico.</p><p>El failover activo-pasivo también puede denominarse failover maestro-esclavo.</p><p>#### Activo-activo</p><p>En activo-activo, ambos servidores gestionan el tráfico, distribuyendo la carga entre ellos.</p><p>Si los servidores están expuestos al público, el DNS necesitaría conocer las IP públicas de ambos servidores. Si los servidores están orientados internamente, la lógica de la aplicación debería conocer ambos servidores.</p><p>El failover activo-activo también puede denominarse failover maestro-maestro.</p><h3>Desventaja(s): failover</h3>
+<ul><li>La conmutación por error añade más hardware y complejidad adicional.</li>
+<li>Existe un potencial de pérdida de datos si el sistema activo falla antes de que cualquier dato recién escrito pueda ser replicado al pasivo.</li></p><p></ul><h3>Replicación</h3></p><p>#### Maestro-esclavo y maestro-maestro</p><p>Este tema se discute más a fondo en la sección de <a href="#database" target="_blank" rel="noopener noreferrer">Base de datos</a>:</p><ul><li><a href="#master-slave-replication" target="_blank" rel="noopener noreferrer">Replicación maestro-esclavo</a></li>
+<li><a href="#master-master-replication" target="_blank" rel="noopener noreferrer">Replicación maestro-maestro</a></li></p><p></ul><h3>Disponibilidad en números</h3></p><p>La disponibilidad a menudo se cuantifica por el tiempo de actividad (o inactividad) como un porcentaje del tiempo que el servicio está disponible. La disponibilidad generalmente se mide en número de nueves: un servicio con 99.99% de disponibilidad se describe como que tiene cuatro nueves.</p><p>#### Disponibilidad del 99.9% - tres nueves</p><p>| Duración            | Tiempo de inactividad aceptable |
+|---------------------|--------------------------------|
+| Inactividad por año | 8h 45min 57s                   |
+| Inactividad por mes | 43m 49.7s                      |
+| Inactividad por semana | 10m 4.8s                    |
+| Inactividad por día | 1m 26.4s                      |</p><p>#### Disponibilidad del 99.99% - cuatro nueves</p><p>| Duración            | Tiempo de inactividad aceptable |
+|---------------------|--------------------------------|
+| Inactividad por año | 52min 35.7s                    |
+| Inactividad por mes | 4m 23s                        |
+| Inactividad por semana | 1m 5s                      |
+| Inactividad por día | 8.6s                          |</p><p>#### Disponibilidad en paralelo vs en secuencia</p><p>Si un servicio consiste en múltiples componentes propensos a fallos, la disponibilidad general del servicio depende de si los componentes están en secuencia o en paralelo.</p><p>###### En secuencia</p><p>
+La disponibilidad general disminuye cuando dos componentes con disponibilidad < 100 % están en secuencia:</p><pre><code class="language-">Availability (Total) = Availability (Foo) * Availability (Bar)</code></pre>
+Si tanto <code>Foo</code> como <code>Bar</code> tuvieran cada uno un 99.9% de disponibilidad, su disponibilidad total en secuencia sería del 99.8%.</p><p>###### En paralelo</p><p>La disponibilidad general aumenta cuando dos componentes con disponibilidad < 100% están en paralelo:</p><pre><code class="language-">Availability (Total) = 1 - (1 - Availability (Foo)) * (1 - Availability (Bar))</code></pre>
+Si tanto <code>Foo</code> como <code>Bar</code> tuvieran cada uno un 99.9% de disponibilidad, su disponibilidad total en paralelo sería del 99.9999%.</p><h2>Sistema de nombres de dominio</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/IOyLj4i.jpg">
+  <br/>
+  <i><a href=http://www.slideshare.net/srikrupa5/dns-security-presentation-issa>Fuente: Presentación de seguridad DNS</a></i>
+</p></p><p>Un Sistema de Nombres de Dominio (DNS) traduce un nombre de dominio como www.example.com a una dirección IP.</p><p>El DNS es jerárquico, con algunos servidores autorizados en el nivel superior.  Tu router o ISP proporciona información sobre qué servidor(es) DNS contactar al realizar una consulta.  Los servidores DNS de nivel inferior almacenan en caché los mapeos, que podrían volverse obsoletos debido a retrasos en la propagación del DNS.  Los resultados DNS también pueden ser almacenados en caché por tu navegador o sistema operativo durante un cierto período, determinado por el <a href="https://es.wikipedia.org/wiki/Time_to_live" target="_blank" rel="noopener noreferrer">tiempo de vida (TTL)</a>.</p><ul><li><strong>Registro NS (servidor de nombres)</strong> - Especifica los servidores DNS para tu dominio/subdominio.</li>
+<li><strong>Registro MX (intercambio de correo)</strong> - Especifica los servidores de correo para aceptar mensajes.</li>
+<li><strong>Registro A (dirección)</strong> - Apunta un nombre a una dirección IP.</li>
+<li><strong>CNAME (canónico)</strong> - Apunta un nombre a otro nombre o <code>CNAME</code> (example.com a www.example.com) o a un registro <code>A</code>.</li></p><p></ul>Servicios como <a href="https://www.cloudflare.com/dns/" target="_blank" rel="noopener noreferrer">CloudFlare</a> y <a href="https://aws.amazon.com/route53/" target="_blank" rel="noopener noreferrer">Route 53</a> ofrecen servicios DNS gestionados.  Algunos servicios DNS pueden enrutar el tráfico mediante varios métodos:</p><ul><li><a href="https://www.jscape.com/blog/load-balancing-algorithms" target="_blank" rel="noopener noreferrer">Round robin ponderado</a></li>
+    <li>Evitar que el tráfico vaya a servidores en mantenimiento</li>
+    <li>Balancear entre tamaños variables de clúster</li>
+    <li>Pruebas A/B</li>
+<li><a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-latency.html" target="_blank" rel="noopener noreferrer">Basado en latencia</a></li>
+<li><a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-geo.html" target="_blank" rel="noopener noreferrer">Basado en geolocalización</a></li></p><p></ul><h3>Desventaja(s): DNS</h3></p><ul><li>Acceder a un servidor DNS introduce una pequeña demora, aunque mitigada por el almacenamiento en caché descrito arriba.</li>
+<li>La gestión de servidores DNS puede ser compleja y generalmente está a cargo de <a href="http://superuser.com/questions/472695/who-controls-the-dns-servers/472729" target="_blank" rel="noopener noreferrer">gobiernos, ISP y grandes empresas</a>.</li>
+<li>Los servicios DNS han sido recientemente objeto de <a href="http://dyn.com/blog/dyn-analysis-summary-of-friday-october-21-attack/" target="_blank" rel="noopener noreferrer">ataques DDoS</a>, impidiendo que los usuarios accedan a sitios web como Twitter sin conocer la(s) dirección(es) IP de Twitter.</li></p><p></ul><h3>Fuente(s) y lecturas adicionales</h3></p><ul><li><a href="https://technet.microsoft.com/en-us/library/dd197427(v=ws.10" target="_blank" rel="noopener noreferrer">Arquitectura DNS</a>.aspx)</li>
+<li><a href="https://es.wikipedia.org/wiki/Domain_Name_System" target="_blank" rel="noopener noreferrer">Wikipedia</a></li>
+<li><a href="https://support.dnsimple.com/categories/dns/" target="_blank" rel="noopener noreferrer">Artículos DNS</a></li></p><p>
+</ul><h2>Red de entrega de contenido</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/h9TAuGI.jpg">
+  <br/>
+  <i><a href=https://www.creative-artworks.eu/why-use-a-content-delivery-network-cdn/>Fuente: Por qué usar una CDN</a></i>
+</p></p><p>Una red de entrega de contenido (CDN) es una red distribuida globalmente de servidores proxy, que sirven contenido desde ubicaciones más cercanas al usuario. Generalmente, archivos estáticos como HTML/CSS/JS, fotos y videos son servidos desde la CDN, aunque algunas CDNs como CloudFront de Amazon soportan contenido dinámico. La resolución DNS del sitio indicará a los clientes qué servidor contactar.</p><p>Servir contenido desde CDNs puede mejorar significativamente el rendimiento de dos maneras:</p><ul><li>Los usuarios reciben contenido desde centros de datos cercanos a ellos</li>
+<li>Tus servidores no tienen que atender solicitudes que la CDN cumple</li></p><p></ul><h3>CDNs Push</h3></p><p>Las CDNs push reciben contenido nuevo cada vez que ocurren cambios en tu servidor. Asumes plena responsabilidad por proporcionar contenido, subiéndolo directamente a la CDN y reescribiendo URLs para apuntar a la CDN. Puedes configurar cuándo expira el contenido y cuándo se actualiza. El contenido se sube solo cuando es nuevo o cambiado, minimizando el tráfico, pero maximizando el almacenamiento.</p><p>Los sitios con poco tráfico o sitios con contenido que no se actualiza con frecuencia funcionan bien con CDNs push. El contenido se coloca en las CDNs una sola vez, en lugar de ser recuperado repetidamente en intervalos regulares.</p><h3>CDNs Pull</h3></p><p>Las CDNs pull obtienen contenido nuevo de tu servidor cuando el primer usuario solicita el contenido. Dejas el contenido en tu servidor y reescribes URLs para apuntar a la CDN. Esto resulta en una solicitud más lenta hasta que el contenido se cachea en la CDN.</p><p>Un <a href="https://es.wikipedia.org/wiki/Time_to_live" target="_blank" rel="noopener noreferrer">tiempo de vida (TTL)</a> determina cuánto tiempo se cachea el contenido. Las CDNs pull minimizan el espacio de almacenamiento en la CDN, pero pueden crear tráfico redundante si los archivos expiran y se recuperan antes de que hayan cambiado realmente.</p><p>Los sitios con tráfico elevado funcionan bien con CDNs pull, ya que el tráfico se distribuye de manera más uniforme y solo el contenido solicitado recientemente permanece en la CDN.</p><h3>Desventaja(s): CDN</h3></p><ul><li>Los costos de CDN podrían ser significativos dependiendo del tráfico, aunque esto debe ponderarse con los costos adicionales que incurrirías al no usar una CDN.</li>
+<li>El contenido podría estar desactualizado si se actualiza antes de que expire el TTL.</li>
+<li>Las CDNs requieren cambiar URLs para el contenido estático para apuntar a la CDN.</li></p><p></ul><h3>Fuente(s) y lectura adicional</h3></p><ul><li><a href="https://figshare.com/articles/Globally_distributed_content_delivery/6605972" target="_blank" rel="noopener noreferrer">Entrega de contenido distribuida globalmente</a></li>
+<li><a href="http://www.travelblogadvice.com/technical/the-differences-between-push-and-pull-cdns/" target="_blank" rel="noopener noreferrer">Las diferencias entre CDNs push y pull</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Content_delivery_network" target="_blank" rel="noopener noreferrer">Wikipedia</a></li></p><p></ul><h2>Balanceador de carga</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/h81n9iK.png">
+  <br/>
+  <i><a href=http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html>Fuente: Patrones de diseño de sistemas escalables</a></i>
+</p></p><p>Los balanceadores de carga distribuyen las solicitudes entrantes de los clientes a recursos informáticos como servidores de aplicaciones y bases de datos. En cada caso, el balanceador de carga devuelve la respuesta del recurso informático al cliente correspondiente. Los balanceadores de carga son efectivos para:</p><ul><li>Prevenir que las solicitudes se dirijan a servidores no saludables</li>
+<li>Evitar la sobrecarga de recursos</li>
+<li>Ayudar a eliminar un punto único de fallo</li></p><p></ul>Los balanceadores de carga pueden implementarse con hardware (costoso) o con software como HAProxy.</p><p>Beneficios adicionales incluyen:</p><ul><li><strong>Terminación SSL</strong> - Desencriptar solicitudes entrantes y encriptar respuestas del servidor para que los servidores backend no tengan que realizar estas operaciones potencialmente costosas</li>
+    <li>Elimina la necesidad de instalar <a href="https://en.wikipedia.org/wiki/X.509" target="_blank" rel="noopener noreferrer">certificados X.509</a> en cada servidor</li>
+<li><strong>Persistencia de sesión</strong> - Emitir cookies y enrutar las solicitudes de un cliente específico a la misma instancia si las aplicaciones web no mantienen el seguimiento de las sesiones</li></p><p></ul>Para proteger contra fallos, es común configurar múltiples balanceadores de carga, ya sea en modo <a href="#active-passive" target="_blank" rel="noopener noreferrer">activo-pasivo</a> o <a href="#active-active" target="_blank" rel="noopener noreferrer">activo-activo</a>.</p><p>Los balanceadores de carga pueden enrutar el tráfico basándose en varias métricas, incluyendo:</p><ul><li>Aleatorio</li>
+<li>Menos cargado</li>
+<li>Sesión/cookies</li>
+<li><a href="https://www.g33kinfo.com/info/round-robin-vs-weighted-round-robin-lb" target="_blank" rel="noopener noreferrer">Round robin o round robin ponderado</a></li>
+<li><a href="#layer-4-load-balancing" target="_blank" rel="noopener noreferrer">Capa 4</a></li>
+<li><a href="#layer-7-load-balancing" target="_blank" rel="noopener noreferrer">Capa 7</a></li></p><p></ul><h3>Balanceo de carga en capa 4</h3></p><p>Los balanceadores de carga de capa 4 analizan la información en la <a href="#communication" target="_blank" rel="noopener noreferrer">capa de transporte</a> para decidir cómo distribuir las solicitudes. Generalmente, esto involucra las direcciones IP de origen y destino, y los puertos en el encabezado, pero no el contenido del paquete. Los balanceadores de carga de capa 4 reenvían paquetes de red hacia y desde el servidor ascendente, realizando <a href="https://www.nginx.com/resources/glossary/layer-4-load-balancing/" target="_blank" rel="noopener noreferrer">Traducción de Direcciones de Red (NAT)</a>.</p><h3>Balanceo de carga en capa 7</h3></p><p>Los balanceadores de carga de capa 7 analizan la <a href="#communication" target="_blank" rel="noopener noreferrer">capa de aplicación</a> para decidir cómo distribuir las solicitudes. Esto puede involucrar el contenido del encabezado, el mensaje y las cookies. Los balanceadores de carga de capa 7 terminan el tráfico de red, leen el mensaje, toman una decisión de balanceo de carga y luego abren una conexión con el servidor seleccionado. Por ejemplo, un balanceador de carga de capa 7 puede dirigir el tráfico de video a servidores que alojan videos mientras dirige el tráfico más sensible de facturación de usuarios a servidores reforzados en seguridad.</p><p>A costa de la flexibilidad, el balanceo de carga de capa 4 requiere menos tiempo y recursos computacionales que la capa 7, aunque el impacto en el rendimiento puede ser mínimo en hardware moderno y común.</p><h3>Escalamiento horizontal</h3></p><p>Los balanceadores de carga también pueden ayudar con el escalamiento horizontal, mejorando el rendimiento y la disponibilidad. Escalar usando máquinas comunes es más eficiente en costos y resulta en mayor disponibilidad que escalar un solo servidor con hardware más costoso, llamado <strong>Escalamiento Vertical</strong>. También es más fácil contratar talento que trabaje con hardware común que con sistemas empresariales especializados.</p><p>#### Desventaja(s): escalamiento horizontal</p><ul><li>Escalar horizontalmente introduce complejidad e implica clonar servidores</li>
+    <li>Los servidores deben ser sin estado: no deben contener datos relacionados con el usuario como sesiones o fotos de perfil</li>
+    <li>Las sesiones pueden almacenarse en un almacén de datos centralizado como una <a href="#database" target="_blank" rel="noopener noreferrer">base de datos</a> (SQL, NoSQL) o una <a href="#cache" target="_blank" rel="noopener noreferrer">caché</a> persistente (Redis, Memcached)</li>
+<li>Los servidores aguas abajo, como cachés y bases de datos, necesitan manejar más conexiones simultáneas a medida que los servidores aguas arriba escalan</li></p><p></ul><h3>Desventaja(s): balanceador de carga</h3></p><ul><li>El balanceador de carga puede convertirse en un cuello de botella de rendimiento si no tiene suficientes recursos o si no está configurado correctamente.</li>
+<li>Introducir un balanceador de carga para ayudar a eliminar un único punto de falla resulta en mayor complejidad.</li>
+<li>Un solo balanceador de carga es un único punto de falla; configurar múltiples balanceadores de carga aumenta aún más la complejidad.</li></p><p></ul><h3>Fuente(s) y lectura adicional</h3></p><ul><li><a href="https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale/" target="_blank" rel="noopener noreferrer">Arquitectura de NGINX</a></li>
+<li><a href="http://www.haproxy.org/download/1.2/doc/architecture.txt" target="_blank" rel="noopener noreferrer">Guía de arquitectura de HAProxy</a></li>
+<li><a href="https://web.archive.org/web/20220530193911/https://www.lecloud.net/post/7295452622/scalability-for-dummies-part-1-clones" target="_blank" rel="noopener noreferrer">Escalabilidad</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Load_balancing_(computing" target="_blank" rel="noopener noreferrer">Wikipedia</a>)</li>
+<li><a href="https://www.nginx.com/resources/glossary/layer-4-load-balancing/" target="_blank" rel="noopener noreferrer">Balanceo de carga de capa 4</a></li>
+<li><a href="https://www.nginx.com/resources/glossary/layer-7-load-balancing/" target="_blank" rel="noopener noreferrer">Balanceo de carga de capa 7</a></li>
+<li><a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html" target="_blank" rel="noopener noreferrer">Configuración de listener ELB</a></li></p><p></ul><h2>Proxy inverso (servidor web)</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/n41Azff.png">
+  <br/>
+  <i><a href=https://upload.wikimedia.org/wikipedia/commons/6/67/Reverse_proxy_h2g2bob.svg>Fuente: Wikipedia</a></i>
+  <br/>
+</p>
+Un proxy inverso es un servidor web que centraliza servicios internos y proporciona interfaces unificadas al público. Las solicitudes de los clientes se reenvían a un servidor que puede cumplirlas antes de que el proxy inverso devuelva la respuesta del servidor al cliente.</p><p>Beneficios adicionales incluyen:</p><ul><li><strong>Mayor seguridad</strong> - Ocultar información sobre los servidores backend, bloquear IPs, limitar el número de conexiones por cliente</li>
+<li><strong>Mayor escalabilidad y flexibilidad</strong> - Los clientes solo ven la IP del proxy inverso, lo que permite escalar servidores o cambiar su configuración</li>
+<li><strong>Terminación SSL</strong> - Desencriptar solicitudes entrantes y encriptar respuestas del servidor para que los servidores backend no tengan que realizar estas operaciones potencialmente costosas</li>
+    <li>Elimina la necesidad de instalar <a href="https://en.wikipedia.org/wiki/X.509" target="_blank" rel="noopener noreferrer">certificados X.509</a> en cada servidor</li>
+<li><strong>Compresión</strong> - Comprimir respuestas del servidor</li>
+<li><strong>Caché</strong> - Devolver la respuesta para solicitudes en caché</li>
+<li><strong>Contenido estático</strong> - Servir contenido estático directamente</li>
+    <li>HTML/CSS/JS</li>
+    <li>Fotos</li>
+    <li>Videos</li>
+    <li>Etc</li></p><p></ul><h3>Balanceador de carga vs proxy inverso</h3></p><ul><li>Implementar un balanceador de carga es útil cuando se tienen múltiples servidores. A menudo, los balanceadores de carga dirigen el tráfico a un conjunto de servidores que cumplen la misma función.</li>
+<li>Los proxies inversos pueden ser útiles incluso con un solo servidor web o servidor de aplicaciones, abriendo los beneficios descritos en la sección anterior.</li>
+<li>Soluciones como NGINX y HAProxy pueden soportar tanto proxy inverso en capa 7 como balanceo de carga.</li></p><p></ul><h3>Desventaja(s): proxy inverso</h3></p><ul><li>Introducir un proxy inverso resulta en una mayor complejidad.</li>
+<li>Un solo proxy inverso es un único punto de fallo, configurar múltiples proxies inversos (es decir, un <a href="https://en.wikipedia.org/wiki/Failover" target="_blank" rel="noopener noreferrer">failover</a>) aumenta aún más la complejidad.</li></p><p></ul><h3>Fuente(s) y lectura adicional</h3></p><ul><li><a href="https://www.nginx.com/resources/glossary/reverse-proxy-vs-load-balancer/" target="_blank" rel="noopener noreferrer">Proxy inverso vs balanceador de carga</a></li>
+<li><a href="https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale/" target="_blank" rel="noopener noreferrer">Arquitectura de NGINX</a></li>
+<li><a href="http://www.haproxy.org/download/1.2/doc/architecture.txt" target="_blank" rel="noopener noreferrer">Guía de arquitectura de HAProxy</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Reverse_proxy" target="_blank" rel="noopener noreferrer">Wikipedia</a></li></p><p></ul><h2>Capa de aplicación</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/yB5SYwm.png">
+  <br/></p><p>  <i><a href=http://lethain.com/introduction-to-architecting-systems-for-scale/#platform_layer>Fuente: Introducción a la arquitectura de sistemas para escalabilidad</a></i>
+</p></p><p>Separar la capa web de la capa de aplicación (también conocida como capa de plataforma) permite escalar y configurar ambas capas de manera independiente. Agregar una nueva API resulta en añadir servidores de aplicación sin necesariamente añadir servidores web adicionales. El <strong>principio de responsabilidad única</strong> aboga por servicios pequeños y autónomos que trabajan juntos. Equipos pequeños con servicios pequeños pueden planificar de forma más agresiva para un crecimiento rápido.</p><p>Los trabajadores en la capa de aplicación también ayudan a habilitar el <a href="#asynchronism" target="_blank" rel="noopener noreferrer">asincronismo</a>.</p><h3>Microservicios</h3></p><p>Relacionado con esta discusión están los <a href="https://es.wikipedia.org/wiki/Microservicio" target="_blank" rel="noopener noreferrer">microservicios</a>, que pueden describirse como un conjunto de servicios pequeños, modulares e independientemente desplegables. Cada servicio ejecuta un proceso único y se comunica a través de un mecanismo ligero y bien definido para cumplir un objetivo de negocio. <sup><a href=https://smartbear.com/learn/api-design/what-are-microservices>1</a></sup></p><p>Pinterest, por ejemplo, podría tener los siguientes microservicios: perfil de usuario, seguidores, feed, búsqueda, subida de fotos, etc.</p><h3>Descubrimiento de servicios</h3></p><p>Sistemas como <a href="https://www.consul.io/docs/index.html" target="_blank" rel="noopener noreferrer">Consul</a>, <a href="https://coreos.com/etcd/docs/latest" target="_blank" rel="noopener noreferrer">Etcd</a>, y <a href="http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper" target="_blank" rel="noopener noreferrer">Zookeeper</a> pueden ayudar a que los servicios se encuentren entre sí manteniendo un registro de nombres, direcciones y puertos registrados. Los <a href="https://www.consul.io/intro/getting-started/checks.html" target="_blank" rel="noopener noreferrer">chequeos de salud</a> ayudan a verificar la integridad del servicio y a menudo se realizan usando un endpoint <a href="#hypertext-transfer-protocol-http" target="_blank" rel="noopener noreferrer">HTTP</a>. Tanto Consul como Etcd tienen una <a href="#key-value-store" target="_blank" rel="noopener noreferrer">almacén clave-valor</a> incorporado que puede ser útil para almacenar valores de configuración y otros datos compartidos.</p><h3>Desventaja(s): capa de aplicación</h3></p><ul><li>Agregar una capa de aplicación con servicios débilmente acoplados requiere un enfoque diferente desde el punto de vista arquitectónico, operativo y de procesos (vs un sistema monolítico).</li>
+<li>Los microservicios pueden añadir complejidad en términos de despliegues y operaciones.</li></p><p></ul><h3>Fuente(s) y lectura adicional</h3></p><ul><li><a href="http://lethain.com/introduction-to-architecting-systems-for-scale" target="_blank" rel="noopener noreferrer">Introducción a la arquitectura de sistemas para escalabilidad</a></li>
+<li><a href="http://www.puncsky.com/blog/2016-02-13-crack-the-system-design-interview" target="_blank" rel="noopener noreferrer">Domina la entrevista de diseño de sistemas</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Arquitectura_orientada_a_servicios" target="_blank" rel="noopener noreferrer">Arquitectura orientada a servicios</a></li>
+<li><a href="http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper" target="_blank" rel="noopener noreferrer">Introducción a Zookeeper</a></li>
+<li><a href="https://cloudncode.wordpress.com/2016/07/22/msa-getting-started/" target="_blank" rel="noopener noreferrer">Esto es lo que necesitas saber sobre la construcción de microservicios</a></li></p><p></ul><h2>Base de datos</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/Xkm5CXz.png">
+  <br/>
+  <i><a href=https://www.youtube.com/watch?v=kKjm4ehYiMs>Fuente: Escalando hasta tus primeros 10 millones de usuarios</a></i>
+</p></p><h3>Sistema de gestión de bases de datos relacionales (RDBMS)</h3></p><p>Una base de datos relacional como SQL es una colección de elementos de datos organizados en tablas.</p><p><strong>ACID</strong> es un conjunto de propiedades de las <a href="https://es.wikipedia.org/wiki/Transacci%C3%B3n_(inform%C3%A1tica" target="_blank" rel="noopener noreferrer">transacciones</a>) en bases de datos relacionales.</p><ul><li><strong>Atomicidad</strong> - Cada transacción es todo o nada</li>
+<li><strong>Consistencia</strong> - Cualquier transacción llevará la base de datos de un estado válido a otro</li>
+<li><strong>Aislamiento</strong> - Ejecutar transacciones concurrentemente tiene los mismos resultados que si se ejecutaran en serie</li>
+<li><strong>Durabilidad</strong> - Una vez que una transacción ha sido confirmada, permanecerá así</li></p><p></ul>Existen muchas técnicas para escalar una base de datos relacional: <strong>replicación maestro-esclavo</strong>, <strong>replicación maestro-maestro</strong>, <strong>federación</strong>, <strong>sharding</strong>, <strong>desnormalización</strong> y <strong>optimización de SQL</strong>.</p><p>#### Replicación maestro-esclavo</p><p>El maestro atiende lecturas y escrituras, replicando las escrituras a uno o más esclavos, que solo atienden lecturas. Los esclavos también pueden replicar a esclavos adicionales en forma de árbol. Si el maestro se desconecta, el sistema puede continuar operando en modo solo lectura hasta que un esclavo sea promovido a maestro o se configure un nuevo maestro.</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/C9ioGtn.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>Fuente: Escalabilidad, disponibilidad, estabilidad, patrones</a></i>
+</p></p><p>##### Desventaja(s): replicación maestro-esclavo</p><ul><li>Se necesita lógica adicional para promover un esclavo a maestro.</li>
+<li>Ver <a href="#disadvantages-replication" target="_blank" rel="noopener noreferrer">Desventaja(s): replicación</a> para puntos relacionados con <strong>ambos</strong> maestro-esclavo y maestro-maestro.</li></p><p></ul>#### Replicación maestro-maestro</p><p>Ambos maestros atienden lecturas y escrituras y coordinan entre sí las escrituras. Si alguno de los maestros falla, el sistema puede continuar operando con lecturas y escrituras.</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/krAHLGg.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>Fuente: Escalabilidad, disponibilidad, estabilidad, patrones</a></i>
+</p></p><p>##### Desventaja(s): replicación maestro-maestro</p><ul><li>Necesitarás un balanceador de carga o deberás hacer cambios en la lógica de tu aplicación para determinar dónde escribir.</li>
+<li>La mayoría de sistemas maestro-maestro son o bien débilmente consistentes (violando ACID) o tienen mayor latencia de escritura debido a la sincronización.</li>
+<li>La resolución de conflictos cobra mayor importancia a medida que se añaden más nodos de escritura y aumenta la latencia.  </li>
+<li>Consulte <a href="#disadvantages-replication" target="_blank" rel="noopener noreferrer">Desventaja(s): replicación</a> para puntos relacionados con <strong>ambos</strong> master-esclavo y master-master.</li></p><p></ul>##### Desventaja(s): replicación</p><ul><li>Existe la posibilidad de pérdida de datos si el maestro falla antes de que los datos recién escritos puedan replicarse a otros nodos.  </li>
+<li>Las escrituras se reproducen en las réplicas de lectura. Si hay muchas escrituras, las réplicas de lectura pueden saturarse con la reproducción de escrituras y no pueden realizar tantas lecturas.  </li>
+<li>Cuantos más esclavos de lectura, más tiene que replicar, lo que conduce a una mayor latencia de replicación.  </li>
+<li>En algunos sistemas, escribir en el maestro puede generar múltiples hilos para escribir en paralelo, mientras que las réplicas de lectura solo admiten escritura secuencial con un solo hilo.  </li>
+<li>La replicación añade más hardware y complejidad adicional.</li></p><p></ul>##### Fuente(s) y lectura adicional: replicación</p><ul><li><a href="http://www.slideshare.net/jboner/scalability-availability-stability-patterns/" target="_blank" rel="noopener noreferrer">Escalabilidad, disponibilidad, estabilidad, patrones</a>  </li>
+<li><a href="https://es.wikipedia.org/wiki/Replicaci%C3%B3n_multi-maestro" target="_blank" rel="noopener noreferrer">Replicación multi-maestro</a></li></p><p></ul>#### Federación</p><p><p align="center">  
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/U3qV33e.png">  
+  <br/>  
+  <i><a href=https://www.youtube.com/watch?v=kKjm4ehYiMs>Fuente: Escalando hasta tus primeros 10 millones de usuarios</a></i>  
+</p></p><p>La federación (o partición funcional) divide las bases de datos por función. Por ejemplo, en lugar de una base de datos monolítica única, podrías tener tres bases de datos: <strong>foros</strong>, <strong>usuarios</strong> y <strong>productos</strong>, lo que resulta en menos tráfico de lectura y escritura para cada base de datos y por lo tanto menos latencia de replicación. Bases de datos más pequeñas resultan en más datos que pueden caber en memoria, lo que a su vez resulta en más aciertos de caché debido a una mejor localidad de caché. Sin un maestro central único que serialice las escrituras, puedes escribir en paralelo, aumentando el rendimiento.</p><p>##### Desventaja(s): federación</p><ul><li>La federación no es efectiva si tu esquema requiere funciones o tablas enormes.  </li>
+<li>Necesitarás actualizar la lógica de tu aplicación para determinar qué base de datos leer y escribir.  </li>
+<li>Unir datos de dos bases de datos es más complejo con un <a href="http://stackoverflow.com/questions/5145637/querying-data-by-joining-two-tables-in-two-database-on-different-servers" target="_blank" rel="noopener noreferrer">enlace de servidor</a>.  </li>
+<li>La federación añade más hardware y complejidad adicional.</li></p><p></ul>##### Fuente(s) y lectura adicional: federación</p><ul><li><a href="https://www.youtube.com/watch?v=kKjm4ehYiMs" target="_blank" rel="noopener noreferrer">Escalando hasta tus primeros 10 millones de usuarios</a></li></p><p></ul>#### Sharding</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/wU8x5Id.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>Fuente: Escalabilidad, disponibilidad, estabilidad, patrones</a></i>
+</p></p><p>El sharding distribuye datos a través de diferentes bases de datos de modo que cada base de datos solo puede gestionar un subconjunto de los datos. Tomando como ejemplo una base de datos de usuarios, a medida que aumenta el número de usuarios, se añaden más shards al clúster.</p><p>De manera similar a las ventajas de la <a href="#federation" target="_blank" rel="noopener noreferrer">federación</a>, el sharding resulta en menos tráfico de lectura y escritura, menos replicación y más aciertos en caché. El tamaño del índice también se reduce, lo que generalmente mejora el rendimiento con consultas más rápidas. Si un shard falla, los otros shards siguen operativos, aunque querrás añadir alguna forma de replicación para evitar la pérdida de datos. Al igual que la federación, no hay un maestro central único que serialice las escrituras, lo que permite escribir en paralelo con mayor rendimiento.</p><p>Las formas comunes de shardear una tabla de usuarios son a través de la inicial del apellido del usuario o la ubicación geográfica del usuario.</p><p>##### Desventaja(s): sharding</p><ul><li>Necesitarás actualizar la lógica de tu aplicación para trabajar con shards, lo que podría resultar en consultas SQL complejas.</li>
+<li>La distribución de datos puede volverse desigual en un shard. Por ejemplo, un conjunto de usuarios con mucha actividad en un shard podría resultar en una carga mayor en ese shard comparado con otros.</li>
+    <li>El rebalanceo añade complejidad adicional. Una función de sharding basada en <a href="http://www.paperplanes.de/2011/12/9/the-magic-of-consistent-hashing.html" target="_blank" rel="noopener noreferrer">hashing consistente</a> puede reducir la cantidad de datos transferidos.</li>
+<li>Realizar joins de datos desde múltiples shards es más complejo.</li>
+<li>El sharding añade más hardware y complejidad adicional.</li></p><p></ul>##### Fuente(s) y lectura adicional: sharding</p><ul><li><a href="http://highscalability.com/blog/2009/8/6/an-unorthodox-approach-to-database-design-the-coming-of-the.html" target="_blank" rel="noopener noreferrer">La llegada del shard</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Shard_(database_architecture" target="_blank" rel="noopener noreferrer">Arquitectura de base de datos shard</a>)</li>
+<li><a href="http://www.paperplanes.de/2011/12/9/the-magic-of-consistent-hashing.html" target="_blank" rel="noopener noreferrer">Hashing consistente</a></li></p><p></ul>#### Desnormalización</p><p>La desnormalización intenta mejorar el rendimiento de lectura a expensas de algo de rendimiento en escritura. Se escriben copias redundantes de los datos en múltiples tablas para evitar joins costosos. Algunos RDBMS como <a href="https://en.wikipedia.org/wiki/PostgreSQL" target="_blank" rel="noopener noreferrer">PostgreSQL</a> y Oracle soportan <a href="https://en.wikipedia.org/wiki/Materialized_view" target="_blank" rel="noopener noreferrer">vistas materializadas</a> que gestionan el trabajo de almacenar información redundante y mantener las copias redundantes consistentes.</p><p>Una vez que los datos se distribuyen con técnicas como la <a href="#federation" target="_blank" rel="noopener noreferrer">federación</a> y el <a href="#sharding" target="_blank" rel="noopener noreferrer">sharding</a>, gestionar joins entre centros de datos incrementa aún más la complejidad. La desnormalización podría evitar la necesidad de esos joins complejos.</p><p>En la mayoría de los sistemas, las lecturas pueden superar ampliamente a las escrituras en una proporción de 100:1 o incluso 1000:1. Una lectura que resulta en un join complejo puede ser muy costosa, consumiendo una cantidad significativa de tiempo en operaciones de disco.</p><p>##### Desventaja(s): desnormalización</p><ul><li>Los datos se duplican.</li>
+<li>Las restricciones pueden ayudar a que las copias redundantes de información se mantengan sincronizadas, lo que aumenta la complejidad del diseño de la base de datos.</li>
+<li>Una base de datos desnormalizada bajo una carga pesada de escrituras podría rendir peor que su contraparte normalizada.</li></p><p></ul>###### Fuente(s) y lectura adicional: desnormalización
+<ul><li><a href="https://es.wikipedia.org/wiki/Desnormalizaci%C3%B3n" target="_blank" rel="noopener noreferrer">Desnormalización</a></li></p><p></ul>#### Afinación de SQL</p><p>La afinación de SQL es un tema amplio y se han escrito muchos <a href="https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=sql+tuning" target="_blank" rel="noopener noreferrer">libros</a> como referencia.</p><p>Es importante <strong>realizar pruebas de rendimiento</strong> y <strong>perfiles</strong> para simular y descubrir cuellos de botella.</p><ul><li><strong>Prueba de rendimiento</strong> - Simular situaciones de alta carga con herramientas como <a href="http://httpd.apache.org/docs/2.2/programs/ab.html" target="_blank" rel="noopener noreferrer">ab</a>.</li>
+<li><strong>Perfil</strong> - Habilitar herramientas como el <a href="http://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html" target="_blank" rel="noopener noreferrer">registro de consultas lentas</a> para ayudar a rastrear problemas de rendimiento.</li></p><p></ul>Las pruebas de rendimiento y los perfiles podrían indicarle las siguientes optimizaciones.</p><p>##### Ajustar el esquema</p><ul><li>MySQL volca a disco en bloques contiguos para acceso rápido.</li>
+<li>Use <code>CHAR</code> en lugar de <code>VARCHAR</code> para campos de longitud fija.</li>
+    <li><code>CHAR</code> permite un acceso rápido y aleatorio, mientras que con <code>VARCHAR</code> debe encontrar el final de una cadena antes de pasar a la siguiente.</li>
+<li>Use <code>TEXT</code> para grandes bloques de texto como entradas de blog. <code>TEXT</code> también permite búsquedas booleanas. Usar un campo <code>TEXT</code> implica almacenar un puntero en disco que se usa para localizar el bloque de texto.</li>
+<li>Use <code>INT</code> para números grandes hasta 2^32 o 4 mil millones.</li>
+<li>Use <code>DECIMAL</code> para moneda para evitar errores de representación en punto flotante.</li>
+<li>Evite almacenar <code>BLOBS</code> grandes, almacene la ubicación de donde obtener el objeto en su lugar.</li>
+<li><code>VARCHAR(255)</code> es el número máximo de caracteres que se pueden contar en un número de 8 bits, maximizando a menudo el uso de un byte en algunos RDBMS.</li>
+<li>Establezca la restricción <code>NOT NULL</code> donde sea aplicable para <a href="http://stackoverflow.com/questions/1017239/how-do-null-values-affect-performance-in-a-database-search" target="_blank" rel="noopener noreferrer">mejorar el rendimiento de búsqueda</a>.</li></p><p></ul>##### Use buenos índices</p><ul><li>Las columnas que consulte (<code>SELECT</code>, <code>GROUP BY</code>, <code>ORDER BY</code>, <code>JOIN</code>) podrían ser más rápidas con índices.</li>
+<li>Los índices generalmente se representan como <a href="https://es.wikipedia.org/wiki/%C3%81rbol_B" target="_blank" rel="noopener noreferrer">B-tree</a> autoequilibrados que mantienen los datos ordenados y permiten búsquedas, acceso secuencial, inserciones y eliminaciones en tiempo logarítmico.</li>
+<li>Colocar un índice puede mantener los datos en memoria, requiriendo más espacio.</li>
+<li>Las escrituras también podrían ser más lentas ya que el índice debe actualizarse.</li>
+<li>Al cargar grandes cantidades de datos, puede ser más rápido deshabilitar los índices, cargar los datos y luego reconstruir los índices.</li></p><p></ul>##### Evite joins costosos</p><ul><li><a href="#desnormalización" target="_blank" rel="noopener noreferrer">Desnormalice</a> donde el rendimiento lo demande.</li></p><p></ul>##### Particione tablas</p><ul><li>Dividir una tabla poniendo puntos calientes en una tabla separada para ayudar a mantenerla en memoria.</li></p><p></ul>##### Ajustar la caché de consultas</p><ul><li>En algunos casos, la <a href="https://dev.mysql.com/doc/refman/5.7/en/query-cache.html" target="_blank" rel="noopener noreferrer">caché de consultas</a> podría causar <a href="https://www.percona.com/blog/2016/10/12/mysql-5-7-performance-tuning-immediately-after-installation/" target="_blank" rel="noopener noreferrer">problemas de rendimiento</a>.</li></p><p></ul>##### Fuente(s) y lecturas adicionales: Optimización SQL</p><ul><li><a href="http://aiddroid.com/10-tips-optimizing-mysql-queries-dont-suck/" target="_blank" rel="noopener noreferrer">Consejos para optimizar consultas MySQL</a></li>
+<li><a href="http://stackoverflow.com/questions/1217466/is-there-a-good-reason-i-see-varchar255-used-so-often-as-opposed-to-another-l" target="_blank" rel="noopener noreferrer">¿Hay una buena razón para ver VARCHAR(255) usado tan frecuentemente?</a></li>
+<li><a href="http://stackoverflow.com/questions/1017239/how-do-null-values-affect-performance-in-a-database-search" target="_blank" rel="noopener noreferrer">¿Cómo afectan los valores nulos al rendimiento?</a></li>
+<li><a href="http://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html" target="_blank" rel="noopener noreferrer">Registro de consultas lentas</a></li></p><p></ul><h3>NoSQL</h3></p><p>NoSQL es una colección de elementos de datos representados en un <strong>almacén clave-valor</strong>, <strong>almacén de documentos</strong>, <strong>almacén de columnas anchas</strong>, o una <strong>base de datos de grafos</strong>.  Los datos están desnormalizados, y las uniones generalmente se hacen en el código de la aplicación.  La mayoría de los almacenes NoSQL carecen de transacciones ACID verdaderas y prefieren la <a href="#eventual-consistency" target="_blank" rel="noopener noreferrer">consistencia eventual</a>.</p><p><strong>BASE</strong> se usa a menudo para describir las propiedades de las bases de datos NoSQL.  En comparación con el <a href="#cap-theorem" target="_blank" rel="noopener noreferrer">Teorema CAP</a>, BASE elige disponibilidad sobre consistencia.</p><ul><li><strong>Básicamente disponible</strong> - el sistema garantiza disponibilidad.</li>
+<li><strong>Estado blando</strong> - el estado del sistema puede cambiar con el tiempo, incluso sin entrada.</li>
+<li><strong>Consistencia eventual</strong> - el sistema se volverá consistente en un período de tiempo, dado que el sistema no reciba entrada durante ese período.</li></p><p></ul>Además de elegir entre <a href="#sql-or-nosql" target="_blank" rel="noopener noreferrer">SQL o NoSQL</a>, es útil entender qué tipo de base de datos NoSQL se adapta mejor a su(s) caso(s) de uso.  Revisaremos <strong>almacenes clave-valor</strong>, <strong>almacenes de documentos</strong>, <strong>almacenes de columnas anchas</strong> y <strong>bases de datos de grafos</strong> en la siguiente sección.</p><p>#### Almacén clave-valor</p><blockquote>Abstracción: tabla hash</blockquote></p><p>Un almacén clave-valor generalmente permite lecturas y escrituras O(1) y a menudo está respaldado por memoria o SSD.  Los almacenes de datos pueden mantener claves en <a href="https://en.wikipedia.org/wiki/Lexicographical_order" target="_blank" rel="noopener noreferrer">orden lexicográfico</a>, permitiendo una recuperación eficiente de rangos de claves.  Los almacenes clave-valor pueden permitir almacenar metadatos junto con un valor.</p><p>Los almacenes clave-valor ofrecen alto rendimiento y se usan frecuentemente para modelos de datos simples o para datos que cambian rápidamente, como una capa de caché en memoria.  Dado que ofrecen solo un conjunto limitado de operaciones, la complejidad se traslada a la capa de aplicación si se necesitan operaciones adicionales.</p><p>Un almacén clave-valor es la base para sistemas más complejos como un almacén de documentos y, en algunos casos, una base de datos de grafos.</p><p>##### Fuente(s) y lecturas adicionales: almacén clave-valor</p><ul><li><a href="https://en.wikipedia.org/wiki/Key-value_database" target="_blank" rel="noopener noreferrer">Base de datos clave-valor</a></li>
+<li><a href="http://stackoverflow.com/questions/4056093/what-are-the-disadvantages-of-using-a-key-value-table-over-nullable-columns-or" target="_blank" rel="noopener noreferrer">Desventajas de los almacenes clave-valor</a></li>
+<li><a href="http://qnimate.com/overview-of-redis-architecture/" target="_blank" rel="noopener noreferrer">Arquitectura de Redis</a></li>
+<li><a href="https://adayinthelifeof.nl/2011/02/06/memcache-internals/" target="_blank" rel="noopener noreferrer">Arquitectura de Memcached</a></li></p><p></ul>#### Almacenamiento de documentos</p><blockquote>Abstracción: almacén clave-valor con documentos almacenados como valores</blockquote></p><p>Un almacenamiento de documentos se centra en documentos (XML, JSON, binario, etc.), donde un documento almacena toda la información de un objeto dado. Los almacenes de documentos proporcionan APIs o un lenguaje de consulta para consultar basándose en la estructura interna del documento mismo. <em>Nota, muchos almacenes clave-valor incluyen características para trabajar con los metadatos de un valor, difuminando las líneas entre estos dos tipos de almacenamiento.</em></p><p>Según la implementación subyacente, los documentos se organizan por colecciones, etiquetas, metadatos o directorios. Aunque los documentos pueden organizarse o agruparse juntos, los documentos pueden tener campos que son completamente diferentes entre sí.</p><p>Algunos almacenes de documentos como <a href="https://www.mongodb.com/mongodb-architecture" target="_blank" rel="noopener noreferrer">MongoDB</a> y <a href="https://blog.couchdb.org/2016/08/01/couchdb-2-0-architecture/" target="_blank" rel="noopener noreferrer">CouchDB</a> también proporcionan un lenguaje similar a SQL para realizar consultas complejas. <a href="http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/decandia07dynamo.pdf" target="_blank" rel="noopener noreferrer">DynamoDB</a> soporta tanto clave-valor como documentos.</p><p>Los almacenes de documentos ofrecen alta flexibilidad y se utilizan frecuentemente para trabajar con datos que cambian ocasionalmente.</p><p>##### Fuente(s) y lectura adicional: almacenamiento de documentos</p><ul><li><a href="https://es.wikipedia.org/wiki/Base_de_datos_orientada_a_documentos" target="_blank" rel="noopener noreferrer">Base de datos orientada a documentos</a></li>
+<li><a href="https://www.mongodb.com/mongodb-architecture" target="_blank" rel="noopener noreferrer">Arquitectura de MongoDB</a></li>
+<li><a href="https://blog.couchdb.org/2016/08/01/couchdb-2-0-architecture/" target="_blank" rel="noopener noreferrer">Arquitectura de CouchDB</a></li>
+<li><a href="https://www.elastic.co/blog/found-elasticsearch-from-the-bottom-up" target="_blank" rel="noopener noreferrer">Arquitectura de Elasticsearch</a></li></p><p></ul>#### Almacenamiento de columnas anchas</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/n16iOGk.png">
+  <br/>
+  <i><a href=http://blog.grio.com/2015/11/sql-nosql-a-brief-history.html>Fuente: SQL & NoSQL, una breve historia</a></i>
+</p></p><blockquote>Abstracción: mapa anidado <code>ColumnFamily<RowKey, Columns<ColKey, Value, Timestamp>></code></blockquote></p><p>La unidad básica de datos de un almacenamiento de columnas anchas es una columna (par nombre/valor). Una columna puede agruparse en familias de columnas (análogas a una tabla SQL). Las familias de supercolumnas agrupan aún más familias de columnas. Puedes acceder a cada columna de forma independiente con una clave de fila, y las columnas con la misma clave forman una fila. Cada valor contiene una marca de tiempo para versionado y resolución de conflictos.</p><p>Google introdujo <a href="http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf" target="_blank" rel="noopener noreferrer">Bigtable</a> como el primer almacenamiento de columnas anchas, que influyó en el proyecto open-source <a href="https://www.edureka.co/blog/hbase-architecture/" target="_blank" rel="noopener noreferrer">HBase</a> usado frecuentemente en el ecosistema Hadoop, y <a href="http://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archIntro.html" target="_blank" rel="noopener noreferrer">Cassandra</a> de Facebook. Almacenes como BigTable, HBase y Cassandra mantienen las claves en orden lexicográfico, permitiendo una recuperación eficiente de rangos selectivos de claves.</p><p>Los almacenes de columnas anchas ofrecen alta disponibilidad y alta escalabilidad. A menudo se utilizan para conjuntos de datos muy grandes.</p><p>##### Fuente(s) y lectura adicional: almacenamiento de columnas anchas</p><ul><li><a href="http://blog.grio.com/2015/11/sql-nosql-a-brief-history.html" target="_blank" rel="noopener noreferrer">SQL & NoSQL, una breve historia</a></li>
+<li><a href="http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf" target="_blank" rel="noopener noreferrer">Arquitectura de Bigtable</a></li>
+<li><a href="https://www.edureka.co/blog/hbase-architecture/" target="_blank" rel="noopener noreferrer">Arquitectura de HBase</a></li>
+<li><a href="http://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archIntro.html" target="_blank" rel="noopener noreferrer">Arquitectura de Cassandra</a></li></p><p></ul>#### Base de datos de grafos</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/fNcl65g.png">
+  <br/>
+  <i><a href=https://en.wikipedia.org/wiki/File:GraphDatabase_PropertyGraph.png>Fuente: Base de datos de grafos</a></i>
+</p></p><blockquote>Abstracción: grafo</blockquote></p><p>En una base de datos de grafos, cada nodo es un registro y cada arco es una relación entre dos nodos.  Las bases de datos de grafos están optimizadas para representar relaciones complejas con muchas claves foráneas o relaciones muchos a muchos.</p><p>Las bases de datos de grafos ofrecen un alto rendimiento para modelos de datos con relaciones complejas, como una red social.  Son relativamente nuevas y aún no se usan ampliamente; puede ser más difícil encontrar herramientas de desarrollo y recursos.  Muchos grafos solo pueden accederse con <a href="#representational-state-transfer-rest" target="_blank" rel="noopener noreferrer">APIs REST</a>.</p><p>##### Fuente(s) y lectura adicional: grafo</p><ul><li><a href="https://en.wikipedia.org/wiki/Graph_database" target="_blank" rel="noopener noreferrer">Base de datos de grafos</a></li>
+<li><a href="https://neo4j.com/" target="_blank" rel="noopener noreferrer">Neo4j</a></li>
+<li><a href="https://blog.twitter.com/2010/introducing-flockdb" target="_blank" rel="noopener noreferrer">FlockDB</a></li></p><p></ul>#### Fuente(s) y lectura adicional: NoSQL</p><ul><li><a href="http://stackoverflow.com/questions/3342497/explanation-of-base-terminology" target="_blank" rel="noopener noreferrer">Explicación de la terminología BASE</a></li>
+<li><a href="https://medium.com/baqend-blog/nosql-databases-a-survey-and-decision-guidance-ea7823a822d#.wskogqenq" target="_blank" rel="noopener noreferrer">Bases de datos NoSQL: una encuesta y guía para la decisión</a></li>
+<li><a href="https://web.archive.org/web/20220602114024/https://www.lecloud.net/post/7994751381/scalability-for-dummies-part-2-database" target="_blank" rel="noopener noreferrer">Escalabilidad</a></li>
+<li><a href="https://www.youtube.com/watch?v=qI_g07C_Q5I" target="_blank" rel="noopener noreferrer">Introducción a NoSQL</a></li>
+<li><a href="http://horicky.blogspot.com/2009/11/nosql-patterns.html" target="_blank" rel="noopener noreferrer">Patrones NoSQL</a></li></p><p></ul><h3>SQL o NoSQL</h3></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/wXGqG5f.png">
+  <br/>
+  <i><a href=https://www.infoq.com/articles/Transition-RDBMS-NoSQL/>Fuente: Transición de RDBMS a NoSQL</a></i>
+</p></p><p>Razones para <strong>SQL</strong>:</p><ul><li>Datos estructurados</li>
+<li>Esquema estricto</li>
+<li>Datos relacionales</li>
+<li>Necesidad de uniones complejas</li>
+<li>Transacciones</li>
+<li>Patrones claros para escalado</li>
+<li>Más establecido: desarrolladores, comunidad, código, herramientas, etc.</li>
+<li>Las búsquedas por índice son muy rápidas</li></p><p></ul>Razones para <strong>NoSQL</strong>:</p><ul><li>Datos semiestructurados</li>
+<li>Esquema dinámico o flexible</li>
+<li>Datos no relacionales</li>
+<li>No necesita uniones complejas</li>
+<li>Almacenar muchos TB (o PB) de datos</li>
+<li>Carga de trabajo muy intensiva en datos</li>
+<li>Muy alto rendimiento para IOPS</li></p><p></ul>Datos de ejemplo bien adaptados para NoSQL:</p><ul><li>Ingesta rápida de datos de clickstream y registros</li>
+<li>Datos de tablas de clasificación o puntuación</li>
+<li>Datos temporales, como un carrito de compras</li>
+<li>Tablas frecuentemente accedidas ('calientes')</li>
+<li>Tablas de metadatos/búsqueda</li></p><p></ul>##### Fuente(s) y lectura adicional: SQL o NoSQL</p><ul><li><a href="https://www.youtube.com/watch?v=kKjm4ehYiMs" target="_blank" rel="noopener noreferrer">Escalando hasta tus primeros 10 millones de usuarios</a></li>
+<li><a href="https://www.sitepoint.com/sql-vs-nosql-differences/" target="_blank" rel="noopener noreferrer">Diferencias entre SQL y NoSQL</a></li></p><p></ul><h2>Caché</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/Q6z24La.png">
+  <br/>
+  <i><a href=http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html>Fuente: Patrones de diseño de sistemas escalables</a></i>
+</p></p><p>El almacenamiento en caché mejora los tiempos de carga de la página y puede reducir la carga en sus servidores y bases de datos. En este modelo, el despachador primero buscará si la solicitud se ha realizado antes e intentará encontrar el resultado previo para devolverlo, con el fin de ahorrar la ejecución real.</p><p>Las bases de datos a menudo se benefician de una distribución uniforme de lecturas y escrituras a través de sus particiones. Los elementos populares pueden sesgar la distribución, causando cuellos de botella. Colocar una caché delante de una base de datos puede ayudar a absorber cargas desiguales y picos de tráfico.</p><h3>Caché del cliente</h3></p><p>Las cachés pueden estar ubicadas en el lado del cliente (SO o navegador), <a href="#reverse-proxy-web-server" target="_blank" rel="noopener noreferrer">lado del servidor</a> o en una capa de caché distinta.</p><h3>Caché CDN</h3></p><p>Las <a href="#content-delivery-network" target="_blank" rel="noopener noreferrer">CDNs</a> se consideran un tipo de caché.</p><h3>Caché del servidor web</h3></p><p>Los <a href="#reverse-proxy-web-server" target="_blank" rel="noopener noreferrer">proxy inversos</a> y cachés como <a href="https://www.varnish-cache.org/" target="_blank" rel="noopener noreferrer">Varnish</a> pueden servir contenido estático y dinámico directamente. Los servidores web también pueden almacenar en caché solicitudes, devolviendo respuestas sin tener que contactar con servidores de aplicaciones.</p><h3>Caché de base de datos</h3></p><p>Su base de datos generalmente incluye algún nivel de caché en una configuración predeterminada, optimizada para un caso de uso genérico. Ajustar estas configuraciones para patrones de uso específicos puede mejorar aún más el rendimiento.</p><h3>Caché de aplicación</h3></p><p>Las cachés en memoria como Memcached y Redis son almacenes clave-valor entre su aplicación y su almacenamiento de datos. Dado que los datos se mantienen en RAM, es mucho más rápido que las bases de datos típicas donde los datos se almacenan en disco. La RAM es más limitada que el disco, por lo que algoritmos de <a href="https://es.wikipedia.org/wiki/Algoritmos_de_cach%C3%A9" target="_blank" rel="noopener noreferrer">invalidación de caché</a> como <a href="https://es.wikipedia.org/wiki/Pol%C3%ADticas_de_reemplazo_de_cach%C3%A9#El_menos_usado_recientemente_(LRU" target="_blank" rel="noopener noreferrer">el menos utilizado recientemente (LRU)</a>) pueden ayudar a invalidar entradas 'frías' y mantener datos 'calientes' en RAM.</p><p>Redis tiene las siguientes características adicionales:</p><ul><li>Opción de persistencia</li>
+<li>Estructuras de datos integradas como conjuntos ordenados y listas</li></p><p></ul>Hay múltiples niveles que puede almacenar en caché y que se dividen en dos categorías generales: <strong>consultas de base de datos</strong> y <strong>objetos</strong>:</p><ul><li>Nivel de fila</li>
+<li>Nivel de consulta</li>
+<li>Objetos serializables completamente formados</li>
+<li>HTML completamente renderizado</li></p><p></ul>En general, debería tratar de evitar el almacenamiento en caché basado en archivos, ya que dificulta la clonación y el autoescalado.</p><h3>Caché a nivel de consulta de base de datos</h3></p><p>Cada vez que consultas la base de datos, hashea la consulta como una clave y almacena el resultado en la caché. Este enfoque sufre problemas de expiración:</p><ul><li>Difícil eliminar un resultado en caché con consultas complejas</li>
+<li>Si un dato cambia, como una celda de tabla, necesitas eliminar todas las consultas en caché que podrían incluir la celda cambiada</li></p><p></ul><h3>Caché a nivel de objeto</h3></p><p>Ve tus datos como un objeto, similar a lo que haces con el código de tu aplicación. Haz que tu aplicación arme el conjunto de datos desde la base de datos en una instancia de clase o una(s) estructura(s) de datos:</p><ul><li>Elimina el objeto de la caché si sus datos subyacentes han cambiado</li>
+<li>Permite procesamiento asíncrono: los workers arman objetos consumiendo el último objeto en caché</li></p><p></ul>Sugerencias de qué cachéar:</p><ul><li>Sesiones de usuario</li>
+<li>Páginas web completamente renderizadas</li>
+<li>Flujos de actividad</li>
+<li>Datos de grafo de usuario</li></p><p></ul><h3>Cuándo actualizar la caché</h3></p><p>Dado que solo puedes almacenar una cantidad limitada de datos en caché, deberás determinar qué estrategia de actualización de caché funciona mejor para tu caso de uso.</p><p>#### Cache-aside</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/ONjORqk.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/tmatyashovsky/from-cache-to-in-memory-data-grid-introduction-to-hazelcast>Fuente: De caché a grid de datos en memoria</a></i>
+</p></p><p>La aplicación es responsable de leer y escribir desde el almacenamiento. La caché no interactúa directamente con el almacenamiento. La aplicación hace lo siguiente:</p><ul><li>Busca la entrada en caché, resultando en un fallo de caché</li>
+<li>Carga la entrada desde la base de datos</li>
+<li>Añade la entrada a la caché</li>
+<li>Devuelve la entrada</li></p><p></ul><pre><code class="language-python">def get_user(self, user_id):
+    user = cache.get("user.{0}", user_id)
+    if user is None:
+        user = db.query("SELECT * FROM users WHERE user_id = {0}", user_id)
+        if user is not None:
+            key = "user.{0}".format(user_id)
+            cache.set(key, json.dumps(user))
+    return user</code></pre></p><p><a href="https://memcached.org/" target="_blank" rel="noopener noreferrer">Memcached</a> generalmente se usa de esta manera.</p><p>Las lecturas posteriores de datos agregados a la caché son rápidas. Cache-aside también se conoce como carga perezosa. Solo se almacena en caché los datos solicitados, lo que evita llenar la caché con datos que no se solicitan.</p><p>##### Desventaja(s): cache-aside</p><ul><li>Cada fallo de caché resulta en tres viajes, lo que puede causar una demora notable.</li>
+<li>Los datos pueden volverse obsoletos si se actualizan en la base de datos. Este problema se mitiga configurando un tiempo de vida (TTL) que fuerza una actualización de la entrada de caché, o usando write-through.</li>
+<li>Cuando un nodo falla, es reemplazado por un nodo nuevo y vacío, aumentando la latencia.</li></p><p></ul>#### Write-through</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/0vBc0hN.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>Fuente: Escalabilidad, disponibilidad, estabilidad, patrones</a></i>
+</p></p><p>La aplicación usa la caché como el almacén principal de datos, leyendo y escribiendo datos en ella, mientras que la caché es responsable de leer y escribir en la base de datos:</p><ul><li>La aplicación agrega/actualiza la entrada en la caché</li>
+<li>La caché escribe sincrónicamente la entrada en el almacén de datos</li>
+<li>Retorna</li></p><p></ul>Código de la aplicación:</p><pre><code class="language-python">set_user(12345, {"foo":"bar"})</code></pre></p><p>Código de caché:</p><pre><code class="language-python">def set_user(user_id, values):
+    user = db.query("UPDATE Users WHERE id = {0}", user_id, values)
+    cache.set(user_id, user)</code></pre></p><p>Write-through es una operación general lenta debido a la operación de escritura, pero las lecturas posteriores de datos recién escritos son rápidas. Los usuarios generalmente son más tolerantes a la latencia al actualizar datos que al leer datos. Los datos en la caché no están obsoletos.</p><p>##### Desventaja(s): write through</p><ul><li>Cuando se crea un nuevo nodo debido a una falla o escalado, el nuevo nodo no almacenará en caché las entradas hasta que la entrada se actualice en la base de datos. Cache-aside junto con write through puede mitigar este problema.</li>
+<li>La mayoría de los datos escritos podrían nunca ser leídos, lo que se puede minimizar con un TTL.</li></p><p></ul>#### Write-behind (write-back)</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/rgSrvjG.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>Fuente: Escalabilidad, disponibilidad, estabilidad, patrones</a></i>
+</p></p><p>En write-behind, la aplicación hace lo siguiente:</p><ul><li>Añadir/actualizar entrada en caché</li>
+<li>Escribir la entrada de forma asíncrona en el almacén de datos, mejorando el rendimiento de escritura</li></p><p></ul>##### Desventaja(s): write-behind</p><ul><li>Podría haber pérdida de datos si la caché se cae antes de que sus contenidos lleguen al almacén de datos.</li>
+<li>Es más complejo implementar write-behind que implementar cache-aside o write-through.</li></p><p></ul>#### Refresh-ahead</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/kxtjqgE.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/tmatyashovsky/from-cache-to-in-memory-data-grid-introduction-to-hazelcast>Fuente: De caché a grid de datos en memoria</a></i>
+</p></p><p>Puede configurar la caché para actualizar automáticamente cualquier entrada de caché recientemente accedida antes de su expiración.</p><p>Refresh-ahead puede resultar en una latencia reducida frente a read-through si la caché puede predecir con precisión qué elementos probablemente se necesitarán en el futuro.</p><p>##### Desventaja(s): refresh-ahead</p><ul><li>No predecir con precisión qué elementos serán necesarios en el futuro puede resultar en un rendimiento reducido en comparación con no usar refresh-ahead.</li></p><p></ul><h3>Desventaja(s): caché</h3></p><ul><li>Es necesario mantener la consistencia entre las cachés y la fuente de la verdad, como la base de datos, mediante <a href="https://es.wikipedia.org/wiki/Algoritmo_de_cach%C3%A9" target="_blank" rel="noopener noreferrer">invalidación de caché</a>.</li>
+<li>La invalidación de caché es un problema difícil, existe una complejidad adicional asociada a cuándo actualizar la caché.</li>
+<li>Es necesario hacer cambios en la aplicación, como agregar Redis o memcached.</li></p><p></ul><h3>Fuente(s) y lecturas adicionales</h3></p><ul><li><a href="http://www.slideshare.net/tmatyashovsky/from-cache-to-in-memory-data-grid-introduction-to-hazelcast" target="_blank" rel="noopener noreferrer">De caché a grid de datos en memoria</a></li>
+<li><a href="http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html" target="_blank" rel="noopener noreferrer">Patrones de diseño de sistemas escalables</a></li>
+<li><a href="http://lethain.com/introduction-to-architecting-systems-for-scale/" target="_blank" rel="noopener noreferrer">Introducción a la arquitectura de sistemas para escala</a></li>
+<li><a href="http://www.slideshare.net/jboner/scalability-availability-stability-patterns/" target="_blank" rel="noopener noreferrer">Escalabilidad, disponibilidad, estabilidad, patrones</a></li>
+<li><a href="https://web.archive.org/web/20230126233752/https://www.lecloud.net/post/9246290032/scalability-for-dummies-part-3-cache" target="_blank" rel="noopener noreferrer">Escalabilidad</a></li>
+<li><a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Strategies.html" target="_blank" rel="noopener noreferrer">Estrategias AWS ElastiCache</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Cache_(inform%C3%A1tica" target="_blank" rel="noopener noreferrer">Wikipedia</a>)</li></p><p></ul><h2>Asincronismo</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/54GYsSx.png">
+  <br/>
+  <i><a href=http://lethain.com/introduction-to-architecting-systems-for-scale/#platform_layer>Fuente: Introducción a la arquitectura de sistemas para escala</a></i>
+</p></p><p>Los flujos de trabajo asíncronos ayudan a reducir los tiempos de respuesta para operaciones costosas que de otro modo se realizarían en línea. También pueden ayudar realizando trabajo que consume tiempo por adelantado, como la agregación periódica de datos.</p><h3>Colas de mensajes</h3></p><p>Las colas de mensajes reciben, retienen y entregan mensajes. Si una operación es demasiado lenta para realizarse en línea, puede usar una cola de mensajes con el siguiente flujo de trabajo:</p><ul><li>Una aplicación publica un trabajo en la cola y luego notifica al usuario sobre el estado del trabajo</li>
+<li>Un trabajador recoge el trabajo de la cola, lo procesa y luego señala que el trabajo está completo</li></p><p></ul>El usuario no queda bloqueado y el trabajo se procesa en segundo plano. Durante este tiempo, el cliente podría opcionalmente realizar una pequeña cantidad de procesamiento para que parezca que la tarea ha finalizado. Por ejemplo, si publicas un tweet, el tweet podría aparecer instantáneamente en tu línea de tiempo, pero podría tardar un poco antes de que tu tweet sea realmente entregado a todos tus seguidores.</p><p><strong><a href="https://redis.io/" target="_blank" rel="noopener noreferrer">Redis</a></strong> es útil como un broker de mensajes simple, pero los mensajes pueden perderse.</p><p><strong><a href="https://www.rabbitmq.com/" target="_blank" rel="noopener noreferrer">RabbitMQ</a></strong> es popular pero requiere que te adaptes al protocolo 'AMQP' y administres tus propios nodos.</p><p><strong><a href="https://aws.amazon.com/sqs/" target="_blank" rel="noopener noreferrer">Amazon SQS</a></strong> está alojado pero puede tener alta latencia y existe la posibilidad de que los mensajes se entreguen dos veces.</p><h3>Colas de tareas</h3></p><p>Las colas de tareas reciben tareas y sus datos relacionados, las ejecutan y luego entregan sus resultados. Pueden soportar programación y pueden usarse para ejecutar trabajos computacionalmente intensivos en segundo plano.</p><p><strong><a href="https://docs.celeryproject.org/en/stable/" target="_blank" rel="noopener noreferrer">Celery</a></strong> tiene soporte para programación y principalmente tiene soporte para python.</p><h3>Presión de retorno</h3></p><p>Si las colas comienzan a crecer significativamente, el tamaño de la cola puede ser mayor que la memoria, lo que resulta en fallos de caché, lecturas de disco y un rendimiento aún más lento. <a href="http://mechanical-sympathy.blogspot.com/2012/05/apply-back-pressure-when-overloaded.html" target="_blank" rel="noopener noreferrer">La presión de retorno</a> puede ayudar limitando el tamaño de la cola, manteniendo así una alta tasa de rendimiento y buenos tiempos de respuesta para los trabajos ya en la cola. Una vez que la cola se llena, los clientes reciben un código de estado de servidor ocupado o HTTP 503 para intentar de nuevo más tarde. Los clientes pueden reintentar la solicitud en otro momento, quizás con <a href="https://en.wikipedia.org/wiki/Exponential_backoff" target="_blank" rel="noopener noreferrer">retroceso exponencial</a>.</p><h3>Desventaja(s): asincronía</h3></p><ul><li>Casos de uso como cálculos económicos y flujos de trabajo en tiempo real podrían ser más adecuados para operaciones síncronas, ya que introducir colas puede añadir retrasos y complejidad.</li></p><p></ul><h3>Fuente(s) y lectura adicional</h3></p><ul><li><a href="https://www.youtube.com/watch?v=1KRYH75wgy4" target="_blank" rel="noopener noreferrer">Todo es un juego de números</a></li>
+<li><a href="http://mechanical-sympathy.blogspot.com/2012/05/apply-back-pressure-when-overloaded.html" target="_blank" rel="noopener noreferrer">Aplicando presión de retorno cuando está sobrecargado</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Little%27s_law" target="_blank" rel="noopener noreferrer">Ley de Little</a></li>
+<li><a href="https://www.quora.com/What-is-the-difference-between-a-message-queue-and-a-task-queue-Why-would-a-task-queue-require-a-message-broker-like-RabbitMQ-Redis-Celery-or-IronMQ-to-function" target="_blank" rel="noopener noreferrer">¿Cuál es la diferencia entre una cola de mensajes y una cola de tareas?</a></li></p><p></ul><h2>Comunicación</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/5KeocQs.jpg">
+  <br/>
+  <i><a href=http://www.escotal.com/osilayer.html>Fuente: modelo OSI de 7 capas</a></i>
+</p></p><h3>Protocolo de transferencia de hipertexto (HTTP)</h3></p><p>HTTP es un método para codificar y transportar datos entre un cliente y un servidor. Es un protocolo de solicitud/respuesta: los clientes emiten solicitudes y los servidores emiten respuestas con contenido relevante e información de estado de finalización sobre la solicitud. HTTP es autónomo, permitiendo que solicitudes y respuestas fluyan a través de muchos routers y servidores intermedios que realizan balanceo de carga, almacenamiento en caché, cifrado y compresión.</p><p>Una solicitud HTTP básica consiste en un verbo (método) y un recurso (endpoint). A continuación se muestran verbos HTTP comunes:</p><p>| Verbo | Descripción | Idempotente* | Seguro | Cacheable |
+|---|---|---|---|---|
+| GET | Lee un recurso | Sí | Sí | Sí |
+| POST | Crea un recurso o activa un proceso que maneja datos | No | No | Sí si la respuesta contiene información de frescura |
+| PUT | Crea o reemplaza un recurso | Sí | No | No |
+| PATCH | Actualiza parcialmente un recurso | No | No | Sí si la respuesta contiene información de frescura |
+| DELETE | Elimina un recurso | Sí | No | No |</p><p>*Puede llamarse muchas veces sin resultados diferentes.</p><p>HTTP es un protocolo de capa de aplicación que se basa en protocolos de nivel inferior como <strong>TCP</strong> y <strong>UDP</strong>.</p><p>#### Fuente(s) y lectura adicional: HTTP</p><ul><li><a href="https://www.nginx.com/resources/glossary/http/" target="_blank" rel="noopener noreferrer">¿Qué es HTTP?</a></li>
+<li><a href="https://www.quora.com/What-is-the-difference-between-HTTP-protocol-and-TCP-protocol" target="_blank" rel="noopener noreferrer">Diferencia entre HTTP y TCP</a></li>
+<li><a href="https://laracasts.com/discuss/channels/general-discussion/whats-the-differences-between-put-and-patch?page=1" target="_blank" rel="noopener noreferrer">Diferencia entre PUT y PATCH</a></li></p><p></ul><h3>Protocolo de control de transmisión (TCP)</h3></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/JdAsdvG.jpg">
+  <br/>
+  <i><a href=http://www.wildbunny.co.uk/blog/2012/10/09/how-to-make-a-multi-player-game-part-1/>Fuente: Cómo hacer un juego multijugador</a></i>
+</p></p><p>TCP es un protocolo orientado a conexión sobre una <a href="https://es.wikipedia.org/wiki/Protocolo_de_Internet" target="_blank" rel="noopener noreferrer">red IP</a>. La conexión se establece y termina usando un <a href="https://es.wikipedia.org/wiki/Intercambio_de_señales" target="_blank" rel="noopener noreferrer">handshake</a>. Todos los paquetes enviados están garantizados a llegar al destino en el orden original y sin corrupción mediante:</p><ul><li>Números de secuencia y <a href="https://es.wikipedia.org/wiki/Protocolo_de_control_de_transmisión#Cálculo_del_checksum" target="_blank" rel="noopener noreferrer">campos de checksum</a> para cada paquete</li>
+<li>Paquetes de <a href="https://es.wikipedia.org/wiki/Reconocimiento_(redes_de_datos" target="_blank" rel="noopener noreferrer">reconocimiento</a>) y retransmisión automática</li></p><p></ul>Si el emisor no recibe una respuesta correcta, reenviará los paquetes. Si hay múltiples tiempos de espera, la conexión se cae. TCP también implementa <a href="https://es.wikipedia.org/wiki/Control_de_flujo_(datos" target="_blank" rel="noopener noreferrer">control de flujo</a>) y <a href="https://es.wikipedia.org/wiki/Congestión_de_red#Control_de_la_congestión" target="_blank" rel="noopener noreferrer">control de congestión</a>. Estas garantías causan retrasos y generalmente resultan en una transmisión menos eficiente que UDP.</p><p>Para asegurar un alto rendimiento, los servidores web pueden mantener un gran número de conexiones TCP abiertas, lo que resulta en un alto uso de memoria. Puede ser costoso tener un gran número de conexiones abiertas entre hilos del servidor web y, por ejemplo, un servidor <a href="https://memcached.org/" target="_blank" rel="noopener noreferrer">memcached</a>. El <a href="https://es.wikipedia.org/wiki/Pool_de_conexiones" target="_blank" rel="noopener noreferrer">pooling de conexiones</a> puede ayudar además de cambiar a UDP cuando sea aplicable.</p><p>TCP es útil para aplicaciones que requieren alta fiabilidad pero son menos críticas en tiempo. Algunos ejemplos incluyen servidores web, información de bases de datos, SMTP, FTP y SSH.</p><p>Usa TCP sobre UDP cuando:</p><ul><li>Necesites que todos los datos lleguen intactos</li>
+<li>Quieras hacer automáticamente una mejor estimación del uso del rendimiento de la red</li></p><p></ul><h3>Protocolo de datagramas de usuario (UDP)</h3></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/yzDrJtA.jpg">
+  <br/>
+  <i><a href=http://www.wildbunny.co.uk/blog/2012/10/09/how-to-make-a-multi-player-game-part-1/>Fuente: Cómo hacer un juego multijugador</a></i>
+</p></p><p>UDP es sin conexión. Los datagramas (análogos a paquetes) están garantizados solo a nivel de datagrama. Los datagramas pueden llegar a su destino fuera de orden o no llegar en absoluto. UDP no soporta control de congestión. Sin las garantías que soporta TCP, UDP es generalmente más eficiente.</p><p>UDP puede hacer broadcast, enviando datagramas a todos los dispositivos en la subred. Esto es útil con <a href="https://es.wikipedia.org/wiki/Protocolo_de_configuraci%C3%B3n_din%C3%A1mica_de_host" target="_blank" rel="noopener noreferrer">DHCP</a> porque el cliente aún no ha recibido una dirección IP, lo que impide una manera para que TCP transmita sin la dirección IP.</p><p>UDP es menos confiable pero funciona bien en casos de uso en tiempo real como VoIP, videollamadas, streaming y juegos multijugador en tiempo real.</p><p>Usa UDP en lugar de TCP cuando:</p><ul><li>Necesitas la latencia más baja</li>
+<li>Los datos tardíos son peores que la pérdida de datos</li>
+<li>Quieres implementar tu propia corrección de errores</li></p><p></ul>#### Fuente(s) y lectura adicional: TCP y UDP</p><ul><li><a href="http://gafferongames.com/networking-for-game-programmers/udp-vs-tcp/" target="_blank" rel="noopener noreferrer">Redes para programación de juegos</a></li>
+<li><a href="http://www.cyberciti.biz/faq/key-differences-between-tcp-and-udp-protocols/" target="_blank" rel="noopener noreferrer">Diferencias clave entre los protocolos TCP y UDP</a></li>
+<li><a href="http://stackoverflow.com/questions/5970383/difference-between-tcp-and-udp" target="_blank" rel="noopener noreferrer">Diferencia entre TCP y UDP</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Protocolo_de_control_de_transmisi%C3%B3n" target="_blank" rel="noopener noreferrer">Protocolo de control de transmisión</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Protocolo_de_datagramas_de_usuario" target="_blank" rel="noopener noreferrer">Protocolo de datagramas de usuario</a></li>
+<li><a href="http://www.cs.bu.edu/~jappavoo/jappavoo.github.com/451/papers/memcache-fb.pdf" target="_blank" rel="noopener noreferrer">Escalando memcache en Facebook</a></li></p><p></ul><h3>Llamada a procedimiento remoto (RPC)</h3></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/iF4Mkb5.png">
+  <br/>
+  <i><a href=http://www.puncsky.com/blog/2016-02-13-crack-the-system-design-interview>Fuente: Crack the system design interview</a></i>
+</p></p><p>En una RPC, un cliente hace que un procedimiento se ejecute en un espacio de direcciones diferente, usualmente un servidor remoto. El procedimiento está codificado como si fuera una llamada a procedimiento local, abstrayendo los detalles de cómo comunicarse con el servidor desde el programa cliente. Las llamadas remotas suelen ser más lentas y menos confiables que las llamadas locales, por lo que es útil distinguir las llamadas RPC de las llamadas locales. Los frameworks RPC populares incluyen <a href="https://developers.google.com/protocol-buffers/" target="_blank" rel="noopener noreferrer">Protobuf</a>, <a href="https://thrift.apache.org/" target="_blank" rel="noopener noreferrer">Thrift</a>, y <a href="https://avro.apache.org/docs/current/" target="_blank" rel="noopener noreferrer">Avro</a>.</p><p>RPC es un protocolo de solicitud-respuesta:</p><ul><li><strong>Programa cliente</strong> - Llama al procedimiento stub del cliente. Los parámetros se apilan en la pila como en una llamada a procedimiento local.</li>
+<li><strong>Procedimiento stub del cliente</strong> - Empaqueta (marshal) el id del procedimiento y los argumentos en un mensaje de solicitud.</li>
+<li><strong>Módulo de comunicación del cliente</strong> - El SO envía el mensaje desde el cliente al servidor.</li>
+<li><strong>Módulo de comunicación del servidor</strong> - El SO pasa los paquetes entrantes al procedimiento stub del servidor.</li>
+<li><strong>Procedimiento stub del servidor</strong> - Desempaqueta (unmarshal) los resultados, llama al procedimiento del servidor que coincide con el id del procedimiento y pasa los argumentos dados.</li>
+<li>La respuesta del servidor repite los pasos anteriores en orden inverso.</li></p><p></ul>Llamadas RPC de ejemplo:</p><pre><code class="language-">GET /someoperation?data=anId</p><p>POST /anotheroperation
+{
+  "data":"anId";
+  "anotherdata": "another value"
+}</code></pre></p><p>RPC se centra en exponer comportamientos. Los RPC a menudo se utilizan por razones de rendimiento en comunicaciones internas, ya que puedes crear llamadas nativas a medida para ajustarlas mejor a tus casos de uso.</p><p>Elige una biblioteca nativa (también conocida como SDK) cuando:</p><ul><li>Conozcas tu plataforma objetivo.</li>
+<li>Quieras controlar cómo se accede a tu "lógica".</li>
+<li>Quieras controlar cómo se maneja el control de errores fuera de tu biblioteca.</li>
+<li>El rendimiento y la experiencia del usuario final sean tu principal preocupación.</li></p><p></ul>Las APIs HTTP que siguen <strong>REST</strong> tienden a usarse más a menudo para APIs públicas.</p><p>#### Desventaja(s): RPC</p><ul><li>Los clientes RPC se vuelven fuertemente acoplados a la implementación del servicio.</li>
+<li>Se debe definir una nueva API para cada nueva operación o caso de uso.</li>
+<li>Puede ser difícil depurar RPC.</li>
+<li>Puede que no puedas aprovechar tecnologías existentes directamente. Por ejemplo, podría requerir esfuerzo adicional asegurar que <a href="https://web.archive.org/web/20170608193645/http://etherealbits.com/2012/12/debunking-the-myths-of-rpc-rest/" target="_blank" rel="noopener noreferrer">las llamadas RPC se almacenen en caché adecuadamente</a> en servidores de caché como <a href="http://www.squid-cache.org/" target="_blank" rel="noopener noreferrer">Squid</a>.</li></p><p></ul><h3>Transferencia de estado representacional (REST)</h3></p><p>REST es un estilo arquitectónico que impone un modelo cliente/servidor donde el cliente actúa sobre un conjunto de recursos gestionados por el servidor. El servidor proporciona una representación de recursos y acciones que pueden manipular o obtener una nueva representación de recursos. Toda la comunicación debe ser sin estado y cacheable.</p><p>Hay cuatro cualidades de una interfaz RESTful:</p><ul><li><strong>Identificar recursos (URI en HTTP)</strong> - usar el mismo URI independientemente de la operación.</li>
+<li><strong>Cambiar con representaciones (Verbos en HTTP)</strong> - usar verbos, encabezados y cuerpo.</li>
+<li><strong>Mensaje de error auto-descriptivo (respuesta de estado en HTTP)</strong> - usar códigos de estado, no reinventar la rueda.</li>
+<li><strong><a href="http://restcookbook.com/Basics/hateoas/" target="_blank" rel="noopener noreferrer">HATEOAS</a> (interfaz HTML para HTTP)</strong> - tu servicio web debe ser completamente accesible en un navegador.</li></p><p></ul>Ejemplos de llamadas REST:</p><pre><code class="language-">GET /someresources/anId</p><p>PUT /someresources/anId
+{"anotherdata": "another value"}</code></pre></p><p>REST se centra en exponer datos. Minimiza el acoplamiento entre cliente/servidor y se utiliza a menudo para APIs HTTP públicas. REST utiliza un método más genérico y uniforme para exponer recursos a través de URIs, <a href="https://github.com/for-GET/know-your-http-well/blob/master/headers.md" target="_blank" rel="noopener noreferrer">representación mediante encabezados</a> y acciones a través de verbos como GET, POST, PUT, DELETE y PATCH. Al ser sin estado, REST es ideal para escalado horizontal y particionamiento.</p><p>#### Desventaja(s): REST</p><ul><li>Al estar REST centrado en exponer datos, puede no ser adecuado si los recursos no están organizados naturalmente o accedidos en una jerarquía simple. Por ejemplo, devolver todos los registros actualizados de la última hora que coincidan con un conjunto particular de eventos no se expresa fácilmente como una ruta. Con REST, es probable que se implemente con una combinación de ruta URI, parámetros de consulta y posiblemente el cuerpo de la solicitud.</li>
+<li>REST típicamente se basa en algunos verbos (GET, POST, PUT, DELETE y PATCH) que a veces no encajan en tu caso de uso. Por ejemplo, mover documentos expirados a la carpeta de archivo podría no encajar claramente dentro de estos verbos.</li>
+<li>Obtener recursos complicados con jerarquías anidadas requiere múltiples viajes de ida y vuelta entre cliente y servidor para renderizar vistas individuales, p. ej., obtener el contenido de una entrada de blog y los comentarios sobre esa entrada. Para aplicaciones móviles que operan en condiciones de red variables, estos múltiples viajes son altamente indeseables.</li>
+<li>Con el tiempo, se pueden añadir más campos a una respuesta de API y los clientes antiguos recibirán todos los nuevos campos de datos, incluso aquellos que no necesitan, lo que hace que el tamaño de la carga útil se incremente y provoque latencias mayores.</li></p><p></ul><h3>Comparación de llamadas RPC y REST</h3></p><p>| Operación | RPC | REST |
+|---|---|---|
+| Registro    | <strong>POST</strong> /signup | <strong>POST</strong> /persons |
+| Renuncia    | <strong>POST</strong> /resign<br/>{<br/>"personid": "1234"<br/>} | <strong>DELETE</strong> /persons/1234 |
+| Leer una persona | <strong>GET</strong> /readPerson?personid=1234 | <strong>GET</strong> /persons/1234 |
+| Leer lista de ítems de una persona | <strong>GET</strong> /readUsersItemsList?personid=1234 | <strong>GET</strong> /persons/1234/items |
+| Añadir un ítem a la lista de una persona | <strong>POST</strong> /addItemToUsersItemsList<br/>{<br/>"personid": "1234";<br/>"itemid": "456"<br/>} | <strong>POST</strong> /persons/1234/items<br/>{<br/>"itemid": "456"<br/>} |
+| Actualizar un ítem    | <strong>POST</strong> /modifyItem<br/>{<br/>"itemid": "456";<br/>"key": "value"<br/>} | <strong>PUT</strong> /items/456<br/>{<br/>"key": "value"<br/>} |
+| Eliminar un ítem | <strong>POST</strong> /removeItem<br/>{<br/>"itemid": "456"<br/>} | <strong>DELETE</strong> /items/456 |</p><p><p align="center">
+  <i><a href=https://apihandyman.io/do-you-really-know-why-you-prefer-rest-over-rpc/>Fuente: ¿Realmente sabes por qué prefieres REST sobre RPC?</a></i>
+</p></p><p>#### Fuente(s) y lecturas adicionales: REST y RPC</p><ul><li><a href="https://apihandyman.io/do-you-really-know-why-you-prefer-rest-over-rpc/" target="_blank" rel="noopener noreferrer">¿Realmente sabes por qué prefieres REST sobre RPC?</a></li>
+<li><a href="http://programmers.stackexchange.com/a/181186" target="_blank" rel="noopener noreferrer">¿Cuándo son más apropiados enfoques tipo RPC que REST?</a></li>
+<li><a href="http://stackoverflow.com/questions/15056878/rest-vs-json-rpc" target="_blank" rel="noopener noreferrer">REST vs JSON-RPC</a></li>
+<li><a href="https://web.archive.org/web/20170608193645/http://etherealbits.com/2012/12/debunking-the-myths-of-rpc-rest/" target="_blank" rel="noopener noreferrer">Desmitificando los mitos de RPC y REST</a></li>
+<li><a href="https://www.quora.com/What-are-the-drawbacks-of-using-RESTful-APIs" target="_blank" rel="noopener noreferrer">¿Cuáles son las desventajas de usar REST?</a></li>
+<li><a href="http://www.puncsky.com/blog/2016-02-13-crack-the-system-design-interview" target="_blank" rel="noopener noreferrer">Supera la entrevista de diseño de sistemas</a></li>
+<li><a href="https://code.facebook.com/posts/1468950976659943/" target="_blank" rel="noopener noreferrer">Thrift</a></li>
+<li><a href="http://arstechnica.com/civis/viewtopic.php?t=1190508" target="_blank" rel="noopener noreferrer">Por qué REST para uso interno y no RPC</a></li></p><p></ul><h2>Seguridad</h2></p><p>Esta sección podría usar algunas actualizaciones. ¡Considera <a href="#contributing" target="_blank" rel="noopener noreferrer">contribuir</a>!</p><p>La seguridad es un tema amplio. A menos que tengas una experiencia considerable, un conocimiento en seguridad, o estés aplicando para un puesto que requiera conocimientos de seguridad, probablemente no necesites saber más que lo básico:</p><ul><li>Encripta en tránsito y en reposo.</li>
+<li>Sanitiza todas las entradas de usuario o cualquier parámetro de entrada expuesto al usuario para prevenir <a href="https://es.wikipedia.org/wiki/Cross-site_scripting" target="_blank" rel="noopener noreferrer">XSS</a> y <a href="https://es.wikipedia.org/wiki/Inyecci%C3%B3n_SQL" target="_blank" rel="noopener noreferrer">inyección SQL</a>.</li>
+<li>Usa consultas parametrizadas para prevenir la inyección SQL.</li>
+<li>Usa el principio de <a href="https://es.wikipedia.org/wiki/Principio_de_m%C3%ADnimo_privilegio" target="_blank" rel="noopener noreferrer">mínimo privilegio</a>.</li></p><p></ul><h3>Fuente(s) y lectura adicional</h3></p><ul><li><a href="https://github.com/shieldfy/API-Security-Checklist" target="_blank" rel="noopener noreferrer">Lista de verificación de seguridad para API</a></li>
+<li><a href="https://github.com/FallibleInc/security-guide-for-developers" target="_blank" rel="noopener noreferrer">Guía de seguridad para desarrolladores</a></li>
+<li><a href="https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet" target="_blank" rel="noopener noreferrer">Top ten de OWASP</a></li></p><p></ul><h2>Apéndice</h2></p><p>A veces se te pedirá hacer estimaciones 'rápidas'. Por ejemplo, podrías necesitar determinar cuánto tiempo tomará generar 100 miniaturas de imágenes desde el disco o cuánta memoria ocupará una estructura de datos. La <strong>tabla de potencias de dos</strong> y los <strong>números de latencia que todo programador debería conocer</strong> son referencias útiles.</p><h3>Tabla de potencias de dos</h3></p><pre><code class="language-">Power           Exact Value         Approx Value        Bytes
+---------------------------------------------------------------
+7                             128
+8                             256
+10                           1024   1 thousand           1 KB
+16                         65,536                       64 KB
+20                      1,048,576   1 million            1 MB
+30                  1,073,741,824   1 billion            1 GB
+32                  4,294,967,296                        4 GB
+40              1,099,511,627,776   1 trillion           1 TB</code></pre>
+#### Fuente(s) y lectura adicional</p><ul><li><a href="https://es.wikipedia.org/wiki/Potencia_de_dos" target="_blank" rel="noopener noreferrer">Potencias de dos</a></li></p><p></ul><h3>Números de latencia que todo programador debe conocer</h3></p><pre><code class="language-">Latency Comparison Numbers
+--------------------------
+L1 cache reference                           0.5 ns
+Branch mispredict                            5   ns
+L2 cache reference                           7   ns                      14x L1 cache
+Mutex lock/unlock                           25   ns
+Main memory reference                      100   ns                      20x L2 cache, 200x L1 cache
+Compress 1K bytes with Zippy            10,000   ns       10 us
+Send 1 KB bytes over 1 Gbps network     10,000   ns       10 us
+Read 4 KB randomly from SSD*           150,000   ns      150 us          ~1GB/sec SSD
+Read 1 MB sequentially from memory     250,000   ns      250 us
+Round trip within same datacenter      500,000   ns      500 us
+Read 1 MB sequentially from SSD*     1,000,000   ns    1,000 us    1 ms  ~1GB/sec SSD, 4X memory
+HDD seek                            10,000,000   ns   10,000 us   10 ms  20x datacenter roundtrip
+Read 1 MB sequentially from 1 Gbps  10,000,000   ns   10,000 us   10 ms  40x memory, 10X SSD
+Read 1 MB sequentially from HDD     30,000,000   ns   30,000 us   30 ms 120x memory, 30X SSD
+Send packet CA->Netherlands->CA    150,000,000   ns  150,000 us  150 ms</p><p>Notes
+-----
+1 ns = 10^-9 seconds
+1 us = 10^-6 seconds = 1,000 ns
+1 ms = 10^-3 seconds = 1,000 us = 1,000,000 ns</code></pre>
+Métricas útiles basadas en los números anteriores:</p><ul><li>Lectura secuencial desde HDD a 30 MB/s</li>
+<li>Lectura secuencial desde Ethernet de 1 Gbps a 100 MB/s</li>
+<li>Lectura secuencial desde SSD a 1 GB/s</li>
+<li>Lectura secuencial desde memoria principal a 4 GB/s</li>
+<li>6-7 viajes de ida y vuelta en todo el mundo por segundo</li>
+<li>2,000 viajes de ida y vuelta por segundo dentro de un centro de datos</li></p><p></ul>#### Números de latencia visualizados</p><p><img src="https://camo.githubusercontent.com/77f72259e1eb58596b564d1ad823af1853bc60a3/687474703a2f2f692e696d6775722e636f6d2f6b307431652e706e67" alt=""></p><p>#### Fuente(s) y lectura adicional</p><ul><li><a href="https://gist.github.com/jboner/2841832" target="_blank" rel="noopener noreferrer">Números de latencia que todo programador debe conocer - 1</a></li>
+<li><a href="https://gist.github.com/hellerbarde/2843375" target="_blank" rel="noopener noreferrer">Números de latencia que todo programador debe conocer - 2</a></li>
+<li><a href="http://www.cs.cornell.edu/projects/ladis2009/talks/dean-keynote-ladis2009.pdf" target="_blank" rel="noopener noreferrer">Diseños, lecciones y consejos de la construcción de sistemas distribuidos grandes</a></li>
+<li><a href="https://static.googleusercontent.com/media/research.google.com/en//people/jeff/stanford-295-talk.pdf" target="_blank" rel="noopener noreferrer">Consejos de ingeniería de software al construir sistemas distribuidos a gran escala</a></li></p><p></ul><h3>Preguntas adicionales para entrevistas de diseño de sistemas</h3></p><blockquote>Preguntas comunes en entrevistas de diseño de sistemas, con enlaces a recursos sobre cómo resolver cada una.</blockquote></p><p>| Pregunta | Referencia(s) |
+|---|---|
+| Diseñar un servicio de sincronización de archivos como Dropbox | <a href="https://www.youtube.com/watch?v=PE4gwstWhmc" target="_blank" rel="noopener noreferrer">youtube.com</a> |
+| Diseñar un motor de búsqueda como Google | <a href="http://queue.acm.org/detail.cfm?id=988407" target="_blank" rel="noopener noreferrer">queue.acm.org</a><br/><a href="http://programmers.stackexchange.com/questions/38324/interview-question-how-would-you-implement-google-search" target="_blank" rel="noopener noreferrer">stackexchange.com</a><br/><a href="http://www.ardendertat.com/2012/01/11/implementing-search-engines/" target="_blank" rel="noopener noreferrer">ardendertat.com</a><br/><a href="http://infolab.stanford.edu/~backrub/google.html" target="_blank" rel="noopener noreferrer">stanford.edu</a> |
+| Diseñar un rastreador web escalable como Google | <a href="https://www.quora.com/How-can-I-build-a-web-crawler-from-scratch" target="_blank" rel="noopener noreferrer">quora.com</a> |
+| Diseñar Google docs | <a href="https://code.google.com/p/google-mobwrite/" target="_blank" rel="noopener noreferrer">code.google.com</a><br/><a href="https://neil.fraser.name/writing/sync/" target="_blank" rel="noopener noreferrer">neil.fraser.name</a> |
+| Diseñar un almacén clave-valor como Redis | <a href="http://www.slideshare.net/dvirsky/introduction-to-redis" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| Diseñar un sistema de caché como Memcached | <a href="http://www.slideshare.net/oemebamo/introduction-to-memcached" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| Diseñar un sistema de recomendación como el de Amazon | <a href="https://web.archive.org/web/20170406065247/http://tech.hulu.com/blog/2011/09/19/recommendation-system.html" target="_blank" rel="noopener noreferrer">hulu.com</a><br/><a href="http://ijcai13.org/files/tutorial_slides/td3.pdf" target="_blank" rel="noopener noreferrer">ijcai13.org</a> |
+| Diseñar un sistema tinyurl como Bitly | <a href="http://n00tc0d3r.blogspot.com/" target="_blank" rel="noopener noreferrer">n00tc0d3r.blogspot.com</a> |
+| Diseñar una app de chat como WhatsApp | <a href="http://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html" target="_blank" rel="noopener noreferrer">highscalability.com</a> |
+| Diseñar un sistema para compartir fotos como Instagram | <a href="http://highscalability.com/flickr-architecture" target="_blank" rel="noopener noreferrer">highscalability.com</a><br/><a href="http://highscalability.com/blog/2011/12/6/instagram-architecture-14-million-users-terabytes-of-photos.html" target="_blank" rel="noopener noreferrer">highscalability.com</a> |
+| Diseñar la función de noticias en Facebook | <a href="http://www.quora.com/What-are-best-practices-for-building-something-like-a-News-Feed" target="_blank" rel="noopener noreferrer">quora.com</a><br/><a href="http://www.quora.com/Activity-Streams/What-are-the-scaling-issues-to-keep-in-mind-while-developing-a-social-network-feed" target="_blank" rel="noopener noreferrer">quora.com</a><br/><a href="http://www.slideshare.net/danmckinley/etsy-activity-feeds-architecture" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| Diseñar la función de línea de tiempo en Facebook | <a href="https://www.facebook.com/note.php?note_id=10150468255628920" target="_blank" rel="noopener noreferrer">facebook.com</a><br/><a href="http://highscalability.com/blog/2012/1/23/facebook-timeline-brought-to-you-by-the-power-of-denormaliza.html" target="_blank" rel="noopener noreferrer">highscalability.com</a> |
+| Diseñar la función de chat en Facebook | <a href="http://www.erlang-factory.com/upload/presentations/31/EugeneLetuchy-ErlangatFacebook.pdf" target="_blank" rel="noopener noreferrer">erlang-factory.com</a><br/><a href="https://www.facebook.com/note.php?note_id=14218138919&id=9445547199&index=0" target="_blank" rel="noopener noreferrer">facebook.com</a> |</p><p>| Diseñar una función de búsqueda en grafo como la de Facebook | <a href="https://www.facebook.com/notes/facebook-engineering/under-the-hood-building-out-the-infrastructure-for-graph-search/10151347573598920" target="_blank" rel="noopener noreferrer">facebook.com</a><br/><a href="https://www.facebook.com/notes/facebook-engineering/under-the-hood-indexing-and-ranking-in-graph-search/10151361720763920" target="_blank" rel="noopener noreferrer">facebook.com</a><br/><a href="https://www.facebook.com/notes/facebook-engineering/under-the-hood-the-natural-language-interface-of-graph-search/10151432733048920" target="_blank" rel="noopener noreferrer">facebook.com</a> |
+| Diseñar una red de entrega de contenido como CloudFlare | <a href="https://figshare.com/articles/Globally_distributed_content_delivery/6605972" target="_blank" rel="noopener noreferrer">figshare.com</a> |
+| Diseñar un sistema de temas de tendencia como el de Twitter | <a href="http://www.michael-noll.com/blog/2013/01/18/implementing-real-time-trending-topics-in-storm/" target="_blank" rel="noopener noreferrer">michael-noll.com</a><br/><a href="http://snikolov.wordpress.com/2012/11/14/early-detection-of-twitter-trends/" target="_blank" rel="noopener noreferrer">snikolov .wordpress.com</a> |
+| Diseñar un sistema de generación de ID aleatorio | <a href="https://blog.twitter.com/2010/announcing-snowflake" target="_blank" rel="noopener noreferrer">blog.twitter.com</a><br/><a href="https://github.com/twitter/snowflake/" target="_blank" rel="noopener noreferrer">github.com</a> |
+| Devolver las k solicitudes principales durante un intervalo de tiempo | <a href="https://www.cs.ucsb.edu/sites/default/files/documents/2005-23.pdf" target="_blank" rel="noopener noreferrer">cs.ucsb.edu</a><br/><a href="http://davis.wpi.edu/xmdv/docs/EDBT11-diyang.pdf" target="_blank" rel="noopener noreferrer">wpi.edu</a> |
+| Diseñar un sistema que sirva datos desde múltiples centros de datos | <a href="http://highscalability.com/blog/2009/8/24/how-google-serves-data-from-multiple-datacenters.html" target="_blank" rel="noopener noreferrer">highscalability.com</a> |
+| Diseñar un juego de cartas multijugador en línea | <a href="https://web.archive.org/web/20180929181117/http://www.indieflashblog.com/how-to-create-an-asynchronous-multiplayer-game.html" target="_blank" rel="noopener noreferrer">indieflashblog.com</a><br/><a href="http://buildnewgames.com/real-time-multiplayer/" target="_blank" rel="noopener noreferrer">buildnewgames.com</a> |
+| Diseñar un sistema de recolección de basura | <a href="http://journal.stuffwithstuff.com/2013/12/08/babys-first-garbage-collector/" target="_blank" rel="noopener noreferrer">stuffwithstuff.com</a><br/><a href="http://courses.cs.washington.edu/courses/csep521/07wi/prj/rick.pdf" target="_blank" rel="noopener noreferrer">washington.edu</a> |
+| Diseñar un limitador de tasa para API | <a href="https://stripe.com/blog/rate-limiters" target="_blank" rel="noopener noreferrer">https://stripe.com/blog/</a> |
+| Diseñar una bolsa de valores (como NASDAQ o Binance) | <a href="https://youtu.be/b1e4t2k2KJY" target="_blank" rel="noopener noreferrer">Jane Street</a><br/><a href="https://around25.com/blog/building-a-trading-engine-for-a-crypto-exchange/" target="_blank" rel="noopener noreferrer">Implementación en Golang</a><br/><a href="http://bhomnick.net/building-a-simple-limit-order-in-go/" target="_blank" rel="noopener noreferrer">Implementación en Go</a> |
+| Añadir una pregunta de diseño de sistema | <a href="#contributing" target="_blank" rel="noopener noreferrer">Contribuir</a> |</p><h3>Arquitecturas del mundo real</h3></p><blockquote>Artículos sobre cómo se diseñan los sistemas en el mundo real.</blockquote></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/TcUo2fw.png">
+  <br/>
+  <i><a href=https://www.infoq.com/presentations/Twitter-Timeline-Scalability>Fuente: Líneas de tiempo de Twitter a gran escala</a></i>
+</p></p><p><strong>No te centres en los detalles minuciosos de los siguientes artículos, en cambio:</strong></p><ul><li>Identifica principios compartidos, tecnologías comunes y patrones dentro de estos artículos</li>
+<li>Estudia qué problemas resuelve cada componente, dónde funciona, dónde no</li>
+<li>Revisa las lecciones aprendidas</li></p><p></ul>|Tipo | Sistema | Referencia(s) |
+|---|---|---|
+| Procesamiento de datos | <strong>MapReduce</strong> - Procesamiento de datos distribuido de Google | <a href="http://static.googleusercontent.com/media/research.google.com/zh-CN/us/archive/mapreduce-osdi04.pdf" target="_blank" rel="noopener noreferrer">research.google.com</a> |
+| Procesamiento de datos | <strong>Spark</strong> - Procesamiento de datos distribuido de Databricks | <a href="http://www.slideshare.net/AGrishchenko/apache-spark-architecture" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| Procesamiento de datos | <strong>Storm</strong> - Procesamiento de datos distribuido de Twitter | <a href="http://www.slideshare.net/previa/storm-16094009" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| | | |
+| Almacenamiento de datos | <strong>Bigtable</strong> - Base de datos distribuida orientada a columnas de Google | <a href="http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf" target="_blank" rel="noopener noreferrer">harvard.edu</a> |
+| Almacenamiento de datos | <strong>HBase</strong> - Implementación de código abierto de Bigtable | <a href="http://www.slideshare.net/alexbaranau/intro-to-hbase" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| Almacenamiento de datos | <strong>Cassandra</strong> - Base de datos distribuida orientada a columnas de Facebook | <a href="http://www.slideshare.net/planetcassandra/cassandra-introduction-features-30103666" target="_blank" rel="noopener noreferrer">slideshare.net</a>
+| Almacenamiento de datos | <strong>DynamoDB</strong> - Base de datos orientada a documentos de Amazon | <a href="http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/decandia07dynamo.pdf" target="_blank" rel="noopener noreferrer">harvard.edu</a> |
+| Almacenamiento de datos | <strong>MongoDB</strong> - Base de datos orientada a documentos | <a href="http://www.slideshare.net/mdirolf/introduction-to-mongodb" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| Almacenamiento de datos | <strong>Spanner</strong> - Base de datos distribuida globalmente de Google | <a href="http://research.google.com/archive/spanner-osdi2012.pdf" target="_blank" rel="noopener noreferrer">research.google.com</a> |
+| Almacén de datos | <strong>Memcached</strong> - Sistema de caché distribuido en memoria | <a href="http://www.slideshare.net/oemebamo/introduction-to-memcached" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| Almacén de datos | <strong>Redis</strong> - Sistema de caché distribuido en memoria con persistencia y tipos de valores | <a href="http://www.slideshare.net/dvirsky/introduction-to-redis" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| | | |
+| Sistema de archivos | <strong>Google File System (GFS)</strong> - Sistema de archivos distribuido | <a href="http://static.googleusercontent.com/media/research.google.com/zh-CN/us/archive/gfs-sosp2003.pdf" target="_blank" rel="noopener noreferrer">research.google.com</a> |
+| Sistema de archivos | <strong>Hadoop File System (HDFS)</strong> - Implementación de código abierto de GFS | <a href="http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html" target="_blank" rel="noopener noreferrer">apache.org</a> |
+| | | |
+| Varios | <strong>Chubby</strong> - Servicio de bloqueo para sistemas distribuidos débilmente acoplados de Google | <a href="http://static.googleusercontent.com/external_content/untrusted_dlcp/research.google.com/en/us/archive/chubby-osdi06.pdf" target="_blank" rel="noopener noreferrer">research.google.com</a> |
+| Varios | <strong>Dapper</strong> - Infraestructura para rastreo de sistemas distribuidos | <a href="http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/36356.pdf" target="_blank" rel="noopener noreferrer">research.google.com</a> |
+| Varios | <strong>Kafka</strong> - Cola de mensajes pub/sub de LinkedIn | <a href="http://www.slideshare.net/mumrah/kafka-talk-tri-hug" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| Varios | <strong>Zookeeper</strong> - Infraestructura y servicios centralizados que permiten la sincronización | <a href="http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| | Añadir una arquitectura | <a href="#contributing" target="_blank" rel="noopener noreferrer">Contribuir</a> |</p><h3>Arquitecturas de empresas</h3></p><p>| Empresa | Referencia(s) |
+|---|---|
+| Amazon | <a href="http://highscalability.com/amazon-architecture" target="_blank" rel="noopener noreferrer">Arquitectura de Amazon</a> |
+| Cinchcast | <a href="http://highscalability.com/blog/2012/7/16/cinchcast-architecture-producing-1500-hours-of-audio-every-d.html" target="_blank" rel="noopener noreferrer">Produciendo 1,500 horas de audio cada día</a> |
+| DataSift | <a href="http://highscalability.com/blog/2011/11/29/datasift-architecture-realtime-datamining-at-120000-tweets-p.html" target="_blank" rel="noopener noreferrer">Minería de datos en tiempo real a 120,000 tweets por segundo</a> |
+| Dropbox | <a href="https://www.youtube.com/watch?v=PE4gwstWhmc" target="_blank" rel="noopener noreferrer">Cómo hemos escalado Dropbox</a> |
+| ESPN | <a href="http://highscalability.com/blog/2013/11/4/espns-architecture-at-scale-operating-at-100000-duh-nuh-nuhs.html" target="_blank" rel="noopener noreferrer">Operando a 100,000 duh nuh nuhs por segundo</a> |
+| Google | <a href="http://highscalability.com/google-architecture" target="_blank" rel="noopener noreferrer">Arquitectura de Google</a> |
+| Instagram | <a href="http://highscalability.com/blog/2011/12/6/instagram-architecture-14-million-users-terabytes-of-photos.html" target="_blank" rel="noopener noreferrer">14 millones de usuarios, terabytes de fotos</a><br/><a href="http://instagram-engineering.tumblr.com/post/13649370142/what-powers-instagram-hundreds-of-instances" target="_blank" rel="noopener noreferrer">Qué impulsa Instagram</a> |
+| Justin.tv | <a href="http://highscalability.com/blog/2010/3/16/justintvs-live-video-broadcasting-architecture.html" target="_blank" rel="noopener noreferrer">Arquitectura de transmisión de video en vivo de Justin.Tv</a> |
+| Facebook | <a href="https://cs.uwaterloo.ca/~brecht/courses/854-Emerging-2014/readings/key-value/fb-memcached-nsdi-2013.pdf" target="_blank" rel="noopener noreferrer">Escalando memcached en Facebook</a><br/><a href="https://cs.uwaterloo.ca/~brecht/courses/854-Emerging-2014/readings/data-store/tao-facebook-distributed-datastore-atc-2013.pdf" target="_blank" rel="noopener noreferrer">TAO: Almacén de datos distribuido de Facebook para el grafo social</a><br/><a href="https://www.usenix.org/legacy/event/osdi10/tech/full_papers/Beaver.pdf" target="_blank" rel="noopener noreferrer">Almacenamiento de fotos de Facebook</a><br/><a href="http://highscalability.com/blog/2016/6/27/how-facebook-live-streams-to-800000-simultaneous-viewers.html" target="_blank" rel="noopener noreferrer">Cómo Facebook transmite en vivo a 800,000 espectadores simultáneos</a> |
+| Flickr | <a href="http://highscalability.com/flickr-architecture" target="_blank" rel="noopener noreferrer">Arquitectura de Flickr</a> |
+| Mailbox | <a href="http://highscalability.com/blog/2013/6/18/scaling-mailbox-from-0-to-one-million-users-in-6-weeks-and-1.html" target="_blank" rel="noopener noreferrer">De 0 a un millón de usuarios en 6 semanas</a> |
+| Netflix | <a href="http://highscalability.com/blog/2015/11/9/a-360-degree-view-of-the-entire-netflix-stack.html" target="_blank" rel="noopener noreferrer">Una vista de 360 grados de toda la pila de Netflix</a><br/><a href="http://highscalability.com/blog/2017/12/11/netflix-what-happens-when-you-press-play.html" target="_blank" rel="noopener noreferrer">Netflix: Qué sucede cuando presionas reproducir</a> |
+| Pinterest | <a href="http://highscalability.com/blog/2013/4/15/scaling-pinterest-from-0-to-10s-of-billions-of-page-views-a.html" target="_blank" rel="noopener noreferrer">De 0 a decenas de miles de millones de vistas de página al mes</a><br/><a href="http://highscalability.com/blog/2012/5/21/pinterest-architecture-update-18-million-visitors-10x-growth.html" target="_blank" rel="noopener noreferrer">18 millones de visitantes, crecimiento de 10x, 12 empleados</a> |
+| Playfish | <a href="http://highscalability.com/blog/2010/9/21/playfishs-social-gaming-architecture-50-million-monthly-user.html" target="_blank" rel="noopener noreferrer">50 millones de usuarios mensuales y creciendo</a> |
+| PlentyOfFish | <a href="http://highscalability.com/plentyoffish-architecture" target="_blank" rel="noopener noreferrer">Arquitectura de PlentyOfFish</a> |
+| Salesforce | <a href="http://highscalability.com/blog/2013/9/23/salesforce-architecture-how-they-handle-13-billion-transacti.html" target="_blank" rel="noopener noreferrer">Cómo manejan 1.3 mil millones de transacciones por día</a> |
+| Stack Overflow | <a href="http://highscalability.com/blog/2009/8/5/stack-overflow-architecture.html" target="_blank" rel="noopener noreferrer">Arquitectura de Stack Overflow</a> |
+| TripAdvisor | <a href="http://highscalability.com/blog/2011/6/27/tripadvisor-architecture-40m-visitors-200m-dynamic-page-view.html" target="_blank" rel="noopener noreferrer">40M visitantes, 200M vistas dinámicas de página, 30TB de datos</a> |
+| Tumblr | <a href="http://highscalability.com/blog/2012/2/13/tumblr-architecture-15-billion-page-views-a-month-and-harder.html" target="_blank" rel="noopener noreferrer">15 mil millones de vistas de página al mes</a> |
+| Twitter | <a href="http://highscalability.com/scaling-twitter-making-twitter-10000-percent-faster" target="_blank" rel="noopener noreferrer">Haciendo Twitter 10,000 por ciento más rápido</a><br/><a href="http://highscalability.com/blog/2011/12/19/how-twitter-stores-250-million-tweets-a-day-using-mysql.html" target="_blank" rel="noopener noreferrer">Almacenando 250 millones de tweets al día usando MySQL</a><br/><a href="http://highscalability.com/blog/2013/7/8/the-architecture-twitter-uses-to-deal-with-150m-active-users.html" target="_blank" rel="noopener noreferrer">150M usuarios activos, 300K QPS, un firehose de 22 MB/s</a><br/><a href="https://www.infoq.com/presentations/Twitter-Timeline-Scalability" target="_blank" rel="noopener noreferrer">Líneas de tiempo a escala</a><br/><a href="https://www.youtube.com/watch?v=5cKTP36HVgI" target="_blank" rel="noopener noreferrer">Datos grandes y pequeños en Twitter</a><br/><a href="https://www.youtube.com/watch?v=z8LU0Cj6BOU" target="_blank" rel="noopener noreferrer">Operaciones en Twitter: escalando más allá de 100 millones de usuarios</a><br/><a href="http://highscalability.com/blog/2016/4/20/how-twitter-handles-3000-images-per-second.html" target="_blank" rel="noopener noreferrer">Cómo Twitter maneja 3,000 imágenes por segundo</a> |
+| Uber | <a href="http://highscalability.com/blog/2015/9/14/how-uber-scales-their-real-time-market-platform.html" target="_blank" rel="noopener noreferrer">Cómo Uber escala su plataforma de mercado en tiempo real</a><br/><a href="http://highscalability.com/blog/2016/10/12/lessons-learned-from-scaling-uber-to-2000-engineers-1000-ser.html" target="_blank" rel="noopener noreferrer">Lecciones aprendidas al escalar Uber a 2000 ingenieros, 1000 servicios y 8000 repositorios Git</a> |
+| WhatsApp | <a href="http://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html" target="_blank" rel="noopener noreferrer">La arquitectura de WhatsApp que Facebook compró por 19 mil millones de dólares</a> |
+| YouTube | <a href="https://www.youtube.com/watch?v=w5WVu624fY8" target="_blank" rel="noopener noreferrer">Escalabilidad de YouTube</a><br/><a href="http://highscalability.com/youtube-architecture" target="_blank" rel="noopener noreferrer">Arquitectura de YouTube</a> |</p><h3>Blogs de ingeniería de empresas</h3></p><blockquote>Arquitecturas para las empresas con las que estás entrevistando.</blockquote>
+>
+<blockquote>Las preguntas que encuentres podrían ser del mismo dominio.</blockquote></p><ul><li><a href="http://nerds.airbnb.com/" target="_blank" rel="noopener noreferrer">Ingeniería de Airbnb</a></li>
+<li><a href="https://developer.atlassian.com/blog/" target="_blank" rel="noopener noreferrer">Desarrolladores de Atlassian</a></li>
+<li><a href="https://aws.amazon.com/blogs/aws/" target="_blank" rel="noopener noreferrer">Blog de AWS</a></li>
+<li><a href="http://word.bitly.com/" target="_blank" rel="noopener noreferrer">Blog de Ingeniería de Bitly</a></li>
+<li><a href="https://blog.box.com/blog/category/engineering" target="_blank" rel="noopener noreferrer">Blogs de Box</a></li>
+<li><a href="http://blog.cloudera.com/" target="_blank" rel="noopener noreferrer">Blog de Desarrolladores de Cloudera</a></li>
+<li><a href="https://tech.dropbox.com/" target="_blank" rel="noopener noreferrer">Blog Técnico de Dropbox</a></li>
+<li><a href="https://www.quora.com/q/quoraengineering" target="_blank" rel="noopener noreferrer">Ingeniería en Quora</a></li>
+<li><a href="http://www.ebaytechblog.com/" target="_blank" rel="noopener noreferrer">Blog Técnico de Ebay</a></li>
+<li><a href="https://blog.evernote.com/tech/" target="_blank" rel="noopener noreferrer">Blog Técnico de Evernote</a></li>
+<li><a href="http://codeascraft.com/" target="_blank" rel="noopener noreferrer">Etsy Código como Artesanía</a></li>
+<li><a href="https://www.facebook.com/Engineering" target="_blank" rel="noopener noreferrer">Ingeniería de Facebook</a></li>
+<li><a href="http://code.flickr.net/" target="_blank" rel="noopener noreferrer">Código de Flickr</a></li>
+<li><a href="http://engineering.foursquare.com/" target="_blank" rel="noopener noreferrer">Blog de Ingeniería de Foursquare</a></li>
+<li><a href="https://github.blog/category/engineering" target="_blank" rel="noopener noreferrer">Blog de Ingeniería de GitHub</a></li>
+<li><a href="http://googleresearch.blogspot.com/" target="_blank" rel="noopener noreferrer">Blog de Investigación de Google</a></li>
+<li><a href="https://engineering.groupon.com/" target="_blank" rel="noopener noreferrer">Blog de Ingeniería de Groupon</a></li>
+<li><a href="https://engineering.heroku.com/" target="_blank" rel="noopener noreferrer">Blog de Ingeniería de Heroku</a></li>
+<li><a href="http://product.hubspot.com/blog/topic/engineering" target="_blank" rel="noopener noreferrer">Blog de Ingeniería de Hubspot</a></li>
+<li><a href="http://highscalability.com/" target="_blank" rel="noopener noreferrer">Alta Escalabilidad</a></li>
+<li><a href="http://instagram-engineering.tumblr.com/" target="_blank" rel="noopener noreferrer">Ingeniería de Instagram</a></li>
+<li><a href="https://software.intel.com/en-us/blogs/" target="_blank" rel="noopener noreferrer">Blog de Software de Intel</a></li>
+<li><a href="https://blogs.janestreet.com/category/ocaml/" target="_blank" rel="noopener noreferrer">Blog Técnico de Jane Street</a></li>
+<li><a href="http://engineering.linkedin.com/blog" target="_blank" rel="noopener noreferrer">Ingeniería de LinkedIn</a></li>
+<li><a href="https://engineering.microsoft.com/" target="_blank" rel="noopener noreferrer">Ingeniería de Microsoft</a></li>
+<li><a href="https://blogs.msdn.microsoft.com/pythonengineering/" target="_blank" rel="noopener noreferrer">Ingeniería Python de Microsoft</a></li>
+<li><a href="http://techblog.netflix.com/" target="_blank" rel="noopener noreferrer">Blog Técnico de Netflix</a></li>
+<li><a href="https://medium.com/paypal-engineering" target="_blank" rel="noopener noreferrer">Blog para Desarrolladores de Paypal</a></li>
+<li><a href="https://medium.com/@Pinterest_Engineering" target="_blank" rel="noopener noreferrer">Blog de Ingeniería de Pinterest</a></li>
+<li><a href="http://www.redditblog.com/" target="_blank" rel="noopener noreferrer">Blog de Reddit</a></li>
+<li><a href="https://developer.salesforce.com/blogs/engineering/" target="_blank" rel="noopener noreferrer">Blog de Ingeniería de Salesforce</a></li>
+<li><a href="https://slack.engineering/" target="_blank" rel="noopener noreferrer">Blog de Ingeniería de Slack</a></li>
+<li><a href="https://labs.spotify.com/" target="_blank" rel="noopener noreferrer">Laboratorios Spotify</a></li>
+<li><a href="https://stripe.com/blog/engineering" target="_blank" rel="noopener noreferrer">Blog de Ingeniería de Stripe</a></li>
+<li><a href="http://www.twilio.com/engineering" target="_blank" rel="noopener noreferrer">Blog de Ingeniería de Twilio</a></li>
+<li><a href="https://blog.twitter.com/engineering/" target="_blank" rel="noopener noreferrer">Ingeniería de Twitter</a></li>
+<li><a href="http://eng.uber.com/" target="_blank" rel="noopener noreferrer">Blog de Ingeniería de Uber</a></li>
+<li><a href="http://yahooeng.tumblr.com/" target="_blank" rel="noopener noreferrer">Blog de Ingeniería de Yahoo</a></li>
+<li><a href="http://engineeringblog.yelp.com/" target="_blank" rel="noopener noreferrer">Blog de Ingeniería de Yelp</a></li>
+<li><a href="https://www.zynga.com/blogs/engineering" target="_blank" rel="noopener noreferrer">Blog de Ingeniería de Zynga</a></li></p><p></ul>#### Fuente(s) y lecturas adicionales</p><p>¿Quieres agregar un blog? Para evitar trabajo duplicado, considera añadir el blog de tu empresa al siguiente repositorio:</p><ul><li><a href="https://github.com/kilimchoi/engineering-blogs" target="_blank" rel="noopener noreferrer">kilimchoi/engineering-blogs</a></li></p><p></ul><h2>En desarrollo</h2></p><p>¿Interesado en agregar una sección o ayudar a completar una en progreso? ¡<a href="#contributing" target="_blank" rel="noopener noreferrer">Contribuye</a>!</p><ul><li>Computación distribuida con MapReduce</li>
+<li>Hashing consistente</li>
+<li>Scatter gather</li>
+<li><a href="#contributing" target="_blank" rel="noopener noreferrer">Contribuye</a></li></p><p></ul><h2>Créditos</h2></p><p>Los créditos y fuentes están proporcionados a lo largo de este repositorio.</p><p>Agradecimientos especiales a:</p><ul><li><a href="http://www.hiredintech.com/system-design/the-system-design-process/" target="_blank" rel="noopener noreferrer">Hired in tech</a></li>
+<li><a href="https://www.amazon.com/dp/0984782850/" target="_blank" rel="noopener noreferrer">Cracking the coding interview</a></li>
+<li><a href="http://highscalability.com/" target="_blank" rel="noopener noreferrer">High scalability</a></li>
+<li><a href="https://github.com/checkcheckzz/system-design-interview" target="_blank" rel="noopener noreferrer">checkcheckzz/system-design-interview</a></li>
+<li><a href="https://github.com/shashank88/system_design" target="_blank" rel="noopener noreferrer">shashank88/system_design</a></li>
+<li><a href="https://github.com/mmcgrana/services-engineering" target="_blank" rel="noopener noreferrer">mmcgrana/services-engineering</a></li>
+<li><a href="https://gist.github.com/vasanthk/485d1c25737e8e72759f" target="_blank" rel="noopener noreferrer">System design cheat sheet</a></li>
+<li><a href="http://dancres.github.io/Pages/" target="_blank" rel="noopener noreferrer">A distributed systems reading list</a></li>
+<li><a href="http://www.puncsky.com/blog/2016-02-13-crack-the-system-design-interview" target="_blank" rel="noopener noreferrer">Cracking the system design interview</a></li></p><p></ul><h2>Información de contacto</h2></p><p>No dude en contactarme para discutir cualquier problema, pregunta o comentario.</p><p>Mi información de contacto se puede encontrar en mi <a href="https://github.com/donnemartin" target="_blank" rel="noopener noreferrer">página de GitHub</a>.</p><h2>Licencia</h2></p><p><em>Estoy proporcionando el código y los recursos en este repositorio bajo una licencia de código abierto. Debido a que este es mi repositorio personal, la licencia que recibe para mi código y recursos es de mi parte y no de mi empleador (Facebook).</em></p><p>    Derechos de autor 2017 Donne Martin</p><p>    Licencia Internacional Creative Commons Atribución 4.0 (CC BY 4.0)</p><p>    http://creativecommons.org/licenses/by/4.0/</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-09
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-09 
+    </div>
+    
+</body>
+</html>

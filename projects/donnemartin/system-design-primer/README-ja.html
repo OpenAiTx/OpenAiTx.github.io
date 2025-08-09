@@ -1,0 +1,1005 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>system-design-primer - 大規模システムの設計方法を学び、システム設計面接の準備をします。Ankiフラッシュカードも含まれています。</title>
+    <meta name="description" content="大規模システムの設計方法を学び、システム設計面接の準備をします。Ankiフラッシュカードも含まれています。">
+    <meta name="keywords" content="system-design-primer, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "system-design-primer",
+  "description": "大規模システムの設計方法を学び、システム設計面接の準備をします。Ankiフラッシュカードも含まれています。",
+  "author": {
+    "@type": "Person",
+    "name": "donnemartin"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 314773
+  },
+  "url": "https://OpenAiTx.github.io/projects/donnemartin/system-design-primer/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README.md",
+  "datePublished": "2025-08-09",
+  "dateModified": "2025-08-09"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    system-design-primer
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 314773 stars</span>
+                <span class="language">Japanese</span>
+                <span>by donnemartin</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><em><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README.md" target="_blank" rel="noopener noreferrer">English</a> ∙ <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README-ja.md" target="_blank" rel="noopener noreferrer">日本語</a> ∙ <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README-zh-Hans.md" target="_blank" rel="noopener noreferrer">简体中文</a> ∙ <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README-zh-TW.md" target="_blank" rel="noopener noreferrer">繁體中文</a> | <a href="https://github.com/donnemartin/system-design-primer/issues/170" target="_blank" rel="noopener noreferrer">العَرَبِيَّة‎</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/220" target="_blank" rel="noopener noreferrer">বাংলা</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/40" target="_blank" rel="noopener noreferrer">Português do Brasil</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/186" target="_blank" rel="noopener noreferrer">Deutsch</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/130" target="_blank" rel="noopener noreferrer">ελληνικά</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/272" target="_blank" rel="noopener noreferrer">עברית</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/104" target="_blank" rel="noopener noreferrer">Italiano</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/102" target="_blank" rel="noopener noreferrer">한국어</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/110" target="_blank" rel="noopener noreferrer">فارسی</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/68" target="_blank" rel="noopener noreferrer">Polski</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/87" target="_blank" rel="noopener noreferrer">русский язык</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/136" target="_blank" rel="noopener noreferrer">Español</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/187" target="_blank" rel="noopener noreferrer">ภาษาไทย</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/39" target="_blank" rel="noopener noreferrer">Türkçe</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/127" target="_blank" rel="noopener noreferrer">tiếng Việt</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/250" target="_blank" rel="noopener noreferrer">Français</a> | <a href="https://github.com/donnemartin/system-design-primer/issues/28" target="_blank" rel="noopener noreferrer">Add Translation</a></em>
+<strong>このガイドの<a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/TRANSLATIONS.md" target="_blank" rel="noopener noreferrer">翻訳</a>にご協力ください！</strong></p><h1>システム設計入門</h1></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/jj3A5N8.png">
+  <br/>
+</p></p><h2>動機</h2></p><blockquote>大規模システムの設計方法を学ぶ。</blockquote>
+>
+<blockquote>システム設計面接の準備をする。</blockquote></p><h3>大規模システムの設計方法を学ぶ</h3></p><p>スケーラブルなシステムの設計方法を学ぶことは、より良いエンジニアになる助けとなります。</p><p>システム設計は広範なトピックです。システム設計の原則に関する<strong>膨大な量のリソースがウェブ上に散在しています</strong>。</p><p>このリポジトリは、スケールするシステムの構築方法を学ぶのに役立つ<strong>体系的に整理されたリソースのコレクション</strong>です。</p><h3>オープンソースコミュニティから学ぶ</h3></p><p>これは継続的に更新されるオープンソースプロジェクトです。</p><p><a href="#contributing" target="_blank" rel="noopener noreferrer">貢献</a>を歓迎します！</p><h3>システム設計面接の準備</h3></p><p>コーディング面接に加えて、多くの技術系企業の<strong>技術面接プロセス</strong>にはシステム設計が<strong>必須の要素</strong>となっています。</p><p><strong>一般的なシステム設計面接の質問を練習し</strong>、<strong>議論、コード、図解を含むサンプル解答</strong>と<strong>比較</strong>しましょう。</p><p>面接準備のための追加トピック：</p><ul><li><a href="#study-guide" target="_blank" rel="noopener noreferrer">学習ガイド</a></li>
+<li><a href="#how-to-approach-a-system-design-interview-question" target="_blank" rel="noopener noreferrer">システム設計面接の質問へのアプローチ方法</a></li></p><p><li><a href="#system-design-interview-questions-with-solutions" target="_blank" rel="noopener noreferrer">システム設計面接質問、<strong>解答付き</strong></a></li>
+<li><a href="#object-oriented-design-interview-questions-with-solutions" target="_blank" rel="noopener noreferrer">オブジェクト指向設計面接質問、<strong>解答付き</strong></a></li>
+<li><a href="#additional-system-design-interview-questions" target="_blank" rel="noopener noreferrer">追加のシステム設計面接質問</a></li></p><p></ul><h2>Ankiフラッシュカード</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/zdCAkB3.png">
+  <br/>
+</p></p><p>提供されている<a href="https://apps.ankiweb.net/" target="_blank" rel="noopener noreferrer">Ankiフラッシュカードデッキ</a>は、間隔反復を利用して主要なシステム設計の概念を記憶するのに役立ちます。</p><ul><li><a href="https://github.com/donnemartin/system-design-primer/tree/master/resources/flash_cards/System%20Design.apkg" target="_blank" rel="noopener noreferrer">システム設計デッキ</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer/tree/master/resources/flash_cards/System%20Design%20Exercises.apkg" target="_blank" rel="noopener noreferrer">システム設計演習デッキ</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer/tree/master/resources/flash_cards/OO%20Design.apkg" target="_blank" rel="noopener noreferrer">オブジェクト指向設計演習デッキ</a></li></p><p></ul>外出先での利用に最適です。</p><h3>コーディングリソース: インタラクティブコーディングチャレンジ</h3></p><p><a href="https://github.com/donnemartin/interactive-coding-challenges" target="_blank" rel="noopener noreferrer"><strong>コーディング面接</strong></a>の準備に役立つリソースをお探しですか？</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/b4YtAEN.png">
+  <br/>
+</p></p><p>姉妹リポジトリの<a href="https://github.com/donnemartin/interactive-coding-challenges" target="_blank" rel="noopener noreferrer"><strong>Interactive Coding Challenges</strong></a>もぜひご覧ください。追加のAnkiデッキが含まれています：</p><ul><li><a href="https://github.com/donnemartin/interactive-coding-challenges/tree/master/anki_cards/Coding.apkg" target="_blank" rel="noopener noreferrer">コーディングデッキ</a></li></p><p></ul><h2>貢献について</h2></p><blockquote>コミュニティから学びましょう。</blockquote></p><p>以下のためにプルリクエストを自由に送ってください：</p><ul><li>誤りの修正</li>
+<li>セクションの改善</li>
+<li>新しいセクションを追加</li>
+<li><a href="https://github.com/donnemartin/system-design-primer/issues/28" target="_blank" rel="noopener noreferrer">翻訳</a></li></p><p></ul>調整が必要なコンテンツは<a href="#under-development" target="_blank" rel="noopener noreferrer">開発中</a>に置かれています。</p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">貢献ガイドライン</a>を確認してください。</p><h2>システム設計トピックの索引</h2></p><blockquote>さまざまなシステム設計トピックの概要、利点と欠点を含む。 <strong>すべてはトレードオフ</strong>です。</blockquote>
+>
+<blockquote>各セクションには、より詳細なリソースへのリンクが含まれています。</blockquote></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/jrUBAF7.png">
+  <br/>
+</p></p><ul><li><a href="#system-design-topics-start-here" target="_blank" rel="noopener noreferrer">システム設計トピック：ここから始める</a></li>
+    <li><a href="#step-1-review-the-scalability-video-lecture" target="_blank" rel="noopener noreferrer">ステップ1：スケーラビリティのビデオ講義を確認</a></li>
+    <li><a href="#step-2-review-the-scalability-article" target="_blank" rel="noopener noreferrer">ステップ2：スケーラビリティの記事を確認</a></li>
+    <li><a href="#next-steps" target="_blank" rel="noopener noreferrer">次のステップ</a></li>
+<li><a href="#performance-vs-scalability" target="_blank" rel="noopener noreferrer">パフォーマンス対スケーラビリティ</a></li>
+<li><a href="#latency-vs-throughput" target="_blank" rel="noopener noreferrer">レイテンシ対スループット</a></li>
+<li><a href="#availability-vs-consistency" target="_blank" rel="noopener noreferrer">可用性対整合性</a></li>
+    <li><a href="#cap-theorem" target="_blank" rel="noopener noreferrer">CAP定理</a></li>
+        <li><a href="#cp---consistency-and-partition-tolerance" target="_blank" rel="noopener noreferrer">CP - 整合性と分割耐性</a></li>
+        <li><a href="#ap---availability-and-partition-tolerance" target="_blank" rel="noopener noreferrer">AP - 可用性と分割耐性</a></li>
+<li><a href="#consistency-patterns" target="_blank" rel="noopener noreferrer">整合性パターン</a></li>
+    <li><a href="#weak-consistency" target="_blank" rel="noopener noreferrer">弱い整合性</a></li>
+    <li><a href="#eventual-consistency" target="_blank" rel="noopener noreferrer">最終的整合性</a></li>
+    <li><a href="#strong-consistency" target="_blank" rel="noopener noreferrer">強い整合性</a></li>
+<li><a href="#availability-patterns" target="_blank" rel="noopener noreferrer">可用性パターン</a></li>
+    <li><a href="#fail-over" target="_blank" rel="noopener noreferrer">フェイルオーバー</a></li>
+    <li><a href="#replication" target="_blank" rel="noopener noreferrer">レプリケーション</a></li>
+    <li><a href="#availability-in-numbers" target="_blank" rel="noopener noreferrer">可用性の数値</a></li>
+<li><a href="#domain-name-system" target="_blank" rel="noopener noreferrer">ドメインネームシステム</a></li>
+<li><a href="#content-delivery-network" target="_blank" rel="noopener noreferrer">コンテンツ配信ネットワーク</a></li>
+    <li><a href="#push-cdns" target="_blank" rel="noopener noreferrer">プッシュCDN</a></li>
+    <li><a href="#pull-cdns" target="_blank" rel="noopener noreferrer">プルCDN</a></li>
+<li><a href="#load-balancer" target="_blank" rel="noopener noreferrer">ロードバランサー</a></li>
+    <li><a href="#active-passive" target="_blank" rel="noopener noreferrer">アクティブ-パッシブ</a></li>
+    <li><a href="#active-active" target="_blank" rel="noopener noreferrer">アクティブ-アクティブ</a></li>
+    <li><a href="#layer-4-load-balancing" target="_blank" rel="noopener noreferrer">レイヤー4ロードバランシング</a></li>
+    <li><a href="#layer-7-load-balancing" target="_blank" rel="noopener noreferrer">レイヤー7ロードバランシング</a></li>
+    <li><a href="#horizontal-scaling" target="_blank" rel="noopener noreferrer">水平スケーリング</a></li>
+<li><a href="#reverse-proxy-web-server" target="_blank" rel="noopener noreferrer">リバースプロキシ（ウェブサーバー）</a></li>
+    <li><a href="#load-balancer-vs-reverse-proxy" target="_blank" rel="noopener noreferrer">ロードバランサーとリバースプロキシの違い</a></li>
+<li><a href="#application-layer" target="_blank" rel="noopener noreferrer">アプリケーション層</a></li>
+    <li><a href="#microservices" target="_blank" rel="noopener noreferrer">マイクロサービス</a></li>
+    <li><a href="#service-discovery" target="_blank" rel="noopener noreferrer">サービスディスカバリー</a></li>
+<li><a href="#database" target="_blank" rel="noopener noreferrer">データベース</a></li>
+    <li><a href="#relational-database-management-system-rdbms" target="_blank" rel="noopener noreferrer">リレーショナルデータベース管理システム（RDBMS）</a></li>
+        <li><a href="#master-slave-replication" target="_blank" rel="noopener noreferrer">マスター-スレーブレプリケーション</a></li>
+        <li><a href="#master-master-replication" target="_blank" rel="noopener noreferrer">マスター-マスターレプリケーション</a></li>
+        <li><a href="#federation" target="_blank" rel="noopener noreferrer">フェデレーション</a></li>
+        <li><a href="#sharding" target="_blank" rel="noopener noreferrer">シャーディング</a></li>
+        <li><a href="#denormalization" target="_blank" rel="noopener noreferrer">非正規化</a></li>
+        <li><a href="#sql-tuning" target="_blank" rel="noopener noreferrer">SQLチューニング</a></li>
+    <li><a href="#nosql" target="_blank" rel="noopener noreferrer">NoSQL</a></li>
+        <li><a href="#key-value-store" target="_blank" rel="noopener noreferrer">キー・バリューストア</a></li>
+        <li><a href="#document-store" target="_blank" rel="noopener noreferrer">ドキュメントストア</a></li>
+        <li><a href="#wide-column-store" target="_blank" rel="noopener noreferrer">ワイドカラムストア</a></li>
+        <li><a href="#graph-database" target="_blank" rel="noopener noreferrer">グラフデータベース</a></li>
+    <li><a href="#sql-or-nosql" target="_blank" rel="noopener noreferrer">SQLまたはNoSQL</a></li>
+<li><a href="#cache" target="_blank" rel="noopener noreferrer">キャッシュ</a></li>
+    <li><a href="#client-caching" target="_blank" rel="noopener noreferrer">クライアントキャッシュ</a></li>
+    <li><a href="#cdn-caching" target="_blank" rel="noopener noreferrer">CDNキャッシュ</a></li>
+    <li><a href="#web-server-caching" target="_blank" rel="noopener noreferrer">ウェブサーバーキャッシュ</a></li>
+    <li><a href="#database-caching" target="_blank" rel="noopener noreferrer">データベースキャッシュ</a></li>
+    <li><a href="#application-caching" target="_blank" rel="noopener noreferrer">アプリケーションキャッシュ</a></li>
+    <li><a href="#caching-at-the-database-query-level" target="_blank" rel="noopener noreferrer">データベースクエリレベルでのキャッシュ</a></li>
+    <li><a href="#caching-at-the-object-level" target="_blank" rel="noopener noreferrer">オブジェクトレベルでのキャッシュ</a></li>
+    <li><a href="#when-to-update-the-cache" target="_blank" rel="noopener noreferrer">キャッシュ更新のタイミング</a></li>
+        <li><a href="#cache-aside" target="_blank" rel="noopener noreferrer">キャッシュアサイド</a></li>
+        <li><a href="#write-through" target="_blank" rel="noopener noreferrer">ライトスルー</a></li>
+        <li><a href="#write-behind-write-back" target="_blank" rel="noopener noreferrer">ライトビハインド（ライトバック）</a></li>
+        <li><a href="#refresh-ahead" target="_blank" rel="noopener noreferrer">リフレッシュアヘッド</a></li>
+<li><a href="#asynchronism" target="_blank" rel="noopener noreferrer">非同期処理</a></li>
+    <li><a href="#message-queues" target="_blank" rel="noopener noreferrer">メッセージキュー</a></li>
+    <li><a href="#task-queues" target="_blank" rel="noopener noreferrer">タスクキュー</a></li>
+    <li><a href="#back-pressure" target="_blank" rel="noopener noreferrer">バックプレッシャー</a></li>
+<li><a href="#communication" target="_blank" rel="noopener noreferrer">通信</a></li>
+    <li><a href="#transmission-control-protocol-tcp" target="_blank" rel="noopener noreferrer">トランスミッションコントロールプロトコル (TCP)</a></li>
+    <li><a href="#user-datagram-protocol-udp" target="_blank" rel="noopener noreferrer">ユーザーデータグラムプロトコル (UDP)</a></li>
+    <li><a href="#remote-procedure-call-rpc" target="_blank" rel="noopener noreferrer">リモートプロシージャコール (RPC)</a></li>
+    <li><a href="#representational-state-transfer-rest" target="_blank" rel="noopener noreferrer">表現状態転送 (REST)</a></li>
+<li><a href="#security" target="_blank" rel="noopener noreferrer">セキュリティ</a></li>
+<li><a href="#appendix" target="_blank" rel="noopener noreferrer">付録</a></li>
+    <li><a href="#powers-of-two-table" target="_blank" rel="noopener noreferrer">2のべき乗表</a></li>
+    <li><a href="#latency-numbers-every-programmer-should-know" target="_blank" rel="noopener noreferrer">すべてのプログラマーが知るべきレイテンシ数値</a></li>
+    <li><a href="#additional-system-design-interview-questions" target="_blank" rel="noopener noreferrer">追加のシステム設計面接質問</a></li>
+    <li><a href="#real-world-architectures" target="_blank" rel="noopener noreferrer">実際のアーキテクチャ</a></li>
+    <li><a href="#company-architectures" target="_blank" rel="noopener noreferrer">企業のアーキテクチャ</a></li>
+    <li><a href="#company-engineering-blogs" target="_blank" rel="noopener noreferrer">企業のエンジニアリングブログ</a></li>
+<li><a href="#under-development" target="_blank" rel="noopener noreferrer">開発中</a></li>
+<li><a href="#credits" target="_blank" rel="noopener noreferrer">クレジット</a></li>
+<li><a href="#contact-info" target="_blank" rel="noopener noreferrer">連絡先情報</a></li>
+<li><a href="#license" target="_blank" rel="noopener noreferrer">ライセンス</a></li></p><p></ul><h2>学習ガイド</h2></p><blockquote>面接のスケジュールに基づく推奨トピック（短期、中期、長期）。</blockquote></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/OfVllex.png" alt="Imgur"></p><p><strong>Q: 面接のためにここにあるすべてを知る必要がありますか？</strong></p><p><strong>A: いいえ、面接準備のためにここにあるすべてを知る必要はありません</strong>。</p><p>面接で問われる内容は以下のような変数によって異なります：</p><ul><li>あなたの経験の量</li>
+<li>あなたの技術的な背景</li>
+<li>面接を受けるポジション</li>
+<li>面接を受ける企業</li>
+<li>運</li></p><p></ul>経験豊富な候補者は一般的にシステム設計についてより多く知っていることが期待されます。 アーキテクトやチームリーダーは個人貢献者よりも多く知っていることが期待されるかもしれません。 トップテック企業では一つ以上の設計面接ラウンドがある可能性が高いです。</p><p>幅広く学び、いくつかの分野で深掘りしましょう。システム設計の主要なトピックについて少し知っておくと役立ちます。以下のガイドは、あなたのスケジュール、経験、面接するポジションや企業に応じて調整してください。</p><ul><li><strong>短期間</strong> - システム設計トピックの<strong>広範囲</strong>を目指しましょう。<strong>いくつか</strong>の面接問題を解いて練習します。</li>
+<li><strong>中期間</strong> - システム設計トピックの<strong>広範囲</strong>と<strong>一部の深掘り</strong>を目指しましょう。<strong>多くの</strong>面接問題を解いて練習します。</li>
+<li><strong>長期間</strong> - システム設計トピックの<strong>広範囲</strong>と<strong>より深い理解</strong>を目指しましょう。<strong>ほとんどの</strong>面接問題を解いて練習します。</li></p><p></ul>| | 短期間 | 中期間 | 長期間 |
+|---|---|---|---|
+| <a href="#index-of-system-design-topics" target="_blank" rel="noopener noreferrer">システム設計トピック</a>を読んでシステムの仕組みを広く理解する | :+1: | :+1: | :+1: |
+| 面接予定の企業の<a href="#company-engineering-blogs" target="_blank" rel="noopener noreferrer">会社のエンジニアリングブログ</a>をいくつか読む | :+1: | :+1: | :+1: |
+| <a href="#real-world-architectures" target="_blank" rel="noopener noreferrer">実世界のアーキテクチャ</a>をいくつか読む | :+1: | :+1: | :+1: |
+| <a href="#how-to-approach-a-system-design-interview-question" target="_blank" rel="noopener noreferrer">システム設計面接の質問への取り組み方</a>を見直す | :+1: | :+1: | :+1: |
+| <a href="#system-design-interview-questions-with-solutions" target="_blank" rel="noopener noreferrer">システム設計面接質問と解答</a>に取り組む | 一部 | 多く | ほとんど |
+| <a href="#object-oriented-design-interview-questions-with-solutions" target="_blank" rel="noopener noreferrer">オブジェクト指向設計面接質問と解答</a>に取り組む | 一部 | 多く | ほとんど |
+| <a href="#additional-system-design-interview-questions" target="_blank" rel="noopener noreferrer">追加のシステム設計面接質問</a>を見直す | 一部 | 多く | ほとんど |</p><h2>システム設計面接質問への取り組み方</h2></p><blockquote>システム設計面接質問にどう取り組むか。</blockquote></p><p>システム設計面接は<strong>オープンエンドな対話</strong>です。あなたが主導することが期待されます。</p><p>以下のステップを使って議論を進めることができます。このプロセスを確実にするために、<a href="#system-design-interview-questions-with-solutions" target="_blank" rel="noopener noreferrer">システム設計面接質問と解答</a>のセクションを以下のステップに従って取り組みましょう。</p><h3>ステップ1: ユースケース、制約、仮定の概要を示す</h3></p><p>要件を集めて問題の範囲を定めます。ユースケースや制約を明確にするために質問し、仮定を議論します。</p><ul><li>誰が使うのか？</li>
+<li>どのように使うのか？</li>
+<li>ユーザー数は？</li>
+<li>システムは何をするのか？</li>
+<li>システムの入力と出力は何か？</li>
+<li>どれくらいのデータを扱うことを想定しているか？</li>
+<li>1秒あたりのリクエスト数はどれくらいか？</li>
+<li>読み込みと書き込みの比率はどの程度か？</li></p><p></ul><h3>ステップ2: 高レベル設計を作成する</h3></p><p>すべての重要なコンポーネントを含む高レベル設計の概要を示します。
+<ul><li>主なコンポーネントと接続をスケッチする  </li>
+<li>アイデアの正当性を説明する  </li></p><p></ul><h3>ステップ3: コアコンポーネントの設計  </h3></p><p>各コアコンポーネントの詳細に入り込む。たとえば、もし<a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/pastebin/README.md" target="_blank" rel="noopener noreferrer">URL短縮サービスを設計する</a>ように求められた場合、以下を議論する：  </p><ul><li>フルURLのハッシュを生成し保存する  </li>
+    <li><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/pastebin/README.md" target="_blank" rel="noopener noreferrer">MD5</a>と<a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/pastebin/README.md" target="_blank" rel="noopener noreferrer">Base62</a>  </li>
+    <li>ハッシュの衝突  </li>
+    <li>SQLかNoSQLか  </li>
+    <li>データベーススキーマ  </li>
+<li>ハッシュ化されたURLをフルURLに変換する  </li>
+    <li>データベース検索  </li>
+<li>APIとオブジェクト指向設計  </li></p><p></ul><h3>ステップ4: 設計のスケールアップ  </h3></p><p>制約条件を踏まえてボトルネックを特定し対処する。たとえば、スケーラビリティの問題に対処するために以下が必要か？  </p><ul><li>ロードバランサー  </li>
+<li>水平スケーリング  </li>
+<li>キャッシュ  </li>
+<li>データベースシャーディング  </li></p><p></ul>潜在的な解決策とトレードオフを議論する。すべてはトレードオフである。<a href="#index-of-system-design-topics" target="_blank" rel="noopener noreferrer">スケーラブルなシステム設計の原則</a>を用いてボトルネックに対処する。  </p><h3>おおまかな計算  </h3></p><p>手計算での見積もりを求められることがある。<a href="#appendix" target="_blank" rel="noopener noreferrer">付録</a>の以下のリソースを参照せよ：  </p><ul><li><a href="http://highscalability.com/blog/2011/1/26/google-pro-tip-use-back-of-the-envelope-calculations-to-choo.html" target="_blank" rel="noopener noreferrer">おおまかな計算の利用</a>  </li>
+<li><a href="#powers-of-two-table" target="_blank" rel="noopener noreferrer">2の冪乗表</a>  </li>
+<li><a href="#latency-numbers-every-programmer-should-know" target="_blank" rel="noopener noreferrer">すべてのプログラマが知るべきレイテンシ数値</a>  </li></p><p></ul><h3>参考文献およびさらなる読書  </h3></p><p>以下のリンクを確認し、何を期待すべきかの理解を深めよう：</p><ul><li><a href="https://www.palantir.com/2011/10/how-to-rock-a-systems-design-interview/" target="_blank" rel="noopener noreferrer">システム設計面接を成功させる方法</a></li>
+<li><a href="http://www.hiredintech.com/system-design" target="_blank" rel="noopener noreferrer">システム設計面接</a></li>
+<li><a href="https://www.youtube.com/watch?v=ZgdS0EUmn70" target="_blank" rel="noopener noreferrer">アーキテクチャとシステム設計面接の入門</a></li>
+<li><a href="https://leetcode.com/discuss/career/229177/My-System-Design-Template" target="_blank" rel="noopener noreferrer">システム設計テンプレート</a></li></p><p></ul><h2>システム設計面接の質問と解答例</h2></p><blockquote>一般的なシステム設計面接の質問とサンプルディスカッション、コード、図解。</blockquote>
+>
+<blockquote>解答は <code>solutions/</code> フォルダ内の内容にリンク。</blockquote></p><p>| 質問 | |
+|---|---|
+| Pastebin.com（または Bit.ly）の設計 | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/pastebin/README.md" target="_blank" rel="noopener noreferrer">解答</a> |
+| Twitterのタイムラインと検索の設計（またはFacebookのフィードと検索） | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/twitter/README.md" target="_blank" rel="noopener noreferrer">解答</a> |
+| ウェブクローラーの設計 | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/web_crawler/README.md" target="_blank" rel="noopener noreferrer">解答</a> |
+| Mint.comの設計 | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/mint/README.md" target="_blank" rel="noopener noreferrer">解答</a> |
+| ソーシャルネットワークのデータ構造の設計 | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/social_graph/README.md" target="_blank" rel="noopener noreferrer">解答</a> |
+| 検索エンジン用のキー・バリューストアの設計 | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/query_cache/README.md" target="_blank" rel="noopener noreferrer">解答</a> |
+| Amazonのカテゴリー別売上ランキング機能の設計 | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/sales_rank/README.md" target="_blank" rel="noopener noreferrer">解答</a> |
+| AWSで数百万ユーザーにスケール可能なシステムの設計 | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/scaling_aws/README.md" target="_blank" rel="noopener noreferrer">解答</a> |
+| システム設計の質問を追加する | <a href="#contributing" target="_blank" rel="noopener noreferrer">貢献する</a> |</p><h3>Pastebin.com（または Bit.ly）の設計</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/pastebin/README.md" target="_blank" rel="noopener noreferrer">演習と解答を見る</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/4edXG0T.png" alt="Imgur"></p><h3>Twitterのタイムラインと検索の設計（またはFacebookのフィードと検索）</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/twitter/README.md" target="_blank" rel="noopener noreferrer">演習と解答を見る</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/jrUBAF7.png" alt="Imgur"></p><h3>ウェブクローラーの設計</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/web_crawler/README.md" target="_blank" rel="noopener noreferrer">演習と解答を見る</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/bWxPtQA.png" alt="Imgur"></p><h3>Design Mint.com</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/mint/README.md" target="_blank" rel="noopener noreferrer">View exercise and solution</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/V5q57vU.png" alt="Imgur"></p><h3>Design the data structures for a social network</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/social_graph/README.md" target="_blank" rel="noopener noreferrer">View exercise and solution</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/cdCv5g7.png" alt="Imgur"></p><h3>Design a key-value store for a search engine</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/query_cache/README.md" target="_blank" rel="noopener noreferrer">View exercise and solution</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/4j99mhe.png" alt="Imgur"></p><h3>Design Amazon's sales ranking by category feature</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/sales_rank/README.md" target="_blank" rel="noopener noreferrer">View exercise and solution</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/MzExP06.png" alt="Imgur"></p><h3>Design a system that scales to millions of users on AWS</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/scaling_aws/README.md" target="_blank" rel="noopener noreferrer">View exercise and solution</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/jj3A5N8.png" alt="Imgur"></p><h2>Object-oriented design interview questions with solutions</h2></p><blockquote>Common object-oriented design interview questions with sample discussions, code, and diagrams.</blockquote>
+>
+<blockquote>Solutions linked to content in the <code>solutions/</code> folder.</blockquote></p><p>><strong>Note: This section is under development</strong></p><p>| Question | |
+|---|---|
+| ハッシュマップを設計する | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/object_oriented_design/hash_table/hash_map.ipynb" target="_blank" rel="noopener noreferrer">解答</a>  |
+| LRUキャッシュを設計する | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/object_oriented_design/lru_cache/lru_cache.ipynb" target="_blank" rel="noopener noreferrer">解答</a>  |
+| コールセンターを設計する | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/object_oriented_design/call_center/call_center.ipynb" target="_blank" rel="noopener noreferrer">解答</a>  |
+| トランプの山札を設計する | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/object_oriented_design/deck_of_cards/deck_of_cards.ipynb" target="_blank" rel="noopener noreferrer">解答</a>  |
+| 駐車場を設計する | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/object_oriented_design/parking_lot/parking_lot.ipynb" target="_blank" rel="noopener noreferrer">解答</a>  |
+| チャットサーバーを設計する | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/object_oriented_design/online_chat/online_chat.ipynb" target="_blank" rel="noopener noreferrer">解答</a>  |
+| 循環配列を設計する | <a href="#contributing" target="_blank" rel="noopener noreferrer">貢献する</a>  |
+| オブジェクト指向設計の質問を追加する | <a href="#contributing" target="_blank" rel="noopener noreferrer">貢献する</a> |</p><h2>システム設計トピック：ここから始めよう</h2></p><p>システム設計は初めてですか？</p><p>まず、基本的な共通原則の理解が必要です。これらが何であるか、どのように使われるか、その利点と欠点について学びましょう。</p><h3>ステップ1：スケーラビリティのビデオ講義を視聴する</h3></p><p><a href="https://www.youtube.com/watch?v=-W9F__D3oY4" target="_blank" rel="noopener noreferrer">ハーバードのスケーラビリティ講義</a></p><ul><li>カバーするトピック:</li>
+    <li>垂直スケーリング</li>
+    <li>水平スケーリング</li>
+    <li>キャッシュ</li>
+    <li>ロードバランシング</li>
+    <li>データベースのレプリケーション</li>
+    <li>データベースのパーティショニング</li></p><p></ul><h3>ステップ2：スケーラビリティの記事を読む</h3></p><p><a href="https://web.archive.org/web/20221030091841/http://www.lecloud.net/tagged/scalability/chrono" target="_blank" rel="noopener noreferrer">スケーラビリティ</a></p><ul><li>カバーするトピック:</li>
+    <li><a href="https://web.archive.org/web/20220530193911/https://www.lecloud.net/post/7295452622/scalability-for-dummies-part-1-clones" target="_blank" rel="noopener noreferrer">クローン</a></li>
+    <li><a href="https://web.archive.org/web/20220602114024/https://www.lecloud.net/post/7994751381/scalability-for-dummies-part-2-database" target="_blank" rel="noopener noreferrer">データベース</a></li>
+    <li><a href="https://web.archive.org/web/20230126233752/https://www.lecloud.net/post/9246290032/scalability-for-dummies-part-3-cache" target="_blank" rel="noopener noreferrer">キャッシュ</a></li>
+    <li><a href="https://web.archive.org/web/20220926171507/https://www.lecloud.net/post/9699762917/scalability-for-dummies-part-4-asynchronism" target="_blank" rel="noopener noreferrer">非同期処理</a></li></p><p></ul><h3>次のステップ</h3></p><p>次に、高レベルのトレードオフについて見ていきます：</p><ul><li><strong>パフォーマンス</strong> vs <strong>スケーラビリティ</strong></li>
+<li><strong>レイテンシ</strong> vs <strong>スループット</strong></li>
+<li><strong>可用性</strong> vs <strong>一貫性</strong></li></p><p></ul>すべては<strong>トレードオフ</strong>であることを念頭に置いてください。</p><p>その後、DNS、CDN、ロードバランサーなど、より具体的なトピックに踏み込んでいきます。</p><h2>パフォーマンス vs スケーラビリティ</h2></p><p>サービスが<strong>スケーラブル</strong>であるとは、追加したリソースに比例して<strong>パフォーマンス</strong>が向上する場合を指します。一般的に、パフォーマンスの向上とはより多くの作業単位を処理することを意味しますが、データセットが増大する場合のように、より大きな作業単位を扱うことも含まれます。<sup><a href=http://www.allthingsdistributed.com/2006/03/a_word_on_scalability.html>1</a></sup></p><p>パフォーマンスとスケーラビリティの別の見方：</p><ul><li><strong>パフォーマンス</strong>の問題がある場合、単一ユーザーに対してシステムが遅い。</li>
+<li><strong>スケーラビリティ</strong>の問題がある場合、単一ユーザーには速いが、負荷が高いときに遅くなる。</li></p><p></ul><h3>参考文献とさらなる読み物</h3></p><ul><li><a href="http://www.allthingsdistributed.com/2006/03/a_word_on_scalability.html" target="_blank" rel="noopener noreferrer">スケーラビリティについての一言</a></li>
+<li><a href="http://www.slideshare.net/jboner/scalability-availability-stability-patterns/" target="_blank" rel="noopener noreferrer">スケーラビリティ、可用性、安定性、パターン</a></li></p><p></ul><h2>レイテンシ vs スループット</h2></p><p><strong>レイテンシ</strong>は、ある操作を実行するか結果を出すまでの時間です。</p><p><strong>スループット</strong>は、単位時間あたりのそのような操作や結果の数です。</p><p>一般的には、<strong>許容可能なレイテンシ</strong>で<strong>最大スループット</strong>を目指すべきです。</p><h3>参考文献とさらなる読み物</h3></p><ul><li><a href="https://community.cadence.com/cadence_blogs_8/b/fv/posts/understanding-latency-vs-throughput" target="_blank" rel="noopener noreferrer">レイテンシとスループットの理解</a></li></p><p></ul><h2>可用性 vs 一貫性</h2></p><h3>CAP定理</h3></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/bgLMI2u.png">
+  <br/>
+  <i><a href=http://robertgreiner.com/2014/08/cap-theorem-revisited>出典: CAP定理再考</a></i>
+</p></p><p>分散コンピュータシステムでは、次の3つの保証のうち2つだけをサポートできます:</p><ul><li><strong>一貫性（Consistency）</strong> - すべての読み取りは最新の書き込みを受け取るか、エラーになる</li>
+<li><strong>可用性（Availability）</strong> - すべてのリクエストは応答を受け取るが、最新の情報が含まれている保証はない</li>
+<li><strong>分割耐性（Partition Tolerance）</strong> - ネットワーク障害による任意の分割があってもシステムは動作し続ける</li></p><p></ul><em>ネットワークは信頼できないため、分割耐性をサポートする必要があります。ソフトウェア上のトレードオフとして、一貫性と可用性のどちらかを選択する必要があります。</em></p><p>#### CP - 一貫性と分割耐性</p><p>分割されたノードからの応答を待つとタイムアウトエラーになる可能性があります。ビジネス上の要件が原子性のある読み書きを必要とする場合、CPは良い選択です。</p><p>#### AP - 可用性と分割耐性</p><p>応答は任意のノードで最も利用可能なバージョンのデータを返しますが、最新ではない場合があります。分割が解消されると書き込みの伝播に時間がかかることがあります。</p><p>APは<a href="#eventual-consistency" target="_blank" rel="noopener noreferrer">最終的な一貫性</a>を許容する必要がある場合や、外部のエラーがあってもシステムを継続動作させる必要がある場合に適しています。</p><h3>出典とさらなる参考資料</h3></p><ul><li><a href="http://robertgreiner.com/2014/08/cap-theorem-revisited/" target="_blank" rel="noopener noreferrer">CAP定理再考</a></li>
+<li><a href="http://ksat.me/a-plain-english-introduction-to-cap-theorem" target="_blank" rel="noopener noreferrer">CAP定理のわかりやすい紹介</a></li>
+<li><a href="https://github.com/henryr/cap-faq" target="_blank" rel="noopener noreferrer">CAP FAQ</a></li>
+<li><a href="https://www.youtube.com/watch?v=k-Yaq8AHlFA" target="_blank" rel="noopener noreferrer">CAP定理</a></li></p><p></ul><h2>一貫性パターン</h2></p><p>同じデータの複数のコピーが存在する場合、クライアントが一貫したデータビューを持つようにそれらをどのように同期させるかの選択肢があります。<a href="#cap-theorem" target="_blank" rel="noopener noreferrer">CAP定理</a>の一貫性の定義を思い出してください - すべての読み取りは最新の書き込みを受け取るか、エラーになる。</p><h3>弱い一貫性</h3></p><p>書き込み後に読み取りがそれを見える場合も見えない場合もあります。ベストエフォートのアプローチです。</p><p>このアプローチはmemcachedのようなシステムで見られます。弱い一貫性はVoIP、ビデオチャット、リアルタイムマルチプレイヤーゲームなどのリアルタイムユースケースでよく機能します。例えば、電話中に数秒間通信が途切れた場合、接続が回復してもその間に話された内容は聞こえません。
+<h3>最終的整合性</h3></p><p>書き込み後、読み取りは最終的にそれを参照します（通常は数ミリ秒以内）。データは非同期に複製されます。</p><p>このアプローチはDNSやメールのようなシステムで見られます。最終的整合性は高可用性システムでうまく機能します。</p><h3>強い整合性</h3></p><p>書き込み後、読み取りはそれを参照します。データは同期的に複製されます。</p><p>このアプローチはファイルシステムやRDBMSで見られます。強い整合性はトランザクションを必要とするシステムでうまく機能します。</p><h3>出典およびさらなる読み物</h3></p><ul><li><a href="http://snarfed.org/transactions_across_datacenters_io.html" target="_blank" rel="noopener noreferrer">データセンター間のトランザクション</a></li></p><p></ul><h2>可用性パターン</h2></p><p>高可用性をサポートするための相補的なパターンが二つあります：<strong>フェイルオーバー</strong>と<strong>レプリケーション</strong>。</p><h3>フェイルオーバー</h3></p><p>#### アクティブ-パッシブ</p><p>アクティブ-パッシブフェイルオーバーでは、アクティブサーバーと待機中のパッシブサーバー間でハートビートが送信されます。ハートビートが中断された場合、パッシブサーバーがアクティブのIPアドレスを引き継ぎサービスを再開します。</p><p>ダウンタイムの長さは、パッシブサーバーがすでに「ホット」スタンバイで稼働しているか、「コールド」スタンバイから起動する必要があるかで決まります。トラフィックを処理するのはアクティブサーバーのみです。</p><p>アクティブ-パッシブフェイルオーバーはマスター-スレーブフェイルオーバーとも呼ばれます。</p><p>#### アクティブ-アクティブ</p><p>アクティブ-アクティブでは、両方のサーバーがトラフィックを管理し、負荷を分散しています。</p><p>サーバーが公開向けの場合、DNSは両方のサーバーのパブリックIPを認識する必要があります。サーバーが内部向けの場合、アプリケーションロジックが両方のサーバーを認識する必要があります。</p><p>アクティブ-アクティブフェイルオーバーはマスター-マスターフェイルオーバーとも呼ばれます。</p><h3>欠点：フェイルオーバー</h3></p><ul><li>フェイルオーバーは、より多くのハードウェアと追加の複雑さをもたらします。</li>
+<li>アクティブシステムが、新たに書き込まれたデータがパッシブに複製される前に障害が発生した場合、データの損失の可能性があります。</li></p><p></ul><h3>複製</h3></p><p>#### マスター・スレーブおよびマスター・マスター</p><p>このトピックは<a href="#database" target="_blank" rel="noopener noreferrer">データベース</a>セクションでさらに詳しく説明されています：</p><ul><li><a href="#master-slave-replication" target="_blank" rel="noopener noreferrer">マスター・スレーブ複製</a></li>
+<li><a href="#master-master-replication" target="_blank" rel="noopener noreferrer">マスター・マスター複製</a></li></p><p></ul><h3>可用性の数値</h3></p><p>可用性はしばしばサービスが利用可能な時間の割合としてアップタイム（またはダウンタイム）で定量化されます。可用性は一般的に「9の数」で測定され、99.99%の可用性を持つサービスは「4つの9」と表現されます。</p><p>#### 99.9%の可用性 - 3つの9</p><p>| 期間                | 許容ダウンタイム     |
+|---------------------|--------------------|
+| 年間ダウンタイム     | 8時間45分57秒       |
+| 月間ダウンタイム     | 43分49.7秒          |
+| 週間ダウンタイム     | 10分4.8秒           |
+| 1日あたりのダウンタイム | 1分26.4秒           |</p><p>#### 99.99%の可用性 - 4つの9</p><p>| 期間                | 許容ダウンタイム     |
+|---------------------|--------------------|
+| 年間ダウンタイム     | 52分35.7秒          |
+| 月間ダウンタイム     | 4分23秒             |
+| 週間ダウンタイム     | 1分5秒              |
+| 1日あたりのダウンタイム | 8.6秒               |</p><p>#### 並列可用性と直列可用性</p><p>サービスが障害を起こしやすい複数のコンポーネントで構成されている場合、サービス全体の可用性はコンポーネントが直列か並列かによって異なります。</p><p>###### 直列の場合</p><p>全体の可用性は、可用性が100%未満の2つのコンポーネントが直列に接続されている場合に低下します:</p><pre><code class="language-">Availability (Total) = Availability (Foo) * Availability (Bar)</code></pre></p><p>もし <code>Foo</code> と <code>Bar</code> の両方がそれぞれ99.9%の可用性を持っている場合、それらが直列に接続されると合計の可用性は99.8%になります。</p><p>###### 並列の場合</p><p>可用性が100%未満の2つのコンポーネントを並列に配置すると、全体の可用性は向上します：</p><pre><code class="language-">Availability (Total) = 1 - (1 - Availability (Foo)) * (1 - Availability (Bar))</code></pre>
+もし <code>Foo</code> と <code>Bar</code> の両方がそれぞれ99.9%の可用性を持っている場合、並列での総可用性は99.9999%になります。</p><h2>ドメインネームシステム</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/IOyLj4i.jpg">
+  <br/>
+  <i><a href=http://www.slideshare.net/srikrupa5/dns-security-presentation-issa>出典: DNSセキュリティプレゼンテーション</a></i>
+</p></p><p>ドメインネームシステム（DNS）は、www.example.comのようなドメイン名をIPアドレスに変換します。</p><p>DNSは階層構造を持ち、最上位にいくつかの権威サーバーがあります。ルーターやISPは、名前解決時にどのDNSサーバーに連絡すべきかの情報を提供します。下位のDNSサーバーはマッピングをキャッシュしますが、DNS伝播遅延により古くなることがあります。DNSの結果はブラウザやOSによっても一定期間キャッシュされ、その期間は<a href="https://en.wikipedia.org/wiki/Time_to_live" target="_blank" rel="noopener noreferrer">TTL（Time to Live）</a>によって決まります。</p><ul><li><strong>NSレコード（ネームサーバー）</strong> - ドメイン／サブドメインのDNSサーバーを指定します。</li>
+<li><strong>MXレコード（メール交換）</strong> - メッセージ受信のためのメールサーバーを指定します。</li>
+<li><strong>Aレコード（アドレス）</strong> - 名前をIPアドレスに紐づけます。</li>
+<li><strong>CNAME（カノニカル）</strong> - 名前を別の名前や <code>CNAME</code>（例: example.com を www.example.com に）または <code>A</code>レコードに紐づけます。</li></p><p></ul><a href="https://www.cloudflare.com/dns/" target="_blank" rel="noopener noreferrer">CloudFlare</a>や<a href="https://aws.amazon.com/route53/" target="_blank" rel="noopener noreferrer">Route 53</a>のようなサービスはマネージドDNSサービスを提供しています。一部のDNSサービスは以下のような様々な方法でトラフィックをルーティングできます：</p><ul><li><a href="https://www.jscape.com/blog/load-balancing-algorithms" target="_blank" rel="noopener noreferrer">重み付きラウンドロビン</a></li>
+    <li>メンテナンス中のサーバーへのトラフィックを防ぐ</li>
+    <li>異なるクラスタサイズ間のバランス調整</li>
+    <li>A/Bテスト</li>
+<li><a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-latency.html" target="_blank" rel="noopener noreferrer">レイテンシベース</a></li>
+<li><a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-geo.html" target="_blank" rel="noopener noreferrer">地理位置ベース</a></li></p><p></ul><h3>DNSの欠点</h3></p><ul><li>DNSサーバーにアクセスすることで若干の遅延が発生しますが、前述のキャッシュにより軽減されます。</li>
+<li>DNSサーバーの管理は複雑であり、一般的に<a href="http://superuser.com/questions/472695/who-controls-the-dns-servers/472729" target="_blank" rel="noopener noreferrer">政府、ISP、大企業</a>によって管理されています。</li>
+<li>最近DNSサービスは<a href="http://dyn.com/blog/dyn-analysis-summary-of-friday-october-21-attack/" target="_blank" rel="noopener noreferrer">DDoS攻撃</a>を受けており、ユーザーがTwitterなどのウェブサイトにアクセスする際にTwitterのIPアドレスを知らないとアクセスできない状況が発生しています。</li></p><p></ul><h3>参考文献とさらなる情報</h3></p><ul><li><a href="https://technet.microsoft.com/en-us/library/dd197427(v=ws.10" target="_blank" rel="noopener noreferrer">DNSアーキテクチャ</a>.aspx)</li>
+<li><a href="https://ja.wikipedia.org/wiki/ドメインネームシステム" target="_blank" rel="noopener noreferrer">Wikipedia</a></li>
+<li><a href="https://support.dnsimple.com/categories/dns/" target="_blank" rel="noopener noreferrer">DNS関連記事</a></li></p><p></ul><h2>コンテンツ配信ネットワーク</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/h9TAuGI.jpg">
+  <br/>
+  <i><a href=https://www.creative-artworks.eu/why-use-a-content-delivery-network-cdn/>出典: なぜCDNを使うのか</a></i>
+</p></p><p>コンテンツ配信ネットワーク（CDN）は、ユーザーに近い場所からコンテンツを配信する、世界中に分散したプロキシサーバーのネットワークです。一般的に、HTML/CSS/JS、写真、動画などの静的ファイルはCDNから配信されますが、AmazonのCloudFrontのように動的コンテンツをサポートするCDNもあります。サイトのDNS解決はクライアントにどのサーバーに接続すべきかを伝えます。</p><p>CDNからコンテンツを配信することで、次の2つの方法でパフォーマンスが大幅に向上します：</p><ul><li>ユーザーは自分に近いデータセンターからコンテンツを受け取る</li>
+<li>サーバーはCDNが対応するリクエストを処理する必要がなくなる</li></p><p></ul><h3>プッシュCDN</h3></p><p>プッシュCDNはサーバーで変更があるたびに新しいコンテンツを受け取ります。コンテンツ提供の全責任はあなたにあり、直接CDNにアップロードし、URLを書き換えてCDNを指すようにします。コンテンツの有効期限や更新タイミングを設定できます。コンテンツは新規または変更時のみアップロードされるため、トラフィックを最小限に抑えつつ、ストレージを最大限に活用します。</p><p>トラフィックが少ないサイトや更新頻度の低いコンテンツのサイトではプッシュCDNが適しています。コンテンツは一度CDNに配置され、定期的に再取得されることはありません。</p><h3>プルCDN</h3></p><p>プルCDNは最初のユーザーがコンテンツをリクエストした際にあなたのサーバーから新しいコンテンツを取得します。コンテンツはサーバー上に残し、URLを書き換えてCDNを指すようにします。そのため、コンテンツがCDNにキャッシュされるまではリクエストが遅くなります。</p><p><a href="https://ja.wikipedia.org/wiki/TTL" target="_blank" rel="noopener noreferrer">TTL（Time-to-Live）</a>はコンテンツがキャッシュされる期間を決定します。プルCDNはCDN上のストレージ使用を最小限に抑えますが、ファイルの期限切れ後に実際には変更されていない場合でも再取得されることで冗長なトラフィックが発生する可能性があります。</p><p>トラフィックが多いサイトではプルCDNが適しており、最近リクエストされたコンテンツのみがCDNに残り、トラフィックがより均等に分散されます。</p><h3>デメリット：CDN</h3></p><ul><li>トラフィックによってはCDNコストが大きくなる可能性がありますが、CDNを使わなかった場合の追加コストと比較する必要があります。</li>
+<li>TTLが切れる前に更新された場合、コンテンツが古いままになる可能性があります。</li>
+<li>静的コンテンツのURLをCDNを指すように変更する必要があります。</li></p><p></ul><h3>出典および参考文献</h3></p><ul><li><a href="https://figshare.com/articles/Globally_distributed_content_delivery/6605972" target="_blank" rel="noopener noreferrer">Globally distributed content delivery</a></li>
+<li><a href="http://www.travelblogadvice.com/technical/the-differences-between-push-and-pull-cdns/" target="_blank" rel="noopener noreferrer">プッシュCDNとプルCDNの違い</a></li></p><p><li><a href="https://en.wikipedia.org/wiki/Content_delivery_network" target="_blank" rel="noopener noreferrer">Wikipedia</a></li></p><p></ul><h2>ロードバランサー</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/h81n9iK.png">
+  <br/>
+  <i><a href=http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html>出典: スケーラブルシステム設計パターン</a></i>
+</p></p><p>ロードバランサーは、アプリケーションサーバーやデータベースなどのコンピューティングリソースに対するクライアントからのリクエストを分散します。 各ケースで、ロードバランサーはコンピューティングリソースからのレスポンスを適切なクライアントに返します。 ロードバランサーは以下に効果的です：</p><ul><li>不健康なサーバーへのリクエストを防ぐ</li>
+<li>リソースの過負荷を防ぐ</li>
+<li>単一障害点の排除に役立つ</li></p><p></ul>ロードバランサーはハードウェア（高価）やHAProxyのようなソフトウェアで実装可能です。</p><p>追加の利点には以下があります：</p><ul><li><strong>SSL終端</strong> - 受信リクエストの復号化とサーバーレスポンスの暗号化を行い、バックエンドサーバーがこれらの高コストな処理を行わずに済むようにする</li>
+    <li>各サーバーに<a href="https://en.wikipedia.org/wiki/X.509" target="_blank" rel="noopener noreferrer">X.509証明書</a>をインストールする必要がなくなる</li>
+<li><strong>セッション持続性</strong> - クッキーを発行し、ウェブアプリがセッションを追跡しない場合に特定クライアントのリクエストを同一インスタンスにルーティングする</li></p><p></ul>障害に備えて、ロードバランサーは<a href="#active-passive" target="_blank" rel="noopener noreferrer">アクティブ-パッシブ</a>または<a href="#active-active" target="_blank" rel="noopener noreferrer">アクティブ-アクティブ</a>モードで複数台構成することが一般的です。</p><p>ロードバランサーは以下のような様々な指標に基づいてトラフィックをルーティングできます：</p><ul><li>ランダム</li>
+<li>最も負荷の低い</li>
+<li>セッション／クッキー</li>
+<li><a href="https://www.g33kinfo.com/info/round-robin-vs-weighted-round-robin-lb" target="_blank" rel="noopener noreferrer">ラウンドロビンまたは加重ラウンドロビン</a></li>
+<li><a href="#layer-4-load-balancing" target="_blank" rel="noopener noreferrer">レイヤー4</a></li>
+<li><a href="#layer-7-load-balancing" target="_blank" rel="noopener noreferrer">レイヤー7</a></li></p><p></ul><h3>レイヤー4ロードバランシング</h3></p><p>レイヤー4ロードバランサーはリクエスト分散のために<a href="#communication" target="_blank" rel="noopener noreferrer">トランスポート層</a>の情報を参照します。 一般的には、ヘッダー内の送信元・宛先IPアドレスとポートを使いますが、パケットの内容は見ません。 レイヤー4ロードバランサーはアップストリームサーバーへのネットワークパケットを転送し、<a href="https://www.nginx.com/resources/glossary/layer-4-load-balancing/" target="_blank" rel="noopener noreferrer">ネットワークアドレス変換（NAT）</a>を行います。</p><h3>レイヤー7ロードバランシング</h3>
+レイヤー7のロードバランサーは、リクエストをどのように分配するかを決定するために<a href="#communication" target="_blank" rel="noopener noreferrer">アプリケーション層</a>を参照します。これはヘッダー、メッセージ、クッキーの内容を含む場合があります。レイヤー7のロードバランサーはネットワークトラフィックを終端し、メッセージを読み込み、負荷分散の決定を行い、選択されたサーバーへの接続を開きます。例えば、レイヤー7のロードバランサーは動画トラフィックを動画をホストするサーバーに、より機密性の高いユーザー請求トラフィックをセキュリティ強化されたサーバーに振り分けることができます。</p><p>柔軟性の代償として、レイヤー4のロードバランシングはレイヤー7よりも少ない時間と計算資源を必要としますが、最新の汎用ハードウェアではパフォーマンスへの影響は最小限です。</p><h3>水平スケーリング</h3></p><p>ロードバランサーは水平スケーリングにも役立ち、パフォーマンスと可用性を向上させます。汎用マシンを使用してスケールアウトすることは、より高価なハードウェア上で単一のサーバーをスケールアップする（<strong>垂直スケーリング</strong>と呼ばれる）よりもコスト効率が高く、可用性も向上します。また、専門的な企業システムよりも汎用ハードウェアで働く人材を採用する方が容易です。</p><p>#### 欠点：水平スケーリング</p><ul><li>水平スケーリングは複雑さを導入し、サーバーの複製を伴います</li>
+    <li>サーバーはステートレスであるべきです：セッションやプロフィール画像などのユーザー関連データを含まないこと</li>
+    <li>セッションは<a href="#database" target="_blank" rel="noopener noreferrer">データベース</a>（SQL、NoSQL）や永続的な<a href="#cache" target="_blank" rel="noopener noreferrer">キャッシュ</a>（Redis、Memcached）などの集中管理されたデータストアに保存できます</li>
+<li>キャッシュやデータベースなどの下流サーバーは、上流サーバーのスケールアウトに伴い同時接続数の増加を処理する必要があります</li></p><p></ul><h3>欠点：ロードバランサー</h3></p><ul><li>ロードバランサーが十分なリソースを持たない場合や適切に設定されていない場合、パフォーマンスのボトルネックになる可能性があります。</li>
+<li>単一障害点を排除するためにロードバランサーを導入すると、複雑さが増します。</li>
+<li>単一のロードバランサーは単一障害点であり、複数のロードバランサーを設定するとさらに複雑さが増します。</li></p><p></ul><h3>参考文献およびさらなる読み物</h3></p><ul><li><a href="https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale/" target="_blank" rel="noopener noreferrer">NGINXのアーキテクチャ</a></li>
+<li><a href="http://www.haproxy.org/download/1.2/doc/architecture.txt" target="_blank" rel="noopener noreferrer">HAProxyアーキテクチャガイド</a></li>
+<li><a href="https://web.archive.org/web/20220530193911/https://www.lecloud.net/post/7295452622/scalability-for-dummies-part-1-clones" target="_blank" rel="noopener noreferrer">スケーラビリティ</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Load_balancing_(computing" target="_blank" rel="noopener noreferrer">ウィキペディア</a>)</li>
+<li><a href="https://www.nginx.com/resources/glossary/layer-4-load-balancing/" target="_blank" rel="noopener noreferrer">レイヤー4ロードバランシング</a></li>
+<li><a href="https://www.nginx.com/resources/glossary/layer-7-load-balancing/" target="_blank" rel="noopener noreferrer">レイヤー7ロードバランシング</a></li>
+<li><a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html" target="_blank" rel="noopener noreferrer">ELBリスナー設定</a></li></p><p></ul><h2>リバースプロキシ（ウェブサーバー）</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/n41Azff.png">
+  <br/>
+  <i><a href=https://upload.wikimedia.org/wikipedia/commons/6/67/Reverse_proxy_h2g2bob.svg>出典: ウィキペディア</a></i>
+  <br/>
+</p></p><p>リバースプロキシは、内部サービスを集中管理し、一般向けに統一されたインターフェースを提供するウェブサーバーです。  
+クライアントからのリクエストは、それを満たすことができるサーバーに転送され、リバースプロキシはそのサーバーの応答をクライアントに返します。  </p><p>追加の利点には以下が含まれます：  </p><ul><li><strong>セキュリティの向上</strong> - バックエンドサーバーの情報を隠し、IPをブラックリスト化し、クライアントごとの接続数を制限  </li>
+<li><strong>スケーラビリティと柔軟性の向上</strong> - クライアントはリバースプロキシのIPのみを認識し、サーバーのスケールや設定変更が可能  </li>
+<li><strong>SSL終了処理</strong> - 受信リクエストを復号し、サーバー応答を暗号化することで、バックエンドサーバーがこれらの高コストな処理を行わなくて済む  </li>
+    <li>各サーバーに<a href="https://en.wikipedia.org/wiki/X.509" target="_blank" rel="noopener noreferrer">X.509証明書</a>をインストールする必要がなくなる  </li>
+<li><strong>圧縮</strong> - サーバー応答の圧縮  </li>
+<li><strong>キャッシュ</strong> - キャッシュされたリクエストに対して応答を返す  </li>
+<li><strong>静的コンテンツ</strong> - 静的コンテンツを直接配信  </li>
+    <li>HTML/CSS/JS  </li>
+    <li>写真  </li>
+    <li>動画  </li>
+    <li>その他  </li></p><p></ul><h3>ロードバランサーとリバースプロキシの違い  </h3></p><ul><li>複数のサーバーがある場合、ロードバランサーの導入は有用です。多くの場合、ロードバランサーは同一機能を提供するサーバー群へトラフィックを振り分けます。  </li>
+<li>リバースプロキシは、単一のウェブサーバーやアプリケーションサーバーでも有用であり、前述の利点を享受できます。  </li>
+<li>NGINXやHAProxyなどのソリューションは、レイヤ7のリバースプロキシとロードバランシングの両方をサポートします。  </li></p><p></ul><h3>リバースプロキシの欠点  </h3></p><ul><li>リバースプロキシを導入すると複雑さが増します。  </li>
+<li>単一のリバースプロキシは単一障害点となり、複数のリバースプロキシ（例：<a href="https://en.wikipedia.org/wiki/Failover" target="_blank" rel="noopener noreferrer">フェイルオーバー</a>）を設定するとさらに複雑になります。  </li></p><p></ul><h3>参考文献とさらなる読み物  </h3></p><ul><li><a href="https://www.nginx.com/resources/glossary/reverse-proxy-vs-load-balancer/" target="_blank" rel="noopener noreferrer">リバースプロキシ vs ロードバランサー</a>  </li>
+<li><a href="https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale/" target="_blank" rel="noopener noreferrer">NGINXのアーキテクチャ</a>  </li>
+<li><a href="http://www.haproxy.org/download/1.2/doc/architecture.txt" target="_blank" rel="noopener noreferrer">HAProxyアーキテクチャガイド</a>  </li>
+<li><a href="https://en.wikipedia.org/wiki/Reverse_proxy" target="_blank" rel="noopener noreferrer">Wikipedia</a>  </li></p><p></ul><h2>アプリケーション層  </h2></p><p><p align="center">  
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/yB5SYwm.png">  
+  <br/>
+  <i><a href=http://lethain.com/introduction-to-architecting-systems-for-scale/#platform_layer>出典：システムをスケールさせるためのアーキテクチャ入門</a></i>
+</p></p><p>ウェブ層をアプリケーション層（プラットフォーム層とも呼ばれる）から分離することで、両層を独立してスケールおよび構成できます。新しいAPIを追加する場合、必ずしも追加のウェブサーバーを増やすことなくアプリケーションサーバーを追加できます。<strong>単一責任の原則</strong>は、小さく自律的なサービスが連携して動作することを推奨します。小さなチームと小さなサービスは、急速な成長に対してより積極的な計画が可能です。</p><p>アプリケーション層のワーカーは、<a href="#asynchronism" target="_blank" rel="noopener noreferrer">非同期処理</a>の実現も支援します。</p><h3>マイクロサービス</h3></p><p>この議論に関連するのが<a href="https://en.wikipedia.org/wiki/Microservices" target="_blank" rel="noopener noreferrer">マイクロサービス</a>であり、独立してデプロイ可能な小さくモジュール化されたサービス群として説明できます。各サービスは独自のプロセスを実行し、ビジネス目標を達成するために定義された軽量の通信手段を通じて連携します。<sup><a href=https://smartbear.com/learn/api-design/what-are-microservices>1</a></sup></p><p>例えばPinterestでは、ユーザープロファイル、フォロワー、フィード、検索、写真アップロードなどのマイクロサービスが存在する可能性があります。</p><h3>サービスディスカバリ</h3></p><p><a href="https://www.consul.io/docs/index.html" target="_blank" rel="noopener noreferrer">Consul</a>、<a href="https://coreos.com/etcd/docs/latest" target="_blank" rel="noopener noreferrer">Etcd</a>、および<a href="http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper" target="_blank" rel="noopener noreferrer">Zookeeper</a>などのシステムは、登録された名前、アドレス、ポートを追跡することでサービス同士の検出を支援します。<a href="https://www.consul.io/intro/getting-started/checks.html" target="_blank" rel="noopener noreferrer">ヘルスチェック</a>はサービスの健全性を検証し、多くの場合<a href="#hypertext-transfer-protocol-http" target="_blank" rel="noopener noreferrer">HTTP</a>エンドポイントを使用して行われます。ConsulとEtcdは共に構成値やその他の共有データを保存するのに便利な組み込みの<a href="#key-value-store" target="_blank" rel="noopener noreferrer">key-valueストア</a>を備えています。</p><h3>欠点：アプリケーション層</h3></p><ul><li>ゆるく結合されたサービスを持つアプリケーション層の追加は、モノリシックシステムとは異なるアーキテクチャ、運用、プロセスのアプローチを必要とします。</li>
+<li>マイクロサービスはデプロイや運用の面で複雑さを増す可能性があります。</li></p><p></ul><h3>出典および参考資料</h3></p><ul><li><a href="http://lethain.com/introduction-to-architecting-systems-for-scale" target="_blank" rel="noopener noreferrer">システムをスケールさせるためのアーキテクチャ入門</a></li>
+<li><a href="http://www.puncsky.com/blog/2016-02-13-crack-the-system-design-interview" target="_blank" rel="noopener noreferrer">システム設計面接を攻略する</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Service-oriented_architecture" target="_blank" rel="noopener noreferrer">サービス指向アーキテクチャ</a></li>
+<li><a href="http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper" target="_blank" rel="noopener noreferrer">Zookeeper入門</a></li>
+<li><a href="https://cloudncode.wordpress.com/2016/07/22/msa-getting-started/" target="_blank" rel="noopener noreferrer">マイクロサービス構築に必要なこと</a></li></p><p></ul><h2>データベース</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/Xkm5CXz.png">
+  <br/>
+  <i><a href=https://www.youtube.com/watch?v=kKjm4ehYiMs>出典：最初の1000万人ユーザーへのスケーリング</a></i>
+</p></p><h3>リレーショナルデータベース管理システム（RDBMS）</h3></p><p>リレーショナルデータベース（SQLのようなもの）は、テーブルに整理されたデータ項目の集合です。</p><p><strong>ACID</strong> はリレーショナルデータベースの<a href="https://en.wikipedia.org/wiki/Database_transaction" target="_blank" rel="noopener noreferrer">トランザクション</a>の特性のセットです。</p><ul><li><strong>Atomicity（原子性）</strong> - 各トランザクションは全か無かである</li>
+<li><strong>Consistency（一貫性）</strong> - いかなるトランザクションもデータベースを有効な状態から別の有効な状態へと変える</li>
+<li><strong>Isolation（独立性）</strong> - トランザクションを同時に実行しても、直列に実行した場合と同じ結果になる</li>
+<li><strong>Durability（永続性）</strong> - 一度コミットされたトランザクションは保持され続ける</li></p><p></ul>リレーショナルデータベースをスケールさせる手法は多数あります：<strong>マスター・スレーブレプリケーション</strong>、<strong>マスター・マスターレプリケーション</strong>、<strong>フェデレーション</strong>、<strong>シャーディング</strong>、<strong>非正規化</strong>、および<strong>SQLチューニング</strong>。</p><p>#### マスター・スレーブレプリケーション</p><p>マスターは読み書きを提供し、書き込みを一つ以上のスレーブにレプリケートします。スレーブは読み込みのみを提供します。スレーブはさらに木構造のように別のスレーブにレプリケートすることもできます。マスターがオフラインになった場合、スレーブがマスターに昇格されるか新しいマスターが用意されるまで、システムは読み取り専用モードで動作を続けられます。</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/C9ioGtn.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>出典: Scalability, availability, stability, patterns</a></i>
+</p></p><p>##### 欠点：マスター・スレーブレプリケーション</p><ul><li>スレーブをマスターに昇格させるための追加のロジックが必要です。</li>
+<li><strong>マスター・スレーブ</strong> と <strong>マスター・マスター</strong> の両方に関係する点は <a href="#disadvantages-replication" target="_blank" rel="noopener noreferrer">欠点：レプリケーション</a> を参照してください。</li></p><p></ul>#### マスター・マスターレプリケーション</p><p>両方のマスターが読み書きを提供し、書き込みに関しては互いに調整します。どちらかのマスターがダウンしても、システムは読み書きの両方を継続して動作できます。</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/krAHLGg.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>出典: Scalability, availability, stability, patterns</a></i>
+</p></p><p>##### 欠点：マスター・マスターレプリケーション</p><ul><li>ロードバランサーが必要になるか、書き込み先を決定するためにアプリケーションロジックを変更する必要があります。</li>
+<li>ほとんどのマスター・マスターシステムは緩やかに整合性が保たれている（ACIDを破る）か、同期による書き込み遅延が増加します。</li>
+<li>コンフリクト解決は、書き込みノードが増え、レイテンシが増加するにつれてより重要になります。</li>
+<li>マスター・スレーブおよびマスター・マスターの<strong>両方</strong>に関連するポイントについては、<a href="#disadvantages-replication" target="_blank" rel="noopener noreferrer">欠点：レプリケーション</a>を参照してください。</li></p><p></ul>##### 欠点：レプリケーション</p><ul><li>マスターが新たに書き込まれたデータを他のノードにレプリケートする前に障害が発生した場合、データが失われる可能性があります。</li>
+<li>書き込みはリードレプリカにリプレイされます。書き込みが多いと、リードレプリカは書き込みのリプレイで遅くなり、読み込み処理が減少します。</li>
+<li>リードスレーブが多いほど、レプリケーションする量が増え、レプリケーション遅延が大きくなります。</li>
+<li>一部のシステムでは、マスターへの書き込みは複数のスレッドで並列に行われますが、リードレプリカは単一スレッドで順次書き込みのみサポートします。</li>
+<li>レプリケーションはハードウェアの追加と複雑さを増加させます。</li></p><p></ul>##### 参考文献および詳細：レプリケーション</p><ul><li><a href="http://www.slideshare.net/jboner/scalability-availability-stability-patterns/" target="_blank" rel="noopener noreferrer">スケーラビリティ、可用性、安定性、パターン</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Multi-master_replication" target="_blank" rel="noopener noreferrer">マルチマスター・レプリケーション</a></li></p><p></ul>#### フェデレーション</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/U3qV33e.png">
+  <br/>
+  <i><a href=https://www.youtube.com/watch?v=kKjm4ehYiMs>出典：初めての1000万人ユーザーへのスケーリング</a></i>
+</p></p><p>フェデレーション（または機能的パーティショニング）は、データベースを機能ごとに分割します。例えば、単一のモノリシックなデータベースの代わりに、<strong>フォーラム</strong>、<strong>ユーザー</strong>、<strong>製品</strong>の3つのデータベースを持つことで、各データベースへの読み書きトラフィックが減り、その結果レプリケーション遅延が少なくなります。小さいデータベースはメモリに収まるデータが増え、キャッシュの局所性が向上するためキャッシュヒット率が上がります。単一の中央マスターが書き込みを直列化しないため、並列に書き込むことができ、スループットが向上します。</p><p>##### 欠点：フェデレーション</p><ul><li>スキーマが巨大な関数やテーブルを必要とする場合、フェデレーションは効果的ではありません。</li>
+<li>どのデータベースを読み書きするかを判断するためにアプリケーションロジックを更新する必要があります。</li>
+<li>2つのデータベースからのデータ結合は、<a href="http://stackoverflow.com/questions/5145637/querying-data-by-joining-two-tables-in-two-database-on-different-servers" target="_blank" rel="noopener noreferrer">サーバーリンク</a>を使うためより複雑です。</li>
+<li>フェデレーションはハードウェアの追加と複雑さを増加させます。</li></p><p></ul>##### 参考文献および詳細：フェデレーション</p><ul><li><a href="https://www.youtube.com/watch?v=kKjm4ehYiMs" target="_blank" rel="noopener noreferrer">初めての1000万人ユーザーへのスケーリング</a></li></p><p></ul>#### シャーディング</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/wU8x5Id.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>出典：スケーラビリティ、可用性、安定性、パターン</a></i>
+</p></p><p>シャーディングはデータを異なるデータベースに分散させ、各データベースがデータのサブセットのみを管理できるようにします。ユーザーデータベースを例に取ると、ユーザー数が増えるにつれて、クラスターにシャードが追加されます。</p><p><a href="#federation" target="_blank" rel="noopener noreferrer">federation</a>の利点と同様に、シャーディングは読み書きトラフィックの減少、レプリケーションの減少、キャッシュヒットの増加をもたらします。インデックスサイズも減少し、一般的にクエリの高速化によってパフォーマンスが向上します。1つのシャードがダウンしても他のシャードは稼働し続けますが、データ損失を防ぐために何らかのレプリケーションを追加する必要があります。federationと同様に、書き込みを直列化する単一の中央マスターがないため、スループットを増加させて並列書き込みが可能です。</p><p>ユーザーテーブルをシャーディングする一般的な方法は、ユーザーの姓のイニシャルや地理的位置によるものです。</p><p>##### 欠点：シャーディング</p><ul><li>シャードに対応するためにアプリケーションロジックを更新する必要があり、複雑なSQLクエリになる可能性があります。</li>
+<li>データの分布がシャード内で偏ることがあります。例えば、特定のシャードにパワーユーザーが集中すると、そのシャードの負荷が他より増加します。</li>
+    <li>リバランスはさらなる複雑さを加えます。<a href="http://www.paperplanes.de/2011/12/9/the-magic-of-consistent-hashing.html" target="_blank" rel="noopener noreferrer">一貫性ハッシュ</a>に基づくシャーディング関数は転送データ量を減らせます。</li>
+<li>複数シャードのデータを結合するのはより複雑です。</li>
+<li>シャーディングはハードウェアと複雑さを増やします。</li></p><p></ul>##### 出典およびさらなる参考資料：シャーディング</p><ul><li><a href="http://highscalability.com/blog/2009/8/6/an-unorthodox-approach-to-database-design-the-coming-of-the.html" target="_blank" rel="noopener noreferrer">The coming of the shard</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Shard_(database_architecture" target="_blank" rel="noopener noreferrer">Shard database architecture</a>)</li>
+<li><a href="http://www.paperplanes.de/2011/12/9/the-magic-of-consistent-hashing.html" target="_blank" rel="noopener noreferrer">Consistent hashing</a></li></p><p></ul>#### 非正規化</p><p>非正規化は書き込み性能を一部犠牲にして読み取り性能を向上させることを試みます。高価な結合を避けるために、冗長なデータコピーを複数のテーブルに書き込みます。<a href="https://ja.wikipedia.org/wiki/PostgreSQL" target="_blank" rel="noopener noreferrer">PostgreSQL</a>やOracleなど一部のRDBMSは、冗長情報の保持とコピーの一貫性維持を処理する<a href="https://ja.wikipedia.org/wiki/マテリアライズドビュー" target="_blank" rel="noopener noreferrer">マテリアライズドビュー</a>をサポートしています。</p><p><a href="#federation" target="_blank" rel="noopener noreferrer">federation</a>や<a href="#sharding" target="_blank" rel="noopener noreferrer">sharding</a>のような技術でデータが分散されると、データセンター間の結合管理はさらに複雑になります。非正規化はそのような複雑な結合の必要性を回避するかもしれません。</p><p>ほとんどのシステムでは、読み取りが書き込みを100:1または1000:1で大幅に上回ることがあります。複雑なデータベース結合を伴う読み取りは非常にコストがかかり、多くの時間をディスク操作に費やします。</p><p>##### 欠点：非正規化</p><ul><li>データが重複します。</li>
+<li>制約は冗長な情報コピーの同期を助けますが、データベース設計の複雑さを増します。</li>
+<li>非正規化データベースは書き込み負荷が高いと、正規化されたものより性能が悪化することがあります。</li></p><p></ul>###### 出典およびさらなる参考資料：非正規化
+<ul><li><a href="https://ja.wikipedia.org/wiki/非正規化" target="_blank" rel="noopener noreferrer">非正規化</a></li></p><p></ul>#### SQL チューニング</p><p>SQL チューニングは広範なトピックであり、多くの<a href="https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=sql+tuning" target="_blank" rel="noopener noreferrer">書籍</a>が参考資料として書かれています。</p><p><strong>ベンチマーク</strong>および<strong>プロファイリング</strong>を行い、ボトルネックをシミュレートして発見することが重要です。</p><ul><li><strong>ベンチマーク</strong> - <a href="http://httpd.apache.org/docs/2.2/programs/ab.html" target="_blank" rel="noopener noreferrer">ab</a>などのツールで高負荷状況をシミュレートします。</li>
+<li><strong>プロファイル</strong> - <a href="http://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html" target="_blank" rel="noopener noreferrer">スロークエリログ</a>などのツールを有効にしてパフォーマンス問題の追跡を支援します。</li></p><p></ul>ベンチマークとプロファイリングによって、次の最適化が示唆されることがあります。</p><p>##### スキーマを厳密にする</p><ul><li>MySQLは高速アクセスのためにディスクに連続したブロックでダンプします。</li>
+<li>固定長フィールドには <code>CHAR</code> を使用します。</li>
+    <li><code>CHAR</code> は高速なランダムアクセスを可能にしますが、<code>VARCHAR</code> は次の文字列に移動する前に文字列の終端を見つける必要があります。</li>
+<li>ブログ投稿などの大きなテキストブロックには <code>TEXT</code> を使います。<code>TEXT</code> はブール検索も可能です。<code>TEXT</code> フィールドを使用すると、テキストブロックを特定するためのポインタがディスクに保存されます。</li>
+<li>2^32（約40億）までの大きな数値には <code>INT</code> を使います。</li>
+<li>浮動小数点の表現誤差を避けるために通貨には <code>DECIMAL</code> を使います。</li>
+<li>大きな <code>BLOB</code> を保存するのは避け、代わりにオブジェクトの取得場所を保存します。</li>
+<li><code>VARCHAR(255)</code> は8ビット数でカウントできる最大の文字数であり、多くのRDBMSでバイトの使用を最大化します。</li>
+<li>適用可能な場合は <code>NOT NULL</code> 制約を設定して<a href="http://stackoverflow.com/questions/1017239/how-do-null-values-affect-performance-in-a-database-search" target="_blank" rel="noopener noreferrer">検索性能を改善</a>します。</li></p><p></ul>##### 良いインデックスを使う</p><ul><li>クエリで使用するカラム（<code>SELECT</code>、<code>GROUP BY</code>、<code>ORDER BY</code>、<code>JOIN</code>）はインデックスで高速化できます。</li>
+<li>インデックスは通常、データをソートし、探索、順次アクセス、挿入、削除を対数時間で行う自己平衡型の<a href="https://ja.wikipedia.org/wiki/B木" target="_blank" rel="noopener noreferrer">B木</a>として表されます。</li>
+<li>インデックスを配置するとデータをメモリに保持でき、より多くのスペースを要します。</li>
+<li>インデックスも更新する必要があるため、書き込みは遅くなることがあります。</li>
+<li>大量データのロード時はインデックスを無効化し、ロード後に再構築する方が速い場合があります。</li></p><p></ul>##### 高コストなジョインを避ける</p><ul><li>パフォーマンスが求められる場合は<a href="#非正規化" target="_blank" rel="noopener noreferrer">非正規化</a>を行います。</li></p><p></ul>##### テーブルをパーティション分割する</p><ul><li>ホットスポットを別のテーブルに分割してメモリに保持しやすくする。</li></p><p></ul>##### クエリキャッシュの調整</p><ul><li>場合によっては、<a href="https://dev.mysql.com/doc/refman/5.7/en/query-cache.html" target="_blank" rel="noopener noreferrer">クエリキャッシュ</a>が<a href="https://www.percona.com/blog/2016/10/12/mysql-5-7-performance-tuning-immediately-after-installation/" target="_blank" rel="noopener noreferrer">パフォーマンスの問題</a>を引き起こすことがある。</li></p><p></ul>##### 出典および参考文献：SQLチューニング</p><ul><li><a href="http://aiddroid.com/10-tips-optimizing-mysql-queries-dont-suck/" target="_blank" rel="noopener noreferrer">MySQLクエリ最適化のためのヒント</a></li>
+<li><a href="http://stackoverflow.com/questions/1217466/is-there-a-good-reason-i-see-varchar255-used-so-often-as-opposed-to-another-l" target="_blank" rel="noopener noreferrer">なぜVARCHAR(255)が頻繁に使われるのか？</a></li>
+<li><a href="http://stackoverflow.com/questions/1017239/how-do-null-values-affect-performance-in-a-database-search" target="_blank" rel="noopener noreferrer">NULL値はパフォーマンスにどう影響するか？</a></li>
+<li><a href="http://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html" target="_blank" rel="noopener noreferrer">スロークエリログ</a></li></p><p></ul><h3>NoSQL</h3></p><p>NoSQLは<strong>キー・バリュー・ストア</strong>、<strong>ドキュメントストア</strong>、<strong>ワイドカラムストア</strong>、または<strong>グラフデータベース</strong>で表現されるデータ項目の集合である。 データは非正規化されており、結合は一般的にアプリケーションコード内で行われる。 多くのNoSQLストアは真のACIDトランザクションを欠き、<a href="#eventual-consistency" target="_blank" rel="noopener noreferrer">最終的整合性</a>を重視する。</p><p><strong>BASE</strong>はNoSQLデータベースの特性を表すために使われることが多い。 <a href="#cap-theorem" target="_blank" rel="noopener noreferrer">CAP定理</a>と比較すると、BASEは一貫性よりも可用性を優先する。</p><ul><li><strong>基本的に利用可能</strong> - システムは可用性を保証する。</li>
+<li><strong>ソフトステート</strong> - システムの状態は入力がなくても時間とともに変化する可能性がある。</li>
+<li><strong>最終的整合性</strong> - システムは一定期間入力がなければ整合性が取れる状態になる。</li></p><p></ul><a href="#sql-or-nosql" target="_blank" rel="noopener noreferrer">SQLかNoSQLか</a>の選択に加えて、どのタイプのNoSQLデータベースがユースケースに最適かを理解することが有用である。 次節では<strong>キー・バリュー・ストア</strong>、<strong>ドキュメントストア</strong>、<strong>ワイドカラムストア</strong>、<strong>グラフデータベース</strong>をレビューする。</p><p>#### キー・バリュー・ストア</p><blockquote>抽象化：ハッシュテーブル</blockquote></p><p>キー・バリュー・ストアは一般的にO(1)の読み書きを可能にし、メモリまたはSSDでバックアップされることが多い。 データストアは<a href="https://en.wikipedia.org/wiki/Lexicographical_order" target="_blank" rel="noopener noreferrer">辞書式順序</a>でキーを保持でき、キー範囲の効率的な取得を可能にする。 キー・バリュー・ストアは値にメタデータを格納することもできる。</p><p>キー・バリュー・ストアは高いパフォーマンスを提供し、シンプルなデータモデルやインメモリキャッシュ層のような急速に変化するデータによく使われる。 限られた操作セットのみを提供するため、追加の操作が必要な場合は複雑さがアプリケーション層に移る。</p><p>キー・バリュー・ストアはドキュメントストアや場合によってはグラフデータベースのようなより複雑なシステムの基礎となる。</p><p>##### 出典および参考文献：キー・バリュー・ストア</p><ul><li><a href="https://en.wikipedia.org/wiki/Key-value_database" target="_blank" rel="noopener noreferrer">キー・バリュー・データベース</a></li>
+<li><a href="http://stackoverflow.com/questions/4056093/what-are-the-disadvantages-of-using-a-key-value-table-over-nullable-columns-or" target="_blank" rel="noopener noreferrer">キー・バリュー・ストアの欠点</a></li>
+<li><a href="http://qnimate.com/overview-of-redis-architecture/" target="_blank" rel="noopener noreferrer">Redisのアーキテクチャ</a></li>
+<li><a href="https://adayinthelifeof.nl/2011/02/06/memcache-internals/" target="_blank" rel="noopener noreferrer">Memcachedのアーキテクチャ</a></li></p><p></ul>#### ドキュメントストア</p><blockquote>抽象化: ドキュメントを値として格納するキー・バリュー・ストア</blockquote></p><p>ドキュメントストアはドキュメント（XML、JSON、バイナリなど）を中心に設計されており、ドキュメントは特定のオブジェクトに関するすべての情報を格納します。ドキュメントストアは、ドキュメント内部の構造に基づいてクエリを実行するためのAPIやクエリ言語を提供します。<em>注：多くのキー・バリュー・ストアは値のメタデータを扱う機能を含んでおり、これら二つのストレージタイプの境界を曖昧にしています。</em></p><p>基盤となる実装により、ドキュメントはコレクション、タグ、メタデータ、またはディレクトリによって組織化されます。ドキュメントはグループ化されることもありますが、ドキュメント同士が全く異なるフィールドを持つ場合もあります。</p><p><a href="https://www.mongodb.com/mongodb-architecture" target="_blank" rel="noopener noreferrer">MongoDB</a>や<a href="https://blog.couchdb.org/2016/08/01/couchdb-2-0-architecture/" target="_blank" rel="noopener noreferrer">CouchDB</a>のような一部のドキュメントストアは、複雑なクエリを実行するためのSQLに似た言語も提供しています。<a href="http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/decandia07dynamo.pdf" target="_blank" rel="noopener noreferrer">DynamoDB</a>はキー・バリューとドキュメントの両方をサポートしています。</p><p>ドキュメントストアは高い柔軟性を持ち、時折変更されるデータを扱う場合によく使われます。</p><p>##### 参考文献およびさらなる学習: ドキュメントストア</p><ul><li><a href="https://ja.wikipedia.org/wiki/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E6%8C%87%E5%90%91%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9" target="_blank" rel="noopener noreferrer">ドキュメント指向データベース</a></li>
+<li><a href="https://www.mongodb.com/mongodb-architecture" target="_blank" rel="noopener noreferrer">MongoDBのアーキテクチャ</a></li>
+<li><a href="https://blog.couchdb.org/2016/08/01/couchdb-2-0-architecture/" target="_blank" rel="noopener noreferrer">CouchDBのアーキテクチャ</a></li>
+<li><a href="https://www.elastic.co/blog/found-elasticsearch-from-the-bottom-up" target="_blank" rel="noopener noreferrer">Elasticsearchのアーキテクチャ</a></li></p><p></ul>#### ワイドカラムストア</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/n16iOGk.png">
+  <br/>
+  <i><a href=http://blog.grio.com/2015/11/sql-nosql-a-brief-history.html>出典: SQL & NoSQL、簡単な歴史</a></i>
+</p></p><blockquote>抽象化: ネストされたマップ <code>ColumnFamily<RowKey, Columns<ColKey, Value, Timestamp>></code></blockquote></p><p>ワイドカラムストアの基本データ単位はカラム（名前/値のペア）です。カラムはカラムファミリー（SQLのテーブルに類似）にグループ化されます。スーパーカラムファミリーはさらにカラムファミリーをグループ化します。行キーで各カラムに独立してアクセスでき、同じ行キーのカラムが行を形成します。各値にはバージョニングや競合解決のためのタイムスタンプが含まれます。</p><p>Googleは最初のワイドカラムストアとして<a href="http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf" target="_blank" rel="noopener noreferrer">Bigtable</a>を導入し、これがHadoopエコシステムでよく使われるオープンソースの<a href="https://www.edureka.co/blog/hbase-architecture/" target="_blank" rel="noopener noreferrer">HBase</a>やFacebookの<a href="http://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archIntro.html" target="_blank" rel="noopener noreferrer">Cassandra</a>に影響を与えました。BigTable、HBase、Cassandraなどのストアはキーを辞書順で保持し、選択的なキー範囲の効率的な取得を可能にしています。</p><p>ワイドカラムストアは高い可用性と高いスケーラビリティを提供し、非常に大規模なデータセットによく使用されます。</p><p>##### 参考文献およびさらなる学習: ワイドカラムストア</p><ul><li><a href="http://blog.grio.com/2015/11/sql-nosql-a-brief-history.html" target="_blank" rel="noopener noreferrer">SQL & NoSQL、簡単な歴史</a></li>
+<li><a href="http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf" target="_blank" rel="noopener noreferrer">Bigtableアーキテクチャ</a></li>
+<li><a href="https://www.edureka.co/blog/hbase-architecture/" target="_blank" rel="noopener noreferrer">HBaseアーキテクチャ</a></li>
+<li><a href="http://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archIntro.html" target="_blank" rel="noopener noreferrer">Cassandraアーキテクチャ</a></li></p><p></ul>#### グラフデータベース</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/fNcl65g.png">
+  <br/>
+  <i><a href=https://en.wikipedia.org/wiki/File:GraphDatabase_PropertyGraph.png>出典：グラフデータベース</a></i>
+</p></p><blockquote>抽象化：グラフ</blockquote></p><p>グラフデータベースでは、各ノードがレコードであり、各アークが2つのノード間の関係を表します。グラフデータベースは、多数の外部キーや多対多の関係を持つ複雑な関係を表現するように最適化されています。</p><p>グラフデータベースは、ソーシャルネットワークのような複雑な関係を持つデータモデルに対して高いパフォーマンスを提供します。比較的新しい技術であり、まだ広く使われていないため、開発ツールやリソースを見つけるのが難しい場合があります。多くのグラフは<a href="#representational-state-transfer-rest" target="_blank" rel="noopener noreferrer">REST API</a>でのみアクセス可能です。</p><p>##### 出典および追加資料：グラフ</p><ul><li><a href="https://en.wikipedia.org/wiki/Graph_database" target="_blank" rel="noopener noreferrer">グラフデータベース</a></li>
+<li><a href="https://neo4j.com/" target="_blank" rel="noopener noreferrer">Neo4j</a></li>
+<li><a href="https://blog.twitter.com/2010/introducing-flockdb" target="_blank" rel="noopener noreferrer">FlockDB</a></li></p><p></ul>#### 出典および追加資料：NoSQL</p><ul><li><a href="http://stackoverflow.com/questions/3342497/explanation-of-base-terminology" target="_blank" rel="noopener noreferrer">BASE用語の説明</a></li>
+<li><a href="https://medium.com/baqend-blog/nosql-databases-a-survey-and-decision-guidance-ea7823a822d#.wskogqenq" target="_blank" rel="noopener noreferrer">NoSQLデータベースの調査と意思決定ガイダンス</a></li>
+<li><a href="https://web.archive.org/web/20220602114024/https://www.lecloud.net/post/7994751381/scalability-for-dummies-part-2-database" target="_blank" rel="noopener noreferrer">スケーラビリティ</a></li>
+<li><a href="https://www.youtube.com/watch?v=qI_g07C_Q5I" target="_blank" rel="noopener noreferrer">NoSQL入門</a></li>
+<li><a href="http://horicky.blogspot.com/2009/11/nosql-patterns.html" target="_blank" rel="noopener noreferrer">NoSQLパターン</a></li></p><p></ul><h3>SQLまたはNoSQL</h3></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/wXGqG5f.png">
+  <br/>
+  <i><a href=https://www.infoq.com/articles/Transition-RDBMS-NoSQL/>出典：RDBMSからNoSQLへの移行</a></i>
+</p></p><p><strong>SQL</strong>を選ぶ理由:</p><ul><li>構造化データ</li>
+<li>厳密なスキーマ</li>
+<li>リレーショナルデータ</li>
+<li>複雑な結合が必要</li>
+<li>トランザクション</li>
+<li>スケーリングのための明確なパターン</li>
+<li>より確立されている：開発者、コミュニティ、コード、ツールなど</li>
+<li>インデックスによるルックアップが非常に高速</li></p><p></ul><strong>NoSQL</strong>を選ぶ理由:</p><ul><li>半構造化データ</li>
+<li>動的または柔軟なスキーマ</li>
+<li>非リレーショナルデータ</li>
+<li>複雑な結合が不要</li>
+<li>多数のTB（またはPB）のデータを保存</li>
+<li>非常にデータ集約型のワークロード</li>
+<li>非常に高いIOPSスループット</li></p><p></ul>NoSQLに適したサンプルデータ:</p><ul><li>クリックストリームやログデータの迅速な取り込み</li>
+<li>リーダーボードやスコアリングデータ</li>
+<li>ショッピングカートのような一時データ</li>
+<li>頻繁にアクセスされる（「ホット」）テーブル</li>
+<li>メタデータ／ルックアップテーブル</li></p><p></ul>##### 出典およびさらなる参考資料: SQLまたはNoSQL</p><ul><li><a href="https://www.youtube.com/watch?v=kKjm4ehYiMs" target="_blank" rel="noopener noreferrer">最初の1000万人ユーザーまでのスケーリング</a></li>
+<li><a href="https://www.sitepoint.com/sql-vs-nosql-differences/" target="_blank" rel="noopener noreferrer">SQLとNoSQLの違い</a></li></p><p></ul><h2>キャッシュ</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/Q6z24La.png">
+  <br/>
+  <i><a href=http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html>出典: スケーラブルなシステム設計パターン</a></i>
+</p></p><p>キャッシュはページの読み込み時間を改善し、サーバーやデータベースの負荷を軽減できます。このモデルでは、ディスパッチャーがまずリクエストが以前に行われたかどうかを確認し、実際の実行を省くために以前の結果を返そうとします。</p><p>データベースは通常、パーティション全体で読み書きが均等に分布することで恩恵を受けます。人気のあるアイテムは分布を偏らせ、ボトルネックを引き起こす可能性があります。データベースの前にキャッシュを置くことで、不均等な負荷やトラフィックの急増を吸収できます。</p><h3>クライアントキャッシュ</h3></p><p>キャッシュはクライアント側（OSやブラウザ）、<a href="#reverse-proxy-web-server" target="_blank" rel="noopener noreferrer">サーバー側</a>、または独立したキャッシュ層に配置できます。</p><h3>CDNキャッシュ</h3></p><p><a href="#content-delivery-network" target="_blank" rel="noopener noreferrer">CDN</a>はキャッシュの一種と見なされます。</p><h3>ウェブサーバーキャッシュ</h3></p><p><a href="#reverse-proxy-web-server" target="_blank" rel="noopener noreferrer">リバースプロキシ</a>や<a href="https://www.varnish-cache.org/" target="_blank" rel="noopener noreferrer">Varnish</a>のようなキャッシュは静的および動的コンテンツを直接提供できます。ウェブサーバーもリクエストをキャッシュし、アプリケーションサーバーに連絡せずにレスポンスを返せます。</p><h3>データベースキャッシュ</h3></p><p>データベースは通常、デフォルト設定で何らかのキャッシュレベルを含み、汎用的なユースケースに最適化されています。特定の使用パターンに合わせてこれらの設定を調整すると、さらにパフォーマンスを向上させることができます。</p><h3>アプリケーションキャッシュ</h3></p><p>MemcachedやRedisのようなインメモリキャッシュは、アプリケーションとデータストレージの間にあるキー・バリューストアです。データがRAMに保持されるため、通常ディスクに保存されるデータベースよりもはるかに高速です。RAMはディスクよりも容量が限られているため、<a href="https://ja.wikipedia.org/wiki/キャッシュアルゴリズム" target="_blank" rel="noopener noreferrer">キャッシュ無効化</a>アルゴリズム（例えば<a href="https://ja.wikipedia.org/wiki/キャッシュ置換アルゴリズム#最も最近使われていない_(LRU" target="_blank" rel="noopener noreferrer">最も最近使われていない（LRU）</a>)）が「冷たい」エントリを無効化し、「熱い」データをRAMに保持するのに役立ちます。</p><p>Redisには以下の追加機能があります：</p><ul><li>永続化オプション</li>
+<li>ソート済みセットやリストなどの組み込みデータ構造</li></p><p></ul>キャッシュできるレベルは複数あり、大きく分けて<strong>データベースクエリ</strong>と<strong>オブジェクト</strong>の2種類があります：</p><ul><li>行レベル</li>
+<li>クエリレベル</li>
+<li>完全に形成されたシリアライズ可能なオブジェクト</li>
+<li>完全にレンダリングされたHTML</li></p><p></ul>一般的に、ファイルベースのキャッシュはクローン作成やオートスケーリングを難しくするため避けるべきです。</p><h3>データベースクエリレベルでのキャッシュ</h3></p><p>データベースをクエリするたびに、クエリをキーとしてハッシュ化し、その結果をキャッシュに保存します。この方法は有効期限の問題があります：</p><ul><li>複雑なクエリのキャッシュ結果を削除するのが難しい</li>
+<li>テーブルのセルなど一部のデータが変更された場合、変更されたセルを含む可能性のあるすべてのキャッシュクエリを削除する必要がある</li></p><p></ul><h3>オブジェクトレベルでのキャッシュ</h3></p><p>データをアプリケーションコードと同様にオブジェクトとして見なします。アプリケーションがデータベースからのデータセットをクラスインスタンスやデータ構造に組み立てます：</p><ul><li>基盤となるデータが変更された場合、オブジェクトをキャッシュから削除する</li>
+<li>非同期処理を可能にする：ワーカーは最新のキャッシュされたオブジェクトを利用してオブジェクトを組み立てる</li></p><p></ul>キャッシュすべきものの提案：</p><ul><li>ユーザーセッション</li>
+<li>完全にレンダリングされたウェブページ</li>
+<li>アクティビティストリーム</li>
+<li>ユーザーグラフデータ</li></p><p></ul><h3>キャッシュを更新するタイミング</h3></p><p>キャッシュに保存できるデータ量は限られているため、ユースケースに最適なキャッシュ更新戦略を決定する必要があります。</p><p>#### Cache-aside</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/ONjORqk.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/tmatyashovsky/from-cache-to-in-memory-data-grid-introduction-to-hazelcast>出典: From cache to in-memory data grid</a></i>
+</p></p><p>アプリケーションがストレージからの読み書きを担当します。キャッシュはストレージと直接やり取りしません。アプリケーションの動作は以下の通りです：</p><ul><li>キャッシュ内のエントリを探すが、キャッシュミスとなる</li>
+<li>データベースからエントリを読み込む</li>
+<li>エントリをキャッシュに追加する</li>
+<li>エントリを返す</li></p><p></ul><pre><code class="language-python">def get_user(self, user_id):
+    user = cache.get("user.{0}", user_id)
+    if user is None:
+        user = db.query("SELECT * FROM users WHERE user_id = {0}", user_id)
+        if user is not None:
+            key = "user.{0}".format(user_id)
+            cache.set(key, json.dumps(user))
+    return user</code></pre>
+<a href="https://memcached.org/" target="_blank" rel="noopener noreferrer">Memcached</a> は一般的にこのように使用されます。</p><p>キャッシュに追加されたデータの後続の読み取りは高速です。Cache-asideはレイジーローディングとも呼ばれます。要求されたデータのみがキャッシュされ、要求されていないデータでキャッシュが埋まるのを防ぎます。</p><p>##### 欠点: cache-aside</p><ul><li>キャッシュミスごとに3回の往復が発生し、目に見える遅延を引き起こす可能性があります。</li>
+<li>データベースで更新された場合、データが古くなる可能性があります。この問題は、キャッシュエントリの更新を強制するTTL（有効期限）を設定するか、ライトスルーを使用することで緩和されます。</li>
+<li>ノードが故障した場合、新しい空のノードに置き換えられ、レイテンシが増加します。</li></p><p></ul>#### ライトスルー</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/0vBc0hN.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>出典: Scalability, availability, stability, patterns</a></i>
+</p></p><p>アプリケーションはキャッシュを主要なデータストアとして使用し、読み書きを行い、キャッシュはデータベースへの読み書きを担当します：</p><ul><li>アプリケーションがキャッシュにエントリを追加/更新</li>
+<li>キャッシュが同期的にデータストアにエントリを書き込み</li>
+<li>戻り値を返す</li></p><p></ul>アプリケーションコード：</p><pre><code class="language-python">set_user(12345, {"foo":"bar"})</code></pre>
+キャッシュコード：</p><pre><code class="language-python">def set_user(user_id, values):
+    user = db.query("UPDATE Users WHERE id = {0}", user_id, values)
+    cache.set(user_id, user)</code></pre></p><p>ライトスルーは書き込み操作のため全体的に遅いですが、直後に書き込まれたデータの読み取りは高速です。ユーザーはデータの更新よりも読み取り時の遅延を一般的により許容します。キャッシュ内のデータは古くありません。</p><p>##### デメリット：ライトスルー</p><ul><li>障害やスケーリングにより新しいノードが作成された場合、そのノードはデータベースでエントリが更新されるまでエントリをキャッシュしません。キャッシュアサイドとライトスルーを組み合わせることでこの問題を軽減できます。</li>
+<li>書き込まれたデータの多くは一度も読み取られない可能性があり、TTLでこれを最小化できます。</li></p><p></ul>#### ライトビハインド（ライトバック）</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/rgSrvjG.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>出典：スケーラビリティ、可用性、安定性パターン</a></i>
+</p></p><p>ライトビハインドでは、アプリケーションは以下を行います：</p><ul><li>キャッシュにエントリを追加／更新</li>
+<li>非同期でデータストアにエントリを書き込み、書き込み性能を向上させる</li></p><p></ul>##### デメリット：ライトビハインド</p><ul><li>キャッシュの内容がデータストアに反映される前にキャッシュがダウンするとデータ損失が発生する可能性があります。</li>
+<li>ライトビハインドはキャッシュアサイドやライトスルーよりも実装が複雑です。</li></p><p></ul>#### リフレッシュアヘッド</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/kxtjqgE.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/tmatyashovsky/from-cache-to-in-memory-data-grid-introduction-to-hazelcast>出典：キャッシュからインメモリデータグリッドへ</a></i>
+</p></p><p>キャッシュは自動的に最近アクセスされたキャッシュエントリを期限切れ前にリフレッシュするよう設定できます。</p><p>リフレッシュアヘッドは、キャッシュが将来必要とされる可能性のあるアイテムを正確に予測できれば、リードスルーよりもレイテンシを低減できます。</p><p>##### デメリット：リフレッシュアヘッド</p><ul><li>将来必要になる可能性が高いアイテムを正確に予測できないと、リフレッシュアヘッドなしの場合よりもパフォーマンスが低下することがある。</li></p><p></ul><h3>欠点: キャッシュ</h3></p><ul><li>キャッシュとデータベースなどの真実のソースとの一貫性を<a href="https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%82%A2%E3%83%AB%E4%BB%A3%E6%9B%BF" target="_blank" rel="noopener noreferrer">キャッシュ無効化</a>を通じて維持する必要がある。</li>
+<li>キャッシュ無効化は難しい問題であり、いつキャッシュを更新するかに関する追加の複雑さがある。</li>
+<li>Redisやmemcachedの追加など、アプリケーションの変更が必要になる。</li></p><p></ul><h3>参考文献およびさらなる読み物</h3></p><ul><li><a href="http://www.slideshare.net/tmatyashovsky/from-cache-to-in-memory-data-grid-introduction-to-hazelcast" target="_blank" rel="noopener noreferrer">キャッシュからインメモリデータグリッドへ</a></li>
+<li><a href="http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html" target="_blank" rel="noopener noreferrer">スケーラブルシステム設計パターン</a></li>
+<li><a href="http://lethain.com/introduction-to-architecting-systems-for-scale/" target="_blank" rel="noopener noreferrer">スケールのためのシステム設計入門</a></li>
+<li><a href="http://www.slideshare.net/jboner/scalability-availability-stability-patterns/" target="_blank" rel="noopener noreferrer">スケーラビリティ、可用性、安定性のパターン</a></li>
+<li><a href="https://web.archive.org/web/20230126233752/https://www.lecloud.net/post/9246290032/scalability-for-dummies-part-3-cache" target="_blank" rel="noopener noreferrer">スケーラビリティ</a></li>
+<li><a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Strategies.html" target="_blank" rel="noopener noreferrer">AWS ElastiCache戦略</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5_(%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0" target="_blank" rel="noopener noreferrer">ウィキペディア</a>)</li></p><p></ul><h2>非同期処理</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/54GYsSx.png">
+  <br/>
+  <i><a href=http://lethain.com/introduction-to-architecting-systems-for-scale/#platform_layer>出典: スケールのためのシステム設計入門</a></i>
+</p></p><p>非同期ワークフローは、インラインで実行すると高コストな操作のリクエスト時間を短縮するのに役立つ。また、定期的なデータ集約など、時間のかかる作業を事前に行うことにも役立つ。</p><h3>メッセージキュー</h3></p><p>メッセージキューはメッセージの受信、保持、配信を行う。操作がインラインで行うには遅すぎる場合、以下のワークフローでメッセージキューを利用できる。</p><ul><li>アプリケーションがジョブをキューに公開し、ユーザーにジョブの状態を通知する。</li>
+<li>ワーカーがキューからジョブを取得して処理し、ジョブの完了を通知する。</li></p><p></ul>ユーザーはブロックされず、ジョブはバックグラウンドで処理される。この間、クライアントはタスクが完了したかのように見せるために少量の処理を行うことがある。たとえば、ツイートを投稿する場合、ツイートは即座にタイムラインに表示されるが、実際にすべてのフォロワーに配信されるまでには時間がかかることがある。</p><p><strong><a href="https://redis.io/" target="_blank" rel="noopener noreferrer">Redis</a></strong> はシンプルなメッセージブローカーとして有用だが、メッセージが失われる可能性がある。</p><p><strong><a href="https://www.rabbitmq.com/" target="_blank" rel="noopener noreferrer">RabbitMQ</a></strong> は人気があるが、'AMQP'プロトコルに適応し、自分でノードを管理する必要がある。
+<strong><a href="https://aws.amazon.com/sqs/" target="_blank" rel="noopener noreferrer">Amazon SQS</a></strong> はホスト型ですが、高遅延が発生する可能性があり、メッセージが二重に配信される可能性があります。</p><h3>タスクキュー</h3></p><p>タスクキューはタスクと関連データを受け取り、それを実行し、結果を届けます。スケジューリングをサポートでき、計算負荷の高いジョブをバックグラウンドで実行するのに利用可能です。</p><p><strong><a href="https://docs.celeryproject.org/en/stable/" target="_blank" rel="noopener noreferrer">Celery</a></strong> はスケジューリングをサポートし、主にPythonでのサポートがあります。</p><h3>バックプレッシャー</h3></p><p>キューのサイズが大幅に増加すると、キューサイズがメモリ容量を超え、キャッシュミスやディスク読み込みが発生し、さらにパフォーマンスが低下します。<a href="http://mechanical-sympathy.blogspot.com/2012/05/apply-back-pressure-when-overloaded.html" target="_blank" rel="noopener noreferrer">バックプレッシャー</a> はキューサイズを制限することで、スループット率を維持し、キュー内のジョブに対して良好な応答時間を保つのに役立ちます。キューが満杯になると、クライアントはサーバービジーやHTTP 503ステータスコードを受け取り、後で再試行を促されます。クライアントは後でリクエストを再試行でき、<a href="https://en.wikipedia.org/wiki/Exponential_backoff" target="_blank" rel="noopener noreferrer">指数バックオフ</a>を用いることもあります。</p><h3>デメリット：非同期性</h3></p><ul><li>安価な計算やリアルタイムワークフローのようなユースケースには、キューを導入すると遅延や複雑さが増すため、同期処理の方が適している場合があります。</li></p><p></ul><h3>出典および参考文献</h3></p><ul><li><a href="https://www.youtube.com/watch?v=1KRYH75wgy4" target="_blank" rel="noopener noreferrer">It's all a numbers game</a></li>
+<li><a href="http://mechanical-sympathy.blogspot.com/2012/05/apply-back-pressure-when-overloaded.html" target="_blank" rel="noopener noreferrer">Applying back pressure when overloaded</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Little%27s_law" target="_blank" rel="noopener noreferrer">Little's law</a></li>
+<li><a href="https://www.quora.com/What-is-the-difference-between-a-message-queue-and-a-task-queue-Why-would-a-task-queue-require-a-message-broker-like-RabbitMQ-Redis-Celery-or-IronMQ-to-function" target="_blank" rel="noopener noreferrer">What is the difference between a message queue and a task queue?</a></li></p><p></ul><h2>通信</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/5KeocQs.jpg">
+  <br/>
+  <i><a href=http://www.escotal.com/osilayer.html>出典: OSI 7層モデル</a></i>
+</p></p><h3>ハイパーテキスト転送プロトコル（HTTP）</h3></p><p>HTTPはクライアントとサーバー間でデータをエンコードし転送する方法です。リクエスト/レスポンス型のプロトコルであり、クライアントはリクエストを発行し、サーバーは関連コンテンツとリクエストの完了状態情報を含むレスポンスを返します。HTTPは自己完結型であり、多くの中間ルーターやサーバーを経由してロードバランシング、キャッシュ、暗号化、圧縮を行いながらリクエストとレスポンスが流れます。</p><p>基本的なHTTPリクエストは動詞（メソッド）とリソース（エンドポイント）で構成されます。以下は一般的なHTTP動詞です：</p><p>| 動詞 | 説明 | 冪等* | 安全 | キャッシュ可能 |
+|---|---|---|---|---|</p><p>| GET | リソースを読み取る | はい | はい | はい |
+| POST | リソースを作成するか、データを処理するプロセスをトリガーする | いいえ | いいえ | レスポンスに新鮮さ情報が含まれる場合ははい |
+| PUT | リソースを作成または置き換える | はい | いいえ | いいえ |
+| PATCH | リソースを部分的に更新する | いいえ | いいえ | レスポンスに新鮮さ情報が含まれる場合ははい |
+| DELETE | リソースを削除する | はい | いいえ | いいえ |</p><ul><li>結果が変わらない場合、何度でも呼び出せます。</li></p><p></ul>HTTPは、<strong>TCP</strong>や<strong>UDP</strong>などの下位プロトコルに依存するアプリケーション層プロトコルです。</p><p>#### 出典およびさらなる読み物: HTTP</p><ul><li><a href="https://www.nginx.com/resources/glossary/http/" target="_blank" rel="noopener noreferrer">HTTPとは？</a></li>
+<li><a href="https://www.quora.com/What-is-the-difference-between-HTTP-protocol-and-TCP-protocol" target="_blank" rel="noopener noreferrer">HTTPとTCPの違い</a></li>
+<li><a href="https://laracasts.com/discuss/channels/general-discussion/whats-the-differences-between-put-and-patch?page=1" target="_blank" rel="noopener noreferrer">PUTとPATCHの違い</a></li></p><p></ul><h3>トランスミッションコントロールプロトコル（TCP）</h3></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/JdAsdvG.jpg">
+  <br/>
+  <i><a href=http://www.wildbunny.co.uk/blog/2012/10/09/how-to-make-a-multi-player-game-part-1/>出典：マルチプレイヤーゲームの作り方</a></i>
+</p></p><p>TCPは<a href="https://ja.wikipedia.org/wiki/インターネットプロトコル" target="_blank" rel="noopener noreferrer">IPネットワーク</a>上のコネクション指向プロトコルです。接続は<a href="https://ja.wikipedia.org/wiki/ハンドシェイク" target="_blank" rel="noopener noreferrer">ハンドシェイク</a>を使って確立および終了されます。送信されるすべてのパケットは、次の方法で元の順序で破損なく宛先に届くことが保証されます：</p><ul><li>各パケットに対するシーケンス番号と<a href="https://ja.wikipedia.org/wiki/トランスミッション制御プロトコル#チェックサム計算" target="_blank" rel="noopener noreferrer">チェックサムフィールド</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/確認応答" target="_blank" rel="noopener noreferrer">確認応答</a>パケットと自動再送信</li></p><p></ul>送信者が正しい応答を受け取らない場合、パケットを再送します。タイムアウトが複数回発生すると接続は切断されます。TCPはまた、<a href="https://ja.wikipedia.org/wiki/フロー制御" target="_blank" rel="noopener noreferrer">フロー制御</a>と<a href="https://ja.wikipedia.org/wiki/ネットワーク輻輳#輻輳制御" target="_blank" rel="noopener noreferrer">輻輳制御</a>も実装しています。これらの保証は遅延を引き起こし、一般的にUDPより効率の悪い伝送となります。</p><p>高スループットを確保するために、ウェブサーバーは多数のTCP接続を開いたままにでき、その結果メモリ使用量が増加します。ウェブサーバースレッドと例えば<a href="https://memcached.org/" target="_blank" rel="noopener noreferrer">memcached</a>サーバー間で多数の開いた接続を持つことはコストがかかります。<a href="https://ja.wikipedia.org/wiki/コネクションプーリング" target="_blank" rel="noopener noreferrer">コネクションプーリング</a>は、適用可能な場合はUDPへの切り替えに加えて役立ちます。</p><p>TCPは高い信頼性が必要で時間的制約が比較的少ないアプリケーションに有用です。例としてウェブサーバー、データベース情報、SMTP、FTP、SSHなどがあります。</p><p>UDPよりTCPを使う場合：</p><ul><li>すべてのデータが完全に届く必要がある場合</li>
+<li>ネットワークスループットの最善推定を自動的に行いたい場合</li></p><p></ul><h3>ユーザーデータグラムプロトコル（UDP）</h3></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/yzDrJtA.jpg">
+  <br/>
+  <i><a href=http://www.wildbunny.co.uk/blog/2012/10/09/how-to-make-a-multi-player-game-part-1/>出典: マルチプレイヤーゲームの作り方</a></i>
+</p></p><p>UDPはコネクションレスです。データグラム（パケットに類似）はデータグラムレベルでのみ保証されます。データグラムは順序が入れ替わって届くことや、全く届かないこともあります。UDPは輻輳制御をサポートしません。TCPがサポートする保証がないため、UDPは一般的により効率的です。</p><p>UDPはブロードキャストが可能で、サブネット上の全デバイスにデータグラムを送信します。これはクライアントがまだIPアドレスを受け取っていないため、TCPがIPアドレスなしでストリームを送る方法を妨げる<a href="https://ja.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol" target="_blank" rel="noopener noreferrer">DHCP</a>で有用です。</p><p>UDPは信頼性は低いですが、VoIP、ビデオチャット、ストリーミング、リアルタイムマルチプレイヤーゲームなどのリアルタイム用途に適しています。</p><p>UDPをTCPの代わりに使うのは以下の場合です：</p><ul><li>最低の遅延が必要なとき</li>
+<li>遅延したデータはデータ損失より悪いとき</li>
+<li>独自の誤り訂正を実装したいとき</li></p><p></ul>#### 出典およびさらなる読み物: TCPとUDP</p><ul><li><a href="http://gafferongames.com/networking-for-game-programmers/udp-vs-tcp/" target="_blank" rel="noopener noreferrer">ゲームプログラミングのためのネットワーキング</a></li>
+<li><a href="http://www.cyberciti.biz/faq/key-differences-between-tcp-and-udp-protocols/" target="_blank" rel="noopener noreferrer">TCPとUDPプロトコルの主な違い</a></li>
+<li><a href="http://stackoverflow.com/questions/5970383/difference-between-tcp-and-udp" target="_blank" rel="noopener noreferrer">TCPとUDPの違い</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/Transmission_Control_Protocol" target="_blank" rel="noopener noreferrer">伝送制御プロトコル</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/User_Datagram_Protocol" target="_blank" rel="noopener noreferrer">ユーザーデータグラムプロトコル</a></li>
+<li><a href="http://www.cs.bu.edu/~jappavoo/jappavoo.github.com/451/papers/memcache-fb.pdf" target="_blank" rel="noopener noreferrer">Facebookのmemcacheスケーリング</a></li></p><p></ul><h3>リモートプロシージャコール（RPC）</h3></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/iF4Mkb5.png">
+  <br/>
+  <i><a href=http://www.puncsky.com/blog/2016-02-13-crack-the-system-design-interview>出典: システム設計面接を攻略する</a></i>
+</p></p><p>RPCでは、クライアントが通常リモートサーバーの異なるアドレス空間でプロシージャを実行させます。プロシージャはローカルプロシージャコールのようにコード化されており、クライアントプログラムからサーバーとの通信方法の詳細を抽象化しています。リモートコールは通常ローカルコールより遅く信頼性が低いため、RPCコールとローカルコールを区別することが有用です。代表的なRPCフレームワークには<a href="https://developers.google.com/protocol-buffers/" target="_blank" rel="noopener noreferrer">Protobuf</a>、<a href="https://thrift.apache.org/" target="_blank" rel="noopener noreferrer">Thrift</a>、<a href="https://avro.apache.org/docs/current/" target="_blank" rel="noopener noreferrer">Avro</a>があります。</p><p>RPCはリクエスト-レスポンスプロトコルです：</p><ul><li><strong>クライアントプログラム</strong> - クライアントスタブ手続きを呼び出します。パラメータはローカル手続き呼び出しのようにスタックにプッシュされます。</li>
+<li><strong>クライアントスタブ手続き</strong> - 手続きIDと引数をリクエストメッセージにマーシャリング（パック）します。</li>
+<li><strong>クライアント通信モジュール</strong> - OSがクライアントからサーバへメッセージを送信します。</li>
+<li><strong>サーバ通信モジュール</strong> - OSが受信パケットをサーバスタブ手続きに渡します。</li>
+<li><strong>サーバスタブ手続き</strong> - 結果をアンマーシャルし、手続きIDに対応するサーバ手続きを呼び出し、引数を渡します。</li>
+<li>サーバの応答は上記の手順を逆順で繰り返します。</li></p><p></ul>サンプルRPC呼び出し:</p><pre><code class="language-">GET /someoperation?data=anId</p><p>POST /anotheroperation
+{
+  "data":"anId";
+  "anotherdata": "another value"
+}</code></pre>
+RPCは動作の公開に焦点を当てています。RPCは内部通信でパフォーマンス上の理由からよく使用されます。ネイティブ呼び出しを手作業で作成してユースケースにより適合させることができるためです。</p><p>ネイティブライブラリ（別名SDK）を選択する場合：</p><ul><li>対象プラットフォームが明確である。</li>
+<li>「ロジック」へのアクセス方法を制御したい。</li>
+<li>ライブラリ外でのエラー制御の方法を制御したい。</li>
+<li>パフォーマンスとエンドユーザーの体験が最優先である。</li></p><p></ul><strong>REST</strong>に従ったHTTP APIは、より一般的に公開APIで使われる傾向があります。</p><p>#### 欠点：RPC</p><ul><li>RPCクライアントはサービス実装に強く結合される。</li>
+<li>新しい操作やユースケースごとに新しいAPIを定義する必要がある。</li>
+<li>RPCのデバッグは困難な場合がある。</li>
+<li>既存の技術をすぐに活用できないかもしれない。例えば、<a href="http://www.squid-cache.org/" target="_blank" rel="noopener noreferrer">RPC呼び出しがキャッシュサーバー（例：[Squid</a>）で正しくキャッシュされるようにする](https://web.archive.org/web/20170608193645/http://etherealbits.com/2012/12/debunking-the-myths-of-rpc-rest/)には追加の労力が必要なことがある。</li></p><p></ul><h3>表現状態転送（REST）</h3></p><p>RESTはクライアント/サーバーモデルを強制するアーキテクチャスタイルで、クライアントはサーバーが管理するリソースの集合に対して動作します。サーバーはリソースの表現と、リソースを操作したり新しい表現を取得したりするためのアクションを提供します。全ての通信はステートレスでキャッシュ可能でなければなりません。</p><p>RESTfulインターフェースには4つの特徴があります：</p><ul><li><strong>リソースの識別（HTTPのURI）</strong> - 操作に関わらず同じURIを使用する。</li>
+<li><strong>表現による変更（HTTPの動詞）</strong> - 動詞、ヘッダー、ボディを使用する。</li>
+<li><strong>自己記述的なエラーメッセージ（HTTPのステータス応答）</strong> - ステータスコードを使い、再発明しない。</li>
+<li><strong><a href="http://restcookbook.com/Basics/hateoas/" target="_blank" rel="noopener noreferrer">HATEOAS</a>（HTTPのHTMLインターフェース）</strong> - ウェブサービスはブラウザで完全にアクセス可能であるべき。</li></p><p></ul>RESTのサンプル呼び出し：</p><pre><code class="language-">GET /someresources/anId</p><p>PUT /someresources/anId
+{"anotherdata": "another value"}</code></pre>
+RESTはデータの公開に焦点を当てています。クライアント/サーバー間の結合度を最小限に抑え、公共のHTTP APIでよく使用されます。RESTはURIを通じてリソースをより一般的かつ均一な方法で公開し、<a href="https://github.com/for-GET/know-your-http-well/blob/master/headers.md" target="_blank" rel="noopener noreferrer">ヘッダーによる表現</a>やGET、POST、PUT、DELETE、PATCHなどの動詞によるアクションを使用します。ステートレスであるため、RESTは水平スケーリングやパーティショニングに適しています。</p><p>#### 欠点: REST</p><ul><li>RESTはデータ公開に焦点を当てているため、リソースが自然に単純な階層構造で整理またはアクセスされない場合には適さないことがあります。例えば、過去1時間に特定のイベントに一致するすべての更新レコードを返すことは、パスとして簡単に表現できません。RESTでは、URIパス、クエリパラメータ、および場合によってはリクエストボディの組み合わせで実装される可能性が高いです。</li>
+<li>RESTは通常、いくつかの動詞（GET、POST、PUT、DELETE、PATCH）に依存しますが、これらが必ずしもユースケースに合わないことがあります。例えば、期限切れのドキュメントをアーカイブフォルダに移動する処理は、これらの動詞のどれにもきれいに収まらないかもしれません。</li>
+<li>入れ子構造を持つ複雑なリソースを取得するには、クライアントとサーバー間で複数回の往復が必要となり、単一ビューのレンダリングに時間がかかります。例えば、ブログエントリの内容とそのエントリに対するコメントを取得する場合です。変動するネットワーク環境で動作するモバイルアプリケーションでは、これらの複数の往復は非常に望ましくありません。</li>
+<li>時間が経つにつれてAPIレスポンスにより多くのフィールドが追加されることがあり、古いクライアントは必要のない新しいデータフィールドもすべて受け取ってしまいます。その結果、ペイロードサイズが膨れ上がり、レイテンシが大きくなります。</li></p><p></ul><h3>RPCとREST呼び出しの比較</h3></p><p>| 操作 | RPC | REST |
+|---|---|---|
+| サインアップ | <strong>POST</strong> /signup | <strong>POST</strong> /persons |
+| 退会 | <strong>POST</strong> /resign<br/>{<br/>"personid": "1234"<br/>} | <strong>DELETE</strong> /persons/1234 |
+| 人物情報取得 | <strong>GET</strong> /readPerson?personid=1234 | <strong>GET</strong> /persons/1234 |
+| 人物のアイテムリスト取得 | <strong>GET</strong> /readUsersItemsList?personid=1234 | <strong>GET</strong> /persons/1234/items |
+| 人物のアイテムに追加 | <strong>POST</strong> /addItemToUsersItemsList<br/>{<br/>"personid": "1234";<br/>"itemid": "456"<br/>} | <strong>POST</strong> /persons/1234/items<br/>{<br/>"itemid": "456"<br/>} |
+| アイテム更新 | <strong>POST</strong> /modifyItem<br/>{<br/>"itemid": "456";<br/>"key": "value"<br/>} | <strong>PUT</strong> /items/456<br/>{<br/>"key": "value"<br/>} |
+| アイテム削除 | <strong>POST</strong> /removeItem<br/>{<br/>"itemid": "456"<br/>} | <strong>DELETE</strong> /items/456 |</p><p><p align="center">
+  <i><a href=https://apihandyman.io/do-you-really-know-why-you-prefer-rest-over-rpc/>出典: RESTをRPCより好む理由を本当に知っていますか</a></i>
+</p></p><p>#### 出典およびさらなる参考資料: RESTとRPC</p><ul><li><a href="https://apihandyman.io/do-you-really-know-why-you-prefer-rest-over-rpc/" target="_blank" rel="noopener noreferrer">RESTをRPCより好む理由を本当に知っていますか</a></li>
+<li><a href="http://programmers.stackexchange.com/a/181186" target="_blank" rel="noopener noreferrer">RPC的アプローチがRESTより適切な場合とは？</a></li>
+<li><a href="http://stackoverflow.com/questions/15056878/rest-vs-json-rpc" target="_blank" rel="noopener noreferrer">REST vs JSON-RPC</a></li>
+<li><a href="https://web.archive.org/web/20170608193645/http://etherealbits.com/2012/12/debunking-the-myths-of-rpc-rest/" target="_blank" rel="noopener noreferrer">RPCとRESTの神話を覆す</a></li>
+<li><a href="https://www.quora.com/What-are-the-drawbacks-of-using-RESTful-APIs" target="_blank" rel="noopener noreferrer">RESTの欠点とは？</a></li>
+<li><a href="http://www.puncsky.com/blog/2016-02-13-crack-the-system-design-interview" target="_blank" rel="noopener noreferrer">システム設計面接を攻略する</a></li>
+<li><a href="https://code.facebook.com/posts/1468950976659943/" target="_blank" rel="noopener noreferrer">Thrift</a></li>
+<li><a href="http://arstechnica.com/civis/viewtopic.php?t=1190508" target="_blank" rel="noopener noreferrer">なぜ内部利用にはRESTでRPCではないのか</a></li></p><p></ul><h2>セキュリティ</h2></p><p>このセクションは更新が必要です。<a href="#contributing" target="_blank" rel="noopener noreferrer">貢献</a>をご検討ください！</p><p>セキュリティは広範なテーマです。 かなりの経験やセキュリティの背景があるか、セキュリティ知識が必要な職に応募していない限り、おそらく基本的なこと以上を知る必要はありません:</p><ul><li>転送中および保存時に暗号化する。</li>
+<li><a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank" rel="noopener noreferrer">XSS</a>や<a href="https://en.wikipedia.org/wiki/SQL_injection" target="_blank" rel="noopener noreferrer">SQLインジェクション</a>を防ぐために、すべてのユーザー入力やユーザーに公開されている入力パラメータをサニタイズする。</li>
+<li>SQLインジェクションを防ぐためにパラメータ化クエリを使用する。</li>
+<li><a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege" target="_blank" rel="noopener noreferrer">最小特権の原則</a>を利用する。</li></p><p></ul><h3>参考資料およびさらなる読み物</h3></p><ul><li><a href="https://github.com/shieldfy/API-Security-Checklist" target="_blank" rel="noopener noreferrer">APIセキュリティチェックリスト</a></li>
+<li><a href="https://github.com/FallibleInc/security-guide-for-developers" target="_blank" rel="noopener noreferrer">開発者向けセキュリティガイド</a></li>
+<li><a href="https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet" target="_blank" rel="noopener noreferrer">OWASPトップテン</a></li></p><p></ul><h2>付録</h2></p><p>時折「ざっとした」見積もりを求められることがあります。 例えば、ディスクから100枚の画像サムネイルを生成するのにどれくらい時間がかかるか、またはデータ構造がどれほどのメモリを必要とするかを見積もる場合です。 <strong>2のべき乗表</strong> と <strong>すべてのプログラマーが知っておくべきレイテンシ数値</strong> は便利な参考資料です。</p><h3>2のべき乗表</h3></p><pre><code class="language-">Power           Exact Value         Approx Value        Bytes
+---------------------------------------------------------------
+7                             128
+8                             256
+10                           1024   1 thousand           1 KB
+16                         65,536                       64 KB
+20                      1,048,576   1 million            1 MB
+30                  1,073,741,824   1 billion            1 GB
+32                  4,294,967,296                        4 GB
+40              1,099,511,627,776   1 trillion           1 TB</code></pre></p><p>#### 参照元およびさらなる読書資料</p><ul><li><a href="https://en.wikipedia.org/wiki/Power_of_two" target="_blank" rel="noopener noreferrer">2のべき乗</a></li></p><p></ul><h3>すべてのプログラマーが知っておくべきレイテンシーの数値</h3></p><pre><code class="language-">Latency Comparison Numbers
+--------------------------
+L1 cache reference                           0.5 ns
+Branch mispredict                            5   ns
+L2 cache reference                           7   ns                      14x L1 cache
+Mutex lock/unlock                           25   ns
+Main memory reference                      100   ns                      20x L2 cache, 200x L1 cache
+Compress 1K bytes with Zippy            10,000   ns       10 us
+Send 1 KB bytes over 1 Gbps network     10,000   ns       10 us
+Read 4 KB randomly from SSD*           150,000   ns      150 us          ~1GB/sec SSD
+Read 1 MB sequentially from memory     250,000   ns      250 us
+Round trip within same datacenter      500,000   ns      500 us
+Read 1 MB sequentially from SSD*     1,000,000   ns    1,000 us    1 ms  ~1GB/sec SSD, 4X memory
+HDD seek                            10,000,000   ns   10,000 us   10 ms  20x datacenter roundtrip
+Read 1 MB sequentially from 1 Gbps  10,000,000   ns   10,000 us   10 ms  40x memory, 10X SSD
+Read 1 MB sequentially from HDD     30,000,000   ns   30,000 us   30 ms 120x memory, 30X SSD
+Send packet CA->Netherlands->CA    150,000,000   ns  150,000 us  150 ms</p><p>Notes
+-----
+1 ns = 10^-9 seconds
+1 us = 10^-6 seconds = 1,000 ns
+1 ms = 10^-3 seconds = 1,000 us = 1,000,000 ns</code></pre>
+上記の数値に基づく便利な指標：</p><ul><li>HDDからの順次読み取り速度は30 MB/s</li>
+<li>1 Gbpsイーサネットからの順次読み取り速度は100 MB/s</li>
+<li>SSDからの順次読み取り速度は1 GB/s</li>
+<li>メインメモリからの順次読み取り速度は4 GB/s</li>
+<li>世界中で6〜7回の往復通信が1秒間に可能</li>
+<li>データセンター内では1秒間に2,000回の往復通信が可能</li></p><p></ul>#### レイテンシー数値の可視化</p><p><img src="https://camo.githubusercontent.com/77f72259e1eb58596b564d1ad823af1853bc60a3/687474703a2f2f692e696d6775722e636f6d2f6b307431652e706e67" alt=""></p><p>#### 出典およびさらなる参考資料</p><ul><li><a href="https://gist.github.com/jboner/2841832" target="_blank" rel="noopener noreferrer">Latency numbers every programmer should know - 1</a></li>
+<li><a href="https://gist.github.com/hellerbarde/2843375" target="_blank" rel="noopener noreferrer">Latency numbers every programmer should know - 2</a></li>
+<li><a href="http://www.cs.cornell.edu/projects/ladis2009/talks/dean-keynote-ladis2009.pdf" target="_blank" rel="noopener noreferrer">大規模分散システム構築からの設計・教訓・アドバイス</a></li>
+<li><a href="https://static.googleusercontent.com/media/research.google.com/en//people/jeff/stanford-295-talk.pdf" target="_blank" rel="noopener noreferrer">大規模分散システム構築からのソフトウェア工学アドバイス</a></li></p><p></ul><h3>追加のシステム設計面接質問</h3></p><blockquote>一般的なシステム設計の面接質問と、それぞれの解決方法へのリンク集。</blockquote></p><p>| 質問 | 参考リンク |
+|---|---|
+| Dropboxのようなファイル同期サービスを設計せよ | <a href="https://www.youtube.com/watch?v=PE4gwstWhmc" target="_blank" rel="noopener noreferrer">youtube.com</a> |
+| Googleのような検索エンジンを設計せよ | <a href="http://queue.acm.org/detail.cfm?id=988407" target="_blank" rel="noopener noreferrer">queue.acm.org</a><br/><a href="http://programmers.stackexchange.com/questions/38324/interview-question-how-would-you-implement-google-search" target="_blank" rel="noopener noreferrer">stackexchange.com</a><br/><a href="http://www.ardendertat.com/2012/01/11/implementing-search-engines/" target="_blank" rel="noopener noreferrer">ardendertat.com</a><br/><a href="http://infolab.stanford.edu/~backrub/google.html" target="_blank" rel="noopener noreferrer">stanford.edu</a> |
+| Googleのようなスケーラブルなウェブクローラーを設計せよ | <a href="https://www.quora.com/How-can-I-build-a-web-crawler-from-scratch" target="_blank" rel="noopener noreferrer">quora.com</a> |
+| Googleドキュメントを設計せよ | <a href="https://code.google.com/p/google-mobwrite/" target="_blank" rel="noopener noreferrer">code.google.com</a><br/><a href="https://neil.fraser.name/writing/sync/" target="_blank" rel="noopener noreferrer">neil.fraser.name</a> |
+| Redisのようなキー・バリューストアを設計せよ | <a href="http://www.slideshare.net/dvirsky/introduction-to-redis" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| Memcachedのようなキャッシュシステムを設計せよ | <a href="http://www.slideshare.net/oemebamo/introduction-to-memcached" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| Amazonのようなレコメンデーションシステムを設計せよ | <a href="https://web.archive.org/web/20170406065247/http://tech.hulu.com/blog/2011/09/19/recommendation-system.html" target="_blank" rel="noopener noreferrer">hulu.com</a><br/><a href="http://ijcai13.org/files/tutorial_slides/td3.pdf" target="_blank" rel="noopener noreferrer">ijcai13.org</a> |
+| BitlyのようなTinyURLシステムを設計せよ | <a href="http://n00tc0d3r.blogspot.com/" target="_blank" rel="noopener noreferrer">n00tc0d3r.blogspot.com</a> |
+| WhatsAppのようなチャットアプリを設計せよ | <a href="http://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html" target="_blank" rel="noopener noreferrer">highscalability.com</a>
+| Instagramのような写真共有システムを設計せよ | <a href="http://highscalability.com/flickr-architecture" target="_blank" rel="noopener noreferrer">highscalability.com</a><br/><a href="http://highscalability.com/blog/2011/12/6/instagram-architecture-14-million-users-terabytes-of-photos.html" target="_blank" rel="noopener noreferrer">highscalability.com</a> |
+| Facebookのニュースフィード機能を設計せよ | <a href="http://www.quora.com/What-are-best-practices-for-building-something-like-a-News-Feed" target="_blank" rel="noopener noreferrer">quora.com</a><br/><a href="http://www.quora.com/Activity-Streams/What-are-the-scaling-issues-to-keep-in-mind-while-developing-a-social-network-feed" target="_blank" rel="noopener noreferrer">quora.com</a><br/><a href="http://www.slideshare.net/danmckinley/etsy-activity-feeds-architecture" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| Facebookのタイムライン機能を設計せよ | <a href="https://www.facebook.com/note.php?note_id=10150468255628920" target="_blank" rel="noopener noreferrer">facebook.com</a><br/><a href="http://highscalability.com/blog/2012/1/23/facebook-timeline-brought-to-you-by-the-power-of-denormaliza.html" target="_blank" rel="noopener noreferrer">highscalability.com</a> |
+| Facebookのチャット機能を設計せよ | <a href="http://www.erlang-factory.com/upload/presentations/31/EugeneLetuchy-ErlangatFacebook.pdf" target="_blank" rel="noopener noreferrer">erlang-factory.com</a><br/><a href="https://www.facebook.com/note.php?note_id=14218138919&id=9445547199&index=0" target="_blank" rel="noopener noreferrer">facebook.com</a> |</p><p>| Facebookのようなグラフ検索機能を設計する | <a href="https://www.facebook.com/notes/facebook-engineering/under-the-hood-building-out-the-infrastructure-for-graph-search/10151347573598920" target="_blank" rel="noopener noreferrer">facebook.com</a><br/><a href="https://www.facebook.com/notes/facebook-engineering/under-the-hood-indexing-and-ranking-in-graph-search/10151361720763920" target="_blank" rel="noopener noreferrer">facebook.com</a><br/><a href="https://www.facebook.com/notes/facebook-engineering/under-the-hood-the-natural-language-interface-of-graph-search/10151432733048920" target="_blank" rel="noopener noreferrer">facebook.com</a> |
+| CloudFlareのようなコンテンツ配信ネットワークを設計する | <a href="https://figshare.com/articles/Globally_distributed_content_delivery/6605972" target="_blank" rel="noopener noreferrer">figshare.com</a> |
+| Twitterのようなトレンドトピックシステムを設計する | <a href="http://www.michael-noll.com/blog/2013/01/18/implementing-real-time-trending-topics-in-storm/" target="_blank" rel="noopener noreferrer">michael-noll.com</a><br/><a href="http://snikolov.wordpress.com/2012/11/14/early-detection-of-twitter-trends/" target="_blank" rel="noopener noreferrer">snikolov .wordpress.com</a> |
+| ランダムID生成システムを設計する | <a href="https://blog.twitter.com/2010/announcing-snowflake" target="_blank" rel="noopener noreferrer">blog.twitter.com</a><br/><a href="https://github.com/twitter/snowflake/" target="_blank" rel="noopener noreferrer">github.com</a> |
+| 一定時間内のトップkリクエストを返す | <a href="https://www.cs.ucsb.edu/sites/default/files/documents/2005-23.pdf" target="_blank" rel="noopener noreferrer">cs.ucsb.edu</a><br/><a href="http://davis.wpi.edu/xmdv/docs/EDBT11-diyang.pdf" target="_blank" rel="noopener noreferrer">wpi.edu</a> |
+| 複数のデータセンターからデータを提供するシステムを設計する | <a href="http://highscalability.com/blog/2009/8/24/how-google-serves-data-from-multiple-datacenters.html" target="_blank" rel="noopener noreferrer">highscalability.com</a> |
+| オンラインマルチプレイヤーカードゲームを設計する | <a href="https://web.archive.org/web/20180929181117/http://www.indieflashblog.com/how-to-create-an-asynchronous-multiplayer-game.html" target="_blank" rel="noopener noreferrer">indieflashblog.com</a><br/><a href="http://buildnewgames.com/real-time-multiplayer/" target="_blank" rel="noopener noreferrer">buildnewgames.com</a> |
+| ガベージコレクションシステムを設計する | <a href="http://journal.stuffwithstuff.com/2013/12/08/babys-first-garbage-collector/" target="_blank" rel="noopener noreferrer">stuffwithstuff.com</a><br/><a href="http://courses.cs.washington.edu/courses/csep521/07wi/prj/rick.pdf" target="_blank" rel="noopener noreferrer">washington.edu</a> |
+| APIレートリミッターを設計する | <a href="https://stripe.com/blog/rate-limiters" target="_blank" rel="noopener noreferrer">https://stripe.com/blog/</a> |
+| 株式取引所（NASDAQやBinanceのような）を設計する | <a href="https://youtu.be/b1e4t2k2KJY" target="_blank" rel="noopener noreferrer">Jane Street</a><br/><a href="https://around25.com/blog/building-a-trading-engine-for-a-crypto-exchange/" target="_blank" rel="noopener noreferrer">Golang Implementation</a><br/><a href="http://bhomnick.net/building-a-simple-limit-order-in-go/" target="_blank" rel="noopener noreferrer">Go Implementation</a> |
+| システム設計の質問を追加する | <a href="#contributing" target="_blank" rel="noopener noreferrer">Contribute</a> |</p><h3>実世界のアーキテクチャ</h3></p><blockquote>実際のシステムがどのように設計されているかに関する記事。</blockquote></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/TcUo2fw.png">
+  <br/>
+  <i><a href=https://www.infoq.com/presentations/Twitter-Timeline-Scalability>出典: 大規模Twitterタイムライン</a></i>
+</p></p><p><strong>以下の記事では細かい詳細にこだわらず、代わりに：</strong></p><ul><li>これらの記事に共通する原則、一般的な技術、パターンを特定する</li>
+<li>各コンポーネントが解決する問題、機能する箇所、機能しない箇所を学ぶ</li>
+<li>得られた教訓を振り返る</li></p><p></ul>|種類 | システム | 参照 |
+|---|---|---|
+| データ処理 | <strong>MapReduce</strong> - Googleの分散データ処理 | <a href="http://static.googleusercontent.com/media/research.google.com/zh-CN/us/archive/mapreduce-osdi04.pdf" target="_blank" rel="noopener noreferrer">research.google.com</a> |
+| データ処理 | <strong>Spark</strong> - Databricksの分散データ処理 | <a href="http://www.slideshare.net/AGrishchenko/apache-spark-architecture" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| データ処理 | <strong>Storm</strong> - Twitterの分散データ処理 | <a href="http://www.slideshare.net/previa/storm-16094009" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| | | |
+| データストア | <strong>Bigtable</strong> - Googleの分散カラム指向データベース | <a href="http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf" target="_blank" rel="noopener noreferrer">harvard.edu</a> |
+| データストア | <strong>HBase</strong> - Bigtableのオープンソース実装 | <a href="http://www.slideshare.net/alexbaranau/intro-to-hbase" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| データストア | <strong>Cassandra</strong> - Facebookの分散カラム指向データベース | <a href="http://www.slideshare.net/planetcassandra/cassandra-introduction-features-30103666" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| データストア | <strong>DynamoDB</strong> - Amazonのドキュメント指向データベース | <a href="http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/decandia07dynamo.pdf" target="_blank" rel="noopener noreferrer">harvard.edu</a> |
+| データストア | <strong>MongoDB</strong> - ドキュメント指向データベース | <a href="http://www.slideshare.net/mdirolf/introduction-to-mongodb" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| データストア | <strong>Spanner</strong> - Googleのグローバル分散データベース | <a href="http://research.google.com/archive/spanner-osdi2012.pdf" target="_blank" rel="noopener noreferrer">research.google.com</a> |
+| データストア | <strong>Memcached</strong> - 分散メモリキャッシュシステム | <a href="http://www.slideshare.net/oemebamo/introduction-to-memcached" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| データストア | <strong>Redis</strong> - 永続性と値タイプを備えた分散メモリキャッシュシステム | <a href="http://www.slideshare.net/dvirsky/introduction-to-redis" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| | | |
+| ファイルシステム | <strong>Google File System (GFS)</strong> - 分散ファイルシステム | <a href="http://static.googleusercontent.com/media/research.google.com/zh-CN/us/archive/gfs-sosp2003.pdf" target="_blank" rel="noopener noreferrer">research.google.com</a> |
+| ファイルシステム | <strong>Hadoop File System (HDFS)</strong> - GFSのオープンソース実装 | <a href="http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html" target="_blank" rel="noopener noreferrer">apache.org</a> |
+| | | |
+| その他 | <strong>Chubby</strong> - Googleの疎結合分散システム用ロックサービス | <a href="http://static.googleusercontent.com/external_content/untrusted_dlcp/research.google.com/en/us/archive/chubby-osdi06.pdf" target="_blank" rel="noopener noreferrer">research.google.com</a> |
+| その他 | <strong>Dapper</strong> - 分散システムのトレーシングインフラストラクチャ | <a href="http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/36356.pdf" target="_blank" rel="noopener noreferrer">research.google.com</a> |
+| その他 | <strong>Kafka</strong> - LinkedInのPub/Subメッセージキュー | <a href="http://www.slideshare.net/mumrah/kafka-talk-tri-hug" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| その他 | <strong>Zookeeper</strong> - 同期を可能にする集中型インフラとサービス | <a href="http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| | アーキテクチャを追加 | <a href="#contributing" target="_blank" rel="noopener noreferrer">Contribute</a> |</p><h3>企業アーキテクチャ</h3></p><p>| 企業 | 参照 |
+|---|---|
+| Amazon | <a href="http://highscalability.com/amazon-architecture" target="_blank" rel="noopener noreferrer">Amazonアーキテクチャ</a> |
+| Cinchcast | <a href="http://highscalability.com/blog/2012/7/16/cinchcast-architecture-producing-1500-hours-of-audio-every-d.html" target="_blank" rel="noopener noreferrer">毎日1,500時間のオーディオ制作</a> |
+| DataSift | <a href="http://highscalability.com/blog/2011/11/29/datasift-architecture-realtime-datamining-at-120000-tweets-p.html" target="_blank" rel="noopener noreferrer">毎秒120,000ツイートのリアルタイムデータマイニング</a> |
+| Dropbox | <a href="https://www.youtube.com/watch?v=PE4gwstWhmc" target="_blank" rel="noopener noreferrer">Dropboxのスケーリング方法</a> |
+| ESPN | <a href="http://highscalability.com/blog/2013/11/4/espns-architecture-at-scale-operating-at-100000-duh-nuh-nuhs.html" target="_blank" rel="noopener noreferrer">毎秒100,000回の操作</a> |
+| Google | <a href="http://highscalability.com/google-architecture" target="_blank" rel="noopener noreferrer">Googleアーキテクチャ</a> |
+| Instagram | <a href="http://highscalability.com/blog/2011/12/6/instagram-architecture-14-million-users-terabytes-of-photos.html" target="_blank" rel="noopener noreferrer">1400万人のユーザー、テラバイトの写真</a><br/><a href="http://instagram-engineering.tumblr.com/post/13649370142/what-powers-instagram-hundreds-of-instances" target="_blank" rel="noopener noreferrer">Instagramの動力源</a> |
+| Justin.tv | <a href="http://highscalability.com/blog/2010/3/16/justintvs-live-video-broadcasting-architecture.html" target="_blank" rel="noopener noreferrer">Justin.Tvのライブビデオ放送アーキテクチャ</a> |
+| Facebook | <a href="https://cs.uwaterloo.ca/~brecht/courses/854-Emerging-2014/readings/key-value/fb-memcached-nsdi-2013.pdf" target="_blank" rel="noopener noreferrer">Facebookでのmemcachedのスケーリング</a><br/><a href="https://cs.uwaterloo.ca/~brecht/courses/854-Emerging-2014/readings/data-store/tao-facebook-distributed-datastore-atc-2013.pdf" target="_blank" rel="noopener noreferrer">TAO: Facebookのソーシャルグラフ用分散データストア</a><br/><a href="https://www.usenix.org/legacy/event/osdi10/tech/full_papers/Beaver.pdf" target="_blank" rel="noopener noreferrer">Facebookの写真ストレージ</a><br/><a href="http://highscalability.com/blog/2016/6/27/how-facebook-live-streams-to-800000-simultaneous-viewers.html" target="_blank" rel="noopener noreferrer">Facebookが80万人の同時視聴者にライブ配信する方法</a> |
+| Flickr | <a href="http://highscalability.com/flickr-architecture" target="_blank" rel="noopener noreferrer">Flickrアーキテクチャ</a> |
+| Mailbox | <a href="http://highscalability.com/blog/2013/6/18/scaling-mailbox-from-0-to-one-million-users-in-6-weeks-and-1.html" target="_blank" rel="noopener noreferrer">6週間で0から100万人のユーザーへ</a> |
+| Netflix | <a href="http://highscalability.com/blog/2015/11/9/a-360-degree-view-of-the-entire-netflix-stack.html" target="_blank" rel="noopener noreferrer">Netflixスタックの360度ビュー</a><br/><a href="http://highscalability.com/blog/2017/12/11/netflix-what-happens-when-you-press-play.html" target="_blank" rel="noopener noreferrer">Netflix：再生ボタンを押すと何が起こるか</a> |
+| Pinterest | <a href="http://highscalability.com/blog/2013/4/15/scaling-pinterest-from-0-to-10s-of-billions-of-page-views-a.html" target="_blank" rel="noopener noreferrer">月間数百億ページビューへのスケーリング</a><br/><a href="http://highscalability.com/blog/2012/5/21/pinterest-architecture-update-18-million-visitors-10x-growth.html" target="_blank" rel="noopener noreferrer">1800万人の訪問者、10倍の成長、従業員12名</a> |
+| Playfish | <a href="http://highscalability.com/blog/2010/9/21/playfishs-social-gaming-architecture-50-million-monthly-user.html" target="_blank" rel="noopener noreferrer">月間5,000万人のユーザー数と成長</a> |
+| PlentyOfFish | <a href="http://highscalability.com/plentyoffish-architecture" target="_blank" rel="noopener noreferrer">PlentyOfFishアーキテクチャ</a> |
+| Salesforce | <a href="http://highscalability.com/blog/2013/9/23/salesforce-architecture-how-they-handle-13-billion-transacti.html" target="_blank" rel="noopener noreferrer">1日13億件のトランザクションを処理する方法</a> |
+| Stack Overflow | <a href="http://highscalability.com/blog/2009/8/5/stack-overflow-architecture.html" target="_blank" rel="noopener noreferrer">Stack Overflowアーキテクチャ</a> |
+| TripAdvisor | <a href="http://highscalability.com/blog/2011/6/27/tripadvisor-architecture-40m-visitors-200m-dynamic-page-view.html" target="_blank" rel="noopener noreferrer">4,000万人の訪問者、2億の動的ページビュー、30TBのデータ</a> |
+| Tumblr | <a href="http://highscalability.com/blog/2012/2/13/tumblr-architecture-15-billion-page-views-a-month-and-harder.html" target="_blank" rel="noopener noreferrer">月間150億ページビュー</a> |
+| Twitter | <a href="http://highscalability.com/scaling-twitter-making-twitter-10000-percent-faster" target="_blank" rel="noopener noreferrer">Twitterを1万倍高速化</a><br/><a href="http://highscalability.com/blog/2011/12/19/how-twitter-stores-250-million-tweets-a-day-using-mysql.html" target="_blank" rel="noopener noreferrer">MySQLで1日2.5億ツイートを保存</a><br/><a href="http://highscalability.com/blog/2013/7/8/the-architecture-twitter-uses-to-deal-with-150m-active-users.html" target="_blank" rel="noopener noreferrer">1億5,000万人のアクティブユーザー、30万QPS、22MB/sのファイアホース</a><br/><a href="https://www.infoq.com/presentations/Twitter-Timeline-Scalability" target="_blank" rel="noopener noreferrer">大規模なタイムライン</a><br/><a href="https://www.youtube.com/watch?v=5cKTP36HVgI" target="_blank" rel="noopener noreferrer">Twitterのビッグ＆スモールデータ</a><br/><a href="https://www.youtube.com/watch?v=z8LU0Cj6BOU" target="_blank" rel="noopener noreferrer">Twitterの運用：1億ユーザー超のスケーリング</a><br/><a href="http://highscalability.com/blog/2016/4/20/how-twitter-handles-3000-images-per-second.html" target="_blank" rel="noopener noreferrer">Twitterが毎秒3,000枚の画像を処理する方法</a> |
+| Uber | <a href="http://highscalability.com/blog/2015/9/14/how-uber-scales-their-real-time-market-platform.html" target="_blank" rel="noopener noreferrer">Uberのリアルタイムマーケットプラットフォームのスケーリング方法</a><br/><a href="http://highscalability.com/blog/2016/10/12/lessons-learned-from-scaling-uber-to-2000-engineers-1000-ser.html" target="_blank" rel="noopener noreferrer">Uberのスケーリング教訓：2000エンジニア、1000サービス、8000 Gitリポジトリ</a> |
+| WhatsApp | <a href="http://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html" target="_blank" rel="noopener noreferrer">Facebookが190億ドルで買収したWhatsAppのアーキテクチャ</a> |
+| YouTube | <a href="https://www.youtube.com/watch?v=w5WVu624fY8" target="_blank" rel="noopener noreferrer">YouTubeのスケーラビリティ</a><br/><a href="http://highscalability.com/youtube-architecture" target="_blank" rel="noopener noreferrer">YouTubeアーキテクチャ</a> |</p><h3>企業のエンジニアリングブログ</h3></p><blockquote>面接を受ける企業のアーキテクチャ。</blockquote>
+>
+<blockquote>出題される質問は同じドメインから来ることがあります。</blockquote></p><ul><li><a href="http://nerds.airbnb.com/" target="_blank" rel="noopener noreferrer">Airbnb エンジニアリング</a></li>
+<li><a href="https://developer.atlassian.com/blog/" target="_blank" rel="noopener noreferrer">Atlassian デベロッパー</a></li>
+<li><a href="https://aws.amazon.com/blogs/aws/" target="_blank" rel="noopener noreferrer">AWS ブログ</a></li>
+<li><a href="http://word.bitly.com/" target="_blank" rel="noopener noreferrer">Bitly エンジニアリングブログ</a></li>
+<li><a href="https://blog.box.com/blog/category/engineering" target="_blank" rel="noopener noreferrer">Box ブログ</a></li>
+<li><a href="http://blog.cloudera.com/" target="_blank" rel="noopener noreferrer">Cloudera デベロッパーブログ</a></li>
+<li><a href="https://tech.dropbox.com/" target="_blank" rel="noopener noreferrer">Dropbox テックブログ</a></li>
+<li><a href="https://www.quora.com/q/quoraengineering" target="_blank" rel="noopener noreferrer">Quora のエンジニアリング</a></li>
+<li><a href="http://www.ebaytechblog.com/" target="_blank" rel="noopener noreferrer">Ebay テックブログ</a></li>
+<li><a href="https://blog.evernote.com/tech/" target="_blank" rel="noopener noreferrer">Evernote テックブログ</a></li>
+<li><a href="http://codeascraft.com/" target="_blank" rel="noopener noreferrer">Etsy Code as Craft</a></li>
+<li><a href="https://www.facebook.com/Engineering" target="_blank" rel="noopener noreferrer">Facebook エンジニアリング</a></li>
+<li><a href="http://code.flickr.net/" target="_blank" rel="noopener noreferrer">Flickr Code</a></li>
+<li><a href="http://engineering.foursquare.com/" target="_blank" rel="noopener noreferrer">Foursquare エンジニアリングブログ</a></li>
+<li><a href="https://github.blog/category/engineering" target="_blank" rel="noopener noreferrer">GitHub エンジニアリングブログ</a></li>
+<li><a href="http://googleresearch.blogspot.com/" target="_blank" rel="noopener noreferrer">Google リサーチブログ</a></li>
+<li><a href="https://engineering.groupon.com/" target="_blank" rel="noopener noreferrer">Groupon エンジニアリングブログ</a></li>
+<li><a href="https://engineering.heroku.com/" target="_blank" rel="noopener noreferrer">Heroku エンジニアリングブログ</a></li>
+<li><a href="http://product.hubspot.com/blog/topic/engineering" target="_blank" rel="noopener noreferrer">Hubspot エンジニアリングブログ</a></li>
+<li><a href="http://highscalability.com/" target="_blank" rel="noopener noreferrer">High Scalability</a></li>
+<li><a href="http://instagram-engineering.tumblr.com/" target="_blank" rel="noopener noreferrer">Instagram エンジニアリング</a></li>
+<li><a href="https://software.intel.com/en-us/blogs/" target="_blank" rel="noopener noreferrer">Intel ソフトウェアブログ</a></li>
+<li><a href="https://blogs.janestreet.com/category/ocaml/" target="_blank" rel="noopener noreferrer">Jane Street テックブログ</a></li>
+<li><a href="http://engineering.linkedin.com/blog" target="_blank" rel="noopener noreferrer">LinkedIn エンジニアリング</a></li>
+<li><a href="https://engineering.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft エンジニアリング</a></li>
+<li><a href="https://blogs.msdn.microsoft.com/pythonengineering/" target="_blank" rel="noopener noreferrer">Microsoft Python エンジニアリング</a></li>
+<li><a href="http://techblog.netflix.com/" target="_blank" rel="noopener noreferrer">Netflix テックブログ</a></li>
+<li><a href="https://medium.com/paypal-engineering" target="_blank" rel="noopener noreferrer">Paypal デベロッパーブログ</a></li>
+<li><a href="https://medium.com/@Pinterest_Engineering" target="_blank" rel="noopener noreferrer">Pinterest エンジニアリングブログ</a></li>
+<li><a href="http://www.redditblog.com/" target="_blank" rel="noopener noreferrer">Reddit ブログ</a></li>
+<li><a href="https://developer.salesforce.com/blogs/engineering/" target="_blank" rel="noopener noreferrer">Salesforce エンジニアリングブログ</a></li>
+<li><a href="https://slack.engineering/" target="_blank" rel="noopener noreferrer">Slack エンジニアリングブログ</a></li>
+<li><a href="https://labs.spotify.com/" target="_blank" rel="noopener noreferrer">Spotify ラボ</a></li>
+<li><a href="https://stripe.com/blog/engineering" target="_blank" rel="noopener noreferrer">Stripe エンジニアリングブログ</a></li>
+<li><a href="http://www.twilio.com/engineering" target="_blank" rel="noopener noreferrer">Twilio エンジニアリングブログ</a></li>
+<li><a href="https://blog.twitter.com/engineering/" target="_blank" rel="noopener noreferrer">Twitter エンジニアリング</a></li>
+<li><a href="http://eng.uber.com/" target="_blank" rel="noopener noreferrer">Uber エンジニアリングブログ</a></li>
+<li><a href="http://yahooeng.tumblr.com/" target="_blank" rel="noopener noreferrer">Yahoo エンジニアリングブログ</a></li>
+<li><a href="http://engineeringblog.yelp.com/" target="_blank" rel="noopener noreferrer">Yelp エンジニアリングブログ</a></li>
+<li><a href="https://www.zynga.com/blogs/engineering" target="_blank" rel="noopener noreferrer">Zynga エンジニアリングブログ</a></li></p><p></ul>#### 出典およびさらなる参考資料</p><p>ブログを追加したいですか？ 重複作業を避けるために、以下のリポジトリにあなたの会社のブログを追加することを検討してください：</p><ul><li><a href="https://github.com/kilimchoi/engineering-blogs" target="_blank" rel="noopener noreferrer">kilimchoi/engineering-blogs</a></li></p><p></ul><h2>開発中</h2></p><p>セクションを追加したり、進行中のものを完成させるのを手伝いたいですか？ <a href="#contributing" target="_blank" rel="noopener noreferrer">貢献する</a>！</p><ul><li>MapReduceを用いた分散コンピューティング</li>
+<li>一貫性のあるハッシュ</li>
+<li>スキャッター・ギャザー</li>
+<li><a href="#contributing" target="_blank" rel="noopener noreferrer">貢献する</a></li></p><p></ul><h2>クレジット</h2></p><p>クレジットと出典はこのリポジトリ全体にわたって提供されています。</p><p>特別な感謝：</p><ul><li><a href="http://www.hiredintech.com/system-design/the-system-design-process/" target="_blank" rel="noopener noreferrer">Hired in tech</a></li>
+<li><a href="https://www.amazon.com/dp/0984782850/" target="_blank" rel="noopener noreferrer">Cracking the coding interview</a></li>
+<li><a href="http://highscalability.com/" target="_blank" rel="noopener noreferrer">High scalability</a></li>
+<li><a href="https://github.com/checkcheckzz/system-design-interview" target="_blank" rel="noopener noreferrer">checkcheckzz/system-design-interview</a></li>
+<li><a href="https://github.com/shashank88/system_design" target="_blank" rel="noopener noreferrer">shashank88/system_design</a></li>
+<li><a href="https://github.com/mmcgrana/services-engineering" target="_blank" rel="noopener noreferrer">mmcgrana/services-engineering</a></li>
+<li><a href="https://gist.github.com/vasanthk/485d1c25737e8e72759f" target="_blank" rel="noopener noreferrer">System design cheat sheet</a></li>
+<li><a href="http://dancres.github.io/Pages/" target="_blank" rel="noopener noreferrer">A distributed systems reading list</a></li>
+<li><a href="http://www.puncsky.com/blog/2016-02-13-crack-the-system-design-interview" target="_blank" rel="noopener noreferrer">Cracking the system design interview</a></li></p><p></ul><h2>連絡先情報</h2></p><p>ご質問やご意見、ご不明な点がございましたら、お気軽にご連絡ください。</p><p>私の連絡先情報は<a href="https://github.com/donnemartin" target="_blank" rel="noopener noreferrer">GitHubページ</a>に記載されています。</p><h2>ライセンス</h2></p><p><em>このリポジトリのコードおよびリソースはオープンソースライセンスのもとで提供しています。これは私個人のリポジトリであるため、コードおよびリソースに対するライセンスは私から直接提供されており、私の勤務先（Facebook）からではありません。</em></p><p>    著作権 2017 Donne Martin</p><p>    クリエイティブ・コモンズ 表示 4.0 国際 ライセンス (CC BY 4.0)</p><p>    http://creativecommons.org/licenses/by/4.0/</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-09
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-09 
+    </div>
+    
+</body>
+</html>

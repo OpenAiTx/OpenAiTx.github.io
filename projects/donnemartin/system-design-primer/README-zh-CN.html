@@ -1,0 +1,1007 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>system-design-primer - 学习如何设计大规模系统。为系统设计面试做准备。包含 Anki 闪卡。</title>
+    <meta name="description" content="学习如何设计大规模系统。为系统设计面试做准备。包含 Anki 闪卡。">
+    <meta name="keywords" content="system-design-primer, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "system-design-primer",
+  "description": "学习如何设计大规模系统。为系统设计面试做准备。包含 Anki 闪卡。",
+  "author": {
+    "@type": "Person",
+    "name": "donnemartin"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 314773
+  },
+  "url": "https://OpenAiTx.github.io/projects/donnemartin/system-design-primer/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README.md",
+  "datePublished": "2025-08-09",
+  "dateModified": "2025-08-09"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    system-design-primer
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 314773 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by donnemartin</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><em><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README.md" target="_blank" rel="noopener noreferrer">English</a> ∙ <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README-ja.md" target="_blank" rel="noopener noreferrer">日本語</a> ∙ <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README-zh-Hans.md" target="_blank" rel="noopener noreferrer">简体中文</a> ∙ <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README-zh-TW.md" target="_blank" rel="noopener noreferrer">繁體中文</a> | <a href="https://github.com/donnemartin/system-design-primer/issues/170" target="_blank" rel="noopener noreferrer">العَرَبِيَّة‎</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/220" target="_blank" rel="noopener noreferrer">বাংলা</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/40" target="_blank" rel="noopener noreferrer">Português do Brasil</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/186" target="_blank" rel="noopener noreferrer">Deutsch</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/130" target="_blank" rel="noopener noreferrer">ελληνικά</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/272" target="_blank" rel="noopener noreferrer">עברית</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/104" target="_blank" rel="noopener noreferrer">Italiano</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/102" target="_blank" rel="noopener noreferrer">한국어</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/110" target="_blank" rel="noopener noreferrer">فارسی</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/68" target="_blank" rel="noopener noreferrer">Polski</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/87" target="_blank" rel="noopener noreferrer">русский язык</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/136" target="_blank" rel="noopener noreferrer">Español</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/187" target="_blank" rel="noopener noreferrer">ภาษาไทย</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/39" target="_blank" rel="noopener noreferrer">Türkçe</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/127" target="_blank" rel="noopener noreferrer">tiếng Việt</a> ∙ <a href="https://github.com/donnemartin/system-design-primer/issues/250" target="_blank" rel="noopener noreferrer">Français</a> | <a href="https://github.com/donnemartin/system-design-primer/issues/28" target="_blank" rel="noopener noreferrer">Add Translation</a></em>
+<strong>帮助<a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/TRANSLATIONS.md" target="_blank" rel="noopener noreferrer">翻译</a>本指南！</strong></p><h1>系统设计入门</h1></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/jj3A5N8.png">
+  <br/>
+</p></p><h2>动机</h2></p><blockquote>学习如何设计大规模系统。</blockquote>
+>
+<blockquote>准备系统设计面试。</blockquote></p><h3>学习如何设计大规模系统</h3></p><p>学习如何设计可扩展系统将帮助你成为更优秀的工程师。</p><p>系统设计是一个广泛的主题。网络上散布着<strong>大量关于系统设计原则的资源</strong>。</p><p>本仓库是一个<strong>有组织的资源集合</strong>，帮助你学习如何构建大规模系统。</p><h3>向开源社区学习</h3></p><p>这是一个持续更新的开源项目。</p><p>欢迎<a href="#contributing" target="_blank" rel="noopener noreferrer">贡献</a>！</p><h3>准备系统设计面试</h3></p><p>除了编码面试，系统设计是许多科技公司<strong>技术面试流程</strong>中的<strong>必备环节</strong>。</p><p><strong>练习常见的系统设计面试题</strong>，并将你的结果与<strong>示例解答</strong>进行<strong>比较</strong>：讨论、代码和图表。</p><p>面试准备的其他主题：</p><ul><li><a href="#study-guide" target="_blank" rel="noopener noreferrer">学习指南</a></li>
+<li><a href="#how-to-approach-a-system-design-interview-question" target="_blank" rel="noopener noreferrer">如何应对系统设计面试题</a></li></p><p><li><a href="#system-design-interview-questions-with-solutions" target="_blank" rel="noopener noreferrer">系统设计面试题，<strong>附答案</strong></a></li>
+<li><a href="#object-oriented-design-interview-questions-with-solutions" target="_blank" rel="noopener noreferrer">面向对象设计面试题，<strong>附答案</strong></a></li>
+<li><a href="#additional-system-design-interview-questions" target="_blank" rel="noopener noreferrer">额外的系统设计面试题</a></li></p><p></ul><h2>Anki 闪卡</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/zdCAkB3.png">
+  <br/>
+</p></p><p>提供的 <a href="https://apps.ankiweb.net/" target="_blank" rel="noopener noreferrer">Anki 闪卡套装</a> 使用间隔重复帮助你记忆关键的系统设计概念。</p><ul><li><a href="https://github.com/donnemartin/system-design-primer/tree/master/resources/flash_cards/System%20Design.apkg" target="_blank" rel="noopener noreferrer">系统设计套装</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer/tree/master/resources/flash_cards/System%20Design%20Exercises.apkg" target="_blank" rel="noopener noreferrer">系统设计练习套装</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer/tree/master/resources/flash_cards/OO%20Design.apkg" target="_blank" rel="noopener noreferrer">面向对象设计练习套装</a></li></p><p></ul>非常适合在移动中使用。</p><h3>编程资源：互动编程挑战</h3></p><p>想找资源帮助准备<a href="https://github.com/donnemartin/interactive-coding-challenges" target="_blank" rel="noopener noreferrer"><strong>编程面试</strong></a>吗？</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/b4YtAEN.png">
+  <br/>
+</p></p><p>看看姊妹仓库 <a href="https://github.com/donnemartin/interactive-coding-challenges" target="_blank" rel="noopener noreferrer"><strong>互动编程挑战</strong></a>，其中包含额外的 Anki 套装：</p><ul><li><a href="https://github.com/donnemartin/interactive-coding-challenges/tree/master/anki_cards/Coding.apkg" target="_blank" rel="noopener noreferrer">编程套装</a></li></p><p></ul><h2>贡献</h2></p><blockquote>从社区中学习。</blockquote></p><p>欢迎提交拉取请求帮助：</p><ul><li>修正错误</li>
+<li>改进章节</li>
+<li>添加新章节</li>
+<li><a href="https://github.com/donnemartin/system-design-primer/issues/28" target="_blank" rel="noopener noreferrer">翻译</a></li></p><p></ul>需要润色的内容放置在<a href="#under-development" target="_blank" rel="noopener noreferrer">开发中</a>。</p><p>请查看<a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">贡献指南</a>。</p><h2>系统设计主题索引</h2></p><blockquote>各种系统设计主题的总结，包括优缺点。<strong>一切都是权衡</strong>。</blockquote>
+>
+<blockquote>每个章节包含指向更深入资源的链接。</blockquote></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/jrUBAF7.png">
+  <br/>
+</p></p><ul><li><a href="#system-design-topics-start-here" target="_blank" rel="noopener noreferrer">系统设计主题：从这里开始</a></li>
+    <li><a href="#step-1-review-the-scalability-video-lecture" target="_blank" rel="noopener noreferrer">步骤 1：观看可扩展性视频讲座</a></li>
+    <li><a href="#step-2-review-the-scalability-article" target="_blank" rel="noopener noreferrer">步骤 2：阅读可扩展性文章</a></li>
+    <li><a href="#next-steps" target="_blank" rel="noopener noreferrer">下一步</a></li>
+<li><a href="#performance-vs-scalability" target="_blank" rel="noopener noreferrer">性能与可扩展性</a></li>
+<li><a href="#latency-vs-throughput" target="_blank" rel="noopener noreferrer">延迟与吞吐量</a></li>
+<li><a href="#availability-vs-consistency" target="_blank" rel="noopener noreferrer">可用性与一致性</a></li>
+    <li><a href="#cap-theorem" target="_blank" rel="noopener noreferrer">CAP 定理</a></li>
+        <li><a href="#cp---consistency-and-partition-tolerance" target="_blank" rel="noopener noreferrer">CP - 一致性和分区容错</a></li>
+        <li><a href="#ap---availability-and-partition-tolerance" target="_blank" rel="noopener noreferrer">AP - 可用性和分区容错</a></li>
+<li><a href="#consistency-patterns" target="_blank" rel="noopener noreferrer">一致性模式</a></li>
+    <li><a href="#weak-consistency" target="_blank" rel="noopener noreferrer">弱一致性</a></li>
+    <li><a href="#eventual-consistency" target="_blank" rel="noopener noreferrer">最终一致性</a></li>
+    <li><a href="#strong-consistency" target="_blank" rel="noopener noreferrer">强一致性</a></li>
+<li><a href="#availability-patterns" target="_blank" rel="noopener noreferrer">可用性模式</a></li>
+    <li><a href="#fail-over" target="_blank" rel="noopener noreferrer">故障切换</a></li>
+    <li><a href="#replication" target="_blank" rel="noopener noreferrer">复制</a></li>
+    <li><a href="#availability-in-numbers" target="_blank" rel="noopener noreferrer">用数字看可用性</a></li>
+<li><a href="#domain-name-system" target="_blank" rel="noopener noreferrer">域名系统</a></li>
+<li><a href="#content-delivery-network" target="_blank" rel="noopener noreferrer">内容分发网络</a></li>
+    <li><a href="#push-cdns" target="_blank" rel="noopener noreferrer">推送型 CDN</a></li>
+    <li><a href="#pull-cdns" target="_blank" rel="noopener noreferrer">拉取型 CDN</a></li>
+<li><a href="#load-balancer" target="_blank" rel="noopener noreferrer">负载均衡器</a></li>
+    <li><a href="#active-passive" target="_blank" rel="noopener noreferrer">主动-被动</a></li>
+    <li><a href="#active-active" target="_blank" rel="noopener noreferrer">主动-主动</a></li>
+    <li><a href="#layer-4-load-balancing" target="_blank" rel="noopener noreferrer">第4层负载均衡</a></li>
+    <li><a href="#layer-7-load-balancing" target="_blank" rel="noopener noreferrer">第7层负载均衡</a></li>
+    <li><a href="#horizontal-scaling" target="_blank" rel="noopener noreferrer">水平扩展</a></li>
+<li><a href="#reverse-proxy-web-server" target="_blank" rel="noopener noreferrer">反向代理（网页服务器）</a></li>
+    <li><a href="#load-balancer-vs-reverse-proxy" target="_blank" rel="noopener noreferrer">负载均衡器 vs 反向代理</a></li>
+<li><a href="#application-layer" target="_blank" rel="noopener noreferrer">应用层</a></li>
+    <li><a href="#microservices" target="_blank" rel="noopener noreferrer">微服务</a></li>
+    <li><a href="#service-discovery" target="_blank" rel="noopener noreferrer">服务发现</a></li>
+<li><a href="#database" target="_blank" rel="noopener noreferrer">数据库</a></li>
+    <li><a href="#relational-database-management-system-rdbms" target="_blank" rel="noopener noreferrer">关系型数据库管理系统 (RDBMS)</a></li>
+        <li><a href="#master-slave-replication" target="_blank" rel="noopener noreferrer">主从复制</a></li>
+        <li><a href="#master-master-replication" target="_blank" rel="noopener noreferrer">主主复制</a></li>
+        <li><a href="#federation" target="_blank" rel="noopener noreferrer">联合</a></li>
+        <li><a href="#sharding" target="_blank" rel="noopener noreferrer">分片</a></li>
+        <li><a href="#denormalization" target="_blank" rel="noopener noreferrer">反规范化</a></li>
+        <li><a href="#sql-tuning" target="_blank" rel="noopener noreferrer">SQL 调优</a></li>
+    <li><a href="#nosql" target="_blank" rel="noopener noreferrer">NoSQL</a></li>
+        <li><a href="#key-value-store" target="_blank" rel="noopener noreferrer">键值存储</a></li>
+        <li><a href="#document-store" target="_blank" rel="noopener noreferrer">文档存储</a></li>
+        <li><a href="#wide-column-store" target="_blank" rel="noopener noreferrer">宽列存储</a></li>
+        <li><a href="#graph-database" target="_blank" rel="noopener noreferrer">图数据库</a></li>
+    <li><a href="#sql-or-nosql" target="_blank" rel="noopener noreferrer">SQL 或 NoSQL</a></li>
+<li><a href="#cache" target="_blank" rel="noopener noreferrer">缓存</a></li>
+    <li><a href="#client-caching" target="_blank" rel="noopener noreferrer">客户端缓存</a></li>
+    <li><a href="#cdn-caching" target="_blank" rel="noopener noreferrer">CDN 缓存</a></li>
+    <li><a href="#web-server-caching" target="_blank" rel="noopener noreferrer">网页服务器缓存</a></li>
+    <li><a href="#database-caching" target="_blank" rel="noopener noreferrer">数据库缓存</a></li>
+    <li><a href="#application-caching" target="_blank" rel="noopener noreferrer">应用缓存</a></li>
+    <li><a href="#caching-at-the-database-query-level" target="_blank" rel="noopener noreferrer">数据库查询级缓存</a></li>
+    <li><a href="#caching-at-the-object-level" target="_blank" rel="noopener noreferrer">对象级缓存</a></li>
+    <li><a href="#when-to-update-the-cache" target="_blank" rel="noopener noreferrer">何时更新缓存</a></li>
+        <li><a href="#cache-aside" target="_blank" rel="noopener noreferrer">旁路缓存</a></li>
+        <li><a href="#write-through" target="_blank" rel="noopener noreferrer">写透</a></li>
+        <li><a href="#write-behind-write-back" target="_blank" rel="noopener noreferrer">写后（写回）</a></li>
+        <li><a href="#refresh-ahead" target="_blank" rel="noopener noreferrer">预刷新</a></li>
+<li><a href="#asynchronism" target="_blank" rel="noopener noreferrer">异步</a></li>
+    <li><a href="#message-queues" target="_blank" rel="noopener noreferrer">消息队列</a></li>
+    <li><a href="#task-queues" target="_blank" rel="noopener noreferrer">任务队列</a></li>
+    <li><a href="#back-pressure" target="_blank" rel="noopener noreferrer">反压</a></li>
+<li><a href="#communication" target="_blank" rel="noopener noreferrer">通信</a></li>
+    <li><a href="#transmission-control-protocol-tcp" target="_blank" rel="noopener noreferrer">传输控制协议 (TCP)</a></li>
+    <li><a href="#user-datagram-protocol-udp" target="_blank" rel="noopener noreferrer">用户数据报协议 (UDP)</a></li>
+    <li><a href="#remote-procedure-call-rpc" target="_blank" rel="noopener noreferrer">远程过程调用 (RPC)</a></li>
+    <li><a href="#representational-state-transfer-rest" target="_blank" rel="noopener noreferrer">表现层状态转移 (REST)</a></li>
+<li><a href="#security" target="_blank" rel="noopener noreferrer">安全</a></li>
+<li><a href="#appendix" target="_blank" rel="noopener noreferrer">附录</a></li>
+    <li><a href="#powers-of-two-table" target="_blank" rel="noopener noreferrer">二的幂表</a></li>
+    <li><a href="#latency-numbers-every-programmer-should-know" target="_blank" rel="noopener noreferrer">每个程序员应知的延迟数字</a></li>
+    <li><a href="#additional-system-design-interview-questions" target="_blank" rel="noopener noreferrer">额外的系统设计面试问题</a></li>
+    <li><a href="#real-world-architectures" target="_blank" rel="noopener noreferrer">真实世界架构</a></li>
+    <li><a href="#company-architectures" target="_blank" rel="noopener noreferrer">公司架构</a></li>
+    <li><a href="#company-engineering-blogs" target="_blank" rel="noopener noreferrer">公司工程博客</a></li>
+<li><a href="#under-development" target="_blank" rel="noopener noreferrer">开发中</a></li>
+<li><a href="#credits" target="_blank" rel="noopener noreferrer">鸣谢</a></li>
+<li><a href="#contact-info" target="_blank" rel="noopener noreferrer">联系方式</a></li>
+<li><a href="#license" target="_blank" rel="noopener noreferrer">许可</a></li></p><p></ul><h2>学习指南</h2></p><blockquote>根据你的面试时间线建议复习的主题（短期、中期、长期）。</blockquote></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/OfVllex.png" alt="Imgur"></p><p><strong>问：面试时，我需要知道这里的所有内容吗？</strong></p><p><strong>答：不，你不需要知道这里的所有内容来准备面试</strong>。</p><p>面试时被问到的内容取决于以下变量：</p><ul><li>你的经验有多少</li>
+<li>你的技术背景是什么</li>
+<li>你面试的职位是什么</li>
+<li>你面试的是哪些公司</li>
+<li>运气</li></p><p></ul>经验更丰富的候选人通常被期望对系统设计了解更多。架构师或团队负责人可能被期望比普通贡献者知道更多。顶级科技公司很可能有一轮或多轮设计面试。</p><p>从广泛开始，在少数几个领域深入。了解一些关键系统设计主题会很有帮助。根据你的时间安排、经验、面试职位和面试公司调整以下指南。</p><ul><li><strong>时间紧张</strong> - 目标是系统设计主题的<strong>广度</strong>。通过解决<strong>一些</strong>面试题进行练习。</li>
+<li><strong>时间适中</strong> - 目标是系统设计主题的<strong>广度</strong>和<strong>一定深度</strong>。通过解决<strong>许多</strong>面试题进行练习。</li>
+<li><strong>时间充裕</strong> - 目标是系统设计主题的<strong>广度</strong>和<strong>更深的深度</strong>。通过解决<strong>大部分</strong>面试题进行练习。</li></p><p></ul>| | 短期 | 中期 | 长期 |
+|---|---|---|---|
+| 通读<a href="#index-of-system-design-topics" target="_blank" rel="noopener noreferrer">系统设计主题</a>，对系统如何工作有一个广泛的了解 | :+1: | :+1: | :+1: |
+| 阅读你面试公司的<a href="#company-engineering-blogs" target="_blank" rel="noopener noreferrer">公司工程博客</a>中的几篇文章 | :+1: | :+1: | :+1: |
+| 阅读几篇<a href="#real-world-architectures" target="_blank" rel="noopener noreferrer">真实世界架构</a> | :+1: | :+1: | :+1: |
+| 复习<a href="#how-to-approach-a-system-design-interview-question" target="_blank" rel="noopener noreferrer">如何处理系统设计面试题</a> | :+1: | :+1: | :+1: |
+| 练习<a href="#system-design-interview-questions-with-solutions" target="_blank" rel="noopener noreferrer">带有解答的系统设计面试题</a> | 一些 | 许多 | 大部分 |
+| 练习<a href="#object-oriented-design-interview-questions-with-solutions" target="_blank" rel="noopener noreferrer">带有解答的面向对象设计面试题</a> | 一些 | 许多 | 大部分 |
+| 复习<a href="#additional-system-design-interview-questions" target="_blank" rel="noopener noreferrer">额外的系统设计面试题</a> | 一些 | 许多 | 大部分 |</p><h2>如何处理系统设计面试题</h2></p><blockquote>如何解决系统设计面试题。</blockquote></p><p>系统设计面试是一个<strong>开放式对话</strong>。你需要主导它。</p><p>你可以使用以下步骤来引导讨论。为了帮助巩固这个过程，使用以下步骤完成<a href="#system-design-interview-questions-with-solutions" target="_blank" rel="noopener noreferrer">带有解答的系统设计面试题</a>部分。</p><h3>第一步：概述用例、约束和假设</h3></p><p>收集需求并确定问题范围。提问以澄清用例和约束。讨论假设。</p><ul><li>谁将使用它？</li>
+<li>他们将如何使用它？</li>
+<li>有多少用户？</li>
+<li>系统做什么？</li>
+<li>系统的输入和输出是什么？</li>
+<li>我们预计处理多少数据？</li>
+<li>我们预计每秒多少请求？</li>
+<li>预期的读写比例是多少？</li></p><p></ul><h3>第二步：创建高级设计</h3></p><p>概述一个包含所有重要组件的高级设计。
+<ul><li>绘制主要组件和连接</li>
+<li>说明你的设计思路</li></p><p></ul><h3>第3步：设计核心组件</h3></p><p>深入讨论每个核心组件的细节。例如，如果你被要求<a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/pastebin/README.md" target="_blank" rel="noopener noreferrer">设计一个URL缩短服务</a>，可以讨论：</p><ul><li>生成并存储完整URL的哈希值</li>
+    <li><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/pastebin/README.md" target="_blank" rel="noopener noreferrer">MD5</a> 和 <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/pastebin/README.md" target="_blank" rel="noopener noreferrer">Base62</a></li>
+    <li>哈希冲突</li>
+    <li>使用SQL还是NoSQL</li>
+    <li>数据库模式设计</li>
+<li>将哈希URL转换为完整URL</li>
+    <li>数据库查询</li>
+<li>API设计和面向对象设计</li></p><p></ul><h3>第4步：扩展设计</h3></p><p>识别并解决瓶颈问题，考虑约束条件。例如，你是否需要以下方案来解决可扩展性问题？</p><ul><li>负载均衡器</li>
+<li>横向扩展</li>
+<li>缓存</li>
+<li>数据库分片</li></p><p></ul>讨论潜在的解决方案和权衡。所有设计都有权衡。使用<a href="#index-of-system-design-topics" target="_blank" rel="noopener noreferrer">可扩展系统设计原则</a>来解决瓶颈问题。</p><h3>估算计算</h3></p><p>你可能需要手动做一些估算。请参考<a href="#appendix" target="_blank" rel="noopener noreferrer">附录</a>中的以下资源：</p><ul><li><a href="http://highscalability.com/blog/2011/1/26/google-pro-tip-use-back-of-the-envelope-calculations-to-choo.html" target="_blank" rel="noopener noreferrer">使用估算计算</a></li>
+<li><a href="#powers-of-two-table" target="_blank" rel="noopener noreferrer">2的幂表</a></li>
+<li><a href="#latency-numbers-every-programmer-should-know" target="_blank" rel="noopener noreferrer">每个程序员都该知道的延迟数字</a></li></p><p></ul><h3>来源和进一步阅读</h3></p><p>查看以下链接以更好地了解预期内容：</p><ul><li><a href="https://www.palantir.com/2011/10/how-to-rock-a-systems-design-interview/" target="_blank" rel="noopener noreferrer">如何通过系统设计面试</a></li>
+<li><a href="http://www.hiredintech.com/system-design" target="_blank" rel="noopener noreferrer">系统设计面试</a></li>
+<li><a href="https://www.youtube.com/watch?v=ZgdS0EUmn70" target="_blank" rel="noopener noreferrer">架构与系统设计面试简介</a></li>
+<li><a href="https://leetcode.com/discuss/career/229177/My-System-Design-Template" target="_blank" rel="noopener noreferrer">系统设计模板</a></li></p><p></ul><h2>系统设计面试题及解决方案</h2></p><blockquote>常见系统设计面试题，附示例讨论、代码及图表。</blockquote>
+>
+<blockquote>解决方案链接指向 <code>solutions/</code> 文件夹中的内容。</blockquote></p><p>| 问题 | |
+|---|---|
+| 设计 Pastebin.com（或 Bit.ly） | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/pastebin/README.md" target="_blank" rel="noopener noreferrer">解决方案</a> |
+| 设计 Twitter 时间线和搜索（或 Facebook 动态和搜索） | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/twitter/README.md" target="_blank" rel="noopener noreferrer">解决方案</a> |
+| 设计一个网络爬虫 | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/web_crawler/README.md" target="_blank" rel="noopener noreferrer">解决方案</a> |
+| 设计 Mint.com | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/mint/README.md" target="_blank" rel="noopener noreferrer">解决方案</a> |
+| 设计社交网络的数据结构 | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/social_graph/README.md" target="_blank" rel="noopener noreferrer">解决方案</a> |
+| 设计搜索引擎的键值存储 | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/query_cache/README.md" target="_blank" rel="noopener noreferrer">解决方案</a> |
+| 设计亚马逊按类别的销售排名功能 | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/sales_rank/README.md" target="_blank" rel="noopener noreferrer">解决方案</a> |
+| 设计一个可扩展至数百万用户的 AWS 系统 | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/scaling_aws/README.md" target="_blank" rel="noopener noreferrer">解决方案</a> |
+| 添加系统设计题目 | <a href="#contributing" target="_blank" rel="noopener noreferrer">贡献</a> |</p><h3>设计 Pastebin.com（或 Bit.ly）</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/pastebin/README.md" target="_blank" rel="noopener noreferrer">查看练习及解决方案</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/4edXG0T.png" alt="Imgur"></p><h3>设计 Twitter 时间线和搜索（或 Facebook 动态和搜索）</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/twitter/README.md" target="_blank" rel="noopener noreferrer">查看练习及解决方案</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/jrUBAF7.png" alt="Imgur"></p><h3>设计一个网络爬虫</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/web_crawler/README.md" target="_blank" rel="noopener noreferrer">查看练习及解决方案</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/bWxPtQA.png" alt="Imgur"></p><h3>Design Mint.com</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/mint/README.md" target="_blank" rel="noopener noreferrer">View exercise and solution</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/V5q57vU.png" alt="Imgur"></p><h3>Design the data structures for a social network</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/social_graph/README.md" target="_blank" rel="noopener noreferrer">View exercise and solution</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/cdCv5g7.png" alt="Imgur"></p><h3>Design a key-value store for a search engine</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/query_cache/README.md" target="_blank" rel="noopener noreferrer">View exercise and solution</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/4j99mhe.png" alt="Imgur"></p><h3>Design Amazon's sales ranking by category feature</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/sales_rank/README.md" target="_blank" rel="noopener noreferrer">View exercise and solution</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/MzExP06.png" alt="Imgur"></p><h3>Design a system that scales to millions of users on AWS</h3></p><p><a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/system_design/scaling_aws/README.md" target="_blank" rel="noopener noreferrer">View exercise and solution</a></p><p><img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/jj3A5N8.png" alt="Imgur"></p><h2>Object-oriented design interview questions with solutions</h2></p><blockquote>Common object-oriented design interview questions with sample discussions, code, and diagrams.</blockquote>
+>
+<blockquote>Solutions linked to content in the <code>solutions/</code> folder.</blockquote></p><p>><strong>Note: This section is under development</strong></p><p>| Question | |
+|---|---|
+| 设计哈希映射 | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/object_oriented_design/hash_table/hash_map.ipynb" target="_blank" rel="noopener noreferrer">解决方案</a>  |
+| 设计最近最少使用缓存 | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/object_oriented_design/lru_cache/lru_cache.ipynb" target="_blank" rel="noopener noreferrer">解决方案</a>  |
+| 设计呼叫中心 | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/object_oriented_design/call_center/call_center.ipynb" target="_blank" rel="noopener noreferrer">解决方案</a>  |
+| 设计一副牌 | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/object_oriented_design/deck_of_cards/deck_of_cards.ipynb" target="_blank" rel="noopener noreferrer">解决方案</a>  |
+| 设计停车场 | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/object_oriented_design/parking_lot/parking_lot.ipynb" target="_blank" rel="noopener noreferrer">解决方案</a>  |
+| 设计聊天服务器 | <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/solutions/object_oriented_design/online_chat/online_chat.ipynb" target="_blank" rel="noopener noreferrer">解决方案</a>  |
+| 设计循环数组 | <a href="#contributing" target="_blank" rel="noopener noreferrer">贡献</a>  |
+| 添加面向对象设计问题 | <a href="#contributing" target="_blank" rel="noopener noreferrer">贡献</a> |</p><h2>系统设计主题：从这里开始</h2></p><p>系统设计新手？</p><p>首先，你需要对常见原则有基本了解，学习它们是什么、如何使用以及它们的优缺点。</p><h3>第一步：观看可扩展性视频讲座</h3></p><p><a href="https://www.youtube.com/watch?v=-W9F__D3oY4" target="_blank" rel="noopener noreferrer">哈佛可扩展性讲座</a></p><ul><li>涉及主题：</li>
+    <li>纵向扩展</li>
+    <li>横向扩展</li>
+    <li>缓存</li>
+    <li>负载均衡</li>
+    <li>数据库复制</li>
+    <li>数据库分区</li></p><p></ul><h3>第二步：阅读可扩展性文章</h3></p><p><a href="https://web.archive.org/web/20221030091841/http://www.lecloud.net/tagged/scalability/chrono" target="_blank" rel="noopener noreferrer">可扩展性</a></p><ul><li>涉及主题：</li>
+    <li><a href="https://web.archive.org/web/20220530193911/https://www.lecloud.net/post/7295452622/scalability-for-dummies-part-1-clones" target="_blank" rel="noopener noreferrer">克隆</a></li>
+    <li><a href="https://web.archive.org/web/20220602114024/https://www.lecloud.net/post/7994751381/scalability-for-dummies-part-2-database" target="_blank" rel="noopener noreferrer">数据库</a></li>
+    <li><a href="https://web.archive.org/web/20230126233752/https://www.lecloud.net/post/9246290032/scalability-for-dummies-part-3-cache" target="_blank" rel="noopener noreferrer">缓存</a></li>
+    <li><a href="https://web.archive.org/web/20220926171507/https://www.lecloud.net/post/9699762917/scalability-for-dummies-part-4-asynchronism" target="_blank" rel="noopener noreferrer">异步</a></li></p><p></ul><h3>接下来的步骤</h3></p><p>接下来，我们将关注高级权衡：</p><ul><li><strong>性能</strong> 与 <strong>可扩展性</strong></li>
+<li><strong>延迟</strong> 与 <strong>吞吐量</strong></li>
+<li><strong>可用性</strong> 与 <strong>一致性</strong></li></p><p></ul>请记住，<strong>一切都是权衡</strong>。</p><p>然后我们将深入探讨更具体的主题，如 DNS、CDN 和负载均衡器。</p><h2>性能与可扩展性</h2></p><p>如果服务能够随着资源的增加而按比例提升<strong>性能</strong>，则该服务是<strong>可扩展的</strong>。通常，提高性能意味着处理更多的工作单位，但也可以是处理更大的工作单位，例如数据集增长时。<sup><a href=http://www.allthingsdistributed.com/2006/03/a_word_on_scalability.html>1</a></sup></p><p>从另一个角度看性能与可扩展性：</p><ul><li>如果你有<strong>性能</strong>问题，说明系统对单个用户来说很慢。</li>
+<li>如果你有<strong>可扩展性</strong>问题，说明系统对单个用户很快，但在负载重时很慢。</li></p><p></ul><h3>资料来源及进一步阅读</h3></p><ul><li><a href="http://www.allthingsdistributed.com/2006/03/a_word_on_scalability.html" target="_blank" rel="noopener noreferrer">关于可扩展性的一句话</a></li>
+<li><a href="http://www.slideshare.net/jboner/scalability-availability-stability-patterns/" target="_blank" rel="noopener noreferrer">可扩展性、可用性、稳定性、模式</a></li></p><p></ul><h2>延迟与吞吐量</h2></p><p><strong>延迟</strong> 是执行某个动作或产生某个结果所需的时间。</p><p><strong>吞吐量</strong> 是单位时间内完成的此类动作或产生的结果数量。</p><p>通常，你应当以<strong>最大吞吐量</strong>和<strong>可接受的延迟</strong>为目标。</p><h3>资料来源及进一步阅读</h3></p><ul><li><a href="https://community.cadence.com/cadence_blogs_8/b/fv/posts/understanding-latency-vs-throughput" target="_blank" rel="noopener noreferrer">理解延迟与吞吐量</a></li></p><p></ul><h2>可用性与一致性</h2></p><h3>CAP 定理</h3></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/bgLMI2u.png">
+  <br/>
+  <i><a href=http://robertgreiner.com/2014/08/cap-theorem-revisited>来源：CAP 定理再访</a></i>
+</p></p><p>在分布式计算系统中，你只能支持以下三项保证中的两项：</p><ul><li><strong>一致性</strong> - 每次读取都能获得最近的写入内容，或返回错误</li>
+<li><strong>可用性</strong> - 每个请求都会收到响应，但不保证包含最新版本的信息</li>
+<li><strong>分区容错性</strong> - 系统即使在因网络故障导致的任意分区情况下仍能继续运行</li></p><p></ul><em>网络不可靠，因此你需要支持分区容错。你需要在一致性和可用性之间做出软件上的权衡。</em></p><p>#### CP - 一致性和分区容错性</p><p>等待分区节点的响应可能导致超时错误。如果业务需求要求原子读写，CP 是一个不错的选择。</p><p>#### AP - 可用性和分区容错性</p><p>响应返回任何节点上最容易获得的数据版本，可能不是最新的。当分区恢复时，写操作可能需要一定时间传播。</p><p>当业务需要允许<a href="#eventual-consistency" target="_blank" rel="noopener noreferrer">最终一致性</a>或系统需要在外部错误发生时继续工作时，AP 是一个不错的选择。</p><h3>来源及进一步阅读</h3></p><ul><li><a href="http://robertgreiner.com/2014/08/cap-theorem-revisited/" target="_blank" rel="noopener noreferrer">CAP 定理再访</a></li>
+<li><a href="http://ksat.me/a-plain-english-introduction-to-cap-theorem" target="_blank" rel="noopener noreferrer">CAP 定理通俗介绍</a></li>
+<li><a href="https://github.com/henryr/cap-faq" target="_blank" rel="noopener noreferrer">CAP 常见问题解答</a></li>
+<li><a href="https://www.youtube.com/watch?v=k-Yaq8AHlFA" target="_blank" rel="noopener noreferrer">CAP 定理讲解视频</a></li></p><p></ul><h2>一致性模式</h2></p><p>当存在多个相同数据副本时，我们面临如何同步它们以保证客户端数据一致性的选择。回想<a href="#cap-theorem" target="_blank" rel="noopener noreferrer">CAP 定理</a>中一致性的定义——每次读取都能获得最近的写入内容，或返回错误。</p><h3>弱一致性</h3></p><p>写入后，读取可能能看到也可能看不到写入内容。采取的是尽力而为的方式。</p><p>这种方式见于如 memcached 这类系统。弱一致性在实时应用场景中表现良好，如 VoIP、视频聊天和实时多人游戏。例如，如果你在通话中短暂失去信号，恢复连接后不会听到信号丢失期间的内容。</p><h3>最终一致性</h3></p><p>写入后，读取最终会看到该写入（通常在毫秒级内）。数据是异步复制的。</p><p>这种方法见于 DNS 和电子邮件等系统。最终一致性在高可用系统中效果良好。</p><h3>强一致性</h3></p><p>写入后，读取会立即看到该写入。数据是同步复制的。</p><p>这种方法见于文件系统和关系型数据库系统。强一致性适用于需要事务的系统。</p><h3>来源及进一步阅读</h3></p><ul><li><a href="http://snarfed.org/transactions_across_datacenters_io.html" target="_blank" rel="noopener noreferrer">跨数据中心的事务</a></li></p><p></ul><h2>可用性模式</h2></p><p>支持高可用性的两种互补模式：<strong>故障切换</strong> 和 <strong>复制</strong>。</p><h3>故障切换</h3></p><p>#### 主备模式</p><p>在主备故障切换中，主服务器与待命的备份服务器之间会发送心跳信号。若心跳中断，备份服务器接管主服务器的 IP 地址并恢复服务。</p><p>停机时间长短取决于备份服务器是处于“热”待命状态还是需要从“冷”待命启动。仅主服务器处理流量。</p><p>主备故障切换也可称为主从故障切换。</p><p>#### 主主模式</p><p>在主主模式中，两个服务器都在管理流量，分摊负载。</p><p>如果服务器面向公网，DNS 需要知道两个服务器的公网 IP 地址；如果服务器面向内部，应用逻辑需要知道两个服务器。</p><p>主主故障切换也可称为主主复制故障切换。</p><h3>缺点：故障切换</h3>
+<ul><li>故障切换增加了更多硬件和额外的复杂性。</li>
+<li>如果活动系统在任何新写入数据复制到被动系统之前失败，可能会导致数据丢失。</li></p><p></ul><h3>复制</h3></p><p>#### 主从和主主</p><p>此主题在<a href="#database" target="_blank" rel="noopener noreferrer">数据库</a>部分中有更详细的讨论：</p><ul><li><a href="#master-slave-replication" target="_blank" rel="noopener noreferrer">主从复制</a></li>
+<li><a href="#master-master-replication" target="_blank" rel="noopener noreferrer">主主复制</a></li></p><p></ul><h3>可用性数字化</h3></p><p>可用性通常通过正常运行时间（或停机时间）作为服务可用时间的百分比来量化。可用性通常用“9”的个数来衡量——具有99.99%可用性的服务被描述为有四个9。</p><p>#### 99.9% 可用性 - 三个9</p><p>| 时长               | 可接受的停机时间     |
+|--------------------|--------------------|
+| 每年停机时间       | 8小时45分57秒       |
+| 每月停机时间       | 43分49.7秒          |
+| 每周停机时间       | 10分4.8秒           |
+| 每日停机时间       | 1分26.4秒           |</p><p>#### 99.99% 可用性 - 四个9</p><p>| 时长               | 可接受的停机时间     |
+|--------------------|--------------------|
+| 每年停机时间       | 52分35.7秒          |
+| 每月停机时间       | 4分23秒             |
+| 每周停机时间       | 1分5秒              |
+| 每日停机时间       | 8.6秒               |</p><p>#### 并行与串行的可用性</p><p>如果服务由多个易失败的组件组成，服务的整体可用性取决于这些组件是串行还是并行。</p><p>###### 串行</p><p>
+当两个可用性低于100%的组件依次连接时，总体可用性会降低：</p><pre><code class="language-">Availability (Total) = Availability (Foo) * Availability (Bar)</code></pre>
+如果 <code>Foo</code> 和 <code>Bar</code> 各自的可用性都是 99.9%，它们顺序组合的总可用性将是 99.8%。</p><p>###### 并行</p><p>当两个可用性低于 100% 的组件并行时，总体可用性会提高：</p><pre><code class="language-">Availability (Total) = 1 - (1 - Availability (Foo)) * (1 - Availability (Bar))</code></pre>
+如果 <code>Foo</code> 和 <code>Bar</code> 都有 99.9% 的可用性，那么它们并联的总可用性将是 99.9999%。</p><h2>域名系统</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/IOyLj4i.jpg">
+  <br/>
+  <i><a href=http://www.slideshare.net/srikrupa5/dns-security-presentation-issa>来源：DNS 安全演示文稿</a></i>
+</p></p><p>域名系统（DNS）将诸如 www.example.com 这样的域名转换为 IP 地址。</p><p>DNS 是分层的，顶层有少数权威服务器。您的路由器或 ISP 提供关于查找时应联系哪个 DNS 服务器的信息。低级 DNS 服务器会缓存映射，由于 DNS 传播延迟，缓存可能变得过时。DNS 结果也可以由您的浏览器或操作系统缓存一段时间，这取决于<a href="https://en.wikipedia.org/wiki/Time_to_live" target="_blank" rel="noopener noreferrer">生存时间（TTL）</a>。</p><ul><li><strong>NS 记录（名称服务器）</strong> - 指定您的域名/子域的 DNS 服务器。</li>
+<li><strong>MX 记录（邮件交换）</strong> - 指定接收邮件的邮件服务器。</li>
+<li><strong>A 记录（地址）</strong> - 指向一个 IP 地址的名称。</li>
+<li><strong>CNAME（规范名称）</strong> - 将一个名称指向另一个名称或 <code>CNAME</code>（例如 example.com 指向 www.example.com）或指向一个 <code>A</code> 记录。</li></p><p></ul>诸如 <a href="https://www.cloudflare.com/dns/" target="_blank" rel="noopener noreferrer">CloudFlare</a> 和 <a href="https://aws.amazon.com/route53/" target="_blank" rel="noopener noreferrer">Route 53</a> 等服务提供托管的 DNS 服务。一些 DNS 服务可以通过多种方法路由流量：</p><ul><li><a href="https://www.jscape.com/blog/load-balancing-algorithms" target="_blank" rel="noopener noreferrer">加权轮询</a></li>
+    <li>防止流量流向维护中的服务器</li>
+    <li>平衡不同大小的集群</li>
+    <li>A/B 测试</li>
+<li><a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-latency.html" target="_blank" rel="noopener noreferrer">基于延迟</a></li>
+<li><a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-geo.html" target="_blank" rel="noopener noreferrer">基于地理位置</a></li></p><p></ul><h3>缺点：DNS</h3></p><ul><li>访问 DNS 服务器会引入轻微的延迟，尽管上述缓存机制有所缓解。</li>
+<li>DNS 服务器管理可能很复杂，通常由<a href="http://superuser.com/questions/472695/who-controls-the-dns-servers/472729" target="_blank" rel="noopener noreferrer">政府、ISP 和大型公司</a>管理。</li>
+<li>DNS 服务近期遭受过<a href="http://dyn.com/blog/dyn-analysis-summary-of-friday-october-21-attack/" target="_blank" rel="noopener noreferrer">DDoS 攻击</a>，导致用户在不知道 Twitter IP 地址的情况下无法访问 Twitter 等网站。</li></p><p></ul><h3>资源及进一步阅读</h3></p><ul><li><a href="https://technet.microsoft.com/en-us/library/dd197427(v=ws.10" target="_blank" rel="noopener noreferrer">DNS 架构</a>.aspx)</li>
+<li><a href="https://en.wikipedia.org/wiki/Domain_Name_System" target="_blank" rel="noopener noreferrer">维基百科</a></li>
+<li><a href="https://support.dnsimple.com/categories/dns/" target="_blank" rel="noopener noreferrer">DNS 相关文章</a></li></p><p>
+</ul><h2>内容分发网络</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/h9TAuGI.jpg">
+  <br/>
+  <i><a href=https://www.creative-artworks.eu/why-use-a-content-delivery-network-cdn/>来源：为什么使用 CDN</a></i>
+</p></p><p>内容分发网络（CDN）是一种全球分布的代理服务器网络，从更靠近用户的位置提供内容。通常，静态文件如 HTML/CSS/JS、照片和视频由 CDN 提供，尽管一些 CDN 如亚马逊的 CloudFront 支持动态内容。网站的 DNS 解析会告诉客户端联系哪个服务器。</p><p>从 CDN 提供内容可以通过两种方式显著提升性能：</p><ul><li>用户从离他们较近的数据中心接收内容</li>
+<li>你的服务器不必处理 CDN 已满足的请求</li></p><p></ul><h3>推送型 CDN</h3></p><p>推送型 CDN 在服务器内容发生变化时接收新内容。你需要全权负责内容的提供，直接上传到 CDN 并重写 URL 指向 CDN。你可以配置内容的过期时间和更新时间。内容仅在新建或更改时上传，最大限度减少流量，同时最大化存储。</p><p>流量较小或内容不常更新的网站非常适合推送型 CDN。内容只需上传到 CDN 一次，而不是定期重新拉取。</p><h3>拉取型 CDN</h3></p><p>拉取型 CDN 在首个用户请求内容时从你的服务器抓取新内容。你将内容保留在服务器上，并重写 URL 指向 CDN。这导致第一次请求较慢，直到内容缓存到 CDN 上。</p><p><a href="https://en.wikipedia.org/wiki/Time_to_live" target="_blank" rel="noopener noreferrer">生存时间 (TTL)</a> 决定内容缓存的时长。拉取型 CDN 最大化减少 CDN 上的存储空间，但如果文件过期且尚未实际更改就被拉取，会产生冗余流量。</p><p>流量较大的站点适合拉取型 CDN，因为流量更均匀分布，只有最近请求的内容保留在 CDN 上。</p><h3>缺点：CDN</h3></p><ul><li>根据流量，CDN 费用可能较高，但这应与不使用 CDN 所产生的额外成本进行权衡。</li>
+<li>如果内容在 TTL 过期前被更新，可能会出现内容过时的情况。</li>
+<li>CDN 需要更改静态内容的 URL 指向 CDN。</li></p><p></ul><h3>来源及进一步阅读</h3></p><ul><li><a href="https://figshare.com/articles/Globally_distributed_content_delivery/6605972" target="_blank" rel="noopener noreferrer">全球分布式内容交付</a></li>
+<li><a href="http://www.travelblogadvice.com/technical/the-differences-between-push-and-pull-cdns/" target="_blank" rel="noopener noreferrer">推送型与拉取型 CDN 的区别</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Content_delivery_network" target="_blank" rel="noopener noreferrer">维基百科</a></li></p><p></ul><h2>负载均衡器</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/h81n9iK.png">
+  <br/>
+  <i><a href=http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html>来源：可扩展系统设计模式</a></i>
+</p></p><p>负载均衡器将传入的客户端请求分发到计算资源，如应用服务器和数据库。在每种情况下，负载均衡器将计算资源的响应返回给相应的客户端。负载均衡器有效于：</p><ul><li>防止请求发送到不健康的服务器</li>
+<li>防止资源过载</li>
+<li>有助于消除单点故障</li></p><p></ul>负载均衡器可以通过硬件（昂贵）或软件实现，如 HAProxy。</p><p>其他好处包括：</p><ul><li><strong>SSL 终止</strong> - 解密传入请求并加密服务器响应，使后端服务器无需执行这些可能耗费资源的操作</li>
+    <li>消除了在每台服务器上安装 <a href="https://en.wikipedia.org/wiki/X.509" target="_blank" rel="noopener noreferrer">X.509 证书</a> 的需求</li>
+<li><strong>会话持久性</strong> - 如果 Web 应用不跟踪会话，则发放 Cookie 并将特定客户端的请求路由到相同实例</li></p><p></ul>为防止故障，通常会设置多个负载均衡器，以 <a href="#active-passive" target="_blank" rel="noopener noreferrer">主动-被动</a> 或 <a href="#active-active" target="_blank" rel="noopener noreferrer">主动-主动</a> 模式运行。</p><p>负载均衡器可以基于多种指标路由流量，包括：</p><ul><li>随机</li>
+<li>最少负载</li>
+<li>会话/Cookie</li>
+<li><a href="https://www.g33kinfo.com/info/round-robin-vs-weighted-round-robin-lb" target="_blank" rel="noopener noreferrer">轮询或加权轮询</a></li>
+<li><a href="#layer-4-load-balancing" target="_blank" rel="noopener noreferrer">第 4 层</a></li>
+<li><a href="#layer-7-load-balancing" target="_blank" rel="noopener noreferrer">第 7 层</a></li></p><p></ul><h3>第 4 层负载均衡</h3></p><p>第 4 层负载均衡器查看<a href="#communication" target="_blank" rel="noopener noreferrer">传输层</a>的信息来决定如何分配请求。通常，这涉及报头中的源地址、目标 IP 地址和端口，但不包括数据包的内容。第 4 层负载均衡器将网络数据包转发到上游服务器，并执行<a href="https://www.nginx.com/resources/glossary/layer-4-load-balancing/" target="_blank" rel="noopener noreferrer">网络地址转换 (NAT)</a>。</p><h3>第 7 层负载均衡</h3>
+第7层负载均衡器查看<a href="#communication" target="_blank" rel="noopener noreferrer">应用层</a>来决定如何分配请求。 这可能涉及头部、消息和Cookie的内容。 第7层负载均衡器终止网络流量，读取消息，做出负载均衡决策，然后打开与选定服务器的连接。 例如，第7层负载均衡器可以将视频流量引导到托管视频的服务器，同时将更敏感的用户计费流量引导到安全加固的服务器。</p><p>以灵活性为代价，第4层负载均衡所需的时间和计算资源比第7层少，尽管在现代通用硬件上性能影响可能很小。</p><h3>水平扩展</h3></p><p>负载均衡器还可以帮助进行水平扩展，提高性能和可用性。 使用通用机器进行横向扩展比使用更昂贵硬件上的单个服务器进行纵向扩展（称为<strong>纵向扩展</strong>）更具成本效益且可用性更高。 招聘在通用硬件上工作的技术人才也比专门的企业系统更容易。</p><p>#### 缺点：水平扩展</p><ul><li>水平扩展引入复杂性并涉及服务器克隆</li>
+    <li>服务器应是无状态的：不应包含任何用户相关数据，如会话或头像</li>
+    <li>会话可以存储在集中式数据存储中，例如<a href="#database" target="_blank" rel="noopener noreferrer">数据库</a>（SQL，NoSQL）或持久性<a href="#cache" target="_blank" rel="noopener noreferrer">缓存</a>（Redis，Memcached）</li>
+<li>下游服务器如缓存和数据库需要处理更多同时连接，因为上游服务器扩展</li></p><p></ul><h3>缺点：负载均衡器</h3></p><ul><li>如果负载均衡器资源不足或配置不当，可能成为性能瓶颈。</li>
+<li>引入负载均衡器以消除单点故障会增加复杂性。</li>
+<li>单个负载均衡器是单点故障，配置多个负载均衡器会进一步增加复杂性。</li></p><p></ul><h3>来源及进一步阅读</h3></p><ul><li><a href="https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale/" target="_blank" rel="noopener noreferrer">NGINX架构</a></li>
+<li><a href="http://www.haproxy.org/download/1.2/doc/architecture.txt" target="_blank" rel="noopener noreferrer">HAProxy架构指南</a></li>
+<li><a href="https://web.archive.org/web/20220530193911/https://www.lecloud.net/post/7295452622/scalability-for-dummies-part-1-clones" target="_blank" rel="noopener noreferrer">可扩展性</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Load_balancing_(computing" target="_blank" rel="noopener noreferrer">维基百科</a>)</li>
+<li><a href="https://www.nginx.com/resources/glossary/layer-4-load-balancing/" target="_blank" rel="noopener noreferrer">第4层负载均衡</a></li>
+<li><a href="https://www.nginx.com/resources/glossary/layer-7-load-balancing/" target="_blank" rel="noopener noreferrer">第7层负载均衡</a></li>
+<li><a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html" target="_blank" rel="noopener noreferrer">ELB监听器配置</a></li></p><p></ul><h2>反向代理（网页服务器）</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/n41Azff.png">
+  <br/>
+  <i><a href=https://upload.wikimedia.org/wikipedia/commons/6/67/Reverse_proxy_h2g2bob.svg>来源：维基百科</a></i>
+  <br/>
+</p></p><p>反向代理是一种网络服务器，它集中管理内部服务并向公众提供统一接口。客户端的请求被转发到能够处理该请求的服务器，反向代理再将服务器的响应返回给客户端。</p><p>额外的好处包括：</p><ul><li><strong>增强安全性</strong> - 隐藏后端服务器的信息，黑名单IP，限制每个客户端的连接数</li>
+<li><strong>提高可扩展性和灵活性</strong> - 客户端只看到反向代理的IP，允许您扩展服务器或更改其配置</li>
+<li><strong>SSL终止</strong> - 解密传入请求并加密服务器响应，使后端服务器无需执行这些可能代价高昂的操作</li>
+    <li>免去在每台服务器上安装<a href="https://en.wikipedia.org/wiki/X.509" target="_blank" rel="noopener noreferrer">X.509证书</a>的需求</li>
+<li><strong>压缩</strong> - 压缩服务器响应</li>
+<li><strong>缓存</strong> - 返回缓存请求的响应</li>
+<li><strong>静态内容</strong> - 直接提供静态内容</li>
+    <li>HTML/CSS/JS</li>
+    <li>图片</li>
+    <li>视频</li>
+    <li>等等</li></p><p></ul><h3>负载均衡器与反向代理</h3></p><ul><li>当您拥有多台服务器时，部署负载均衡器非常有用。负载均衡器通常将流量路由到执行相同功能的一组服务器。</li>
+<li>即使只有一台Web服务器或应用服务器，反向代理也可能有用，可以带来上一节描述的好处。</li>
+<li>诸如NGINX和HAProxy等解决方案支持第7层反向代理和负载均衡。</li></p><p></ul><h3>缺点：反向代理</h3></p><ul><li>引入反向代理会增加复杂性。</li>
+<li>单个反向代理是单点故障，配置多个反向代理（即<a href="https://en.wikipedia.org/wiki/Failover" target="_blank" rel="noopener noreferrer">故障转移</a>）会进一步增加复杂性。</li></p><p></ul><h3>来源及进一步阅读</h3></p><ul><li><a href="https://www.nginx.com/resources/glossary/reverse-proxy-vs-load-balancer/" target="_blank" rel="noopener noreferrer">反向代理与负载均衡器</a></li>
+<li><a href="https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale/" target="_blank" rel="noopener noreferrer">NGINX架构</a></li>
+<li><a href="http://www.haproxy.org/download/1.2/doc/architecture.txt" target="_blank" rel="noopener noreferrer">HAProxy架构指南</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Reverse_proxy" target="_blank" rel="noopener noreferrer">维基百科</a></li></p><p></ul><h2>应用层</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/yB5SYwm.png">
+  <br/></p><p>  <i><a href=http://lethain.com/introduction-to-architecting-systems-for-scale/#platform_layer>来源：架构可扩展系统简介</a></i>
+</p></p><p>将 Web 层与应用层（也称为平台层）分离，可以让你独立地扩展和配置这两个层。添加新的 API 会导致添加应用服务器，而不一定需要增加额外的 Web 服务器。<strong>单一职责原则</strong>主张构建小型且自治的服务协同工作。拥有小团队和小服务可以更积极地规划快速增长。</p><p>应用层的工作者还帮助实现了<a href="#asynchronism" target="_blank" rel="noopener noreferrer">异步</a>。</p><h3>微服务</h3></p><p>与此相关的是<a href="https://en.wikipedia.org/wiki/Microservices" target="_blank" rel="noopener noreferrer">微服务</a>，它可以被描述为一套独立部署的小型模块化服务。每个服务运行一个独特的进程，并通过一个定义良好、轻量级的机制进行通信，以实现业务目标。<sup><a href=https://smartbear.com/learn/api-design/what-are-microservices>1</a></sup></p><p>例如，Pinterest 可能有以下微服务：用户资料、关注者、动态、搜索、照片上传等。</p><h3>服务发现</h3></p><p>诸如<a href="https://www.consul.io/docs/index.html" target="_blank" rel="noopener noreferrer">Consul</a>、<a href="https://coreos.com/etcd/docs/latest" target="_blank" rel="noopener noreferrer">Etcd</a>和<a href="http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper" target="_blank" rel="noopener noreferrer">Zookeeper</a>等系统可以帮助服务通过跟踪注册的名称、地址和端口找到彼此。<a href="https://www.consul.io/intro/getting-started/checks.html" target="_blank" rel="noopener noreferrer">健康检查</a>帮助验证服务完整性，通常通过<a href="#hypertext-transfer-protocol-http" target="_blank" rel="noopener noreferrer">HTTP</a>端点完成。Consul 和 Etcd 都内置了<a href="#key-value-store" target="_blank" rel="noopener noreferrer">key-value 存储</a>，这对于存储配置值和其他共享数据很有用。</p><h3>缺点：应用层</h3></p><ul><li>添加一个具有松耦合服务的应用层，从架构、运维和流程视角来看需要不同的方法（相较于单体系统）。</li>
+<li>微服务在部署和运维方面可能增加复杂性。</li></p><p></ul><h3>来源及进一步阅读</h3></p><ul><li><a href="http://lethain.com/introduction-to-architecting-systems-for-scale" target="_blank" rel="noopener noreferrer">架构可扩展系统简介</a></li>
+<li><a href="http://www.puncsky.com/blog/2016-02-13-crack-the-system-design-interview" target="_blank" rel="noopener noreferrer">攻克系统设计面试</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Service-oriented_architecture" target="_blank" rel="noopener noreferrer">面向服务架构</a></li>
+<li><a href="http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper" target="_blank" rel="noopener noreferrer">Zookeeper 简介</a></li>
+<li><a href="https://cloudncode.wordpress.com/2016/07/22/msa-getting-started/" target="_blank" rel="noopener noreferrer">构建微服务你需要知道的</a></li></p><p></ul><h2>数据库</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/Xkm5CXz.png">
+  <br/>
+  <i><a href=https://www.youtube.com/watch?v=kKjm4ehYiMs>来源：扩展到第一个一千万用户</a></i>
+</p></p><h3>关系型数据库管理系统（RDBMS）</h3></p><p>关系型数据库如 SQL 是以表格形式组织的数据项集合。</p><p><strong>ACID</strong> 是关系型数据库<a href="https://en.wikipedia.org/wiki/Database_transaction" target="_blank" rel="noopener noreferrer">事务</a>的一组属性。</p><ul><li><strong>原子性</strong> - 每个事务要么全部完成，要么全部不做</li>
+<li><strong>一致性</strong> - 任何事务都会将数据库从一个有效状态带到另一个有效状态</li>
+<li><strong>隔离性</strong> - 并发执行事务的结果与串行执行事务的结果相同</li>
+<li><strong>持久性</strong> - 一旦事务提交，其结果将永久保留</li></p><p></ul>有许多技术可以扩展关系型数据库：<strong>主从复制</strong>、<strong>主主复制</strong>、<strong>联合</strong>、<strong>分片</strong>、<strong>反范式设计</strong>和<strong>SQL 调优</strong>。</p><p>#### 主从复制</p><p>主节点处理读写操作，将写操作复制到一个或多个从节点，从节点仅处理读操作。从节点也可以以树状结构复制到其他从节点。如果主节点离线，系统可以继续以只读模式运行，直到从节点被提升为主节点或新主节点被配置。</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/C9ioGtn.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>来源：可扩展性、可用性、稳定性模式</a></i>
+</p></p><p>##### 缺点：主从复制</p><ul><li>需要额外逻辑来将从节点提升为主节点。</li>
+<li>有关<strong>主从</strong>和<strong>主主</strong>复制的相关点，请参见<a href="#disadvantages-replication" target="_blank" rel="noopener noreferrer">缺点：复制</a>。</li></p><p></ul>#### 主主复制</p><p>两个主节点都处理读写操作，并在写操作上相互协调。如果任一主节点宕机，系统仍可继续进行读写操作。</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/krAHLGg.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>来源：可扩展性、可用性、稳定性模式</a></i>
+</p></p><p>##### 缺点：主主复制</p><ul><li>你需要负载均衡器，或者需要修改应用逻辑以确定写入位置。</li>
+<li>大多数主主系统要么是弱一致的（违反 ACID），要么由于同步导致写延迟增加。</li>
+<li>随着写节点的增加和延迟的提高，冲突解决变得更加重要。</li>
+<li>有关<strong>主从</strong>和<strong>主主</strong>复制相关的问题，请参见<a href="#disadvantages-replication" target="_blank" rel="noopener noreferrer">缺点：复制</a>。</li></p><p></ul>##### 缺点：复制</p><ul><li>如果主节点在新写入数据复制到其他节点之前失败，可能会导致数据丢失。</li>
+<li>写入操作会被重放到只读副本。如果写入量很大，只读副本可能会因重放写入而变得繁忙，导致读取能力下降。</li>
+<li>只读从库越多，需要复制的数据越多，从而导致更大的复制延迟。</li>
+<li>在某些系统中，写入主库可以生成多个线程并行写入，而只读副本仅支持单线程顺序写入。</li>
+<li>复制增加了更多的硬件需求和额外的复杂性。</li></p><p></ul>##### 复制的来源和进一步阅读</p><ul><li><a href="http://www.slideshare.net/jboner/scalability-availability-stability-patterns/" target="_blank" rel="noopener noreferrer">可扩展性、可用性、稳定性及模式</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Multi-master_replication" target="_blank" rel="noopener noreferrer">多主复制</a></li></p><p></ul>#### 联邦</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/U3qV33e.png">
+  <br/>
+  <i><a href=https://www.youtube.com/watch?v=kKjm4ehYiMs>来源：扩展到你的第一个1000万用户</a></i>
+</p></p><p>联邦（或功能分区）按功能划分数据库。例如，不使用单一的整体数据库，而是拥有三个数据库：<strong>论坛</strong>、<strong>用户</strong>和<strong>产品</strong>，从而减少每个数据库的读写流量，降低复制延迟。较小的数据库意味着更多数据可以放入内存，进而因缓存局部性改进而提高缓存命中率。没有单一的中央主节点串行写入，写入可以并行进行，提高吞吐量。</p><p>##### 联邦的缺点</p><ul><li>如果你的模式需要庞大的函数或表，联邦效果不佳。</li>
+<li>你需要更新应用逻辑来确定读写哪个数据库。</li>
+<li>从两个数据库联合查询数据更复杂，需使用<a href="http://stackoverflow.com/questions/5145637/querying-data-by-joining-two-tables-in-two-database-on-different-servers" target="_blank" rel="noopener noreferrer">服务器链接</a>。</li>
+<li>联邦增加了更多的硬件需求和额外的复杂性。</li></p><p></ul>##### 联邦的来源和进一步阅读</p><ul><li><a href="https://www.youtube.com/watch?v=kKjm4ehYiMs" target="_blank" rel="noopener noreferrer">扩展到你的第一个1000万用户</a></li></p><p></ul>#### 分片</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/wU8x5Id.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>来源：可扩展性、可用性、稳定性、模式</a></i>
+</p></p><p>分片（Sharding）将数据分布到不同的数据库中，使得每个数据库只能管理数据的一个子集。以用户数据库为例，随着用户数量的增加，集群中会添加更多的分片。</p><p>与<a href="#federation" target="_blank" rel="noopener noreferrer">联合</a>的优点类似，分片带来更少的读写流量、更少的复制以及更多的缓存命中。索引大小也减少，通常这能提升性能，加快查询速度。如果某个分片宕机，其他分片仍然可以正常工作，不过你需要添加某种复制机制以避免数据丢失。像联合一样，没有单一中央主库来串行化写操作，允许你并行写入，提高吞吐量。</p><p>常见的用户表分片方式是通过用户的姓氏首字母或用户的地理位置。</p><p>##### 缺点：分片</p><ul><li>你需要更新应用逻辑以支持分片，这可能导致复杂的 SQL 查询。</li>
+<li>数据分布在分片中可能不均衡。例如，某个分片上的一组高频用户可能导致该分片负载增加，超过其他分片。</li>
+    <li>重新平衡会增加额外复杂性。基于<a href="http://www.paperplanes.de/2011/12/9/the-magic-of-consistent-hashing.html" target="_blank" rel="noopener noreferrer">一致性哈希</a>的分片函数可以减少传输的数据量。</li>
+<li>跨多个分片连接数据更复杂。</li>
+<li>分片增加了更多硬件需求和额外复杂性。</li></p><p></ul>##### 来源及扩展阅读：分片</p><ul><li><a href="http://highscalability.com/blog/2009/8/6/an-unorthodox-approach-to-database-design-the-coming-of-the.html" target="_blank" rel="noopener noreferrer">分片的到来</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Shard_(database_architecture" target="_blank" rel="noopener noreferrer">分片数据库架构</a>)</li>
+<li><a href="http://www.paperplanes.de/2011/12/9/the-magic-of-consistent-hashing.html" target="_blank" rel="noopener noreferrer">一致性哈希</a></li></p><p></ul>#### 反规范化</p><p>反规范化试图以牺牲部分写性能为代价来提升读性能。在多个表中写入冗余数据副本以避免昂贵的连接操作。一些关系型数据库管理系统（如<a href="https://en.wikipedia.org/wiki/PostgreSQL" target="_blank" rel="noopener noreferrer">PostgreSQL</a>和Oracle）支持<a href="https://en.wikipedia.org/wiki/Materialized_view" target="_blank" rel="noopener noreferrer">物化视图</a>，它们负责存储冗余信息并保持副本一致。</p><p>一旦数据通过<a href="#federation" target="_blank" rel="noopener noreferrer">联合</a>和<a href="#sharding" target="_blank" rel="noopener noreferrer">分片</a>等技术分布开来，跨数据中心管理连接操作的复杂性进一步增加。反规范化可能避免了这种复杂连接的需求。</p><p>在大多数系统中，读操作远远多于写操作，比例可能达到100:1甚至1000:1。一次复杂的数据库连接查询可能非常昂贵，花费大量时间在磁盘操作上。</p><p>##### 缺点：反规范化</p><ul><li>数据被复制。</li>
+<li>约束可以帮助冗余信息保持同步，但这增加了数据库设计的复杂性。</li>
+<li>在写负载较重时，反规范化的数据库性能可能不如其规范化的对应版本。</li></p><p></ul>###### 来源及扩展阅读：反规范化</p><ul><li><a href="https://en.wikipedia.org/wiki/Denormalization" target="_blank" rel="noopener noreferrer">反规范化</a></li></p><p></ul>#### SQL 调优</p><p>SQL 调优是一个广泛的话题，已经有许多<a href="https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=sql+tuning" target="_blank" rel="noopener noreferrer">书籍</a>作为参考。</p><p>进行<strong>基准测试</strong>和<strong>性能分析</strong>来模拟并发现瓶颈非常重要。</p><ul><li><strong>基准测试</strong> - 使用如 <a href="http://httpd.apache.org/docs/2.2/programs/ab.html" target="_blank" rel="noopener noreferrer">ab</a> 等工具模拟高负载情况。</li>
+<li><strong>性能分析</strong> - 启用如 <a href="http://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html" target="_blank" rel="noopener noreferrer">慢查询日志</a> 等工具帮助跟踪性能问题。</li></p><p></ul>基准测试和性能分析可能会指引您进行以下优化。</p><p>##### 收紧数据库模式</p><ul><li>MySQL 将数据以连续块写入磁盘以实现快速访问。</li>
+<li>对于固定长度字段使用 <code>CHAR</code> 替代 <code>VARCHAR</code>。</li>
+    <li><code>CHAR</code> 实际上允许快速随机访问，而使用 <code>VARCHAR</code> 时必须找到字符串结尾后才能访问下一个。</li>
+<li>对于大块文本如博客文章使用 <code>TEXT</code>。 <code>TEXT</code> 也支持布尔搜索。使用 <code>TEXT</code> 字段会在磁盘上存储一个指针，用于定位文本块。</li>
+<li>对于最大可达 2^32 或 40 亿的大数字，使用 <code>INT</code>。</li>
+<li>使用 <code>DECIMAL</code> 存储货币，以避免浮点表示错误。</li>
+<li>避免存储大 <code>BLOB</code>，改为存储对象位置。</li>
+<li><code>VARCHAR(255)</code> 是 8 位数字能计数的最大字符数，通常在某些关系数据库中最大化一个字节的使用。</li>
+<li>在适用情况下设置 <code>NOT NULL</code> 约束以<a href="http://stackoverflow.com/questions/1017239/how-do-null-values-affect-performance-in-a-database-search" target="_blank" rel="noopener noreferrer">提升搜索性能</a>。</li></p><p></ul>##### 使用合适的索引</p><ul><li>查询的列（<code>SELECT</code>、<code>GROUP BY</code>、<code>ORDER BY</code>、<code>JOIN</code>）使用索引可以更快。</li>
+<li>索引通常表现为自平衡的<a href="https://en.wikipedia.org/wiki/B-tree" target="_blank" rel="noopener noreferrer">B树</a>，保持数据排序，允许对数时间的搜索、顺序访问、插入和删除。</li>
+<li>建立索引会占用更多内存空间。</li>
+<li>写入速度可能变慢，因为索引也需要更新。</li>
+<li>加载大量数据时，禁用索引加载数据然后重建索引可能更快。</li></p><p></ul>##### 避免昂贵的连接</p><ul><li>在性能要求高时进行<a href="#denormalization" target="_blank" rel="noopener noreferrer">反规范化</a>。</li></p><p></ul>##### 分区表</p><ul><li>通过将热点数据放入单独的表中来拆分表，以帮助保持其在内存中的状态。</li></p><p></ul>##### 调优查询缓存</p><ul><li>在某些情况下，<a href="https://dev.mysql.com/doc/refman/5.7/en/query-cache.html" target="_blank" rel="noopener noreferrer">查询缓存</a>可能导致<a href="https://www.percona.com/blog/2016/10/12/mysql-5-7-performance-tuning-immediately-after-installation/" target="_blank" rel="noopener noreferrer">性能问题</a>。</li></p><p></ul>##### 来源及进一步阅读：SQL调优</p><ul><li><a href="http://aiddroid.com/10-tips-optimizing-mysql-queries-dont-suck/" target="_blank" rel="noopener noreferrer">优化MySQL查询的技巧</a></li>
+<li><a href="http://stackoverflow.com/questions/1217466/is-there-a-good-reason-i-see-varchar255-used-so-often-as-opposed-to-another-l" target="_blank" rel="noopener noreferrer">为什么VARCHAR(255)这么常用，有合理的原因吗？</a></li>
+<li><a href="http://stackoverflow.com/questions/1017239/how-do-null-values-affect-performance-in-a-database-search" target="_blank" rel="noopener noreferrer">空值如何影响性能？</a></li>
+<li><a href="http://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html" target="_blank" rel="noopener noreferrer">慢查询日志</a></li></p><p></ul><h3>NoSQL</h3></p><p>NoSQL 是一组以<strong>键值存储</strong>、<strong>文档存储</strong>、<strong>宽列存储</strong>或<strong>图数据库</strong>形式表示的数据项。数据是非规范化的，连接通常在应用代码中完成。大多数 NoSQL 存储缺乏真正的 ACID 事务，偏向于<a href="#eventual-consistency" target="_blank" rel="noopener noreferrer">最终一致性</a>。</p><p><strong>BASE</strong> 常用来描述 NoSQL 数据库的特性。与<a href="#cap-theorem" target="_blank" rel="noopener noreferrer">CAP 定理</a>相比，BASE 选择可用性而非一致性。</p><ul><li><strong>基本可用</strong> - 系统保证可用性。</li>
+<li><strong>软状态</strong> - 系统状态可能随时间变化，即使没有输入。</li>
+<li><strong>最终一致性</strong> - 系统将在一段时间内变为一致，前提是在此期间系统未接收输入。</li></p><p></ul>除了在<a href="#sql-or-nosql" target="_blank" rel="noopener noreferrer">SQL或NoSQL</a>之间选择外，了解哪种类型的 NoSQL 数据库最适合您的用例也很有帮助。我们将在下一节回顾<strong>键值存储</strong>、<strong>文档存储</strong>、<strong>宽列存储</strong>和<strong>图数据库</strong>。</p><p>#### 键值存储</p><blockquote>抽象：哈希表</blockquote></p><p>键值存储通常允许 O(1) 的读写，通常由内存或 SSD 支持。数据存储可以保持键的<a href="https://en.wikipedia.org/wiki/Lexicographical_order" target="_blank" rel="noopener noreferrer">字典序</a>，从而高效检索键范围。键值存储可以允许与值一起存储元数据。</p><p>键值存储提供高性能，常用于简单数据模型或快速变化的数据，如内存缓存层。由于它们仅提供有限的操作集，若需要额外操作，复杂性将转移到应用层。</p><p>键值存储是更复杂系统的基础，例如文档存储，某些情况下也是图数据库。</p><p>##### 来源及进一步阅读：键值存储</p><ul><li><a href="https://en.wikipedia.org/wiki/Key-value_database" target="_blank" rel="noopener noreferrer">键值数据库</a></li>
+<li><a href="http://stackoverflow.com/questions/4056093/what-are-the-disadvantages-of-using-a-key-value-table-over-nullable-columns-or" target="_blank" rel="noopener noreferrer">键值存储的缺点</a></li>
+<li><a href="http://qnimate.com/overview-of-redis-architecture/" target="_blank" rel="noopener noreferrer">Redis 架构概述</a></li>
+<li><a href="https://adayinthelifeof.nl/2011/02/06/memcache-internals/" target="_blank" rel="noopener noreferrer">Memcached 架构</a></li></p><p></ul>#### 文档存储</p><blockquote>抽象：键值存储，文档作为值存储</blockquote></p><p>文档存储以文档（XML、JSON、二进制等）为中心，文档存储给定对象的所有信息。文档存储提供基于文档内部结构的 API 或查询语言进行查询。<em>注意，许多键值存储包含处理值元数据的功能，模糊了这两种存储类型之间的界限。</em></p><p>根据底层实现，文档通过集合、标签、元数据或目录进行组织。尽管文档可以被组织或分组，但文档的字段可能彼此完全不同。</p><p>一些文档存储如 <a href="https://www.mongodb.com/mongodb-architecture" target="_blank" rel="noopener noreferrer">MongoDB</a> 和 <a href="https://blog.couchdb.org/2016/08/01/couchdb-2-0-architecture/" target="_blank" rel="noopener noreferrer">CouchDB</a> 也提供类似 SQL 的语言来执行复杂查询。<a href="http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/decandia07dynamo.pdf" target="_blank" rel="noopener noreferrer">DynamoDB</a> 同时支持键值和文档。</p><p>文档存储提供高度灵活性，常用于处理偶尔变更的数据。</p><p>##### 来源及进一步阅读：文档存储</p><ul><li><a href="https://en.wikipedia.org/wiki/Document-oriented_database" target="_blank" rel="noopener noreferrer">面向文档的数据库</a></li>
+<li><a href="https://www.mongodb.com/mongodb-architecture" target="_blank" rel="noopener noreferrer">MongoDB 架构</a></li>
+<li><a href="https://blog.couchdb.org/2016/08/01/couchdb-2-0-architecture/" target="_blank" rel="noopener noreferrer">CouchDB 架构</a></li>
+<li><a href="https://www.elastic.co/blog/found-elasticsearch-from-the-bottom-up" target="_blank" rel="noopener noreferrer">Elasticsearch 架构</a></li></p><p></ul>#### 宽列存储</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/n16iOGk.png">
+  <br/>
+  <i><a href=http://blog.grio.com/2015/11/sql-nosql-a-brief-history.html>来源：SQL & NoSQL，简史</a></i>
+</p></p><blockquote>抽象：嵌套映射 <code>ColumnFamily<RowKey, Columns<ColKey, Value, Timestamp>></code></blockquote></p><p>宽列存储的数据基本单元是列（名称/值对）。列可以分组到列族中（类似于 SQL 表）。超级列族进一步对列族进行分组。您可以通过行键独立访问每个列，具有相同行键的列组成一行。每个值包含时间戳，用于版本控制和冲突解决。</p><p>Google 推出了 <a href="http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf" target="_blank" rel="noopener noreferrer">Bigtable</a> 作为首个宽列存储，影响了开源的 <a href="https://www.edureka.co/blog/hbase-architecture/" target="_blank" rel="noopener noreferrer">HBase</a>（常用于 Hadoop 生态系统）和 Facebook 的 <a href="http://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archIntro.html" target="_blank" rel="noopener noreferrer">Cassandra</a>。BigTable、HBase 和 Cassandra 等存储按字典序维护键，支持高效检索特定键范围。</p><p>宽列存储提供高可用性和高扩展性，常用于超大数据集。</p><p>##### 来源及进一步阅读：宽列存储</p><ul><li><a href="http://blog.grio.com/2015/11/sql-nosql-a-brief-history.html" target="_blank" rel="noopener noreferrer">SQL & NoSQL，简史</a></li>
+<li><a href="http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf" target="_blank" rel="noopener noreferrer">Bigtable 架构</a></li>
+<li><a href="https://www.edureka.co/blog/hbase-architecture/" target="_blank" rel="noopener noreferrer">HBase 架构</a></li>
+<li><a href="http://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archIntro.html" target="_blank" rel="noopener noreferrer">Cassandra 架构</a></li></p><p></ul>#### 图数据库</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/fNcl65g.png">
+  <br/>
+  <i><a href=https://en.wikipedia.org/wiki/File:GraphDatabase_PropertyGraph.png>来源：图数据库</a></i>
+</p></p><blockquote>抽象：图</blockquote></p><p>在图数据库中，每个节点是一个记录，每条弧是两个节点之间的关系。图数据库针对具有许多外键或多对多关系的复杂关系进行了优化。</p><p>图数据库为具有复杂关系的数据模型（如社交网络）提供高性能。它们相对较新，尚未被广泛使用；可能更难找到开发工具和资源。许多图只能通过<a href="#representational-state-transfer-rest" target="_blank" rel="noopener noreferrer">REST API</a>访问。</p><p>##### 来源及进一步阅读：图</p><ul><li><a href="https://en.wikipedia.org/wiki/Graph_database" target="_blank" rel="noopener noreferrer">图数据库</a></li>
+<li><a href="https://neo4j.com/" target="_blank" rel="noopener noreferrer">Neo4j</a></li>
+<li><a href="https://blog.twitter.com/2010/introducing-flockdb" target="_blank" rel="noopener noreferrer">FlockDB</a></li></p><p></ul>#### 来源及进一步阅读：NoSQL</p><ul><li><a href="http://stackoverflow.com/questions/3342497/explanation-of-base-terminology" target="_blank" rel="noopener noreferrer">BASE 术语解释</a></li>
+<li><a href="https://medium.com/baqend-blog/nosql-databases-a-survey-and-decision-guidance-ea7823a822d#.wskogqenq" target="_blank" rel="noopener noreferrer">NoSQL 数据库调查与决策指导</a></li>
+<li><a href="https://web.archive.org/web/20220602114024/https://www.lecloud.net/post/7994751381/scalability-for-dummies-part-2-database" target="_blank" rel="noopener noreferrer">可扩展性</a></li>
+<li><a href="https://www.youtube.com/watch?v=qI_g07C_Q5I" target="_blank" rel="noopener noreferrer">NoSQL 入门</a></li>
+<li><a href="http://horicky.blogspot.com/2009/11/nosql-patterns.html" target="_blank" rel="noopener noreferrer">NoSQL 模式</a></li></p><p></ul><h3>SQL 或 NoSQL</h3></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/wXGqG5f.png">
+  <br/>
+  <i><a href=https://www.infoq.com/articles/Transition-RDBMS-NoSQL/>来源：从关系型数据库到 NoSQL 的转变</a></i>
+</p></p><p><strong>SQL</strong> 的原因：</p><ul><li>结构化数据  </li>
+<li>严格的模式  </li>
+<li>关系型数据  </li>
+<li>需要复杂的连接  </li>
+<li>事务处理  </li>
+<li>清晰的扩展模式  </li>
+<li>更加成熟：开发者、社区、代码、工具等  </li>
+<li>通过索引查找非常快  </li></p><p></ul><strong>NoSQL</strong> 的原因：</p><ul><li>半结构化数据  </li>
+<li>动态或灵活的模式  </li>
+<li>非关系型数据  </li>
+<li>无需复杂的连接  </li>
+<li>存储大量 TB（或 PB）级数据  </li>
+<li>高度数据密集型工作负载  </li>
+<li>极高的 IOPS 吞吐量  </li></p><p></ul>适合 NoSQL 的示例数据：</p><ul><li>快速摄取点击流和日志数据  </li>
+<li>排行榜或评分数据  </li>
+<li>临时数据，如购物车  </li>
+<li>频繁访问的（“热”）表  </li>
+<li>元数据/查找表  </li></p><p></ul>##### 来源及进一步阅读：SQL 或 NoSQL</p><ul><li><a href="https://www.youtube.com/watch?v=kKjm4ehYiMs" target="_blank" rel="noopener noreferrer">扩展到你的第一个 1000 万用户</a>  </li>
+<li><a href="https://www.sitepoint.com/sql-vs-nosql-differences/" target="_blank" rel="noopener noreferrer">SQL 与 NoSQL 的区别</a>  </li></p><p></ul><h2>缓存</h2></p><p><p align="center">  
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/Q6z24La.png">  
+  <br/>  
+  <i><a href=http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html>来源：可扩展系统设计模式</a></i>
+</p></p><p>缓存可以提高页面加载速度，并减少服务器和数据库的负载。在此模型中，调度器会首先查找请求是否已被处理过，尝试找到之前的结果返回，以节省实际执行的时间。</p><p>数据库通常受益于跨分区的读写均匀分布。热门项目可能会导致分布不均，造成瓶颈。在数据库前放置缓存可以帮助吸收不均匀的负载和流量峰值。</p><h3>客户端缓存</h3></p><p>缓存可以位于客户端（操作系统或浏览器）、<a href="#reverse-proxy-web-server" target="_blank" rel="noopener noreferrer">服务器端</a>或独立的缓存层。</p><h3>CDN 缓存</h3></p><p><a href="#content-delivery-network" target="_blank" rel="noopener noreferrer">内容分发网络（CDN）</a>被视为一种缓存。</p><h3>Web 服务器缓存</h3></p><p><a href="#reverse-proxy-web-server" target="_blank" rel="noopener noreferrer">反向代理</a>和如 <a href="https://www.varnish-cache.org/" target="_blank" rel="noopener noreferrer">Varnish</a> 等缓存可以直接提供静态和动态内容。Web 服务器也可以缓存请求，返回响应而无需联系应用服务器。</p><h3>数据库缓存</h3></p><p>数据库通常在默认配置中包含一定程度的缓存，针对通用使用场景进行优化。针对特定使用模式调整这些设置可以进一步提升性能。</p><h3>应用缓存</h3></p><p>内存缓存如 Memcached 和 Redis 是应用与数据存储之间的键值存储。由于数据存储在内存中，比典型的基于磁盘存储的数据库更快。内存容量有限，因此<a href="https://en.wikipedia.org/wiki/Cache_algorithms" target="_blank" rel="noopener noreferrer">缓存失效</a>算法如<a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU" target="_blank" rel="noopener noreferrer">最近最少使用（LRU）</a>)可以帮助失效“冷”条目，保持“热”数据在内存中。</p><p>Redis 具有以下额外功能：</p><ul><li>持久化选项</li>
+<li>内置数据结构，如有序集合和列表</li></p><p></ul>缓存可以存在多个层级，归于两大类：<strong>数据库查询</strong>和<strong>对象</strong>：</p><ul><li>行级缓存</li>
+<li>查询级缓存</li>
+<li>完整可序列化对象缓存</li>
+<li>完整渲染的 HTML 缓存</li></p><p></ul>通常，应尽量避免基于文件的缓存，因为这会增加克隆和自动扩展的难度。</p><h3>数据库查询级别的缓存</h3></p><p>每当查询数据库时，将查询哈希作为键并将结果存储到缓存中。此方法存在过期问题：</p><ul><li>对于复杂查询，很难删除缓存结果</li>
+<li>如果某个数据发生变化（如表中的某个单元格），需要删除所有可能包含该变化单元格的缓存查询</li></p><p></ul><h3>对象级别的缓存</h3></p><p>将数据视为对象，类似于应用程序代码的处理方式。让应用程序将数据库中的数据集组装成类实例或数据结构：</p><ul><li>如果底层数据发生变化，则从缓存中移除该对象</li>
+<li>支持异步处理：工作线程通过消费最新缓存对象来组装对象</li></p><p></ul>建议缓存的内容：</p><ul><li>用户会话</li>
+<li>完全渲染的网页</li>
+<li>活动流</li>
+<li>用户图数据</li></p><p></ul><h3>何时更新缓存</h3></p><p>由于缓存中只能存储有限的数据，需要确定哪种缓存更新策略最适合您的用例。</p><p>#### Cache-aside</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/ONjORqk.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/tmatyashovsky/from-cache-to-in-memory-data-grid-introduction-to-hazelcast>来源：从缓存到内存数据网格简介</a></i>
+</p></p><p>应用程序负责从存储中读取和写入。缓存不直接与存储交互。应用程序执行以下操作：</p><ul><li>在缓存中查找条目，导致缓存未命中</li>
+<li>从数据库加载条目</li>
+<li>将条目添加到缓存</li>
+<li>返回条目</li></p><p></ul><pre><code class="language-python">def get_user(self, user_id):
+    user = cache.get("user.{0}", user_id)
+    if user is None:
+        user = db.query("SELECT * FROM users WHERE user_id = {0}", user_id)
+        if user is not None:
+            key = "user.{0}".format(user_id)
+            cache.set(key, json.dumps(user))
+    return user</code></pre>
+<a href="https://memcached.org/" target="_blank" rel="noopener noreferrer">Memcached</a> 通常以这种方式使用。</p><p>随后的缓存数据读取速度很快。Cache-aside 也称为懒加载。仅缓存被请求的数据，避免缓存被未请求的数据填满。</p><p>##### 缺点：cache-aside</p><ul><li>每次缓存未命中都会导致三次往返，可能引起明显延迟。</li>
+<li>如果数据库中的数据被更新，缓存数据可能变得过时。该问题通过设置生存时间（TTL）来强制更新缓存条目，或使用写直达方式来缓解。</li>
+<li>当节点失败时，会被一个新的空节点替换，增加了延迟。</li></p><p></ul>#### 写直达（Write-through）</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/0vBc0hN.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>来源：可扩展性、可用性、稳定性模式</a></i>
+</p></p><p>应用程序将缓存作为主要数据存储，读写数据时都操作缓存，缓存负责读写数据库：</p><ul><li>应用程序添加/更新缓存条目</li>
+<li>缓存同步写入数据存储</li>
+<li>返回</li></p><p></ul>应用程序代码：</p><pre><code class="language-python">set_user(12345, {"foo":"bar"})</code></pre>
+缓存代码：</p><pre><code class="language-python">def set_user(user_id, values):
+    user = db.query("UPDATE Users WHERE id = {0}", user_id, values)
+    cache.set(user_id, user)</code></pre>
+写入直达（Write-through）由于写操作而整体较慢，但随后读取刚写入的数据速度很快。用户在更新数据时通常对延迟更为容忍，而读取数据时则不然。缓存中的数据不会过时。</p><p>##### 缺点：写入直达</p><ul><li>当由于故障或扩容创建新节点时，直到数据库中条目被更新，新节点才会缓存条目。写入直达配合缓存旁路（Cache-aside）可以缓解此问题。</li>
+<li>大部分写入的数据可能永远不会被读取，可以通过设置TTL（生存时间）来最小化这种情况。</li></p><p></ul>#### 写入回写（Write-behind / Write-back）</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/rgSrvjG.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>来源：可扩展性、可用性、稳定性模式</a></i>
+</p></p><p>在写入回写中，应用程序执行以下操作：</p><ul><li>在缓存中添加/更新条目</li>
+<li>异步将条目写入数据存储，从而提升写入性能</li></p><p></ul>##### 缺点：写入回写</p><ul><li>如果缓存宕机且内容尚未写入数据存储，可能会导致数据丢失。</li>
+<li>实现写入回写比实现缓存旁路或写入直达更复杂。</li></p><p></ul>#### 预刷新（Refresh-ahead）</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/kxtjqgE.png">
+  <br/>
+  <i><a href=http://www.slideshare.net/tmatyashovsky/from-cache-to-in-memory-data-grid-introduction-to-hazelcast>来源：从缓存到内存数据网格</a></i>
+</p></p><p>您可以配置缓存，在条目过期前自动刷新任何最近访问的缓存条目。</p><p>如果缓存能够准确预测未来可能需要的条目，预刷新相比读取穿透可以减少延迟。</p><p>##### 缺点：预刷新</p><ul><li>不准确地预测未来可能需要的项目可能导致性能不如没有预刷新时的表现。</li></p><p></ul><h3>缺点：缓存</h3></p><ul><li>需要通过<a href="https://zh.wikipedia.org/wiki/缓存算法" target="_blank" rel="noopener noreferrer">缓存失效</a>来保持缓存与数据源（如数据库）之间的一致性。</li>
+<li>缓存失效是一个难题，何时更新缓存存在额外的复杂性。</li>
+<li>需要进行应用改动，如添加 Redis 或 memcached。</li></p><p></ul><h3>来源及进一步阅读</h3></p><ul><li><a href="http://www.slideshare.net/tmatyashovsky/from-cache-to-in-memory-data-grid-introduction-to-hazelcast" target="_blank" rel="noopener noreferrer">从缓存到内存数据网格</a></li>
+<li><a href="http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html" target="_blank" rel="noopener noreferrer">可扩展系统设计模式</a></li>
+<li><a href="http://lethain.com/introduction-to-architecting-systems-for-scale/" target="_blank" rel="noopener noreferrer">系统架构扩展简介</a></li>
+<li><a href="http://www.slideshare.net/jboner/scalability-availability-stability-patterns/" target="_blank" rel="noopener noreferrer">可扩展性、可用性、稳定性模式</a></li>
+<li><a href="https://web.archive.org/web/20230126233752/https://www.lecloud.net/post/9246290032/scalability-for-dummies-part-3-cache" target="_blank" rel="noopener noreferrer">可扩展性</a></li>
+<li><a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Strategies.html" target="_blank" rel="noopener noreferrer">AWS ElastiCache 策略</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/Cache_(computing" target="_blank" rel="noopener noreferrer">维基百科</a>)</li></p><p></ul><h2>异步性</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/54GYsSx.png">
+  <br/>
+  <i><a href=http://lethain.com/introduction-to-architecting-systems-for-scale/#platform_layer>来源：系统架构扩展简介</a></i>
+</p></p><p>异步工作流有助于减少对昂贵操作的请求时间，这些操作本来会同步执行。它们还可以通过提前完成耗时工作（如定期数据聚合）来发挥作用。</p><h3>消息队列</h3></p><p>消息队列用于接收、存储和传递消息。如果操作太慢无法同步执行，可以使用消息队列，流程如下：</p><ul><li>应用将任务发布到队列，然后通知用户任务状态</li>
+<li>工作线程从队列获取任务，处理后标记任务完成</li></p><p></ul>用户不会被阻塞，任务在后台处理。此期间，客户端可以执行少量处理，使任务看起来已完成。例如，发送推文时，推文可以立即显示在时间线上，但实际传递给所有关注者可能需要一些时间。</p><p><strong><a href="https://redis.io/" target="_blank" rel="noopener noreferrer">Redis</a></strong> 是一个简单的消息代理，但消息可能丢失。</p><p><strong><a href="https://www.rabbitmq.com/" target="_blank" rel="noopener noreferrer">RabbitMQ</a></strong> 很受欢迎，但需要适应 'AMQP' 协议并自行管理节点。</p><p><strong><a href="https://aws.amazon.com/sqs/" target="_blank" rel="noopener noreferrer">Amazon SQS</a></strong> 是托管服务，但可能存在高延迟，并且消息可能会被重复传递。</p><h3>任务队列</h3></p><p>任务队列接收任务及其相关数据，执行任务，然后传递结果。它们支持调度，可用于在后台运行计算密集型作业。</p><p><strong><a href="https://docs.celeryproject.org/en/stable/" target="_blank" rel="noopener noreferrer">Celery</a></strong> 支持调度，主要支持 Python。</p><h3>背压</h3></p><p>如果队列开始显著增长，队列大小可能超过内存，导致缓存未命中、磁盘读取，甚至性能更慢。<a href="http://mechanical-sympathy.blogspot.com/2012/05/apply-back-pressure-when-overloaded.html" target="_blank" rel="noopener noreferrer">背压</a> 通过限制队列大小来帮助维持高吞吐率和队列中作业的良好响应时间。一旦队列满了，客户端会收到服务器繁忙或 HTTP 503 状态码，提示稍后重试。客户端可以在稍后时间重试请求，可能采用<a href="https://en.wikipedia.org/wiki/Exponential_backoff" target="_blank" rel="noopener noreferrer">指数退避</a>。</p><h3>缺点：异步性</h3></p><ul><li>诸如廉价计算和实时工作流的用例可能更适合同步操作，因为引入队列会增加延迟和复杂性。</li></p><p></ul><h3>来源及进一步阅读</h3></p><ul><li><a href="https://www.youtube.com/watch?v=1KRYH75wgy4" target="_blank" rel="noopener noreferrer">这全是数字游戏</a></li>
+<li><a href="http://mechanical-sympathy.blogspot.com/2012/05/apply-back-pressure-when-overloaded.html" target="_blank" rel="noopener noreferrer">过载时应用背压</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Little%27s_law" target="_blank" rel="noopener noreferrer">Little 法则</a></li>
+<li><a href="https://www.quora.com/What-is-the-difference-between-a-message-queue-and-a-task-queue-Why-would-a-task-queue-require-a-message-broker-like-RabbitMQ-Redis-Celery-or-IronMQ-to-function" target="_blank" rel="noopener noreferrer">消息队列和任务队列的区别是什么？</a></li></p><p></ul><h2>通信</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/5KeocQs.jpg">
+  <br/>
+  <i><a href=http://www.escotal.com/osilayer.html>来源：OSI 七层模型</a></i>
+</p></p><h3>超文本传输协议 (HTTP)</h3></p><p>HTTP 是一种在客户端和服务器之间编码和传输数据的方法。它是一种请求/响应协议：客户端发出请求，服务器发出包含相关内容和请求完成状态信息的响应。HTTP 是自包含的，允许请求和响应通过执行负载均衡、缓存、加密和压缩的多个中间路由器和服务器。</p><p>一个基本的 HTTP 请求由动词（方法）和资源（端点）组成。以下是常见的 HTTP 动词：</p><p>| 动词 | 描述 | 幂等* | 安全 | 可缓存 |
+|---|---|---|---|---|
+| GET | 读取资源 | 是 | 是 | 是 |
+| POST | 创建资源或触发处理数据的进程 | 否 | 否 | 如果响应包含新鲜度信息，则是 |
+| PUT | 创建或替换资源 | 是 | 否 | 否 |
+| PATCH | 部分更新资源 | 否 | 否 | 如果响应包含新鲜度信息，则是 |
+| DELETE | 删除资源 | 是 | 否 | 否 |</p><ul><li>可以多次调用而不会产生不同的结果。</li></p><p></ul>HTTP 是一种应用层协议，依赖于诸如 <strong>TCP</strong> 和 <strong>UDP</strong> 之类的底层协议。</p><p>#### 来源及进一步阅读：HTTP</p><ul><li><a href="https://www.nginx.com/resources/glossary/http/" target="_blank" rel="noopener noreferrer">什么是 HTTP？</a></li>
+<li><a href="https://www.quora.com/What-is-the-difference-between-HTTP-protocol-and-TCP-protocol" target="_blank" rel="noopener noreferrer">HTTP 和 TCP 的区别</a></li>
+<li><a href="https://laracasts.com/discuss/channels/general-discussion/whats-the-differences-between-put-and-patch?page=1" target="_blank" rel="noopener noreferrer">PUT 与 PATCH 的区别</a></li></p><p></ul><h3>传输控制协议（TCP）</h3></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/JdAsdvG.jpg">
+  <br/>
+  <i><a href=http://www.wildbunny.co.uk/blog/2012/10/09/how-to-make-a-multi-player-game-part-1/>来源：如何制作多人游戏</a></i>
+</p></p><p>TCP 是基于 <a href="https://en.wikipedia.org/wiki/Internet_Protocol" target="_blank" rel="noopener noreferrer">IP 网络</a> 的面向连接的协议。连接通过 <a href="https://en.wikipedia.org/wiki/Handshaking" target="_blank" rel="noopener noreferrer">握手</a> 建立和终止。所有发送的数据包都保证以原始顺序且无损坏地到达目的地，通过：</p><ul><li>每个数据包的序列号和 <a href="https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Checksum_computation" target="_blank" rel="noopener noreferrer">校验和字段</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Acknowledgement_(data_networks" target="_blank" rel="noopener noreferrer">确认</a>) 数据包和自动重传</li></p><p></ul>如果发送方没有收到正确响应，它将重新发送数据包。如果多次超时，连接将被断开。TCP 还实现了 <a href="https://en.wikipedia.org/wiki/Flow_control_(data" target="_blank" rel="noopener noreferrer">流量控制</a>) 和 <a href="https://en.wikipedia.org/wiki/Network_congestion#Congestion_control" target="_blank" rel="noopener noreferrer">拥塞控制</a>。这些保障会导致延迟，并且通常比 UDP 传输效率低。</p><p>为了确保高吞吐量，Web 服务器可以保持大量 TCP 连接打开，导致高内存使用。在 Web 服务器线程与例如 <a href="https://memcached.org/" target="_blank" rel="noopener noreferrer">memcached</a> 服务器之间保持大量打开连接可能代价高昂。除了在适用情况下切换到 UDP，使用 <a href="https://en.wikipedia.org/wiki/Connection_pool" target="_blank" rel="noopener noreferrer">连接池</a> 也能有所帮助。</p><p>TCP 适用于需要高可靠性但对时间要求不高的应用。一些例子包括 Web 服务器、数据库信息、SMTP、FTP 和 SSH。</p><p>在以下情况下使用 TCP 而非 UDP：</p><ul><li>你需要所有数据完整无损地到达</li>
+<li>你希望自动尽可能高效地利用网络吞吐量</li></p><p></ul><h3>用户数据报协议（UDP）</h3></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/yzDrJtA.jpg">
+  <br/>
+  <i><a href=http://www.wildbunny.co.uk/blog/2012/10/09/how-to-make-a-multi-player-game-part-1/>来源：如何制作多人游戏</a></i>
+</p></p><p>UDP 是无连接的。数据报（类似于数据包）仅在数据报级别被保证。数据报可能乱序到达目的地，甚至根本无法到达。UDP 不支持拥塞控制。由于缺乏 TCP 提供的保证，UDP 通常更高效。</p><p>UDP 可以广播，向子网内所有设备发送数据报。这在 <a href="https://zh.wikipedia.org/wiki/动态主机配置协议" target="_blank" rel="noopener noreferrer">DHCP</a> 中非常有用，因为客户端尚未收到 IP 地址，因此 TCP 无法在没有 IP 地址的情况下进行流传输。</p><p>UDP 可靠性较低，但在 VoIP、视频聊天、流媒体和实时多人游戏等实时应用中表现良好。</p><p>在以下情况下使用 UDP 而非 TCP：</p><ul><li>你需要最低的延迟</li>
+<li>延迟的数据比数据丢失更糟</li>
+<li>你想实现自己的错误纠正</li></p><p></ul>#### 来源及进一步阅读：TCP 和 UDP</p><ul><li><a href="http://gafferongames.com/networking-for-game-programmers/udp-vs-tcp/" target="_blank" rel="noopener noreferrer">游戏编程的网络</a></li>
+<li><a href="http://www.cyberciti.biz/faq/key-differences-between-tcp-and-udp-protocols/" target="_blank" rel="noopener noreferrer">TCP 和 UDP 协议的主要区别</a></li>
+<li><a href="http://stackoverflow.com/questions/5970383/difference-between-tcp-and-udp" target="_blank" rel="noopener noreferrer">TCP 和 UDP 的区别</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/传输控制协议" target="_blank" rel="noopener noreferrer">传输控制协议</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/用户数据报协议" target="_blank" rel="noopener noreferrer">用户数据报协议</a></li>
+<li><a href="http://www.cs.bu.edu/~jappavoo/jappavoo.github.com/451/papers/memcache-fb.pdf" target="_blank" rel="noopener noreferrer">Facebook 的 memcache 扩展</a></li></p><p></ul><h3>远程过程调用（RPC）</h3></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/iF4Mkb5.png">
+  <br/>
+  <i><a href=http://www.puncsky.com/blog/2016-02-13-crack-the-system-design-interview>来源：破解系统设计面试</a></i>
+</p></p><p>在 RPC 中，客户端使一个过程在不同的地址空间上执行，通常是远程服务器。该过程的编码方式就像本地过程调用一样，抽象了如何与服务器通信的细节，客户端程序无需关心。远程调用通常比本地调用更慢且不那么可靠，因此区分 RPC 调用和本地调用是有帮助的。流行的 RPC 框架包括 <a href="https://developers.google.com/protocol-buffers/" target="_blank" rel="noopener noreferrer">Protobuf</a>、<a href="https://thrift.apache.org/" target="_blank" rel="noopener noreferrer">Thrift</a> 和 <a href="https://avro.apache.org/docs/current/" target="_blank" rel="noopener noreferrer">Avro</a>。</p><p>RPC 是一种请求-响应协议：</p><ul><li><strong>客户端程序</strong> - 调用客户端存根过程。参数像本地过程调用一样被压入堆栈。</li>
+<li><strong>客户端存根过程</strong> - 将过程ID和参数封装（打包）到请求消息中。</li>
+<li><strong>客户端通信模块</strong> - 操作系统将消息从客户端发送到服务器。</li>
+<li><strong>服务器通信模块</strong> - 操作系统将接收到的数据包传递给服务器存根过程。</li>
+<li><strong>服务器存根过程</strong> - 解封（解包）结果，调用与过程ID匹配的服务器过程并传递给定的参数。</li>
+<li>服务器响应按照上述步骤的逆序重复执行。</li></p><p></ul>示例RPC调用：</p><pre><code class="language-">GET /someoperation?data=anId</p><p>POST /anotheroperation
+{
+  "data":"anId";
+  "anotherdata": "another value"
+}</code></pre>
+RPC 专注于暴露行为。RPC 通常用于内部通信以提升性能，因为你可以手工编写本地调用以更好地适应你的用例。</p><p>选择本地库（即 SDK）时：</p><ul><li>你知道你的目标平台。</li>
+<li>你想控制你的“逻辑”如何被访问。</li>
+<li>你想控制库外的错误控制方式。</li>
+<li>性能和最终用户体验是你的主要关注点。</li></p><p></ul>遵循 <strong>REST</strong> 的 HTTP API 更常用于公共 API。</p><p>#### 缺点：RPC</p><ul><li>RPC 客户端与服务实现紧密耦合。</li>
+<li>每个新操作或用例都必须定义新的 API。</li>
+<li>调试 RPC 可能很困难。</li>
+<li>你可能无法开箱即用地利用现有技术。例如，可能需要额外工作来确保 <a href="https://web.archive.org/web/20170608193645/http://etherealbits.com/2012/12/debunking-the-myths-of-rpc-rest/" target="_blank" rel="noopener noreferrer">RPC 调用被适当缓存</a> 于如 <a href="http://www.squid-cache.org/" target="_blank" rel="noopener noreferrer">Squid</a> 等缓存服务器上。</li></p><p></ul><h3>表现层状态转移 (REST)</h3></p><p>REST 是一种架构风格，强制执行客户端/服务器模型，其中客户端对服务器管理的一组资源进行操作。服务器提供资源的表现形式和可以操作或获取新资源表现形式的动作。所有通信必须是无状态且可缓存的。</p><p>RESTful 接口有四个特性：</p><ul><li><strong>识别资源（HTTP 中的 URI）</strong> - 无论任何操作，使用相同的 URI。</li>
+<li><strong>通过表现形式改变（HTTP 中的动词）</strong> - 使用动词、头部和主体。</li>
+<li><strong>自描述错误信息（HTTP 中的状态响应）</strong> - 使用状态码，不要重新发明轮子。</li>
+<li><strong><a href="http://restcookbook.com/Basics/hateoas/" target="_blank" rel="noopener noreferrer">HATEOAS</a>（HTTP 的 HTML 界面）</strong> - 你的 Web 服务应可在浏览器中完全访问。</li></p><p></ul>REST 调用示例：</p><pre><code class="language-">GET /someresources/anId</p><p>PUT /someresources/anId
+{"anotherdata": "another value"}</code></pre>
+REST 专注于数据的暴露。它最大限度地减少了客户端/服务器之间的耦合，通常用于公共 HTTP API。REST 通过 URI、<a href="https://github.com/for-GET/know-your-http-well/blob/master/headers.md" target="_blank" rel="noopener noreferrer">通过头部的表示</a> 以及通过诸如 GET、POST、PUT、DELETE 和 PATCH 之类的动词来使用更通用和统一的方法暴露资源。由于是无状态的，REST 非常适合水平扩展和分区。</p><p>#### 缺点：REST</p><ul><li>由于 REST 专注于数据的暴露，如果资源本身没有自然组织或以简单的层级方式访问，可能不太适用。例如，返回过去一小时内所有符合特定事件集合的更新记录不容易用路径表达。使用 REST，通常通过 URI 路径、查询参数以及可能的请求体组合来实现。</li>
+<li>REST 通常依赖于少数几个动词（GET、POST、PUT、DELETE 和 PATCH），有时无法满足您的用例。例如，将过期文档移动到归档文件夹可能无法很好地适应这些动词。</li>
+<li>获取具有嵌套层级的复杂资源需要客户端和服务器之间多次往返以渲染单个视图，例如获取博客条目的内容及该条目的评论。对于在不稳定网络条件下运行的移动应用，这些多次往返是非常不理想的。</li>
+<li>随着时间推移，API 响应中可能会添加更多字段，旧客户端会接收所有新字段，即使它们不需要，这会导致有效载荷膨胀并增加延迟。</li></p><p></ul><h3>RPC 和 REST 调用比较</h3></p><p>| 操作 | RPC | REST |
+|---|---|---|
+| 注册    | <strong>POST</strong> /signup | <strong>POST</strong> /persons |
+| 辞职    | <strong>POST</strong> /resign<br/>{<br/>"personid": "1234"<br/>} | <strong>DELETE</strong> /persons/1234 |
+| 读取某人 | <strong>GET</strong> /readPerson?personid=1234 | <strong>GET</strong> /persons/1234 |
+| 读取某人的物品列表 | <strong>GET</strong> /readUsersItemsList?personid=1234 | <strong>GET</strong> /persons/1234/items |
+| 向某人物品列表添加物品 | <strong>POST</strong> /addItemToUsersItemsList<br/>{<br/>"personid": "1234";<br/>"itemid": "456"<br/>} | <strong>POST</strong> /persons/1234/items<br/>{<br/>"itemid": "456"<br/>} |
+| 更新物品    | <strong>POST</strong> /modifyItem<br/>{<br/>"itemid": "456";<br/>"key": "value"<br/>} | <strong>PUT</strong> /items/456<br/>{<br/>"key": "value"<br/>} |
+| 删除物品 | <strong>POST</strong> /removeItem<br/>{<br/>"itemid": "456"<br/>} | <strong>DELETE</strong> /items/456 |</p><p><p align="center">
+  <i><a href=https://apihandyman.io/do-you-really-know-why-you-prefer-rest-over-rpc/>来源：你真的知道为什么你更喜欢 REST 而不是 RPC 吗</a></i>
+</p></p><p>#### 来源及进一步阅读：REST 和 RPC</p><ul><li><a href="https://apihandyman.io/do-you-really-know-why-you-prefer-rest-over-rpc/" target="_blank" rel="noopener noreferrer">你真的知道为什么你更喜欢 REST 而不是 RPC 吗</a></li>
+<li><a href="http://programmers.stackexchange.com/a/181186" target="_blank" rel="noopener noreferrer">什么时候 RPC 式方法比 REST 更合适？</a></li>
+<li><a href="http://stackoverflow.com/questions/15056878/rest-vs-json-rpc" target="_blank" rel="noopener noreferrer">REST 与 JSON-RPC</a></li>
+<li><a href="https://web.archive.org/web/20170608193645/http://etherealbits.com/2012/12/debunking-the-myths-of-rpc-rest/" target="_blank" rel="noopener noreferrer">揭穿 RPC 和 REST 的神话</a></li>
+<li><a href="https://www.quora.com/What-are-the-drawbacks-of-using-RESTful-APIs" target="_blank" rel="noopener noreferrer">使用 REST 的缺点是什么</a></li>
+<li><a href="http://www.puncsky.com/blog/2016-02-13-crack-the-system-design-interview" target="_blank" rel="noopener noreferrer">破解系统设计面试</a></li>
+<li><a href="https://code.facebook.com/posts/1468950976659943/" target="_blank" rel="noopener noreferrer">Thrift</a></li>
+<li><a href="http://arstechnica.com/civis/viewtopic.php?t=1190508" target="_blank" rel="noopener noreferrer">为什么内部使用 REST 而不是 RPC</a></li></p><p></ul><h2>安全</h2></p><p>本节内容需要更新。欢迎<a href="#contributing" target="_blank" rel="noopener noreferrer">贡献</a>！</p><p>安全是一个广泛的话题。除非你有丰富的经验、安全背景，或者申请的职位需要安全知识，否则你可能只需要了解基础知识：</p><ul><li>传输和存储时加密。</li>
+<li>清理所有用户输入或任何暴露给用户的输入参数，以防止<a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank" rel="noopener noreferrer">XSS</a>和<a href="https://en.wikipedia.org/wiki/SQL_injection" target="_blank" rel="noopener noreferrer">SQL注入</a>。</li>
+<li>使用参数化查询以防止SQL注入。</li>
+<li>使用<a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege" target="_blank" rel="noopener noreferrer">最小权限原则</a>。</li></p><p></ul><h3>来源及进一步阅读</h3></p><ul><li><a href="https://github.com/shieldfy/API-Security-Checklist" target="_blank" rel="noopener noreferrer">API安全清单</a></li>
+<li><a href="https://github.com/FallibleInc/security-guide-for-developers" target="_blank" rel="noopener noreferrer">开发者安全指南</a></li>
+<li><a href="https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet" target="_blank" rel="noopener noreferrer">OWASP十大</a></li></p><p></ul><h2>附录</h2></p><p>有时你会被要求做“信封背面”的估算。例如，你可能需要确定从磁盘生成100个图像缩略图需要多长时间，或者一个数据结构会占用多少内存。<strong>二的幂表</strong>和<strong>每个程序员都应了解的延迟数字</strong>是很好的参考资料。</p><h3>二的幂表</h3></p><pre><code class="language-">Power           Exact Value         Approx Value        Bytes
+---------------------------------------------------------------
+7                             128
+8                             256
+10                           1024   1 thousand           1 KB
+16                         65,536                       64 KB
+20                      1,048,576   1 million            1 MB
+30                  1,073,741,824   1 billion            1 GB
+32                  4,294,967,296                        4 GB
+40              1,099,511,627,776   1 trillion           1 TB</code></pre></p><p>#### 来源及进一步阅读</p><ul><li><a href="https://en.wikipedia.org/wiki/Power_of_two" target="_blank" rel="noopener noreferrer">二的幂</a></li></p><p></ul><h3>每个程序员都应了解的延迟数字</h3></p><pre><code class="language-">Latency Comparison Numbers
+--------------------------
+L1 cache reference                           0.5 ns
+Branch mispredict                            5   ns
+L2 cache reference                           7   ns                      14x L1 cache
+Mutex lock/unlock                           25   ns
+Main memory reference                      100   ns                      20x L2 cache, 200x L1 cache
+Compress 1K bytes with Zippy            10,000   ns       10 us
+Send 1 KB bytes over 1 Gbps network     10,000   ns       10 us
+Read 4 KB randomly from SSD*           150,000   ns      150 us          ~1GB/sec SSD
+Read 1 MB sequentially from memory     250,000   ns      250 us
+Round trip within same datacenter      500,000   ns      500 us
+Read 1 MB sequentially from SSD*     1,000,000   ns    1,000 us    1 ms  ~1GB/sec SSD, 4X memory
+HDD seek                            10,000,000   ns   10,000 us   10 ms  20x datacenter roundtrip
+Read 1 MB sequentially from 1 Gbps  10,000,000   ns   10,000 us   10 ms  40x memory, 10X SSD
+Read 1 MB sequentially from HDD     30,000,000   ns   30,000 us   30 ms 120x memory, 30X SSD
+Send packet CA->Netherlands->CA    150,000,000   ns  150,000 us  150 ms</p><p>Notes
+-----
+1 ns = 10^-9 seconds
+1 us = 10^-6 seconds = 1,000 ns
+1 ms = 10^-3 seconds = 1,000 us = 1,000,000 ns</code></pre>
+基于以上数字的实用指标：</p><ul><li>从 HDD 顺序读取速度为 30 MB/s</li>
+<li>从 1 Gbps 以太网顺序读取速度为 100 MB/s</li>
+<li>从 SSD 顺序读取速度为 1 GB/s</li>
+<li>从主内存顺序读取速度为 4 GB/s</li>
+<li>每秒 6-7 次全球范围往返</li>
+<li>数据中心内每秒 2000 次往返</li></p><p></ul>#### 延迟数字可视化</p><p><img src="https://camo.githubusercontent.com/77f72259e1eb58596b564d1ad823af1853bc60a3/687474703a2f2f692e696d6775722e636f6d2f6b307431652e706e67" alt=""></p><p>#### 来源及进一步阅读</p><ul><li><a href="https://gist.github.com/jboner/2841832" target="_blank" rel="noopener noreferrer">每个程序员都该知道的延迟数字 - 1</a></li>
+<li><a href="https://gist.github.com/hellerbarde/2843375" target="_blank" rel="noopener noreferrer">每个程序员都该知道的延迟数字 - 2</a></li>
+<li><a href="http://www.cs.cornell.edu/projects/ladis2009/talks/dean-keynote-ladis2009.pdf" target="_blank" rel="noopener noreferrer">构建大型分布式系统的设计、经验与建议</a></li>
+<li><a href="https://static.googleusercontent.com/media/research.google.com/en//people/jeff/stanford-295-talk.pdf" target="_blank" rel="noopener noreferrer">构建大规模分布式系统的软件工程建议</a></li></p><p></ul><h3>额外的系统设计面试题</h3></p><blockquote>常见系统设计面试题，附带解决资源链接。</blockquote></p><p>| 问题 | 参考资料 |
+|---|---|
+| 设计一个类似 Dropbox 的文件同步服务 | <a href="https://www.youtube.com/watch?v=PE4gwstWhmc" target="_blank" rel="noopener noreferrer">youtube.com</a> |
+| 设计一个类似 Google 的搜索引擎 | <a href="http://queue.acm.org/detail.cfm?id=988407" target="_blank" rel="noopener noreferrer">queue.acm.org</a><br/><a href="http://programmers.stackexchange.com/questions/38324/interview-question-how-would-you-implement-google-search" target="_blank" rel="noopener noreferrer">stackexchange.com</a><br/><a href="http://www.ardendertat.com/2012/01/11/implementing-search-engines/" target="_blank" rel="noopener noreferrer">ardendertat.com</a><br/><a href="http://infolab.stanford.edu/~backrub/google.html" target="_blank" rel="noopener noreferrer">stanford.edu</a> |
+| 设计一个类似 Google 的可扩展网络爬虫 | <a href="https://www.quora.com/How-can-I-build-a-web-crawler-from-scratch" target="_blank" rel="noopener noreferrer">quora.com</a> |
+| 设计 Google 文档 | <a href="https://code.google.com/p/google-mobwrite/" target="_blank" rel="noopener noreferrer">code.google.com</a><br/><a href="https://neil.fraser.name/writing/sync/" target="_blank" rel="noopener noreferrer">neil.fraser.name</a> |
+| 设计一个类似 Redis 的键值存储 | <a href="http://www.slideshare.net/dvirsky/introduction-to-redis" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| 设计一个类似 Memcached 的缓存系统 | <a href="http://www.slideshare.net/oemebamo/introduction-to-memcached" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| 设计一个类似亚马逊的推荐系统 | <a href="https://web.archive.org/web/20170406065247/http://tech.hulu.com/blog/2011/09/19/recommendation-system.html" target="_blank" rel="noopener noreferrer">hulu.com</a><br/><a href="http://ijcai13.org/files/tutorial_slides/td3.pdf" target="_blank" rel="noopener noreferrer">ijcai13.org</a> |
+| 设计一个类似 Bitly 的短链接系统 | <a href="http://n00tc0d3r.blogspot.com/" target="_blank" rel="noopener noreferrer">n00tc0d3r.blogspot.com</a> |
+| 设计一个类似 WhatsApp 的聊天应用 | <a href="http://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html" target="_blank" rel="noopener noreferrer">highscalability.com</a> |
+| 设计一个类似 Instagram 的图片分享系统 | <a href="http://highscalability.com/flickr-architecture" target="_blank" rel="noopener noreferrer">highscalability.com</a><br/><a href="http://highscalability.com/blog/2011/12/6/instagram-architecture-14-million-users-terabytes-of-photos.html" target="_blank" rel="noopener noreferrer">highscalability.com</a> |
+| 设计 Facebook 新闻推送功能 | <a href="http://www.quora.com/What-are-best-practices-for-building-something-like-a-News-Feed" target="_blank" rel="noopener noreferrer">quora.com</a><br/><a href="http://www.quora.com/Activity-Streams/What-are-the-scaling-issues-to-keep-in-mind-while-developing-a-social-network-feed" target="_blank" rel="noopener noreferrer">quora.com</a><br/><a href="http://www.slideshare.net/danmckinley/etsy-activity-feeds-architecture" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| 设计 Facebook 时间线功能 | <a href="https://www.facebook.com/note.php?note_id=10150468255628920" target="_blank" rel="noopener noreferrer">facebook.com</a><br/><a href="http://highscalability.com/blog/2012/1/23/facebook-timeline-brought-to-you-by-the-power-of-denormaliza.html" target="_blank" rel="noopener noreferrer">highscalability.com</a> |
+| 设计 Facebook 聊天功能 | <a href="http://www.erlang-factory.com/upload/presentations/31/EugeneLetuchy-ErlangatFacebook.pdf" target="_blank" rel="noopener noreferrer">erlang-factory.com</a><br/><a href="https://www.facebook.com/note.php?note_id=14218138919&id=9445547199&index=0" target="_blank" rel="noopener noreferrer">facebook.com</a> |</p><p>| 设计一个类似 Facebook 的图搜索功能 | <a href="https://www.facebook.com/notes/facebook-engineering/under-the-hood-building-out-the-infrastructure-for-graph-search/10151347573598920" target="_blank" rel="noopener noreferrer">facebook.com</a><br/><a href="https://www.facebook.com/notes/facebook-engineering/under-the-hood-indexing-and-ranking-in-graph-search/10151361720763920" target="_blank" rel="noopener noreferrer">facebook.com</a><br/><a href="https://www.facebook.com/notes/facebook-engineering/under-the-hood-the-natural-language-interface-of-graph-search/10151432733048920" target="_blank" rel="noopener noreferrer">facebook.com</a> |
+| 设计一个类似 CloudFlare 的内容分发网络 | <a href="https://figshare.com/articles/Globally_distributed_content_delivery/6605972" target="_blank" rel="noopener noreferrer">figshare.com</a> |
+| 设计一个类似 Twitter 的热门话题系统 | <a href="http://www.michael-noll.com/blog/2013/01/18/implementing-real-time-trending-topics-in-storm/" target="_blank" rel="noopener noreferrer">michael-noll.com</a><br/><a href="http://snikolov.wordpress.com/2012/11/14/early-detection-of-twitter-trends/" target="_blank" rel="noopener noreferrer">snikolov .wordpress.com</a> |
+| 设计一个随机 ID 生成系统 | <a href="https://blog.twitter.com/2010/announcing-snowflake" target="_blank" rel="noopener noreferrer">blog.twitter.com</a><br/><a href="https://github.com/twitter/snowflake/" target="_blank" rel="noopener noreferrer">github.com</a> |
+| 返回某一时间区间内的前 k 个请求 | <a href="https://www.cs.ucsb.edu/sites/default/files/documents/2005-23.pdf" target="_blank" rel="noopener noreferrer">cs.ucsb.edu</a><br/><a href="http://davis.wpi.edu/xmdv/docs/EDBT11-diyang.pdf" target="_blank" rel="noopener noreferrer">wpi.edu</a> |
+| 设计一个从多个数据中心提供数据的系统 | <a href="http://highscalability.com/blog/2009/8/24/how-google-serves-data-from-multiple-datacenters.html" target="_blank" rel="noopener noreferrer">highscalability.com</a> |
+| 设计一个在线多人纸牌游戏 | <a href="https://web.archive.org/web/20180929181117/http://www.indieflashblog.com/how-to-create-an-asynchronous-multiplayer-game.html" target="_blank" rel="noopener noreferrer">indieflashblog.com</a><br/><a href="http://buildnewgames.com/real-time-multiplayer/" target="_blank" rel="noopener noreferrer">buildnewgames.com</a> |
+| 设计一个垃圾回收系统 | <a href="http://journal.stuffwithstuff.com/2013/12/08/babys-first-garbage-collector/" target="_blank" rel="noopener noreferrer">stuffwithstuff.com</a><br/><a href="http://courses.cs.washington.edu/courses/csep521/07wi/prj/rick.pdf" target="_blank" rel="noopener noreferrer">washington.edu</a> |
+| 设计一个 API 速率限制器 | <a href="https://stripe.com/blog/rate-limiters" target="_blank" rel="noopener noreferrer">https://stripe.com/blog/</a> |
+| 设计一个股票交易所（如 NASDAQ 或 Binance） | <a href="https://youtu.be/b1e4t2k2KJY" target="_blank" rel="noopener noreferrer">Jane Street</a><br/><a href="https://around25.com/blog/building-a-trading-engine-for-a-crypto-exchange/" target="_blank" rel="noopener noreferrer">Golang 实现</a><br/><a href="http://bhomnick.net/building-a-simple-limit-order-in-go/" target="_blank" rel="noopener noreferrer">Go 实现</a> |
+| 添加一个系统设计问题 | <a href="#contributing" target="_blank" rel="noopener noreferrer">贡献</a> |</p><h3>现实世界架构</h3></p><blockquote>关于现实世界系统设计的文章。</blockquote></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/images/TcUo2fw.png">
+  <br/>
+  <i><a href=https://www.infoq.com/presentations/Twitter-Timeline-Scalability>来源：Twitter 时间线的可扩展性</a></i>
+</p></p><p><strong>以下文章不要关注细枝末节，而应：</strong></p><ul><li>识别文章中共享的原则、常用技术和模式</li>
+<li>研究每个组件解决了什么问题，适用场景和局限</li>
+<li>回顾所学到的经验教训</li></p><p></ul>| 类型 | 系统 | 参考资料 |
+|---|---|---|
+| 数据处理 | <strong>MapReduce</strong> - Google 的分布式数据处理 | <a href="http://static.googleusercontent.com/media/research.google.com/zh-CN/us/archive/mapreduce-osdi04.pdf" target="_blank" rel="noopener noreferrer">research.google.com</a> |
+| 数据处理 | <strong>Spark</strong> - Databricks 的分布式数据处理 | <a href="http://www.slideshare.net/AGrishchenko/apache-spark-architecture" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| 数据处理 | <strong>Storm</strong> - Twitter 的分布式数据处理 | <a href="http://www.slideshare.net/previa/storm-16094009" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| | | |
+| 数据存储 | <strong>Bigtable</strong> - Google 的分布式列式数据库 | <a href="http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf" target="_blank" rel="noopener noreferrer">harvard.edu</a> |
+| 数据存储 | <strong>HBase</strong> - Bigtable 的开源实现 | <a href="http://www.slideshare.net/alexbaranau/intro-to-hbase" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| 数据存储 | <strong>Cassandra</strong> - Facebook 的分布式列式数据库 | <a href="http://www.slideshare.net/planetcassandra/cassandra-introduction-features-30103666" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| 数据存储 | <strong>DynamoDB</strong> - Amazon 的文档数据库 | <a href="http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/decandia07dynamo.pdf" target="_blank" rel="noopener noreferrer">harvard.edu</a> |
+| 数据存储 | <strong>MongoDB</strong> - 文档数据库 | <a href="http://www.slideshare.net/mdirolf/introduction-to-mongodb" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| 数据存储 | <strong>Spanner</strong> - Google 的全球分布式数据库 | <a href="http://research.google.com/archive/spanner-osdi2012.pdf" target="_blank" rel="noopener noreferrer">research.google.com</a> |
+| 数据存储 | <strong>Memcached</strong> - 分布式内存缓存系统 | <a href="http://www.slideshare.net/oemebamo/introduction-to-memcached" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| 数据存储 | <strong>Redis</strong> - 具有持久化和多种值类型的分布式内存缓存系统 | <a href="http://www.slideshare.net/dvirsky/introduction-to-redis" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| | | |
+| 文件系统 | <strong>谷歌文件系统 (GFS)</strong> - 分布式文件系统 | <a href="http://static.googleusercontent.com/media/research.google.com/zh-CN/us/archive/gfs-sosp2003.pdf" target="_blank" rel="noopener noreferrer">research.google.com</a> |
+| 文件系统 | <strong>Hadoop 文件系统 (HDFS)</strong> - GFS 的开源实现 | <a href="http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html" target="_blank" rel="noopener noreferrer">apache.org</a> |
+| | | |
+| 其他 | <strong>Chubby</strong> - 谷歌为松耦合分布式系统提供的锁服务 | <a href="http://static.googleusercontent.com/external_content/untrusted_dlcp/research.google.com/en/us/archive/chubby-osdi06.pdf" target="_blank" rel="noopener noreferrer">research.google.com</a> |
+| 其他 | <strong>Dapper</strong> - 分布式系统追踪基础设施 | <a href="http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/36356.pdf" target="_blank" rel="noopener noreferrer">research.google.com</a>
+| 其他 | <strong>Kafka</strong> - 来自 LinkedIn 的发布/订阅消息队列 | <a href="http://www.slideshare.net/mumrah/kafka-talk-tri-hug" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| 其他 | <strong>Zookeeper</strong> - 实现同步的集中式基础设施和服务 | <a href="http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper" target="_blank" rel="noopener noreferrer">slideshare.net</a> |
+| | 添加一个架构 | <a href="#contributing" target="_blank" rel="noopener noreferrer">贡献</a> |</p><h3>公司架构</h3></p><p>| 公司 | 参考资料 |
+|---|---|
+| 亚马逊 | <a href="http://highscalability.com/amazon-architecture" target="_blank" rel="noopener noreferrer">亚马逊架构</a> |
+| Cinchcast | <a href="http://highscalability.com/blog/2012/7/16/cinchcast-architecture-producing-1500-hours-of-audio-every-d.html" target="_blank" rel="noopener noreferrer">每天生产1500小时音频</a> |
+| DataSift | <a href="http://highscalability.com/blog/2011/11/29/datasift-architecture-realtime-datamining-at-120000-tweets-p.html" target="_blank" rel="noopener noreferrer">每秒12万条推文的实时数据挖掘</a> |
+| Dropbox | <a href="https://www.youtube.com/watch?v=PE4gwstWhmc" target="_blank" rel="noopener noreferrer">我们如何扩展 Dropbox</a> |
+| ESPN | <a href="http://highscalability.com/blog/2013/11/4/espns-architecture-at-scale-operating-at-100000-duh-nuh-nuhs.html" target="_blank" rel="noopener noreferrer">每秒10万“呃呃呃”操作的运行</a> |
+| 谷歌 | <a href="http://highscalability.com/google-architecture" target="_blank" rel="noopener noreferrer">谷歌架构</a> |
+| Instagram | <a href="http://highscalability.com/blog/2011/12/6/instagram-architecture-14-million-users-terabytes-of-photos.html" target="_blank" rel="noopener noreferrer">1400万用户，数TB照片</a><br/><a href="http://instagram-engineering.tumblr.com/post/13649370142/what-powers-instagram-hundreds-of-instances" target="_blank" rel="noopener noreferrer">Instagram的动力</a> |
+| Justin.tv | <a href="http://highscalability.com/blog/2010/3/16/justintvs-live-video-broadcasting-architecture.html" target="_blank" rel="noopener noreferrer">Justin.Tv 的直播视频广播架构</a> |
+| Facebook | <a href="https://cs.uwaterloo.ca/~brecht/courses/854-Emerging-2014/readings/key-value/fb-memcached-nsdi-2013.pdf" target="_blank" rel="noopener noreferrer">Facebook 上的 memcached 扩展</a><br/><a href="https://cs.uwaterloo.ca/~brecht/courses/854-Emerging-2014/readings/data-store/tao-facebook-distributed-datastore-atc-2013.pdf" target="_blank" rel="noopener noreferrer">TAO：Facebook 社交图的分布式数据存储</a><br/><a href="https://www.usenix.org/legacy/event/osdi10/tech/full_papers/Beaver.pdf" target="_blank" rel="noopener noreferrer">Facebook 的照片存储</a><br/><a href="http://highscalability.com/blog/2016/6/27/how-facebook-live-streams-to-800000-simultaneous-viewers.html" target="_blank" rel="noopener noreferrer">Facebook 实时直播给80万同时观看者</a> |
+| Flickr | <a href="http://highscalability.com/flickr-architecture" target="_blank" rel="noopener noreferrer">Flickr 架构</a> |
+| Mailbox | <a href="http://highscalability.com/blog/2013/6/18/scaling-mailbox-from-0-to-one-million-users-in-6-weeks-and-1.html" target="_blank" rel="noopener noreferrer">6周内从0到100万用户</a> |
+| Netflix | <a href="http://highscalability.com/blog/2015/11/9/a-360-degree-view-of-the-entire-netflix-stack.html" target="_blank" rel="noopener noreferrer">Netflix 全栈360度视图</a><br/><a href="http://highscalability.com/blog/2017/12/11/netflix-what-happens-when-you-press-play.html" target="_blank" rel="noopener noreferrer">Netflix：按下播放键会发生什么？</a> |
+| Pinterest | <a href="http://highscalability.com/blog/2013/4/15/scaling-pinterest-from-0-to-10s-of-billions-of-page-views-a.html" target="_blank" rel="noopener noreferrer">从0到数百亿月页面浏览量</a><br/><a href="http://highscalability.com/blog/2012/5/21/pinterest-architecture-update-18-million-visitors-10x-growth.html" target="_blank" rel="noopener noreferrer">1800万访客，10倍增长，12名员工</a> |
+| Playfish | <a href="http://highscalability.com/blog/2010/9/21/playfishs-social-gaming-architecture-50-million-monthly-user.html" target="_blank" rel="noopener noreferrer">5000万月活用户且持续增长</a> |
+| PlentyOfFish | <a href="http://highscalability.com/plentyoffish-architecture" target="_blank" rel="noopener noreferrer">PlentyOfFish 架构</a> |
+| Salesforce | <a href="http://highscalability.com/blog/2013/9/23/salesforce-architecture-how-they-handle-13-billion-transacti.html" target="_blank" rel="noopener noreferrer">每天处理13亿交易</a> |
+| Stack Overflow | <a href="http://highscalability.com/blog/2009/8/5/stack-overflow-architecture.html" target="_blank" rel="noopener noreferrer">Stack Overflow 架构</a> |
+| TripAdvisor | <a href="http://highscalability.com/blog/2011/6/27/tripadvisor-architecture-40m-visitors-200m-dynamic-page-view.html" target="_blank" rel="noopener noreferrer">4000万访客，2亿动态页面浏览，30TB数据</a> |
+| Tumblr | <a href="http://highscalability.com/blog/2012/2/13/tumblr-architecture-15-billion-page-views-a-month-and-harder.html" target="_blank" rel="noopener noreferrer">每月150亿页面浏览量</a> |
+| Twitter | <a href="http://highscalability.com/scaling-twitter-making-twitter-10000-percent-faster" target="_blank" rel="noopener noreferrer">让 Twitter 快1万倍</a><br/><a href="http://highscalability.com/blog/2011/12/19/how-twitter-stores-250-million-tweets-a-day-using-mysql.html" target="_blank" rel="noopener noreferrer">使用 MySQL 存储每天2.5亿条推文</a><br/><a href="http://highscalability.com/blog/2013/7/8/the-architecture-twitter-uses-to-deal-with-150m-active-users.html" target="_blank" rel="noopener noreferrer">1.5亿活跃用户，30万QPS，22MB/s数据流</a><br/><a href="https://www.infoq.com/presentations/Twitter-Timeline-Scalability" target="_blank" rel="noopener noreferrer">大规模时间线</a><br/><a href="https://www.youtube.com/watch?v=5cKTP36HVgI" target="_blank" rel="noopener noreferrer">Twitter 的大数据与小数据</a><br/><a href="https://www.youtube.com/watch?v=z8LU0Cj6BOU" target="_blank" rel="noopener noreferrer">Twitter 运维：超越1亿用户的扩展</a><br/><a href="http://highscalability.com/blog/2016/4/20/how-twitter-handles-3000-images-per-second.html" target="_blank" rel="noopener noreferrer">Twitter 如何处理每秒3000张图片</a> |
+| Uber | <a href="http://highscalability.com/blog/2015/9/14/how-uber-scales-their-real-time-market-platform.html" target="_blank" rel="noopener noreferrer">Uber 如何扩展其实时市场平台</a><br/><a href="http://highscalability.com/blog/2016/10/12/lessons-learned-from-scaling-uber-to-2000-engineers-1000-ser.html" target="_blank" rel="noopener noreferrer">扩展 Uber 到2000名工程师、1000个服务和8000个 Git 仓库的经验教训</a> |
+| WhatsApp | <a href="http://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html" target="_blank" rel="noopener noreferrer">Facebook 以190亿美元收购的 WhatsApp 架构</a> |
+| YouTube | <a href="https://www.youtube.com/watch?v=w5WVu624fY8" target="_blank" rel="noopener noreferrer">YouTube 可扩展性</a><br/><a href="http://highscalability.com/youtube-architecture" target="_blank" rel="noopener noreferrer">YouTube 架构</a> |</p><h3>公司工程博客</h3></p><blockquote>你面试的公司的架构。</blockquote>
+>
+<blockquote>你遇到的问题可能来自同一领域。</blockquote></p><ul><li><a href="http://nerds.airbnb.com/" target="_blank" rel="noopener noreferrer">Airbnb 工程</a></li>
+<li><a href="https://developer.atlassian.com/blog/" target="_blank" rel="noopener noreferrer">Atlassian 开发者</a></li>
+<li><a href="https://aws.amazon.com/blogs/aws/" target="_blank" rel="noopener noreferrer">AWS 博客</a></li>
+<li><a href="http://word.bitly.com/" target="_blank" rel="noopener noreferrer">Bitly 工程博客</a></li>
+<li><a href="https://blog.box.com/blog/category/engineering" target="_blank" rel="noopener noreferrer">Box 博客</a></li>
+<li><a href="http://blog.cloudera.com/" target="_blank" rel="noopener noreferrer">Cloudera 开发者博客</a></li>
+<li><a href="https://tech.dropbox.com/" target="_blank" rel="noopener noreferrer">Dropbox 技术博客</a></li>
+<li><a href="https://www.quora.com/q/quoraengineering" target="_blank" rel="noopener noreferrer">Quora 工程</a></li>
+<li><a href="http://www.ebaytechblog.com/" target="_blank" rel="noopener noreferrer">Ebay 技术博客</a></li>
+<li><a href="https://blog.evernote.com/tech/" target="_blank" rel="noopener noreferrer">Evernote 技术博客</a></li>
+<li><a href="http://codeascraft.com/" target="_blank" rel="noopener noreferrer">Etsy 代码如工艺</a></li>
+<li><a href="https://www.facebook.com/Engineering" target="_blank" rel="noopener noreferrer">Facebook 工程</a></li>
+<li><a href="http://code.flickr.net/" target="_blank" rel="noopener noreferrer">Flickr 代码</a></li>
+<li><a href="http://engineering.foursquare.com/" target="_blank" rel="noopener noreferrer">Foursquare 工程博客</a></li>
+<li><a href="https://github.blog/category/engineering" target="_blank" rel="noopener noreferrer">GitHub 工程博客</a></li>
+<li><a href="http://googleresearch.blogspot.com/" target="_blank" rel="noopener noreferrer">Google 研究博客</a></li>
+<li><a href="https://engineering.groupon.com/" target="_blank" rel="noopener noreferrer">Groupon 工程博客</a></li>
+<li><a href="https://engineering.heroku.com/" target="_blank" rel="noopener noreferrer">Heroku 工程博客</a></li>
+<li><a href="http://product.hubspot.com/blog/topic/engineering" target="_blank" rel="noopener noreferrer">Hubspot 工程博客</a></li>
+<li><a href="http://highscalability.com/" target="_blank" rel="noopener noreferrer">High Scalability</a></li>
+<li><a href="http://instagram-engineering.tumblr.com/" target="_blank" rel="noopener noreferrer">Instagram 工程</a></li>
+<li><a href="https://software.intel.com/en-us/blogs/" target="_blank" rel="noopener noreferrer">Intel 软件博客</a></li>
+<li><a href="https://blogs.janestreet.com/category/ocaml/" target="_blank" rel="noopener noreferrer">Jane Street 技术博客</a></li>
+<li><a href="http://engineering.linkedin.com/blog" target="_blank" rel="noopener noreferrer">LinkedIn 工程</a></li>
+<li><a href="https://engineering.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft 工程</a></li>
+<li><a href="https://blogs.msdn.microsoft.com/pythonengineering/" target="_blank" rel="noopener noreferrer">Microsoft Python 工程</a></li>
+<li><a href="http://techblog.netflix.com/" target="_blank" rel="noopener noreferrer">Netflix 技术博客</a></li>
+<li><a href="https://medium.com/paypal-engineering" target="_blank" rel="noopener noreferrer">Paypal 开发者博客</a></li>
+<li><a href="https://medium.com/@Pinterest_Engineering" target="_blank" rel="noopener noreferrer">Pinterest 工程博客</a></li>
+<li><a href="http://www.redditblog.com/" target="_blank" rel="noopener noreferrer">Reddit 博客</a></li>
+<li><a href="https://developer.salesforce.com/blogs/engineering/" target="_blank" rel="noopener noreferrer">Salesforce 工程博客</a></li>
+<li><a href="https://slack.engineering/" target="_blank" rel="noopener noreferrer">Slack 工程博客</a></li>
+<li><a href="https://labs.spotify.com/" target="_blank" rel="noopener noreferrer">Spotify 实验室</a></li>
+<li><a href="https://stripe.com/blog/engineering" target="_blank" rel="noopener noreferrer">Stripe 工程博客</a></li>
+<li><a href="http://www.twilio.com/engineering" target="_blank" rel="noopener noreferrer">Twilio 工程博客</a></li>
+<li><a href="https://blog.twitter.com/engineering/" target="_blank" rel="noopener noreferrer">Twitter 工程</a></li>
+<li><a href="http://eng.uber.com/" target="_blank" rel="noopener noreferrer">Uber 工程博客</a></li>
+<li><a href="http://yahooeng.tumblr.com/" target="_blank" rel="noopener noreferrer">Yahoo 工程博客</a></li>
+<li><a href="http://engineeringblog.yelp.com/" target="_blank" rel="noopener noreferrer">Yelp 工程博客</a></li>
+<li><a href="https://www.zynga.com/blogs/engineering" target="_blank" rel="noopener noreferrer">Zynga 工程博客</a></li></p><p></ul>#### 来源及进一步阅读</p><p>想添加博客？为了避免重复劳动，考虑将贵公司的博客添加到以下仓库：</p><ul><li><a href="https://github.com/kilimchoi/engineering-blogs" target="_blank" rel="noopener noreferrer">kilimchoi/engineering-blogs</a></li></p><p></ul><h2>开发中</h2></p><p>有兴趣添加新章节或帮助完成正在进行中的章节？<a href="#contributing" target="_blank" rel="noopener noreferrer">贡献</a>！</p><ul><li>使用 MapReduce 的分布式计算</li>
+<li>一致性哈希</li>
+<li>散射聚合</li>
+<li><a href="#contributing" target="_blank" rel="noopener noreferrer">贡献</a></li></p><p></ul><h2>致谢</h2></p><p>致谢和来源贯穿本仓库。</p><p>特别感谢：</p><ul><li><a href="http://www.hiredintech.com/system-design/the-system-design-process/" target="_blank" rel="noopener noreferrer">Hired in tech</a></li>
+<li><a href="https://www.amazon.com/dp/0984782850/" target="_blank" rel="noopener noreferrer">破解编码面试</a></li>
+<li><a href="http://highscalability.com/" target="_blank" rel="noopener noreferrer">高可扩展性</a></li>
+<li><a href="https://github.com/checkcheckzz/system-design-interview" target="_blank" rel="noopener noreferrer">checkcheckzz/system-design-interview</a></li>
+<li><a href="https://github.com/shashank88/system_design" target="_blank" rel="noopener noreferrer">shashank88/system_design</a></li>
+<li><a href="https://github.com/mmcgrana/services-engineering" target="_blank" rel="noopener noreferrer">mmcgrana/services-engineering</a></li>
+<li><a href="https://gist.github.com/vasanthk/485d1c25737e8e72759f" target="_blank" rel="noopener noreferrer">系统设计备忘单</a></li>
+<li><a href="http://dancres.github.io/Pages/" target="_blank" rel="noopener noreferrer">分布式系统阅读列表</a></li>
+<li><a href="http://www.puncsky.com/blog/2016-02-13-crack-the-system-design-interview" target="_blank" rel="noopener noreferrer">破解系统设计面试</a></li></p><p></ul><h2>联系方式</h2></p><p>欢迎随时联系我讨论任何问题、疑问或意见。</p><p>我的联系方式可以在我的<a href="https://github.com/donnemartin" target="_blank" rel="noopener noreferrer">GitHub 页面</a>找到。</p><h2>许可证</h2></p><p><em>我在此仓库中向您提供的代码和资源均遵循开源许可证。由于这是我的个人仓库，您获得的代码和资源的许可证由我本人而非我的雇主（Facebook）授权。</em></p><p>    版权 2017 Donne Martin</p><p>    知识共享 署名 4.0 国际许可协议 (CC BY 4.0)</p><p>    http://creativecommons.org/licenses/by/4.0/</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-09
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-09 
+    </div>
+    
+</body>
+</html>
