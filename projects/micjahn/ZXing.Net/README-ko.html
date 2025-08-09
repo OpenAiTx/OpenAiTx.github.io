@@ -1,0 +1,393 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZXing.Net - 원본 자바 기반 바코드 리더 및 생성기 라이브러리 zxing의 .Net 포트 버전</title>
+    <meta name="description" content="원본 자바 기반 바코드 리더 및 생성기 라이브러리 zxing의 .Net 포트 버전">
+    <meta name="keywords" content="ZXing.Net, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ZXing.Net",
+  "description": "원본 자바 기반 바코드 리더 및 생성기 라이브러리 zxing의 .Net 포트 버전",
+  "author": {
+    "@type": "Person",
+    "name": "micjahn"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 2921
+  },
+  "url": "https://OpenAiTx.github.io/projects/micjahn/ZXing.Net/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/micjahn/ZXing.Net/master/README.md",
+  "datePublished": "2025-08-09",
+  "dateModified": "2025-08-09"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/micjahn/ZXing.Net" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    ZXing.Net
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 2921 stars</span>
+                <span class="language">Korean</span>
+                <span>by micjahn</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>ZXing.Net </h1></p><p><a href="https://www.nuget.org/packages/ZXing.Net/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/nuget/v/ZXing.Net.svg" alt="N|NuGet"></a>
+<a href="https://ci.appveyor.com/project/MichaelJahn/zxing-net" target="_blank" rel="noopener noreferrer"><img src="https://ci.appveyor.com/api/projects/status/49uvsxpw3ak9jtmm?svg=true" alt="Build status"></a>
+<a href="#donate" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/%F0%9F%92%99-Donate%20%2F%20Support%20Us-blue.svg" alt="Donate"></a></p><p><img src="https://raw.githubusercontent.com/micjahn/ZXing.Net/master/Icons/logo.jpg" alt="ZXing.Net.Mobile Logo"></p><h2>프로젝트 설명</h2>
+이미지 내에서 바코드(예: QR 코드, PDF 417, EAN, UPC, Aztec, 데이터 매트릭스, Codabar)를 디코딩하고 생성하는 라이브러리입니다.</p><p>이 프로젝트는 자바 기반 바코드 리더 및 생성기 라이브러리 ZXing을 포팅한 것입니다.  
+https://github.com/zxing/zxing  
+많은 최적화와 개선을 거쳐 수작업으로 포팅되었습니다.</p><p>디코더가 지원하는 바코드는 다음과 같습니다:
+UPC-A, UPC-E, EAN-8, EAN-13, Code 39, Code 93, Code 128, ITF, Codabar, MSI, RSS-14 (모든 변형), QR 코드, 데이터 매트릭스, Aztec 및 PDF-417.
+인코더가 지원하는 포맷은 다음과 같습니다:
+UPC-A, EAN-8, EAN-13, Code 39, Code 128, ITF, Codabar, Plessey, MSI, QR 코드, PDF-417, Aztec, 데이터 매트릭스</p><p>#### 다음 플랫폼용 어셈블리가 제공됩니다:</p><ul><li>.Net 2.0, 3.5, 4.x, 5.0, 6.0, 7.0</li>
+<li>Windows RT 클래스 라이브러리 및 런타임 컴포넌트 (winmd)</li>
+<li>.NET Standard / .NET Core / UWP</li>
+<li>포터블 클래스 라이브러리</li>
+<li>Unity3D (.Net 2.0, System.Drawing 참조 없이 빌드됨)</li>
+<li>Xamarin.Android (이전 Mono for Android)</li>
+<li>Windows.Compatibility, CoreCompat.System.Drawing, ImageSharp, SkiaSharp, OpenCVSharp, Magick, Kinect V1 및 V2, EmguCV, Eto.Forms, ZKWeb.System.Drawing 바인딩</li>
+<li>COM 상호 운용 지원, VBA와 함께 사용 가능</li></p><p></ul>#### 다음 플랫폼용 구버전 어셈블리가 0.16 릴리스까지 제공됩니다:
+<ul><li>Windows Phone 7.0, 7.1 및 8.0</li>
+<li>Windows CE</li>
+<li>Silverlight 4 및 5</li></p><p></ul>라이브러리는 <a href="https://github.com/micjahn/ZXing.Net/releases" target="_blank" rel="noopener noreferrer">릴리스 섹션</a>과 <a href="https://www.nuget.org/packages/ZXing.Net/" target="_blank" rel="noopener noreferrer">NuGet 패키지</a>로도 제공됩니다.</p><p>#### 사전 빌드된 바이너리 없이 추가 플랫폼 지원
+라이브러리는 Xamarin.iOS (이전 MonoTouch)용으로 빌드할 수 있습니다. 프로젝트 파일과 솔루션은 소스 코드 저장소에 있습니다.
+.Net Micro Framework용 특별 버전은 소스 코드 저장소의 별도 브랜치에서 확인할 수 있습니다.</p><p>#### 다음 데모 클라이언트들이 제공됩니다:</p><ul><li>명령줄용 디코더</li>
+<li>명령줄용 인코더</li>
+<li>Windows Forms 데모 (정적 이미지와 카메라에서의 디코딩 및 인코딩 시연)</li>
+<li>Windows 서비스 데모 (정적 이미지 디코딩 시연)</li>
+<li>Windows Presentation Framework 데모 (정적 이미지 디코딩 시연)</li>
+<li>Windows RT 데모 (정적 이미지 디코딩 시연)</li>
+<li>HTML5/JS를 사용하는 Windows 스토어 앱 (정적 이미지 디코딩 시연)</li>
+<li>Unity3D 및 Vuforia 데모 (바코드 인코딩과 <a href="http://unity3d.com/" target="_blank" rel="noopener noreferrer">Unity3D</a> 카메라 이미지 디코딩 시연)</li>
+<li>EmguCV 데모 (<a href="http://www.emgu.com/" target="_blank" rel="noopener noreferrer">EmguCV 프레임워크</a>를 사용한 카메라 이미지 디코딩 시연)</li>
+<li>OpenCV 데모 (<a href="https://github.com/shimat/opencvsharp/" target="_blank" rel="noopener noreferrer">OpenCVSharp 프레임워크</a>를 사용한 카메라 이미지 디코딩 시연)</li>
+<li>AForge 데모 (<a href="http://www.aforgenet.com/" target="_blank" rel="noopener noreferrer">AForge 프레임워크</a>를 사용한 카메라 이미지 디코딩 시연)</li></p><p></ul><h2>감사의 말씀</h2>
+훌륭한 작업을 해주신 <a href="https://github.com/zxing/zxing" target="_blank" rel="noopener noreferrer">zxing 프로젝트</a> 팀에 깊은 감사를 드립니다. ZXing.Net은 여러분의 작업 없이는 불가능했을 것입니다!
+<h2>사용 예제</h2>
+소스 코드 저장소에는 Windows Forms, Windows Phone 및 기타 프로젝트 유형용 작은 예제들이 포함되어 있습니다.
+구식 예제들은 별도 브랜치에서 다음 플랫폼용으로 제공됩니다:
+0.16:
+<ul><li>Silverlight 4 및 5,</li>
+<li>Windows CE 데모 (정적 이미지 디코딩 시연)</li>
+<li>Windows Phone 데모 (정적 이미지 및 카메라 디코딩 시연)</li></p><p></ul>#### 비트맵 내 바코드를 디코딩하는 작은 예제 (.Net 2.0/3.5/4.x)
+다음 예제는 버전 4.8.1까지의 클래식 .Net 프레임워크에서 작동합니다:</p><pre><code class="language-csharp">// create a barcode reader instance
+IBarcodeReader reader = new BarcodeReader();
+// load a bitmap
+var barcodeBitmap = (Bitmap)Image.FromFile("C:\\sample-barcode-image.png");
+// detect and decode the barcode inside the bitmap
+var result = reader.Decode(barcodeBitmap);
+// do something with the result
+if (result != null)
+{
+   txtDecoderType.Text = result.BarcodeFormat.ToString();
+   txtDecoderContent.Text = result.Text;
+}</code></pre>
+#### .Net Standard 및 .Net 5.0 이상 대상 플랫폼에 대한 중요 공지
+위의 샘플 코드를 .Net Standard 또는 .Net 5.0 이상을 대상으로 하는 프로젝트에서 시도하려면 다음 중 하나를 추가해야 합니다
+특정 이미지 라이브러리를 위한 추가 NuGet 패키지: https://www.nuget.org/packages?q=ZXing.Bindings
+이러한 플랫폼용 ZXing.Net의 주요 패키지는 이미지 형식에 대한 특정 어셈블리에 의존하지 않는 핵심 클래스만 포함합니다.</p><pre><code class="language-csharp">// example shows a simple decoding snippet as a .Net 8.0 console appliation which uses the ZXing.Windows.Compatibility package
+using System.Drawing;
+using ZXing.Windows.Compatibility;</p><p>// create a barcode reader instance
+var reader = new BarcodeReader();
+// load a bitmap
+var barcodeBitmap = (Bitmap)Image.FromFile("C:\\sample-barcode-image.png");
+// detect and decode the barcode inside the bitmap
+var result = reader.Decode(barcodeBitmap);
+// do something with the result
+if (result != null)
+{
+    Console.WriteLine(result.BarcodeFormat.ToString());
+    Console.WriteLine(result.Text);
+}
+else
+{
+    Console.WriteLine("No barcode found");
+}</code></pre>
+<h2>도움 요청</h2>
+모든 도움을 환영합니다!
+<h2>피드백</h2>
+라이브러리를 사용하고 계신가요?
+라이브러리 사용에 대한 간단한 메모를 남겨주시면 감사하겠습니다.</p><p>버그를 발견하셨나요?
+새로운 이슈를 여기에서 생성하거나 확실하지 않은 경우 토론을 시작해 주세요.</p><p>라이브러리를 사용 중인데 만족하지 못하나요?
+이메일을 보내주시거나 문제에 대해 토론을 시작해 주세요. 도와드리겠습니다.</p><p>그리고 저를 <a href="http://twitter.com/micjahn" target="_blank" rel="noopener noreferrer">트위터</a>에서 찾으실 수 있습니다.
+<a href="http://twitter.com/micjahn" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/twitter/follow/espadrine.svg?style=social&label=Follow" alt="N|http://twitter.com/micjahn"></a>
+<h2>후원하기</h2>
+프로젝트가 유용하다고 생각되면 향후 개발 지원을 위해 후원해 주세요.</p><h2>기부</h2></p><p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BYHN42UHPA86E" target="_blank" rel="noopener noreferrer"><img src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG_global.gif" alt="N|Donate"></a></p><p>기부 외에도 패치, 버그 리포트, 피드백 및 기타 유용한 도움은 언제나 환영합니다!</p><h2>후원자</h2></p><p>월간 후원으로 저희 활동을 계속할 수 있도록 도와주세요.  
+후원자가 되어 Github README에 귀하의 로고와 사이트 링크를 올릴 수 있습니다.  
+<ul><li><a href="https://github.com/sponsors/micjahn" target="_blank" rel="noopener noreferrer">[Github 후원자가 되기</a>]</li>
+<li><a href="https://opencollective.com/zxingnet" target="_blank" rel="noopener noreferrer">[Opencollective 후원자/서포터 되기</a>]</li></p><p></ul><h2>돈 없이 하는 기부</h2>
+저의 사회 프로젝트 중 하나를 지원해 주시면 정말, 정말 좋겠습니다. 금전적 지불 없이도 지원할 수 있습니다.  
+지원하는 온라인 상점(아마존, 이베이 등)에서 구매하기 전에 아래 URL에 접속하기만 하면 됩니다:  
+http://www.bildungsspender.de/kitadorfhain  
+선호하는 온라인 상점을 선택하고 평소처럼 쇼핑하세요. 온라인 상점이 귀하의 구매에 대해 유치원에 수수료를 지불합니다. 귀하에게는 추가 비용이 없습니다. 85명의 감사한 아이들이 있습니다.  
+(그리고 ZXing.Net의 한 감사한 개발자도 있지요 ;) )</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-09
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/micjahn/ZXing.Net/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-09 
+    </div>
+    
+</body>
+</html>

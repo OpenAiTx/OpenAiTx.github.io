@@ -1,0 +1,383 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PdfPig - Leer y extraer texto y otros contenidos de PDFs en C# (port de PDFBox)</title>
+    <meta name="description" content="Leer y extraer texto y otros contenidos de PDFs en C# (port de PDFBox)">
+    <meta name="keywords" content="PdfPig, Spanish, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PdfPig",
+  "description": "Leer y extraer texto y otros contenidos de PDFs en C# (port de PDFBox)",
+  "author": {
+    "@type": "Person",
+    "name": "UglyToad"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 2136
+  },
+  "url": "https://OpenAiTx.github.io/projects/UglyToad/PdfPig/README-es.html",
+  "sameAs": "https://raw.githubusercontent.com/UglyToad/PdfPig/master/README.md",
+  "datePublished": "2025-08-09",
+  "dateModified": "2025-08-09"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/UglyToad/PdfPig" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    PdfPig
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 2136 stars</span>
+                <span class="language">Spanish</span>
+                <span>by UglyToad</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><image src="https://raw.githubusercontent.com/UglyToad/Pdf/master/documentation/pdfpig.png" width="128px" height="128px"/></p><h1>PdfPig</h1></p><p><a href="https://www.nuget.org/packages/PdfPig/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/nuget/dt/PdfPig" alt="nuget"></a>
+<a href="https://github.com/UglyToad/PdfPig/actions/workflows/build_and_test.yml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/UglyToad/PdfPig/actions/workflows/build_and_test.yml/badge.svg" alt="Build and test"></a>
+[![Build and test [MacOS]](https://github.com/UglyToad/PdfPig/actions/workflows/build_and_test_macos.yml/badge.svg)](https://github.com/UglyToad/PdfPig/actions/workflows/build_and_test_macos.yml)</p><p>PdfPig soporta la lectura de texto y contenido de archivos PDF. También soporta la creación básica de archivos PDF.</p><h2>Instalación</h2></p><p>El paquete está disponible a través de la pestaña de lanzamientos o desde Nuget:</p><p>https://www.nuget.org/packages/PdfPig/</p><p>O desde la consola del administrador de paquetes:</p><p>    > Install-Package PdfPig</p><p>Mientras la versión esté por debajo de 1.0.0, las versiones menores cambiarán la API pública sin advertencia (no se seguirá SemVer hasta alcanzar la versión 1.0.0).</p><h2>Comenzando</h2></p><p>Consulta la <a href="https://github.com/UglyToad/PdfPig/wiki" target="_blank" rel="noopener noreferrer">wiki</a> para más ejemplos</p><h3>Leer texto de un PDF</h3></p><p>El uso más simple en esta etapa es abrir un documento, leyendo las palabras de cada página:</p><pre><code class="language-cs">// using UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor;
+// using UglyToad.PdfPig.DocumentLayoutAnalysis.WordExtractor;
+using (PdfDocument document = PdfDocument.Open(@"C:\Documents\document.pdf"))
+{
+    foreach (Page page in document.GetPages())
+    {
+        string text = ContentOrderTextExtractor.GetText(page);
+        IEnumerable<Word> words = page.GetWords(NearestNeighbourWordExtractor.Instance);
+    }
+}</code></pre></p><p>No <strong>deberías</strong> usar <code>page.Text</code> directamente, a menos que sepas lo que estás haciendo. La propiedad <code>Text</code> preserva el orden interno del contenido que rara vez es el texto en el orden que deseas.</p><p>Estas herramientas de análisis de diseño deberían obtener el texto que deseas en la mayoría de los casos.</p><h3>Crear documento PDF</h3>
+Para crear documentos usa la clase <code>PdfDocumentBuilder</code>. Las fuentes estándar 14 proporcionan una forma rápida de comenzar:</p><pre><code class="language-cs">PdfDocumentBuilder builder = new PdfDocumentBuilder();</p><p>PdfPageBuilder page = builder.AddPage(PageSize.A4);</p><p>// Fonts must be registered with the document builder prior to use to prevent duplication.
+PdfDocumentBuilder.AddedFont font = builder.AddStandard14Font(Standard14Font.Helvetica);</p><p>page.AddText("Hello World!", 12, new PdfPoint(25, 700), font);</p><p>byte[] documentBytes = builder.Build();</p><p>File.WriteAllBytes(@"C:\git\newPdf.pdf", documentBytes);</code></pre>
+La salida es un documento PDF de 1 página con el texto "¡Hola Mundo!" en Helvetica cerca de la parte superior de la página:</p><p><img src="https://raw.githubusercontent.com/UglyToad/Pdf/master/documentation/builder-output.png" alt="La imagen muestra un documento PDF en el visor de PDF de Google Chrome. El texto "¡Hola Mundo!" es visible"></p><p>Cada fuente debe ser registrada con el <code>PdfDocumentBuilder</code> antes de usarla para permitir que las páginas compartan los recursos de la fuente. Solo se admiten las 14 fuentes estándar y fuentes TrueType (.ttf).</p><p>La creación de documentos soporta cambios muy limitados en documentos PDF existentes. Sin embargo, no soporta ninguno de los siguientes:</p><ul><li>Edición de formularios</li>
+<li>Copiar o cambiar anotaciones, metadatos o datos de estructura del documento</li>
+<li>Añadir o eliminar texto con fuentes existentes</li></p><p></ul><h3>Extracción avanzada de documentos</h3>
+En este ejemplo se realiza una extracción de documento más avanzada. <code>PdfDocumentBuilder</code> se usa para crear una copia del pdf con información de depuración (cajas delimitadoras y orden de lectura) añadida.</p><pre><code class="language-cs">//using UglyToad.PdfPig;
+//using UglyToad.PdfPig.DocumentLayoutAnalysis.PageSegmenter;
+//using UglyToad.PdfPig.DocumentLayoutAnalysis.ReadingOrderDetector;
+//using UglyToad.PdfPig.DocumentLayoutAnalysis.WordExtractor;
+//using UglyToad.PdfPig.Fonts.Standard14Fonts;
+//using UglyToad.PdfPig.Writer;</p><p>
+var sourcePdfPath = "";
+var outputPath = "";
+var pageNumber = 1;
+using (var document = PdfDocument.Open(sourcePdfPath))
+{
+    var builder = new PdfDocumentBuilder { };
+    PdfDocumentBuilder.AddedFont font = builder.AddStandard14Font(Standard14Font.Helvetica);
+    var pageBuilder = builder.AddPage(document, pageNumber);
+    pageBuilder.SetStrokeColor(0, 255, 0);
+    var page = document.GetPage(pageNumber);</p><p>    var letters = page.Letters; // no preprocessing</p><p>    // 1. Extract words
+    var wordExtractor = NearestNeighbourWordExtractor.Instance;</p><p>    var words = wordExtractor.GetWords(letters);</p><p>    // 2. Segment page
+    var pageSegmenter = DocstrumBoundingBoxes.Instance;</p><p>    var textBlocks = pageSegmenter.GetBlocks(words);</p><p>    // 3. Postprocessing
+    var readingOrder = UnsupervisedReadingOrderDetector.Instance;
+    var orderedTextBlocks = readingOrder.Get(textBlocks);</p><p>    // 4. Add debug info - Bounding boxes and reading order
+    foreach (var block in orderedTextBlocks)
+    {
+        var bbox = block.BoundingBox;
+        pageBuilder.DrawRectangle(bbox.BottomLeft, bbox.Width, bbox.Height);
+        pageBuilder.AddText(block.ReadingOrder.ToString(), 8, bbox.TopLeft, font);
+    }</p><p>    // 5. Write result to a file
+    byte[] fileBytes = builder.Build();
+    File.WriteAllBytes(outputPath, fileBytes); // save to file
+}</code></pre></p><p><img src="/documentation/boundingBoxes_ReadingOrder.png" alt="La imagen muestra un documento PDF creado por el bloque de código anterior con las cajas delimitadoras y el orden de lectura de las palabras mostrados"></p><p>Consulte <a href="https://github.com/UglyToad/PdfPig/wiki/Document-Layout-Analysis" target="_blank" rel="noopener noreferrer">Análisis de Diseño de Documento</a> para más información sobre análisis avanzado de documentos.</p><p>Consulte <a href="https://github.com/UglyToad/PdfPig/wiki/Document-Layout-Analysis#export" target="_blank" rel="noopener noreferrer">Exportar</a> para herramientas más avanzadas para analizar diseños de documentos.</p><h2>Uso</h2></p><h3>PdfDocument</h3></p><p>La clase <code>PdfDocument</code> proporciona acceso al contenido de un documento cargado ya sea desde un archivo o pasado como bytes. Para abrir desde un archivo use el método estático <code>PdfDocument.Open</code>:</p><pre><code class="language-cs">using UglyToad.PdfPig;
+using UglyToad.PdfPig.Content;</p><p>using (PdfDocument document = PdfDocument.Open(@"C:\my-file.pdf"))
+{
+	int pageCount = document.NumberOfPages;</p><p>	// Page number starts from 1, not 0.
+	Page page = document.GetPage(1);</p><p>	decimal widthInPoints = page.Width;
+	decimal heightInPoints = page.Height;</p><p>	string text = page.Text;
+}</code></pre>
+<code>PdfDocument</code> solo debe usarse en una declaración <code>using</code> ya que implementa <code>IDisposable</code> (a menos que el consumidor lo libere en otro lugar).</p><p>Los documentos encriptados pueden abrirse con PdfPig. Para proporcionar una contraseña de propietario o de usuario, proporcione las <code>ParsingOptions</code> opcionales al llamar a <code>Open</code> con la propiedad <code>Password</code> definida. Por ejemplo:</p><p>    using (PdfDocument document = PdfDocument.Open(@"C:\mi-archivo.pdf",  new ParsingOptions { Password = "contraseña aquí" }))</p><p>También puede proporcionar una lista de contraseñas para intentar:</p><pre><code class="language-cs">using (PdfDocument document = PdfDocument.Open(@"C:\file.pdf", new ParsingOptions
+{
+	Passwords = new List<string> { "One", "Two" }
+}))</code></pre></p><p>El documento contiene la versión de la especificación PDF con la que cumple, accesible mediante <code>document.Version</code>:</p><p>    decimal version = document.Version;</p><h3>Creación de Documento</h3></p><p>El <code>PdfDocumentBuilder</code> crea un nuevo documento sin páginas ni contenido.</p><p>Para contenido de texto, debe registrarse una fuente con el constructor. Esta biblioteca soporta las fuentes Standard 14 proporcionadas por Adobe por defecto y fuentes en formato TrueType.</p><p>Para agregar una fuente Standard 14 use:</p><p>    public AddedFont AddStandard14Font(Standard14Font type)</p><p>O para una fuente TrueType use:</p><p>    AddedFont AddTrueTypeFont(IReadOnlyList<byte> fontFileBytes)</p><p>Pasando los bytes de un archivo TrueType (.ttf). Puede verificar la idoneidad de un archivo TrueType para incrustar en un documento PDF usando:</p><p>    bool CanUseTrueTypeFont(IReadOnlyList<byte> fontFileBytes, out IReadOnlyList<string> reasons)</p><p>Que proporciona una lista de razones por las que la fuente no puede usarse si la comprobación falla. Debe verificar la licencia de una fuente TrueType antes de usarla, ya que el archivo comprimido de la fuente se incrusta y distribuye con el documento resultante.</p><p>La clase <code>AddedFont</code> representa una clave para la fuente almacenada en el constructor del documento. Esto debe proporcionarse al añadir contenido de texto a las páginas. Para agregar una página a un documento use:</p><p>    PdfPageBuilder AddPage(PageSize size, bool isPortrait = true)</p><p>Esto crea un nuevo <code>PdfPageBuilder</code> con el tamaño especificado. La primera página agregada es la número 1, luego la 2, luego la 3, etc. El constructor de páginas soporta añadir texto, dibujar líneas y rectángulos y medir el tamaño del texto antes de dibujarlo.</p><p>Para dibujar líneas y rectángulos use los métodos:</p><pre><code class="language-cs">void DrawLine(PdfPoint from, PdfPoint to, decimal lineWidth = 1)
+void DrawRectangle(PdfPoint position, decimal width, decimal height, decimal lineWidth = 1)</code></pre></p><p>El ancho de línea se puede variar y por defecto es 1. Los rectángulos no están rellenos y el color de relleno no se puede cambiar actualmente.</p><p>Para escribir texto en la página debe tener una referencia a una <code>AddedFont</code> de los métodos en <code>PdfDocumentBuilder</code> como se describió anteriormente. Luego puede dibujar el texto en la página usando:</p><p>    IReadOnlyList<Letter> AddText(string text, decimal fontSize, PdfPoint position, PdfDocumentBuilder.AddedFont font)</p><p>Donde <code>position</code> es la línea base del texto a dibujar. Actualmente <strong>solo se soporta texto ASCII</strong>. También puede medir el tamaño resultante del texto antes de dibujarlo usando el método:</p><p>    IReadOnlyList<Letter> MeasureText(string text, decimal fontSize, PdfPoint position, PdfDocumentBuilder.AddedFont font)</p><p>Que no cambia el estado de la página, a diferencia de <code>AddText</code>.</p><p>Cambiar el color RGB del texto, líneas y rectángulos está soportado usando:</p><pre><code class="language-cs">void SetStrokeColor(byte r, byte g, byte b)
+void SetTextAndFillColor(byte r, byte g, byte b)</code></pre></p><p>Que toman valores RGB entre 0 y 255. El color permanecerá activo para todas las operaciones llamadas después de estos métodos hasta que se llame a reset usando:</p><p>    void ResetColor()</p><p>Que restablece el color para trazo, relleno y dibujo de texto a negro.</p><h3>Información del Documento</h3></p><p>El <code>PdfDocument</code> proporciona acceso a los metadatos del documento como <code>DocumentInformation</code> definidos en el archivo PDF. Estos suelen no estar proporcionados, por lo que la mayoría de estas entradas serán <code>null</code>:</p><pre><code class="language-">PdfDocument document = PdfDocument.Open(fileName);</p><p>// The name of the program used to convert this document to PDF.
+string producer = document.Information.Producer;</p><p>// The title given to the document
+string title = document.Information.Title;
+// etc...</code></pre></p><h3>Estructura del Documento</h3></p><p>El <code>PdfDocument</code> tiene un miembro Structure:</p><p>    UglyToad.PdfPig.Structure structure = document.Structure;</p><p>Esto proporciona acceso al contenido tokenizado del documento PDF:</p><pre><code class="language-cs">Catalog catalog = structure.Catalog;
+DictionaryToken pagesDictionary = catalog.PagesDictionary;</code></pre></p><p>El diccionario de páginas es la raíz del árbol de páginas dentro de un documento PDF. La estructura también expone un método <code>GetObject(IndirectReference reference)</code> que permite el acceso aleatorio a cualquier objeto en el PDF siempre que se conozca su número de identificador. Este es un identificador de la forma <code>69 0 R</code> donde 69 es el número de objeto y 0 es la generación.</p><h3>Página</h3></p><p>La <code>Page</code> contiene el ancho y alto de la página en puntos así como el mapeo al enumerado <code>PageSize</code>:</p><pre><code class="language-cs">PageSize size = Page.Size;</p><p>bool isA4 = size == PageSize.A4;</code></pre>
+<code>Page</code> proporciona acceso al texto de la página, pero debe usar <code>ContentOrderTextExtractor</code> o alternativas si está indexando el texto, por ejemplo, para RAG/LLMs:</p><p>    string text = page.Text;</p><p>Hay un método que proporciona acceso a las palabras. El método predeterminado utiliza heurísticas básicas. Para casos avanzados, también puede implementar su propio <code>IWordExtractor</code> o usar el <code>NearestNeighbourWordExtractor</code>:</p><p>    IEnumerable<Word> words = page.GetWords();</p><p>También puede acceder a las operaciones en bruto utilizadas en el flujo de contenido de la página para dibujar gráficos y contenido en la página:</p><p>    IReadOnlyList<IGraphicsStateOperation> operations = page.Operations;</p><p>Consulte la especificación PDF para el significado de los operadores individuales.</p><p>También hay una API para recuperar los objetos de imagen PDF por página:</p><p>    IEnumerable<XObjectImage> images = page.GetImages();</p><p>Por favor, lea la <a href="https://github.com/UglyToad/PdfPig/wiki/Images" target="_blank" rel="noopener noreferrer">wiki sobre Imágenes</a>.</p><h3>Letter</h3></p><p>Debido a la forma en que un PDF está estructurado internamente, el texto de la página puede no ser una representación legible del texto tal como aparece en el documento. Dado que PDF es un formato de presentación, el texto puede dibujarse en cualquier orden, no necesariamente en orden de lectura. Esto significa que pueden faltar espacios o que las palabras pueden estar en posiciones inesperadas en el texto.</p><p>Para ayudar a los usuarios a resolver el orden real del texto en la página, el archivo <code>Page</code> proporciona acceso a una lista de las letras:</p><p>    IReadOnlyList<Letter> letters = page.Letters;</p><p>Estas letras contienen:</p><ul><li>El texto de la letra: <code>letter.Value</code>.</li>
+<li>La ubicación de la esquina inferior izquierda de la letra: <code>letter.Location</code>.</li>
+<li>El ancho de la letra: <code>letter.Width</code>.</li>
+<li>El tamaño de fuente en unidades de texto relativas sin escalar (estos tamaños son internos al PDF y no corresponden a tamaños en píxeles, puntos u otras unidades): <code>letter.FontSize</code>.</li>
+<li>El nombre de la fuente utilizada para renderizar la letra, si está disponible: <code>letter.FontName</code>.</li>
+<li>Un rectángulo que es el rectángulo más pequeño que contiene completamente la región visible de la letra/glifo: <code>letter.GlyphRectangle</code>.</li>
+<li>Los puntos al inicio y al final de la línea base <code>StartBaseLine</code> y <code>EndBaseLine</code> que indican si la letra está rotada. La <code>TextDirection</code> indica si esta es una rotación comúnmente usada o una rotación personalizada.</li></p><p></ul>La posición de la letra se mide en coordenadas PDF donde el origen está en la esquina inferior izquierda de la página. Por lo tanto, un valor Y más alto significa más cerca de la parte superior de la página.</p><h3>Anotaciones</h3></p><p>La recuperación de anotaciones en cada página se realiza utilizando el método:</p><p>    page.GetAnnotations()</p><p>Esta llamada no está en caché y el documento no debe haberse cerrado antes de su uso. Las anotaciones no pueden ser editadas.</p><h3>Marcadores</h3></p><p>Los marcadores (esquemas) de un documento pueden obtenerse a nivel del documento:</p><p>    bool hasBookmarks = document.TryGetBookmarks(out Bookmarks bookmarks);</p><p>Esto devolverá <code>false</code> si el documento no define ningún marcador.</p><h3>Formularios</h3></p><p>Los campos de formulario para formularios interactivos (AcroForms) pueden obtenerse usando:</p><p>    bool hasForm = document.TryGetForm(out AcroForm form);</p><p>Esto devolverá <code>false</code> si el documento no contiene un formulario.</p><p>Los campos pueden accederse usando la propiedad <code>Fields</code> de <code>AcroForm</code>. Dado que el formulario se define a nivel de documento, esto devolverá campos de todas las páginas del documento. Los campos son de los tipos definidos por el enum <code>AcroFieldType</code>, por ejemplo <code>PushButton</code>, <code>Checkbox</code>, <code>Text</code>, etc.</p><p>Tenga en cuenta que los formularios son de solo lectura y los valores no pueden cambiarse ni añadirse usando PdfPig.</p><h3>Hipervínculos</h3></p><p>Una página tiene un método para extraer hipervínculos (anotaciones del tipo enlace):</p><p>    IReadOnlyList<UglyToad.PdfPig.Content.Hyperlink> hyperlinks = page.GetHyperlinks();</p><p>Los hipervínculos no pueden añadirse ni editarse al construir documentos.</p><h3>TrueType</h3></p><p>Las clases usadas para trabajar con fuentes TrueType en el archivo PDF están disponibles para uso público. Dado un archivo de entrada:</p><pre><code class="language-cs">using UglyToad.PdfPig.Fonts.TrueType;
+using UglyToad.PdfPig.Fonts.TrueType.Parser;</p><p>byte[] fontBytes = System.IO.File.ReadAllBytes(@"C:\font.ttf");
+TrueTypeDataBytes input = new TrueTypeDataBytes(fontBytes);
+TrueTypeFont font = TrueTypeFontParser.Parse(input);</code></pre></p><p>La fuente analizada puede ser inspeccionada.</p><h3>Archivos incrustados</h3></p><p>Los archivos PDF pueden contener otros archivos completamente incrustados dentro de ellos para anotaciones de documentos. Se puede acceder a la lista de archivos incrustados y su contenido en bytes:</p><pre><code class="language-cs">if (document.Advanced.TryGetEmbeddedFiles(out IReadOnlyList<EmbeddedFile> files)
+    && files.Count > 0)
+{
+    var firstFile = files[0];
+    string name = firstFile.Name;
+    IReadOnlyList<byte> bytes = firstFile.Bytes;
+}</code></pre></p><h3>Fusión</h3></p><p>Puedes fusionar 2 o más archivos PDF existentes utilizando la clase <code>PdfMerger</code>:</p><pre><code class="language-cs">var resultFileBytes = PdfMerger.Merge(filePath1, filePath2);
+File.WriteAllBytes(@"C:\pdfs\outputfilename.pdf", resultFileBytes);</code></pre></p><h2>Wiki</h2>
+Consulta nuestro <a href="https://github.com/UglyToad/PdfPig/wiki" target="_blank" rel="noopener noreferrer">wiki</a> para más ejemplos y guías detalladas sobre la API.</p><h2>Problemas</h2></p><p>Por favor, reporta un problema si encuentras un error. Consulta nuestra <a href="https://github.com/UglyToad/PdfPig/issues/1095" target="_blank" rel="noopener noreferrer">política de problemas</a> y la <a href="https://github.com/UglyToad/PdfPig/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">guía de contribución</a> para más detalles.</p><h2>Referencia de la API</h2></p><p>Si deseas generar documentación doxygen, ejecuta <code>doxygen doxygen-docs</code> y abre <code>docs/doxygen/html/index.html</code>.</p><h2>Créditos</h2></p><p>Este proyecto comenzó como un esfuerzo para portar <a href="https://github.com/apache/pdfbox" target="_blank" rel="noopener noreferrer">PDFBox</a> a C#. Este proyecto no sería posible sin el trabajo realizado por el equipo de <a href="https://pdfbox.apache.org/" target="_blank" rel="noopener noreferrer">PDFBox</a> y la Fundación Apache.</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-09
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/UglyToad/PdfPig/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-09 
+    </div>
+    
+</body>
+</html>

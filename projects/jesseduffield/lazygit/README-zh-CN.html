@@ -1,0 +1,437 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lazygit - 用于 git 命令的简易终端界面</title>
+    <meta name="description" content="用于 git 命令的简易终端界面">
+    <meta name="keywords" content="lazygit, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "lazygit",
+  "description": "用于 git 命令的简易终端界面",
+  "author": {
+    "@type": "Person",
+    "name": "jesseduffield"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 63201
+  },
+  "url": "https://OpenAiTx.github.io/projects/jesseduffield/lazygit/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/jesseduffield/lazygit/master/README.md",
+  "datePublished": "2025-08-09",
+  "dateModified": "2025-08-09"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/jesseduffield/lazygit" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    lazygit
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 63201 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by jesseduffield</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><div align="center">
+<sup>Special thanks to:</sup>
+<br>
+<br>
+<a href="https://www.warp.dev/?utm_source=github&utm_medium=referral&utm_campaign=lazygit_20231023">
+  <div>
+    <img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/warp.png" width="330" alt="Warp">
+  </div>
+  <b>Warp, the intelligent terminal</b>
+  <br>
+  <b>Available for MacOS and Linux</b>
+  <br>
+  <div>
+    <sup>Visit warp.dev to learn more.</sup>
+  </div>
+</a>
+<br>
+<hr>
+<a href="https://www.subble.com">
+  <div>
+    <img src="https://subble-marketing-portal-media-storage.s3.amazonaws.com/images/subble-black-name-logo.svg" width="230" alt="Subble">
+  </div>
+  <b>I (Jesse) co-founded Subble to save your company time and money by helping you manage its software subscriptions. Check it out!</b>
+</a>
+<br></p><hr>
+</div></p><p><p align="center">
+  <img width="536" src="https://user-images.githubusercontent.com/8456633/174470852-339b5011-5800-4bb9-a628-ff230aa8cd4e.png">
+</p></p><p><div align="center"></p><p>A simple terminal UI for git commands
+<br/></p><p><a href="https://github.com/jesseduffield/lazygit/releases" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/downloads/jesseduffield/lazygit/total" alt="GitHub Releases"></a> <a href="https://goreportcard.com/report/github.com/jesseduffield/lazygit" target="_blank" rel="noopener noreferrer"><img src="https://goreportcard.com/badge/github.com/jesseduffield/lazygit" alt="Go Report Card"></a> <a href="https://app.codacy.com/gh/jesseduffield/lazygit/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade" target="_blank" rel="noopener noreferrer"><img src="https://app.codacy.com/project/badge/Grade/f46416b715d74622895657935fcada21" alt="Codacy Badge"></a> <a href="https://app.codacy.com/gh/jesseduffield/lazygit/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage" target="_blank" rel="noopener noreferrer"><img src="https://app.codacy.com/project/badge/Coverage/f46416b715d74622895657935fcada21" alt="Codacy Badge"></a> <a href="https://golangci.com" target="_blank" rel="noopener noreferrer"><img src="https://golangci.com/badges/github.com/jesseduffield/lazygit.svg" alt="GolangCI"></a> <a href="https://github.com/jesseduffield/lazygit/releases/latest" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/tag/jesseduffield/lazygit.svg" alt="GitHub tag"></a> <a href="https://github.com/Homebrew/homebrew-core/blob/master/Formula/lazygit.rb" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/homebrew/v/lazygit" alt="homebrew"></a></p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/commit_and_push-compressed.gif" alt="commit_and_push"></p><p></div></p><h2>赞助商</h2></p><p><p align="center">
+ 本项目的维护得益于所有<a href="https://github.com/jesseduffield/lazygit/graphs/contributors">贡献者</a>和<a href="https://github.com/sponsors/jesseduffield">赞助商</a>。如果您想赞助本项目并让您的头像或公司标志出现在下方，<a href="https://github.com/sponsors/jesseduffield">请点击这里</a>。💙
+</p></p><p><p align="center">
+<!-- sponsors --><a href="https://github.com/intabulas"><img src="https://github.com/intabulas.png" width="60px" alt="Mark Lussier" /></a><a href="https://github.com/peppy"><img src="https://github.com/peppy.png" width="60px" alt="Dean Herbert" /></a><a href="https://github.com/piot"><img src="https://github.com/piot.png" width="60px" alt="Peter Bjorklund" /></a><a href="https://github.com/rgwood"><img src="https://github.com/rgwood.png" width="60px" alt="Reilly Wood" /></a><a href="https://github.com/oliverguenther"><img src="https://github.com/oliverguenther.png" width="60px" alt="Oliver Günther" /></a><a href="https://github.com/pawanjay176"><img src="https://github.com/pawanjay176.png" width="60px" alt="Pawan Dhananjay" /></a><a href="https://github.com/bdach"><img src="https://github.com/bdach.png" width="60px" alt="Bartłomiej Dach" /></a><a href="https://github.com/carstengehling"><img src="https://github.com/carstengehling.png" width="60px" alt="Carsten Gehling" /></a><a href="https://github.com/ceuk"><img src="https://github.com/ceuk.png" width="60px" alt="CEUK" /></a><a href="https://github.com/Xetera"><img src="https://github.com/Xetera.png" width="60px" alt="" /></a><a href="https://github.com/HoldenLucas"><img src="https://github.com/HoldenLucas.png" width="60px" alt="Holden Lucas" /></a><a href="https://github.com/nartc"><img src="https://github.com/nartc.png" width="60px" alt="Chau Tran" /></a><a href="https://github.com/matejcik"><img src="https://github.com/matejcik.png" width="60px" alt="matejcik" /></a><a href="https://github.com/lucatume"><img src="https://github.com/lucatume.png" width="60px" alt="theAverageDev (Luca Tumedei)" /></a><a href="https://github.com/IvanZuy"><img src="https://github.com/IvanZuy.png" width="60px" alt="" /></a><a href="https://github.com/nicholascloud"><img src="https://github.com/nicholascloud.png" width="60px" alt="Nicholas Cloud" /></a><a href="https://github.com/ava1ar"><img src="https://github.com/ava1ar.png" width="60px" alt="Aliaksandr Stelmachonak" /></a><a href="https://github.com/minidfx"><img src="https://github.com/minidfx.png" width="60px" alt="Burgy Benjamin" /></a><a href="https://github.com/JoeKlemmer"><img src="https://github.com/JoeKlemmer.png" width="60px" alt="Joe Klemmer" /></a><a href="https://github.com/tobi"><img src="https://github.com/tobi.png" width="60px" alt="Tobias Lütke" /></a><a href="https://github.com/benbfortis"><img src="https://github.com/benbfortis.png" width="60px" alt="Ben Beaumont" /></a><a href="https://github.com/jakewarren"><img src="https://github.com/jakewarren.png" width="60px" alt="" /></a><a href="https://github.com/tgpholly"><img src="https://github.com/tgpholly.png" width="60px" alt="Holly" /></a><a href="https://github.com/socketbox"><img src="https://github.com/socketbox.png" width="60px" alt="Casey Boettcher" /></a><a href="https://github.com/bitprophet"><img src="https://github.com/bitprophet.png" width="60px" alt="Jeff Forcier" /></a><a href="https://github.com/tayleighr"><img src="https://github.com/tayleighr.png" width="60px" alt="" /></a><a href="https://github.com/Novakov"><img src="https://github.com/Novakov.png" width="60px" alt="Maciej T. Nowak" /></a><a href="https://github.com/nekhaevskiy"><img src="https://github.com/nekhaevskiy.png" width="60px" alt="Yury" /></a><a href="https://github.com/reivilibre"><img src="https://github.com/reivilibre.png" width="60px" alt="" /></a><a href="https://github.com/andreaskurth"><img src="https://github.com/andreaskurth.png" width="60px" alt="Andreas Kurth" /></a><a href="https://github.com/BSteffaniak"><img src="https://github.com/BSteffaniak.png" width="60px" alt="Braden Steffaniak" /></a><a href="https://github.com/jordan-gillard"><img src="https://github.com/jordan-gillard.png" width="60px" alt="Jordan Gillard" /></a><a href="https://github.com/smangels"><img src="https://github.com/smangels.png" width="60px" alt="Sebastian" /></a><a href="https://github.com/amslezak"><img src="https://github.com/amslezak.png" width="60px" alt="Andy Slezak" /></a><a href="https://github.com/mkock"><img src="https://github.com/mkock.png" width="60px" alt="Martin Kock" /></a><a href="https://github.com/jessealama"><img src="https://github.com/jessealama.png" width="60px" alt="Jesse Alama" /></a><a href="https://github.com/danielkokott"><img src="https://github.com/danielkokott.png" width="60px" alt="Daniel Kokott" /></a><a href="https://github.com/heijmans"><img src="https://github.com/heijmans.png" width="60px" alt="Jan Heijmans" /></a><a href="https://github.com/knowald"><img src="https://github.com/knowald.png" width="60px" alt="Kevin Nowald" /></a><a href="https://github.com/omarluq"><img src="https://github.com/omarluq.png" width="60px" alt="Omar Luq" /></a><a href="https://github.com/ethanjli"><img src="https://github.com/ethanjli.png" width="60px" alt="Ethan Li" /></a><a href="https://github.com/phubaba"><img src="https://github.com/phubaba.png" width="60px" alt="" /></a><a href="https://github.com/canhazcodez"><img src="https://github.com/canhazcodez.png" width="60px" alt="Maxi" /></a><a href="https://github.com/neunkasulle"><img src="https://github.com/neunkasulle.png" width="60px" alt="Jan Zenkner" /></a><a href="https://github.com/RVxLab"><img src="https://github.com/RVxLab.png" width="60px" alt="" /></a><a href="https://github.com/FrederickGeek8"><img src="https://github.com/FrederickGeek8.png" width="60px" alt="Frederick Morlock" /></a><a href="https://github.com/ezdac"><img src="https://github.com/ezdac.png" width="60px" alt="Maximilian Langenfeld" /></a><a href="https://github.com/dbuls"><img src="https://github.com/dbuls.png" width="60px" alt="Davis Buls" /></a><a href="https://github.com/lppassos"><img src="https://github.com/lppassos.png" width="60px" alt="" /></a><a href="https://github.com/neilcode"><img src="https://github.com/neilcode.png" width="60px" alt="Neil Lambert" /></a><a href="https://github.com/dhh"><img src="https://github.com/dhh.png" width="60px" alt="David Heinemeier Hansson" /></a><a href="https://github.com/ethanfischer"><img src="https://github.com/ethanfischer.png" width="60px" alt="Ethan Fischer" /></a><a href="https://github.com/poshboytl"><img src="https://github.com/poshboytl.png" width="60px" alt="Terry Tai" /></a><a href="https://github.com/roesnera"><img src="https://github.com/roesnera.png" width="60px" alt="Adam Roesner" /></a><a href="https://github.com/seven1m"><img src="https://github.com/seven1m.png" width="60px" alt="Tim Morgan" /></a><a href="https://github.com/sgoridotla1"><img src="https://github.com/sgoridotla1.png" width="60px" alt="Max Shypulniak" /></a><a href="https://github.com/ADIX7"><img src="https://github.com/ADIX7.png" width="60px" alt="Kovács Ádám" /></a><a href="https://github.com/slowdub"><img src="https://github.com/slowdub.png" width="60px" alt="" /></a><a href="https://github.com/serranomorante"><img src="https://github.com/serranomorante.png" width="60px" alt="Patricio Serrano" /></a><a href="https://github.com/kiriDevs"><img src="https://github.com/kiriDevs.png" width="60px" alt="Kiri" /></a><a href="https://github.com/Bparsons0904"><img src="https://github.com/Bparsons0904.png" width="60px" alt="Bob Parsons" /></a><a href="https://github.com/bjornevik"><img src="https://github.com/bjornevik.png" width="60px" alt="John Even Bjørnevik" /></a><a href="https://github.com/moberst"><img src="https://github.com/moberst.png" width="60px" alt="Michael Oberst" /></a><a href="https://github.com/stianh"><img src="https://github.com/stianh.png" width="60px" alt="Stian Hegglund" /></a><a href="https://github.com/adam-e-trepanier"><img src="https://github.com/adam-e-trepanier.png" width="60px" alt="Adam Trepanier" /></a><a href="https://github.com/arkalon76"><img src="https://github.com/arkalon76.png" width="60px" alt="Kenth Fagerlund" /></a><a href="https://github.com/Djuuu"><img src="https://github.com/Djuuu.png" width="60px" alt="Julien Tardot" /></a><a href="https://github.com/antikytheraton"><img src="https://github.com/antikytheraton.png" width="60px" alt="Aaron Arredondo" /></a><a href="https://github.com/ellord"><img src="https://github.com/ellord.png" width="60px" alt="Ellord Tayag" /></a><a href="https://github.com/EdgarPost"><img src="https://github.com/EdgarPost.png" width="60px" alt="Edgar Post-Buijs" /></a><a href="https://github.com/sbc64"><img src="https://github.com/sbc64.png" width="60px" alt="sbc64" /></a><a href="https://github.com/caillou"><img src="https://github.com/caillou.png" width="60px" alt="Pierre Spring" /></a><a href="https://github.com/mebezac"><img src="https://github.com/mebezac.png" width="60px" alt="Zac Clay" /></a><a href="https://github.com/Tom94"><img src="https://github.com/Tom94.png" width="60px" alt="Thomas Müller" /></a><a href="https://github.com/ccssmnn"><img src="https://github.com/ccssmnn.png" width="60px" alt="Carl Assmann" /></a><a href="https://github.com/ognevsd"><img src="https://github.com/ognevsd.png" width="60px" alt="Sergey Ognev" /></a><a href="https://github.com/moodyhunter"><img src="https://github.com/moodyhunter.png" width="60px" alt="Moody Liu" /></a><a href="https://github.com/code-hunger"><img src="https://github.com/code-hunger.png" width="60px" alt="Alex G" /></a><a href="https://github.com/elithper"><img src="https://github.com/elithper.png" width="60px" alt="Michael Howard" /></a><a href="https://github.com/LasseBloch"><img src="https://github.com/LasseBloch.png" width="60px" alt="Lasse Bloch Lauritsen" /></a><a href="https://github.com/lmarburger"><img src="https://github.com/lmarburger.png" width="60px" alt="Larry Marburger" /></a><a href="https://github.com/dbrockman"><img src="https://github.com/dbrockman.png" width="60px" alt="David Brockman" /></a><a href="https://github.com/slavshik"><img src="https://github.com/slavshik.png" width="60px" alt="Alexander Slavschik" /></a><a href="https://github.com/aidalgol"><img src="https://github.com/aidalgol.png" width="60px" alt="Aidan Gauland" /></a><a href="https://github.com/mbienkowsk"><img src="https://github.com/mbienkowsk.png" width="60px" alt="Maksym Bieńkowski" /></a><a href="https://github.com/joshuawootonn"><img src="https://github.com/joshuawootonn.png" width="60px" alt="Joshua Wootonn" /></a><a href="https://github.com/I4nJ"><img src="https://github.com/I4nJ.png" width="60px" alt="" /></a><a href="https://github.com/gurbindersingh"><img src="https://github.com/gurbindersingh.png" width="60px" alt="Gurbinder Singh" /></a><a href="https://github.com/sandviklee"><img src="https://github.com/sandviklee.png" width="60px" alt="Simon Sandvik Lee" /></a><a href="https://github.com/glagnar"><img src="https://github.com/glagnar.png" width="60px" alt="Thomas Gilbert" /></a><a href="https://github.com/skrzepto"><img src="https://github.com/skrzepto.png" width="60px" alt="Szymon Mucha" /></a><a href="https://github.com/TimShilov"><img src="https://github.com/TimShilov.png" width="60px" alt="Tim Shilov" /></a><a href="https://github.com/unnawut"><img src="https://github.com/unnawut.png" width="60px" alt="Unnawut Leepaisalsuwanna" /></a><a href="https://github.com/wortmanb"><img src="https://github.com/wortmanb.png" width="60px" alt="Bret Wortman" /></a><a href="https://github.com/andre-lameirinhas"><img src="https://github.com/andre-lameirinhas.png" width="60px" alt="André Lameirinhas" /></a><a href="https://github.com/SVappsLAB"><img src="https://github.com/SVappsLAB.png" width="60px" alt="Scott Velez" /></a><a href="https://github.com/ooojustin"><img src="https://github.com/ooojustin.png" width="60px" alt="justin" /></a><a href="https://github.com/TakodaS"><img src="https://github.com/TakodaS.png" width="60px" alt="Austen Bolitho" /></a><a href="https://github.com/mantzu132"><img src="https://github.com/mantzu132.png" width="60px" alt="Mantas" /></a><a href="https://github.com/mayfieldiv"><img src="https://github.com/mayfieldiv.png" width="60px" alt="Mayfield" /></a><!-- sponsors -->
+</p></p><h2>电梯推介</h2></p><p>吐槽时间：你以前肯定听说过，git 是 _强大_ 的，但当一切都难以操作时，这种强大有什么用？交互式变基需要你在编辑器里编辑一个该死的 TODO 文件？_你在开玩笑吗？_ 要暂存文件的一部分，你需要用命令行程序逐块操作，如果某块不能再细分但包含你不想暂存的代码，你得 _手动_ 编辑一个晦涩的补丁文件？_你到底在开玩笑吗？！_ 有时候切换分支时被要求先保存修改，结果切换并恢复后发现根本没有冲突，直接切换分支也没问题？_你一定是在逗我！_</p><p>如果你和我一样只是个凡人，厌倦了每天听别人夸 git 多么强大，而实际上它却是个麻烦制造者，那么 lazygit 可能正适合你。</p><h2>目录</h2></p><ul><li><a href="#sponsors" target="_blank" rel="noopener noreferrer">赞助商</a></li>
+<li><a href="#elevator-pitch" target="_blank" rel="noopener noreferrer">电梯推介</a></li>
+<li><a href="#table-of-contents" target="_blank" rel="noopener noreferrer">目录</a></li>
+<li><a href="#features" target="_blank" rel="noopener noreferrer">功能</a></li>
+  <li><a href="#stage-individual-lines" target="_blank" rel="noopener noreferrer">暂存单行</a></li>
+  <li><a href="#interactive-rebase" target="_blank" rel="noopener noreferrer">交互式变基</a></li>
+  <li><a href="#cherry-pick" target="_blank" rel="noopener noreferrer">摘樱桃（Cherry-pick）</a></li>
+  <li><a href="#bisect" target="_blank" rel="noopener noreferrer">二分查找（Bisect）</a></li>
+  <li><a href="#nuke-the-working-tree" target="_blank" rel="noopener noreferrer">彻底清理工作区</a></li>
+  <li><a href="#amend-an-old-commit" target="_blank" rel="noopener noreferrer">修改旧提交</a></li>
+  <li><a href="#filter" target="_blank" rel="noopener noreferrer">过滤</a></li>
+  <li><a href="#invoke-a-custom-command" target="_blank" rel="noopener noreferrer">调用自定义命令</a></li>
+  <li><a href="#worktrees" target="_blank" rel="noopener noreferrer">工作树</a></li>
+  <li><a href="#rebase-magic-custom-patches" target="_blank" rel="noopener noreferrer">变基魔法（自定义补丁）</a></li>
+  <li><a href="#rebase-from-marked-base-commit" target="_blank" rel="noopener noreferrer">从标记的基准提交变基</a></li>
+  <li><a href="#undo" target="_blank" rel="noopener noreferrer">撤销</a></li>
+  <li><a href="#commit-graph" target="_blank" rel="noopener noreferrer">提交图</a></li>
+  <li><a href="#compare-two-commits" target="_blank" rel="noopener noreferrer">比较两个提交</a></li>
+<li><a href="#tutorials" target="_blank" rel="noopener noreferrer">教程</a></li>
+<li><a href="#installation" target="_blank" rel="noopener noreferrer">安装</a></li>
+  <li><a href="#binary-releases" target="_blank" rel="noopener noreferrer">二进制发布</a></li>
+  <li><a href="#homebrew" target="_blank" rel="noopener noreferrer">Homebrew</a></li>
+  <li><a href="#macports" target="_blank" rel="noopener noreferrer">MacPorts</a></li>
+  <li><a href="#void-linux" target="_blank" rel="noopener noreferrer">Void Linux</a></li>
+  <li><a href="#scoop-windows" target="_blank" rel="noopener noreferrer">Scoop（Windows）</a></li>
+  <li><a href="#arch-linux" target="_blank" rel="noopener noreferrer">Arch Linux</a></li>
+  <li><a href="#fedora-and-rhel" target="_blank" rel="noopener noreferrer">Fedora 和 RHEL</a></li>
+  <li><a href="#solus-linux" target="_blank" rel="noopener noreferrer">Solus Linux</a></li>
+  <li><a href="#debian-and-ubuntu" target="_blank" rel="noopener noreferrer">Debian 和 Ubuntu</a></li>
+  <li><a href="#funtoo-linux" target="_blank" rel="noopener noreferrer">Funtoo Linux</a></li>
+  <li><a href="#gentoo-linux" target="_blank" rel="noopener noreferrer">Gentoo Linux</a></li>
+  <li><a href="#freebsd" target="_blank" rel="noopener noreferrer">FreeBSD</a></li>
+  <li><a href="#termux" target="_blank" rel="noopener noreferrer">Termux</a></li>
+  <li><a href="#conda" target="_blank" rel="noopener noreferrer">Conda</a></li>
+  <li><a href="#go" target="_blank" rel="noopener noreferrer">Go</a></li>
+  <li><a href="#chocolatey-windows" target="_blank" rel="noopener noreferrer">Chocolatey（Windows）</a></li>
+  <li><a href="#winget-windows-10-1709-or-later" target="_blank" rel="noopener noreferrer">Winget（Windows 10 1709及更高版本）</a></li>
+  <li><a href="#manual" target="_blank" rel="noopener noreferrer">手动</a></li>
+<li><a href="#usage" target="_blank" rel="noopener noreferrer">使用</a></li>
+  <li><a href="#keybindings" target="_blank" rel="noopener noreferrer">快捷键</a></li>
+  <li><a href="#changing-directory-on-exit" target="_blank" rel="noopener noreferrer">退出时切换目录</a></li>
+  <li><a href="#undoredo" target="_blank" rel="noopener noreferrer">撤销/重做</a></li>
+<li><a href="#configuration" target="_blank" rel="noopener noreferrer">配置</a></li>
+  <li><a href="#custom-pagers" target="_blank" rel="noopener noreferrer">自定义分页器</a></li>
+  <li><a href="#custom-commands" target="_blank" rel="noopener noreferrer">自定义命令</a></li>
+  <li><a href="#git-flow-support" target="_blank" rel="noopener noreferrer">Git 流支持</a></li>
+<li><a href="#contributing" target="_blank" rel="noopener noreferrer">贡献</a></li>
+  <li><a href="#debugging-locally" target="_blank" rel="noopener noreferrer">本地调试</a></li>
+<li><a href="#donate" target="_blank" rel="noopener noreferrer">捐赠</a></li>
+<li><a href="#faq" target="_blank" rel="noopener noreferrer">常见问题</a></li>
+  <li><a href="#what-do-the-commit-colors-represent" target="_blank" rel="noopener noreferrer">提交颜色代表什么？</a></li>
+<li><a href="#shameless-plug" target="_blank" rel="noopener noreferrer">无耻推广</a></li>
+<li><a href="#alternatives" target="_blank" rel="noopener noreferrer">替代方案</a></li></p><p></ul>Lazygit 并非我的全职工作，但却是一个相当重要的兼职项目，如果你想支持该项目，请考虑<a href="https://github.com/sponsors/jesseduffield" target="_blank" rel="noopener noreferrer">赞助我</a></p><h2>功能</h2></p><h3>分阶段暂存单独行</h3></p><p>按空格键暂存选中的行，或按 <code>v</code> 开始选择一段行。你也可以按 <code>a</code> 选择当前代码块的全部内容。</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/stage_lines-compressed.gif" alt="stage_lines"></p><h3>交互式变基</h3></p><p>按 <code>i</code> 开始交互式变基。然后可以对 TODO 提交执行合并（<code>s</code>）、修正（<code>f</code>）、丢弃（<code>d</code>）、编辑（<code>e</code>）、上移（<code>ctrl+k</code>）或下移（<code>ctrl+j</code>），之后通过按 <code>m</code> 调出变基选项菜单，选择“继续”完成变基。</p><p>你也可以在不显式开始变基的情况下，执行这些操作中的任何一次（例如，直接按 <code>s</code> 合并某个提交）。</p><p>此演示还使用 shift+down 来选择一系列提交以进行移动和修正。</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/interactive_rebase-compressed.gif" alt="interactive_rebase"></p><h3>选择性合并（Cherry-pick）</h3></p><p>在提交上按 <code>shift+c</code> 复制该提交，按 <code>shift+v</code> 粘贴（选择性合并）它。</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/cherry_pick-compressed.gif" alt="cherry_pick"></p><h3>二分查找（Bisect）</h3></p><p>在提交视图中按 <code>b</code> 标记提交为好/坏，以开始 git bisect。</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/bisect-compressed.gif" alt="bisect"></p><h3>清除工作树</h3></p><p>当你真的想清除运行 <code>git status</code> 时出现的任何内容（包括脏的子模块）<a href="https://www.youtube.com/watch?v=N4E2B_k2Bss" target="_blank" rel="noopener noreferrer">kidpix 风格</a>，按 <code>shift+d</code> 调出重置选项菜单，然后选择“清除”选项。</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/nuke_working_tree-compressed.gif" alt="Nuke working tree"></p><h3>修改旧提交</h3></p><p>在任一提交上按 <code>shift+a</code>，将使用当前暂存的更改修改该提交（后台运行交互式变基）。</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/amend_old_commit-compressed.gif" alt="amend_old_commit"></p><h3>过滤</h3></p><p>你可以用 <code>/</code> 过滤视图。这里我们过滤分支视图，然后按 <code>enter</code> 查看其提交。</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/filter-compressed.gif" alt="filter"></p><h3>调用自定义命令</h3></p><p>Lazygit 拥有非常灵活的<a href="https://raw.githubusercontent.com/jesseduffield/lazygit/master/docs/Custom_Command_Keybindings.md" target="_blank" rel="noopener noreferrer">自定义命令系统</a>。本例定义了一个自定义命令，模拟内置的分支检出操作。</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/custom_command-compressed.gif" alt="custom_command"></p><h3>工作树</h3></p><p>你可以创建工作树，以便同时处理多个分支，无需在它们之间切换时进行暂存或创建WIP提交。在分支视图中按 <code>w</code> 可从选定的分支创建工作树并切换到它。</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/worktree_create_from_branches-compressed.gif" alt="worktree_create_from_branches"></p><h3>变基魔法（自定义补丁）</h3></p><p>你可以从旧提交构建自定义补丁，然后从提交中移除该补丁，拆分出新的提交，反向应用补丁到索引，等等。</p><p>在此示例中，我们有一个多余的注释想从旧提交中移除。我们在提交上按 <code><enter></code> 查看其文件，再在文件上按 <code><enter></code> 聚焦补丁，然后按 <code><space></code> 将注释行添加到自定义补丁，最后按 <code>ctrl+p</code> 查看自定义补丁选项；选择从当前提交中移除补丁。</p><p>更多内容请参见 <a href="https://youtu.be/4XaToVut_hs" target="_blank" rel="noopener noreferrer">变基魔法 Youtube 教程</a>。</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/custom_patch-compressed.gif" alt="custom_patch"></p><h3>从标记的基准提交变基</h3></p><p>假设你在一个功能分支上，该分支本身是从 develop 分支分出的，而你决定更希望从 master 分支分出。你需要一种方法仅变基你功能分支上的提交。在此演示中，我们检查 develop 分支的最后提交，然后按 <code>shift+b</code> 将该提交标记为基准提交，再在 master 分支上按 <code>r</code> 进行变基，只带入功能分支上的提交。然后用 <code>shift+p</code> 推送更改。</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/rebase_onto-compressed.gif" alt="rebase_onto"></p><h3>撤销</h3></p><p>你可以按 <code>z</code> 撤销上一个操作，按 <code>ctrl+z</code> 重做。这里我们丢弃了几个提交，然后撤销操作。  
+撤销使用的是针对提交和分支的 reflog，因此无法撤销工作树或暂存区的更改。</p><p><a href="/docs/Undoing.md" target="_blank" rel="noopener noreferrer">更多信息</a></p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/undo-compressed.gif" alt="undo"></p><h3>提交图</h3></p><p>在放大窗口查看提交图时（使用 <code>+</code> 和 <code>_</code> 循环切换屏幕模式），会显示提交图。颜色对应提交作者，向下导航时，选中提交的父提交会被高亮显示。</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/commit_graph-compressed.gif" alt="commit_graph"></p><h3>比较两个提交</h3></p><p>如果你在提交（或分支/引用）上按 <code>shift+w</code>，会打开一个菜单，允许你标记该提交，之后你选择的任何其他提交都会与之进行差异比较。选择第二个提交后，你将在主视图看到差异，按 <code><enter></code> 可查看差异文件。你可以按 <code>shift+w</code> 再次打开差异菜单，查看反转差异方向或退出差异模式等选项。也可以按 <code><escape></code> 退出差异模式。</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/diff_commits-compressed.gif" alt="diff_commits"></p><h2>教程</h2></p><p><a href="https://youtu.be/CPLdltN7wgE" target="_blank" rel="noopener noreferrer"><img src="https://i.imgur.com/sVEktDn.png"></a></p><ul><li><a href="https://youtu.be/CPLdltN7wgE" target="_blank" rel="noopener noreferrer">15分钟掌握15个Lazygit功能</a></li>
+<li><a href="https://youtu.be/VDXvbHZYeKY" target="_blank" rel="noopener noreferrer">基础教程</a></li>
+<li><a href="https://youtu.be/4XaToVut_hs" target="_blank" rel="noopener noreferrer">变基魔法教程</a></li></p><p></ul><h2>安装</h2></p><p><a href="https://repology.org/project/lazygit/versions" target="_blank" rel="noopener noreferrer"><img src="https://repology.org/badge/vertical-allrepos/lazygit.svg?columns=3" alt="打包状态"></a></p><p>_上述大多数软件包由第三方维护，务必自行审核，确认维护者是值得信赖的人，他们会参加当地的体育赛事，并通过烧烤筹款等方式回馈社区_</p><h3>二进制发行版</h3></p><p>对于Windows、Mac OS（10.12及以上）或Linux，您可以在<a href="../../releases" target="_blank" rel="noopener noreferrer">这里</a>下载二进制发行版。</p><h3>Homebrew</h3></p><p>它也支持Linux。</p><pre><code class="language-sh">brew install lazygit</code></pre></p><h3>MacPorts</h3></p><p>从 GitHub 发布构建的最新版本。  
+Tap:</p><pre><code class="language-">sudo port install lazygit</code></pre></p><h3>Void Linux</h3></p><p>Void Linux 的软件包可在发行版仓库中获得</p><p>它们遵循上游的最新版本发布</p><pre><code class="language-sh">sudo xbps-install -S lazygit</code></pre></p><h3>Scoop（Windows）</h3></p><p>您可以使用 <a href="https://scoop.sh/" target="_blank" rel="noopener noreferrer">scoop</a> 安装 <code>lazygit</code>。它位于 <code>extras</code> 仓库中：</p><pre><code class="language-sh"># Add the extras bucket
+scoop bucket add extras</p><h1>Install lazygit</h1>
+scoop install lazygit</code></pre></p><h3>Arch Linux</h3></p><p>Arch Linux 的软件包可通过 pacman 和 AUR（Arch 用户仓库）获得。</p><p>有两个软件包。稳定版是基于最新发布版本构建的，
+开发版是基于最近提交构建的。</p><ul><li>稳定版：<code>sudo pacman -S lazygit</code></li>
+<li>开发版：<https://aur.archlinux.org/packages/lazygit-git/></li></p><p></ul>关于如何安装 AUR 内容的说明可见：
+<https://wiki.archlinux.org/index.php/Arch_User_Repository></p><h3>Fedora / Amazon Linux 2023 / CentOS Stream</h3></p><p>Fedora、Amazon Linux 2023 和 CentOS Stream 的软件包可通过
+<a href="https://copr.fedorainfracloud.org/coprs/dejan/lazygit/" target="_blank" rel="noopener noreferrer">Copr</a>（酷炫其他软件包仓库）获得。</p><pre><code class="language-sh">sudo dnf copr enable dejan/lazygit
+sudo dnf install lazygit</code></pre></p><p>这些软件包是使用位于此处的 RPM 规范文件构建的：https://codeberg.org/dejan/rpm-lazygit</p><p>您应该能够使用最新 COPR 构建中获取的 SRPM（源 RPM）文件为 Fedora 41 或更早版本以及其他 Fedora 衍生版构建 RPM。</p><h3>Solus Linux</h3></p><pre><code class="language-sh">sudo eopkg install lazygit</code></pre></p><h3>Debian 和 Ubuntu</h3></p><p>对于 <strong>Debian 13 "Trixie"，Sid</strong> 及更高版本，或 <strong>Ubuntu 25.10 "Questing Quokka"</strong> 及更高版本：</p><pre><code class="language-sh">sudo apt install lazygit</code></pre>
+对于 <strong>Debian 12 "Bookworm"、Ubuntu 25.04 "Plucky Puffin"</strong> 及更早版本：</p><pre><code class="language-sh">LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": <em>"v\K[^"]</em>')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit -D -t /usr/local/bin/</code></pre></p><p>验证 lazygit 的正确安装：</p><pre><code class="language-sh">lazygit --version</code></pre></p><h3>Funtoo Linux</h3></p><p>Funtoo Linux 在 <a href="https://github.com/funtoo/dev-kit/tree/1.4-release/dev-vcs/lazygit" target="_blank" rel="noopener noreferrer">dev-kit</a> 中有一个自动生成的 lazygit 包：</p><pre><code class="language-sh">sudo emerge dev-vcs/lazygit</code></pre></p><h3>Gentoo Linux</h3></p><p>Lazygit 还未进入主 Gentoo portage，但在 <a href="https://github.com/gentoo-mirror/guru/tree/master/dev-vcs/lazygit" target="_blank" rel="noopener noreferrer">GURU overlay</a> 中有可用的 ebuild</p><p>您可以将该 overlay 添加到系统中，然后像平常一样安装 lazygit：</p><pre><code class="language-sh">sudo eselect repository enable guru
+sudo emaint sync -r guru
+sudo emerge dev-vcs/lazygit</code></pre></p><h3>openSUSE</h3></p><p>lazygit 软件包当前在 <a href="https://build.opensuse.org/package/show/devel:languages:go/lazygit" target="_blank" rel="noopener noreferrer">devel:languages:go/lazygit</a> 中构建。</p><p>要在 openSUSE Tumbleweed 上安装 lazygit，请运行：</p><pre><code class="language-sh">sudo zypper ar https://download.opensuse.org/repositories/devel:/languages:/go/openSUSE_Factory/devel:languages:go.repo
+sudo zypper ref && sudo zypper in lazygit</code></pre></p><p>要在 openSUSE Leap 上安装 lazygit，请运行：</p><pre><code class="language-sh">source /etc/os-release
+sudo zypper ar https://download.opensuse.org/repositories/devel:/languages:/go/$VERSION_ID/devel:languages:go.repo
+sudo zypper ref && sudo zypper in lazygit</code></pre>
+<h3>NixOs</h3></p><p>在 NixOs 上，lazygit 通过 nix 打包并通过 nixpkgs 分发。  
+您可以在不安装的情况下尝试使用 lazygit，方法是：</p><pre><code class="language-sh">nix-shell -p lazygit
+<h1>or with flakes enabled</h1>
+nix run nixpkgs#lazygit</code></pre>
+或者你可以通过 <code>environment.systemPackages</code> 选项将 lazygit 添加到你的 <code>configuration.nix</code> 中。  
+更多详情可以通过 NixOs 搜索<a href="https://search.nixos.org/" target="_blank" rel="noopener noreferrer">页面</a>获取。  </p><h3>Flox  </h3></p><p>Lazygit 可以按如下方式安装到 Flox 环境中。</p><pre><code class="language-sh">flox install lazygit</code></pre></p><p>关于 Flox 的更多详细信息可以在<a href="https://flox.dev/" target="_blank" rel="noopener noreferrer">他们的网站</a>上找到。</p><h3>FreeBSD</h3></p><pre><code class="language-sh">pkg install lazygit</code></pre></p><h3>Termux</h3></p><pre><code class="language-sh">apt install lazygit</code></pre></p><h3>Conda</h3></p><p>已发布的版本适用于不同平台，详见 <https://anaconda.org/conda-forge/lazygit></p><pre><code class="language-sh">conda install -c conda-forge lazygit</code></pre></p><h3>Go</h3></p><pre><code class="language-sh">go install github.com/jesseduffield/lazygit@latest</code></pre>
+请注意：  
+如果出现错误提示找不到 lazygit 或未定义，  
+您可能需要将 <code>~/go/bin</code> 添加到您的 $PATH（MacOS/Linux），或将 <code>%HOME%\go\bin</code>  
+添加到 Windows 的环境变量中。不要混淆 <code>C:\Go\bin</code>（这是 Go 自带的二进制文件夹，  
+而非像 lazygit 这样的应用程序的路径）。  </p><h3>Chocolatey（Windows）  </h3></p><p>您可以使用 <a href="https://chocolatey.org/" target="_blank" rel="noopener noreferrer">Chocolatey</a> 安装 <code>lazygit</code>：</p><pre><code class="language-sh">choco install lazygit</code></pre></p><h3>Winget（Windows 10 1709 或更高版本）</h3></p><p>您可以使用 Windows 终端中的 <code>winget</code> 命令安装 <code>lazygit</code>，命令如下：</p><pre><code class="language-powershell">winget install -e --id=JesseDuffield.lazygit</code></pre></p><h3>手册</h3></p><p>您需要<a href="https://golang.org/doc/install" target="_blank" rel="noopener noreferrer">安装 Go</a></p><pre><code class="language-">git clone https://github.com/jesseduffield/lazygit.git
+cd lazygit
+go install</code></pre></p><p>你也可以使用 <code>go run main.go</code> 来一次性编译并运行（双关语绝对是故意的）</p><h2>使用方法</h2></p><p>在你的终端中，进入一个 git 仓库，调用 <code>lazygit</code>。</p><pre><code class="language-sh">$ lazygit</code></pre>
+如果你愿意，你也可以  
+通过 <code>echo "alias lg='lazygit'" >> ~/.zshrc</code> 添加一个别名（或者你使用的其他 rc 文件）。  </p><h3>快捷键  </h3></p><p>你可以在<a href="/docs/keybindings" target="_blank" rel="noopener noreferrer">这里</a>查看快捷键列表。  </p><h3>退出时更改目录  </h3></p><p>如果你在 lazygit 中切换了仓库，并希望退出 lazygit 后你的 shell 能切换到该仓库目录，  
+请将以下内容添加到你的 <code>~/.zshrc</code>（或其他 rc 文件）：  </p><pre><code class="language-">lg()
+{
+    export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir</p><p>    lazygit "$@"</p><p>    if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
+            cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+            rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+    fi
+}</code></pre>
+然后执行 <code>source ~/.zshrc</code>，从现在开始，当你调用 <code>lg</code> 并退出时，你将切换到在 lazygit 内部所在的目录。要覆盖此行为，可以使用 <code>shift+Q</code> 退出，而不是直接按 <code>q</code>。</p><h3>撤销/重做</h3></p><p>请参阅<a href="/docs/Undoing.md" target="_blank" rel="noopener noreferrer">文档</a></p><h2>配置</h2></p><p>查看<a href="https://raw.githubusercontent.com/jesseduffield/lazygit/master/docs/Config.md" target="_blank" rel="noopener noreferrer">配置文档</a>。</p><h3>自定义分页器</h3></p><p>参见<a href="https://raw.githubusercontent.com/jesseduffield/lazygit/master/docs/Custom_Pagers.md" target="_blank" rel="noopener noreferrer">文档</a></p><h3>自定义命令</h3></p><p>如果 lazygit 缺少某个功能，很可能你可以通过自定义命令自己实现它！</p><p>参见<a href="https://raw.githubusercontent.com/jesseduffield/lazygit/master/docs/Custom_Command_Keybindings.md" target="_blank" rel="noopener noreferrer">文档</a></p><h3>Git flow 支持</h3></p><p>如果你已安装，Lazygit 支持<a href="https://github.com/nvie/gitflow" target="_blank" rel="noopener noreferrer">Gitflow</a>。要了解 Gitflow 模型的工作原理，请查看 Vincent Driessen 的原始<a href="https://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener noreferrer">文章</a>进行说明。在 Lazygit 的分支视图中按 <code>i</code> 可以查看 Gitflow 选项。</p><h2>贡献</h2></p><p>我们欢迎你的参与！请查看<a href="https://raw.githubusercontent.com/jesseduffield/lazygit/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">贡献指南</a>。  
+对于不适合在此仓库讨论的贡献者讨论，请加入<a href="https://discord.gg/ehwFt2t4wt" target="_blank" rel="noopener noreferrer">discord 频道</a></p><p><a href="https://discord.gg/ehwFt2t4wt"><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/discord.png" width='75'></a></p><p>如果你想了解从哪里开始，可以查看这个<a href="https://www.youtube.com/watch?v=kNavnhzZHtk" target="_blank" rel="noopener noreferrer">视频</a>，它演示了在 lazygit 中创建一个小功能的过程。</p><h3>本地调试</h3></p><p>在一个终端标签页运行 <code>lazygit --debug</code>，在另一个标签页运行 <code>lazygit --logs</code>，可以并排查看程序及其日志输出。</p><h2>捐赠</h2></p><p>
+如果您想支持 lazygit 的开发，请考虑<a href="https://github.com/sponsors/jesseduffield" target="_blank" rel="noopener noreferrer">赞助我</a>（GitHub 在 12 个月内对所有捐款进行一对一匹配）</p><h2>常见问题解答</h2></p><h3>提交的颜色代表什么？</h3></p><ul><li>绿色：提交包含在主分支中</li>
+<li>黄色：提交未包含在主分支中</li>
+<li>红色：提交尚未推送到上游分支</li></p><p></ul><h2>毫无羞耻的宣传</h2></p><p>如果您想了解我（Jesse）在开发方面的动态，请关注我在
+<a href="https://twitter.com/DuffieldJesse" target="_blank" rel="noopener noreferrer">twitter</a> 或查看我的 <a href="https://jesseduffield.com/" target="_blank" rel="noopener noreferrer">博客</a></p><h2>替代方案</h2></p><p>如果您觉得 lazygit 不完全满足您的需求，以下可能更合适：</p><ul><li><a href="https://github.com/Extrawurst/gitui" target="_blank" rel="noopener noreferrer">GitUI</a></li>
+<li><a href="https://github.com/jonas/tig" target="_blank" rel="noopener noreferrer">tig</a></li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-09
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/jesseduffield/lazygit/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-09 
+    </div>
+    
+</body>
+</html>

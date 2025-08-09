@@ -1,0 +1,435 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lazygit - git 명령어를 위한 간단한 터미널 UI</title>
+    <meta name="description" content="git 명령어를 위한 간단한 터미널 UI">
+    <meta name="keywords" content="lazygit, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "lazygit",
+  "description": "git 명령어를 위한 간단한 터미널 UI",
+  "author": {
+    "@type": "Person",
+    "name": "jesseduffield"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 63201
+  },
+  "url": "https://OpenAiTx.github.io/projects/jesseduffield/lazygit/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/jesseduffield/lazygit/master/README.md",
+  "datePublished": "2025-08-09",
+  "dateModified": "2025-08-09"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/jesseduffield/lazygit" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    lazygit
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 63201 stars</span>
+                <span class="language">Korean</span>
+                <span>by jesseduffield</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><div align="center">
+<sup>Special thanks to:</sup>
+<br>
+<br>
+<a href="https://www.warp.dev/?utm_source=github&utm_medium=referral&utm_campaign=lazygit_20231023">
+  <div>
+    <img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/warp.png" width="330" alt="Warp">
+  </div>
+  <b>Warp, the intelligent terminal</b>
+  <br>
+  <b>Available for MacOS and Linux</b>
+  <br>
+  <div>
+    <sup>Visit warp.dev to learn more.</sup>
+  </div>
+</a>
+<br>
+<hr>
+<a href="https://www.subble.com">
+  <div>
+    <img src="https://subble-marketing-portal-media-storage.s3.amazonaws.com/images/subble-black-name-logo.svg" width="230" alt="Subble">
+  </div>
+  <b>I (Jesse) co-founded Subble to save your company time and money by helping you manage its software subscriptions. Check it out!</b>
+</a>
+<br></p><hr>
+</div></p><p><p align="center">
+  <img width="536" src="https://user-images.githubusercontent.com/8456633/174470852-339b5011-5800-4bb9-a628-ff230aa8cd4e.png">
+</p></p><p><div align="center"></p><p>A simple terminal UI for git commands
+<br/></p><p><a href="https://github.com/jesseduffield/lazygit/releases" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/downloads/jesseduffield/lazygit/total" alt="GitHub Releases"></a> <a href="https://goreportcard.com/report/github.com/jesseduffield/lazygit" target="_blank" rel="noopener noreferrer"><img src="https://goreportcard.com/badge/github.com/jesseduffield/lazygit" alt="Go Report Card"></a> <a href="https://app.codacy.com/gh/jesseduffield/lazygit/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade" target="_blank" rel="noopener noreferrer"><img src="https://app.codacy.com/project/badge/Grade/f46416b715d74622895657935fcada21" alt="Codacy Badge"></a> <a href="https://app.codacy.com/gh/jesseduffield/lazygit/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage" target="_blank" rel="noopener noreferrer"><img src="https://app.codacy.com/project/badge/Coverage/f46416b715d74622895657935fcada21" alt="Codacy Badge"></a> <a href="https://golangci.com" target="_blank" rel="noopener noreferrer"><img src="https://golangci.com/badges/github.com/jesseduffield/lazygit.svg" alt="GolangCI"></a> <a href="https://github.com/jesseduffield/lazygit/releases/latest" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/tag/jesseduffield/lazygit.svg" alt="GitHub tag"></a> <a href="https://github.com/Homebrew/homebrew-core/blob/master/Formula/lazygit.rb" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/homebrew/v/lazygit" alt="homebrew"></a></p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/commit_and_push-compressed.gif" alt="commit_and_push"></p><p></div></p><h2>후원자</h2></p><p><p align="center">
+ 이 프로젝트의 유지 관리는 모든 <a href="https://github.com/jesseduffield/lazygit/graphs/contributors">기여자</a>와 <a href="https://github.com/sponsors/jesseduffield">후원자</a> 덕분에 가능합니다. 이 프로젝트를 후원하고 아래에 아바타 또는 회사 로고를 표시하고 싶으시면 <a href="https://github.com/sponsors/jesseduffield">여기를 클릭하세요</a>. 💙
+</p></p><p><p align="center">
+<!-- sponsors --><a href="https://github.com/intabulas"><img src="https://github.com/intabulas.png" width="60px" alt="Mark Lussier" /></a><a href="https://github.com/peppy"><img src="https://github.com/peppy.png" width="60px" alt="Dean Herbert" /></a><a href="https://github.com/piot"><img src="https://github.com/piot.png" width="60px" alt="Peter Bjorklund" /></a><a href="https://github.com/rgwood"><img src="https://github.com/rgwood.png" width="60px" alt="Reilly Wood" /></a><a href="https://github.com/oliverguenther"><img src="https://github.com/oliverguenther.png" width="60px" alt="Oliver Günther" /></a><a href="https://github.com/pawanjay176"><img src="https://github.com/pawanjay176.png" width="60px" alt="Pawan Dhananjay" /></a><a href="https://github.com/bdach"><img src="https://github.com/bdach.png" width="60px" alt="Bartłomiej Dach" /></a><a href="https://github.com/carstengehling"><img src="https://github.com/carstengehling.png" width="60px" alt="Carsten Gehling" /></a><a href="https://github.com/ceuk"><img src="https://github.com/ceuk.png" width="60px" alt="CEUK" /></a><a href="https://github.com/Xetera"><img src="https://github.com/Xetera.png" width="60px" alt="" /></a><a href="https://github.com/HoldenLucas"><img src="https://github.com/HoldenLucas.png" width="60px" alt="Holden Lucas" /></a><a href="https://github.com/nartc"><img src="https://github.com/nartc.png" width="60px" alt="Chau Tran" /></a><a href="https://github.com/matejcik"><img src="https://github.com/matejcik.png" width="60px" alt="matejcik" /></a><a href="https://github.com/lucatume"><img src="https://github.com/lucatume.png" width="60px" alt="theAverageDev (Luca Tumedei)" /></a><a href="https://github.com/IvanZuy"><img src="https://github.com/IvanZuy.png" width="60px" alt="" /></a><a href="https://github.com/nicholascloud"><img src="https://github.com/nicholascloud.png" width="60px" alt="Nicholas Cloud" /></a><a href="https://github.com/ava1ar"><img src="https://github.com/ava1ar.png" width="60px" alt="Aliaksandr Stelmachonak" /></a><a href="https://github.com/minidfx"><img src="https://github.com/minidfx.png" width="60px" alt="Burgy Benjamin" /></a><a href="https://github.com/JoeKlemmer"><img src="https://github.com/JoeKlemmer.png" width="60px" alt="Joe Klemmer" /></a><a href="https://github.com/tobi"><img src="https://github.com/tobi.png" width="60px" alt="Tobias Lütke" /></a><a href="https://github.com/benbfortis"><img src="https://github.com/benbfortis.png" width="60px" alt="Ben Beaumont" /></a><a href="https://github.com/jakewarren"><img src="https://github.com/jakewarren.png" width="60px" alt="" /></a><a href="https://github.com/tgpholly"><img src="https://github.com/tgpholly.png" width="60px" alt="Holly" /></a><a href="https://github.com/socketbox"><img src="https://github.com/socketbox.png" width="60px" alt="Casey Boettcher" /></a><a href="https://github.com/bitprophet"><img src="https://github.com/bitprophet.png" width="60px" alt="Jeff Forcier" /></a><a href="https://github.com/tayleighr"><img src="https://github.com/tayleighr.png" width="60px" alt="" /></a><a href="https://github.com/Novakov"><img src="https://github.com/Novakov.png" width="60px" alt="Maciej T. Nowak" /></a><a href="https://github.com/nekhaevskiy"><img src="https://github.com/nekhaevskiy.png" width="60px" alt="Yury" /></a><a href="https://github.com/reivilibre"><img src="https://github.com/reivilibre.png" width="60px" alt="" /></a><a href="https://github.com/andreaskurth"><img src="https://github.com/andreaskurth.png" width="60px" alt="Andreas Kurth" /></a><a href="https://github.com/BSteffaniak"><img src="https://github.com/BSteffaniak.png" width="60px" alt="Braden Steffaniak" /></a><a href="https://github.com/jordan-gillard"><img src="https://github.com/jordan-gillard.png" width="60px" alt="Jordan Gillard" /></a><a href="https://github.com/smangels"><img src="https://github.com/smangels.png" width="60px" alt="Sebastian" /></a><a href="https://github.com/amslezak"><img src="https://github.com/amslezak.png" width="60px" alt="Andy Slezak" /></a><a href="https://github.com/mkock"><img src="https://github.com/mkock.png" width="60px" alt="Martin Kock" /></a><a href="https://github.com/jessealama"><img src="https://github.com/jessealama.png" width="60px" alt="Jesse Alama" /></a><a href="https://github.com/danielkokott"><img src="https://github.com/danielkokott.png" width="60px" alt="Daniel Kokott" /></a><a href="https://github.com/heijmans"><img src="https://github.com/heijmans.png" width="60px" alt="Jan Heijmans" /></a><a href="https://github.com/knowald"><img src="https://github.com/knowald.png" width="60px" alt="Kevin Nowald" /></a><a href="https://github.com/omarluq"><img src="https://github.com/omarluq.png" width="60px" alt="Omar Luq" /></a><a href="https://github.com/ethanjli"><img src="https://github.com/ethanjli.png" width="60px" alt="Ethan Li" /></a><a href="https://github.com/phubaba"><img src="https://github.com/phubaba.png" width="60px" alt="" /></a><a href="https://github.com/canhazcodez"><img src="https://github.com/canhazcodez.png" width="60px" alt="Maxi" /></a><a href="https://github.com/neunkasulle"><img src="https://github.com/neunkasulle.png" width="60px" alt="Jan Zenkner" /></a><a href="https://github.com/RVxLab"><img src="https://github.com/RVxLab.png" width="60px" alt="" /></a><a href="https://github.com/FrederickGeek8"><img src="https://github.com/FrederickGeek8.png" width="60px" alt="Frederick Morlock" /></a><a href="https://github.com/ezdac"><img src="https://github.com/ezdac.png" width="60px" alt="Maximilian Langenfeld" /></a><a href="https://github.com/dbuls"><img src="https://github.com/dbuls.png" width="60px" alt="Davis Buls" /></a><a href="https://github.com/lppassos"><img src="https://github.com/lppassos.png" width="60px" alt="" /></a><a href="https://github.com/neilcode"><img src="https://github.com/neilcode.png" width="60px" alt="Neil Lambert" /></a><a href="https://github.com/dhh"><img src="https://github.com/dhh.png" width="60px" alt="David Heinemeier Hansson" /></a><a href="https://github.com/ethanfischer"><img src="https://github.com/ethanfischer.png" width="60px" alt="Ethan Fischer" /></a><a href="https://github.com/poshboytl"><img src="https://github.com/poshboytl.png" width="60px" alt="Terry Tai" /></a><a href="https://github.com/roesnera"><img src="https://github.com/roesnera.png" width="60px" alt="Adam Roesner" /></a><a href="https://github.com/seven1m"><img src="https://github.com/seven1m.png" width="60px" alt="Tim Morgan" /></a><a href="https://github.com/sgoridotla1"><img src="https://github.com/sgoridotla1.png" width="60px" alt="Max Shypulniak" /></a><a href="https://github.com/ADIX7"><img src="https://github.com/ADIX7.png" width="60px" alt="Kovács Ádám" /></a><a href="https://github.com/slowdub"><img src="https://github.com/slowdub.png" width="60px" alt="" /></a><a href="https://github.com/serranomorante"><img src="https://github.com/serranomorante.png" width="60px" alt="Patricio Serrano" /></a><a href="https://github.com/kiriDevs"><img src="https://github.com/kiriDevs.png" width="60px" alt="Kiri" /></a><a href="https://github.com/Bparsons0904"><img src="https://github.com/Bparsons0904.png" width="60px" alt="Bob Parsons" /></a><a href="https://github.com/bjornevik"><img src="https://github.com/bjornevik.png" width="60px" alt="John Even Bjørnevik" /></a><a href="https://github.com/moberst"><img src="https://github.com/moberst.png" width="60px" alt="Michael Oberst" /></a><a href="https://github.com/stianh"><img src="https://github.com/stianh.png" width="60px" alt="Stian Hegglund" /></a><a href="https://github.com/adam-e-trepanier"><img src="https://github.com/adam-e-trepanier.png" width="60px" alt="Adam Trepanier" /></a><a href="https://github.com/arkalon76"><img src="https://github.com/arkalon76.png" width="60px" alt="Kenth Fagerlund" /></a><a href="https://github.com/Djuuu"><img src="https://github.com/Djuuu.png" width="60px" alt="Julien Tardot" /></a><a href="https://github.com/antikytheraton"><img src="https://github.com/antikytheraton.png" width="60px" alt="Aaron Arredondo" /></a><a href="https://github.com/ellord"><img src="https://github.com/ellord.png" width="60px" alt="Ellord Tayag" /></a><a href="https://github.com/EdgarPost"><img src="https://github.com/EdgarPost.png" width="60px" alt="Edgar Post-Buijs" /></a><a href="https://github.com/sbc64"><img src="https://github.com/sbc64.png" width="60px" alt="sbc64" /></a><a href="https://github.com/caillou"><img src="https://github.com/caillou.png" width="60px" alt="Pierre Spring" /></a><a href="https://github.com/mebezac"><img src="https://github.com/mebezac.png" width="60px" alt="Zac Clay" /></a><a href="https://github.com/Tom94"><img src="https://github.com/Tom94.png" width="60px" alt="Thomas Müller" /></a><a href="https://github.com/ccssmnn"><img src="https://github.com/ccssmnn.png" width="60px" alt="Carl Assmann" /></a><a href="https://github.com/ognevsd"><img src="https://github.com/ognevsd.png" width="60px" alt="Sergey Ognev" /></a><a href="https://github.com/moodyhunter"><img src="https://github.com/moodyhunter.png" width="60px" alt="Moody Liu" /></a><a href="https://github.com/code-hunger"><img src="https://github.com/code-hunger.png" width="60px" alt="Alex G" /></a><a href="https://github.com/elithper"><img src="https://github.com/elithper.png" width="60px" alt="Michael Howard" /></a><a href="https://github.com/LasseBloch"><img src="https://github.com/LasseBloch.png" width="60px" alt="Lasse Bloch Lauritsen" /></a><a href="https://github.com/lmarburger"><img src="https://github.com/lmarburger.png" width="60px" alt="Larry Marburger" /></a><a href="https://github.com/dbrockman"><img src="https://github.com/dbrockman.png" width="60px" alt="David Brockman" /></a><a href="https://github.com/slavshik"><img src="https://github.com/slavshik.png" width="60px" alt="Alexander Slavschik" /></a><a href="https://github.com/aidalgol"><img src="https://github.com/aidalgol.png" width="60px" alt="Aidan Gauland" /></a><a href="https://github.com/mbienkowsk"><img src="https://github.com/mbienkowsk.png" width="60px" alt="Maksym Bieńkowski" /></a><a href="https://github.com/joshuawootonn"><img src="https://github.com/joshuawootonn.png" width="60px" alt="Joshua Wootonn" /></a><a href="https://github.com/I4nJ"><img src="https://github.com/I4nJ.png" width="60px" alt="" /></a><a href="https://github.com/gurbindersingh"><img src="https://github.com/gurbindersingh.png" width="60px" alt="Gurbinder Singh" /></a><a href="https://github.com/sandviklee"><img src="https://github.com/sandviklee.png" width="60px" alt="Simon Sandvik Lee" /></a><a href="https://github.com/glagnar"><img src="https://github.com/glagnar.png" width="60px" alt="Thomas Gilbert" /></a><a href="https://github.com/skrzepto"><img src="https://github.com/skrzepto.png" width="60px" alt="Szymon Mucha" /></a><a href="https://github.com/TimShilov"><img src="https://github.com/TimShilov.png" width="60px" alt="Tim Shilov" /></a><a href="https://github.com/unnawut"><img src="https://github.com/unnawut.png" width="60px" alt="Unnawut Leepaisalsuwanna" /></a><a href="https://github.com/wortmanb"><img src="https://github.com/wortmanb.png" width="60px" alt="Bret Wortman" /></a><a href="https://github.com/andre-lameirinhas"><img src="https://github.com/andre-lameirinhas.png" width="60px" alt="André Lameirinhas" /></a><a href="https://github.com/SVappsLAB"><img src="https://github.com/SVappsLAB.png" width="60px" alt="Scott Velez" /></a><a href="https://github.com/ooojustin"><img src="https://github.com/ooojustin.png" width="60px" alt="justin" /></a><a href="https://github.com/TakodaS"><img src="https://github.com/TakodaS.png" width="60px" alt="Austen Bolitho" /></a><a href="https://github.com/mantzu132"><img src="https://github.com/mantzu132.png" width="60px" alt="Mantas" /></a><a href="https://github.com/mayfieldiv"><img src="https://github.com/mayfieldiv.png" width="60px" alt="Mayfield" /></a><!-- sponsors -->
+</p></p><h2>엘리베이터 피치</h2></p><p>불만 토크: 이전에도 들어봤겠지만, git은 _강력하다_, 그런데 그 강력함이 모든 일이 너무 어려울 때 무슨 소용이 있겠는가? 인터랙티브 리베이스는 에디터에서 빌어먹을 TODO 파일을 편집해야 한다고? _장난하나?_ 파일의 일부를 스테이지하려면 명령줄 프로그램을 사용해 각 헝크를 단계별로 진행해야 하고, 헝크를 더 이상 나눌 수 없는데 스테이지하고 싶지 않은 코드가 포함되어 있으면 빌어먹을 패치 파일을 _수작업으로_ 편집해야 한다고? _진짜야?!_ 가끔 브랜치를 바꿀 때 변경 사항을 스태시하라고 했다가, 브랜치를 바꾸고 스태시를 해제해 보니 충돌도 없고 그냥 직접 체크아웃해도 괜찮았다는 걸 깨닫게 되면? _미친 거 아냐!_</p><p>나 같은 평범한 사람이고 일상에서 git이 강력한 고통일 때, lazygit이 당신을 위한 것일지도 모릅니다.</p><h2>목차</h2></p><ul><li><a href="#sponsors" target="_blank" rel="noopener noreferrer">후원자</a></li>
+<li><a href="#elevator-pitch" target="_blank" rel="noopener noreferrer">엘리베이터 피치</a></li>
+<li><a href="#table-of-contents" target="_blank" rel="noopener noreferrer">목차</a></li>
+<li><a href="#features" target="_blank" rel="noopener noreferrer">기능</a></li>
+  <li><a href="#stage-individual-lines" target="_blank" rel="noopener noreferrer">개별 라인 스테이지</a></li>
+  <li><a href="#interactive-rebase" target="_blank" rel="noopener noreferrer">인터랙티브 리베이스</a></li>
+  <li><a href="#cherry-pick" target="_blank" rel="noopener noreferrer">체리픽</a></li>
+  <li><a href="#bisect" target="_blank" rel="noopener noreferrer">바이섹트</a></li>
+  <li><a href="#nuke-the-working-tree" target="_blank" rel="noopener noreferrer">작업 트리 초기화</a></li>
+  <li><a href="#amend-an-old-commit" target="_blank" rel="noopener noreferrer">이전 커밋 수정</a></li>
+  <li><a href="#filter" target="_blank" rel="noopener noreferrer">필터</a></li>
+  <li><a href="#invoke-a-custom-command" target="_blank" rel="noopener noreferrer">사용자 명령 호출</a></li>
+  <li><a href="#worktrees" target="_blank" rel="noopener noreferrer">워크트리</a></li>
+  <li><a href="#rebase-magic-custom-patches" target="_blank" rel="noopener noreferrer">리베이스 매직 (사용자 패치)</a></li>
+  <li><a href="#rebase-from-marked-base-commit" target="_blank" rel="noopener noreferrer">표시된 베이스 커밋으로 리베이스</a></li>
+  <li><a href="#undo" target="_blank" rel="noopener noreferrer">되돌리기</a></li>
+  <li><a href="#commit-graph" target="_blank" rel="noopener noreferrer">커밋 그래프</a></li>
+  <li><a href="#compare-two-commits" target="_blank" rel="noopener noreferrer">두 커밋 비교</a></li>
+<li><a href="#tutorials" target="_blank" rel="noopener noreferrer">튜토리얼</a></li>
+<li><a href="#installation" target="_blank" rel="noopener noreferrer">설치</a></li>
+  <li><a href="#binary-releases" target="_blank" rel="noopener noreferrer">바이너리 릴리스</a></li>
+  <li><a href="#homebrew" target="_blank" rel="noopener noreferrer">홈브류</a></li>
+  <li><a href="#macports" target="_blank" rel="noopener noreferrer">맥포트</a></li>
+  <li><a href="#void-linux" target="_blank" rel="noopener noreferrer">보이드 리눅스</a></li>
+  <li><a href="#scoop-windows" target="_blank" rel="noopener noreferrer">스쿱 (윈도우)</a></li>
+  <li><a href="#arch-linux" target="_blank" rel="noopener noreferrer">아치 리눅스</a></li>
+  <li><a href="#fedora-and-rhel" target="_blank" rel="noopener noreferrer">페도라 및 RHEL</a></li>
+  <li><a href="#solus-linux" target="_blank" rel="noopener noreferrer">솔루스 리눅스</a></li>
+  <li><a href="#debian-and-ubuntu" target="_blank" rel="noopener noreferrer">데비안 및 우분투</a></li>
+  <li><a href="#funtoo-linux" target="_blank" rel="noopener noreferrer">펀투 리눅스</a></li>
+  <li><a href="#gentoo-linux" target="_blank" rel="noopener noreferrer">Gentoo Linux</a></li>
+  <li><a href="#freebsd" target="_blank" rel="noopener noreferrer">FreeBSD</a></li>
+  <li><a href="#termux" target="_blank" rel="noopener noreferrer">Termux</a></li>
+  <li><a href="#conda" target="_blank" rel="noopener noreferrer">Conda</a></li>
+  <li><a href="#go" target="_blank" rel="noopener noreferrer">Go</a></li>
+  <li><a href="#chocolatey-windows" target="_blank" rel="noopener noreferrer">Chocolatey (Windows)</a></li>
+  <li><a href="#winget-windows-10-1709-or-later" target="_blank" rel="noopener noreferrer">Winget (Windows 10 1709 or later)</a></li>
+  <li><a href="#manual" target="_blank" rel="noopener noreferrer">수동 설치</a></li>
+<li><a href="#usage" target="_blank" rel="noopener noreferrer">사용법</a></li>
+  <li><a href="#keybindings" target="_blank" rel="noopener noreferrer">키바인딩</a></li>
+  <li><a href="#changing-directory-on-exit" target="_blank" rel="noopener noreferrer">종료 시 디렉터리 변경</a></li>
+  <li><a href="#undoredo" target="_blank" rel="noopener noreferrer">되돌리기/다시 실행</a></li>
+<li><a href="#configuration" target="_blank" rel="noopener noreferrer">설정</a></li>
+  <li><a href="#custom-pagers" target="_blank" rel="noopener noreferrer">사용자 정의 페이저</a></li>
+  <li><a href="#custom-commands" target="_blank" rel="noopener noreferrer">사용자 정의 명령어</a></li>
+  <li><a href="#git-flow-support" target="_blank" rel="noopener noreferrer">Git 흐름 지원</a></li>
+<li><a href="#contributing" target="_blank" rel="noopener noreferrer">기여하기</a></li>
+  <li><a href="#debugging-locally" target="_blank" rel="noopener noreferrer">로컬 디버깅</a></li>
+<li><a href="#donate" target="_blank" rel="noopener noreferrer">후원</a></li>
+<li><a href="#faq" target="_blank" rel="noopener noreferrer">자주 묻는 질문</a></li>
+  <li><a href="#what-do-the-commit-colors-represent" target="_blank" rel="noopener noreferrer">커밋 색상은 무엇을 의미하나요?</a></li>
+<li><a href="#shameless-plug" target="_blank" rel="noopener noreferrer">자기 홍보</a></li>
+<li><a href="#alternatives" target="_blank" rel="noopener noreferrer">대안</a></li></p><p></ul>Lazygit은 제 전업은 아니지만 상당한 부업입니다. 프로젝트를 지원하고 싶으시면 <a href="https://github.com/sponsors/jesseduffield" target="_blank" rel="noopener noreferrer">후원하기</a>를 고려해 주세요.</p><h2>기능</h2></p><h3>개별 라인 스테이징</h3></p><p>선택한 라인에서 스페이스를 눌러 스테이징하거나, <code>v</code>를 눌러 라인 범위 선택을 시작할 수 있습니다. 또한 <code>a</code>를 눌러 현재 헝크 전체를 선택할 수 있습니다.</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/stage_lines-compressed.gif" alt="stage_lines"></p><h3>인터랙티브 리베이스</h3></p><p><code>i</code>를 눌러 인터랙티브 리베이스를 시작합니다. 그런 다음 스쿼시(<code>s</code>), 픽스업(<code>f</code>), 삭제(<code>d</code>), 편집(<code>e</code>), 위로 이동(<code>ctrl+k</code>), 아래로 이동(<code>ctrl+j</code>) 중 원하는 작업을 TODO 커밋에 수행한 후, <code>m</code>을 눌러 리베이스 옵션 메뉴를 불러내고 <code>continue</code>를 선택하여 리베이스를 계속합니다.</p><p>명시적으로 리베이스를 시작하지 않고도 한 번만 수행하는 작업(예: 커밋에서 <code>s</code>를 눌러 스쿼시하기)도 가능합니다.</p><p>이 데모에서는 shift+down을 사용하여 이동 및 fixup할 커밋 범위를 선택할 수도 있습니다.</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/interactive_rebase-compressed.gif" alt="interactive_rebase"></p><h3>체리픽</h3></p><p>커밋에서 <code>shift+c</code>를 눌러 복사하고 <code>shift+v</code>를 눌러 붙여넣기(체리픽)합니다.</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/cherry_pick-compressed.gif" alt="cherry_pick"></p><h3>바이섹트</h3></p><p>커밋 뷰에서 <code>b</code>를 눌러 git bisect를 시작하기 위해 커밋을 좋음/나쁨으로 표시합니다.</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/bisect-compressed.gif" alt="bisect"></p><h3>작업 트리 초기화</h3></p><p><code>git status</code> 실행 시 나타나는 모든 것을 정말로 제거하고 싶을 때(더럽혀진 서브모듈 포함) <a href="https://www.youtube.com/watch?v=N4E2B_k2Bss" target="_blank" rel="noopener noreferrer">kidpix 스타일</a>로 <code>shift+d</code>를 눌러 리셋 옵션 메뉴를 열고 'nuke' 옵션을 선택하세요.</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/nuke_working_tree-compressed.gif" alt="Nuke working tree"></p><h3>이전 커밋 수정</h3></p><p>어떤 커밋에서든 <code>shift+a</code>를 누르면 현재 스테이지된 변경사항으로 해당 커밋을 수정합니다(백그라운드에서 인터랙티브 리베이스 실행).</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/amend_old_commit-compressed.gif" alt="amend_old_commit"></p><h3>필터</h3></p><p><code>/</code>를 사용해 뷰를 필터링할 수 있습니다. 여기서는 브랜치 뷰를 필터링한 후 <code>enter</code>를 눌러 해당 커밋을 봅니다.</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/filter-compressed.gif" alt="filter"></p><h3>사용자 명령 호출</h3></p><p>Lazygit은 매우 유연한 <a href="https://raw.githubusercontent.com/jesseduffield/lazygit/master/docs/Custom_Command_Keybindings.md" target="_blank" rel="noopener noreferrer">사용자 명령 시스템</a>을 제공합니다. 이 예제에서는 내장 브랜치 체크아웃 동작을 에뮬레이트하는 사용자 명령이 정의되어 있습니다.</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/custom_command-compressed.gif" alt="custom_command"></p><h3>워크트리</h3></p><p>워크트리를 생성하여 여러 브랜치를 동시에 진행할 수 있으며, 브랜치 전환 시 스태시나 WIP 커밋 생성이 필요 없습니다. 브랜치 뷰에서 <code>w</code>를 눌러 선택한 브랜치로부터 워크트리를 생성하고 전환할 수 있습니다.</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/worktree_create_from_branches-compressed.gif" alt="worktree_create_from_branches"></p><h3>리베이스 매직 (커스텀 패치)</h3></p><p>오래된 커밋에서 커스텀 패치를 생성한 후, 해당 커밋에서 패치를 제거하거나, 새 커밋으로 분리하고, 패치를 역방향으로 인덱스에 적용하는 등 다양한 작업을 할 수 있습니다.</p><p>예제에서는 오래된 커밋에서 제거하고 싶은 불필요한 주석이 있습니다. 커밋에서 <code><enter></code>를 눌러 파일을 보고, 파일에서 <code><enter></code>를 눌러 패치에 포커스한 후, <code><space></code>로 주석 라인을 커스텀 패치에 추가하고, <code>ctrl+p</code>를 눌러 커스텀 패치 옵션을 확인한 다음 현재 커밋에서 패치를 제거하도록 선택합니다.</p><p>자세한 내용은 <a href="https://youtu.be/4XaToVut_hs" target="_blank" rel="noopener noreferrer">리베이스 매직 유튜브 튜토리얼</a>을 참고하세요.</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/custom_patch-compressed.gif" alt="custom_patch"></p><h3>마크된 베이스 커밋에서 리베이스</h3></p><p>기능 브랜치가 develop 브랜치에서 분기되었고, 이제 master 브랜치를 베이스로 삼고 싶다고 가정합시다. 기능 브랜치의 커밋만 리베이스할 방법이 필요합니다. 이 데모에서는 develop 브랜치의 마지막 커밋을 확인하고 <code>shift+b</code>를 눌러 해당 커밋을 베이스 커밋으로 마크한 후, master 브랜치에서 <code>r</code>을 눌러 리베이스하여 기능 브랜치의 커밋만 가져옵니다. 그 다음 <code>shift+p</code>로 변경사항을 푸시합니다.</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/rebase_onto-compressed.gif" alt="rebase_onto"></p><h3>실행 취소</h3></p><p>마지막 작업을 <code>z</code>를 눌러 실행 취소할 수 있으며, <code>ctrl+z</code>로 다시 실행할 수 있습니다. 여기서는 몇 개의 커밋을 삭제한 뒤 작업을 실행 취소합니다. 실행 취소는 커밋과 브랜치에 특화된 reflog를 사용하므로 작업 트리나 스태시에 대한 변경은 실행 취소할 수 없습니다.</p><p><a href="/docs/Undoing.md" target="_blank" rel="noopener noreferrer">자세한 정보</a></p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/undo-compressed.gif" alt="undo"></p><h3>커밋 그래프</h3></p><p>확대된 창에서 커밋 그래프를 볼 때(<code>+</code>와 <code>_</code>를 사용해 화면 모드를 순환), 커밋 그래프가 표시됩니다. 색상은 커밋 작성자를 나타내며, 그래프를 아래로 이동할 때 선택한 커밋의 부모 커밋이 강조 표시됩니다.</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/commit_graph-compressed.gif" alt="commit_graph"></p><h3>두 커밋 비교</h3></p><p>커밋(또는 브랜치/참조)에서 <code>shift+w</code>를 누르면 메뉴가 열리며, 해당 커밋을 마크할 수 있습니다. 이후 다른 커밋을 선택하면 그 커밋과 마크된 커밋 간의 차이를 보여줍니다. 두 번째 커밋을 선택하면 메인 뷰에 차이가 표시되고, <code><enter></code>를 누르면 차이 파일을 볼 수 있습니다. <code>shift+w</code>를 다시 눌러 차이 메뉴를 열어 차이 방향 전환이나 차이 모드 종료 옵션을 사용할 수 있습니다. <code><escape></code>를 눌러 차이 모드에서 나올 수도 있습니다.</p><p><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/demo/diff_commits-compressed.gif" alt="diff_commits"></p><h2>튜토리얼</h2></p><p><a href="https://youtu.be/CPLdltN7wgE" target="_blank" rel="noopener noreferrer"><img src="https://i.imgur.com/sVEktDn.png"></a></p><ul><li><a href="https://youtu.be/CPLdltN7wgE" target="_blank" rel="noopener noreferrer">15분 만에 배우는 15가지 Lazygit 기능</a></li>
+<li><a href="https://youtu.be/VDXvbHZYeKY" target="_blank" rel="noopener noreferrer">기초 튜토리얼</a></li>
+<li><a href="https://youtu.be/4XaToVut_hs" target="_blank" rel="noopener noreferrer">리베이스 매직 튜토리얼</a></li></p><p></ul><h2>설치</h2></p><p><a href="https://repology.org/project/lazygit/versions" target="_blank" rel="noopener noreferrer"><img src="https://repology.org/badge/vertical-allrepos/lazygit.svg?columns=3" alt="패키징 상태"></a></p><p>_위의 대부분 패키지는 서드파티가 관리하므로 직접 검토하고 유지 관리자가 지역 스포츠 경기 참석 및 바비큐 모금 행사 등으로 지역사회에 환원하는 신뢰할 만한 사람인지 확인하세요_</p><h3>바이너리 릴리스</h3></p><p>Windows, Mac OS(10.12 이상) 또는 Linux용 바이너리 릴리스를 <a href="../../releases" target="_blank" rel="noopener noreferrer">여기</a>에서 다운로드할 수 있습니다.</p><h3>Homebrew</h3></p><p>Linux에서도 작동합니다.</p><pre><code class="language-sh">brew install lazygit</code></pre>
+<h3>MacPorts</h3></p><p>최신 버전은 github 릴리스에서 빌드되었습니다.  
+탭:</p><pre><code class="language-">sudo port install lazygit</code></pre></p><h3>Void Linux</h3></p><p>Void Linux용 패키지는 배포판 저장소에서 제공됩니다</p><p>최신 버전을 그대로 따릅니다</p><pre><code class="language-sh">sudo xbps-install -S lazygit</code></pre></p><h3>Scoop (Windows)</h3></p><p><code>scoop</code>을 사용하여 <code>lazygit</code>을 설치할 수 있습니다. <a href="https://scoop.sh/" target="_blank" rel="noopener noreferrer">scoop</a>에서 사용할 수 있으며, <code>extras</code> 버킷에 있습니다:</p><pre><code class="language-sh"># Add the extras bucket
+scoop bucket add extras</p><h1>Install lazygit</h1>
+scoop install lazygit</code></pre>
+<h3>Arch Linux</h3></p><p>Arch Linux용 패키지는 pacman과 AUR(Arch User Repository)를 통해 제공됩니다.</p><p>두 가지 패키지가 있습니다. 최신 릴리스로 빌드된 안정 버전과
+가장 최근 커밋으로 빌드된 git 버전입니다.</p><ul><li>안정 버전: <code>sudo pacman -S lazygit</code></li>
+<li>개발 버전: <https://aur.archlinux.org/packages/lazygit-git/></li></p><p></ul>AUR 콘텐츠 설치 방법은 다음에서 확인할 수 있습니다:
+<https://wiki.archlinux.org/index.php/Arch_User_Repository></p><h3>Fedora / Amazon Linux 2023 / CentOS Stream</h3></p><p>Fedora, Amazon Linux 2023 및 CentOS Stream용 패키지는
+<a href="https://copr.fedorainfracloud.org/coprs/dejan/lazygit/" target="_blank" rel="noopener noreferrer">Copr</a> (Cool Other Package Repo)를 통해 제공됩니다.</p><pre><code class="language-sh">sudo dnf copr enable dejan/lazygit
+sudo dnf install lazygit</code></pre></p><p>이 패키지들은 여기 위치한 RPM 스펙 파일을 사용하여 빌드됩니다: https://codeberg.org/dejan/rpm-lazygit</p><p>Fedora 41 이하 및 기타 Fedora 파생 배포판용 RPM을 최신 COPR 빌드에서 가져올 수 있는
+SRPM(소스 RPM) 파일을 사용하여 빌드할 수 있어야 합니다.</p><h3>Solus Linux</h3></p><pre><code class="language-sh">sudo eopkg install lazygit</code></pre></p><h3>데비안 및 우분투</h3></p><p><strong>Debian 13 "Trixie", Sid</strong> 이후 버전과 <strong>Ubuntu 25.10 "Questing Quokka"</strong> 이후 버전의 경우:</p><pre><code class="language-sh">sudo apt install lazygit</code></pre></p><p><strong>Debian 12 "Bookworm"</strong>, <strong>Ubuntu 25.04 "Plucky Puffin"</strong> 및 이전 버전의 경우:</p><pre><code class="language-sh">LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": <em>"v\K[^"]</em>')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit -D -t /usr/local/bin/</code></pre></p><p>lazygit의 올바른 설치 여부 확인:</p><pre><code class="language-sh">lazygit --version</code></pre></p><h3>펀투 리눅스</h3></p><p>펀투 리눅스에는 <a href="https://github.com/funtoo/dev-kit/tree/1.4-release/dev-vcs/lazygit" target="_blank" rel="noopener noreferrer">dev-kit</a>에 자동 생성된 lazygit 패키지가 있습니다:</p><pre><code class="language-sh">sudo emerge dev-vcs/lazygit</code></pre></p><h3>Gentoo Linux</h3></p><p>Lazygit은 아직 메인 Gentoo 포티지에 포함되어 있지 않지만, <a href="https://github.com/gentoo-mirror/guru/tree/master/dev-vcs/lazygit" target="_blank" rel="noopener noreferrer">GURU 오버레이</a>에서 ebuild를 사용할 수 있습니다.</p><p>오버레이를 시스템에 추가하고 평소처럼 lazygit을 설치할 수 있습니다:</p><pre><code class="language-sh">sudo eselect repository enable guru
+sudo emaint sync -r guru
+sudo emerge dev-vcs/lazygit</code></pre>
+<h3>openSUSE</h3></p><p>lazygit 패키지는 현재 <a href="https://build.opensuse.org/package/show/devel:languages:go/lazygit" target="_blank" rel="noopener noreferrer">devel:languages:go/lazygit</a>에서 빌드되고 있습니다.</p><p>openSUSE Tumbleweed에 lazygit을 설치하려면 다음을 실행하세요:</p><pre><code class="language-sh">sudo zypper ar https://download.opensuse.org/repositories/devel:/languages:/go/openSUSE_Factory/devel:languages:go.repo
+sudo zypper ref && sudo zypper in lazygit</code></pre>
+openSUSE Leap에 lazygit을 설치하려면 다음을 실행하세요:</p><pre><code class="language-sh">source /etc/os-release
+sudo zypper ar https://download.opensuse.org/repositories/devel:/languages:/go/$VERSION_ID/devel:languages:go.repo
+sudo zypper ref && sudo zypper in lazygit</code></pre></p><h3>NixOs</h3></p><p>NixOs에서는 lazygit이 nix로 패키징되어 nixpkgs를 통해 배포됩니다.  
+설치하지 않고 lazygit을 사용해 보려면 다음을 실행하세요:  </p><pre><code class="language-sh">nix-shell -p lazygit
+<h1>or with flakes enabled</h1>
+nix run nixpkgs#lazygit</code></pre></p><p>또는 <code>environment.systemPackages</code> 옵션을 사용하여 <code>configuration.nix</code>에 lazygit을 추가할 수 있습니다.  
+자세한 내용은 NixOs 검색 <a href="https://search.nixos.org/" target="_blank" rel="noopener noreferrer">페이지</a>에서 확인할 수 있습니다.  </p><h3>Flox  </h3></p><p>Lazygit은 다음과 같이 Flox 환경에 설치할 수 있습니다.  </p><pre><code class="language-sh">flox install lazygit</code></pre></p><p>Flox에 대한 자세한 내용은 <a href="https://flox.dev/" target="_blank" rel="noopener noreferrer">공식 웹사이트</a>에서 확인할 수 있습니다.</p><h3>FreeBSD</h3></p><pre><code class="language-sh">pkg install lazygit</code></pre></p><h3>Termux</h3></p><pre><code class="language-sh">apt install lazygit</code></pre></p><h3>Conda</h3></p><p>릴리스된 버전은 다양한 플랫폼에서 사용할 수 있습니다. 자세한 내용은 <https://anaconda.org/conda-forge/lazygit>를 참조하세요.</p><pre><code class="language-sh">conda install -c conda-forge lazygit</code></pre></p><h3>Go</h3></p><pre><code class="language-sh">go install github.com/jesseduffield/lazygit@latest</code></pre></p><p>Please note:
+만약 lazygit을 찾을 수 없거나 정의되지 않았다는 오류가 발생하면,
+$PATH에 <code>~/go/bin</code>(MacOS/Linux) 또는 <code>%HOME%\go\bin</code>
+(Windows)를 추가해야 할 수 있습니다. <code>C:\Go\bin</code>과 혼동하지 마세요
+(이는 Go 자체 바이너리를 위한 경로이며, lazygit 같은 앱용이 아닙니다).</p><h3>Chocolatey (Windows)</h3></p><p><code>lazygit</code>은 <a href="https://chocolatey.org/" target="_blank" rel="noopener noreferrer">Chocolatey</a>를 사용하여 설치할 수 있습니다:</p><pre><code class="language-sh">choco install lazygit</code></pre></p><h3>Winget (Windows 10 1709 이상)</h3></p><p>Windows 터미널에서 다음 명령어를 사용하여 <code>winget</code> 명령어로 <code>lazygit</code>을 설치할 수 있습니다:</p><pre><code class="language-powershell">winget install -e --id=JesseDuffield.lazygit</code></pre></p><h3>매뉴얼</h3></p><p><a href="https://golang.org/doc/install" target="_blank" rel="noopener noreferrer">Go 설치</a>를 진행해야 합니다.</p><pre><code class="language-">git clone https://github.com/jesseduffield/lazygit.git
+cd lazygit
+go install</code></pre></p><p><code>go run main.go</code>를 사용하여 한 번에 컴파일하고 실행할 수도 있습니다 (말장난 의도 확실함)</p><h2>사용법</h2></p><p>git 저장소 내 터미널에서 <code>lazygit</code>을 호출하세요.</p><pre><code class="language-sh">$ lazygit</code></pre>
+원한다면, <code>echo "alias lg='lazygit'" >> ~/.zshrc</code> (또는 사용 중인 rc 파일에)로 이 명령어에 별칭을 추가할 수 있습니다.</p><h3>키 바인딩</h3></p><p>키 바인딩 목록은 <a href="/docs/keybindings" target="_blank" rel="noopener noreferrer">여기</a>에서 확인할 수 있습니다.</p><h3>종료 시 디렉토리 변경</h3></p><p>lazygit에서 저장소를 변경하고 lazygit 종료 시 셸이 해당 저장소로 디렉토리를 변경하도록 하려면, 이를 <code>~/.zshrc</code> (또는 다른 rc 파일)에 추가하세요:</p><pre><code class="language-">lg()
+{
+    export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir</p><p>    lazygit "$@"</p><p>    if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
+            cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+            rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+    fi
+}</code></pre>
+그런 다음 <code>source ~/.zshrc</code>를 실행하면 이제부터 <code>lg</code>를 호출하고 종료할 때 lazygit 내부에서 있었던 디렉토리로 전환됩니다. 이 동작을 무시하려면 단순히 <code>q</code> 대신 <code>shift+Q</code>로 종료하세요.</p><h3>실행 취소/다시 실행</h3></p><p><a href="/docs/Undoing.md" target="_blank" rel="noopener noreferrer">문서</a>를 참조하세요.</p><h2>설정</h2></p><p><a href="https://raw.githubusercontent.com/jesseduffield/lazygit/master/docs/Config.md" target="_blank" rel="noopener noreferrer">설정 문서</a>를 확인하세요.</p><h3>사용자 정의 페이저</h3></p><p><a href="https://raw.githubusercontent.com/jesseduffield/lazygit/master/docs/Custom_Pagers.md" target="_blank" rel="noopener noreferrer">문서</a>를 참조하세요.</p><h3>사용자 정의 명령어</h3></p><p>lazygit에 기능이 부족하다면, 사용자 정의 명령어로 직접 구현할 수 있을 가능성이 높습니다!</p><p><a href="https://raw.githubusercontent.com/jesseduffield/lazygit/master/docs/Custom_Command_Keybindings.md" target="_blank" rel="noopener noreferrer">문서</a>를 참조하세요.</p><h3>Git flow 지원</h3></p><p>lazygit은 설치되어 있다면 <a href="https://github.com/nvie/gitflow" target="_blank" rel="noopener noreferrer">Gitflow</a>를 지원합니다. Gitflow 모델이 어떻게 작동하는지 이해하려면 Vincent Driessen의 원본 <a href="https://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener noreferrer">글</a>을 확인하세요. Lazygit 내에서 Gitflow 옵션을 보려면 브랜치 뷰에서 <code>i</code>를 누르세요.</p><h2>기여하기</h2></p><p>여러분의 의견을 환영합니다! <a href="https://raw.githubusercontent.com/jesseduffield/lazygit/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">기여 가이드</a>를 확인하세요.  
+저장소 외에 논의하기 좋은 주제는 <a href="https://discord.gg/ehwFt2t4wt" target="_blank" rel="noopener noreferrer">디스코드 채널</a>에 참여하세요.</p><p><a href="https://discord.gg/ehwFt2t4wt"><img src="https://raw.githubusercontent.com/jesseduffield/lazygit/master/../assets/discord.png" width='75'></a></p><p>lazygit에서 작은 기능을 만드는 과정을 보여주는 <a href="https://www.youtube.com/watch?v=kNavnhzZHtk" target="_blank" rel="noopener noreferrer">영상</a>을 참고하면 시작하는 데 도움이 됩니다.</p><h3>로컬 디버깅</h3></p><p>한 터미널 탭에서 <code>lazygit --debug</code>를 실행하고 다른 탭에서 <code>lazygit --logs</code>를 실행하여 프로그램과 로그 출력을 나란히 확인하세요.</p><h2>기부하기</h2></p><p>
+만약 lazygit 개발을 지원하고 싶다면, <a href="https://github.com/sponsors/jesseduffield" target="_blank" rel="noopener noreferrer">저를 후원해주세요</a> (깃허브가 12개월 동안 모든 기부금에 대해 1달러당 1달러를 매칭합니다)</p><h2>FAQ</h2></p><h3>커밋 색상은 무엇을 의미하나요?</h3></p><ul><li>초록색: 커밋이 마스터 브랜치에 포함되어 있습니다</li>
+<li>노란색: 커밋이 마스터 브랜치에 포함되어 있지 않습니다</li>
+<li>빨간색: 커밋이 업스트림 브랜치에 푸시되지 않았습니다</li></p><p></ul><h2>부끄럼 없는 홍보</h2></p><p>제가 (Jesse) 개발 중인 내용을 보고 싶다면
+<a href="https://twitter.com/DuffieldJesse" target="_blank" rel="noopener noreferrer">트위터</a>를 팔로우하거나 <a href="https://jesseduffield.com/" target="_blank" rel="noopener noreferrer">블로그</a>를 확인하세요</p><h2>대안</h2></p><p>lazygit이 요구사항을 완전히 만족시키지 못한다면, 다음이 더 적합할 수 있습니다:</p><ul><li><a href="https://github.com/Extrawurst/gitui" target="_blank" rel="noopener noreferrer">GitUI</a></li>
+<li><a href="https://github.com/jonas/tig" target="_blank" rel="noopener noreferrer">tig</a></li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-09
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/jesseduffield/lazygit/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-09 
+    </div>
+    
+</body>
+</html>
