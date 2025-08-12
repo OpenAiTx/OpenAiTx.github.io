@@ -1,0 +1,349 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>attribute-events - &#128293; 在 Eloquent 模型的属性变化时触发事件</title>
+    <meta name="description" content="&#128293; 在 Eloquent 模型的属性变化时触发事件">
+    <meta name="keywords" content="attribute-events, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "attribute-events",
+  "description": "🔥 在 Eloquent 模型的属性变化时触发事件",
+  "author": {
+    "@type": "Person",
+    "name": "jpkleemans"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 329
+  },
+  "url": "https://OpenAiTx.github.io/projects/jpkleemans/attribute-events/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/jpkleemans/attribute-events/master/README.md",
+  "datePublished": "2025-08-11",
+  "dateModified": "2025-08-11"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/jpkleemans/attribute-events" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    attribute-events
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 329 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by jpkleemans</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><img src="/../gh-pages/attribute-events.svg#gh-light-mode-only" alt="Laravel Attribute Events">
+<img src="/../gh-pages/attribute-events-dark.svg#gh-dark-mode-only" alt="Laravel Attribute Events"></p><p><p align="center">
+  <a href="https://app.travis-ci.com/jpkleemans/attribute-events" target="_blank"><img src="https://img.shields.io/travis/com/jpkleemans/attribute-events?label=tests&style=flat-square" alt="构建状态"></a>
+  <a href="https://github.com/jpkleemans/attribute-events/commits" target="_blank"><img src="https://img.shields.io/github/last-commit/jpkleemans/attribute-events?label=更新于&style=flat-square" alt="最后更新"></a>
+  <a href="https://packagist.org/packages/jpkleemans/attribute-events"><img src="https://img.shields.io/packagist/v/jpkleemans/attribute-events?label=稳定版&style=flat-square" alt="最新稳定版本"></a>
+  <a href="https://packagist.org/packages/jpkleemans/attribute-events"><img src="https://img.shields.io/packagist/l/jpkleemans/attribute-events?style=flat-square" alt="许可证"></a>
+</p></p><pre><code class="language-php">class Order extends Model
+{
+    protected $dispatchesEvents = [
+        'status:shipped' => OrderShipped::class,
+        'note:*' => OrderNoteChanged::class,
+    ];
+}</code></pre></p><p>Eloquent 模型在其生命周期内会触发多个方便的事件，例如 <code>created</code> 和 <code>deleted</code>。然而，模型生命周期中通常会发生更多具有业务意义的事件。使用此库，您可以通过将属性变化映射到您自己的事件类来捕获这些事件。</p><h2>安装</h2>
+<pre><code class="language-bash">composer require jpkleemans/attribute-events</code></pre></p><h2>如何使用</h2>
+在您的模型中使用 <code>Kleemans\AttributeEvents</code> trait，并将属性添加到 <code>$dispatchesEvents</code> 属性中：</p><pre><code class="language-php">class Order extends Model
+{
+    use AttributeEvents;</p><p>    protected $dispatchesEvents = [
+        'created'         => OrderPlaced::class,
+        'status:canceled' => OrderCanceled::class,
+        'note:*'          => OrderNoteChanged::class,
+    ];
+}</code></pre></p><p>属性事件将在更新后的模型保存后分发。每个事件通过其构造函数接收模型的实例。</p><blockquote>有关模型事件和 <code>$dispatchesEvents</code> 属性的更多信息，请访问 <a href="https://laravel.com/docs/eloquent#events" target="_blank">Laravel 文档</a></blockquote></p><h2>监听</h2>
+现在，您可以通过 <code>EventServiceProvider</code> 的 <code>$listen</code> 数组订阅事件，或使用基于闭包的监听器手动订阅：</p><pre><code class="language-php">Event::listen(function (OrderCanceled $event) {
+    // Restock inventory
+});</code></pre>
+或者使用 Laravel 的 <a href="https://laravel.com/docs/broadcasting" target="_blank">广播</a> 功能，向您的用户推送实时更新：</p><pre><code class="language-js">Echo.channel('orders')
+    .listen('OrderShipped', (event) => {
+        // Display a notification
+    })</code></pre></p><h2>JSON 属性</h2>
+对于以 JSON 格式存储的属性，您可以使用 <code>-></code> 操作符：</p><pre><code class="language-php">protected $dispatchesEvents = [
+    'payment->status:completed' => PaymentCompleted::class,
+];</code></pre></p><h2>访问器</h2>
+对于更复杂的状态变化，您可以使用由<a href="https://laravel.com/docs/eloquent-mutators#defining-an-accessor" target="_blank">访问器</a>定义的属性：</p><pre><code class="language-php">class Product extends Model
+{
+    protected $dispatchesEvents = [
+        'low_stock:true' => ProductReachedLowStock::class,
+    ];</p><p>    public function getLowStockAttribute(): bool
+    {
+        return $this->stock <= 3;
+    }
+}</code></pre></p><blockquote>您也可以使用 Laravel 9 中引入的 <a href="https://laravel.com/docs/9.x/releases#eloquent-accessors-and-mutators" target="_blank" rel="noopener noreferrer">定义访问器的新方法</a>。</blockquote></p><h2>了解更多</h2>
+<ul><li><a href="https://jpkleemans.medium.com/decouple-your-laravel-code-using-attribute-events-de8f2528f46a" target="_blank" rel="noopener noreferrer">“使用属性事件解耦您的 Laravel 代码”</a> 作者 Jan-Paul Kleemans</li>
+<li><a href="https://laravel.com/docs/eloquent#events" target="_blank" rel="noopener noreferrer">Laravel 模型事件文档</a></li></p><p></ul><h2>赞助商</h2></p><p><a href="https://www.nexxtmove.nl/" target="_blank">
+  <img src="https://raw.githubusercontent.com/jpkleemans/attribute-events/gh-pages/nexxtmove-logo.svg" alt="Nexxtmove 标志" width="200">
+</a></p><p>感谢 <a href="https://www.nexxtmove.nl/" target="_blank">Nexxtmove</a> 赞助本项目的开发。  
+您的标志或名称在此？<a href="https://github.com/sponsors/jpkleemans" target="_blank" rel="noopener noreferrer">赞助此项目</a>。</p><h2>许可协议</h2></p><p>代码基于 <a href="https://github.com/jpkleemans/attribute-events/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">MIT 许可协议</a> 发布。</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-11
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/jpkleemans/attribute-events/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-11 
+    </div>
+    
+</body>
+</html>
