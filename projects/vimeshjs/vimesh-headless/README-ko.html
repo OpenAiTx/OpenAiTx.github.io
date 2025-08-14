@@ -1,0 +1,357 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vimesh-headless - Tailwind Headless UI의 Alpine.js 구현체</title>
+    <meta name="description" content="Tailwind Headless UI의 Alpine.js 구현체">
+    <meta name="keywords" content="vimesh-headless, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "vimesh-headless",
+  "description": "Tailwind Headless UI의 Alpine.js 구현체",
+  "author": {
+    "@type": "Person",
+    "name": "vimeshjs"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 111
+  },
+  "url": "https://OpenAiTx.github.io/projects/vimeshjs/vimesh-headless/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/vimeshjs/vimesh-headless/master/README.md",
+  "datePublished": "2025-08-14",
+  "dateModified": "2025-08-14"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/vimeshjs/vimesh-headless" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    vimesh-headless
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 111 stars</span>
+                <span class="language">Korean</span>
+                <span>by vimeshjs</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Vimesh 헤드리스 UI</h1>
+<h2>특징</h2>
+이것은 <a href="https://headlessui.com/" target="_blank" rel="noopener noreferrer">Tailwind Headless UI</a>의 Alpine.js 구현체입니다. <a href="https://github.com/vimeshjs/vimesh-ui" target="_blank" rel="noopener noreferrer">Vimesh UI</a> 프레임워크로 구축된 Vimesh 헤드리스 UI는 다음과 같은 멋진 기능을 갖추고 있습니다:
+<h3>초경량</h3>
+Vimesh 헤드리스 UI는 훨씬 더 작은 코드 크기를 가집니다</p><p>| 컴포넌트   | Vimesh 헤드리스 UI   | Vue용 Tailwind 헤드리스 UI | React용 Tailwind 헤드리스 UI |
+| ----------- | -------------------- | -------- | ----- |
+| 리스트박스   | 8k  | 34k | 30k | 
+| 콤보박스  | 9k  | 25k | 39k |
+| 메뉴      | 7k  | 18k | 20k |
+| 스위치    | 0.6k | 5k | 6k |
+| 탭      | 4k  | 12k | 16k |
+| 다이얼로그    | 2k  | 15k | 17k |
+| 팝오버   | 6k  | 23k | 28k |
+| 라디오 그룹 | 1k | 11k | 14k |</p><p>Vimesh와 Tailwind 헤드리스 다이얼로그 예제 페이지의 프로덕션 버전 크기를 비교하면, Vimesh가 더 많은 기능과 적은 버그로 훨씬 더 작습니다 (tailwind 팝업 다이얼로그에서 메뉴 표시를 확인하세요).</p><ul><li>Vimesh (192k) </li>
+</ul><img src="https://raw.githubusercontent.com/vimeshjs/vimesh-headless/master/./assets/vimesh001.png" alt=""> 
+<ul><li>Tailwind (425k)</li>
+</ul><img src="https://raw.githubusercontent.com/vimeshjs/vimesh-headless/master/./assets/tailwind001.png" alt=""></p><h3>사용된 컴포넌트만 동적으로 로드</h3>
+컴포넌트는 일반 html 파일로, 어디서나 호스팅할 수 있으며 보통 CDN에 위치합니다. 추가 트리 쉐이킹 작업 없이도 다른 프로젝트 간에 공유할 수 있습니다. 예를 들어, 다이얼로그 기본 예제는 두 개의 컴포넌트 <code>hui-dialog</code>와 <code>hui-menu</code>를 사용합니다. 이들을 <code>x-import</code>로 비동기 로드하면 Vimesh UI가 해당 네이티브 커스텀 엘리먼트를 등록하고 초기화합니다.</p><pre><code class="language-html"><template x-component:page="dialog-basic" x-import="hui:dialog,menu" x-data="setupDialogBasicData()"
+    class="overflow-y-auto">
+    ...
+    <hui-dialog :open="isOpen" @close="setIsOpen(false)">
+        ...
+        <hui-menu>
+        </hui-menu>
+    </hui-dialog>
+    ...
+</template></code></pre>
+<h3>빌드 없음, 번들 없음</h3>
+작성한 내용이 그대로 출력됩니다. 구성 요소를 의미 있는 네임스페이스 아래 html 파일로 구성하세요. webpack, rollup, vite 등이 필요하지 않습니다.</p><h2>시작하기</h2>
+<h3>개발 모드</h3>
+alpinejs, @vimesh/style, @vimesh/ui, universal-router 및 http-server를 포함한 개발 의존성을 설치하세요.</p><pre><code class="language-">yarn</code></pre>
+정적 HTTP 서버 실행
+<pre><code class="language-">yarn dev</code></pre>
+<code>http://127.0.0.1:8080/playground/dev.html</code> URL을 엽니다.</p><p>인덱스 페이지가 표시됩니다.
+<img src="https://raw.githubusercontent.com/vimeshjs/vimesh-headless/master/./assets/vimesh002.jpg" alt=""></p><p>상대 경로의 소스 코드와 함께 다양한 컴포넌트 예제가 있습니다.</p><p><img src="https://raw.githubusercontent.com/vimeshjs/vimesh-headless/master/./assets/vimesh003.jpg" alt=""></p><p>node_modules 폴더에 있는 개발 버전의 alpinejs와 @vimesh/ui를 사용합니다.</p><h3>프로덕션 모드</h3>
+<code>playground/index.html</code>을 확인하세요. 여기서는 <code>unpkg.com</code>의 최신 alpinejs와 @vimesh/ui를 사용합니다. 실제 프로젝트에서 Vimesh Headless UI를 사용할 때도 이 방법을 사용합니다.
+``<code> html
+<head>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico"></p><p>    <script src="https://unpkg.com/@vimesh/style"></script>
+    <script src="https://unpkg.com/@vimesh/ui"></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script src="https://unpkg.com/universal-router/universal-router.min.js"></script></p><p>    <script>
+        const DEBUG = false
+        $vui.config.debug = DEBUG
+        $vui.config.importMap = {
+            "hui": '../components/${component}.html' + (DEBUG ? '?v=' + new Date().valueOf() : '?v=0.1'),
+            "app": './components/${path}${component}.html' + (DEBUG ? '?v=' + new Date().valueOf() : '?v=0.1'),
+            "page": './pages/${path}${component}.html' + (DEBUG ? '?v=' + new Date().valueOf() : '?v=0.1'),
+        }
+    </script>
+    ...
+</head>
+</code>`<code></p><p><a href="https://unpkg.com/@vimesh/headless/playground/index.html" target="_blank" rel="noopener noreferrer">Online Playground</a></p><p>Yes, the online playground are 100% plain html hosted at </code>unpkg.com`. It is very old school style, right? Let's make frondend development back to what it should be.
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-14
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/vimeshjs/vimesh-headless/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-14 
+    </div>
+    
+</body>
+</html>
