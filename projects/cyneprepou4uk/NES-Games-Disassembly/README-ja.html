@@ -1,0 +1,346 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NES-Games-Disassembly - いくつかのNESゲームのソースコード</title>
+    <meta name="description" content="いくつかのNESゲームのソースコード">
+    <meta name="keywords" content="NES-Games-Disassembly, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "NES-Games-Disassembly",
+  "description": "いくつかのNESゲームのソースコード",
+  "author": {
+    "@type": "Person",
+    "name": "cyneprepou4uk"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 193
+  },
+  "url": "https://OpenAiTx.github.io/projects/cyneprepou4uk/NES-Games-Disassembly/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/cyneprepou4uk/NES-Games-Disassembly/main/README.md",
+  "datePublished": "2025-08-15",
+  "dateModified": "2025-08-15"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/cyneprepou4uk/NES-Games-Disassembly" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    NES-Games-Disassembly
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 193 stars</span>
+                <span class="language">Japanese</span>
+                <span>by cyneprepou4uk</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>NESゲーム逆アセンブル</h1></p><p>各ソースコードは元のROMと同等で、コンパイルおよび編集可能です。</p><p>すべて私の<a href="https://github.com/cyneprepou4uk/BZK-6502-Disassembler" target="_blank" rel="noopener noreferrer">BZK 6502 Disassembler</a>スクリプトで作成されました。</p><p><a href="https://www.romhacking.net/forum/index.php?topic=32220.0" target="_blank" rel="noopener noreferrer">RHDN</a>のトピックで連絡可能です。</p><h2>逆アセンブルのビルド方法</h2></p><h3>Windows</h3></p><p>特別な要件はありません。<code>assemble.bat</code>を起動し、完了まで待つだけです。</p><h3>その他のOS</h3></p><p>代わりにターミナルで<code>sh assemble.sh</code>を試してください。すべてのクレジットは<a href="https://github.com/gb-2312" target="_blank" rel="noopener noreferrer">gb-2312</a>に帰します。</p><p><code>_scripts</code>および<code>_install_packages</code>フォルダは、動作を理解していない限り削除や編集をしないでください。</p><h2>構文ハイライト</h2></p><p><a href="https://notepad-plus-plus.org/" target="_blank" rel="noopener noreferrer">Notepad++</a>でコードをハイライトするには、<code>syntax_6502.xml</code>を使用してください。</p><p>メニューから Language -> User Defined Language -> Define your language -> Import を選択します。</p><h2>逆アセンブルの編集方法</h2></p><p>重要なコメントは<code>bzk</code>テキストでマークされています。まずはスペース確保のために不要なゴミを削除してください。</p><p><code>C - - - - - 0x00009C 00:C08C: A9 00     LDA #$00</code>のようなものは気にしなくて大丈夫です。</p><p><code>preparations.lua</code>スクリプトがコンパイル前に処理します。通常通り新しいコードを<code>LDA #$00</code>のように書くだけでOKです。</p><p>必要に応じて、<code>.\s.\s.\s.\s.\s.\s0x0........:....:\s..\s..\s..\s\s</code> の正規表現でこのテキストを手動で削除できます。</p><h2>ゲームリスト (GoodNES) + CRC32</h2></p><h3>分解済み</h3>
+<ul><li>アドベンチャーアイランド (U) [!] <code>B78C09A2</code></li>
+<li>バトルシティ (J) [!] <code>F599A07E</code></li>
+<li>バグズバニー クレイジーキャッスル (U) [!] <code>DB0C3656</code></li>
+<li>悪魔城ドラキュラIII - 呪いの封印 (U) [!] <code>7CC9C669</code></li>
+<li>コントラフォース (U) [!] <code>83D69922</code></li>
+<li>ダニーサリバンのインディヒート (U) [!] <code>311B5A58</code></li>
+<li>ダブルドラゴンII - ザ・リベンジ (J) <code>8CF69E4B</code></li>
+<li>ドクターマリオ (JU) (PRG0) [!] <code>B1F7E3E9</code></li>
+<li>エキサイトバイク (JU) [!] <code>2BB33C69</code></li>
+<li>フィリックス・ザ・キャット (U) [!] <code>0639E88E</code></li>
+<li>アイスクライマー (J) [!] <code>80C41616</code></li>
+<li>熱血くにおくん サッカーリーグ (J) [!] <code>61C27F7B</code></li>
+<li>ゼルダの伝説 (U) (PRG0) [!] <code>D7AE93DF</code></li>
+<li>リトルマーメイド (U) [!] <code>08EB97DB</code></li>
+<li>マッピー (J) [!] <code>3F0E8E0A</code></li>
+<li>ナッツ＆ミルク (J) [!] <code>11879FE8</code></li>
+<li>パックマン (J) (V1.1) [!] <code>D747B639</code></li>
+<li>ロボコップ3 (U) [!] <code>FBBB58A6</code></li>
+<li>ソルスティス - デムノスの杖を求めて (U) [!] <code>1D60732E</code></li>
+<li>ソンソン (J) [!] <code>F7C8F42D</code></li>
+<li>ストリートファイターIII (9 Fighter) (Unl) <code>22CDD2F6</code></li>
+<li>スーパーC (U) [!] <code>1AC846F0</code></li>
+<li>テクモワールドカップサッカー (J) [!] <code>19F24980</code></li>
+<li>テニス (JU) [!] <code>5F457C00</code></li>
+<li>イーアルカンフー (J) (V1.4) [!] <code>0D526208</code></li></p><p></ul><h3>作業中</h3>
+<ul><li>バトルトード＆ダブルドラゴン - ザ・アルティメットチーム (U) [!] <code>53B02F3D</code></li>
+<li>キャプテンアメリカ＆ザ・アベンジャーズ (U) [!].nes <code>7254D53D</code></li>
+<li>ギャラガ - デモンズオブデス (U) [!] <code>E36D5991</code></li>
+<li>忍者外伝III - 古代の船の呪い (U) [!] <code>BABD39FA</code></li>
+<li>R.C. Pro-Am II (U) [!] <code>03DB5562</code></li>
+<li>リバーシティランサム (U) [!] <code>C3508F7E</code></li>
+<li>スーパーマリオブラザーズ (W) [!] <code>3337EC46</code></li>
+<li>アーバンチャンピオン (W) [!] <code>0770CDAA</code></li></p><p></ul><h3>プランニング</h3>
+<ul><li>バルーンファイト (J) [!] <code>A0DABE0A</code></li>
+<li>バブルボブル (U) [!] <code>D3A91B41</code></li>
+<li>ゴースト＆ゴブリン (U) [!] <code>87ED54AA</code></li>
+<li>キッドイカロス (UE) [!] <code>0B30E036</code></li>
+<li>キン肉マン マッスルタグマッチ (J) (PRG0) [!] <code>C296C8CE</code></li>
+<li>マイティファイナルファイト (U) [!] <code>15EB0BEE</code></li>
+<li>三つ目がとおる (J) [!] <code>E27EC1EC</code></li>
+<li>ポパイ (JU) (PRG0) [!] <code>DE1D762F</code></li>
+<li>テトリス (テンゲン) [!] <code>88F071C3</code></li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-15
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/cyneprepou4uk/NES-Games-Disassembly/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-15 
+    </div>
+    
+</body>
+</html>
