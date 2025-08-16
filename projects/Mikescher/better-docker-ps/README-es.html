@@ -1,0 +1,448 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>better-docker-ps - Porque `docker ps` es molesto y no se ajusta al ancho de mi monitor/terminal</title>
+    <meta name="description" content="Porque `docker ps` es molesto y no se ajusta al ancho de mi monitor/terminal">
+    <meta name="keywords" content="better-docker-ps, Spanish, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "better-docker-ps",
+  "description": "Porque `docker ps` es molesto y no se ajusta al ancho de mi monitor/terminal",
+  "author": {
+    "@type": "Person",
+    "name": "Mikescher"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 208
+  },
+  "url": "https://OpenAiTx.github.io/projects/Mikescher/better-docker-ps/README-es.html",
+  "sameAs": "https://raw.githubusercontent.com/Mikescher/better-docker-ps/master/README.md",
+  "datePublished": "2025-08-16",
+  "dateModified": "2025-08-16"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Mikescher/better-docker-ps" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    better-docker-ps
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 208 stars</span>
+                <span class="language">Spanish</span>
+                <span>by Mikescher</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>./dops - mejor <code>docker ps</code>  </h1>
+Un reemplazo para el docker-ps predeterminado que intenta ajustarse realmente al ancho de tu terminal.</p><p><img src="https://raw.githubusercontent.com/Mikescher/better-docker-ps/master/readme.d/main.png" alt=""></p><h2>Justificación</h2></p><p>Por defecto, la salida de mi <code>docker ps</code> es realmente ancha y cada línea se divide en tres.  
+Esto (obviamente) rompe la visualización tabular y hace que todo sea caótico.  
+<em>(Esto se vuelve especialmente malo si un contenedor tiene múltiples asignaciones de puertos, y todas se muestran en una sola fila)</em>  
+No parece que vayamos a tener una salida mejorada en el futuro previsible (ver <a href="https://github.com/moby/moby/issues/7477" target="_blank" rel="noopener noreferrer">moby#7477</a>), así que decidí hacer mi propio reemplazo directo.  </p><h2>Características</h2></p><ul><li>Todas las opciones/banderas normales de la línea de comandos de docker-ps funcionan <em>(casi)</em> igual.  </li>
+ <li>Escribe datos de múltiples valores (como múltiples asignaciones de puertos, múltiples redes, etc.) en múltiples líneas en lugar de concatenarlos.  </li>
+ <li>Añade color a la columna STATE y STATUS (verde / amarillo / rojo).  </li>
+ <li>Elimina automáticamente columnas en la salida hasta que encaje en el ancho actual del terminal.  </li>
+ <li>Ordena la salida con el argumento <code>--sort</code>  </li>
+ <li>Entra en modo watch con el argumento <code>--watch</code>  </li></p><p></ul>Más cambios respecto al docker-ps por defecto:  
+ <ul><li>Muestra (por defecto) el comando del contenedor sin argumentos.  </li>
+ <li>Muestra el Nombre de Imagen (por defecto) sin el prefijo del registro, y divide Nombre de Imagen y Etiqueta en dos columnas.  </li>
+ <li>Añadidas las columnas IP y NETWORK al conjunto de columnas por defecto (si caben)  </li>
+ <li>Añadido soporte para algunas columnas nuevas (vía --format):  </li>
+   </ul><code>{{.ImageName}</code>, <code>{{.ImageTag}</code>, <code>{{.Tag}</code>, <code>{{.ImageRegistry}</code>, <code>{{.Registry}</code>, <code>{{.ShortCommand}</code>, <code>{{.LabelKeys}</code>, <code>{{.IP}</code>                         
+ <ul><li>Añadidas opciones para controlar la salida en color, el socket usado, la zona horaria y formato de tiempo, etc (ver <code>./dops --help</code>)  </li></p><p></ul><h2>Empezando</h2></p><h3>Linux genérico (p.ej. Debian/Fedora/...)  </h3>
+ <ul><li>Descarga el binario más reciente desde la <a href="https://github.com/Mikescher/better-docker-ps/releases" target="_blank" rel="noopener noreferrer">página de lanzamientos</a> y colócalo en tu PATH (ej. /usr/local/bin)  </li>
+ <li>También puedes usar la siguiente línea única (después puedes usar el comando <code>dops</code> en cualquier lugar):</li>
+</ul><pre><code class="language-">$> sudo wget "https://github.com/Mikescher/better-docker-ps/releases/latest/download/dops_linux-amd64-static" -O "/usr/local/bin/dops" && sudo chmod +x "/usr/local/bin/dops"</code></pre>
+<h3>ArchLinux</h3>
+ <ul><li>Alternativamente, puedes usar uno de los paquetes AUR (en Arch Linux):</li>
+    <li>https://aur.archlinux.org/packages/dops-bin (instala <code>dops</code> en tu PATH)</li>
+    <li>https://aur.archlinux.org/packages/dops-git (instala <code>dops</code> en tu PATH)</li>
+ <li>o el paquete homebrew:</li>
+    <li><code>brew tap mikescher/tap && brew install dops</code></li></p><p></ul><h3>Pasos opcionales</h3>
+ <ul><li>Alias al comando docker ps como <code>dops</code> (ver <a href="#usage-as-drop-in-replacement" target="_blank" rel="noopener noreferrer">sección abajo</a>)</li></p><p></ul><h2>Capturas de pantalla</h2></p><p><img src="https://raw.githubusercontent.com/Mikescher/better-docker-ps/master/readme.d/fullsize.png" alt="">  
+Todas las columnas (por defecto) visibles</p><p>&nbsp;</p><p><img src="https://raw.githubusercontent.com/Mikescher/better-docker-ps/master/readme.d/default.png" alt="">  
+Salida en una terminal de tamaño mediano</p><p>&nbsp;</p><p><img src="https://raw.githubusercontent.com/Mikescher/better-docker-ps/master/readme.d/small.png" alt="">  
+Salida en una terminal pequeña</p><p>&nbsp;</p><h2>Uso como reemplazo directo</h2></p><p>Puedes reemplazar completamente docker ps creando una función shell en tu <code>.bashrc</code> / <code>.zshrc</code>...</p><p>~~~sh
+docker() {
+  case $1 in
+    ps)
+      shift
+      command dops "$@"
+      ;;
+    *)</p><p>      command docker "$@";;
+  esac
+}
+~~~</p><p>Esto aliasará cada llamada a <code>docker ps ...</code> con <code>dops ...</code> (asegúrate de tener el binario dops en tu PATH).</p><p>Si usas fish-shell tienes que crear una función (similar):</p><p>~~~fish
+function docker
+    if test -n "$argv[1]"
+        switch $argv[1]
+            case ps
+                dops $argv[2..-1]
+            case '*'
+                command docker $argv[1..-1]
+        end
+    end
+end
+~~~</p><h2>Cambiar el formato de salida</h2></p><p>Por defecto dops intenta ser "inteligente" y encontrar el mejor formato de salida para el ancho de tu terminal.
+Los formatos de salida actuales (= columnas de la tabla) están definidos en el <a href="https://github.com/Mikescher/better-docker-ps/blob/master/cli/options.go" target="_blank" rel="noopener noreferrer">options.go</a>.
+Se usa el primer formato que quepa en el ancho de tu terminal.</p><p>Pero también puedes sobrescribirlo suministrando un parámetro <code>--format</code>. Si proporcionas más de un parámetro <code>--format</code>, se usa el primero que quepa en tu terminal (misma lógica que con los formatos por defecto...)</p><p>Normalmente solo se soportan columnas simples, es decir, <code>{{.Status}}</code>.  
+Pero también puedes usar la sintaxis completa de plantillas golang (p.ej. <code>{{ printf "%.15s" .Command }}</code>).
+En este caso puede ser útil especificar el encabezado de la columna anteponiéndolo con dos puntos (<code>NOMBRE ACORTADO:{{ printf "%.10s" (join .Names ";") }}</code>)</p><p>Las siguientes funciones están definidas en estas plantillas (además de las <a href="https://pkg.go.dev/text/template" target="_blank" rel="noopener noreferrer">funciones go por defecto</a>):
+ <ul><li><code>join</code>: strings.Join</li>
+ <li><code>array_last</code>: v\[-1\]</li>
+ <li><code>array_slice</code>: v\[a..b\] </li>
+ <li><code>in_array</code>: v1.contains(v2)</li>
+ <li><code>json</code>: json.Marshal(v)</li>
+ <li><code>json_indent</code>: json.MarshalIndent(v, "", "  ")</li>
+ <li><code>json_pretty</code>:  json.Indent(v, "", "  ")</li>
+ <li><code>coalesce</code>: v1 ?? v2</li>
+ <li><code>to_string</code>: fmt.Sprintf("%v", v)</li>
+ <li><code>deref</code>: *v</li>
+ <li><code>now</code>: time.Now()</li>
+ <li><code>uniqid</code>: UUID</li></p><p></ul>Examples:
+~~~~
+$ ./dops --format "table {{.ID}}"
+$ ./dops --format "table {{.ID}}\\t{{.Names}}\\t{{.State}}"</p><p>$ ./dops --format "idlist"</p><p>$ ./dops --format "table {{.ID}}\\t{{.Names}}\\t{{.State}}"  --format "table {{.ID}}\\t{{.Names}}" --format "table {{.ID}}"</p><p>$ ./dops --format "ID: {{.ID}}; Name: {{.Names}}"</p><p>$ ./dops -aq</p><p>$ ./dops --sort "IP" --sort-direction "ASC"</p><p>$ ./dops --format "table {{.ID}}\\tCMD:{{ printf \"%.15s\" .Command }}"
+$ ./dops --format "table {{.ID}}\\tNAME:{{ printf \"%.10s\" (join .Names \";\") }}"</p><p>~~~~</p><h2>Configuración persistente</h2></p><p>También puedes configurar algunas/la mayoría de las opciones mediante un archivo de configuración.  
+Coloca un archivo con formato TOML en <code>$HOME/.config/dops.conf</code> / <code>$XDG_CONFIG_HOME/dops.conf</code>.</p><p>Las siguientes claves son compatibles:
+ <ul><li>verbose</li>
+ <li>silent</li>
+ <li>timezone</li>
+ <li>timeformat</li>
+ <li>timeformat-header</li>
+ <li>color</li>
+ <li>socket</li>
+ <li>todos</li>
+ <li>tamaño</li>
+ <li>filtro (= arreglo de cadenas)</li>
+ <li>formato (= arreglo de cadenas)</li>
+ <li>último</li>
+ <li>más reciente</li>
+ <li>truncar</li>
+ <li>encabezado (= verdadero / falso / simple)</li>
+ <li>ordenar (= arreglo de cadenas)</li>
+ <li>dirección-orden (= arreglo de cadenas)</li></p><p></ul>Ejemplo:
+<pre><code class="language-toml">verbose = 0</p><p>timezone = "Europe/Berlin"</p><p>format = [
+   "table {{.ID}}\t{{.Names}}\t{{.State}}\t{{.Status}}",
+   "table {{.ID}}\t{{.Names}}\t{{.State}}",
+   "table {{.ID}}\t{{.Names}}",
+   "table {{.ID}}",
+]</p><p>header = "simple"</code></pre></p><h2>Manual</h2></p><p>Salida de <code>./dops --help</code>:</p><p>~~~~~~
+better-docker-ps</p><p>Uso:
+  dops [OPCIONES]                    Listar contenedores de docker</p><p>Opciones (por defecto):
+  -h, --help                         Mostrar esta pantalla.
+  --version                          Mostrar versión.
+  --all , -a                         Mostrar todos los contenedores (por defecto muestra solo los en ejecución)
+  --filter <ftr>, -f <ftr>           Filtrar salida según las condiciones proporcionadas
+  --format <fmt>                     Imprimir contenedores formateados usando una plantilla Go
+  --last , -n                        Mostrar los n últimos contenedores creados (incluye todos los estados)
+  --latest , -l                      Mostrar el contenedor creado más reciente (incluye todos los estados)
+  --no-trunc                         No truncar la salida (ej. IDs de contenedor, referencias de imagen Sha256, línea de comandos)
+  --quiet , -q                       Mostrar solo los IDs de los contenedores
+  --size , -s                        Mostrar el tamaño total de archivos</p><p>Opciones (extra | no existen en <code>docker ps</code>):
+  --silent                           No imprimir ninguna salida
+  --timezone                         Especificar la zona horaria para salidas de fecha
+  --color <true|false>               Activar/Desactivar color en la terminal
+  --no-color                         Desactivar color en la terminal
+  --socket <ruta-de-archivo>         Especificar la ubicación del socket docker (Por defecto: <code>auto</code> - que llama al cli de docker para determinar el socket)
+  --timeformat <formato-go-time>     Especificar el formato de fecha/hora de salida (sintaxis golang)
+  --no-header                        No imprimir el encabezado de la tabla
+  --simple-header                    No imprimir las líneas debajo del encabezado
+  --format <fmt>                     Puede especificar múltiples formatos y se usará el primero que se ajuste al ancho de su terminal
+  --sort <col>                       Ordenar la salida por una columna específica, use el mismo identificador que en --format, útil solo con formatos de tabla
+  --sort-direction <ASC|DESC>        Dirección del ordenamiento, útil solo en combinación con --sort
+  --watch <interval>, -w <interval>  Refrescar la salida automáticamente periódicamente (intervalo es opcional, por defecto: 2s)</p><p>Claves disponibles para --format (por defecto):
+  {{.ID}}                            ID del contenedor
+  {{.Image}}                         ID de la imagen
+  {{.Command}}                       Comando entrecomillado
+  {{.CreatedAt}}                     Hora en que se creó el contenedor.
+  {{.RunningFor}}                    Tiempo transcurrido desde que se inició el contenedor.
+  {{.Ports}}                         Puertos publicados. ([!] difiere de docker CLI, estos son solo los puertos publicados)
+  {{.State}}                         Estado del contenedor
+  {{.Status}}                        Estado del contenedor con detalles
+  {{.Size}}                          Tamaño en disco del contenedor.
+  {{.Names}}                         Nombres del contenedor.
+  {{.Labels}}                        Todas las etiquetas asignadas al contenedor.
+  {{.Label}}                         [!] No soportado
+  {{.Mounts}}                        Nombres de los volúmenes montados en este contenedor.
+  {{.Networks}}                      Nombres de las redes conectadas a este contenedor.</p><p>Claves disponibles para --format (extra | no existen en <code>docker ps</code>):
+  {{.ImageName}}                     ID de la imagen (sin etiqueta ni registro)
+  {{.ImageTag}}, {{.Tag}}            Etiqueta de la imagen
+  {{.ImageRegistry}}, {{.Registry}}  Registro de la imagen
+  {{.ShortCommand}}                  Comando sin argumentos
+  {{.LabelKeys}}                     Todas las etiquetas asignadas al contenedor (solo claves)
+  {{.ShortPublishedPorts}}           Puertos publicados, salida más corta que {{.Ports}}
+  {{.LongPublishedPorts}}            Puertos publicados, salida completa con IP
+  {{.ExposedPorts}}                  Puertos expuestos
+  {{.PublishedPorts}}                Puertos publicados
+  {{.NotPublishedPorts}}             Puertos expuestos pero no publicados
+  {{.PublicPorts}}                   Solo la parte pública de los puertos publicados
+  {{.IP}}                            Dirección IP interna
+~~~~~~</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-16
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Mikescher/better-docker-ps/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-16 
+    </div>
+    
+</body>
+</html>
