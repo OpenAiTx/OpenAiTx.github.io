@@ -1,0 +1,455 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gpt-load - Multi-channel AI proxy with intelligent key rotation.</title>
+    <meta name="description" content="Multi-channel AI proxy with intelligent key rotation.">
+    <meta name="keywords" content="gpt-load, English, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "gpt-load",
+  "description": "Multi-channel AI proxy with intelligent key rotation.",
+  "author": {
+    "@type": "Person",
+    "name": "tbphp"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 4131
+  },
+  "url": "https://OpenAiTx.github.io/projects/tbphp/gpt-load/README-en.html",
+  "sameAs": "https://raw.githubusercontent.com/tbphp/gpt-load/main/README.md",
+  "datePublished": "2025-08-22",
+  "dateModified": "2025-08-22"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/tbphp/gpt-load" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    gpt-load
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 4131 stars</span>
+                <span class="language">English</span>
+                <span>by tbphp</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>GPT-Load</h1></p><p>Chinese Document | <a href="https://raw.githubusercontent.com/tbphp/gpt-load/main/README_EN.md" target="_blank" rel="noopener noreferrer">English</a></p><p><a href="https://github.com/tbphp/gpt-load/releases" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/v/release/tbphp/gpt-load" alt="Release"></a>
+<img src="https://img.shields.io/badge/Go-1.23+-blue.svg" alt="Go Version">
+<img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></p><p>A high-performance, enterprise-grade AI interface transparent proxy service, specially designed for enterprises and developers who need to integrate multiple AI services. Developed in Go, it features intelligent key management, load balancing, and comprehensive monitoring, specifically designed for high-concurrency production environments.</p><p>For details, please refer to the <a href="https://www.gpt-load.com/docs" target="_blank" rel="noopener noreferrer">official documentation</a></p><p><a href="https://hellogithub.com/repository/tbphp/gpt-load" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=554dc4c46eb14092b9b0c56f1eb9021c&claim_uid=Qlh8vzrWJ0HCneG" alt="Featured｜HelloGitHub" style="width: 250px; height: 54px;" width="250" height="54" /></a></p><h2>Features</h2></p><ul><li><strong>Transparent Proxy</strong>: Fully retains the native API format, supporting multiple formats such as OpenAI, Google Gemini, and Anthropic Claude</li>
+<li><strong>Intelligent Key Management</strong>: High-performance key pool, supporting group management, automatic rotation, and fault recovery</li>
+<li><strong>Load Balancing</strong>: Supports weighted load balancing across multiple upstream endpoints to improve service availability</li>
+<li><strong>Intelligent Fault Handling</strong>: Automatic key blacklist management and recovery mechanism to ensure service continuity</li>
+<li><strong>Dynamic Configuration</strong>: System settings and group configurations support hot reloads, effective without restarting</li>
+<li><strong>Enterprise-grade Architecture</strong>: Distributed master-slave deployment, supporting horizontal scaling and high availability</li>
+<li><strong>Modern Management</strong>: Web management interface based on Vue 3, intuitive and user-friendly</li>
+<li><strong>Comprehensive Monitoring</strong>: Real-time statistics, health checks, detailed request logs</li>
+<li><strong>High-performance Design</strong>: Zero-copy streaming transmission, connection pool reuse, atomic operations</li>
+<li><strong>Production Ready</strong>: Graceful shutdown, error recovery, complete security mechanisms</li>
+<li><strong>Dual Authentication System</strong>: Separate authentication for management and proxy ends; proxy authentication supports global and group-level keys</li></p><p></ul><h2>Supported AI Services</h2></p><p>As a transparent proxy service, GPT-Load fully retains the native API formats of various AI providers:</p><ul><li><strong>OpenAI Format</strong>: Official OpenAI API, Azure OpenAI, and other OpenAI-compatible services</li>
+<li><strong>Google Gemini Format</strong>: Native APIs for models like Gemini Pro, Gemini Pro Vision, etc.</li>
+<li><strong>Anthropic Claude Format</strong>: Claude series models, supporting high-quality dialogue and text generation</li></p><p></ul><h2>Quick Start</h2></p><h3>Environment Requirements</h3></p><ul><li>Go 1.23+ (Source Code Build)</li>
+<li>Docker (Containerized Deployment)</li>
+<li>MySQL, PostgreSQL, or SQLite (Database Storage)</li>
+<li>Redis (Caching and Distributed Coordination, Optional)</li></p><p></ul><h3>Method 1: Docker Quick Start</h3></p><pre><code class="language-bash">docker run -d --name gpt-load \
+    -p 3001:3001 \
+    -e AUTH_KEY=sk-123456 \
+    -v "$(pwd)/data":/app/data \
+    ghcr.io/tbphp/gpt-load:latest</code></pre></p><blockquote>Log in to the management interface using <code>sk-123456</code>: <http://localhost:3001></blockquote></p><h3>Method 2: Using Docker Compose (Recommended)</h3></p><p><strong>Installation command:</strong></p><pre><code class="language-bash"># 创建目录
+mkdir -p gpt-load && cd gpt-load</p><h1>下载配置文件</h1>
+wget https://raw.githubusercontent.com/tbphp/gpt-load/refs/heads/main/docker-compose.yml
+wget -O .env https://raw.githubusercontent.com/tbphp/gpt-load/refs/heads/main/.env.example</p><h1>启动服务</h1>
+docker compose up -d</code></pre></p><p>The default installation is the SQLite version, suitable for lightweight standalone applications.</p><p>If you need to install MySQL, PostgreSQL, and Redis, please uncomment the required services in the <code>docker-compose.yml</code> file and configure the corresponding environment settings before restarting.</p><p><strong>Other commands:</strong></p><pre><code class="language-bash"># 查看服务状态
+docker compose ps</p><h1>查看日志</h1>
+docker compose logs -f</p><h1>重启服务</h1>
+docker compose down && docker compose up -d</p><h1>更新到最新版本</h1>
+docker compose pull && docker compose down && docker compose up -d</code></pre></p><p>After deployment:</p><ul><li>Access the Web management interface: <http://localhost:3001></li>
+<li>API proxy address: <http://localhost:3001/proxy></li></p><p></ul>> Use the default authentication Key <code>sk-123456</code> to log in to the management console, the authentication Key can be modified in the .env file under AUTH_KEY.</p><h3>Method 3: Source Code Build</h3></p><p>Source code build requires a locally installed database (SQLite, MySQL, or PostgreSQL) and Redis (optional).</p><pre><code class="language-bash"># 克隆并构建
+git clone https://github.com/tbphp/gpt-load.git
+cd gpt-load
+go mod tidy</p><h1>创建配置</h1>
+cp .env.example .env</p><h1>修改 .env 中 DATABASE_DSN 和 REDIS_DSN 配置</h1>
+<h1>REDIS_DSN 为可选，如果不配置则启用内存存储</h1></p><h1>运行</h1>
+make run</code></pre>
+After deployment:</p><ul><li>Access the Web management interface: <http://localhost:3001></li>
+<li>API proxy address: <http://localhost:3001/proxy></li></p><p></ul>> Use the default authentication Key <code>sk-123456</code> to log in to the management end, the authentication Key can be modified in the .env file under AUTH_KEY.</p><h3>Method 4: Cluster Deployment</h3></p><p>Cluster deployment requires all nodes to connect to the same MySQL (or PostgreSQL) and Redis, and Redis is mandatory. It is recommended to use unified distributed MySQL and Redis clusters.</p><p><strong>Deployment requirements:</strong></p><ul><li>All nodes must configure the same <code>AUTH_KEY</code>, <code>DATABASE_DSN</code>, <code>REDIS_DSN</code></li>
+<li>Master-slave architecture, slave nodes must configure the environment variable: <code>IS_SLAVE=true</code></li></p><p></ul>For details, please refer to the <a href="https://www.gpt-load.com/docs/cluster" target="_blank" rel="noopener noreferrer">Cluster Deployment Documentation</a></p><h2>Configure the System</h2></p><h3>Configuration Architecture Overview</h3></p><p>GPT-Load adopts a two-layer configuration architecture:</p><p>#### 1. Static Configuration (Environment Variables)</p><ul><li><strong>Features</strong>: Read at application startup, cannot be modified during runtime, requires application restart to take effect</li>
+<li><strong>Purpose</strong>: Infrastructure configuration such as database connection, server port, authentication keys, etc.</li>
+<li><strong>Management method</strong>: Set via <code>.env</code> file or system environment variables</li></p><p></ul>#### 2. Dynamic Configuration (Hot Reload)</p><ul><li><strong>System settings</strong>: Stored in the database, providing a unified behavioral baseline for the entire application</li>
+<li><strong>Group configuration</strong>: Customized behavioral parameters for specific groups, can override system settings</li>
+<li><strong>Configuration priority</strong>: Group configuration > System settings > Environment configuration</li>
+<li><strong>Features</strong>: Supports hot reload, takes effect immediately after modification, no need to restart the application</li></p><p></ul><details>
+<summary>Static Configuration (Environment Variables)</summary></p><p>
+<strong>Server Configuration:</strong></p><p>| Configuration Item | Environment Variable               | Default Value   | Description                 |
+| ------------------ | -------------------------------- | --------------- | --------------------------- |
+| Server Port        | <code>PORT</code>                           | 3001            | HTTP server listening port  |
+| Server Address     | <code>HOST</code>                           | 0.0.0.0         | HTTP server bind address    |
+| Read Timeout       | <code>SERVER_READ_TIMEOUT</code>            | 60              | HTTP server read timeout (seconds)  |
+| Write Timeout      | <code>SERVER_WRITE_TIMEOUT</code>           | 600             | HTTP server write timeout (seconds) |
+| Idle Timeout       | <code>SERVER_IDLE_TIMEOUT</code>            | 120             | HTTP connection idle timeout (seconds) |
+| Graceful Shutdown Timeout | <code>SERVER_GRACEFUL_SHUTDOWN_TIMEOUT</code> | 10              | Service graceful shutdown wait time (seconds) |
+| Slave Mode         | <code>IS_SLAVE</code>                      | false           | Slave node identifier in cluster deployment |
+| Time Zone          | <code>TZ</code>                             | <code>Asia/Shanghai</code> | Specified time zone         |</p><p><strong>Authentication and Database Configuration:</strong></p><p>| Configuration Item | Environment Variable | Default Value      | Description                        |
+| ------------------ | --------------------| ------------------ | --------------------------------- |
+| Admin Key          | <code>AUTH_KEY</code>          | <code>sk-123456</code>       | Access authentication key for <strong>admin</strong> |
+| Database Connection| <code>DATABASE_DSN</code>      | ./data/gpt-load.db | Database connection string (DSN) or file path |
+| Redis Connection   | <code>REDIS_DSN</code>         | -                  | Redis connection string, uses in-memory storage if empty |</p><p><strong>Performance and CORS Configuration:</strong></p><p>| Configuration Item    | Environment Variable       | Default Value                 | Description               |
+| --------------------- | --------------------------| -----------------------------| ------------------------- |
+| Max Concurrent Requests| <code>MAX_CONCURRENT_REQUESTS</code> | 100                          | Maximum concurrent requests allowed by the system |
+| Enable CORS           | <code>ENABLE_CORS</code>             | true                         | Whether to enable Cross-Origin Resource Sharing |
+| Allowed Origins       | <code>ALLOWED_ORIGINS</code>         | <code>*</code>                          | Allowed origins, comma-separated |
+| Allowed Methods       | <code>ALLOWED_METHODS</code>         | <code>GET,POST,PUT,DELETE,OPTIONS</code>| Allowed HTTP methods        |
+| Allowed Headers       | <code>ALLOWED_HEADERS</code>         | <code>*</code>                          | Allowed request headers, comma-separated |
+| Allow Credentials     | <code>ALLOW_CREDENTIALS</code>       | false                        | Whether to allow sending credentials |</p><p><strong>Logging Configuration:</strong></p><p>| Configuration Item | Environment Variable    | Default Value | Description                         |
+| ------------------ | -----------------------| ------------- | ---------------------------------- |
+| Log Level          | <code>LOG_LEVEL</code>            | <code>info</code>       | Log level: debug, info, warn, error |
+| Log Format         | <code>LOG_FORMAT</code>           | <code>text</code>       | Log format: text, json              |
+| Enable File Logging| <code>LOG_ENABLE_FILE</code>      | false        | Whether to enable file log output  |
+| Log File Path | <code>LOG_FILE_PATH</code>   | <code>./data/logs/app.log</code> | Log file storage path                   |</p><p><strong>Proxy Configuration:</strong></p><p>GPT-Load will automatically read proxy settings from environment variables for requests to upstream AI providers.</p><p>| Config Item   | Environment Variable | Default | Description                              |
+| ------------- | -------------------- | ------- | -------------------------------------- |
+| HTTP Proxy    | <code>HTTP_PROXY</code>         | -       | Proxy server address for HTTP requests |
+| HTTPS Proxy   | <code>HTTPS_PROXY</code>        | -       | Proxy server address for HTTPS requests|
+| No Proxy      | <code>NO_PROXY</code>           | -       | Hosts or domains not accessed via proxy, comma-separated |</p><p>Supported proxy protocol formats:</p><ul><li><strong>HTTP</strong>: <code>http://user:pass@host:port</code></li>
+<li><strong>HTTPS</strong>: <code>https://user:pass@host:port</code></li>
+<li><strong>SOCKS5</strong>: <code>socks5://user:pass@host:port</code></li>
+</ul></details></p><p><details>
+<summary>Dynamic Configuration (Hot Reload)</summary></p><p><strong>Basic Settings:</strong></p><p>| Config Item          | Field Name                        | Default                      | Group Overridable | Description                            |
+| -------------------- | -------------------------------- | ----------------------------| ----------------- | -------------------------------------|
+| Project URL          | <code>app_url</code>                        | <code>http://localhost:3001</code>      | ❌                | Base URL of the project               |
+| Log Retention Days   | <code>request_log_retention_days</code>      | 7                            | ❌                | Request log retention days, 0 means no cleanup |
+| Log Write Interval   | <code>request_log_write_interval_minutes</code> | 1                           | ❌                | Log write interval to database (minutes) |
+| Global Proxy Keys    | <code>proxy_keys</code>                     | Initially from environment AUTH_KEY | ❌         | Globally effective proxy authentication keys, separated by commas |</p><p><strong>Request Settings:</strong></p><p>| Config Item           | Field Name                  | Default | Group Overridable | Description                        |
+| --------------------- | --------------------------- | ------- | ----------------- | ---------------------------------|
+| Request Timeout       | <code>request_timeout</code>           | 600     | ✅                | Full lifecycle timeout for forwarded requests (seconds) |
+| Connect Timeout       | <code>connect_timeout</code>           | 15      | ✅                | Timeout for establishing connection with upstream service (seconds) |
+| Idle Connection Timeout | <code>idle_conn_timeout</code>        | 120     | ✅                | HTTP client idle connection timeout (seconds) |
+| Response Header Timeout | <code>response_header_timeout</code>  | 600     | ✅                | Timeout waiting for upstream response headers (seconds) |
+| Max Idle Connections  | <code>max_idle_conns</code>            | 100     | ✅                | Maximum total idle connections in the connection pool |
+| Max Idle Connections Per Host | <code>max_idle_conns_per_host</code> | 50     | ✅         | Maximum idle connections per upstream host     |
+| Proxy Server Address           | <code>proxy_url</code>               | -      | ✅         | HTTP/HTTPS proxy for forwarding requests, empty to use environment settings |</p><p><strong>Key Configuration:</strong></p><p>| Item                     | Field Name                         | Default | Group Override | Description                                             |
+| ------------------------ | --------------------------------- | ------- | -------------- | ------------------------------------------------------- |
+| Max Retry Count          | <code>max_retries</code>                     | 3       | ✅             | Maximum retry count using different keys per request   |
+| Blacklist Threshold      | <code>blacklist_threshold</code>             | 3       | ✅             | Number of consecutive failures before a key is blacklisted |
+| Key Validation Interval  | <code>key_validation_interval_minutes</code>| 60      | ✅             | Background periodic key validation interval (minutes)  |
+| Key Validation Concurrency | <code>key_validation_concurrency</code>    | 10      | ✅             | Concurrency for background invalid key validation       |
+| Key Validation Timeout   | <code>key_validation_timeout_seconds</code> | 20      | ✅             | API request timeout for single key validation (seconds) |</p><p></details></p><h2>Web Management Interface</h2></p><p>Access the management console: <http://localhost:3001> (default address)</p><h3>Interface Display</h3></p><p><img src="https://raw.githubusercontent.com/tbphp/gpt-load/main/screenshot/dashboard.png" alt="Dashboard" width="600" /></p><p><br/></p><p><img src="https://raw.githubusercontent.com/tbphp/gpt-load/main/screenshot/keys.png" alt="Key Management" width="600" /></p><p><br/></p><p>The web management interface provides the following features:</p><ul><li><strong>Dashboard</strong>: Real-time statistics and system status overview</li>
+<li><strong>Key Management</strong>: Create and configure AI provider groups, add, delete, and monitor API keys</li>
+<li><strong>Request Logs</strong>: Detailed request history and debugging information</li>
+<li><strong>System Settings</strong>: Global configuration management and hot reload</li></p><p></ul><h2>API Usage Instructions</h2></p><p><details>
+<summary>Proxy Interface Call Method</summary></p><p>GPT-Load routes requests to different AI services through group names. Usage is as follows:</p><p>#### 1. Proxy Endpoint Format</p><pre><code class="language-text">http://localhost:3001/proxy/{group_name}/{原始API路径}</code></pre></p><ul><li><code>{group_name}</code>: The group name created in the management interface  </li>
+<li><code>{original API path}</code>: The path exactly consistent with the original AI service  </li></p><p></ul>#### 2. Authentication Method  </p><p>Configure <strong>Proxy Keys</strong> in the Web management interface, allowing system-level and group-level proxy keys.  </p><ul><li><strong>Authentication method</strong>: Same as the native API, but the original key must be replaced with the configured proxy key.  </li>
+<li><strong>Key scope</strong>: The <strong>global proxy key</strong> configured in system settings can be used in all groups, while the <strong>group proxy key</strong> configured in the group is only valid in the current group.  </li>
+<li><strong>Format</strong>: Multiple keys are separated by half-width English commas.  </li></p><p></ul>#### 3. OpenAI API Call Example  </p><p>Assuming a group named <code>openai</code> is created:  </p><p><strong>Original call method:</strong></p><pre><code class="language-bash">curl -X POST https://api.openai.com/v1/chat/completions \
+  -H "Authorization: Bearer sk-your-openai-key" \
+  -H "Content-Type: application/json" \
+  -d '{"model": "gpt-4.1-mini", "messages": [{"role": "user", "content": "Hello"}]}'</code></pre></p><p><strong>Proxy Invocation Method:</strong></p><pre><code class="language-bash">curl -X POST http://localhost:3001/proxy/openai/v1/chat/completions \
+  -H "Authorization: Bearer your-proxy-key" \
+  -H "Content-Type: application/json" \
+  -d '{"model": "gpt-4.1-mini", "messages": [{"role": "user", "content": "Hello"}]}'</code></pre></p><p><strong>Change Description:</strong></p><ul><li>Replace <code>https://api.openai.com</code> with <code>http://localhost:3001/proxy/openai</code></li>
+<li>Replace the original API Key with the <strong>proxy key</strong></li></p><p></ul>#### 4. Gemini Interface Call Example</p><p>Assuming a group named <code>gemini</code> has been created:</p><p><strong>Original call method:</strong></p><pre><code class="language-bash">curl -X POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key=your-gemini-key \
+  -H "Content-Type: application/json" \
+  -d '{"contents": [{"parts": [{"text": "Hello"}]}]}'</code></pre></p><p><strong>Proxy invocation method:</strong></p><pre><code class="language-bash">curl -X POST http://localhost:3001/proxy/gemini/v1beta/models/gemini-2.5-pro:generateContent?key=your-proxy-key \
+  -H "Content-Type: application/json" \
+  -d '{"contents": [{"parts": [{"text": "Hello"}]}]}'</code></pre></p><p><strong>Change Description:</strong></p><ul><li>Replace <code>https://generativelanguage.googleapis.com</code> with <code>http://localhost:3001/proxy/gemini</code></li>
+<li>Replace <code>key=your-gemini-key</code> in the URL parameters with <strong>proxy key</strong></li></p><p></ul>#### 5. Anthropic API Call Example</p><p>Assuming a group named <code>anthropic</code> has been created:</p><p><strong>Original call method:</strong></p><pre><code class="language-bash">curl -X POST https://api.anthropic.com/v1/messages \
+  -H "x-api-key: sk-ant-api03-your-anthropic-key" \
+  -H "anthropic-version: 2023-06-01" \
+  -H "Content-Type: application/json" \
+  -d '{"model": "claude-sonnet-4-20250514", "messages": [{"role": "user", "content": "Hello"}]}'</code></pre></p><p><strong>Proxy Invocation Method:</strong></p><pre><code class="language-bash">curl -X POST http://localhost:3001/proxy/anthropic/v1/messages \
+  -H "x-api-key: your-proxy-key" \
+  -H "anthropic-version: 2023-06-01" \
+  -H "Content-Type: application/json" \
+  -d '{"model": "claude-sonnet-4-20250514", "messages": [{"role": "user", "content": "Hello"}]}'</code></pre></p><p><strong>Change Description:</strong></p><ul><li>Replace <code>https://api.anthropic.com</code> with <code>http://localhost:3001/proxy/anthropic</code></li>
+<li>Replace the original API Key in the <code>x-api-key</code> header with the <strong>proxy key</strong></li></p><p></ul>#### 6. Supported Interfaces</p><p><strong>OpenAI Format:</strong></p><ul><li><code>/v1/chat/completions</code> - Chat conversations</li>
+<li><code>/v1/completions</code> - Text completions</li>
+<li><code>/v1/embeddings</code> - Text embeddings</li>
+<li><code>/v1/models</code> - Model list</li>
+<li>And all other OpenAI-compatible interfaces</li></p><p></ul><strong>Gemini Format:</strong></p><ul><li><code>/v1beta/models/*/generateContent</code> - Content generation</li>
+<li><code>/v1beta/models</code> - Model list</li>
+<li>And all other native Gemini interfaces</li></p><p></ul><strong>Anthropic Format:</strong></p><ul><li><code>/v1/messages</code> - Message conversations</li>
+<li><code>/v1/models</code> - Model list (if available)</li>
+<li>And all other native Anthropic interfaces</li></p><p></ul>#### 7. Client SDK Configuration</p><p><strong>OpenAI Python SDK：</strong></p><pre><code class="language-python">from openai import OpenAI</p><p>client = OpenAI(
+    api_key="your-proxy-key",  # 使用密钥
+    base_url="http://localhost:3001/proxy/openai"  # 使用代理端点
+)</p><p>response = client.chat.completions.create(
+    model="gpt-4.1-mini",
+    messages=[{"role": "user", "content": "Hello"}]
+)</code></pre></p><p><strong>Google Gemini SDK (Python):</strong></p><pre><code class="language-python">import google.generativeai as genai</p><h1>配置 API 密钥和基础 URL</h1>
+genai.configure(
+    api_key="your-proxy-key",  # 使用代理密钥
+    client_options={"api_endpoint": "http://localhost:3001/proxy/gemini"}
+)</p><p>model = genai.GenerativeModel('gemini-2.5-pro')
+response = model.generate_content("Hello")</code></pre></p><p><strong>Anthropic SDK (Python):</strong></p><pre><code class="language-python">from anthropic import Anthropic</p><p>client = Anthropic(
+    api_key="your-proxy-key",  # 使用代理密钥
+    base_url="http://localhost:3001/proxy/anthropic"  # 使用代理端点
+)</p><p>response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    messages=[{"role": "user", "content": "Hello"}]
+)</code></pre></p><blockquote><strong>Important Note</strong>: As a transparent proxy service, GPT-Load fully preserves the native API format and authentication methods of each AI service, requiring only the replacement of the endpoint address and the use of the <strong>proxy key</strong> configured in the management console for seamless migration.</blockquote></p><p></details></p><h2>License</h2></p><p>MIT License - For details, please refer to the <a href="LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a> file.</p><h2>Star History</h2></p><p><a href="https://starchart.cc/tbphp/gpt-load" target="_blank" rel="noopener noreferrer"><img src="https://starchart.cc/tbphp/gpt-load.svg?variant=adaptive" alt="Stargazers over time"></a></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-22
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/tbphp/gpt-load/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-22 
+    </div>
+    
+</body>
+</html>

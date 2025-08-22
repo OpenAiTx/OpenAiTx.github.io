@@ -1,0 +1,433 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>serde-yaml-ng - Rust向けの強く型付けされたYAMLライブラリで、serde互換です。dtolnayのserde-yamlの独立した継続版です。</title>
+    <meta name="description" content="Rust向けの強く型付けされたYAMLライブラリで、serde互換です。dtolnayのserde-yamlの独立した継続版です。">
+    <meta name="keywords" content="serde-yaml-ng, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "serde-yaml-ng",
+  "description": "Rust向けの強く型付けされたYAMLライブラリで、serde互換です。dtolnayのserde-yamlの独立した継続版です。",
+  "author": {
+    "@type": "Person",
+    "name": "acatton"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 69
+  },
+  "url": "https://OpenAiTx.github.io/projects/acatton/serde-yaml-ng/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/acatton/serde-yaml-ng/master/README.md",
+  "datePublished": "2025-08-22",
+  "dateModified": "2025-08-22"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/acatton/serde-yaml-ng" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    serde-yaml-ng
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 69 stars</span>
+                <span class="language">Japanese</span>
+                <span>by acatton</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>Serde YAML
+==========</p><p><a href="https://github.com/acatton/serde-yaml-ng" target="_blank" rel="noopener noreferrer"><img alt="github" src="https://img.shields.io/badge/github-acatton/serde--yaml--ng-8da0cb?style=for-the-badge&labelColor=555555&logo=github" height="20"></a>
+<a href="https://crates.io/crates/serde_yaml_ng" target="_blank" rel="noopener noreferrer"><img alt="crates.io" src="https://img.shields.io/crates/v/serde_yaml_ng.svg?style=for-the-badge&color=fc8d62&logo=rust" height="20"></a>
+<a href="https://docs.rs/serde_yaml_ng" target="_blank" rel="noopener noreferrer"><img alt="docs.rs" src="https://img.shields.io/badge/docs.rs-serde__yaml__ng-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs" height="20"></a>
+<a href="https://github.com/acatton/serde-yaml-ng/actions?query=branch%3Amaster" target="_blank" rel="noopener noreferrer"><img alt="build status" src="https://img.shields.io/github/actions/workflow/status/acatton/serde-yaml-ng/ci.yml?branch=master&style=for-the-badge" height="20"></a></p><p>Rustライブラリで、[Serde] シリアライズフレームワークを [YAML] のファイル形式のデータで使用するためのものです。このライブラリは <a href="https://yaml.org/spec/1.1/" target="_blank" rel="noopener noreferrer">YAML仕様 1.1</a> のみをサポートしています。</p><p>このライブラリは、<a href="https://github.com/dtolnay/serde-yaml" target="_blank" rel="noopener noreferrer">serde-yaml</a> の最新コミットをフォークしたもので、
+コミットIDは <code>200950</code> です。
+<sup>\<a href="https://github.com/dtolnay/serde-yaml/commit/2009506d33767dfc88e979d6bc0d53d09f941c94" target="_blank" rel="noopener noreferrer">[original</a>\]</sup>
+<sup>\<a href="https://github.com/acatton/serde-yaml-ng/commit/2009506d33767dfc88e979d6bc0d53d09f941c94" target="_blank" rel="noopener noreferrer">[this project</a>\]</sup>
+私の目標は <a href="https://github.com/dtolnay" target="_blank" rel="noopener noreferrer">David Tolnay</a> の元のライブラリとできるだけ互換性を持たせることです。</p><p>[Serde]: https://github.com/serde-rs/serde
+[YAML]: https://yaml.org/</p><h2>依存関係</h2></p><pre><code class="language-toml">[dependencies]
+serde = "1.0"
+serde_yaml_ng = "0.10"</code></pre>
+リリースノートは[GitHubリリース]で入手可能です。</p><p>[GitHubリリース]: https://github.com/acatton/serde-yaml-ng/releases</p><h2>Serde YAMLの使用方法</h2></p><p>[APIドキュメントはrustdoc形式で利用可能][docs.rs]ですが、一般的な考え方は：</p><p>[docs.rs]: https://docs.rs/serde_yaml_ng</p><pre><code class="language-rust">use std::collections::BTreeMap;</p><p>fn main() -> Result<(), serde_yaml_ng::Error> {
+    // You have some type.
+    let mut map = BTreeMap::new();
+    map.insert("x".to_string(), 1.0);
+    map.insert("y".to_string(), 2.0);</p><p>    // Serialize it to a YAML string.
+    let yaml = serde_yaml_ng::to_string(&map)?;
+    assert_eq!(yaml, "x: 1.0\ny: 2.0\n");</p><p>    // Deserialize it back to a Rust type.
+    let deserialized_map: BTreeMap<String, f64> = serde_yaml_ng::from_str(&yaml)?;
+    assert_eq!(map, deserialized_map);
+    Ok(())
+}</code></pre>
+Serdeのderiveマクロと組み合わせて、プログラム内で定義された構造体や列挙型を処理することもできます。</p><pre><code class="language-toml">[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_yaml_ng = "0.10"</code></pre></p><p>構造体は明白な方法でシリアライズされます：</p><pre><code class="language-rust">use serde::{Serialize, Deserialize};</p><p>#[derive(Debug, PartialEq, Serialize, Deserialize)]
+struct Point {
+    x: f64,
+    y: f64,
+}</p><p>fn main() -> Result<(), serde_yaml_ng::Error> {
+    let point = Point { x: 1.0, y: 2.0 };</p><p>    let yaml = serde_yaml_ng::to_string(&point)?;
+    assert_eq!(yaml, "x: 1.0\ny: 2.0\n");</p><p>    let deserialized_point: Point = serde_yaml_ng::from_str(&yaml)?;
+    assert_eq!(point, deserialized_point);
+    Ok(())
+}</code></pre></p><p>列挙型は、バリアント名を識別するために YAML の <code>!tag</code> 構文を使用してシリアライズされます。</p><pre><code class="language-rust">use serde::{Serialize, Deserialize};</p><p>#[derive(Serialize, Deserialize, PartialEq, Debug)]
+enum Enum {
+    Unit,
+    Newtype(usize),
+    Tuple(usize, usize, usize),
+    Struct { x: f64, y: f64 },
+}</p><p>fn main() -> Result<(), serde_yaml_ng::Error> {
+    let yaml = "
+        <ul><li>!Newtype 1</li>
+        <li>!Tuple [0, 0, 0]</li>
+        <li>!Struct {x: 1.0, y: 2.0}</li>
+    </ul>";
+    let values: Vec<Enum> = serde_yaml_ng::from_str(yaml).unwrap();
+    assert_eq!(values[0], Enum::Newtype(1));
+    assert_eq!(values[1], Enum::Tuple(0, 0, 0));
+    assert_eq!(values[2], Enum::Struct { x: 1.0, y: 2.0 });</p><p>    // The last two in YAML's block style instead:
+    let yaml = "
+        <ul><li>!Tuple</li>
+          <li>0</li>
+          <li>0</li>
+          <li>0</li>
+        <li>!Struct</li>
+          </ul>x: 1.0
+          y: 2.0
+    ";
+    let values: Vec<Enum> = serde_yaml_ng::from_str(yaml).unwrap();
+    assert_eq!(values[0], Enum::Tuple(0, 0, 0));
+    assert_eq!(values[1], Enum::Struct { x: 1.0, y: 2.0 });</p><p>    // Variants with no data can be written using !Tag or just the string name.
+    let yaml = "
+        <ul><li>Unit  # serialization produces this one</li>
+        <li>!Unit</li>
+    </ul>";
+    let values: Vec<Enum> = serde_yaml_ng::from_str(yaml).unwrap();
+    assert_eq!(values[0], Enum::Unit);
+    assert_eq!(values[1], Enum::Unit);</p><p>    Ok(())
+}</code></pre>
+<h2>なぜ？</h2></p><h3>元文：2024年5月</h3></p><p><em>（これは古い情報であり、歴史的な文脈のために提供されています。次の更新を参照してください）</em></p><p>このプロジェクト開始時点で良いフォークは見つかっていません。最良の候補は
+<a href="https://github.com/sebastienrousseau/serde_yml" target="_blank" rel="noopener noreferrer">serde\_yml</a>で、これは
+<a href="https://github.com/sebastienrousseau/serde_yml/commit/4312d4a56225b223410b5133af571fd13e62f18a" target="_blank" rel="noopener noreferrer">メインメンテナの「Initial commit」の巨大なコミット</a>
+に基づいています。
+これは<a href="https://ja.wikipedia.org/wiki/XZ_Utils_backdoor" target="_blank" rel="noopener noreferrer">セキュリティの大惨事</a>につながるような
+手法の典型例です。</p><p>私は人々の手法について議論したくありません。だからこそ自分自身のため、
+そしてRustエコシステム全体のためにこのライブラリをメンテナンスしています。
+フランス語で言うように：「<em>自分ほど良くサービスしてくれる人はいない</em>」。😉</p><p>使っても使わなくても構いません。できる限りバグを修正します。
+合理的かつ作業しやすいプルリクエストは受け入れます。</p><h3>更新：2025年7月</h3></p><p><a href="https://github.com/sebastienrousseau/serde_yml" target="_blank" rel="noopener noreferrer">serde\_yml</a>に対して
+<a href="https://xcancel.com/davidtolnay/status/1883906113428676938" target="_blank" rel="noopener noreferrer">Twitter/Xでserde-yamlの元著者David Tolnayによる大きな反発</a>
+がありました。</p><p>もし<a href="https://xcancel.com/" target="_blank" rel="noopener noreferrer">xcancel.com</a>が閉鎖された場合に備え、
+彼らのツイートのコピーをここに掲載します。（ちなみに、xcancel.comは寄付を受け付けています）</p><blockquote>David Tolnay (@davidtolnay) - 2025年1月27日</blockquote>
+>
+<blockquote>以前はRustユーザーにもっと楽観的な印象を持っていました。</blockquote>
+<blockquote>こんなに多くのそれなりに慎重な人々が、あからさまにAI「管理」のRustライブラリを選ぶとは思っていませんでした。</blockquote>
+>
+<blockquote><code>serde_yml</code>クレートは、高品質だがメンテナンスされていないライブラリのフォークです。</blockquote>
+<blockquote>そのフォークでは、AIが主体的に多くのものを追加しましたが、</blockquote>
+<blockquote>それらは様々な意味で全くのナンセンス（<a href="https://docs.rs/serde_yml/0.0.11/serde_yml/macro.macro_get_field.html" target="_blank" rel="noopener noreferrer">docs.rs/serde_yml/0.0.11/ser…</a>,</blockquote>
+<blockquote><a href="https://docs.rs/serde_yml/0.0.11/src/serde_yml/macros/macro_get_field.rs.html#14-49" target="_blank" rel="noopener noreferrer">docs.rs/serde_yml/0.0.11/src…</a>）</blockquote>
+<blockquote>だったり、不健全（<a href="https://docs.rs/serde_yml/0.0.11/serde_yml/ser/struct.Serializer.html#structfield.emitter" target="_blank" rel="noopener noreferrer">docs.rs/serde_yml/0.0.11/ser…</a>）だったりします。</blockquote>
+<blockquote>さらに、このクレートのドキュメントはdocs.rsでずっと壊れたままです。</blockquote>
+<blockquote>5か月間、AIが存在しないrustdocフラグをクレートの設定に幻覚的に挿入したためです。</blockquote>
+>
+<blockquote>それにもかかわらず、134の他の公開パッケージがこれを採用することを選択しました。Jiff（テスト専用）、axodotdev、Wasmer、MiniJinja、Holochainのような高評価で適切に管理されているプロジェクトも含まれています。これは良い兆候ではありません。</blockquote>
+>
+<blockquote>YAMLライブラリでより良いものを作るためのハードルは非常に低いです。</blockquote></p><p>このツイートには以下のコードが添付されていました：</p><pre><code class="language-rust">fn main() {
+	let a = ".".repeat(100);
+	let emitter = {
+		let mut buf = [0u8; 100];
+		serde_yml::Serializer::new(&mut buf.as_mut_slice()).emitter
+	};
+	let s = ".".repeat(100);
+	emitter.into_inner().write_all(&[1u8; 100]).unwrap();
+	println!("{}\n{}", a, s);
+}</code></pre>
+そしてこのコンソール出力：</p><pre><code class="language-">$ cargo run --release
+    Finished <code>release</code> profile [optimized] target(s) in 0.01s
+     Running <code>target/release/repro</code>
+Segmentation fault (core dumped)</code></pre>
+反発があってから、<code>serde_yml</code>の人たちはGit履歴を整理し、  
+彼らのGitのやり方を批判する私のすべてのリンクを壊しました。彼らは私が  
+批判していた唯一の点を修正しました。彼らは元のserde_yamlの履歴にリベースしました。  
+しかし<a href="https://en.wikipedia.org/wiki/Vibe_coding" target="_blank" rel="noopener noreferrer">vibeコーディング</a>の部分は  
+私には信頼を感じさせないので、私はまだこのフォークを維持しています。  </p><p>繰り返しますが、私は<code>serde_yml</code>の人たちを批判しているわけではなく、  
+単に私個人としては彼らを信頼していないので彼らのものは使わないというだけです。  
+あなたは好きにすればいいです。  </p><p>このライブラリはユーザーが増え、報告される問題やプルリクエストも増えています。  
+私はまだ<a href="https://github.com/acatton/serde-yaml-ng/issues/5" target="_blank" rel="noopener noreferrer">unsafe-libyamlからlibyaml-saferへの移行</a>  
+に取り組んでいます。これにより、このライブラリは私の知る限り比類のないものになります。  
+これは私自身のためのライブラリなので、プロのサポートを期待しないでください。  </p><p>元の<code>serde_yaml</code>には別のフォークがあり、  
+<a href="https://docs.rs/serde_norway/latest/serde_norway/" target="_blank" rel="noopener noreferrer"><code>serde_norway</code></a>と呼ばれています。  
+私はまだ評価していませんが、元の<code>serde_yaml</code>を参照する壊れたリンクは信頼を感じさせません。  
+しかし、その背後にいる人たちは私個人としては、<code>serde_yml</code>のAI-<a href="https://en.wiktionary.org/wiki/cryptobro" target="_blank" rel="noopener noreferrer">cryptobros</a>  
+よりもずっとずっと信頼できるように見えます。  </p><h2>財政的支援  </h2></p><p>私は昼間は高給の仕事をして夜はガレージで作業する男です。  
+あなたのお金は必要ありません。<strong>代わりに<a href="https://github.com/dtolnay" target="_blank" rel="noopener noreferrer">David Tolnay</a>に寄付してください。</strong>  
+この人は<a href="https://crates.io/users/dtolnay" target="_blank" rel="noopener noreferrer">Rustエコシステムの半分を背負っている</a>人物で、  
+私がフォークする前にこのプロジェクトのほとんどのコードを書きました。  
+私はただの乗り遅れた人間なので、お金はもらわないでください。  </p><h2>ライセンス  </h2></p><p><a href="LICENSE-MIT">MITライセンス</a>のもとでライセンスされています。  </p><p>すべての貢献には、<code>git commit</code>の<code>--signoff</code>フラグを使用して  
+<a href="https://developercertificate.org/" target="_blank" rel="noopener noreferrer">開発者証明書</a>の署名を添付する必要があります。</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-22
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/acatton/serde-yaml-ng/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-22 
+    </div>
+    
+</body>
+</html>
