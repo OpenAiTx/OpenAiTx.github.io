@@ -1,0 +1,362 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oci2git - 像使用 Git 一样轻松地检查 Docker 镜像</title>
+    <meta name="description" content="像使用 Git 一样轻松地检查 Docker 镜像">
+    <meta name="keywords" content="oci2git, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "oci2git",
+  "description": "像使用 Git 一样轻松地检查 Docker 镜像",
+  "author": {
+    "@type": "Person",
+    "name": "Virviil"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 352
+  },
+  "url": "https://OpenAiTx.github.io/projects/Virviil/oci2git/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/Virviil/oci2git/main/README.md",
+  "datePublished": "2025-08-23",
+  "dateModified": "2025-08-23"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Virviil/oci2git" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    oci2git
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 352 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by Virviil</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>OCI2Git</h1></p><p>一个用 Rust 编写的应用程序，将容器镜像（Docker 等）转换为 Git 仓库。每个容器层都表示为一个 Git 提交，保留了原始镜像的历史和结构。</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="OCI2Git 转换 nginx 镜像的演示"></p><h2>功能</h2></p><ul><li>分析 Docker 镜像并提取层信息</li>
+<li>创建一个 Git 仓库，每个镜像层表示为一个提交</li>
+<li>支持空层（ENV、WORKDIR 等）作为空提交</li>
+<li>完整的元数据提取为 Markdown 格式</li>
+<li>可扩展架构以支持不同的容器引擎</li></p><p></ul><h2>使用场景</h2></p><h3>层差异比较</h3>
+在排查容器问题时，可以利用 Git 强大的差异比较功能，准确识别任意两层之间的变化。通过在提交之间运行 <code>git diff</code>，工程师可以精准看到哪些文件被添加、修改或删除，更容易理解每条 Dockerfile 指令的影响并定位问题变更。
+<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="层差异比较示例"></p><h3>来源追踪</h3>
+通过使用 <code>git blame</code>，开发者可以快速确定具体文件或代码行是由哪个层引入的。这在诊断配置文件或依赖问题时尤其有价值。无需手动检查每层，即可立即追溯任意文件的来源层及对应的 Dockerfile 指令。</p><h3>文件生命周期跟踪</h3>
+OCI2Git 使您能够跟踪特定文件在容器镜像历史中的演变。您可以观察文件最初何时创建，如何跨层被修改，以及是否/何时被最终删除。该全面视图有助于理解文件的演变过程，而无需手动追踪可能多达数十层的更改。</p><p>要跟踪容器镜像中某个文件的历史——包括首次出现、修改或删除时间——转换后可以使用以下 Git 命令：</p><pre><code class="language-bash"># Full history of a file (including renames)
+git log --follow -- /rootfs/my/file/path</p><h1>First appearance (i.e. creation) - see which layer introduced the file</h1>
+git log --diff-filter=A -- /rootfs/my/file/path</p><h1>All changes made to the file (with diffs)</h1>
+git log -p --follow -- /rootfs/my/file/path</p><h1>When the file was deleted</h1>
+git log --diff-filter=D -- /rootfs/my/file/path</p><h1>Show short commit info (concise layer history)</h1>
+git log --follow --oneline -- /rootfs/my/file/path</code></pre>
+这些命令使得追踪任意文件在容器层之间的完整历史变得简单，无需手动提取和比较层的 tar 包的复杂操作。</p><h3>多层分析</h3>
+有时，最有洞察力的比较来自于检查多个非连续层之间的变化。使用 OCI2Git，您可以利用 Git 的比较工具分析组件在多个构建阶段的演变，识别仅通过观察相邻层无法发现的模式。</p><h3>层探索</h3>
+通过使用 <code>git checkout</code> 切换到任意特定提交，您可以检查容器文件系统在该层的确切状态。这样开发者就能在镜像创建过程中的任意时点检查文件和目录的精确状态，在调试或分析容器行为时提供宝贵的上下文。
+<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/checkout.png" alt="切换到先前提交"></p><h3>多镜像分析</h3></p><p>在处理具有共同祖先的多个容器镜像时，OCI2Git 仅在镜像实际分叉时智能创建分支。这样，您可以在单一仓库中分析多个相关镜像，同时保留它们的共同历史。</p><pre><code class="language-bash"># Convert first image to create the base repository
+oci2git postgres:16.9-alpine3.21 -o alp</p><h1>Convert second image to the same output folder</h1>
+oci2git nginx:1.28.0-alpine-slim -o alp</code></pre>
+OCI2Git 会自动检测镜像之间共享的层，并创建一个反映它们共同基础的分支结构。Git 历史将显示：
+<ul><li>包含所有共享层的公共主干</li>
+<li>仅在镜像实际不同的时候分叉的独立分支</li>
+<li>清晰地展示镜像共享共同祖先的位置以及何处变得独特</li>
+<li>智能重复处理：如果完全相同的镜像被处理两次，算法会在最终元数据提交之前检测到这一点并跳过创建重复分支</li></p><p></ul>这种方法尤其适用于：
+<ul><li><strong>镜像家族分析</strong>：理解不同变体镜像（不同版本、架构或配置）之间的关系</li>
+<li><strong>基础镜像影响</strong>：准确查看基础镜像的更改如何影响多个派生镜像</li>
+<li><strong>优化机会</strong>：识别可以在镜像变体之间更好利用的共享组件</li></p><p></ul><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/multiimage.png" alt="多镜像仓库结构，显示共享基础和分叉分支"></p><h3>其他使用场景</h3></p><ul><li><strong>安全审计</strong>：准确识别易受攻击的软件包或配置何时引入，并追溯到具体的构建指令。</li>
+<li><strong>镜像优化</strong>：分析层结构，发现冗余操作或可合并的大文件，帮助减小镜像体积。</li>
+<li><strong>依赖管理</strong>：监控依赖何时被添加、升级或移除，贯穿整个镜像历史。</li>
+<li><strong>构建过程改进</strong>：检查层组成，优化 Dockerfile 指令以实现更好的缓存和更小的镜像大小。</li>
+<li><strong>跨镜像对比</strong>：将多个相关镜像转换为 Git 仓库，利用 Git 的对比工具分析它们的差异和共性。</li></p><p></ul><h2>安装</h2></p><h3>从源码安装</h3></p><pre><code class="language-bash"># Clone the repository
+git clone https://github.com/virviil/oci2git.git
+cd oci2git</p><h1>Install locally</h1>
+cargo install --path .</code></pre></p><h3>来自 Crates.io</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h2>用法</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>Arguments:
+  <code><IMAGE></code>  要转换的镜像名称（例如，'ubuntu:latest'）或使用 tar 引擎时的 tar 包路径</p><p>Options:
+  <code>-o, --output <o></code>  Git 仓库输出目录 [默认值: ./container_repo]
+  <code>-e, --engine <ENGINE></code>  使用的容器引擎（docker、nerdctl、tar）[默认值: docker]
+  <code>-h, --help</code>            打印帮助信息
+  <code>-V, --version</code>         打印版本信息</p><p>Environment Variables:
+  <code>TMPDIR</code>  设置此环境变量以更改用于中间数据处理的默认位置。此位置依赖于平台（例如，Unix/macOS 上的 <code>TMPDIR</code>，Windows 上的 <code>TEMP</code> 或 <code>TMP</code>）。</p><h2>Examples</h2></p><p>使用 Docker 引擎（默认）：
+<pre><code class="language-bash">oci2git -o ./ubuntu-repo ubuntu:latest</code></pre></p><p>使用已下载的镜像 tar 包：
+<pre><code class="language-bash">oci2git -e tar -o ./ubuntu-repo /path/to/ubuntu-latest.tar</code></pre></p><p>tar 引擎期望一个有效的 OCI 格式 tar 包，通常使用 <code>docker save</code> 创建：
+<pre><code class="language-bash"># Create a tarball from a local Docker image
+docker save -o ubuntu-latest.tar ubuntu:latest</p><h1>Convert the tarball to a Git repository</h1>
+oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre>
+这将在 <code>./ubuntu-repo</code> 中创建一个 Git 仓库，包含：
+<ul><li><code>Image.md</code> - 以 Markdown 格式完整描述镜像的元数据</li>
+<li><code>rootfs/</code> - 来自容器的文件系统内容</li></p><p></ul>Git 历史反映了容器的层历史：
+<ul><li>第一次提交仅包含带有完整元数据的 <code>Image.md</code> 文件</li>
+<li>之后的每次提交代表原始镜像的一个层</li>
+<li>提交包含 Dockerfile 命令作为提交信息</li></p><p></ul><h2>仓库结构</h2></p><pre><code class="language-">repository/
+├── .git/
+├── Image.md     # Complete image metadata
+└── rootfs/      # Filesystem content from the container</code></pre>
+<h2>要求</h2></p><ul><li>Rust 2021 版本</li>
+<li>Docker CLI（用于 Docker 引擎支持）</li>
+<li>Git</li></p><p></ul><h2>许可证</h2></p><p>MIT</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-23
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Virviil/oci2git/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-23 
+    </div>
+    
+</body>
+</html>
