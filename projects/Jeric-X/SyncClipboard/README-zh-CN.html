@@ -1,0 +1,469 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncClipboard - 跨平台剪贴板同步方案</title>
+    <meta name="description" content="跨平台剪贴板同步方案">
+    <meta name="keywords" content="SyncClipboard, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "SyncClipboard",
+  "description": "跨平台剪贴板同步方案",
+  "author": {
+    "@type": "Person",
+    "name": "Jeric-X"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 3330
+  },
+  "url": "https://OpenAiTx.github.io/projects/Jeric-X/SyncClipboard/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/Jeric-X/SyncClipboard/master/README.md",
+  "datePublished": "2025-08-23",
+  "dateModified": "2025-08-23"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Jeric-X/SyncClipboard" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    SyncClipboard
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 3330 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by Jeric-X</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>SyncClipboard</h1>
+<a href="https://github.com/Jeric-X/SyncClipboard/actions?query=branch%3Amaster" target="_blank" rel="noopener noreferrer"><img src="https://github.com/Jeric-X/SyncClipboard/actions/workflows/build-entry.yml/badge.svg?branch=master" alt="build"></a></p><p>中文 | <a href="https://raw.githubusercontent.com/Jeric-X/SyncClipboard/master/docs/README_EN.md" target="_blank" rel="noopener noreferrer">English</a>  </p><p><details>
+<summary>目录</summary></p><ul><li><a href="#syncclipboard" target="_blank" rel="noopener noreferrer">SyncClipboard</a></li>
+  <li><a href="#功能" target="_blank" rel="noopener noreferrer">功能</a></li>
+  <li><a href="#服务器" target="_blank" rel="noopener noreferrer">服务器</a></li>
+    <li><a href="#独立服务器" target="_blank" rel="noopener noreferrer">独立服务器</a></li>
+      <li><a href="#服务器配置" target="_blank" rel="noopener noreferrer">服务器配置</a></li>
+      <li><a href="#docker" target="_blank" rel="noopener noreferrer">Docker</a></li>
+      <li><a href="#arch-linux" target="_blank" rel="noopener noreferrer">Arch Linux</a></li>
+    <li><a href="#客户端内置服务器" target="_blank" rel="noopener noreferrer">客户端内置服务器</a></li>
+    <li><a href="#webdav服务器" target="_blank" rel="noopener noreferrer">WebDAV服务器</a></li>
+  <li><a href="#客户端" target="_blank" rel="noopener noreferrer">客户端</a></li>
+    <li><a href="#windows" target="_blank" rel="noopener noreferrer">Windows</a></li>
+      <li><a href="#免安装板" target="_blank" rel="noopener noreferrer">免安装板</a></li>
+      <li><a href="#故障排除" target="_blank" rel="noopener noreferrer">故障排除</a></li>
+    <li><a href="#macos" target="_blank" rel="noopener noreferrer">macOS</a></li>
+      <li><a href="#手动安装" target="_blank" rel="noopener noreferrer">手动安装</a></li>
+      <li><a href="#故障排除-1" target="_blank" rel="noopener noreferrer">故障排除</a></li>
+    <li><a href="#linux" target="_blank" rel="noopener noreferrer">Linux</a></li>
+      <li><a href="#手动安装-1" target="_blank" rel="noopener noreferrer">手动安装</a></li>
+      <li><a href="#arch-linux-1" target="_blank" rel="noopener noreferrer">Arch Linux</a></li>
+      <li><a href="#故障排除-2" target="_blank" rel="noopener noreferrer">故障排除</a></li>
+    <li><a href="#桌面客户端命令行参数" target="_blank" rel="noopener noreferrer">桌面客户端命令行参数</a></li>
+      <li><a href="#--shutdown-previous" target="_blank" rel="noopener noreferrer">--shutdown-previous</a></li>
+      <li><a href="#--command-command-name" target="_blank" rel="noopener noreferrer">--command-{command-name}</a></li>
+    <li><a href="#ios" target="_blank" rel="noopener noreferrer">IOS</a></li>
+      <li><a href="#使用快捷指令" target="_blank" rel="noopener noreferrer">使用快捷指令</a></li>
+    <li><a href="#android" target="_blank" rel="noopener noreferrer">Android</a></li>
+      <li><a href="#使用http-request-shortcuts" target="_blank" rel="noopener noreferrer">使用HTTP Request Shortcuts</a></li>
+      <li><a href="#使用autoxjs" target="_blank" rel="noopener noreferrer">使用Autox.js</a></li>
+      <li><a href="#使用smsforwarder" target="_blank" rel="noopener noreferrer">使用SmsForwarder</a></li>
+      <li><a href="#使用tasker" target="_blank" rel="noopener noreferrer">使用Tasker</a></li>
+    <li><a href="#客户端配置说明" target="_blank" rel="noopener noreferrer">客户端配置说明</a></li>
+  <li><a href="#api" target="_blank" rel="noopener noreferrer">API</a></li>
+    <li><a href="#获取上传剪贴板文字" target="_blank" rel="noopener noreferrer">获取/上传剪贴板（文字）</a></li>
+    <li><a href="#获取上传剪贴板图片文件" target="_blank" rel="noopener noreferrer">获取/上传剪贴板（图片/文件）</a></li>
+    <li><a href="#syncclipboardjson" target="_blank" rel="noopener noreferrer">SyncClipboard.json</a></li>
+  <li><a href="#项目依赖" target="_blank" rel="noopener noreferrer">项目依赖</a></li></p><p></ul></details></p><h2>功能</h2></p><ul><li>剪贴板同步，支持文字、图片和文件。服务器/客户端架构，可以使用客户端内置服务器、独立部署服务器，也可以使用支持WebDAV的网盘作为服务器  </li>
+<li>优化图片类型的剪贴板，功能有：</li>
+  <li>从任意位置复制图片时，可以直接向文件系统粘贴图片文件，反之亦然</li>
+  <li>从浏览器复制图片后，后台下载原图到本地，解决无法从浏览器拷贝动态图的问题（大多网站有认证，适用范围有限，支持bilibili动态图片）</li>
+  <li>从文件系统复制较新格式类型的图片文件时（webp/heic等），在剪贴板内储存gif或jpg格式，用于直接向支持图片的文本框粘贴图片</li></p><p></ul><h2>服务器</h2>
+<h3>独立服务器</h3>
+<a href="https://github.com/Jeric-X/SyncClipboard/releases/" target="_blank" rel="noopener noreferrer">SyncClipboard.Server</a>支持跨平台运行，依赖<a href="https://dotnet.microsoft.com/zh-cn/download/dotnet/8.0" target="_blank" rel="noopener noreferrer">ASP.NET Core 8.0</a>，安装<code>ASP.NET Core 运行时</code>后，通过以下命令运行
+<pre><code class="language-">dotnet /path/to/SyncClipboard.Server.dll --contentRoot ./</code></pre>
+工作目录与dll所在目录一致，需要写入权限。如需修改工作目录，拷贝一份<code>appsettings.json</code>到新工作目录并修改<code>--contentRoot</code>后的路径  </p><p>#### 服务器配置
+服务器通过<code>appsettings.json</code>文件配置，形式如下：
+<pre><code class="language-jsonc">{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "Kestrel": {
+    "Endpoints": {
+      "http": {
+        "Url": "http://*:5033"
+      },
+      //"https": {
+      //  "Url": "https://*:5033"
+      //}
+    },
+    //"Certificates": {
+    //  "Default": {
+    //    "Path": "/path/to/pem",
+    //    "KeyPath": "/path/to/pem_key"
+    //  }
+    //}
+  },
+  "AppSettings": {
+    "UserName": "your_username",
+    "Password": "your_password"
+  }
+}</code></pre>
+如需启用HTTPS，请取消<code>https</code>和<code>Certificates</code>部分的注释，并设定HTTPS证书路径。最后将<code>http</code>部分注释或删除以关闭不安全的连接。如需同时启用HTTP和HTTPS，请将二者<code>Url</code>设置为不同的端口号  
+不同类型证书的配置方法可以参考<a href="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel/endpoints?view=aspnetcore-8.0#configure-https-in-appsettingsjson" target="_blank" rel="noopener noreferrer">微软官方文档</a></p><p>用户名和密码支持使用环境变量配置，当环境变量<code>SYNCCLIPBOARD_USERNAME</code>、<code>SYNCCLIPBOARD_PASSWORD</code>均不为空时，将优先使用这两个环境变量作为用户名和密码  </p><p>环境变量<code>ASPNETCORE_hostBuilder__reloadConfigOnChange</code>用于配置是否自动识别appsettings.json变动并重载配置，默认值为<code>false</code>，修改为任何非<code>false</code>值后会启用此功能</p><blockquote>[!WARNING]  </blockquote>
+<blockquote>HTTP使用明文传输，在公共网络部署服务器请启用HTTPS或使用反向代理工具配置HTTPS。无法从证书颁发机构获取证书时，推荐使用开源工具<a href="https://github.com/FiloSottile/mkcert" target="_blank" rel="noopener noreferrer">mkcert</a>或其他方式生成自签名证书</blockquote></p><p>#### Docker</p><pre><code class="language-shell"># docker
+docker run -d \
+  --name=syncclipboard-server \
+  -p 5033:5033 \
+  -e SYNCCLIPBOARD_USERNAME=your_username \
+  -e SYNCCLIPBOARD_PASSWORD=your_password \
+  --restart unless-stopped \
+  jericx/syncclipboard-server:latest</p><h1>docker compose</h1>
+curl -sL https://github.com/Jeric-X/SyncClipboard/raw/master/src/SyncClipboard.Server/docker-compose.yml
+docker compose up -d</code></pre>
+如需配置HTTPS，请自行映射<code>appsettings.json</code>和证书文件，<code>appsettings.json</code>的容器内路径为<code>/app/appsettings.json</code></p><p>#### Arch Linux</p><p>可以直接从 <a href="https://aur.archlinux.org/packages/syncclipboard-server" target="_blank" rel="noopener noreferrer">AUR</a> 安装（由 <a href="https://github.com/devome" target="_blank" rel="noopener noreferrer">@devome</a> 维护）：</p><pre><code class="language-shell">paru -Sy syncclipboard-server</code></pre>
+配置文件路径为<code>/etc/syncclipboard/appsettings.json</code>，修改配置后使用<code>systemctl</code>命令启动即可：</p><pre><code class="language-shell">sudo systemctl enable --now syncclipboard.service</code></pre></p><h3>客户端内置服务器</h3></p><p>桌面客户端（Windows/Linux/macOS）内置了服务器功能，可以使用可视界面配置</p><h3>WebDAV服务器</h3>
+可以使用支持WebDAV协议的网盘作为服务器  
+测试过的服务器：   </p><ul><li>[x] <a href="https://nextcloud.com/" target="_blank" rel="noopener noreferrer">Nextcloud</a> </li>
+<li>[x] <a href="https://alist.nn.ci/" target="_blank" rel="noopener noreferrer">AList</a></li>
+<li>[x] <a href="https://infini-cloud.net/en/" target="_blank" rel="noopener noreferrer">InfiniCLOUD</a></li>
+<li>[x] <a href="https://github.com/messense/aliyundrive-webdav" target="_blank" rel="noopener noreferrer">aliyundrive-webdav</a></li></p><p></ul><h2>客户端</h2></p><p>桌面客户端（Windows/Linux/macOS）运行在后台时将自动同步剪贴板
+<details>
+<summary>展开/折叠截图</summary></p><p><img src="https://raw.githubusercontent.com/Jeric-X/SyncClipboard/master/docs/image/WinUI.png" alt=""></p><p></details></p><h3>Windows</h3>
+#### 免安装板</p><p>在<a href="https://github.com/Jeric-X/SyncClipboard/releases/latest" target="_blank" rel="noopener noreferrer">Release</a>页面下载名字以<code>SyncClipboard_win_</code>开头的zip文件，解压后运行<code>SyncClipboard.exe</code></p><p>#### 常见排除
+<ul><li>支持的最低系统版本为Windows10 2004</li>
+<li>在Windows 10中运行SyncClipboard时界面图标大范围出错，请下载安装微软<a href="https://aka.ms/SegoeFluentIcons" target="_blank" rel="noopener noreferrer">Segoe Fluent Icons</a>图标字体</li></p><p></ul><h3>macOS</h3>
+#### 手动安装
+在<a href="https://github.com/Jeric-X/SyncClipboard/releases/latest" target="_blank" rel="noopener noreferrer">Release</a>页面下载名字以<code>SyncClipboard_macos_</code>开头的安装包，双击后拖动SyncClipboard图标到Applications文件夹</p><p>#### 常见排除
+<ul><li>系统提示<code>由于开发者无法验证，“SyncClipboard”无法打开</code>： </li>
+</ul>在macOS的<code>设置</code>-><code>隐私与安全性</code>页面，点击<code>仍要打开</code>
+<ul><li>系统提示<code>“SyncClipboard”已损坏，无法打开</code>：在终端中执行<code>sudo xattr -d com.apple.quarantine /Applications/SyncClipboard.app</code></li>
+<li>快捷键依赖辅助功能权限，软件在需要时会弹窗提示授权</li></p><p></ul><h3>Linux</h3>
+#### 手动安装
+在<a href="https://github.com/Jeric-X/SyncClipboard/releases/latest" target="_blank" rel="noopener noreferrer">Release</a>页面下载名字以<code>SyncClipboard_linux_</code>开头的安装包</p><p>#### Arch Linux</p><p>Arch Linux 用户可以直接从<a href="https://aur.archlinux.org/packages/syncclipboard-desktop" target="_blank" rel="noopener noreferrer">AUR</a>安装（由 <a href="https://github.com/devome" target="_blank" rel="noopener noreferrer">@devome</a> 维护）：</p><pre><code class="language-shell">paru -Sy syncclipboard-desktop</code></pre>
+安装后从菜单中启动即可。如果在命令行中使用命令<code>syncclipboard-desktop</code>启动报错，请将环境变量<code>LANG</code>设置为<code>en_US.UTF-8</code>，以<code>LANG=en_US.UTF-8 syncclipboard-desktop</code>来启动。</p><p>#### 故常排除
+<ul><li>剪贴板同步不及时、无法同步、上传乱码：建议在系统内安装<code>xclip</code>（X11）或<code>wl-clipboard</code>（Wayland），SyncClipboard会使用这些工具辅助获取剪贴板以增强稳定性。使用<code>xclip -version</code>或<code>wl-paste -version</code>命令确认是否已安装</li>
+<li>使用<code>deb</code>、<code>rpm</code>安装包时，升级安装失败时，请先删除旧版再安装新版</li>
+<li>使用<code>AppImage</code>包时，请确认AppImage文件具有可执行权限</li>
+<li>快捷键在Wayland可能无法使用</li>
+<li>无法自动识别语言，默认为英语，启动后可以在SyncClipboard的设置中修改</li></p><p></ul>> [!NOTE]  
+<blockquote>需要彻底删除SyncClipboard时请手动删除配置文件和临时文件目录：  </blockquote>
+<blockquote><code>%AppData%\SyncClipboard\</code>(Windows)，<code>~/Library/Application Support/SyncClipboard/</code>(macOS)，<code>~/.config/SyncClipboard/</code>(Linux)</blockquote></p><h3>桌面客户端命令行参数</h3></p><p>#### --shutdown-previous
+关闭已经运行的SyncClipboard，运行新的实例</p><p>#### --command-{command-name}
+运行指定命令，<code>{command-name}</code>为命令名称，设置快捷键后，在配置文件中可以查看对应的命令名称，即使清除快捷键配置，命令行参数仍然有效  
+当存在已经运行的SyncClipboard时，不会启动新的实例，而是调用已经运行的SyncClipboard执行命令。当不存在已经运行的SyncClipboard时，将在启动完成后立刻执行命令  
+支持多个<code>--command-{command-name}</code>参数，多个命令同时执行  </p><blockquote>[!NOTE]  </blockquote>
+<blockquote>macOS使用命令行参数时，请使用可执行程序的完整路径<code>/Applications/SyncClipboard.app/Contents/MacOS/SyncClipboard.Desktop.MacOS</code></blockquote></p><h3>IOS </h3>
+#### 使用<a href="https://apps.apple.com/cn/app/%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/id1462947752" target="_blank" rel="noopener noreferrer">快捷指令</a>  </p><ul><li>手动同步，导入这个<a href="https://www.icloud.com/shortcuts/d1b9e49556e04c2ca290590294afbd99" target="_blank" rel="noopener noreferrer">快捷指令</a>，手动触发上传或下载</li>
+<li>自动同步，导入这个<a href="https://www.icloud.com/shortcuts/1ced32f011bc4d3498dca9960dc2c0d5" target="_blank" rel="noopener noreferrer">快捷指令</a>，运行后设备会自动在后台同步剪贴板内容，此快捷指令将执行无限时长，需要手动关闭，你还可以手动修改同步后是否发送系统通知、查询的间隔秒数</li>
+<li>自动上传短信验证码，参考这个帖子中的视频教程 https://github.com/Jeric-X/SyncClipboard/discussions/60</li></p><p></ul><h3>Android</h3>
+#### 使用<a href="https://github.com/Waboodoo/HTTP-Shortcuts" target="_blank" rel="noopener noreferrer">HTTP Request Shortcuts</a>
+导入这个<a href="/script/shortcuts.zip" target="_blank" rel="noopener noreferrer">配置文件</a>，修改<code>变量</code>中的<code>UserName</code>，<code>UserToken</code>，<code>url</code>， <code>url</code>不要以斜线分隔符<code>/</code>结尾。<code>HTTP Request Shortcuts</code>支持从下拉菜单、桌面组件、桌面图标、分享菜单中使用</p><p><details>
+<summary>导入配置文件后修改配置图示</summary></p><p>
+<img src="https://raw.githubusercontent.com/Jeric-X/SyncClipboard/master/docs/image/android1.jpg" alt="">
+<img src="https://raw.githubusercontent.com/Jeric-X/SyncClipboard/master/docs/image/android2.jpg" alt="">
+<img src="https://raw.githubusercontent.com/Jeric-X/SyncClipboard/master/docs/image/android3.jpg" alt=""></p><p></details></p><p>#### 使用<a href="https://github.com/kkevsekk1/AutoX" target="_blank" rel="noopener noreferrer">Autox.js</a></p><ul><li>自动同步，使用这个<a href="/script/SyncAutoxJs.js" target="_blank" rel="noopener noreferrer">js文件</a>。由于安卓系统限制，在安卓10及以上的系统应用无法在后台读取剪贴板，但可以使用基于Root权限的工具(Magisk/Xposed)解除应用后台读取剪贴版的权限，如<a href="https://github.com/Kr328/Riru-ClipboardWhitelist" target="_blank" rel="noopener noreferrer">Riru-ClipboardWhitelist</a>、<a href="https://modules.lsposed.org/module/io.github.tehcneko.clipboardwhitelist" target="_blank" rel="noopener noreferrer">Clipboard Whitelist</a>。由于在安卓13及以上的系统应用必须由用户手动授权才被允许访问系统日志（剪贴板），也可以使用Xposed自动为应用授权访问系统日志的权限，如<a href="https://github.com/QueallyTech/DisableLogRequest" target="_blank" rel="noopener noreferrer">DisableLogRequest/禁用日志访问请求</a></li>
+<li>自动上传验证码，使用这个<a href="/script/UploadVerificationCode.js" target="_blank" rel="noopener noreferrer">js文件</a>，这个脚本运行在后台时将读取所有通知消息，在识别到验证码类信息时将证码上传到服务器</li></p><p></ul>导入js文件、修改每个文件头部的用户配置后，手动点击运行，或者为每个js文件设置触发方式，例如：开机时触发</p><p>#### 使用<a href="https://github.com/pppscn/SmsForwarder" target="_blank" rel="noopener noreferrer">SmsForwarder</a></p><ul><li>自动上传验证码， https://github.com/Jeric-X/SyncClipboard/discussions/109</li></p><p></ul>#### 使用<a href="https://tasker.joaoapps.com/" target="_blank" rel="noopener noreferrer">Tasker</a></p><ul><li>https://github.com/forrestgao/taskerforSyncClipboard ，作者：<a href="https://github.com/forrestgao" target="_blank" rel="noopener noreferrer">forrestgao</a></li></p><p></ul>Tasker是一款安卓系统上非常强大的自动化工具软件，你可以根据SyncClipboard的API创建适合自己的配置文件，如果你认为你的配置文件非常通用并希望分享出来，欢迎联系我置于此处</p><h3>客户端配置说明</h3></p><p>全平台依赖三条必要配置（配置的拼写可能会有所不同，含义相同）。
+<ul><li>user</li>
+<li>password</li>
+<li>url，格式为http(s)://ip(或者域名):port。使用WebDav服务器时，url需要具体到一个已存在的文件夹作为工作目录，例如<code>https://domain.com/dav/folder1/working%20folder</code>，特殊符号需要使用url转义字符代替，不要使用这个文件夹存储其他文件。不使用桌面客户端（Windows/Linux/macOS）时需在工作目录中再创建<code>file</code>文件夹以同步文件，桌面客户端会在设置服务器时自动创建<code>file</code>文件夹。url尽量不要以斜线分隔符<code>/</code>结尾，在部分客户端中会出现问题。</li></p><p></ul><h2>API</h2></p><p>API基于WebDAV，在独立服务器运行环境下设定环境变量ASPNETCORE_ENVIRONMENT为Development后运行服务器，或桌面客户端打开服务器并打开设置里的诊断模式后，
+访问<code>http://ip:端口/swagger/index.html</code>可以打开API页面，以下是部分关键API</p><h3>获取/上传剪贴板（文字）</h3>
+<pre><code class="language-">GET /SyncClipboard.json
+PUT /SyncClipboard.json</code></pre></p><h3>Get/Upload Clipboard (Image/File)</h3>
+<pre><code class="language-">GET  /SyncClipboard.json
+HEAD /file/filename         // optional
+GET  /file/filename</p><p>PUT /file/filename
+PUT /SyncClipboard.json</code></pre></p><h3>SyncClipboard.json</h3>
+<pre><code class="language-">{
+    "Type" : "Text"
+    "Clipboard" : "Content",
+    "File":""
+}</p><p>{
+    "Type": "Image", // or "File", "Group"
+    "Clipboard": "hash, optional",
+    "File": "filename"
+}</code></pre></p><h2>项目依赖</h2>
+<a href="https://github.com/Jeric-X/NativeNotification" target="_blank" rel="noopener noreferrer">NativeNotification</a>  
+<a href="https://github.com/dlemstra/Magick.NET" target="_blank" rel="noopener noreferrer">Magick.NET</a>  
+<a href="https://github.com/CommunityToolkit/dotnet" target="_blank" rel="noopener noreferrer">.NET Community Toolkit</a>  
+<a href="https://github.com/HavenDV/H.NotifyIcon" target="_blank" rel="noopener noreferrer">H.NotifyIcon</a>  
+<a href="https://github.com/dotMorten/WinUIEx" target="_blank" rel="noopener noreferrer">WinUIEx</a>  
+<a href="https://github.com/moq/moq" target="_blank" rel="noopener noreferrer">moq</a>  
+<a href="https://avaloniaui.net/" target="_blank" rel="noopener noreferrer">Avalonia</a>  
+<a href="https://github.com/indigo-san/FluentAvalonia.BreadcrumbBar" target="_blank" rel="noopener noreferrer">FluentAvalonia.BreadcrumbBar</a>  
+<a href="https://github.com/amwx/FluentAvalonia" target="_blank" rel="noopener noreferrer">FluentAvalonia</a>  
+<a href="https://github.com/dahall/Vanara" target="_blank" rel="noopener noreferrer">Vanara</a>  
+<a href="https://github.com/tmds/Tmds.DBus" target="_blank" rel="noopener noreferrer">Tmds.DBus</a>  
+<a href="https://github.com/TolikPylypchuk/SharpHook" target="_blank" rel="noopener noreferrer">SharpHook</a>  
+<a href="https://github.com/haf/DotNetZip.Semverd" target="_blank" rel="noopener noreferrer">DotNetZip.Semverd</a>  
+<a href="https://github.com/quartznet/quartznet" target="_blank" rel="noopener noreferrer">Quartz.NET</a>  
+<a href="https://hyperos.mi.com/font" target="_blank" rel="noopener noreferrer">MiSans</a>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-23
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Jeric-X/SyncClipboard/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-23 
+    </div>
+    
+</body>
+</html>
