@@ -1,0 +1,399 @@
+﻿<!DOCTYPE html>
+<html lang="as">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uni-page - Uni-Page হৈছে Java-ভিত্তিক এটা সাধাৰণ pagination framework, যি abstraction design ৰ জৰিয়তে বিভিন্ন data source ৰ বাবে একেটা pagination query interface প্ৰদান কৰে। এই framework টোৱে modular architecture ব্যৱহাৰ কৰে আৰু বৰ্তমান JDBC, Mybatis, MongoDB, Elasticsearch আদি বহু data source integrate কৰিছে, লগতে flexible extension mechanism প্ৰদান কৰে।</title>
+    <meta name="description" content="Uni-Page হৈছে Java-ভিত্তিক এটা সাধাৰণ pagination framework, যি abstraction design ৰ জৰিয়তে বিভিন্ন data source ৰ বাবে একেটা pagination query interface প্ৰদান কৰে। এই framework টোৱে modular architecture ব্যৱহাৰ কৰে আৰু বৰ্তমান JDBC, Mybatis, MongoDB, Elasticsearch আদি বহু data source integrate কৰিছে, লগতে flexible extension mechanism প্ৰদান কৰে।">
+    <meta name="keywords" content="uni-page, Assamese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "uni-page",
+  "description": "Uni-Page হৈছে Java-ভিত্তিক এটা সাধাৰণ pagination framework, যি abstraction design ৰ জৰিয়তে বিভিন্ন data source ৰ বাবে একেটা pagination query interface প্ৰদান কৰে। এই framework টোৱে modular architecture ব্যৱহাৰ কৰে আৰু বৰ্তমান JDBC, Mybatis, MongoDB, Elasticsearch আদি বহু data source integrate কৰিছে, লগতে flexible extension mechanism প্ৰদান কৰে।",
+  "author": {
+    "@type": "Person",
+    "name": "ethan-carter-g"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 164
+  },
+  "url": "https://OpenAiTx.github.io/projects/ethan-carter-g/uni-page/README-as.html",
+  "sameAs": "https://raw.githubusercontent.com/ethan-carter-g/uni-page/main/README.md",
+  "datePublished": "2025-08-28",
+  "dateModified": "2025-08-28"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/ethan-carter-g/uni-page" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    uni-page
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 164 stars</span>
+                <span class="language">Assamese</span>
+                <span>by ethan-carter-g</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>
+<div align="right">
+  <details>
+    <summary >🌐 ভাষা</summary>
+    <div>
+      <div align="center">
+        <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=en">English</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=zh-CN">简体中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=zh-TW">繁體中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=ja">日本語</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=ko">한국어</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=hi">हिन्दी</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=th">ไทย</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=fr">Français</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=de">Deutsch</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=es">Español</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=it">Italiano</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=ru">Русский</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=pt">Português</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=nl">Nederlands</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=pl">Polski</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=ar">العربية</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=fa">فارسی</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=tr">Türkçe</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=vi">Tiếng Việt</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=id">Bahasa Indonesia</a>
+        | <a href="https://openaitx.github.io/view.html?user=ethan-carter-g&project=uni-page&lang=as">অসমীয়া</
+      </div>
+    </div>
+  </details>
+</div></p><h1>Uni-Page পৃষ্ঠাবিভাজন ফ্ৰেমৱৰ্ক</h1></p><p>Uni-Page এটা Java-ভিত্তিত সাধাৰণ পৃষ্ঠাবিভাজন ফ্ৰেমৱৰ্ক, যি বিমূর্ত ডিজাইনৰে বিভিন্ন তথ্য উৎসৰ বাবে একেটা পৃষ্ঠাবিভাজন অনুসন্ধান ইণ্টাৰফেচ প্ৰদান কৰে। ফ্ৰেমৱৰ্কটোৱে মডুলাৰ স্থাপত্য গ্ৰহণ কৰিছে, বৰ্তমান JDBC, Mybatis, MongoDB, Elasticsearch আদি বহু তথ্য উৎসৰ সৈতে সংহত কৰা হৈছে আৰু এটা নমনীয় বিস্তাৰণ প্ৰণালী প্ৰদান কৰিছে।</p><h2>মূল ডিজাইন</h2></p><p>ফ্ৰেমৱৰ্কৰ মূল ডিজাইন চাৰিটা মুখ্য উপাদানক কেন্দ্ৰ কৰি বিকাশ কৰা হৈছে:</p><ul><li><strong>পৃষ্ঠা বিভাজন বাক্য (PaginationStatement)</strong></li>
+    <li>যিকোনো ভাষাৰ পৃষ্ঠা বিভাজন অনুসন্ধান বাক্য সংজ্ঞা সমৰ্থন কৰে</li>
+    <li>এক ৰূপ paging parameter interface প্ৰদান কৰে</li>
+    <li>কাষ্টম paging logic অনুমতি দিয়ে</li></p><p><li><strong>পৃষ্ঠা বিভাজন এক্সিকিউটৰ (PaginationStatementExecutor)</strong></li>
+    <li>পৃষ্ঠা বিভাজন অনুসন্ধান বাক্য সম্পাদন কৰিবলৈ দায়িত্ববান</li>
+    <li>পৃষ্ঠা তথ্য অনুসন্ধানৰ কাৰ্যক্ষমতা প্ৰদান কৰে</li>
+    <li>বিস্তৃতযোগ্য এক্সিকিউটৰ ব্যৱস্থা</li></p><p><li><strong>পৃষ্ঠা ফলাফল সমষ্টি (PaginationResultSet)</strong></li>
+    <li>এক ৰূপ ফলাফল সমষ্টি ইণ্টাৰফেইচ</li>
+    <li>কলাম নাম আৰু সূচক অনুসৰি তথ্য প্ৰৱেশ সমৰ্থন কৰে</li>
+    <li>টাইপ ৰূপান্তৰ কাৰ্যক্ষমতা প্ৰদান কৰে</li>
+    <li>JDBC ResultSet সদৃশ ডিজাইন</li></p><p><li><strong>ফলাফল সমষ্টি হেণ্ডলাৰ (PaginationResultSetHandler)</strong></li>
+    <li>কাষ্টম ফলাফল সমষ্টি ৰূপান্তৰ সমৰ্থন</li>
+    <li>অবজেক্ট ম্যাপিং কাৰ্যক্ষমতা প্ৰদান</li></p><p>
+</ul><h2>ডিজাইনৰ লক্ষ্য</h2></p><ul><li><strong>এক ৰূপতা</strong></li>
+    <li>এক ৰূপ paging অনুসন্ধান ইণ্টাৰফেইচ প্ৰদান</li>
+    <li>বিভিন্ন তথ্য উৎসৰ কাৰ্যান্বয়ৰ পাৰ্থক্য গোপন কৰে</li>
+    <li>paging অনুসন্ধান ব্যৱহাৰ সহজ কৰে</li></p><p><li><strong>লচিলতা</strong></li>
+    <li>কাষ্টম paging বাক্য সমৰ্থন</li>
+    <li>এক্সিকিউটৰ বিস্তৃত কৰাৰ অনুমতি</li>
+    <li>সমৃদ্ধ ফলাফল সমষ্টি প্ৰক্ৰিয়া প্ৰদান</li></p><p><li><strong>বিস্তৃতযোগ্যতা</strong></li>
+    <li>মডুলাৰ ডিজাইন</li>
+    <li>নতুন তথ্য উৎস সোনকালে সংযোগ সমৰ্থন</li>
+    <li>বিস্তৃতি বিন্দু ব্যৱস্থা প্ৰদান</li></p><p><li><strong>সহজ ব্যৱহাৰযোগ্যতা</strong></li>
+    <li>সহজ আৰু স্পষ্ট API</li>
+    <li>সম্পূৰ্ণ ৰূপে টাইপ ৰূপান্তৰ</li>
+    <li>সমৃদ্ধ টুল ক্লাছ সমৰ্থন</li>
+</ul><h2>প্ৰযোজ্য ক্ষেত্ৰ</h2></p><ul><li>একাধিক ডাটা উৎসৰ পৃষ্ঠা অনুসন্ধান একত্ৰিতভাৱে পৰিচালনা কৰিব লগা প্ৰকল্প</li>
+<li>বহুবিধ ডাটা উৎসৰ পৃষ্ঠা অনুসন্ধান সমৰ্থন কৰিব লগা উদ্যোগিক ব্যৱহাৰ</li></p><p></ul><h2>মূল অংশ</h2></p><h3><a href="https://github.com/ethan-carter-g/uni-page/tree/main/uni-page" target="_blank" rel="noopener noreferrer">uni-page</a></h3>
+মূল পৃষ্ঠা লাইব্ৰেৰী, আধাৰভূত পৃষ্ঠা ইন্টাৰফেচ আৰু বিমূর্ত বাস্তবায়ন প্ৰদান কৰে।</p><h3><a href="https://github.com/ethan-carter-g/uni-page/tree/main/uni-page-jdbc" target="_blank" rel="noopener noreferrer">uni-page-jdbc</a></h3>
+JDBC ডাটা উৎস সমৰ্থন অংশ, JDBC ভিত্তিক পৃষ্ঠা বাস্তবায়ন প্ৰদান কৰে।</p><h3><a href="https://github.com/ethan-carter-g/uni-page/tree/main/uni-page-jdbc-mybatis" target="_blank" rel="noopener noreferrer">uni-page-jdbc-mybatis</a></h3>
+MyBatis সংহত অংশ, MyBatis ফ্ৰেমৱৰ্কৰ সৈতে সংহতি সমৰ্থন প্ৰদান কৰে।
+    
+<h3><a href="https://github.com/ethan-carter-g/uni-page/tree/main/uni-page-mongodb" target="_blank" rel="noopener noreferrer">uni-page-mongodb</a></h3>
+MongoDB ডাটা উৎস সমৰ্থন অংশ, MongoDB ভিত্তিক পৃষ্ঠা বাস্তবায়ন প্ৰদান কৰে।</p><h3><a href="https://github.com/ethan-carter-g/uni-page/tree/main/uni-page-elasticsearch" target="_blank" rel="noopener noreferrer">uni-page-elasticsearch</a></h3>
+Elasticsearch ডাটা উৎস সমৰ্থন অংশ, ES ভিত্তিক পৃষ্ঠা বাস্তবায়ন প্ৰদান কৰে।</p><h3><a href="https://github.com/ethan-carter-g/uni-page/tree/main/spring-boot-starter-web-uni-page" target="_blank" rel="noopener noreferrer">spring-boot-starter-web-uni-page</a></h3>
+Spring MVC পৰিৱেশত পৃষ্ঠা সমৰ্থন অংশ, Spring MVCৰ সৈতে সংহতি সমৰ্থন প্ৰদান কৰে, সাধাৰণ কণ্ট্ৰোলাৰ লিখাৰ দৰে সহজ।
+<ul><li>পৃষ্ঠা পৰামিতি স্বয়ংক্ৰিয়ভাৱে বাইন্ডিং</li>
+<li>পৃষ্ঠা ফলাফল স্বয়ংক্ৰিয়ভাৱে ৰূপান্তৰ</li></p><p></ul><h3><a href="https://github.com/ethan-carter-g/uni-page/tree/main/web-uni-page-test" target="_blank" rel="noopener noreferrer">web-uni-page-test</a></h3>
+Spring Boot Web পৰিৱেশত পৃষ্ঠা পৰীক্ষা অংশ, পৃষ্ঠা ফিচাৰৰ সংহত পৰীক্ষা প্ৰদান কৰে।</p><h2>তৎকালিক আৰম্ভণি, uni-page-jdbc উদাহৰণ হিচাপে</h2></p><h3>Maven নির্ভৰতা</h3></p><pre><code class="language-xml"><dependency>
+    <groupId>com.github.ethancarter</groupId>
+    <artifactId>uni-page-jdbc</artifactId>
+    <version>1.9</version>
+</dependency></code></pre></p><h3>সৰল উদাহৰণ</h3></p><pre><code class="language-java">public class PaginationTest {
+   
+    public void page() {
+        PaginationStatementTemplate operations = new PaginationStatementTemplate();
+        operations.addStatementExecutor(new Sql2oPaginationNamedParameterStatementExecutor(dataSource));
+        
+        // 1. 创建分页语句
+        PaginationStatement statement = of(b -> b
+                .sql("SELECT * FROM user WHERE username LIKE :username")
+                .paramMap("username", "%admin%")
+                .pageable(0, 10)
+                .sort("id", Sort.Direction.DESC));
+        
+        // 2. 执行查询
+        PageInformation information = operations.queryForInformation(statement);
+        Page<User> page = operations.queryForResultSet(statement, new JdbcBeanPropertyPaginationRowMapper<>(User.class));
+    }</p><p>    // User实体类
+    class User {
+        private Long id;
+        private String username;
+        // getters and setters
+    }
+}</code></pre></p><h2>ধন্যবাদ জ্ঞাপন</h2></p><p>এই ফ্ৰেমৱৰ্কৰ বিকাশৰ সময়ত, মই মুক্ত উৎস সমাজৰ পৰা গভীৰভাৱে প্ৰভাৱিত আৰু অনুপ্ৰাণিত হৈছিলোঁ। সেইসকল নিঃস্বার্থভাৱে প্ৰযুক্তি অভিজ্ঞতা ভাগ-বতৰা কৰা বিশিষ্ট ব্যক্তিসকলক ধন্যবাদ, আপোনালোকৰ বুদ্ধি আৰু অৱদানেই এই ফ্ৰেমৱৰ্কৰ জন্ম হ’বলৈ সক্ষম কৰিলে। বিশেষকৈ সেইসকল উৎকৃষ্ট মুক্ত উৎস প্ৰকল্পৰ পৰা আহৰা ডিজাইন অনুপ্ৰেৰণা আৰু কাৰ্য্য-ধাৰণা, এই মূল্যবান অভিজ্ঞতাসমূহে মোক দেৱ-মানুহৰ কঁকালত থিয় হ’বলৈ সহায় কৰিছে।</p><p>মুক্ত উৎস সমাজত অৱদান ৰখা সকলো বিশিষ্ট প্ৰযুক্তি ব্যক্তিসকলক ধন্যবাদ!</p><h2>🌟 পৰিয়োজনাক সমৰ্থন কৰক</h2>
+যদি আপুনি এই পৰিয়োজনাটো আপোনাৰ বাবে সহায়ক বুলি ভাবেন, অনুগ্ৰহ কৰি সোঁ-ওপৰৰ ⭐Star ক্লিক কৰি মোক সমৰ্থন কৰক!</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-28
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/ethan-carter-g/uni-page/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-28 
+    </div>
+    
+</body>
+</html>
