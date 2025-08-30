@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rvv-bench - 開発者が移植性の高い高性能なRISC-Vベクター（RVV）コードを作成するのを支援するためのRVVベンチマーク集</title>
+    <meta name="description" content="開発者が移植性の高い高性能なRISC-Vベクター（RVV）コードを作成するのを支援するためのRVVベンチマーク集">
+    <meta name="keywords" content="rvv-bench, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "rvv-bench",
+  "description": "開発者が移植性の高い高性能なRISC-Vベクター（RVV）コードを作成するのを支援するためのRVVベンチマーク集",
+  "author": {
+    "@type": "Person",
+    "name": "camel-cdr"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 123
+  },
+  "url": "https://OpenAiTx.github.io/projects/camel-cdr/rvv-bench/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/camel-cdr/rvv-bench/main/README.md",
+  "datePublished": "2025-08-30",
+  "dateModified": "2025-08-30"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/camel-cdr/rvv-bench" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    rvv-bench
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 123 stars</span>
+                <span class="language">Japanese</span>
+                <span>by camel-cdr</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>RISC-V ベクターベンチマーク</h1></p><p>ポータブルで高性能なRVVコードを書くための開発者支援用RISC-Vベクター（RVV）ベンチマークのコレクションです。</p><p>ベンチマーク結果は以下で確認できます：https://camel-cdr.github.io/rvv-bench-results</p><h2>ベンチマーク (<a href="./bench/" target="_blank" rel="noopener noreferrer">./bench/</a>)</h2></p><p>特定のアルゴリズムのさまざまな実装のベンチマークを多数収録しています。</p><h2>命令サイクルカウント (<a href="./instructions/" target="_blank" rel="noopener noreferrer">./instructions/</a>)</h2></p><p>指定したRVV命令を繰り返し展開しループさせることで、命令のサイクル数を測定します。</p><h2>はじめに</h2></p><p>まず<a href="https://raw.githubusercontent.com/camel-cdr/rvv-bench/main/./config.mk" target="_blank" rel="noopener noreferrer">./config.mk</a>を設定して<code>make</code>が動作するようにし、オプションで<code>make run</code>を使ってコンパイルと実行を可能にする<a href="https://raw.githubusercontent.com/camel-cdr/rvv-bench/main/./run.sh" target="_blank" rel="noopener noreferrer">./run.sh</a>も設定します。</p><p>デフォルト設定は最近のclangビルドで動作し、フルクロスコンパイルツールチェーンは不要です。なぜならfreestandingモードでビルドするためです。
+つまりLinuxかLinuxのシステムコール互換OSでのみ動作します。</p><p>最近のLinuxではパフォーマンスカウンターはデフォルトで公開されていないため、<code>echo 2 >/proc/sys/kernel/perf_user_access</code>を実行し、<a href="https://raw.githubusercontent.com/camel-cdr/rvv-bench/main/./config.mk" target="_blank" rel="noopener noreferrer">./config.mk</a>の<code>CFLAGS=...</code>行に<code>-DUSE_PERF_EVENT</code>を追加する必要があります（動作しない場合は代わりに<code>-DUSE_PERF_EVENT_SLOW</code>を試してください）。</p><p><a href="https://raw.githubusercontent.com/camel-cdr/rvv-bench/main/./config.mk" target="_blank" rel="noopener noreferrer">./config.mk</a>をホステッドビルド用に設定するか、カスタムツールチェーンで設定し、<code>-DCUSTOM_HOST</code>を定義に追加し、<a href="https://raw.githubusercontent.com/camel-cdr/rvv-bench/main/./nolibc.h" target="_blank" rel="noopener noreferrer">./nolibc.h</a>の<code>#ifdef CUSTOM_HOST</code>以下の未実装関数を実装してください。</p><p>XTheadVectorはサポートを終了しました。</p><h3>ベンチマークの実行 (<a href="./bench/" target="_blank" rel="noopener noreferrer">./bench/</a>)</h3></p><p>ベンチマークを実行するには、まず(<a href="https://raw.githubusercontent.com/camel-cdr/rvv-bench/main/./bench/config.h" target="_blank" rel="noopener noreferrer">./bench/config.h</a>)を確認し、プロセッサに合わせて調整します（例：<code>HAS_E64</code>を設定）。実行に時間がかかる場合は、ベンチマークのスケールに使われる<code>MAX_MEM</code>を減らし、他の定数も調整して、実行時間が適切で比較的滑らかなグラフになるようにします。</p><p>その後、(<a href="./bench/" target="_blank" rel="noopener noreferrer">./bench/</a>)ディレクトリで<code>make run</code>を実行するか、実行ファイルだけをビルドする場合は<code>make</code>を実行してください。</p><h3>サイクルカウントの測定 (<a href="./instructions/" target="_blank" rel="noopener noreferrer">./instructions/</a>)</h3></p><p>サイクルカウント測定を実行するには、まず<a href="https://raw.githubusercontent.com/camel-cdr/rvv-bench/main/instructions/rvv/config.h" target="_blank" rel="noopener noreferrer">instructions/rvv/config.h</a>をプロセッサに合わせて設定します。</p><p>その後、(<a href="./instructions/rvv/" target="_blank" rel="noopener noreferrer">./instructions/rvv/</a>)ディレクトリで<code>make run</code>を実行するか、実行ファイルだけをビルドする場合は<code>make</code>を実行してください。</p><p>XTheadVectorの場合は(<a href="./instructions/xtheadvector/" target="_blank" rel="noopener noreferrer">./instructions/xtheadvector/</a>)ディレクトリを使用してください。（こちらはもはやメンテナンスされていません）</p><h2>貢献について</h2></p><p>以下はまだ行う必要がある作業の提案です。</p><ul><li>新しいCPUの測定結果を https://github.com/camel-cdr/rvv-bench-results に貢献してください。\</li>
+  </ul>単一のjsonファイルを含むissueを作成するだけで構いません。このファイルにはすべての結合された<a href="./bench/" target="_blank" rel="noopener noreferrer">./bench/</a>の結果が含まれます。（適切なセットアップ後、<code>make run > out.json</code> で実行可能です）。\
+<ul><li>メモリ非依存ベンチマークの実装</li>
+<li>さらに多くのベンチマークの実装</li>
+<li>より良いサイクルカウント測定：スループット対レイテンシ（また：実行ポート構成を特定できますか？）</li>
+<li>ロード／ストアのサイクルカウント</li>
+<li>vsetvlのサイクルカウント</li></p><p></ul><h2>ライセンス</h2></p><p>このリポジトリはMITライセンス<a href="LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a>の下でライセンスされています。</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-30
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/camel-cdr/rvv-bench/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-30 
+    </div>
+    
+</body>
+</html>

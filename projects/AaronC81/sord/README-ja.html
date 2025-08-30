@@ -1,0 +1,384 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sord - YARDドキュメントをSorbetのRBIおよびRuby 3/SteepのRBSファイルに変換するツール</title>
+    <meta name="description" content="YARDドキュメントをSorbetのRBIおよびRuby 3/SteepのRBSファイルに変換するツール">
+    <meta name="keywords" content="sord, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "sord",
+  "description": "YARDドキュメントをSorbetのRBIおよびRuby 3/SteepのRBSファイルに変換するツール",
+  "author": {
+    "@type": "Person",
+    "name": "AaronC81"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 328
+  },
+  "url": "https://OpenAiTx.github.io/projects/AaronC81/sord/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/AaronC81/sord/master/README.md",
+  "datePublished": "2025-08-30",
+  "dateModified": "2025-08-30"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/AaronC81/sord" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    sord
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 328 stars</span>
+                <span class="language">Japanese</span>
+                <span>by AaronC81</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Sord</h1></p><h2>概要</h2></p><p>Sordは<a href="https://sorbet.org" target="_blank" rel="noopener noreferrer"><strong>So</strong>rbet</a>と<a href="https://yardoc.org/" target="_blank" rel="noopener noreferrer">YA<strong>RD</strong></a>
+のクロスオーバーです。<strong>YARDドキュメントのコメントに指定された型情報</strong>を参照して、
+<strong>RBIおよびRBS型のシグネチャファイルを自動生成</strong>できます。</p><p>もしあなたのプロジェクトがすでにYARDでドキュメント化されているなら、
+ほとんどの型シグネチャをこのツールで生成できます！</p><p>Sordは、SorbetのRBI形式やRuby 3/SteepのRBS形式のいずれを使うにしても、
+プロジェクトで型導入を始めるのに最適な方法です。</p><p><strong>Sordをオンラインで試す: <a href="https://sord.aaronc.cc" target="_blank" rel="noopener noreferrer">sord.aaronc.cc</a></strong></p><p>Sordの特徴は以下の通りです:
+  <ul><li>モジュール、クラス、メソッドのシグネチャを自動生成</li>
+  <li>複数のパラメータ型や戻り値型のサポート（<code>T.any</code>/<code>|</code>）</li>
+  <li>YARD型情報が欠落している場合も適切に処理（<code>T.untyped</code>/<code>untyped</code>）</li>
+  <li>セッターのパラメータ型を対応するゲッターの戻り値型から推論可能</li>
+  <li>ミキシン（<code>include</code>と<code>extend</code>）を認識</li>
+  <li><code>Array<T></code>や<code>Hash<K, V></code>のようなジェネリック型をサポート</li>
+  <li>名前空間付きクラスの推論可能（<code>[Bar]</code>が<code>GemName::Foo::Bar</code>になる）</li>
+  <li><code>nil</code>を許容する戻り値型を処理（<code>T.nilable</code>/<code>untyped</code>）</li>
+  <li>ダックタイピング型を処理（<code>T.untyped</code>/<code>untyped</code>）</li>
+  <li>順序付きリスト型をサポート（<code>[Array(Integer, Symbol)]</code>が<code>[Integer, Symbol]</code>になる）</li>
+  <li>ブール型をサポート（<code>[true, false]</code>が<code>T::Boolean</code>/<code>bool</code>になる）</li>
+  <li><code>&block</code>パラメータを<code>@yieldparam</code>および<code>@yieldreturn</code>でドキュメント化可能</li></p><p></ul><h2>使い方</h2></p><p><code>gem install sord</code>でSordをインストールします。</p><p>Sordはコマンドラインツールです。プロジェクトのルートディレクトリでターミナルを開き、
+<code>-sord</code>コマンドを実行し、出力先のパスを渡してください（既存のファイルは上書きされます）:</p><pre><code class="language-">sord defs.rbi</code></pre>
+SordはYARDドキュメントを生成し、実行中に推論した情報を出力します。  
+YARDドキュメントの問題は修正することを推奨します。生成されたファイルに加えた編集は、Sordを再実行すると置き換えられます。  </p><p>出力タイプは使用するファイル拡張子から推論されますが、<code>--rbi</code>や<code>--rbs</code>で明示的に指定することも可能です。  </p><h2>RBIタイプの配布  </h2></p><p>Sordで生成されたRBIファイルは主に二つの方法で利用されます：  </p><ul><li><a href="https://sorbet.org/docs/rbi#rbis-within-gems" target="_blank" rel="noopener noreferrer">gem自体に同梱する</a>。  </li>
+<li><a href="https://github.com/sorbet/sorbet-typed" target="_blank" rel="noopener noreferrer">sorbet-typed</a>に貢献する。  </li></p><p></ul>一般的には、可能であればgemに型シグネチャを同梱すべきです。  
+sorbet-typedは、更新が停止されたgemや、メンテナが型シグネチャをgemに同梱したくない場合のための場所です。  </p><h3>フラグ  </h3></p><p>Sordは生成されるファイルを変更するためのいくつかのフラグを受け取ります：  </p><ul><li><code>--rbi</code>/<code>--rbs</code>：ファイル拡張子から推論される出力形式を上書きします。  </li>
+  <li><code>--no-sord-comments</code>：警告・推論・エラーに関するSordのコメントなしでファイルを生成します。（元のファイルのコメントは引き続き含まれます。）  </li>
+  <li><code>--no-regenerate</code>：デフォルトではSordはリポジトリのYARDドキュメントを再生成しますが、このオプションで再生成をスキップします。  </li>
+  <li><code>--break-params</code>：シグネチャが単一行から複数行ブロックに変わるパラメータの数を決定します。（デフォルト: 4）  </li>
+  <li><code>--replace-errors-with-untyped</code>：<code>SORD_ERROR_*</code>定数の代わりに<code>T.untyped</code>を使います。  </li>
+  <li><code>--replace-unresolved-with-untyped</code>：Sordが定数を解決できない場合に<code>T.untyped</code>を使います。  </li>
+  <li><code>--include-messages</code>および<code>--exclude-messages</code>：Sordのログメッセージをフィルターするために使います。<code>--include-messages</code>はホワイトリストとして機能し、指定したログ種別のメッセージのみを出力し、<code>--exclude-messages</code>は</li></p><p>
+    </ul>指定されたログ種類をブラックリストとして扱い、抑制します。両方のフラグはカンマ区切りのログ種類リストを取ります。例：<code>omit,infer</code>。
+    <code>--include-messages</code>を使用すると、<code>done</code>種類はデフォルトで含まれます。
+    （<code>--include-messages</code>と<code>--exclude-messages</code>を同時に指定することはできません。）
+  <ul><li><code>--exclude-untyped</code>: 戻り値が型指定されていないメソッドと属性を除外します。</li>
+  <li><code>--tags TAGS</code>: <code>yard</code>コマンドで理解されるカンマ区切りタグのリストを提供します。例：<code>--tags 'mytag:My Description,mytag2:My New Description'</code></li></p><p></ul><h2>例</h2></p><p>次のファイルがあるとします。名前は<code>test.rb</code>です：</p><pre><code class="language-ruby">module Example
+  class Person
+    # @param name [String] The name of the Person to create.
+    # @param age [Integer] The age of the Person to create.
+    # @return [Example::Person]
+    def initialize(name, age)
+      @name = name
+      @age = age
+    end</p><p>    # @return [String]
+    attr_accessor :name</p><p>    # @return [Integer]
+    attr_accessor :age</p><p>    # @param possible_names [Array<String>] An array of potential names to choose from.
+    # @param possible_ages [Array<Integer>] An array of potential ages to choose from.
+    # @return [Example::Person]
+    def self.construct_randomly(possible_names, possible_ages)
+      Person.new(possible_names.sample, possible_ages.sample)
+    end
+  end
+end</code></pre>
+まず、<code>yardoc test.rb</code>を実行してYARDレジストリを生成します。次に、<code>sord test.rbi</code>を実行してRBIファイルを生成できます。（コードファイルを上書きしないよう注意してください！拡張子は<code>.rbi</code>です。）これを行うと、Sordは次のように表示します：</p><pre><code class="language-">[INFER] Assuming from filename you wish to generate in RBI format
+[DONE ] Processed 8 objects (2 namespaces and 6 methods)</code></pre>
+<code>test.rbi</code> ファイルには、<code>test.rb</code> の完全な RBI ファイルが含まれています:</p><pre><code class="language-ruby"># typed: strong
+module Example
+  class Person
+    # _@param_ <code>name</code> — The name of the Person to create.
+    # 
+    # _@param_ <code>age</code> — The age of the Person to create.
+    sig { params(name: String, age: Integer).void }
+    def initialize(name, age); end</p><p>    # _@param_ <code>possible_names</code> — An array of potential names to choose from.
+    # 
+    # _@param_ <code>possible_ages</code> — An array of potential ages to choose from.
+    sig { params(possible_names: T::Array[String], possible_ages: T::Array[Integer]).returns(Example::Person) }
+    def self.construct_randomly(possible_names, possible_ages); end</p><p>    sig { returns(String) }
+    attr_accessor :name</p><p>    sig { returns(Integer) }
+    attr_accessor :age
+  end
+end</code></pre>
+もし代わりに <code>test.rbs</code> を生成していた場合、RBS形式のこのファイルが得られます:</p><pre><code class="language-ruby">module Example
+  class Person
+    # _@param_ <code>name</code> — The name of the Person to create.
+    # 
+    # _@param_ <code>age</code> — The age of the Person to create.
+    def initialize: (String name, Integer age) -> void</p><p>    # _@param_ <code>possible_names</code> — An array of potential names to choose from.
+    # 
+    # _@param_ <code>possible_ages</code> — An array of potential ages to choose from.
+    def self.construct_randomly: (Array[String] possible_names, Array[Integer] possible_ages) -> Example::Person</p><p>    attr_accessor name: String</p><p>    attr_accessor age: Integer
+  end
+end</code></pre></p><h2>注意点</h2></p><p>型変換の一般的なルールは以下の通りです：</p><ul><li>SordがYARDの型を理解できる場合、それはRBIまたはRBSの型に変換されます。</li>
+  <li>YARDの型が存在しない場合、Sordは<code>T.untyped</code>を補います。</li>
+  <li>YARDの型が理解できない場合、Sordは未知のYARD型に似た名前の未定義Ruby定数を作成します。例えば、明らかに無効なYARD型<code>A%B</code>は<code>SORD_ERROR_AB</code>という定数になります。生成されたファイル内で<code>SORD_ERROR</code>を検索し、修正してください。</li></p><p></ul><h2>貢献について</h2></p><p>バグ報告やプルリクエストはGitHubの https://github.com/AaronC81/sord で歓迎します。このプロジェクトは安全で歓迎的な共同作業の場を目指しており、貢献者は<a href="http://contributor-covenant.org" target="_blank" rel="noopener noreferrer">Contributor Covenant</a>の行動規範を遵守することが期待されています。</p><p>貢献中にSordの変更結果を確認したい場合は、<code>examples:seed</code> Rakeタスクを使用できます。このタスクはSordを使って、Bundler、Haml、Rouge、RSpecなどの複数のオープンソースRuby gemの型を生成します。<code>rake examples:seed</code>（ファイルを再生成するには<code>rake examples:reseed</code>）は、これらのgemのリポジトリを<code>sord_examples/</code>にクローンし、同じディレクトリにファイルを生成します。</p><h2>ライセンス</h2></p><p>このgemは<a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MITライセンス</a>の条件のもとオープンソースとして提供されています。</p><h2>行動規範</h2></p><p>Sordプロジェクトのコードベース、イシュートラッカー、チャットルーム、メーリングリストに関わるすべての人は、<a href="https://github.com/AaronC81/sord/blob/master/CODE_OF_CONDUCT.md" target="_blank" rel="noopener noreferrer">行動規範</a>を遵守することが期待されています。</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-30
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/AaronC81/sord/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-30 
+    </div>
+    
+</body>
+</html>

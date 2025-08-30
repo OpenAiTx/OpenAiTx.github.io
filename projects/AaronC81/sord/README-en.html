@@ -1,0 +1,410 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sord - Convert YARD documentation to Sorbet RBI and Ruby 3/Steep RBS files</title>
+    <meta name="description" content="Convert YARD documentation to Sorbet RBI and Ruby 3/Steep RBS files">
+    <meta name="keywords" content="sord, English, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "sord",
+  "description": "Convert YARD documentation to Sorbet RBI and Ruby 3/Steep RBS files",
+  "author": {
+    "@type": "Person",
+    "name": "AaronC81"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 328
+  },
+  "url": "https://OpenAiTx.github.io/projects/AaronC81/sord/README-en.html",
+  "sameAs": "https://raw.githubusercontent.com/AaronC81/sord/master/README.md",
+  "datePublished": "2025-08-30",
+  "dateModified": "2025-08-30"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/AaronC81/sord" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    sord
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 328 stars</span>
+                <span class="language">English</span>
+                <span>by AaronC81</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Sord</h1></p><h2>Overview</h2></p><p>Sord is a <a href="https://sorbet.org" target="_blank" rel="noopener noreferrer"><strong>So</strong>rbet</a> and <a href="https://yardoc.org/" target="_blank" rel="noopener noreferrer">YA<strong>RD</strong></a>
+crossover. It can <strong>automatically generate RBI and RBS type signature files</strong> by
+looking at the <strong>types specified in YARD documentation</strong> comments.</p><p>If your project is already YARD documented, then this can generate most of the
+type signatures you need!</p><p>Sord is the perfect way to jump-start the adoption of types in your project,
+whether you plan to use Sorbet's RBI format or Ruby 3/Steep's RBS format.</p><p><strong>Try Sord online at: <a href="https://sord.aaronc.cc" target="_blank" rel="noopener noreferrer">sord.aaronc.cc</a></strong></p><p>Sord has the following features:
+  <ul><li>Automatically generates signatures for modules, classes and methods</li>
+  <li>Support for multiple parameter or return types (<code>T.any</code>/<code>|</code>)</li>
+  <li>Gracefully handles missing YARD types (<code>T.untyped</code>/<code>untyped</code>)</li>
+  <li>Can infer setter parameter type from the corresponding getter's return type</li>
+  <li>Recognises mixins (<code>include</code> and <code>extend</code>)</li>
+  <li>Support for generic types such as <code>Array<T></code> and <code>Hash<K, V></code></li>
+  <li>Can infer namespaced classes (<code>[Bar]</code> can become <code>GemName::Foo::Bar</code>)</li>
+  <li>Handles return types which can be <code>nil</code> (<code>T.nilable</code>/<code>untyped</code>)</li>
+  <li>Handles duck types (<code>T.untyped</code>/<code>untyped</code>)</li>
+  <li>Support for ordered list types (<code>[Array(Integer, Symbol)]</code> becomes <code>[Integer, Symbol]</code>)</li>
+  <li>Support for boolean types (<code>[true, false]</code> becomes <code>T::Boolean</code>/<code>bool</code>)</li>
+  <li>Support for <code>&block</code> parameters documented with <code>@yieldparam</code> and <code>@yieldreturn</code></li></p><p></ul><h2>Usage</h2></p><p>Install Sord with <code>gem install sord</code>.</p><p>Sord is a command line tool. To use it, open a terminal in the root directory
+of your project and invoke <code>sord</code>, passing a path where you'd like to save your
+file (this file will be overwritten):</p><pre><code class="language-">sord defs.rbi</code></pre>
+Sord will generate YARD docs and then print information about what it's inferred  
+as it runs. It is best to fix any issues in the YARD documentation, as any edits  
+made to the resulting file will be replaced if you re-run Sord.  </p><p>The output type is inferred by the file extension you use, but you can also  
+specify it explicitly with <code>--rbi</code> or <code>--rbs</code>.  </p><h2>Shipping RBI Types  </h2></p><p>RBI files generated by Sord can be used in two main ways:  </p><ul><li><a href="https://sorbet.org/docs/rbi#rbis-within-gems" target="_blank" rel="noopener noreferrer">Shipped in the gem itself</a>.  </li>
+<li>Contributed to <a href="https://github.com/sorbet/sorbet-typed" target="_blank" rel="noopener noreferrer">sorbet-typed</a>.  </li></p><p></ul>Generally, you should ship the type signatures with your gem if possible.  
+sorbet-typed is meant to be a place for gems that are no longer updated or  
+where the maintainer is unwilling to ship type signatures with the gem itself.  </p><h3>Flags  </h3></p><p>Sord also takes some flags to alter the generated file:  </p><ul><li><code>--rbi</code>/<code>--rbs</code>: Override the output format inferred from the file  </li>
+    </ul>extension.  
+  <ul><li><code>--no-sord-comments</code>: Generates the file without any Sord comments about  </li>
+    </ul>warnings/inferences/errors. (The original file's comments will still be  
+    included.)  
+  <ul><li><code>--no-regenerate</code>: By default, Sord will regenerate a repository's YARD  </li>
+    </ul>docs for you. This option skips regenerating the YARD docs.  
+  <ul><li><code>--break-params</code>: Determines how many parameters are necessary before  </li>
+    </ul>the signature is changed from a single-line to a multi-line block.  
+    (Default: 4)  
+  <ul><li><code>--replace-errors-with-untyped</code>: Uses <code>T.untyped</code> instead of <code>SORD_ERROR_*</code>  </li>
+    </ul>constants.  
+  <ul><li><code>--replace-unresolved-with-untyped</code>: Uses <code>T.untyped</code> when Sord is unable to  </li>
+    </ul>resolve a constant.  
+  <ul><li><code>--include-messages</code> and <code>--exclude-messages</code>: Used to filter the logging  </li>
+    </ul>messages given by Sord. <code>--include-messages</code> acts as a whitelist, printing  
+    only messages of the specified logging kinds, whereas <code>--exclude-messages</code></p><p>    acts as a blacklist and suppresses the specified logging kinds. Both flags
+    take a comma-separated list of logging kinds, for example <code>omit,infer</code>.
+    When using <code>--include-messages</code>, the <code>done</code> kind is included by default.
+    (You cannot specify both <code>--include-messages</code> and <code>--exclude-messages</code>.)
+  <ul><li><code>--exclude-untyped</code>: Exclude methods and attributes with untyped return</li>
+    </ul>values.
+  <ul><li><code>--tags TAGS</code>: Provide a list of comma-separated tags as understood by the</li>
+    </ul><code>yard</code> command. E.g. <code>--tags 'mytag:My Description,mytag2:My New Description'</p><h2>Example</h2></p><p>Say we have this file, called </code>test.rb<code>:</p><pre><code class="language-ruby">module Example
+  class Person
+    # @param name [String] The name of the Person to create.
+    # @param age [Integer] The age of the Person to create.
+    # @return [Example::Person]
+    def initialize(name, age)
+      @name = name
+      @age = age
+    end</p><p>    # @return [String]
+    attr_accessor :name</p><p>    # @return [Integer]
+    attr_accessor :age</p><p>    # @param possible_names [Array<String>] An array of potential names to choose from.
+    # @param possible_ages [Array<Integer>] An array of potential ages to choose from.
+    # @return [Example::Person]
+    def self.construct_randomly(possible_names, possible_ages)
+      Person.new(possible_names.sample, possible_ages.sample)
+    end
+  end
+end</code></pre>
+First, generate a YARD registry by running </code>yardoc test.rb<code>. Then, we can run
+</code>sord test.rbi<code> to generate the RBI file. (Careful not to overwrite your code
+files! Note the </code>.rbi<code> file extension.) In doing this, Sord prints:</p><pre><code class="language-">[INFER] Assuming from filename you wish to generate in RBI format
+[DONE ] Processed 8 objects (2 namespaces and 6 methods)</code></pre></p><p>The </code>test.rbi<code> file then contains a complete RBI file for </code>test.rb<code>:</p><pre><code class="language-ruby"># typed: strong
+module Example
+  class Person
+    # _@param_ </code>name<code> — The name of the Person to create.
+    # 
+    # _@param_ </code>age<code> — The age of the Person to create.
+    sig { params(name: String, age: Integer).void }
+    def initialize(name, age); end</p><p>    # _@param_ </code>possible_names<code> — An array of potential names to choose from.
+    # 
+    # _@param_ </code>possible_ages<code> — An array of potential ages to choose from.
+    sig { params(possible_names: T::Array[String], possible_ages: T::Array[Integer]).returns(Example::Person) }
+    def self.construct_randomly(possible_names, possible_ages); end</p><p>    sig { returns(String) }
+    attr_accessor :name</p><p>    sig { returns(Integer) }
+    attr_accessor :age
+  end
+end</code></pre></p><p>If we had instead generated </code>test.rbs<code>, we would get this file in RBS format:</p><pre><code class="language-ruby">module Example
+  class Person
+    # _@param_ </code>name<code> — The name of the Person to create.
+    # 
+    # _@param_ </code>age<code> — The age of the Person to create.
+    def initialize: (String name, Integer age) -> void</p><p>    # _@param_ </code>possible_names<code> — An array of potential names to choose from.
+    # 
+    # _@param_ </code>possible_ages<code> — An array of potential ages to choose from.
+    def self.construct_randomly: (Array[String] possible_names, Array[Integer] possible_ages) -> Example::Person</p><p>    attr_accessor name: String</p><p>    attr_accessor age: Integer
+  end
+end</code></pre></p><h2>Things to be aware of</h2></p><p>The general rule of thumb for type conversions is:</p><ul><li>If Sord understands the YARD type, then it is converted into the RBI or RBS</li>
+    </ul>type.
+  <ul><li>If the YARD type is missing, Sord fills in </code>T.untyped<code>.</li>
+  <li>If the YARD type can't be understood, Sord creates an undefined Ruby constant</li>
+    </ul>with a similar name to the unknown YARD type. For example, the obviously
+    invalid YARD type </code>A%B<code> will become a constant called </code>SORD_ERROR_AB<code>.
+    You should search through your resulting file to find and fix and 
+    </code>SORD_ERROR<code>s.</p><h2>Contributing</h2></p><p>Bug reports and pull requests are welcome on GitHub at https://github.com/AaronC81/sord. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the <a href="http://contributor-covenant.org" target="_blank" rel="noopener noreferrer">Contributor Covenant</a> code of conduct.</p><p>While contributing, if you want to see the results of your changes to Sord you
+can use the </code>examples:seed<code> Rake task. The task uses Sord to generate types for
+a number of open source Ruby gems, including Bundler, Haml, Rouge, and RSpec.
+</code>rake examples:seed<code> (and </code>rake examples:reseed<code> to regenerate the files) will
+clone the repositories of these gems into </code>sord_examples/` and then generate the
+files into the same directory.</p><h2>License</h2></p><p>The gem is available as open source under the terms of the <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a>.</p><h2>Code of Conduct</h2></p><p>Everyone interacting in the Sord project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the <a href="https://github.com/AaronC81/sord/blob/master/CODE_OF_CONDUCT.md" target="_blank" rel="noopener noreferrer">code of conduct</a>.</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-30
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/AaronC81/sord/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-30 
+    </div>
+    
+</body>
+</html>

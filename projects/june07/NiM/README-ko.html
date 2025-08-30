@@ -1,0 +1,335 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NiM - Chromium(Chrome, Edge 등) DevTools로 Node.js 디버깅 워크플로우를 간소화하세요.</title>
+    <meta name="description" content="Chromium(Chrome, Edge 등) DevTools로 Node.js 디버깅 워크플로우를 간소화하세요.">
+    <meta name="keywords" content="NiM, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "NiM",
+  "description": "Chromium(Chrome, Edge 등) DevTools로 Node.js 디버깅 워크플로우를 간소화하세요.",
+  "author": {
+    "@type": "Person",
+    "name": "june07"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 199
+  },
+  "url": "https://OpenAiTx.github.io/projects/june07/NiM/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/june07/NiM/master/README.md",
+  "datePublished": "2025-08-30",
+  "dateModified": "2025-08-30"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/june07/NiM" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    NiM
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 199 stars</span>
+                <span class="language">Korean</span>
+                <span>by june07</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><img src="https://img.shields.io/chrome-web-store/v/gnhhdgbaldcilmgcpfddgdbkhjohddkj.svg" alt="https://chromewebstore.google.com/detail/nodejs-v8-inspector-manag/gnhhdgbaldcilmgcpfddgdbkhjohddkj">
+<img src="https://img.shields.io/chrome-web-store/users/gnhhdgbaldcilmgcpfddgdbkhjohddkj.svg" alt="https://chromewebstore.google.com/detail/nodejs-v8-inspector-manag/gnhhdgbaldcilmgcpfddgdbkhjohddkj">
+<img src="https://img.shields.io/chrome-web-store/rating/gnhhdgbaldcilmgcpfddgdbkhjohddkj.svg" alt="https://chromewebstore.google.com/detail/nodejs-v8-inspector-manag/gnhhdgbaldcilmgcpfddgdbkhjohddkj">
+<img src="https://img.shields.io/chrome-web-store/stars/gnhhdgbaldcilmgcpfddgdbkhjohddkj.svg" alt="https://chromewebstore.google.com/detail/nodejs-v8-inspector-manag/gnhhdgbaldcilmgcpfddgdbkhjohddkj">
+<img src="https://img.shields.io/chrome-web-store/rating-count/gnhhdgbaldcilmgcpfddgdbkhjohddkj.svg" alt="https://chromewebstore.google.com/detail/nodejs-v8-inspector-manag/gnhhdgbaldcilmgcpfddgdbkhjohddkj"><br>
+<img src="https://img.shields.io/badge/dynamic/json?label=microsoft%20edge%20add-on&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Finjfmegnapmoakbmnmnecjabigpdjeme" alt="https://chromewebstore.google.com/detail/nodejs-v8-inspector-manag/gnhhdgbaldcilmgcpfddgdbkhjohddkj">
+<a href="https://microsoftedge.microsoft.com/addons/detail/injfmegnapmoakbmnmnecjabigpdjeme" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/dynamic/json?label=users&query=%24.activeInstallCount&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Finjfmegnapmoakbmnmnecjabigpdjeme" alt="https://microsoftedge.microsoft.com/addons/detail/injfmegnapmoakbmnmnecjabigpdjeme"></a>
+<a href="https://microsoftedge.microsoft.com/addons/detail/injfmegnapmoakbmnmnecjabigpdjeme" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/dynamic/json?label=rating&query=%24.averageRating&suffix=%2F5&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Finjfmegnapmoakbmnmnecjabigpdjeme" alt="https://microsoftedge.microsoft.com/addons/detail/injfmegnapmoakbmnmnecjabigpdjeme"></a>
+<a href="https://microsoftedge.microsoft.com/addons/detail/injfmegnapmoakbmnmnecjabigpdjeme" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/dynamic/json?label=ratings&query=%24.ratingCount&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Finjfmegnapmoakbmnmnecjabigpdjeme" alt="https://microsoftedge.microsoft.com/addons/detail/injfmegnapmoakbmnmnecjabigpdjeme"></a></p><p><!--평점 배지는 현재 <a href="https://github.com/badges/shields/issues/5475" target="_blank" rel="noopener noreferrer">이 이슈</a>와 <a href="https://github.com/pandawing/node-chrome-web-store-item-property/issues/275#issuecomment-687801815" target="_blank" rel="noopener noreferrer">이 이슈</a>로 인해 작동하지 않습니다.--></p><p>#### 구글의 변경으로 인해 프로젝트가 Manifest Version 3로 업그레이드 되었으니 업데이트는 https://github.com/june07/nimv3 를 참고하세요.</p><p><a href="https://nim.june07.com" target="_blank" rel="noopener noreferrer"><img src="https://june07.github.io/image/smallPromoTile.png" alt="https://nim.june07.com"></a> <a href="https://nim.june07.com" target="_blank" rel="noopener noreferrer"><img src="https://github.com/june07/nimv3/assets/11353590/e6f30f3f-4ae5-4831-bafa-392eaeff66fd" alt="https://nim.june07.com"></a></p><h1>NiM (Node.js --inspector 관리자)</h1>
+###### 개발 과정을 간소화합니다</p><ul><li><a href="[http://bit.ly/2W8hQG9](https://chromewebstore.google.com/detail/nodejs-v8-inspector-manag/gnhhdgbaldcilmgcpfddgdbkhjohddkj?utm_source=github&utm_medium=readme&utm_campaign=nim&utm_content=1" target="_blank" rel="noopener noreferrer">구글 크롬 웹 스토어</a>) (모든 Chromium 브라우저에서 작동: <a href="https://www.google.com/chrome/" target="_blank" rel="noopener noreferrer">구글 크롬</a>, <a href="https://www.microsoftedgeinsider.com/en-us/" target="_blank" rel="noopener noreferrer">마이크로소프트 엣지</a>, <a href="https://www.opera.com/" target="_blank" rel="noopener noreferrer">오페라</a>, <a href="https://vivaldi.com/" target="_blank" rel="noopener noreferrer">비발디</a>, <a href="https://brave.com/" target="_blank" rel="noopener noreferrer">브레이브</a>, <a href="https://www.epicbrowser.com/" target="_blank" rel="noopener noreferrer">에픽</a> 등...)</li>
+<li><a href="https://microsoftedge.microsoft.com/addons/detail/injfmegnapmoakbmnmnecjabigpdjeme" target="_blank" rel="noopener noreferrer">마이크로소프트 엣지 애드온</a> (마이크로소프트 엣지 브라우저에서 작동 https://www.microsoftedgeinsider.com/en-us/) </li></p><p>    </ul><strong><em>주의</strong></em>: 설치 시 사용자 이메일 주소를 저(개발자)와 공유해야 합니다(저와만 공유). 이 점은 별도로 공지되지만, 여전히 매우 중요한 문제라 과도하게 명확히 알립니다. 이메일 공유가 꺼려지면(참고로 제 이메일은 667@june07.com 입니다) 직접 복제(fork)하여 코드를 수정하거나 대체 솔루션을 사용하시기 바랍니다(대체 솔루션은 NiM만큼 좋지 않습니다만 편견일지도 모릅니다). 언제든지 직접 연락 주셔서 대화할 수도 있습니다. 페이스북, 구글, 아마존 같은 대기업과는 달리, 저는 제 코드를 사용하는 실제 사용자들(~99%)의 우려를 진심으로 신경 씁니다. NiM 관련 개인정보처리방침은 https://june07.com/privacypolicy 에서 확인하세요. 감사합니다.</p><h2>블로그 게시물/업데이트:</h2>
+<ul><li>NiM을 만든 이유 https://blog.june07.com/inspect-broke-my-workflow/</li>
+<li>커스텀 DevTools 기능: https://blog.june07.com/nim-custom-devtools-url/</li>
+</ul><h2><code>about::inspect (chrome://inspect/#devices)</code> 보다 쉽습니다</h2></p><p>NiM은 Chrome DevTools 창/탭의 수명주기를 관리하여, 당신이 코드 디버깅에 더 집중할 수 있도록 합니다. 더 이상 DevTools URL을 복사/붙여넣거나 탭/창을 계속 열고 닫을 필요가 없습니다.</p><p>NiM은 --inspect 옵션으로 node를 실행할 때 생성되는 URL을 자동으로 감지합니다(로컬 또는 원격). NiM은 Chrome DevTools를 탭이나 창에서 자동으로 열고 닫는 옵션을 제공합니다. 수동/자동 설정을 전환한 뒤 디버깅 세션을 시작하세요. "Open DevTools" 버튼 클릭 시 또는 지정한 시간 후에 DevTools가 열립니다. 자동 닫기 설정 시 디버깅 세션 종료 후 DevTools 탭/창이 자동으로 닫힙니다.
+ 
+ <ul><li>로컬 및 원격 디버깅 세션 관리 및 모니터링</li>
+ <li>DevTools 인터페이스 수동 또는 자동 제어</li>
+ <li>새 탭 또는 창에서 DevTools 열기</li>
+ <li>시작 시 DevTools 포커스 활성화 또는 비활성화 설정</li>
+ <li>v8 Inspector 프로브 간격 사용자 지정</li>
+ <li>설정 자동 저장</li>
+ <li><a href="https://imgur.com/download/PRMn9md" target="_blank" rel="noopener noreferrer">VSCode</a>에서 실행된 노드 프로세스 디버깅</li>
+</ul><h2>설치 / 사용법 / 방법</h2></p><p>간단하고 기본적입니다... 다음 방법 중 하나로 Chrome 확장 프로그램을 설치하세요:</p><ul><li>Chrome 웹 스토어에서 설치:</li>
+    </ul>https://bit.ly/2W8hQG9 (https://chrome.google.com/webstore/detail/gnhhdgbaldcilmgcpfddgdbkhjohddkj)
+<ul><li>또는, 릴리즈에서 .crx 파일을 직접 다운로드하세요:</li></p><p></ul><img src="https://media.giphy.com/media/xT0xenBpYPF2F0j2fe/giphy.gif" alt="https://media.giphy.com/media/xT0xenBpYPF2F0j2fe/giphy.gif"></p><h1>추가 정보가 필요하신가요?</h1>
+<ul><li>NiM 설치 후 페이지에서 도움을 제공합니다 <a href="https://blog.june07.com/nim-install/" target="_blank" rel="noopener noreferrer">https://blog.june07.com/nim-install</a></li>
+<li>NiM 자체 디버깅 방법 <a href="https://blog.june07.com/debugging-nim/" target="_blank" rel="noopener noreferrer">https://blog.june07.com/debugging-nim/</a></li></p><p></ul><em>참고: 작성 시점에 v8 --inspect 옵션은 비교적 새롭습니다. 옵션에 대한 추가 정보는 https://nodejs.org/api/debugger.html#debugger_v8_inspector_integration_for_node_js 를 참조하세요.</em>
+#### NIM 사용이 즐거우셨다면 <a href="https://chrome.google.com/webstore/detail/nim-node-inspector-manage/gnhhdgbaldcilmgcpfddgdbkhjohddkj/reviewshttps://chrome.google.com/webstore/detail/nim-node-inspector-manage/gnhhdgbaldcilmgcpfddgdbkhjohddkj/reviews" target="_blank" rel="noopener noreferrer">5성 평가 및/또는 G+1을 부탁드립니다.</a></p><p>모든 피드백은 환영하며 권장합니다.  <a href="https://raw.githubusercontent.com/june07/NiM/master/mailto:667@june07.com" target="_blank" rel="noopener noreferrer">이메일을 보내주세요!</a></p><p><!--
+<a href="https://june07.com/blog/ipv4/?utm_source=NiM&utm_medium=options%20page&utm_campaign=ipv4&utm_content=2" target="_blank" rel="noopener noreferrer"><img src="https://june07.github.io/image/EVERYTHING.jpg" alt="IPv4 Lease"></a>
+--></p><p><div style="display:flex; justify-content:center;">
+  <a href="https://m.do.co/c/fe4184318b19" target="_blank" rel="noopener"><IMG border="0" alt="Digitalocean $100 Credit" src="https://june07.github.io/image/digitalocean-credit.png"></a>
+</div></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-30
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/june07/NiM/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-08-30 
+    </div>
+    
+</body>
+</html>
