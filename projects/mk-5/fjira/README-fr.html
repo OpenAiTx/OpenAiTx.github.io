@@ -1,0 +1,351 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fjira - L&#39;interface CLI Jira fuzzy-find en golang &#128640;</title>
+    <meta name="description" content="L&#39;interface CLI Jira fuzzy-find en golang &#128640;">
+    <meta name="keywords" content="fjira, French, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "fjira",
+  "description": "L'interface CLI Jira fuzzy-find en golang 🚀",
+  "author": {
+    "@type": "Person",
+    "name": "mk-5"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 193
+  },
+  "url": "https://OpenAiTx.github.io/projects/mk-5/fjira/README-fr.html",
+  "sameAs": "https://raw.githubusercontent.com/mk-5/fjira/master/README.md",
+  "datePublished": "2025-09-05",
+  "dateModified": "2025-09-05"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/mk-5/fjira" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    fjira
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 193 stars</span>
+                <span class="language">French</span>
+                <span>by mk-5</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Fjira - Chercheur flou et application TUI pour Jira.</h1></p><p><img src="https://raw.githubusercontent.com/mk-5/fjira/master/fjira.png" alt="drawing" width="256"/></p><p><a href="https://github.com/avelino/awesome-go" target="_blank" rel="noopener noreferrer"><img src="https://awesome.re/badge-flat.svg" alt="Mentionné dans Awesome Go"></a>
+<img src="https://github.com/mk-5/fjira/actions/workflows/tests.yml/badge.svg" alt="Test">
+<a href="https://github.com/mk-5/fjira/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg" alt="Licence : AGPL v3"></a>
+<img src="https://img.shields.io/github/v/release/mk-5/fjira" alt="Version GitHub (la plus récente)">
+<a href="https://goreportcard.com/report/github.com/mk-5/fjira" target="_blank" rel="noopener noreferrer"><img src="https://goreportcard.com/badge/github.com/mk-5/fjira" alt="Go Report Card"></a>
+<a href="https://pkg.go.dev/github.com/mk-5/fjira" target="_blank" rel="noopener noreferrer"><img src="https://pkg.go.dev/badge/github.com/mk-5/fjira.svg" alt="Référence Go"></a>
+<a href="https://codecov.io/gh/mk-5/fjira" target="_blank" rel="noopener noreferrer"><img src="https://codecov.io/gh/mk-5/fjira/branch/master/graph/badge.svg?token=MJBTMYGQQW" alt="codecov"></a></p><h2>Introduction</h2></p><p>Fjira est un outil en ligne de commande puissant conçu pour simplifier vos interactions avec Jira. Que vous soyez développeur,
+chef de projet, ou simplement un passionné de Jira, Fjira rationalise votre flux de travail, rendant les tâches Jira plus efficaces que jamais.</p><p><img src="https://raw.githubusercontent.com/mk-5/fjira/master/demo.gif" alt="Démonstration Fjira"></p><h2>Fonctionnalités clés</h2></p><ul><li><strong>Interface de recherche floue :</strong> Recherchez facilement des projets et des tickets Jira.</li>
+<li><strong>Contrôle des assignations :</strong> Changez rapidement les assignés d’un ticket sans naviguer dans l’interface Jira.</li>
+<li><strong>Mise à jour des statuts :</strong> Modifiez les statuts des tickets Jira directement depuis votre terminal.</li>
+<li><strong>Commentaires efficaces :</strong> Ajoutez facilement des commentaires aux tickets Jira.</li>
+<li><strong>Support multi-espace de travail :</strong> Gérez plusieurs espaces Jira sans effort.</li>
+<li><strong>Recherches personnalisées :</strong> Utilisez le langage de requête Jira (JQL) pour des recherches sur mesure.</li>
+<li><strong>Accès direct en CLI :</strong> Accédez aux tickets Jira directement depuis la ligne de commande.</li>
+<li><strong>Compatibilité multiplateforme :</strong> Fonctionne parfaitement sur macOS, Linux et Windows.</li></p><p></ul><h2>Installation</h2></p><h3>macOS</h3></p><pre><code class="language-shell">brew tap mk-5/mk-5
+brew install fjira</code></pre></p><h3>Linux</h3></p><p>#### Ubuntu/Snap</p><pre><code class="language-shell">snap install fjira</code></pre>
+#### Deb</p><p>Visitez <a href="https://github.com/mk-5/fjira/releases/latest" target="_blank" rel="noopener noreferrer">https://github.com/mk-5/fjira/releases/latest</a>, et récupérez la
+dernière version publiée.</p><pre><code class="language-shell">sudo dpkg -i fjira_0.4.0_linux_amd64.deb</code></pre></p><p>#### AUR</p><pre><code class="language-sh">yay -S fjira</code></pre></p><p>#### Binaire</p><pre><code class="language-shell">tar -xvzf fjira_0.4.0_Linux_x86_64.tar.gz
+cp fjira /usr/local/bin/fjira</code></pre></p><h3>Windows</h3></p><pre><code class="language-shell">choco install fjira</code></pre></p><h3>Construire à partir des sources</h3></p><pre><code class="language-shell">make
+./out/bin/fjira</code></pre></p><h2>Utilisation</h2></p><pre><code class="language-text">Usage:
+  fjira [flags]
+  fjira [command]</p><p>Available Commands:
+  [issueKey]  Open a Jira issue directly from the CLI
+  completion  Generate the autocompletion script for the specified shell
+  filters     Search using Jira filters
+  help        Help about any command
+  jql         Search using custom JQL queries
+  version     Print the version number of fjira
+  workspace   Switch to a different workspace</p><p>Flags:
+  -h, --help             help for fjira
+  -p, --project string   Open a project directly from CLI</p><p>Additional help topics:
+  fjira            Open a fuzzy finder for projects as a default action</p><p>Use "fjira [command] --help" for more information about a command.</code></pre></p><h2>Pour Commencer</h2></p><p>L'utilisation du CLI Fjira est simple. Il suffit de lancer fjira dans votre terminal.</p><pre><code class="language-shell">fjira</code></pre></p><h2>Espaces de travail</h2></p><p>La première fois que vous lancez Fjira, il vous demandera l’URL de l’API Jira et le jeton.</p><p><img src="https://raw.githubusercontent.com/mk-5/fjira/master/demo_first_run.gif" alt="Premier lancement de Fjira"></p><p>Les espaces de travail Fjira stockent les données de configuration Jira dans un simple fichier YAML situé à <code>~/.fjira</code>. Vous pouvez basculer entre
+plusieurs espaces de travail en utilisant la commande <code>fjira workspace</code>.</p><pre><code class="language-shell">fjira workspace</code></pre>
+Pour créer un nouvel espace de travail, utilisez la commande suivante :</p><pre><code class="language-shell">fjira workspace --new abc</code></pre></p><p>Vous pouvez modifier un espace de travail existant en utilisant l’option <code>--edit</code> :</p><pre><code class="language-shell">fjira workspace --edit abc</code></pre></p><h3>Type de jeton Jira</h3></p><p>Fjira prend en charge à la fois Jira Server et Jira Cloud, qui utilisent différents types de jetons pour l'autorisation. L'outil vous invitera
+à sélectionner le type de jeton approprié lors de la configuration de l'espace de travail.</p><pre><code class="language-shell">? Jira Token Type:</p><ul><li>api token</li>
+<li>personal token</li></p><p></ul>Enter a number (Default is 1):</code></pre></p><h3>Configuration YAML</h3></p><p>Si vous préférez une approche manuelle, vous avez la possibilité d'ajouter des configurations d'espace de travail en créant un fichier <code>fjira.yaml</code> dans le répertoire <code>~/.fjira/</code>.  
+Pour votre commodité, un fichier de configuration exemple est disponible ici : <a href="https://raw.githubusercontent.com/mk-5/fjira/master/assets/fjira.yaml" target="_blank" rel="noopener noreferrer">fjira.yml</a></p><h2>Recherche de projets</h2></p><p>La vue par défaut lorsque vous lancez <code>fjira</code> est l'écran de recherche de projets.</p><pre><code class="language-shell">fjira</code></pre></p><h2>Ouverture d'un projet spécifique</h2></p><p>Vous pouvez ouvrir un projet directement depuis la CLI :</p><pre><code class="language-shell">fjira --project=PROJ</code></pre></p><p>Cela permettra de passer l'écran de recherche de projet et de vous emmener directement à l'écran de recherche des problèmes.</p><h2>Ouvrir un problème directement</h2></p><p>Pour ouvrir un problème directement depuis la CLI :</p><pre><code class="language-shell">fjira PROJ-123</code></pre></p><p>Fjira sautera tous les écrans intermédiaires et vous mènera directement à la vue du problème.</p><p><img src="https://raw.githubusercontent.com/mk-5/fjira/master/demo_issue.png" alt="Vue du problème Fjira"></p><h2>Vue des tableaux</h2></p><p>Fjira propose également une vue de type tableau. Après avoir ouvert un projet, appuyez sur F4 pour accéder à cette vue.</p><p><img src="https://raw.githubusercontent.com/mk-5/fjira/master/demo_board_view.png" alt="Vue du tableau Fjira"></p><h2>Requêtes JQL personnalisées</h2></p><p>Vous pouvez créer et exécuter des requêtes JQL personnalisées avec Fjira :</p><pre><code class="language-shell">fjira jql</code></pre></p><p><img src="https://raw.githubusercontent.com/mk-5/fjira/master/demo_custom_jql.png" alt="Fjira Custom JQL"></p><h2>My Jira Filters</h2></p><p>You can search using your stored (favourites) Jira Filters:</p><pre><code class="language-shell">fjira filters</code></pre></p><p><img src="https://raw.githubusercontent.com/mk-5/fjira/master/demo_filters.png" alt="Filtres Fjira"></p><h2>Schéma de couleurs personnalisé</h2></p><p>Adaptez le schéma de couleurs fjira à vos préférences en créant un fichier personnalisé <code>~/.fjira/colors.yml</code>. Ce fichier
+vous permet de personnaliser les couleurs selon votre style unique.
+Référez-vous au fichier exemple, situé ici : <a href="https://raw.githubusercontent.com/mk-5/fjira/master/assets/colors.yml" target="_blank" rel="noopener noreferrer">colors.yml</a></p><h2>Feuille de route (À FAIRE)</h2></p><ul><li>Étendre la documentation</li>
+<li>Créer & Supprimer des filtres Jira</li>
+<li>Supporter des gestionnaires de paquets Linux supplémentaires (Apt, AUR, YUM)</li>
+<li>Introduire plus de fonctionnalités Jira</li></p><p></ul><h2>Motivation</h2></p><p>Fjira a été conçu pour la commodité personnelle, né d’un désir d’efficacité et d’un amour pour les outils en terminal.
+Souvent, on se retrouve dans la situation « Je dois juste faire passer le ticket 123 au statut suivant. » Bien que
+l’ouverture de Jira, la localisation du ticket sur le tableau, et la navigation dans la fenêtre du ticket Jira soient
+parfaitement acceptables, cela prend quand même pas mal de temps.</p><p>Fjira vous permet d’exécuter ces tâches directement depuis le terminal, là où vous travaillez probablement déjà ! 😄</p><p>Si Fjira améliore votre expérience Jira comme cela a été le cas pour moi, merci de lui attribuer une étoile sur GitHub. 🌟 Cela me donnera
+de l’énergie pour un futur travail.</p><p>N’hésitez pas à contribuer à ce projet et à façonner son avenir ! Vos retours et contributions sont très
+appréciés.
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-05
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/mk-5/fjira/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-09-05 
+    </div>
+    
+</body>
+</html>
