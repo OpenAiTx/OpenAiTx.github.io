@@ -1,0 +1,388 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker-Davinci-Resolve-Project-Server - 使用自动备份和更新的Postgresql版本的项目服务器解决方案</title>
+    <meta name="description" content="使用自动备份和更新的Postgresql版本的项目服务器解决方案">
+    <meta name="keywords" content="Docker-Davinci-Resolve-Project-Server, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Docker-Davinci-Resolve-Project-Server",
+  "description": "使用自动备份和更新的Postgresql版本的项目服务器解决方案",
+  "author": {
+    "@type": "Person",
+    "name": "elliotmatson"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 226
+  },
+  "url": "https://OpenAiTx.github.io/projects/elliotmatson/Docker-Davinci-Resolve-Project-Server/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/elliotmatson/Docker-Davinci-Resolve-Project-Server/main/README.md",
+  "datePublished": "2025-09-06",
+  "dateModified": "2025-09-06"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/elliotmatson/Docker-Davinci-Resolve-Project-Server" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Docker-Davinci-Resolve-Project-Server
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 226 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by elliotmatson</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>达芬奇调色项目服务器</h1></p><p><img src="https://github.com/elliotmatson/Docker-Davinci-Resolve-Project-Server/actions/workflows/lint.yml/badge.svg" alt="Lint">
+<img src="https://github.com/elliotmatson/Docker-Davinci-Resolve-Project-Server/actions/workflows/stack-healthcheck.yml/badge.svg" alt="Healthcheck">
+<img src="https://github.com/elliotmatson/Docker-Davinci-Resolve-Project-Server/actions/workflows/docker.yml/badge.svg" alt="Docker Build"></p><p>简单的 Resolve 项目服务器，带自动备份功能</p><h2>目录</h2></p><ul><li><a href="#davinci-resolve-project-server" target="_blank" rel="noopener noreferrer">达芬奇调色项目服务器</a></li>
+  <li><a href="#table-of-contents" target="_blank" rel="noopener noreferrer">目录</a></li>
+  <li><a href="#introduction" target="_blank" rel="noopener noreferrer">简介</a></li>
+    <li><a href="#features" target="_blank" rel="noopener noreferrer">功能</a></li>
+  <li><a href="#configuration" target="_blank" rel="noopener noreferrer">配置</a></li>
+    <li><a href="#database" target="_blank" rel="noopener noreferrer">数据库</a></li>
+    <li><a href="#backups" target="_blank" rel="noopener noreferrer">备份</a></li>
+    <li><a href="#pgadmin" target="_blank" rel="noopener noreferrer">PGAdmin</a></li>
+    <li><a href="#volume-locations" target="_blank" rel="noopener noreferrer">卷位置</a></li>
+  <li><a href="#installation" target="_blank" rel="noopener noreferrer">安装</a></li>
+    <li><a href="#qnap-installation" target="_blank" rel="noopener noreferrer">QNAP 安装</a></li>
+    <li><a href="#synology" target="_blank" rel="noopener noreferrer">群晖</a></li>
+    <li><a href="#linux" target="_blank" rel="noopener noreferrer">Linux</a></li>
+  <li><a href="#different-postgresql-versions" target="_blank" rel="noopener noreferrer">不同的 PostgreSQL 版本</a></li>
+    <li><a href="#setting-up-a-postgresql-95-or-11-project-server" target="_blank" rel="noopener noreferrer">设置 PostgreSQL 9.5 或 11 项目服务器</a></li>
+  <li><a href="#thanks" target="_blank" rel="noopener noreferrer">致谢</a></li></p><p></ul><h2>简介</h2></p><p>有很多方法可以托管 Resolve 项目服务器，但每种方法都有各自的问题。官方的项目服务器需要手动备份，其他选项对于没有 IT 团队支持的人来说可能比较复杂。希望这是一个对小团队来说更可靠、更简单的解决方案！</p><h3>功能</h3></p><ul><li><strong>轻量级</strong> - 基于 Docker，因此不需要完整的 macOS 或 Windows 机器或虚拟机。</li>
+<li><strong>平台无关</strong> - 可以安装在 Windows、Mac、Linux、QNAP、群晖、树莓派，实际上任何能运行 Docker 的设备上。</li>
+<li><strong>兼容 Resolve 现有的备份/恢复功能</strong> - 所有备份文件均使用标准的 Resolve \*.backup 文件格式，并且可以通过 Resolve UI 恢复。</li>
+<li><strong>内置 PGAdmin 服务器</strong> - PGAdmin 是管理 PostgreSQL 服务器的工具，有助于诊断问题和迁移/更新整个服务器。</li></p><p></ul><h2>配置</h2></p><p>我们需要编辑 docker-compose.yml 文件顶部的几项内容，以配置我们的安装：</p><pre><code class="language-yaml">---
+version: "3.8"
+x-common:
+  database: &db-environment
+    POSTGRES_DB: database
+    POSTGRES_USER: &pg-user postgres
+    POSTGRES_PASSWORD: DaVinci
+    TZ: America/Chicago
+    POSTGRES_LOCATION: &db-location "???:/var/lib/postgresql/data"
+  backup: &backup-environment
+    SCHEDULE: "@daily"
+    BACKUP_KEEP_DAYS: 7
+    BACKUP_KEEP_WEEKS: 4
+    BACKUP_KEEP_MONTHS: 6
+    BACKUP_LOCATION: &bk-location "???:/backups"
+  admin: &admin-environment
+    PGADMIN_DEFAULT_EMAIL: admin@admin.com
+    PGADMIN_DEFAULT_PASSWORD: root
+    PGADMIN_PORT: &pgadmin-port "3001:80"</code></pre></p><h3>数据库</h3></p><p>要配置服务器本身，我们需要配置以下环境变量：
+| 环境变量 | 含义 |
+|---|---|
+| POSTGRES_DB | 你的数据库名称。可以随意命名。 |
+| POSTGRES_USER | 连接数据库时使用的用户名。Resolve 默认是 "postgres" |
+| POSTGRES_PASSWORD | 连接数据库时使用的密码。Resolve 默认是 "DaVinci" |
+| TZ | 你的时区，这里有一个<a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" target="_blank" rel="noopener noreferrer">列表</a>|
+| POSTGRES_LOCATION | 数据库存储位置。请参见<a href="#volume-locations" target="_blank" rel="noopener noreferrer">卷位置</a> |</p><h3>备份</h3></p><p>要配置备份，我们需要配置以下变量：
+| 环境变量 | 含义 |
+|---|---|
+| SCHEDULE | 备份创建频率的<a href="https://www.freeformatter.com/cron-expression-generator-quartz.html" target="_blank" rel="noopener noreferrer">cron 字符串</a>。可以是 "@daily", "@every 1h" 等 |
+| BACKUP_KEEP_DAYS | 保留的每日备份数量，超过后将删除。 |
+| BACKUP_KEEP_WEEKS | 保留的每周备份数量，超过后将删除。 |
+| BACKUP_KEEP_MONTHS | 保留的每月备份数量，超过后将删除。 |
+| BACKUP_LOCATION | 备份存储位置。请参见<a href="#volume-locations" target="_blank" rel="noopener noreferrer">卷位置</a> |</p><h3>PGAdmin</h3></p><p>要配置 PGAdmin，我们需要配置以下变量：
+| 环境变量 | 含义 |
+|---|---|
+| PGADMIN_DEFAULT_EMAIL | PGAdmin 登录使用的邮箱。默认是 "admin@admin.com" |
+| PGADMIN_DEFAULT_PASSWORD | PGAdmin 登录使用的密码。默认是 "root" |
+| PGADMIN_PORT | 配置 PGAdmin 暴露端口的字符串。格式为 "YOUR_PORT:80" |</p><h3>卷位置</h3></p><p>数据库和备份的位置取决于你安装的平台。你需要知道想要存储它们的文件夹的完整路径。例如，在 QNAP NAS 上，如果我想使用名为 "Videos" 的共享文件夹内名为 "Backups" 的文件夹作为备份位置，路径将是 <code>/shares/Videos/Backups/</code>，我的 <code>BACKUP_LOCATION</code> 值将如下所示：</p><pre><code class="language-yaml">BACKUP_LOCATION: &bk-location "/shares/Videos/Backups/:/backups"</code></pre>
+在 Ubuntu 上，如果我想使用名为 "database" 的文件夹，位于用户名为 "johndoe" 的用户主目录中作为我的数据库位置，路径将是 <code>/home/johndoe/database/</code>，而我的 <code>POSTGRES_LOCATION</code> 值将如下所示：</p><pre><code class="language-yaml">POSTGRES_LOCATION: &db-location "johndoe/database/:/var/lib/postgresql/data"</code></pre>
+我建议将数据库放在SSD上，使用机械硬盘访问速度会明显变慢。</p><p>配置好这些设置后，保存修改后的docker-compose.yml文件，然后继续安装！</p><h2>安装</h2></p><h3>QNAP 安装</h3></p><p>在QNAP NAS上安装相对简单。需要注意的是，请将数据库文件放在SSD上。你以后会感谢我的。</p><ul><li>如果你还没有安装，请从QNAP应用商店安装Container Station。</li>
+<li>在Container Station中，点击“创建”，然后点击“创建应用程序”。</li>
+<li>给你的应用程序起一个名字（例如 ResolveServer）。</li>
+<li>复制/粘贴你修改过的docker-compose.yml文件，点击“验证YAML”测试，如果通过，点击“创建”。</li>
+<li>Container Station会下载所需文件并启动应用。完成后，你应该可以使用数据库名称和凭据连接Resolve到QNAP的IP地址。</li></p><p></ul><h3>Synology</h3></p><p>请参阅<a href="https://github.com/elliotmatson/Docker-Davinci-Resolve-Project-Server/discussions/15#discussioncomment-4615278" target="_blank" rel="noopener noreferrer">此讨论</a>。</p><h3>Linux</h3></p><ul><li>按照<a href="https://docs.docker.com/engine/install/" target="_blank" rel="noopener noreferrer">你的Linux发行版的Docker安装说明</a>进行安装。</li>
+<li>安装<a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener noreferrer">Docker Compose</a>。</li>
+<li>将修改后的docker-compose.yml文件移动到Linux机器上的一个文件夹，然后在终端中切换到该文件夹。</li>
+<li>运行：</li>
+   </ul><code>docker-compose up -d</code>
+<ul><li>Docker-compose会下载所需文件并启动应用。完成后，你应该可以使用数据库名称和凭据连接Resolve到Linux服务器实例的IP地址。</li></p><p></ul><h2>不同的PostgreSQL版本</h2></p><p>通常，Resolve对不匹配的PostgreSQL版本容忍度不高。Resolve 18使用PostgreSQL 13，这也是本仓库当前的默认版本。Resolve 17及以下版本使用PostgreSQL 9.5。不幸的是，9.5主版本已停止维护，特别是9.5.4存在许多安全漏洞，导致不安全。
+由于大多数人仍在使用默认的Resolve服务器凭据，安全性通常不是最大的问题，但如果你试图用旧版本Resolve保护你的项目服务器，建议升级到受支持的PostgreSQL版本。</p><p>Resolve 17及以下仍使用PostgreSQL 12中已移除的遗留功能，因此可用的最新主版本是11，该版本将维护至2023年11月9日。</p><h3>设置PostgreSQL 9.5或11项目服务器</h3></p><p>要设置PostgreSQL 9.5或11服务器而非13，需要修改docker_compose.yml中的两行：</p><pre><code class="language-yaml">services:
+  postgres:
+    image: postgres:13
+    ...
+  pgbackups:
+    image: prodrigestivill/postgres-backup-local:13
+    ...
+...</code></pre>
+至以下内容：</p><pre><code class="language-yaml">services:
+  postgres:
+    image: postgres:9.5
+    ...
+  pgbackups:
+    image: prodrigestivill/postgres-backup-local:9.5
+    ...
+...</code></pre></p><h2>感谢</h2></p><p>-感谢 <a href="https://github.com/prodrigestivill/" target="_blank" rel="noopener noreferrer">prodrigestivill</a> 提供他的 <a href="https://github.com/prodrigestivill/docker-postgres-backup-local" target="_blank" rel="noopener noreferrer">PostgreSQL 备份 Docker 镜像</a></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-06
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/elliotmatson/Docker-Davinci-Resolve-Project-Server/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-09-06 
+    </div>
+    
+</body>
+</html>
