@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 145
+    "ratingCount": 224
   },
   "url": "https://OpenAiTx.github.io/projects/miquel-espinosa/no-time-to-train/README-en.html",
   "sameAs": "https://raw.githubusercontent.com/miquel-espinosa/no-time-to-train/main/README.md",
-  "datePublished": "2025-07-24",
-  "dateModified": "2025-07-24"
+  "datePublished": "2025-09-06",
+  "dateModified": "2025-09-06"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 145 stars</span>
+                <span class="stars">⭐ 224 stars</span>
                 <span class="language">English</span>
                 <span>by miquel-espinosa</span>
             </div>
@@ -393,16 +393,18 @@ FILENAME=few_shot_${SHOTS}shot_seed${SEED}.pkl</code></pre>
                               --model.init_args.model_cfg.dataset_name $CLASS_SPLIT \
                               --model.init_args.dataset_cfgs.test.class_split $CLASS_SPLIT \
                               --trainer.logger.save_dir ${RESULTS_DIR}/ \
-                              --trainer.devices $GPUS</code></pre>
-If you'd like to see inference results online (as they are computed), uncomment lines 1746-1749 in <code>no_time_to_train/models/Sam2MatchingBaseline_noAMG.py</code> <a href="https://github.com/miquel-espinosa/no-time-to-train/blob/main/no_time_to_train/models/Sam2MatchingBaseline_noAMG.py#L1746" target="_blank" rel="noopener noreferrer">here</a>.
-Adjust the score threshold <code>score_thr</code> parameter as needed to see more or less segmented instances.
+                              --trainer.devices $GPUS</code></pre></p><p>If you'd like to see inference results online (as they are computed), add the argument:
+<pre><code class="language-bash">    --model.init_args.model_cfg.test.online_vis True</code></pre>
+To adjust the score threshold <code>score_thr</code> parameter, add the argument (for example, visualizing all instances with score higher than <code>0.4</code>):
+<pre><code class="language-bash">    --model.init_args.model_cfg.test.vis_thr 0.4</code></pre>
 Images will now be saved in <code>results_analysis/few_shot_classes/</code>. The image on the left shows the ground truth, the image on the right shows the segmented instances found by our training-free method.</p><p>Note that in this example we are using the <code>few_shot_classes</code> split, thus, we should only expect to see segmented instances of the classes in this split (not all classes in COCO).</p><p>#### Results</p><p>After running all images in the validation set, you should obtain:</p><pre><code class="language-">BBOX RESULTS:
   Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.368</p><p>SEGM RESULTS:
   Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.342</code></pre>
 <hr></p><h2>🔍 Custom dataset</h2></p><p>We provide the instructions for running our pipeline on a custom dataset. Annotation formats are always in COCO format.</p><blockquote><strong>TLDR;</strong> To directly see how to run the full pipeline on <em>custom datasets</em>, find <code>scripts/matching_cdfsod_pipeline.sh</code> together with example scripts of CD-FSOD datasets (e.g. <code>scripts/dior_fish.sh</code>)</blockquote></p><h3>0. Prepare a custom dataset ⛵🐦</h3></p><p>Let's imagine we want to detect <strong>boats</strong>⛵ and <strong>birds</strong>🐦 in a custom dataset. To use our method we will need:
 <ul><li>At least 1 <em>annotated</em> reference image for each class (i.e. 1 reference image for boat and 1 reference image for bird)</li>
 <li>Multiple target images to find instances of our desired classes.</li></p><p></ul>We have prepared a toy script to create a custom dataset with coco images, for a <strong>1-shot</strong> setting.
-<pre><code class="language-bash">python scripts/make_custom_dataset.py</code></pre>
+<pre><code class="language-bash">mkdir -p data/my_custom_dataset
+python scripts/make_custom_dataset.py</code></pre>
 This will create a custom dataset with the following folder structure:
 <pre><code class="language-">data/my_custom_dataset/
     ├── annotations/
@@ -494,7 +496,7 @@ Visual results are saved in <code>results_analysis/my_custom_dataset/</code>. No
 }</code></pre></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-24
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-06
 
 ---</p>
         </div>
@@ -506,7 +508,7 @@ Visual results are saved in <code>results_analysis/my_custom_dataset/</code>. No
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-07-24 
+        Last updated: 2025-09-06 
     </div>
     
 </body>
