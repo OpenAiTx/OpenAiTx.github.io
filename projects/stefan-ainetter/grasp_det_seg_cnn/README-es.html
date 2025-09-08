@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grasp_det_seg_cnn - C&#243;digo para el art&#237;culo de ICRA21 &quot;Red Neuronal Profunda Entrenable de extremo a extremo para la Detecci&#243;n de Agarre Rob&#243;tico y Segmentaci&#243;n Sem&#225;ntica a partir de RGB&quot;.</title>
+    <meta name="description" content="C&#243;digo para el art&#237;culo de ICRA21 &quot;Red Neuronal Profunda Entrenable de extremo a extremo para la Detecci&#243;n de Agarre Rob&#243;tico y Segmentaci&#243;n Sem&#225;ntica a partir de RGB&quot;.">
+    <meta name="keywords" content="grasp_det_seg_cnn, Spanish, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "grasp_det_seg_cnn",
+  "description": "Código para el artículo de ICRA21 \"Red Neuronal Profunda Entrenable de extremo a extremo para la Detección de Agarre Robótico y Segmentación Semántica a partir de RGB\".",
+  "author": {
+    "@type": "Person",
+    "name": "stefan-ainetter"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 157
+  },
+  "url": "https://OpenAiTx.github.io/projects/stefan-ainetter/grasp_det_seg_cnn/README-es.html",
+  "sameAs": "https://raw.githubusercontent.com/stefan-ainetter/grasp_det_seg_cnn/main/README.md",
+  "datePublished": "2025-09-08",
+  "dateModified": "2025-09-08"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/stefan-ainetter/grasp_det_seg_cnn" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    grasp_det_seg_cnn
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 157 stars</span>
+                <span class="language">Spanish</span>
+                <span>by stefan-ainetter</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Red Neuronal Profunda Entrenable de Extremo a Extremo para la Detección de Agarre Robótico y Segmentación Semántica a partir de RGB</h1></p><p><p align="center">
+<img src="https://raw.githubusercontent.com/stefan-ainetter/grasp_det_seg_cnn/main/Network.png" width="100%"/>
+<br>
+<a href="https://arxiv.org/abs/2107.05287">arXiv</a>
+</p></p><p>Este repositorio contiene el código para el artículo ICRA21 "Red Neuronal Profunda Entrenable de Extremo a Extremo para la Detección de Agarre Robótico
+y Segmentación Semántica a partir de RGB". 
+Contiene el código para entrenar y probar nuestro método propuesto en combinación con el conjunto de datos OCID_grasp. </p><p>Si utiliza nuestro método o la extensión del conjunto de datos para su investigación, por favor cite:
+<pre><code class="language-bibtex">@InProceedings{ainetter2021end,
+  title={End-to-end Trainable Deep Neural Network for Robotic Grasp Detection and Semantic Segmentation from RGB},
+  author={Ainetter, Stefan and Fraundorfer, Friedrich},
+  booktitle={IEEE International Conference on Robotics and Automation (ICRA)},
+  pages={13452--13458}
+  year={2021}
+}</code></pre></p><h2>Requisitos y configuración</h2></p><p>Requisitos principales del sistema:
+<ul><li>CUDA 10.1</li>
+<li>Linux con GCC 7 u 8</li>
+<li>PyTorch v1.1.0</li></p><p></ul><strong>NOTA IMPORTANTE</strong>: Estos requisitos no son necesariamente estrictos, por ejemplo, podría ser posible compilar con versiones anteriores
+de CUDA, o bajo Windows. Sin embargo, solo hemos probado el código bajo las configuraciones mencionadas y no podemos ofrecer soporte para otros entornos.</p><p>Para instalar PyTorch, por favor consulte https://github.com/pytorch/pytorch#installation.</p><p>Para instalar todas las demás dependencias usando pip:
+<pre><code class="language-bash">pip install -r requirements.txt</code></pre></p><h3>Configuración</h3></p><p>Nuestro código está dividido en dos componentes principales: una biblioteca que contiene implementaciones para los diversos módulos de red,
+algoritmos y utilidades, y un conjunto de scripts para entrenar / probar las redes.</p><p>La biblioteca, llamada <code>grasp_det_seg</code>, se puede instalar con:
+<pre><code class="language-bash">git clone https://github.com/stefan-ainetter/grasp_det_seg_cnn.git
+cd grasp_det_seg_cnn
+python setup.py install</code></pre></p><h2>Modelos entrenados</h2></p><p>Los archivos de modelo proporcionados están disponibles bajo la licencia <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>.</p><p>Un modelo entrenado para el conjunto de datos OCID_grasp puede descargarse <a href="https://cloud.tugraz.at/index.php/s/NA7icqiJ5SeNSA6?dir=/Grasp_det_seg_cnn/OCID_pretrained" target="_blank" rel="noopener noreferrer">aquí</a>. 
+Descargue y copie los pesos descargados en la carpeta <code>ckpt_files_OCID/pretrained</code>.</p><p>Para reentrenar la red en OCID_grasp, debe descargar pesos preentrenados en ImageNet 
+<a href="https://cloud.tugraz.at/index.php/s/NA7icqiJ5SeNSA6?dir=/Grasp_det_seg_cnn/ImageNet_weights" target="_blank" rel="noopener noreferrer">aquí</a> y copiarlos 
+en la carpeta <code>weights_pretrained</code>.</p><h3>Entrenamiento</h3></p><p>El entrenamiento implica tres pasos principales: Preparar el conjunto de datos, crear un archivo de configuración y ejecutar el script de entrenamiento.</p><p>Para preparar el conjunto de datos:
+1) Descargue el conjunto de datos OCID_grasp <a href="https://cloud.tugraz.at/index.php/s/NA7icqiJ5SeNSA6?dir=/Grasp_det_seg_cnn/OCID_grasp" target="_blank" rel="noopener noreferrer">aquí</a>.
+Descomprima el archivo <code>OCID_grasp.zip</code> descargado en la carpeta <code>DATA</code>.
+2) El archivo de configuración es un archivo de texto simple en formato <code>ini</code>.
+El valor predeterminado de cada parámetro de configuración, así como una breve descripción de su función, están disponibles en
+<a href="grasp_det_seg/config/defaults" target="_blank" rel="noopener noreferrer">grasp_det_seg/config/defaults</a>.
+<strong>Nota</strong> que estos son solo una indicación de cuál podría ser un valor "razonable" para cada parámetro, y no
+están destinados a reproducir ninguno de los resultados de nuestro artículo.</p><p>3) Para iniciar el entrenamiento:</p><pre><code class="language-bash">cd scripts
+python3 -m torch.distributed.launch --nproc_per_node=1 train_det_seg_OCID.py 
+--log_dir=LOGDIR CONFIG DATA_DIR</code></pre>
+Los registros de entrenamiento, tanto en formatos de texto como Tensorboard, así como los parámetros de la red entrenada, se escribirán  
+en <code>LOG_DIR</code> (por ejemplo, <code>ckpt_files_OCID</code>).  
+El archivo <code>CONFIG</code> contiene la configuración de la red, por ejemplo <code>grasp_det_seg/config/defaults/det_seg_OCID.ini</code>,  
+y <code>DATA_DIR</code> apunta a las divisiones OCID_grasp descargadas previamente, por ejemplo <code>DATA/OCID_grasp/data_split</code>.  </p><p>Tenga en cuenta que, por ahora, nuestro código <strong>debe</strong> ejecutarse en modo "distribuido" utilizando la utilidad <code>torch.distributed.launch</code> de PyTorch.  </p><h3>Ejecución de inferencia  </h3></p><p>Dada una red entrenada, la inferencia se puede ejecutar en cualquier conjunto de imágenes usando  
+<a href="https://raw.githubusercontent.com/stefan-ainetter/grasp_det_seg_cnn/main/scripts/test_det_seg_OCID.py" target="_blank" rel="noopener noreferrer">scripts/test_det_seg_OCID.py</a>:</p><pre><code class="language-bash">cd scripts
+python3 -m torch.distributed.launch --nproc_per_node=1 test_det_seg_OCID.py 
+--log_dir=LOG_DIR CONFIG MODEL_PARAMS DATA_DIR OUTPUT_DIR
+</code></pre>
+Las predicciones se escribirán en <code>OUTPUT_DIR</code>, por ejemplo, la carpeta <code>output</code>. <code>MODEL_PARAMS</code> son pesos preentrenados, por ejemplo, <code>ckpt_files_OCID/pretrained/model_last.pth.tar</code>,  
+<code>DATA_DIR</code> apunta a las divisiones del conjunto de datos utilizadas, por ejemplo, <code>DATA/OCID_grasp/data_split</code>.  </p><h2>Conjunto de datos OCID_grasp  </h2>
+El conjunto de datos OCID_grasp se puede descargar <a href="https://cloud.tugraz.at/index.php/s/NA7icqiJ5SeNSA6?dir=/Grasp_det_seg_cnn/OCID_grasp" target="_blank" rel="noopener noreferrer">aquí</a>.  
+OCID_grasp consta de 1763 imágenes RGB-D seleccionadas del conjunto de datos OCID, con más de 11.4k máscaras segmentadas de objetos y más de 75k candidatos a agarre anotados a mano.  
+Además, cada objeto está clasificado en una de 31 clases de objetos.  
+<h2>Trabajos Relacionados  </h2>
+OCID_grasp es una extensión del conjunto de datos <a href="https://www.acin.tuwien.ac.at/en/vision-for-robotics/software-tools/object-clutter-indoor-dataset/" target="_blank" rel="noopener noreferrer">OCID</a>.  
+Si decide usar OCID_grasp para su investigación, por favor cite también el artículo de OCID:
+<pre><code class="language-bibtex">@inproceedings{suchi2019easylabel,
+  title={EasyLabel: a semi-automatic pixel-wise object annotation tool for creating robotic RGB-D datasets},
+  author={Suchi, Markus and Patten, Timothy and Fischinger, David and Vincze, Markus},
+  booktitle={2019 International Conference on Robotics and Automation (ICRA)},
+  pages={6678--6684},
+  year={2019},
+  organization={IEEE}
+}</code></pre>
+Nuestro marco está basado en la arquitectura de <a href="https://github.com/mapillary/seamseg" target="_blank" rel="noopener noreferrer">Segmentación Continua de Escenas</a>:
+<pre><code class="language-bibtex">@InProceedings{Porzi_2019_CVPR,
+  author = {Porzi, Lorenzo and Rota Bul\`o, Samuel and Colovic, Aleksander and Kontschieder, Peter},
+  title = {Seamless Scene Segmentation},
+  booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  month = {June},
+  year = {2019}
+}</code></pre>
+<hr>
+<h2>Sobre nuestra última investigación</h2>
+<h3>Nuestro artículo 'Segmentación de objetos consciente de la profundidad y detección de agarres para tareas robóticas de recogida' fue aceptado en BMVC21</h3>
+En nuestro último trabajo, implementamos un método para la detección conjunta de agarres y la segmentación de instancias de objetos independiente de la clase,
+que fue publicado en BMVC21. 
+Más información se puede encontrar <a href="https://arxiv.org/pdf/2111.11114" target="_blank" rel="noopener noreferrer">aquí</a>.</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-08
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/stefan-ainetter/grasp_det_seg_cnn/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-09-08 
+    </div>
+    
+</body>
+</html>
