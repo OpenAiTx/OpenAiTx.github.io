@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pproftui - 一个基于终端的 Go pprof 数据诊断工具</title>
+    <meta name="description" content="一个基于终端的 Go pprof 数据诊断工具">
+    <meta name="keywords" content="pproftui, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "pproftui",
+  "description": "一个基于终端的 Go pprof 数据诊断工具",
+  "author": {
+    "@type": "Person",
+    "name": "Oloruntobi1"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 240
+  },
+  "url": "https://OpenAiTx.github.io/projects/Oloruntobi1/pproftui/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/Oloruntobi1/pproftui/main/README.md",
+  "datePublished": "2025-09-09",
+  "dateModified": "2025-09-09"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Oloruntobi1/pproftui" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    pproftui
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 240 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by Oloruntobi1</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>pproftui：在终端中交互式 Go 性能分析</h1></p><p><code>pproftui</code> 是一个基于终端的 Go <code>pprof</code> 用户界面，使性能分析变得交互式、直观且快速。它旨在帮助您定位性能问题，无需切换到网页浏览器，并提供内置的性能分析概念解释。</p><p><img src="https://raw.githubusercontent.com/Oloruntobi1/pproftui/main/./demo.gif" alt="演示"></p><hr></p><h2>为什么选择 <code>pproftui</code>？</h2></p><p>标准的 <code>go tool pprof</code> 功能强大，但有时不够直观。您常常会困惑：
+<ul><li>  "<code>flat</code> 和 <code>cum</code> 究竟是什么意思？"</li>
+</ul><em>   "这 100 个运行时函数中，哪个是</em>我的*代码？"
+<ul><li>  "我如何查找这个版本与上一个版本之间的变化？"</li>
+<li>  "为什么我必须不停地在浏览器和代码之间切换？"</li></p><p></ul><code>pproftui</code> 直接解决了这些问题：
+<ul><li>  <strong>集成源码和调用图视图：</strong> 查看任意函数的源代码或浏览其调用图，无需离开终端。</li>
+<li>  <strong>聚焦您的代码：</strong> 自动高亮项目中的函数。按 <code>p</code> 键即可立即隐藏所有运行时和第三方库的噪音。</li>
+</ul><em>   <strong>强大且直观的差异比较：</strong> 比较两个性能分析报告，不仅看到</em>发生了什么<em>变化，还能了解</em>为什么*变化。界面帮助您通过调用栈追踪性能回退的根源。
+<ul><li>  <strong>实时性能分析：</strong> 指向正在运行的服务，实时观察其性能分析更新。</li>
+<li>  <strong>内置帮助（F1）：</strong> 在需要时，获得关于性能分析术语（<code>cpu</code>、<code>inuse_space</code>、<code>flat</code> 与 <code>cum</code>）的清晰简明解释。</li></p><p></ul>---</p><h2>快速入门</h2></p><h3>安装</h3>
+<pre><code class="language-sh">go install github.com/Oloruntobi1/pproftui@latest</code></pre></p><h3>食谱：常见的性能分析工作流程</h3></p><p>这里是使用 <code>pproftui</code> 解决常见性能问题的实用方案。</p><p>#### 方案 1：调查本地二进制文件的性能下降
+你发现某个函数运行缓慢。让我们获取一个 CPU 性能分析并进行探索。</p><ul><li> <strong>生成性能分析数据：</strong></li>
+    </ul><pre><code class="language-sh">    go test -bench=. -cpuprofile=cpu.prof
+    ``<code></p><ul><li> <strong>使用 </code>pproftui<code> 进行分析：</strong></li>
+    </ul></code>`<code>sh
+    pproftui cpu.prof
+    </code>`<code>
+    <ul><li>  按 </code>c<code> 在源代码视图和调用者/被调用者图之间切换。</li>
+    <li>  如果不确定分析类型的含义，随时按 </code>F1<code>。</li></p><p></ul>#### 方案 2：查找性能回归（差异工作流）
+你怀疑最近的提交使性能变慢了。</code>pproftui<code> 的差异比较是它的超级能力。</p><ul><li> <strong>从你的 </code>main<code> 分支获取分析数据：</strong></li>
+    </ul></code>`<code>sh
+    git checkout main
+    go test -bench=. -cpuprofile=main.prof
+    </code>`<code></p><ul><li> <strong>从您的功能分支获取配置文件：</strong></li>
+    </ul></code>`<code>sh
+    git checkout your-feature-branch
+    go test -bench=. -cpuprofile=feature.prof
+    </code>`<code></p><ul><li> <strong>比较它们的差异：</strong></li>
+    </ul></code>`<code>sh
+    pproftui main.prof feature.prof
+    </code>`<code>
+    </code>pproftui<code> 现在将显示 <em>增量</em>。绿色（</code>+<code>）表示在 </code>feature.prof<code> 中使用了更多资源，红色（</code>-<code>）表示使用较少。使用此功能浏览图表，找到引入新开销的确切函数。</p><p>#### 配方3：分析实时服务性能
+您希望查看您的应用程序在预发布环境负载下的表现。</p><ul><li> <strong>确保您的应用程序暴露了 pprof 端点。</strong>（例如，通过导入 </code>net/http/pprof<code>）</li>
+<li> <strong>以实时模式运行 </code>pproftui<code>：</strong></li>
+    </ul></code>`<code>sh
+    # This will fetch a 5-second CPU profile every 10 seconds.
+    pproftui -live="http://localhost:6060/debug/pprof/profile?seconds=5" -refresh=10s
+    </code>`<code>
+    <ul><li>  按 </code>space<code> 键暂停和恢复实时更新。</li></p><p></ul>#### 方案 4：切入噪音核心
+分析报告充满了运行时和库代码。以下是如何专注于重要内容：<strong>你的代码。</strong>
+</code></pre>sh
+<h1>Provide your project's go module path</h1>
+pproftui --module-path="github.com/your/project" cpu.prof
+</code>`<code>
+<ul><li>  您项目的函数现在将标记为 </code>★<code>。</li>
+<li>  按 </code>p<code> 切换“仅项目”模式，立即隐藏其他所有内容。</li></p><p></ul>---</p><h2>快捷键</h2></p><p>| 键           | 操作                                                  |
+| :---------- | :---------------------------------------------------- |
+| </code>↑<code>/</code>↓<code>     | 在函数列表中导航                                      |
+| </code>t<code>         | 切换配置文件类型（</code>inuse_space<code>，</code>alloc_objects<code>）    |
+| </code>c<code>         | 在<strong>代码</strong>视图和<strong>调用</strong>图视图之间切换                |
+| </code>p<code>         | 切换<strong>仅项目</strong>代码过滤器                              |
+| </code>s<code>         | 循环切换<strong>排序</strong>顺序（</code>Self<code>，</code>Total<code>，</code>Name<code>）       |
+| </code>f<code>         | 切换<strong>火焰图</strong>视图                                    |
+| </code>Enter<code>     | <em>在火焰图中：</em> 放大选中的函数                         |
+| </code>Esc<code>       | <em>在火焰图中：</em> 缩小视图                              |
+| </code>F1<code>        | 显示详细的<strong>帮助</strong>和说明                              |
+| </code>q<code> / </code>ctrl+c`| <strong>退出</strong>                                            |</p><hr></p><h2>许可证</h2></p><p>MIT
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-09
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Oloruntobi1/pproftui/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-09-09 
+    </div>
+    
+</body>
+</html>
