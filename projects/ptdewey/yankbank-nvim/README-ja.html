@@ -1,0 +1,432 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yankbank-nvim - クリップボード履歴へのアクセスを改善するNeovimプラグイン</title>
+    <meta name="description" content="クリップボード履歴へのアクセスを改善するNeovimプラグイン">
+    <meta name="keywords" content="yankbank-nvim, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "yankbank-nvim",
+  "description": "クリップボード履歴へのアクセスを改善するNeovimプラグイン",
+  "author": {
+    "@type": "Person",
+    "name": "ptdewey"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 120
+  },
+  "url": "https://OpenAiTx.github.io/projects/ptdewey/yankbank-nvim/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/ptdewey/yankbank-nvim/main/README.md",
+  "datePublished": "2025-09-16",
+  "dateModified": "2025-09-16"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/ptdewey/yankbank-nvim" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    yankbank-nvim
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 120 stars</span>
+                <span class="language">Japanese</span>
+                <span>by ptdewey</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>YankBank</h1></p><p>Neovimのプラグインで、最近のヤンクや削除を記録し、クイックアクセスメニューで表示します。</p><h2>何をするか</h2></p><p>YankBankは最近のN回のヤンクを無名レジスタ（"）に保存し、これらの最近のヤンクをポップアップウィンドウに表示して、ヤンク履歴に素早くアクセスできるようにします。  
+ポップアップメニューを開くと、現在の無名プラスレジスタ（+）の内容も（無名レジスタの現在の内容と異なる場合に限り）メニューに追加されます。</p><p>メニューからエントリを選択（Enterキーを押す）すると、カーソル位置の現在開いているバッファに貼り付けられます。</p><p>YankBankはセッション間の永続性も提供しており、セッションを閉じて再開してもヤンクを失うことはありません（<a href="#Persistence" target="_blank" rel="noopener noreferrer">永続性</a>を参照）。</p><h3>スクリーンショット</h3></p><p><img src="https://raw.githubusercontent.com/ptdewey/yankbank-nvim/main/assets/screenshot-2.png" alt="YankBank popup window zoomed"></p><p>メニューは現在のセッションに特有であり、まったく新しいセッションで開くときは、現在の無名プラスレジスタの内容のみが含まれます。  
+そのセッションでヤンクまたは削除が行われるごとに、さらにメニューが追加されます。</p><h2>インストールと設定</h2></p><p>#### 永続性あり（推奨）</p><p>lazy.nvimを使用して
+<pre><code class="language-lua">{
+    "ptdewey/yankbank-nvim",
+    dependencies = "kkharji/sqlite.lua",
+    cmd = { "YankBank" },
+    config = function()
+        require('yankbank').setup({
+            persist_type = "sqlite",
+        })
+    end,
+}</code></pre></p><p>#### 永続化なし:</p><p>lazy.nvimを使用する
+<pre><code class="language-lua">{
+    "ptdewey/yankbank-nvim",
+    cmd = { "YankBank" },
+    config = function()
+        require('yankbank').setup()
+    end,
+}</code></pre>
+#### レイジーロード</p><p><a href="https://github.com/nvim-neorocks/nvim-best-practices?tab=readme-ov-file#sleeping_bed-lazy-loading" target="_blank" rel="noopener noreferrer">ベストプラクティス</a>によると、YankBankの初期化フットプリントは非常に小さく、機能は必要なときにのみ読み込まれます。したがって、私は設定で<code>lazy=false</code>を設定し、起動時間を1ms未満にしています。</p><pre><code class="language-lua">-- plugins/yankbank.lua
+return {
+    {
+        "ptdewey/yankbank-nvim",
+        lazy = false,
+        config = function()
+            -- ...
+        end,
+    },
+    {
+        "kkharji/sqlite.lua",
+        lazy = true,
+    },
+}</code></pre></p><p>起動時にYankBankを読み込みたくない場合、以前はテキストをヤンクするキー押下時（<code>y</code>、<code>Y</code>、<code>d</code>、<code>D</code>、<code>x</code>）、<code>FocusGained</code>イベント、および<code>YankBank</code>コマンドで読み込んでいました。
+<pre><code class="language-lua">{
+    "ptdewey/yankbank-nvim",
+    dependencies = "kkharji/sqlite.lua",
+    keys = {
+        { "y" },
+        { "Y", "y$" }, -- redefine Y behavior to y$ to avoid breaking lazy
+        { "D" },
+        { "d" },
+        { "x" },
+        { "<leader>p", desc = "Open YankBank" },
+    },
+    cmd = { "YankBank" },
+    event = { "FocusGained" },
+    config = function()
+        require("yankbank").setup({
+            -- ...
+        })
+    end
+}</code></pre></p><h3>セットアップオプション</h3></p><p>setup関数はオプションのテーブルを受け取ることもサポートしています：
+| オプション | 型 | デフォルト |
+|-------------|--------------------------------------------|----------------|
+| max_entries | ポップアップに表示するエントリの最大数（整数） | <code>10</code> |
+| sep | テーブルエントリ間に表示する区切り文字列 | <code>"-----"</code> |
+| keymaps | キーマップのオーバーライドを含むテーブル | <code>{}</code> |
+| keymaps.navigation_next | 文字列 | <code>"j"</code> |
+| keymaps.navigation_prev | 文字列 | <code>"k"</code> |
+| keymaps.paste | 文字列 | <code>"<CR>"</code> |
+| keymaps.paste_back | 文字列 | <code>"P"</code> |
+| keymaps.yank | 文字列 | <code>"yy"</code> |
+| keymaps.close | 文字列のテーブル | <code>{ "<Esc>", "<C-c>", "q" }</code> |
+| num_behavior | ジャンプ動作を定義する文字列 "prefix" または "jump" | <code>"prefix"</code> |
+| focus_gain_poll | ブール値 | <code>false</code> |
+| registers | レジスタのオーバーライド用テーブル | <code>{ }</code> |
+| registers.yank_register | ポップアップからヤンクするデフォルトのレジスタ | <code>"+"</code> |
+| persist_type | 永続化タイプを定義する文字列 "sqlite" または nil | <code>nil</code> |
+| db_path | sqlite永続化で使用するデータベースファイルのパス文字列 | プラグインインストールディレクトリ |
+| bind_indices | インデックス番号によるペースト用のキーバインドプレフィックスとして使用するオプションの文字列（例："<leader>p"） | <code>nil</code> |</p><p>
+#### 設定例</p><pre><code class="language-lua">{
+    "ptdewey/yankbank-nvim",
+    config = function()
+        require('yankbank').setup({
+            max_entries = 9,
+            sep = "-----",
+            num_behavior = "jump",
+            focus_gain_poll = true,
+            persist_type = "sqlite",
+            keymaps = {
+                paste = "<CR>",
+                paste_back = "P",
+            },
+            registers = {
+                yank_register = "+",
+            },
+            bind_indices = "<leader>p"
+        })
+    end,
+}</code></pre></p><p>区切り文字を使用しない場合は、<code>sep</code> に空文字列を渡してください</p><p>'num_behavior' オプションは、数字キーを押したときのポップアップ内のナビゲーション動作を定義します。
+<ul><li><code>num_behavior = "prefix"</code> は、従来のvimナビゲーションと同様に動作し、'3j' はバンク内の3つ下のエントリに移動します。</li>
+<li><code>num_behavior = "jump"</code> は、押された数字キーに一致するエントリにジャンプします（例：'3' はエントリ3にジャンプ）</li>
+    <li>注意：'max_entries' が2桁の数字の場合、有効なエントリのプレフィックスとなる数字を押すと遅延が発生します。</li></p><p></ul>'focus_gain_poll' オプションは、フォーカス獲得（Neovimウィンドウの再フォーカス）を監視する追加のautocommandを有効にし、unnamedplus ('+') レジスタの変化をチェックして、新しい内容が見つかるとyankbankに追加します。これにより、ブラウザなど他のソースからコピーしたテキストをバンクの起動トリガーなしに自動的にyankbankに追加できます。デフォルトはオフですが、<code>focus_gain_poll = true</code> での有効化を強く推奨します。</p><h3>永続化</h3>
+YankBankを最高の体験で利用するために、永続化の有効化を強く推奨します。
+永続化が有効な場合、sqlite.lua がプラグインのルートディレクトリに最近のヤンクの永続ストアを作成するために使用されます。
+sqlite永続化を利用するには、設定に <code>"kkharji/sqlite.lua"</code> を依存関係として追加し、<code>persist_type</code> を <code>"sqlite"</code> に設定する必要があります。</p><pre><code class="language-lua">-- lazy
+return {
+    "ptdewey/yankbank-nvim",
+    dependencies = "kkharji/sqlite.lua",
+    config = function()
+        require('yankbank').setup({
+            -- other options...
+            persist_type = "sqlite"
+        })
+    end,
+}</code></pre></p><p>注意：データベースは <code>:YankBankClearDB</code> コマンドでクリアするか、（デフォルトではプラグインのインストールディレクトリにある）dbファイルを削除することでクリアできます。</p><p>SQLに関連する問題が発生した場合は、GitHubで問題を報告してください。（一時的な対処として、データベースをクリアすることも試せます）</p><p>
+dbファイルの作成時に権限の問題が発生した場合（例：Nixでインストールした場合）は、<code>db_path</code> オプションを使ってデフォルトのファイルパスを変更してください。（<code>vim.fn.stdpath("data")</code> が有効です）</p><h2>使い方</h2></p><p>ポップアップメニューはコマンド <code>:YankBank</code> で開くことができ、エントリはEnterキーで現在のカーソル位置に貼り付けられ、メニューはEsc、Ctrl-C、またはqキーで閉じられます。
+メニューのエントリはyyキーでunnamedplusレジスタにヤンクすることもできます。</p><p>個人的には、メニューを開くためのキー割り当ても設定することをお勧めします。
+<pre><code class="language-lua">-- map to '<leader>y'
+vim.keymap.set("n", "<leader>y", "<cmd>YankBank<CR>", { noremap = true })</code></pre></p><hr></p><h2>API（作業中）</h2></p><p>いくつかのプラグイン内部もYankBank APIを通じてアクセス可能です。</p><p>例：
+<pre><code class="language-lua">-- get the ith entry in the bank
+---@param i integer index to get
+-- output format: { yank_text = "entry", reg_type = "v" }
+local e = require("yankbank.api").get_entry(i)</p><p>-- add an entry to the bank
+---@param yank_text string yank text to add to YANKS table
+---@param reg_type string register type "v", "V", or "^V" (visual, v-line, v-block respectively)
+require("yankbank.api").add_entry("yank_text", "reg_type")</p><p>-- remove an entry from the bank by index
+---@param i integer index to remove
+require("yankbank.api").remove_entry(i)</p><p>--- pin entry to yankbank so that it won't be removed when its position exceeds the max number of entries
+---@param i integer index to pin
+require("yankbank.api").pin_entry(i)</p><p>
+--- unpin bank entry
+---@param i integer index to unpin
+require("yankbank.api").unpin_entry(i)</code></pre></p><p>APIの詳細については<a href="https://raw.githubusercontent.com/ptdewey/yankbank-nvim/main/lua/yankbank/api.lua" target="_blank" rel="noopener noreferrer"> lua/yankbank/api.lua</a>を参照してください。</p><hr></p><h2>改善の可能性</h2>
+<ul><li>nvim-cmpとの統合</li>
+<li>fzfとの統合</li>
+<li>telescopeとの統合</li></p><p></ul><h2>代替案</h2></p><ul><li><a href="https://github.com/AckslD/nvim-neoclip.lua" target="_blank" rel="noopener noreferrer">nvim-neoclip</a></li>
+<li><a href="https://github.com/gbprod/yanky.nvim" target="_blank" rel="noopener noreferrer">yanky.nvim</a></li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-16
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/ptdewey/yankbank-nvim/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-09-16 
+    </div>
+    
+</body>
+</html>

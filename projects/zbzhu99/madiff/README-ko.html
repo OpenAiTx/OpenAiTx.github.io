@@ -1,0 +1,389 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>madiff - &quot;MADiff: 확산 모델을 이용한 오프라인 다중 에이전트 학습&quot; 구현</title>
+    <meta name="description" content="&quot;MADiff: 확산 모델을 이용한 오프라인 다중 에이전트 학습&quot; 구현">
+    <meta name="keywords" content="madiff, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "madiff",
+  "description": "\"MADiff: 확산 모델을 이용한 오프라인 다중 에이전트 학습\" 구현",
+  "author": {
+    "@type": "Person",
+    "name": "zbzhu99"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 81
+  },
+  "url": "https://OpenAiTx.github.io/projects/zbzhu99/madiff/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/zbzhu99/madiff/main/README.md",
+  "datePublished": "2025-09-16",
+  "dateModified": "2025-09-16"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/zbzhu99/madiff" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    madiff
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 81 stars</span>
+                <span class="language">Korean</span>
+                <span>by zbzhu99</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>[NeurIPS 2024] MADiff: 확산 모델을 이용한 오프라인 다중 에이전트 학습</h1></p><p><img src="https://img.shields.io/badge/Python-3.8-blue" alt="Python 3.8">
+<img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code style">
+<img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT">
+<a href="https://arxiv.org/abs/2305.17330" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg" alt="arXiv"></a></p><p>이것은 NeurIPS 2024에 발표된 "MADiff: 확산 모델을 이용한 오프라인 다중 에이전트 학습"의 공식 구현체입니다.</p><p><img src="/assets/images/madiff.png" alt="MADiff"></p><h2>성능</h2></p><p>간결함을 위해 결과의 표준 편차는 생략하였습니다. 전체 결과는 저희 <a href="https://arxiv.org/abs/2305.17330" target="_blank" rel="noopener noreferrer">논문</a>에서 확인할 수 있습니다.</p><h3>다중 에이전트 입자 환경 (MPE)</h3></p><p><a href="https://arxiv.org/abs/2111.11188" target="_blank" rel="noopener noreferrer">OMAR 논문</a>에서 공개한 MPE 데이터셋에서의 성능입니다. 결과는 5개의 무작위 시드에 대해 평균한 값입니다.</p><p>| 데이터셋 | 작업 | BC | MA-ICQ | MA-TD3+BC | MA-CQL | OMAR | MADiff-D | MADiff-C* |
+| :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
+| 전문가 | Spread | 35.0 | 104.0 | 108.3 | 98.2 | <strong>114.9</strong> | 95.0 | 116.7 |
+| Md-Replay | Spread | 10.0 | 13.6 | 15.4 | 20.0 | <strong>37.9</strong> | 30.3 | 42.2 |
+| 중간 | Spread | 31.6 | 29.3 | 29.3 | 34.1 | 47.9 | <strong>64.9</strong> | 58.2 |
+| 무작위 | Spread | -0.5 | 6.3 | 9.8 | 24.0 | <strong>34.4</strong> | 6.9 | 4.3 |
+| 전문가 | Tag | 40.0 | 113.0 | 115.2 | 93.9 | 116.2 | <strong>120.9</strong> | 167.6 |
+| Md-Replay | Tag | 0.9 | 34.5 | 28.7 | 24.8 | 47.1 | <strong>62.3</strong> | 95.0 |
+| 중간 | Tag | 22.5 | 63.3 | 65.1 | 61.7 | 66.7 | <strong>77.2</strong> | 132.9 |
+| 무작위 | Tag | 1.2 | 2.2 | 5.7 | 5.0 | <strong>11.1</strong> | 3.2 | 10.7 |
+| 전문가 | World | 33.0 | 109.5 | 110.3 | 71.9 | 110.4 | <strong>122.6</strong> | 174.0 |
+| Md-Replay | World | 2.3 | 12.0 | 17.4 | 29.6 | 42.9 | <strong>57.1</strong> | 83.0 |
+| 중간 | World | 25.3 | 71.9 | 73.4 | 58.6 | 74.6 | <strong>123.5</strong> | 158.2 |
+| 무작위 | World | -2.4 | 1.0 | 2.8 | 0.6 | <strong>5.9</strong> | 2.0 | 8.1 |</p><h3>다중 에이전트 무조코 (MA-Mujoco)</h3></p><p><a href="https://arxiv.org/abs/2302.00521" target="_blank" rel="noopener noreferrer">off-the-grid MARL 벤치마크</a>에서 공개한 MA-Mujoco 데이터셋에서의 성능입니다. 결과는 5개의 무작위 시드에 대해 평균한 값입니다.</p><p>| 데이터셋 | 작업 | BC | MA-TD3+BC | OMAR | MADiff-D | MADiff-C* |
+| :----: | :----: | :----: | :----: | :----: | :----: | :----: |
+| Good | 2halfcheetah | 6846 | 7025 | 1434 | <strong>8246</strong> | 8514 |
+| Medium | 2halfcheetah | 1627 | <strong>2561</strong> | 1892 | 2207 | 2203 |
+| Poor | 2halfcheetah | 465 | 736 | 384 | <strong>759</strong> | 760 |
+| Good | 2ant | 2697 | 2922 | 464 | <strong>2946</strong> | 3069 |
+| Medium | 2ant | 1145 | 744 | 799 | <strong>1211</strong> | 1243 |
+| Poor | 2ant | 954 | <strong>1256</strong> | 857 | 946 | 1038 |
+| Good | 4ant | 2802 | 2628 | 344 | <strong>3080</strong> | 3068 |
+| Medium | 4ant | 1617 | <strong>1843</strong> | 929 | 1649 | 1871 |
+| Poor | 4ant | 1033 | 1075 | 518 | <strong>1295</strong> | 1353 |</p><h3>스타크래프트 멀티 에이전트 챌린지 (SMAC)</h3></p><p><a href="https://arxiv.org/abs/2302.00521" target="_blank" rel="noopener noreferrer">off-the-grid MARL benchmark</a>에서 공개된 SMAC 데이터셋에서의 성능입니다. 결과는 5개의 랜덤 시드에 대해 평균한 값입니다.</p><p>| 데이터셋 | 작업 | BC | QMIX | MA-ICQ | MA-CQL | MADT | MADiff-D | MADiff-C* |
+| :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
+| Good | 3m | 16.0 | 13.8 | 18.8 | <strong>19.6</strong> | 19.1 | 19.3 | 19.9 |
+| Medium | 3m | 8.2 | 17.3 | 18.1 | <strong>18.9</strong> | 15.8 | 17.3 | 18.1 | 
+| Poor | 3m | 4.4 | 10.0 | <strong>14.4</strong> | 5.8 | 4.4 | 9.6 | 9.5 | 
+| Good | 2s3z | 18.2 | 5.9 | <strong>19.6</strong> | 19.0 | 19.3 | <strong>19.6</strong> | 19.7 | 
+| Medium | 2s3z | 12.3 | 5.2 | 17.2 | 14.3 | 15.0 | <strong>17.4</strong> | 17.6 | 
+| Poor | 2s3z | 6.7 | 3.8 | <strong>12.1</strong> | 10.1 | 7.0 | 9.8 | 10.4 |
+| Good | 5m6m | 16.6 | 8.0 | 16.3 | 13.8 | 16.7 | <strong>17.8</strong> | 18.0 | 
+| Medium | 5m6m | 12.4 | 12.0 | 15.3 | 17.0 | 16.6 | <strong>17.3</strong> | 18.0 | 
+| Poor | 5m6m | 7.5 | <strong>10.7</strong> | 9.4 | 10.4 | 7.8 | 8.9 | 10.3 |
+| Good | 8m | 16.7 | 4.6 | <strong>19.6</strong> | 11.3 | 18.4 | 19.2 | 19.8 | 
+| Medium | 8m | 10.7 | 13.9 | 18.6 | 16.8 | 18.5 | <strong>18.9</strong> | 19.4 | 
+| Poor | 8m | 5.3 | 6.0 | <strong>10.8</strong> | 4.6 | 4.7 | 5.1 | 5.1 |</p><p><em>\</em> MADiff-C는 기준 방법들과의 공정한 비교를 위한 것이 아니라 MADiff-D가 전역 정보 없이 조정 격차를 채우는지 보여주기 위한 것입니다.*</p><h2>설정</h2></p><h3>설치</h3></p><pre><code class="language-bash">sudo apt-get update
+sudo apt-get install libssl-dev libcurl4-openssl-dev swig
+conda create -n madiff python=3.8
+conda activate madiff
+pip install torch==1.12.1+cu113 --extra-index-url https://download.pytorch.org/whl/cu113
+pip install -r requirements.txt</code></pre>
+<h3>MPE 설정</h3></p><p>우리는 <a href="https://github.com/ling-pan/OMAR" target="_blank" rel="noopener noreferrer">OMAR</a>의 MPE 데이터셋을 사용합니다. 데이터셋 다운로드 링크와 지침은 OMAR의 <a href="https://github.com/ling-pan/OMAR" target="_blank" rel="noopener noreferrer">저장소</a>에서 확인할 수 있습니다. BaiduPan 다운로드 링크가 중국 외 사용자에게 불편할 수 있기 때문에, 데이터셋을 획득하기 위해 OSF에 익명 미러 <a href="https://osf.io/jxawh/?view_only=dd3264a695af4c03bffde0350b8e8c4a" target="_blank" rel="noopener noreferrer">저장소</a>를 유지하고 있습니다.</p><p>다운로드한 데이터셋은 <code>diffuser/datasets/data/mpe</code> 경로에 위치해야 합니다.</p><p>MPE 환경을 설치하세요:</p><pre><code class="language-bash">pip install -e third_party/multiagent-particle-envs
+pip install -e third_party/ddpg-agent</code></pre></p><h3>MA-Mujoco 설정</h3></p><ul><li>MA-Mujoco 설치:</li></p><p>    </ul><pre><code class="language-bash">    pip install -e third_party/multiagent_mujoco
+    ``<code>
+<ul><li>우리는 <a href="https://sites.google.com/view/og-marl" target="_blank" rel="noopener noreferrer">off-the-grid MARL</a>에서 제공하는 MA-Mujoco 데이터셋을 사용합니다. 데이터셋을 전처리하여 궤적을 전체 에피소드로 연결하고 </code>.npy<code> 파일로 저장하여 더 쉽게 로드할 수 있도록 합니다. 원본 데이터셋은 Huggingface <a href="https://huggingface.co/datasets/Avada11/MADiff-Datasets" target="_blank" rel="noopener noreferrer">저장소</a>에서 다운로드할 수 있습니다.</li></p><p>    </ul>다운로드한 데이터셋은 압축을 풀고 </code>diffuser/datasets/data/mamujoco<code> 폴더에 배치해야 합니다.</p><ul><li>off-the-grid MARL을 설치하고 원본 데이터셋을 변환합니다.</li></p><p>
+    </ul></code>`<code>bash
+    pip install -r ./third_party/og-marl/install_environments/requirements/mamujoco.txt
+    pip install -e ./third_party/og-marl
+    python scripts/transform_og_marl_dataset.py --env_name mamujoco --map_name <map> --quality <dataset>
+    </code>`<code></p><h3>SMAC 설정</h3></p><ul><li></code>scripts/smac.sh<code>를 실행하여 <em>StarCraftII</em>를 설치합니다.</li></p><p><li>SMAC을 설치합니다:</li></p><p>    </ul></code>`<code>bash
+    pip install git+https://github.com/oxwhirl/smac.git
+    </code>`<code>
+<ul><li>우리는 <a href="https://sites.google.com/view/og-marl" target="_blank" rel="noopener noreferrer">off-the-grid MARL</a>에서 제공하는 SMAC 데이터셋을 사용합니다. 데이터셋을 전처리하여 궤적을 전체 에피소드로 연결하고 </code>.npy<code> 파일로 저장하여 로딩을 용이하게 합니다. 원본 데이터셋은 Huggingface <a href="https://huggingface.co/datasets/Avada11/MADiff-Datasets" target="_blank" rel="noopener noreferrer">저장소</a>에서 다운로드할 수 있습니다.</li></p><p>    </ul>다운로드한 데이터셋은 압축을 풀고 </code>diffuser/datasets/data/smac<code> 경로에 위치시켜야 합니다.</p><ul><li>off-the-grid MARL을 설치하고 원본 데이터셋을 변환합니다.</li></p><p>
+    </ul></code>`<code>bash
+    pip install -r ./third_party/og-marl/install_environments/requirements/smacv1.txt
+    pip install -e ./third_party/og-marl
+    python scripts/transform_og_marl_dataset.py --env_name smac --map_name <map> --quality <dataset>
+    </code>`<code></p><h2>학습 및 평가</h2>
+학습을 시작하려면 다음 명령어를 실행하세요
+</code></pre>bash
+<h1>multi-agent particle environment</h1>
+python run_experiment.py -e exp_specs/mpe/<task>/mad_mpe_<task>_attn_<dataset>.yaml  # CTCE
+python run_experiment.py -e exp_specs/mpe/<task>/mad_mpe_<task>_ctde_<dataset>.yaml  # CTDE
+<h1>ma-mujoco</h1>
+python run_experiment.py -e exp_specs/mamujoco/<task>/mad_mamujoco_<task>_attn_<dataset>_history.yaml  # CTCE
+python run_experiment.py -e exp_specs/mamujoco/<task>/mad_mamujoco_<task>_ctde_<dataset>_history.yaml  # CTDE
+<h1>smac</h1>
+python run_experiment.py -e exp_specs/smac/<map>/mad_smac_<map>_attn_<dataset>_history.yaml  # CTCE
+python run_experiment.py -e exp_specs/smac/<map>/mad_smac_<map>_ctde_<dataset>_history.yaml  # CTDE
+<pre><code class="language-">
+학습된 모델을 평가하려면 먼저 </code>exp_specs/eval_inv.yaml<code>에서 평가할 </code>log_dir<code>을 교체한 후 실행하세요</code></pre>bash
+python run_experiment.py -e exp_specs/eval_inv.yaml
+<pre><code class="language-">
+<h2>인용</h2>
+</code></pre>
+@article{zhu2023madiff,
+  title={MADiff: Offline Multi-agent Learning with Diffusion Models},
+  author={Zhu, Zhengbang and Liu, Minghuan and Mao, Liyuan and Kang, Bingyi and Xu, Minkai and Yu, Yong and Ermon, Stefano and Zhang, Weinan},
+  journal={arXiv preprint arXiv:2305.17330},
+  year={2023}
+}
+</code>``</p><h2>감사의 글</h2></p><p>이 코드베이스는 <a href="https://github.com/anuragajay/decision-diffuser" target="_blank" rel="noopener noreferrer">decision-diffuser repo</a>와 <a href="https://github.com/Ericonaldo/ILSwiss" target="_blank" rel="noopener noreferrer">ILSwiss</a>를 기반으로 구축되었습니다.</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-16
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/zbzhu99/madiff/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-09-16 
+    </div>
+    
+</body>
+</html>
