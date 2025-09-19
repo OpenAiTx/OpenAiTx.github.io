@@ -1,0 +1,377 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>warbleR - Rで音響解析を効率化する</title>
+    <meta name="description" content="Rで音響解析を効率化する">
+    <meta name="keywords" content="warbleR, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "warbleR",
+  "description": "Rで音響解析を効率化する",
+  "author": {
+    "@type": "Person",
+    "name": "maRce10"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 59
+  },
+  "url": "https://OpenAiTx.github.io/projects/maRce10/warbleR/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/maRce10/warbleR/master/README.md",
+  "datePublished": "2025-09-19",
+  "dateModified": "2025-09-19"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/maRce10/warbleR" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    warbleR
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 59 stars</span>
+                <span class="language">Japanese</span>
+                <span>by maRce10</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>warbleR: バイオアコースティック分析の効率化
+================</p><p><!-- README.md は README.Rmd から生成されています。そちらのファイルを編集してください -->
+<!-- バッジ: 開始 --></p><p><a href="https://lifecycle.r-lib.org/articles/stages.html" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/lifecycle-maturing-brightgreen.svg" alt="lifecycle"></a>
+<a href="https://cran.r-project.org/package=warbleR" target="_blank" rel="noopener noreferrer"><img src="https://tinyverse.netlify.com/badge/warbleR" alt="Dependencies"></a>
+<a href="https://www.repostatus.org/#active" target="_blank" rel="noopener noreferrer"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active The project has reached a stable, usable state
+and is being actively
+developed."></a>
+<a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/licence-GPL--2-blue.svg" alt="Licence"></a>
+<a href="https://cran.r-project.org/package=warbleR" target="_blank" rel="noopener noreferrer"><img src="https://www.r-pkg.org/badges/version/warbleR" alt="CRAN_Status_Badge"></a>
+<a href="https://cranlogs.r-pkg.org/badges/grand-total/warbleR" target="_blank" rel="noopener noreferrer"><img src="https://cranlogs.r-pkg.org/badges/grand-total/warbleR" alt="Total
+Downloads"></a>
+<a href="https://app.codecov.io/gh/maRce10/warbleR?branch=master" target="_blank" rel="noopener noreferrer"><img src="https://codecov.io/gh/maRce10/warbleR/branch/master/graph/badge.svg" alt="Codecov test
+coverage"></a>
+<a href="https://github.com/ropensci/baRulho/actions/workflows/R-CMD-check.yaml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/maRce10/warbleR/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a>
+<!-- バッジ: 終了 --></p><p><img src="https://raw.githubusercontent.com/maRce10/warbleR/master/man/figures/warbleR_sticker.png" alt="warbleR ロゴ" align="right" width = "25%" height="25%"/></p><p><a href="https://cran.r-project.org/package=warbleR" target="_blank" rel="noopener noreferrer">warbleR</a> は
+R における動物の音響信号の構造解析を支援することを目的としています。利用者はオープンアクセスの鳥類録音を収集したり、
+自身のデータを入力して、スペクトログラムの可視化および音響パラメータの測定を容易にするワークフローに沿って操作できます。
+<a href="https://cran.r-project.org/package=warbleR" target="_blank" rel="noopener noreferrer">warbleR</a> は
+seewave パッケージの基本的な音響解析ツールを利用し、新たに音響構造解析のためのツールを提供します。これらのツールは
+音響信号のバッチ解析に対応しています。</p><p>パッケージの主な特徴は以下の通りです:</p><ul><li>音響構造を測定する多様なツール</li>
+<li>選択テーブルで参照される音響信号に対してループを用いてタスクを適用</li>
+<li>作業ディレクトリにスペクトログラム画像を生成し、データの整理や音響解析の検証を支援</li></p><p>
+</ul>このパッケージは以下の機能を提供します：</p><ul><li><a href="https://xeno-canto.org/" target="_blank" rel="noopener noreferrer">Xeno‐Canto</a>の録音を探索およびダウンロード</li>
+<li>複数の音声ファイルの探索、整理、操作</li>
+<li>信号の自動検出（周波数および時間）（より詳細で使いやすい実装についてはRパッケージ<a href="https://docs.ropensci.org/ohun/" target="_blank" rel="noopener noreferrer">ohun</a>を参照）</li>
+<li>録音全体または個別信号のスペクトログラム作成</li>
+<li>音響信号構造の各種測定の実行</li>
+<li>測定方法の性能評価</li>
+<li>信号のカタログ化</li>
+<li>音響信号の異なる構造レベルの特徴付け</li>
+<li>デュエットの協調の統計解析</li>
+<li>データベースおよび注釈テーブルの統合</li></p><p></ul>ほとんどの関数はタスクの並列化を可能にしており、
+複数のプロセッサ間でタスクを分配して計算効率を向上させます。
+各ステップでの分析性能を評価するツールも利用可能です。</p><h2>インストール</h2></p><p>CRANからパッケージを以下のようにインストール／ロードしてください：</p><p>
+``<code> r
+install.packages("warbleR")</p><h1>load package</h1>
+library(warbleR)
+<pre><code class="language-">最新の開発版を
+<a href="https://github.com/" target="_blank" rel="noopener noreferrer">github</a>からインストールするには、
+Rパッケージの
+<a href="https://cran.r-project.org/package=remotes" target="_blank" rel="noopener noreferrer">remotes</a>が必要です：
+</code></pre> r
+remotes::install_github("maRce10/warbleR")</p><h1>load package</h1>
+library(warbleR)
+</code>``
+<h2>使用法</h2></p><p>このパッケージには、主な機能を説明するいくつかのビネットが含まれています。  
+<a href="https://marce10.github.io/warbleR/articles/warbleR.html" target="_blank" rel="noopener noreferrer">warbleR入門</a>  
+ではパッケージの機能概要が提供されています。ビネット  
+<a href="https://marce10.github.io/warbleR/articles/annotation_data_format.html" target="_blank" rel="noopener noreferrer">アノテーションデータ形式</a>  
+では入力アノテーションに必要な形式の詳細な説明がなされています。  
+また、音響解析ワークフローでの関数の組織方法に関する例を示した  
+<a href="https://marce10.github.io/warbleR/articles/" target="_blank" rel="noopener noreferrer">追加のパッケージビネット</a> が3つあります。</p><p>パッケージの完全な説明（やや古いですが）は、こちらの  
+<a href="https://doi.org/10.1111/2041-210X.12624" target="_blank" rel="noopener noreferrer">ジャーナル記事</a> で確認できます。</p><h2>その他のパッケージ</h2></p><p><a href="https://cran.r-project.org/package=seewave" target="_blank" rel="noopener noreferrer">seewave</a> と  
+<a href="https://cran.r-project.org/package=seewave" target="_blank" rel="noopener noreferrer">tuneR</a> のパッケージは、  
+音響解析および操作のための多種多様な関数を提供しています。  
+これらは主にR環境に既にインポートされたwaveオブジェクトを対象とします。  
+<a href="https://cran.r-project.org/package=baRulho" target="_blank" rel="noopener noreferrer">baRulho</a> パッケージは、  
+<a href="https://cran.r-project.org/package=warbleR" target="_blank" rel="noopener noreferrer">warbleR</a> と同様のデータ入力・出力を用い、  
+生息環境による音響信号の劣化を定量化することに焦点を当てています。  
+<a href="https://cran.r-project.org/package=Rraven" target="_blank" rel="noopener noreferrer">Rraven</a> パッケージは、  
+Rと<a href="https://www.ravensoundsoftware.com/" target="_blank" rel="noopener noreferrer">Raven音響解析ソフト</a>  
+（<a href="https://www.birds.cornell.edu/home" target="_blank" rel="noopener noreferrer">コーネル鳥類学研究所</a>）とのデータ交換を容易にし、  
+Rにおける音響解析ワークフローにRavenをアノテーションツールとして組み込む際に非常に役立ちます。  
+<a href="https://docs.ropensci.org/ohun/" target="_blank" rel="noopener noreferrer">ohun</a> パッケージは、音響イベントの自動検出を行い、  
+検出ルーチンの診断および最適化のための関数を提供します。  
+<a href="https://cran.r-project.org/package=seewave" target="_blank" rel="noopener noreferrer">dynaSpec</a> は、  
+動的スペクトログラム（すなわちスペクトログラム動画）を作成することができます。</p><h2>引用方法</h2></p><p>
+次のように<a href="https://cran.r-project.org/package=warbleR" target="_blank" rel="noopener noreferrer">warbleR</a>を引用してください：</p><p>Araya-Salas, M. and Smith-Vidaurre, G. (2017), *warbleR: an r package to
+streamline analysis of animal acoustic signals*. Methods Ecol Evol. 8,
+184-191.</p><p>注意：スペクトログラム作成や音響測定機能を使用する場合は、
+<a href="https://cran.r-project.org/package=tuneR" target="_blank" rel="noopener noreferrer">tuneR</a>および
+<a href="https://cran.r-project.org/package=seewave" target="_blank" rel="noopener noreferrer">seewave</a>のパッケージも
+引用してください。</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-19
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/maRce10/warbleR/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-09-19 
+    </div>
+    
+</body>
+</html>
