@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kubectl-tmux-exec - Un plugin kubectl pour ex&#233;cuter des commandes de mani&#232;re interactive sur plusieurs pods ou conteneurs en utilisant tmux.</title>
+    <meta name="description" content="Un plugin kubectl pour ex&#233;cuter des commandes de mani&#232;re interactive sur plusieurs pods ou conteneurs en utilisant tmux.">
+    <meta name="keywords" content="kubectl-tmux-exec, French, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "kubectl-tmux-exec",
+  "description": "Un plugin kubectl pour exécuter des commandes de manière interactive sur plusieurs pods ou conteneurs en utilisant tmux.",
+  "author": {
+    "@type": "Person",
+    "name": "predatorray"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 135
+  },
+  "url": "https://OpenAiTx.github.io/projects/predatorray/kubectl-tmux-exec/README-fr.html",
+  "sameAs": "https://raw.githubusercontent.com/predatorray/kubectl-tmux-exec/master/README.md",
+  "datePublished": "2025-09-20",
+  "dateModified": "2025-09-20"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/predatorray/kubectl-tmux-exec" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    kubectl-tmux-exec
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 135 stars</span>
+                <span class="language">French</span>
+                <span>by predatorray</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>kubectl-tmux-exec</h1></p><p><img src="https://img.shields.io/github/v/release/predatorray/kubectl-tmux-exec" alt="GitHub release version">
+<img src="https://img.shields.io/github/license/predatorray/kubectl-tmux-exec" alt="License">
+<img src="https://img.shields.io/github/actions/workflow/status/predatorray/kubectl-tmux-exec/ci.yml?branch=master" alt="Build Status">
+<img src="https://img.shields.io/github/downloads/predatorray/kubectl-tmux-exec/total" alt="GitHub all releases"></p><p>A <strong>kubectl</strong> plugin for executing commands interactively across multiple pods or containers using <a href="https://github.com/tmux/tmux" target="_blank" rel="noopener noreferrer"><strong>tmux</strong></a>,
+like <code>csshX</code> or <code>pssh</code> but for <strong>Kubernetes</strong>.</p><p><img src="https://raw.githubusercontent.com/predatorray/kubectl-tmux-exec/master/../assets/screenshot.png?raw=true" alt="screenshot"></p><p>To execute command across all the Nginx containers using <code>bash</code> for example, run:</p><pre><code class="language-sh">kubectl tmux-exec -l app=nginx /bin/bash</code></pre>
+<h2>Installation </h2></p><h3>Homebrew</h3></p><blockquote><strong>Note</strong> : Ceci est uniquement pour les utilisateurs Mac.</blockquote></p><ul><li>Installez <a href="https://brew.sh/" target="_blank" rel="noopener noreferrer">Homebrew</a>.</li></p><p><li><code>brew install predatorray/brew/kubectl-tmux-exec</code></li></p><p></ul>Enfin, assurez-vous que <code>/usr/local/bin/kubectl-tmux_exec</code> est dans votre <code>$PATH</code>.</p><h3>Krew</h3></p><blockquote><strong>Note</strong> : Il est recommandé pour les utilisateurs Linux.</blockquote>
+<blockquote></blockquote>
+<blockquote>Bien que cela fonctionne à la fois sur Mac et Linux, ce n’est pas recommandé pour les utilisateurs Mac, car vous pourriez encore avoir besoin d’installer la dépendance <code>gnu-getopt</code> avec l’aide de Homebrew.</blockquote></p><ul><li>Installez <a href="https://krew.sigs.k8s.io/" target="_blank" rel="noopener noreferrer">Krew</a> en suivant <a href="https://krew.sigs.k8s.io/docs/user-guide/setup/install/" target="_blank" rel="noopener noreferrer">le guide utilisateur</a>.</li></p><p><li><code>kubectl krew install tmux-exec</code></li></p><p><li>Installez les dépendances. (<a href="https://github.com/predatorray/kubectl-tmux-exec/wiki/How-to-Install-Dependencies" target="_blank" rel="noopener noreferrer">Wiki : Comment-Installer-les-Dépendances</a>)</li></p><p></ul><h3>Manuellement</h3></p><ul><li>Téléchargez la <a href="https://github.com/predatorray/kubectl-tmux-exec/releases/latest" target="_blank" rel="noopener noreferrer">dernière version</a>.</li></p><p><li>Décompressez le fichier kubectl-tmux-exec-*.tar.gz et copiez tous les fichiers dans un répertoire, par exemple <code>/usr/local/kubectl-tmux-exec</code>.</li></p><p><li>Ajoutez le répertoire <code>bin/</code> à votre <code>$PATH</code>. Par exemple, ajoutez cette ligne à votre fichier rc : <code>export PATH="$PATH:/usr/local/kubectl-tmux-exec/bin"</code>.</li></p><p><li>Installez les dépendances. (<a href="https://github.com/predatorray/kubectl-tmux-exec/wiki/How-to-Install-Dependencies" target="_blank" rel="noopener noreferrer">Wiki : Comment-Installer-les-Dépendances</a>)</li></p><p></ul><h2>Utilisation</h2></p><p>Assurez-vous d’avoir <code>kubectl</code> ≥ 1.12 ([support des plugins]), idéalement la dernière version.</p><p>Sinon, exécutez le script directement : <code>kubectl-tmux_exec [...ARGS]</code>.</p><p>
+Vérifiez si le script a été ajouté avec succès en :</p><pre><code class="language-sh">kubectl plugin list</code></pre>
+La sortie devrait être comme</p><pre><code class="language-txt">The following compatible plugins are available:</p><p>/usr/local/bin/kubectl-tmux_exec</code></pre></p><p>Si cela n'apparaît pas dans la liste, vérifiez à nouveau la variable d'environnement <code>$PATH</code>.</p><p>Vous pouvez utiliser la commande ci-dessous pour obtenir l'utilisation du script.</p><pre><code class="language-sh">kubectl tmux-exec --help</p><h1>or</h1>
+kubectl-tmux_exec --help</code></pre></p><h3>Options</h3></p><p>| Drapeau                         | Utilisation                                                                                                                                                 |
+|---------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <code>-V</code><br><code>--version</code>             | Affiche les informations de version                                                                                                                        |
+| <code>-l</code><br><code>--selector</code>            | Sélecteur (requête d’étiquette) pour filtrer, prend en charge '=', '==', et '!='. (ex. -l key1=value1,key2=value2)<br>Vous devez utiliser soit <code>--selector</code> soit <code>--file</code>. |
+| <code>-f</code><br><code>--file</code>                | Lit les noms des pods ligne par ligne depuis un fichier.<br>Vous devez utiliser soit <code>--selector</code> soit <code>--file</code>.                                            |
+| <code>-c</code><br><code>--container</code>           | Nom du conteneur. Si omis, le premier conteneur dans le pod sera choisi                                                                                     |
+| <code>-i</code><br><code>--stdin</code>               | Passe stdin au conteneur (<strong>obsolète</strong>, car activé par défaut)                                                                                               |
+| <code>-t</code><br><code>--tty</code>                 | Stdin est un TTY (<strong>obsolète</strong>, car activé par défaut)                                                                                                      |
+| <code>-d</code><br><code>--detach</code>              | Détache la session Tmux                                                                                                                                     |
+| <code>-n</code><br><code>--namespace=</code>          | Le scope du namespace pour cette requête CLI (peut être appliqué plusieurs fois)                                                                            |
+| <code>--context</code>                     | Le nom du contexte kubeconfig à utiliser (peut être appliqué plusieurs fois)                                                                                |
+| <code>-A</code><br><code>--all-namespaces</code>      | Si présent, liste et exécute l’objet demandé à travers tous les namespaces. Le namespace dans le contexte actuel est ignoré même s’il est spécifié avec --namespace. |
+| <code>-C</code><br><code>--enable-control-mode</code> | Démarre tmux en mode contrôle et l’écho est désactivé. (Voir : <a href="#iterm2-integration" target="_blank" rel="noopener noreferrer">Intégration iTerm2</a>)                                                    |
+| <code>--remain-on-exit</code>              | Laisse la fenêtre Tmux ouverte à la sortie                                                                                                                  |
+| <code>--select-layout</code>               | L’un des cinq agencements prédéfinis Tmux : even-horizontal, even-vertical, main-horizontal, main-vertical, ou tiled.                                      |
+| <code>--session-mode</code>                | Où tmux est ouvert : auto, new-session, current-session                                                                                                    |</p><p>L’utilisation de ces options est également disponible via <code>--help</code>.</p><h3>Exemple</h3></p><p>Le <code>tmux-exec</code> est similaire à <code>exec</code>, sauf qu’il nécessite des sélecteurs d’étiquettes tandis que <code>exec</code> nécessite un nom de pod.</p><p>Pour lancer <code>bash</code> dans tous les conteneurs de pods qui partagent certaines étiquettes communes, <code>foo=bar</code> par exemple.</p><pre><code class="language-sh">kubectl tmux-exec -l foo=bar /bin/bash</code></pre></p><p>Après avoir réussi à <code>bash</code> dans vos conteneurs sélectionnés, une fenêtre Tmux s'ouvre en fait, où chaque volet affiche le résultat d'exécution de chaque conteneur de pod. Vos entrées clavier seront synchronisées sur tous ces volets.</p><p>Si vous n'êtes pas familier avec Tmux, vous pouvez consulter la page de manuel de tmux ou des tutoriels en ligne. Ou vous pouvez voir la <a href="#tmux-cheatsheet" target="_blank" rel="noopener noreferrer">feuille de référence</a> ci-dessous, ce qui sera suffisant je pense.</p><h3>Intégration iTerm2</h3></p><p>Avec <code>-C</code> ou <code>--enable-control-mode</code>, il fonctionne en mode contrôle et délègue l'entrée des volets à la fonction "Broadcast Input" de [iTerm2],
+pas besoin de raccourcis tmux.</p><p>Utilisez <kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>i</kbd> pour activer ou désactiver la diffusion dans iTerm2. (<code>synchronize-panes</code> sera désactivé automatiquement dans ce mode.)</p><p>(voir : <a href="https://iterm2.com/documentation-tmux-integration.html" target="_blank" rel="noopener noreferrer">Intégration tmux</a> pour plus d'informations)</p><p>#### Exemple</p><pre><code class="language-sh">kubectl tmux-exec -C -l app=nginx /bin/bash</code></pre></p><p><img src="https://raw.githubusercontent.com/predatorray/kubectl-tmux-exec/master/../assets/screenshot-iterm2-integration.png?raw=true" alt="screenshot"></p><h3>Auto-complétion du Shell</h3></p><p>Veuillez consulter <a href="https://github.com/predatorray/kubectl-tmux-exec/wiki/Shell-Auto-completion" target="_blank" rel="noopener noreferrer">ce wiki</a> pour plus d'informations.</p><h3>Rappel des commandes Tmux</h3></p><p>Toutes les commandes Tmux commencent par un <code>PREFIX</code>. Par défaut, le <code>PREFIX</code> est <kbd>Ctrl</kbd> + <kbd>b</kbd>. J'utiliserai <code>C-b</code> ci-dessous pour le représenter.</p><p><code>C-b d</code>, détacher de la session. Après cela, Tmux continuera de fonctionner en arrière-plan. Vous pouvez taper <code>tmux a</code> pour vous rattacher.</p><p><code>C-b :setw synchronize-panes off</code>, désactive la synchronisation des entrées sur tous les volets.</p><p><code>C-b :setw synchronize-panes on</code>, active la synchronisation des entrées sur tous les volets.</p><p><code>C-b <TOUCHE-FLÈCHE></code>, déplacer le curseur entre les volets.</p><p><code>C-b xy</code>, fermer le volet actuel.</p><p><code>C-b &y</code>, fermer la fenêtre incluant tous les volets.</p><h2>Communauté & Support</h2></p><ul><li>Signaler des problèmes ou demander des fonctionnalités via <a href="(https://github.com/predatorray/kubectl-tmux-exec/issues/new" target="_blank" rel="noopener noreferrer">GitHub Issues</a>)</li>
+<li>Rejoignez le <a href="https://groups.google.com/g/kubectl-tmux-exec" target="_blank" rel="noopener noreferrer">Groupe Google</a> pour les discussions</li></p><p></ul><h2>Autres plugins</h2></p><p><a href="https://github.com/predatorray/kubectl-alias" target="_blank" rel="noopener noreferrer">kubectl-alias</a> : la commande alias manquante pour kubectl.</p><h2>Offrez-moi un café</h2></p><p>Si cela vous fait gagner du temps, n’hésitez pas à [m’offrir un café] 🙌</p><p>[<img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="">][offrez-moi un café]</p><p>[offrez-moi un café]: https://buymeacoffee.com/predatorray
+[iTerm2]: https://iterm2.com/index.html
+[support des plugins] : https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-20
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/predatorray/kubectl-tmux-exec/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-09-20 
+    </div>
+    
+</body>
+</html>
