@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>androbuster - AndroBuster 应用是一款用于目录和子域枚举的渗透测试工具，灵感来源于 Gobuster。它支持导入字典、按状态码/大小过滤、多线程以及快速复制结果。</title>
+    <meta name="description" content="AndroBuster 应用是一款用于目录和子域枚举的渗透测试工具，灵感来源于 Gobuster。它支持导入字典、按状态码/大小过滤、多线程以及快速复制结果。">
+    <meta name="keywords" content="androbuster, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "androbuster",
+  "description": "AndroBuster 应用是一款用于目录和子域枚举的渗透测试工具，灵感来源于 Gobuster。它支持导入字典、按状态码/大小过滤、多线程以及快速复制结果。",
+  "author": {
+    "@type": "Person",
+    "name": "BlackHatDevX"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 3
+  },
+  "url": "https://OpenAiTx.github.io/projects/BlackHatDevX/androbuster/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/BlackHatDevX/androbuster/main/README.md",
+  "datePublished": "2025-09-24",
+  "dateModified": "2025-09-24"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/BlackHatDevX/androbuster" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    androbuster
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 3 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by BlackHatDevX</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>🚀 AndroBuster</h1></p><p><div align="center">
+  <img width="2808" height="699" alt="bannerfinal" src="https://github.com/user-attachments/assets/7f74539f-0af6-40d9-bafb-9207afd80af8" /></p><p></div> </p><p><div align="center"></p><p><strong>🔒 渗透测试变得简单</strong>  
+<em>一款基于 Flutter 构建的强大目录和子域枚举工具</em></p><p><a href="https://github.com/BlackHatDevX/androbuster/releases" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Download-APK-blue?style=for-the-badge&logo=android" alt="Download APK"></a>
+<a href="https://github.com/BlackHatDevX/androbuster" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/stars/BlackHatDevX/androbuster?style=for-the-badge&logo=github" alt="GitHub stars"></a>
+<a href="https://github.com/BlackHatDevX/androbuster" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/forks/BlackHatDevX/androbuster?style=for-the-badge&logo=github" alt="GitHub forks"></a>
+<a href="https://github.com/BlackHatDevX/androbuster/issues" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/issues/BlackHatDevX/androbuster?style=for-the-badge&logo=github" alt="GitHub issues"></a></p><p></div></p><hr></p><h2>📖 概述</h2></p><p>AndroBuster 是一款<strong>开源安全工具</strong>，灵感来源于 GoBuster，提供现代化的跨平台目录和子域枚举界面。基于 Flutter 构建，既提供简洁直观的用户体验，又保持了专业安全工具所需的强大功能和灵活性。</p><h3>🎯 AndroBuster 的独特之处？</h3>
+<ul><li>🚀 <strong>跨平台</strong>：支持 Android、iOS 及桌面端</li>
+<li>🔒 <strong>安全为先</strong>：专为渗透测试人员打造</li>
+<li>💻 <strong>现代界面</strong>：美观的 Flutter 界面</li>
+<li>⚡ <strong>高性能</strong>：高效的线程和内存管理</li>
+<li>📱 <strong>移动优先</strong>：针对移动安全测试优化</li></p><p></ul>---</p><h2>🖼️ 截图</h2></p><p><div align="center"></p><p><img width="339" height="749" alt="Screenshot 2025-08-20 at 1 11 24 AM" src="https://github.com/user-attachments/assets/e12ed93e-876f-408b-9e3d-4a849e8fe2a1" />
+<img width="339" height="749" alt="Screenshot 2025-08-20 at 1 11 34 AM" src="https://github.com/user-attachments/assets/17850561-cef9-46e2-8203-8ba29c223fe7" />
+</div></p><hr></p><h2>✨ 特性</h2></p><h3>🗂️ 目录枚举模式</h3>
+<ul><li><strong>目标 URL 输入</strong>：自动去除尾部斜杠的清理 URL 处理</li>
+<li><strong>负面状态码</strong>：过滤不需要的 HTTP 状态码（默认：404）</li>
+<li><strong>负面页面大小</strong>：基于内容长度排除响应</li>
+<li><strong>字典支持</strong>：支持大文本输入及文件导入功能</li>
+<li><strong>线程控制</strong>：可配置线程数以获得最佳性能</li>
+<li><strong>超时设置</strong>：自定义请求超时时间（毫秒）</li></p><p></ul><h3>🌐 子域枚举模式</h3>
+<ul><li><strong>域名输入</strong>：清理域名处理（无需 http/https）</li>
+<li><strong>子域字典</strong>：专用字典管理用于子域发现</li>
+<li><strong>协议测试</strong>：自动 HTTPS/HTTP 回退测试</li>
+<li><strong>子域验证</strong>：符合 RFC 1123 的子域名验证</li>
+<li><strong>专用过滤器</strong>：子域独立的负面状态码和页面大小过滤</li>
+<li><strong>线程与超时</strong>：与目录模式独立配置</li></p><p></ul><h3>📋 结果管理</h3>
+<ul><li><strong>统一结果标签页</strong>：同时查看目录和子域扫描结果</li>
+<li><strong>结果格式化</strong>：清晰显示路径、状态码、大小和 URL</li>
+<li><strong>复制到剪贴板</strong>：导出结果用于外部分析</li>
+<li><strong>清除结果</strong>：扫描间轻松清理</li>
+<li><strong>结果计数</strong>：目录和子域结果分别统计</li></p><p></ul><h3>📁 文件管理</h3>
+<ul><li><strong>字典导入</strong>：支持最大 50MB 的 .txt 文件</li>
+<li><strong>智能预览</strong>：根据文件大小显示内容</li>
+<li><strong>大文件处理</strong>：高效处理超大字典</li>
+<li><strong>格式支持</strong>：自动处理注释（#）和空行</li></p><p></ul><h3>🚀 性能与可靠性</h3>
+<ul><li><strong>后台执行</strong>：应用在后台扫描时持续运行</li></p><p><li><strong>内存优化</strong>：高效处理大型字典列表  </li>
+<li><strong>错误处理</strong>：优雅的回退和恢复机制  </li>
+<li><strong>跨平台</strong>：使用 Flutter 构建，支持 Android 和 iOS  </li></p><p></ul>---</p><h2>📱 安装</h2></p><h3>📦 发布版本  </h3>
+目前仅提供 Android APK 版本。请从发布页面下载最新 APK。  </p><p><div align="center"></p><p><a href="https://github.com/BlackHatDevX/androbuster/releases" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/📥%20Download%20Latest%20Release-blue?style=for-the-badge" alt="下载最新版本"></a></p><p></div></p><h3>🔧 从源码构建  </h3>
+源码现已公开，欢迎所有人使用、修改和贡献。  </p><hr></p><h2>📖 使用指南</h2></p><h3>🗂️ 目录枚举  </h3>
+<ul><li>进入“Dir”标签页  </li>
+<li>输入目标 URL  </li>
+<li>配置负面状态码和页面大小  </li>
+<li>粘贴或导入字典列表  </li>
+<li>设置线程数和超时  </li>
+<li>开始扫描并监控进度  </li></p><p></ul><h3>🌐 子域名枚举  </h3>
+<ul><li>进入“Subdomain”标签页  </li>
+<li>输入目标域名（不含 http/https）  </li>
+<li>配置子域名相关过滤条件  </li>
+<li>导入或粘贴子域名字典  </li>
+<li>调整线程数和超时设置  </li></p><p>
+<li>开始子域名发现</li></p><p></ul><h3>📋 结果管理</h3>
+<ul><li>在“结果”标签页查看所有结果</li>
+<li>复制结果到剪贴板以便外部分析</li>
+<li>不同扫描间清除结果</li>
+<li>监控扫描进度和完成情况</li></p><p></ul>---</p><h2>⚙️ 配置</h2></p><h3>⚡ 线程数</h3>
+<ul><li><strong>推荐</strong>：大多数场景下使用10-20线程</li>
+<li><strong>高线程警告</strong>：超过20线程时提示</li>
+<li><strong>注意事项</strong>：线程过多可能触发速率限制</li></p><p></ul><h3>⏱️ 超时设置</h3>
+<ul><li><strong>默认</strong>：5000毫秒（5秒）</li>
+<li><strong>调整</strong>：网络较慢时增加，响应较快时减少</li>
+<li><strong>范围</strong>：支持1000毫秒到30000毫秒</li></p><p></ul><h3>🚫 负面过滤器</h3>
+<ul><li><strong>状态码</strong>：逗号分隔列表（例如 404,403,500）</li>
+<li><strong>页面大小</strong>：逗号分隔列表（例如 0,1234,5678）</li>
+<li><strong>用途</strong>：从结果中排除不需要的响应</li></p><p></ul>---</p><h2>🤝 贡献</h2></p><p>该项目为<strong>开源</strong>，欢迎贡献！源码现已公开，供所有人使用。</p><p><div align="center"></p><p><a href="https://github.com/BlackHatDevX/androbuster" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/⭐%20Star%20Repository-yellow?style=for-the-badge&logo=github" alt="Star Repository"></a></p><p></div></p><h3>📋 如何贡献</h3>
+<ul><li><strong>⭐ 收藏</strong> 仓库（可选，但非常感谢！）  </li>
+<li><strong>🍴 分叉</strong> 仓库  </li>
+<li><strong>🌿 创建</strong> 功能分支  </li>
+<li><strong>📤 提交</strong> 拉取请求  </li></p><p></ul>---  </p><h2>🙏 致谢与鸣谢  </h2></p><ul><li><strong>🎯 灵感来源</strong>：<a href="https://github.com/OJ/gobuster" target="_blank" rel="noopener noreferrer">GoBuster</a> - 原始目录枚举工具  </li>
+<li><strong>🛠️ 构建工具</strong>：<a href="https://flutter.dev/" target="_blank" rel="noopener noreferrer">Flutter</a> - 谷歌用于构建原生编译应用的UI工具包  </li>
+<li><strong>🔒 安全重点</strong>：专为渗透测试人员和安全研究人员设计  </li>
+<li><strong>🌍 社区</strong>：感谢所有贡献者和支持者  </li></p><p></ul>---  </p><h2>📄 许可证  </h2></p><p>本项目为<strong>开源</strong>，遵循 MIT 许可证。  </p><p>---  </p><h2>⚠️ 免责声明  </h2></p><p>本工具仅设计用于<strong>授权的安全测试</strong>和<strong>渗透测试目的</strong>。用户有责任确保在测试任何系统前获得适当授权。开发者不对本工具的任何滥用行为负责。  </p><p>---  </p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-24
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/BlackHatDevX/androbuster/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-09-24 
+    </div>
+    
+</body>
+</html>
