@@ -1,0 +1,444 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokedexUI - 一个使用SwiftUI编写的简单宝可梦图鉴应用，集成了PokeAPI，采用Swift并发、MVVM架构和分页功能。</title>
+    <meta name="description" content="一个使用SwiftUI编写的简单宝可梦图鉴应用，集成了PokeAPI，采用Swift并发、MVVM架构和分页功能。">
+    <meta name="keywords" content="PokedexUI, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PokedexUI",
+  "description": "一个使用SwiftUI编写的简单宝可梦图鉴应用，集成了PokeAPI，采用Swift并发、MVVM架构和分页功能。",
+  "author": {
+    "@type": "Person",
+    "name": "brillcp"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 97
+  },
+  "url": "https://OpenAiTx.github.io/projects/brillcp/PokedexUI/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/brillcp/PokedexUI/master/README.md",
+  "datePublished": "2025-09-29",
+  "dateModified": "2025-09-29"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/brillcp/PokedexUI" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    PokedexUI
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 97 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by brillcp</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><img src="https://github.com/user-attachments/assets/5abf1763-b290-4f12-a661-986e58fbeaad" alt="icon"></p><p><img src="https://img.shields.io/badge/Swift-5.0%2B-green" alt="swift">
+<img src="https://img.shields.io/github/v/release/brillcp/pokedexui" alt="release">
+<img src="https://img.shields.io/badge/Platforms-iOS%20iPadOS%20macOS-blue" alt="platforms">
+<a href="#swift-package-manager" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-green" alt="spm"></a>
+<a href="/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/license/brillcp/pokedexui" alt="license"></a>
+<img src="https://img.shields.io/github/stars/brillcp/pokedexui?style=social" alt="stars"></p><h1>PokedexUI</h1>
+PokedexUI 是一个由 <a href="https://viktorgidlof.com" target="_blank" rel="noopener noreferrer">Viktor Gidlöf</a> 使用 <strong>SwiftUI</strong> 构建的现代示例应用。
+它集成了 <a href="https://pokeapi.co" target="_blank" rel="noopener noreferrer">PokeAPI</a>，使用清晰的响应式架构，通过 <code>async / await</code> 和 Swift 并发来获取和展示宝可梦数据。</p><p><img width="360" alt="pd1" src="https://github.com/user-attachments/assets/13c2362d-4519-4457-8e8f-94c0b97ad1f9" />
+<img width="360" alt="pd2" src="https://github.com/user-attachments/assets/facfadbd-da67-4de8-9e7d-ac6c4207fbee" /></p><h1>架构 🏛</h1></p><p>PokedexUI 实现了基于协议的 MVVM 架构，遵循 <strong>Clean Architecture</strong> 原则。它具备通用数据获取、SwiftData 持久化，以及使用 Swift 的 <code>@Observable</code> 宏进行响应式 UI 更新。</p><h2>主要架构优势</h2>
+<ul><li>✅ <strong>基于协议</strong>：支持依赖注入和便捷测试</li>
+<li>✅ <strong>通用数据流</strong>：所有数据源统一模式  </li>
+<li>✅ <strong>存储优先</strong>：支持离线使用及自动同步</li>
+<li>✅ <strong>基于 Actor 的并发</strong>：线程安全的数据操作</li>
+<li>✅ <strong>清晰分层</strong>：层之间边界明确</li>
+<li>✅ <strong>类型安全</strong>：通过泛型实现编译时保障</li>
+<li>✅ <strong>响应式 UI</strong>：通过 @Observable 自动更新</li></p><p></ul><h3>SOLID 合规评分：0.92 / 1.0</h3>
+<ul><li><strong>S</strong> 单一职责：每个组件职责聚焦</li>
+<li><strong>O</strong> 开闭原则：通过协议扩展，无需修改即可扩展  </li>
+<li><strong>L</strong> 里氏替换：协议遵循保证可替代性</li>
+<li><strong>I</strong> 接口隔离：专注且内聚的协议</li>
+<li><strong>D</strong> 依赖倒置：依赖抽象而非具体实现</li></p><p></ul><h2>视图层 📱</h2></p><p>根视图 <code>PokedexView</code> 是一个通用视图，接受遵循协议的 ViewModel，支持依赖注入和测试：
+<pre><code class="language-swift">struct PokedexView<
+    PokedexViewModel: PokedexViewModelProtocol,
+    ItemListViewModel: ItemListViewModelProtocol,
+>: View {
+    @State var viewModel: PokedexViewModel
+    let itemListViewModel: ItemListViewModel
+    
+    var body: some View {
+        TabView(selection: $viewModel.selectedTab) {
+            Tab(Tabs.pokedex.title, systemImage: viewModel.grid.icon, value: Tabs.pokedex) {
+                PokedexContent(viewModel: $viewModel)
+            }
+            // Additional tabs...
+        }
+        .applyPokedexConfiguration(viewModel: viewModel)
+    }
+}</code></pre></p><h2>视图模型层 🧾</h2></p><h3>面向协议设计</h3>
+视图模型遵循协议，实现灵活的实现和更简便的测试：
+<pre><code class="language-swift">protocol PokedexViewModelProtocol {
+    var pokemon: [PokemonViewModel] { get }
+    var isLoading: Bool { get }
+    var selectedTab: Tabs { get set }
+    var grid: GridLayout { get set }
+    
+    func requestPokemon() async
+    func sort(by type: SortType)
+}</code></pre></p><h3>通用数据获取</h3>
+<code>DataFetcher</code> 协议提供了一种统一的以存储优先的数据加载模式：
+<pre><code class="language-swift">protocol DataFetcher {
+    associatedtype StoredData
+    associatedtype APIData  
+    associatedtype ViewModel
+    
+    func fetchStoredData() async throws -> [StoredData]
+    func fetchAPIData() async throws -> [APIData]
+    func storeData(_ data: [StoredData]) async throws
+    func transformToViewModel(_ data: StoredData) -> ViewModel
+    func transformForStorage(_ data: APIData) -> StoredData
+}</p><p>extension DataFetcher {
+    func fetchDataFromStorageOrAPI() async -> [ViewModel] {
+        // Storage-first approach with API fallback
+        guard let localData = await fetchStoredDataSafely(), !localData.isEmpty else {
+            return await fetchDataFromAPI()
+        }
+        return localData.map(transformToViewModel)
+    }
+}</code></pre></p><h3>具体实现</h3>
+<code>PokedexViewModel</code> 实现了两个协议：
+<pre><code class="language-swift">@Observable
+final class PokedexViewModel: PokedexViewModelProtocol, DataFetcher {
+    private let pokemonService: PokemonServiceProtocol
+    private let storageReader: DataStorageReader
+    
+    var pokemon: [PokemonViewModel] = []
+    var isLoading: Bool = false
+    
+    func requestPokemon() async {
+        guard !isLoading else { return }
+        pokemon = await withLoadingState {
+            await fetchDataFromStorageOrAPI()
+        }
+    }
+}</code></pre></p><h2>数据层 📦</h2></p><h3>SwiftData 持久化</h3>
+<code>DataStorageReader</code> 提供了一个基于 actor 的通用接口，用于 SwiftData 操作：
+<pre><code class="language-swift">@ModelActor
+actor DataStorageReader {
+    func store<M: PersistentModel>(_ models: [M]) throws {
+        models.forEach { modelContext.insert($0) }
+        try modelContext.save()
+    }
+    
+    func fetch<M: PersistentModel>(
+        sortBy: SortDescriptor<M>
+    ) throws -> [M] {
+        let descriptor = FetchDescriptor<M>(sortBy: [sortBy])
+        return try modelContext.fetch(descriptor)
+    }
+}</code></pre></p><h1>智能搜索系统 🔍</h1></p><p>一个高性能、协议驱动的搜索实现，具备复杂的多条件过滤和实时结果功能。</p><h2>搜索架构</h2></p><p>搜索系统遵循相同的统一 <code>DataFetcher</code> 模式，确保数据加载一致性和离线能力：</p><pre><code class="language-swift">@Observable
+final class SearchViewModel: SearchViewModelProtocol, DataFetcher {
+    var pokemon: [PokemonViewModel] = []
+    var filtered: [PokemonViewModel] = []
+    var query: String = ""
+    
+    func loadData() async {
+        pokemon = await fetchDataFromStorageOrAPI() // Uses unified data fetching
+    }
+}</code></pre></p><h2>高级过滤算法</h2></p><h3>多词处理与匹配</h3>
+<pre><code class="language-swift">func updateFilteredPokemon() {
+    let queryTerms = query
+        .split(whereSeparator: \.isWhitespace)  // Split on whitespace
+        .map { $0.normalize }                   // Diacritic-insensitive
+        .filter { !$0.isEmpty }
+    
+    filtered = pokemon.filter { pokemonVM in
+        let name = pokemonVM.name.normalize
+        let types = pokemonVM.types.components(separatedBy: ",").map { $0.normalize }
+        
+        return queryTerms.allSatisfy { term in
+            name.contains(term) || types.contains(where: { $0.contains(term) })
+        }
+    }
+}</code></pre></p><h2>主要功能</h2>
+<ul><li>✅ <strong>实时过滤</strong>：输入时结果即时更新</li>
+<li>✅ <strong>多词支持</strong>：“fire dragon” 可匹配同时包含两个词的宝可梦</li>
+<li>✅ <strong>类型识别搜索</strong>：可按类型（如“水”、“电”）或名称查找</li>
+<li>✅ <strong>重音符号不敏感</strong>：自动处理带重音的字符</li>
+<li>✅ <strong>存储集成</strong>：优先搜索本地 SwiftData，失败时调用 API</li></p><p></ul>搜索算法确保<strong>所有词汇均匹配</strong>，实现精准结果，同时支持部分名称匹配和类型组合。</p><h2>精灵加载与缓存 🎨</h2>
+异步加载图片，配合智能缓存：
+<pre><code class="language-swift">actor SpriteLoader {
+    func loadSprite(from urlString: String) async -> UIImage? {
+        // Check cache first, then network with automatic caching
+    }
+}</code></pre></p><h1>依赖 🔗</h1>
+PokedexUI 使用 HTTP 框架 <a href="https://github.com/brillcp/Networking" target="_blank" rel="noopener noreferrer">Networking</a> 来进行所有对 PokeAPI 的 API 调用。您可以在这里了解更多信息 <a href="https://github.com/brillcp/Networking#readme" target="_blank" rel="noopener noreferrer">here</a>。它可以通过 Swift 包管理器安装：
+<pre><code class="language-">dependencies: [
+    .package(url: "https://github.com/brillcp/Networking.git", .upToNextMajor(from: "0.9.3"))
+]</code></pre></p><h1>要求 ❗️</h1>
+<ul><li>Xcode 15及以上</li>
+<li>iOS 17及以上（用于 @Observable 和 SwiftData）</li>
+<li>Swift 5.9及以上</li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-29
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/brillcp/PokedexUI/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-09-29 
+    </div>
+    
+</body>
+</html>

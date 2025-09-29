@@ -1,0 +1,1743 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTubeStudio - Page de d&#233;veloppement de l&#39;API VTube Studio</title>
+    <meta name="description" content="Page de d&#233;veloppement de l&#39;API VTube Studio">
+    <meta name="keywords" content="VTubeStudio, French, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "VTubeStudio",
+  "description": "Page de développement de l'API VTube Studio",
+  "author": {
+    "@type": "Person",
+    "name": "DenchiSoft"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 1083
+  },
+  "url": "https://OpenAiTx.github.io/projects/DenchiSoft/VTubeStudio/README-fr.html",
+  "sameAs": "https://raw.githubusercontent.com/DenchiSoft/VTubeStudio/master/README.md",
+  "datePublished": "2025-09-29",
+  "dateModified": "2025-09-29"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/DenchiSoft/VTubeStudio" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    VTubeStudio
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 1083 stars</span>
+                <span class="language">French</span>
+                <span>by DenchiSoft</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1><a href="https://denchisoft.com"><img src="https://raw.githubusercontent.com/DenchiSoft/VTubeStudio/master/Images/vtube_studio_logo_nyan_2.png" width="542" /></a><br> <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="Licence : MIT"></a> <a href="https://discord.gg/VTubeStudio" target="_blank" rel="noopener noreferrer"><img src="https://discordapp.com/api/guilds/652602255748497449/widget.png?style=shield" alt="Discord VTube Studio"></a> <a href="https://github.com/DenchiSoft/VTubeStudio" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/stars/DenchiSoft/VTubeStudio?style=social" alt="Étoiles"></a> <a href="https://twitter.com/VTubeStudio" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/twitter/follow/VTubeStudio.svg?style=social" alt="Suivre sur Twitter"></a></h1></p><p>
+<a href="https://discord.gg/VTubeStudio" target="_blank" rel="noopener noreferrer"><img src="https://discordapp.com/api/guilds/652602255748497449/widget.png?style=banner2" alt="Discord VTube Studio"></a></p><h2>Cherchez-vous le <a href="https://github.com/DenchiSoft/VTubeStudio/wiki" target="_blank" rel="noopener noreferrer">Manuel de VTube Studio</a> ?</h2></p><p>Vous pouvez le trouver ici : https://github.com/DenchiSoft/VTubeStudio/wiki</p><h2>Cherchez-vous une <a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Plugins" target="_blank" rel="noopener noreferrer">liste des Plugins VTube Studio</a> ?</h2></p><p>Consultez cette page : https://github.com/DenchiSoft/VTubeStudio/wiki/Plugins</p><h2>Êtes-vous un développeur cherchant un moyen de recevoir les données de suivi depuis l’application iPhone VTube Studio ?</h2></p><p>Le processus pour demander les données de suivi depuis l’application iOS VTube Studio est décrit ici : https://github.com/DenchiSoft/VTubeStudioBlendshapeUDPReceiverTest</p><h2>Êtes-vous un développeur qui souhaite apprendre à créer des Plugins VTube Studio ?</h2></p><p>Tout ce que vous cherchez se trouve sur cette page. Si vous avez des questions, veuillez les poser sur le <a href="https://discord.gg/VTubeStudio" target="_blank" rel="noopener noreferrer">Discord</a>.</p><h2>Contenu</h2></p><ul><li><a href="#general-info" target="_blank" rel="noopener noreferrer">Informations générales</a></li>
+<li><a href="#legal-info" target="_blank" rel="noopener noreferrer">Informations légales</a></li>
+<li><a href="#available-examples" target="_blank" rel="noopener noreferrer">Plugins et exemples disponibles</a></li>
+<li><a href="#event-api" target="_blank" rel="noopener noreferrer">API d’événements</a></li>
+<li><a href="#api-details" target="_blank" rel="noopener noreferrer">Détails de l’API</a></li>
+  <li><a href="#api-permissions" target="_blank" rel="noopener noreferrer">Permissions API</a></li>
+  <li><a href="#api-server-discovery-udp" target="_blank" rel="noopener noreferrer">Découverte du serveur API (UDP)</a></li>
+  <li><a href="#authentication" target="_blank" rel="noopener noreferrer">Authentification</a></li>
+  <li><a href="#subscribing-to-and-unsubscribing-from-events" target="_blank" rel="noopener noreferrer">S’abonner et se désabonner des événements</a></li>
+  <li><a href="#getting-current-vts-statistics" target="_blank" rel="noopener noreferrer">Obtenir les statistiques actuelles de VTS</a></li>
+  <li><a href="#getting-list-of-vts-folders" target="_blank" rel="noopener noreferrer">Obtenir la liste des dossiers VTS</a></li>
+  <li><a href="#getting-the-currently-loaded-model" target="_blank" rel="noopener noreferrer">Obtenir le modèle actuellement chargé</a></li>
+  <li><a href="#getting-a-list-of-available-vts-models" target="_blank" rel="noopener noreferrer">Obtenir une liste des modèles VTS disponibles</a></li>
+  <li><a href="#loading-a-vts-model-by-its-id" target="_blank" rel="noopener noreferrer">Charger un modèle VTS par son ID</a></li>
+  <li><a href="#moving-the-currently-loaded-vts-model" target="_blank" rel="noopener noreferrer">Déplacer le modèle VTS actuellement chargé</a></li>
+  <li><a href="#requesting-list-of-hotkeys-available-in-current-or-other-vts-model" target="_blank" rel="noopener noreferrer">Demander la liste des raccourcis disponibles dans le modèle VTS actuel ou un autre</a></li>
+  <li><a href="#requesting-execution-of-hotkeys" target="_blank" rel="noopener noreferrer">Demander l’exécution des raccourcis</a></li>
+  <li><a href="#requesting-current-expression-state-list" target="_blank" rel="noopener noreferrer">Demande de liste des expressions et de leur état</a></li>
+  <li><a href="#requesting-activation-or-deactivation-of-expressions" target="_blank" rel="noopener noreferrer">Demande d’activation/désactivation des expressions</a></li>
+  <li><a href="#requesting-list-of-artmeshes-in-current-model" target="_blank" rel="noopener noreferrer">Demande de liste des ArtMeshes dans le modèle actuel</a></li>
+  <li><a href="#tint-artmeshes-with-color" target="_blank" rel="noopener noreferrer">Teindre les ArtMeshes avec une couleur</a></li>
+  <li><a href="#getting-scene-lighting-overlay-color" target="_blank" rel="noopener noreferrer">Obtenir la couleur de superposition de l’éclairage de la scène</a></li>
+  <li><a href="#checking-if-face-is-currently-found-by-tracker" target="_blank" rel="noopener noreferrer">Vérifier si le visage est actuellement détecté par le tracker</a></li>
+  <li><a href="#requesting-list-of-available-tracking-parameters" target="_blank" rel="noopener noreferrer">Demande de liste des paramètres de suivi disponibles</a></li>
+  <li><a href="#get-the-value-for-one-specific-parameter-default-or-custom" target="_blank" rel="noopener noreferrer">Obtenir la valeur d’un paramètre spécifique, par défaut ou personnalisé</a></li>
+  <li><a href="#get-the-value-for-all-live2d-parameters-in-the-current-model" target="_blank" rel="noopener noreferrer">Obtenir la valeur de tous les paramètres Live2D dans le modèle actuel</a></li>
+  <li><a href="#adding-new-tracking-parameters-custom-parameters" target="_blank" rel="noopener noreferrer">Ajout de nouveaux paramètres de suivi (« paramètres personnalisés »)</a></li>
+  <li><a href="#delete-custom-parameters" target="_blank" rel="noopener noreferrer">Supprimer des paramètres personnalisés</a></li>
+  <li><a href="#feeding-in-data-for-default-or-custom-parameters" target="_blank" rel="noopener noreferrer">Fournir des données pour les paramètres par défaut ou personnalisés</a></li>
+  <li><a href="#getting-physics-settings-of-currently-loaded-vts-model" target="_blank" rel="noopener noreferrer">Obtenir les réglages physiques du modèle VTS actuellement chargé</a></li>
+  <li><a href="#overriding-physics-settings-of-currently-loaded-vts-model" target="_blank" rel="noopener noreferrer">Remplacer les réglages physiques du modèle VTS actuellement chargé</a></li>
+  <li><a href="#get-and-set-ndi-settings" target="_blank" rel="noopener noreferrer">Obtenir et/ou définir les réglages NDI</a></li>
+  <li><a href="#requesting-list-of-available-items-or-items-in-scene" target="_blank" rel="noopener noreferrer">Demande de liste des éléments disponibles ou des éléments dans la scène</a></li>
+  <li><a href="#loading-item-into-the-scene" target="_blank" rel="noopener noreferrer">Chargement d’un élément dans la scène</a></li>
+  <li><a href="#removing-item-from-the-scene" target="_blank" rel="noopener noreferrer">Suppression d’un élément de la scène</a></li>
+  <li><a href="#controling-items-and-item-animations" target="_blank" rel="noopener noreferrer">Contrôle des éléments et des animations d’éléments</a></li>
+  <li><a href="#moving-items-in-the-scene" target="_blank" rel="noopener noreferrer">Déplacement des éléments dans la scène</a></li>
+  <li><a href="#set-item-within-model-sorting-order" target="_blank" rel="noopener noreferrer">Définir l’ordre de tri des éléments dans le modèle</a></li>
+  <li><a href="#asking-user-to-select-artmeshes" target="_blank" rel="noopener noreferrer">Demander à l’utilisateur de sélectionner des ArtMeshes</a></li>
+  <li><a href="#pin-items-to-the-model" target="_blank" rel="noopener noreferrer">Épingler des éléments au modèle</a></li>
+  <li><a href="#get-list-of-post-processing-effects-and-state" target="_blank" rel="noopener noreferrer">Obtenir la liste des effets de post-traitement et leur état</a></li>
+  <li><a href="#set-post-processing-effects" target="_blank" rel="noopener noreferrer">Définir les effets de post-traitement</a></li>
+  
+</ul><h2>Informations générales</h2></p><p>VTube Studio dispose d’une <strong>API publique</strong>. Cela signifie que vous pouvez écrire des plugins/scripts qui peuvent déclencher des raccourcis clavier, alimenter les données de suivi facial, charger des éléments, charger des modèles, recevoir des notifications d’événements, teindre les ArtMeshes du modèle et bien plus encore.</p><p>Si vous développez un plugin ou une application pouvant être utilisée avec VTube Studio, veuillez ouvrir une PR et je l’ajouterai à la liste sur cette page.</p><h2>Informations légales</h2></p><p>Vous êtes libre d’écrire, publier et vendre tout plugin que vous souhaitez pour VTube Studio. Aucune autorisation n’est requise et il n’y a pas de frais de licence ni de redevances.</p><h2>Exemples disponibles</h2></p><p>Si vous êtes un utilisateur de VTube Studio à la recherche de plugins utilisables, consultez la <a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Plugins" target="_blank" rel="noopener noreferrer">page wiki de la liste des plugins</a>.</p><p>Si vous êtes un développeur à la recherche d’exemples/bibliothèques à consulter pour faciliter l’intégration de l’API VTube Studio dans votre application, veuillez consulter le tableau suivant.</p><p>:warning: <strong>Si vous avez créé quelque chose que vous souhaitez voir inclus ici, ouvrez une pull request avec le tableau modifié !!</strong> :warning:</p><p>| Plugin | Développeur | Type | Explication |
+| --- | --- | --- | --- |
+| <a href="https://cheers.hawk.bar/" target="_blank" rel="noopener noreferrer">Cheers Bot</a> | <a href="https://twitter.com/HawkbarGaming" target="_blank" rel="noopener noreferrer">Hawkbar</a> | Application | Une plateforme d’intégration Twitch basée sur le web qui peut déclencher des actions dans VTube Studio lorsque les spectateurs utilisent des points de chaîne, parmi de nombreuses autres fonctionnalités. |
+| <a href="https://github.com/Hawkbat/VTubeStudioJS" target="_blank" rel="noopener noreferrer">VTubeStudioJS</a> | <a href="https://twitter.com/HawkbarGaming" target="_blank" rel="noopener noreferrer">Hawkbar</a> | Bibliothèque | Une bibliothèque JavaScript destinée aux autres auteurs de plugins qui implémente l’API WebSocket de VTube Studio. Compatible avec NodeJS et les navigateurs. |
+| <a href="https://github.com/Renpona/VTStudio-Linker-SMB1" target="_blank" rel="noopener noreferrer">VTS Linker - SMB1</a> | <a href="https://twitter.com/renpona" target="_blank" rel="noopener noreferrer">Renpona</a> | Exemple | Un prototype pour lire les données d’une copie émulée de Super Mario Bros, et utiliser ces données pour déplacer et recolorer automatiquement un modèle Live2D dans VTS selon ce qui se passe dans le jeu. |
+| <a href="https://github.com/Raelice/VTchaos" target="_blank" rel="noopener noreferrer">VTchaos</a> | <a href="https://twitter.com/theraelice" target="_blank" rel="noopener noreferrer">Raelice</a> | Application | Un programme qui lit les chats YouTube et Twitch pour effectuer des fonctions telles que le changement de modèle, la rotation, les raccourcis clavier et le mouvement dans VTube Studio via des commandes simples dans le chat. |
+| <a href="https://mixitupapp.com/" target="_blank" rel="noopener noreferrer">Mix It Up</a> | <a href="https://twitter.com/mixitupapp" target="_blank" rel="noopener noreferrer">Mix It Up</a> | Application | Bot de streaming pour chat, événements et autres fonctionnalités impressionnantes ! |
+| <a href="https://github.com/mlo40/VsPyYt" target="_blank" rel="noopener noreferrer">VsPyYt</a> | <a href="https://emlo40.com" target="_blank" rel="noopener noreferrer">emlo40</a> | Application/Cadre | VsPyYt est une application en ligne de commande capable de lire le chat YouTube et d’exécuter des commandes sauvegardées dans token.json. Vous pouvez aussi l’utiliser comme base pour des programmes Python interagissant avec VTube Studio. |
+| <a href="https://github.com/FomTarro/VTS-Sharp" target="_blank" rel="noopener noreferrer">VTS-Sharp</a> | <a href="https://www.twitter.com/FomTarro" target="_blank" rel="noopener noreferrer">Skeletom</a> | Bibliothèque | Une bibliothèque Unity/C# destinée aux autres auteurs de plugins qui implémente l’API WebSocket de VTube Studio. |
+| <a href="https://github.com/eslym/node-red-contrib-vts" target="_blank" rel="noopener noreferrer">node-red-contrib-vts</a> | <a href="https://github.com/eslym" target="_blank" rel="noopener noreferrer">0nepeop1e</a> | Bibliothèque | Un package de bibliothèque qui fournit un nœud pour Node-RED afin d’intégrer VTube Studio. |
+| <a href="https://github.com/MechaWolfVtuberShin/VTS-Mod/releases/tag/vts-mod" target="_blank" rel="noopener noreferrer">VTS Mod</a> | <a href="https://github.com/MechaWolfVtuberShin" target="_blank" rel="noopener noreferrer">MechaWolfVtuber_Shin</a> | Application | Un programme qui permet aux utilisateurs de changer la couleur de surface du modèle, y compris le RGB. Il peut aussi changer la rotation du modèle. |
+| <a href="https://tie-tools.tiberiusx.me" target="_blank" rel="noopener noreferrer">Tie Tools: VTS Color Editor</a> | <a href="https://www.twitter.com/prof_tiberius" target="_blank" rel="noopener noreferrer">Prof. Tiberius</a> | Application | Application web offrant un contrôle approfondi des couleurs et de l’opacité de parties spécifiques de votre modèle. |
+| <a href="https://github.com/walfie/vtubestudio-rs" target="_blank" rel="noopener noreferrer">vtubestudio-rs</a> | <a href="https://www.twitter.com/walfieee" target="_blank" rel="noopener noreferrer">Walfie</a> | Bibliothèque | Une bibliothèque Rust destinée aux autres auteurs de plugins qui implémente l’API WebSocket de VTube Studio. |
+| <a href="https://skeletom-ch.itch.io/vts-heartrate" target="_blank" rel="noopener noreferrer">vts-heartrate</a> | <a href="https://www.twitter.com/FomTarro" target="_blank" rel="noopener noreferrer">Skeletom</a> | Application | Un plugin qui connecte des données de fréquence cardiaque en temps réel à VTube Studio, permettant une teinte dynamique du modèle et fournissant des paramètres de suivi personnalisés basés sur le pouls. |
+| <a href="https://satetsu888.github.io/vts-chameleon/" target="_blank" rel="noopener noreferrer">vts-chameleon</a> | <a href="https://www.twitter.com/satetsu888" target="_blank" rel="noopener noreferrer">satetsu888</a> | Application | Un plugin pour appliquer des teintes de couleur. Vous pouvez jouer en modifiant les tons de couleur des cheveux, de la peau, de l’uniforme, etc. de vos modèles. |
+| <a href="https://kawaentertainment.itch.io/viewlink" target="_blank" rel="noopener noreferrer">ViewLink</a> | <a href="https://twitter.com/kawa_entertain" target="_blank" rel="noopener noreferrer">KawaEntertainment</a> | Application | Êtes-vous un VTuber qui souhaite streamer des jeux VR mais ne dispose que d’un modèle Live2D ? Avec ViewLink, votre avatar Live2D peut réagir au gameplay VR sans configuration compliquée ni matériel supplémentaire ! |
+| <a href="https://lualucky.itch.io/vts-desktop-audio-plugin" target="_blank" rel="noopener noreferrer">VTS Desktop Audio</a> | <a href="https://twitter.com/LuaVLucky" target="_blank" rel="noopener noreferrer">Lua Lucky</a> | Application | Un plugin pour utiliser l’audio du bureau comme paramètres d’entrée dans VTS. |
+| <a href="https://github.com/Genteki/pyvts" target="_blank" rel="noopener noreferrer">pyvts</a> | <a href="https://github.com/Genteki" target="_blank" rel="noopener noreferrer">Genteki</a> | Bibliothèque | Une bibliothèque Python pour interagir avec l’API VTube Studio. |
+| <a href="https://github.com/chuigda/Project-WG/tree/master/extra/dsys" target="_blank" rel="noopener noreferrer">DSYS: Dummy System</a> | <a href="https://github.com/chuigda" target="_blank" rel="noopener noreferrer">Chuigda</a> | Application | Un plugin simple pour enregistrer/rejouer/semi-piloter avec les paramètres du modèle VTS. |
+| <a href="https://github.com/HueVirtualCreature/SAMMIVtubeStudioExtension" target="_blank" rel="noopener noreferrer">SAMMIVtubeStudioExtension</a> | <a href="https://twitter.com/Hue_SwordDevil" target="_blank" rel="noopener noreferrer">hue</a> | Plugin | Un plugin pour l’outil d’automatisation de streaming appelé <a href="https://sammi.solutions/" target="_blank" rel="noopener noreferrer">SAMMI</a> |
+| <a href="https://streamer.bot" target="_blank" rel="noopener noreferrer">Streamer.bot</a> | <a href="https://streamer.bot" target="_blank" rel="noopener noreferrer">Streamer.bot</a> | Application | Logiciel de streaming multi-plateforme avancé avec une <a href="https://docs.streamer.bot/guide/integrations/vtube-studio" target="_blank" rel="noopener noreferrer">intégration officielle VTubeStudio</a> |
+| <a href="https://github.com/lgc2333/coovts" target="_blank" rel="noopener noreferrer">coovts</a> | <a href="https://github.com/lgc2333" target="_blank" rel="noopener noreferrer">LgCookie</a> | Bibliothèque | Une autre bibliothèque pour créer des plugins VTube Studio en Python (en développement précoce). Complète avec hints de type \| design asynchrone \| validation de données basée sur Pydantic |
+| <a href="https://www.nekomaido.com/plugin/vts-terminal" target="_blank" rel="noopener noreferrer">VTS Terminal</a> | <a href="https://www.nekomaido.com" target="_blank" rel="noopener noreferrer">Neko Maido</a> | Application | Un plugin qui fournit de nombreuses utilités, peut déclencher des raccourcis clavier, ajuster la position du modèle et les effets visuels, et générer un manuel PDF pour votre modèle Live2D. |</p><h1>API Événements</h1></p><p>Il existe une autre page wiki qui décrit l’<strong>API Événements</strong>, que vous pouvez utiliser pour vous abonner aux événements se produisant dans VTube Studio, tels que le chargement des modèles ou l’exécution des raccourcis clavier. Veuillez consulter la page sur les événements <a href="Events/" target="_blank" rel="noopener noreferrer">juste ici</a>.</p><h1>Détails de l’API</h1></p><p>Le serveur websocket VTube Studio fonctionne sur <code>ws://localhost:8001</code>. C’est la valeur par défaut, mais les utilisateurs peuvent aussi changer le port dans l’application. Les websockets supportent en général les messages <code>binary</code> et <code>text</code>. VTube Studio répondra toujours avec des messages <code>text</code> et il est recommandé d’envoyer aussi des messages <code>text</code> à l’API. Vous pouvez aussi envoyer des messages <code>binary</code> mais dans ce cas, assurez-vous qu’ils soient encodés en UTF-8.</p><p>Si votre plugin ne peut pas se connecter au serveur websocket, dites aux utilisateurs de vérifier si le port est correct ou s’il y a des réglages de pare-feu/antivirus qui pourraient empêcher la connexion. Plus important encore, vous devez demander aux utilisateurs d’« Autoriser l’accès à l’API Plugin » dans VTube Studio. C’est une option sur la page principale de configuration dans VTS.  
+Vous devez aussi vous assurer que votre plugin supporte la configuration du port utilisé pour la connexion.</p><p>
+Si vous pouvez vous connecter, la première chose à essayer est de vérifier le statut de votre session.</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "MyIDWithLessThan64Characters",
+	"messageType": "APIStateRequest"
+}</code></pre>
+<strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"messageType": "APIStateResponse",
+	"requestID": "MyIDWithLessThan64Characters",
+	"data": {
+		"active": true,
+		"vTubeStudioVersion": "1.9.0",
+		"currentSessionAuthenticated": false
+	}
+}</code></pre>
+Chaque requête doit contenir <code>"apiName" : "VTubeStudioPublicAPI"</code> et la version de l'API utilisée, qui sera <code>"1.0"</code> au moment de la première sortie.
+Cette version de l'API restera la même tant que des changements incompatibles ne seront pas apportés au comportement/aux charges utiles. Cela signifie que de nouvelles fonctionnalités peuvent être ajoutées à l'API (y compris de nouveaux champs dans des charges utiles existantes) sans augmenter la version. Assurez-vous que votre application peut gérer cela et ne plante pas si elle rencontre des champs inconnus lors de la désérialisation.</p><p>Un exemple de changement incompatible serait de renommer un champ existant ou de le supprimer complètement de la charge utile. S'il y a des changements incompatibles, la version de l'API sera augmentée pour eux afin que les anciennes API puissent toujours être utilisées telles quelles.</p><p>Vous pouvez ajouter le champ <code>"requestID"</code> à chaque requête. Ceci est optionnel mais recommandé, car cela vous permet d'identifier les réponses à vos requêtes.
+Cet ID sera également utilisé pour enregistrer la requête dans les journaux de VTube Studio ainsi que toute erreur. Si quelque chose tourne mal, vous pouvez l'utiliser comme référence pour vérifier toute erreur liée à cette requête dans les journaux.</p><p>Vous pouvez utiliser le même ID ou des IDs différents pour chaque requête. Si fournis, les IDs doivent contenir uniquement des caractères ASCII et avoir une longueur d'au moins 1 et au maximum 64 caractères.
+Si vous n'ajoutez pas le champ <code>"requestID"</code>, VTube Studio ajoutera un UUID généré aléatoirement pour la requête et le renverra avec la réponse.</p><p>Le champ <code>"currentSessionAuthenticated"</code> vous indiquera si la session actuelle a déjà été authentifiée.</p><p>Tous les IDs d'erreur possibles sont listés sur la page <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorsID.cs</a>.</p><p>Une fois connecté, le client peut interroger à tout moment des informations sur l'état actuel de l'application.</p><h2>Permissions de l'API</h2></p><p>Certaines fonctionnalités offertes par l'API VTube Studio sont verrouillées derrière des <strong>permissions</strong> supplémentaires qui doivent être demandées par le plugin après authentification. Comme les permissions dans iOS et Android, cela permet de s'assurer que les utilisateurs comprennent quand les plugins utilisent des fonctionnalités pouvant être considérées comme risquées ou potentiellement dangereuses, comme le chargement d'images arbitraires en tant qu'éléments.</p><p>Lors de la demande d'une permission, une fenêtre contextuelle est affichée à l'utilisateur expliquant ce que fait la permission. L'utilisateur peut alors choisir de l'accorder ou de la refuser. Pour plus d'informations sur la manière de demander des permissions et pourquoi vous en avez besoin, consultez la <a href="Permissions/" target="_blank" rel="noopener noreferrer">page des permissions</a>.</p><p><a href="Permissions/" target="_blank" rel="noopener noreferrer"><img src="/Images/vts_api_permissions_1_transparent.png" alt="Écran de demande de permission de VTube Studio"></a></p><h2>Découverte du serveur API (UDP)</h2></p><p>VTube Studio diffuse également l'état de l'API sur le réseau local via UDP sur le port 47779. Ceci est fait toutes les deux secondes même si l'utilisateur a désactivé l'API.
+L'<code>instanceID</code> est un ID aléatoire généré pour une instance de VTube Studio au démarrage. Il ne change pas tant que cette instance fonctionne, donc deux instances de VTube Studio auront des IDs différents.</p><p>Le <code>windowTitle</code> est le texte du titre de la fenêtre. Sous Windows, cela sera différent pour chaque instance de VTS. Lorsqu'il y a plusieurs instances lancées, la première aura pour titre <code>VTube Studio</code>, la deuxième aura pour titre <code>VTube Studio Window 2</code>, et ainsi de suite. Sur macOS, toutes les instances auront le titre <code>VTube Studio</code></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1630159656406,
+	"messageType": "VTubeStudioAPIStateBroadcast",
+	"requestID": "VTubeStudioAPIStateBroadcast",
+	"data": {
+		"active": false,
+		"port": 8001,
+		"instanceID": "93aa0d0494304fddb057ae8a295c4e59",
+		"windowTitle": "VTube Studio"
+	}
+}</code></pre></p><h2>Authentification</h2></p><p>Avant d’utiliser l’API, vous devez vous authentifier une fois. Pour cela, vous devez fournir le nom de votre plugin et le nom du développeur. Ils doivent tous deux comporter entre 3 et 32 caractères.</p><p>Cela se fait en demandant un jeton pour votre plugin. Envoyez la requête suivante :</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "AuthenticationTokenRequest",
+	"data": {
+		"pluginName": "My Cool Plugin",
+		"pluginDeveloper": "My Name",
+		"pluginIcon": "iVBORw0.........KGgoA="
+	}
+}</code></pre></p><p>Si l'utilisateur a activé l'accès à l'API, cela déclenchera une fenêtre contextuelle dans VTS demandant à l'utilisateur s'il souhaite autoriser le plugin <code>"Mon Super Plugin"</code> par <code>"Mon Nom"</code> à contrôler VTube Studio. <code>"pluginIcon"</code> peut être ajouté en option. Il doit s'agir d'une image PNG ou JPG encodée en base64 avec des dimensions exactes de 128x128 pixels. Si vous ajoutez cela, l'icône sera utilisée dans la fenêtre contextuelle de demande d'accès au plugin affichée à l'utilisateur. S'ils cliquent sur "Autoriser", vous recevrez la réponse suivante :</p><p><strong><code>RÉPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "AuthenticationTokenResponse",
+	"data": {
+		"authenticationToken": "adcd-123-ef09-some-token-string-abcd"
+	}
+}</code></pre></p><p>Le champ <code>"authenticationToken"</code> contient une chaîne ASCII qui servira de jeton pour l'authentification avec l'API. Elle ne dépasse pas 64 caractères.
+S'ils refusent l'accès, vous recevrez l'erreur suivante :</p><p><strong><code>RESPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "APIError",
+	"data": {
+		"errorID": 50,
+		"message": "User has denied API access for your plugin."
+	}
+}</code></pre>
+Les utilisateurs peuvent révoquer l'accès API à votre plugin à tout moment depuis VTube Studio. S'ils le font, vous obtiendrez également cette erreur lors de l'envoi de toute requête. Vous pouvez essayer de vous réauthentifier dans ce cas.</p><p>Vous n'avez besoin d'obtenir le jeton qu'une seule fois. Avec ce jeton, vous pouvez maintenant vous authentifier pour cette session. Lors de la session suivante (par exemple lorsque VTS est redémarré ou que votre plugin doit se reconnecter à VTS pour une raison quelconque), vous pouvez utiliser le même jeton pour vous authentifier à nouveau afin de ne pas avoir à envoyer les requêtes pour obtenir un jeton, l'utilisateur ne sera donc invité à autoriser votre plugin qu'une seule fois.</p><p>Pour vous authentifier pour une session, envoyez la requête suivante avec votre jeton :</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "AuthenticationRequest",
+	"data": {
+		"pluginName": "My Cool Plugin",
+		"pluginDeveloper": "My Name",
+		"authenticationToken": "adcd-123-ef09-some-token-string-abcd"
+	}
+}</code></pre>
+<code>"pluginName"</code> et <code>"pluginDeveloper"</code> doivent correspondre aux valeurs que vous avez utilisées lors de la demande du jeton, sinon la requête d'authentification échouera.</p><p>Si le jeton est valide et que l'accès à l'API n'a pas été révoqué par l'utilisateur, vous obtiendrez la réponse suivante :</p><p><strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "AuthenticationResponse",
+	"data": {
+		"authenticated": true,
+		"reason": "Token valid. The plugin is authenticated for the duration of this session."
+	}
+}</code></pre></p><p>Félicitations, vous êtes authentifié et pouvez utiliser l’API VTube Studio.</p><p>Si des champs obligatoires sont manquants, vous recevrez une réponse d’erreur. Si tous les champs sont présents et correctement formatés mais que le jeton est invalide ou a été révoqué par l’utilisateur, <code>"authenticated"</code> sera renvoyé comme <code>false</code>.</p><p><strong>Note concernant le champ <code>data</code> :</strong> Certaines requêtes incluent un champ objet JSON <code>data</code> et d’autres non. Pour vous faciliter la tâche, vous pouvez également inclure ce champ dans les requêtes qui n’en ont pas besoin. Il sera simplement ignoré par VTube Studio, même si vous le laissez vide ou le définissez à <code>null</code>/<code>undefined</code>. VTube Studio renverra ce champ avec chaque requête pour faciliter la désérialisation pour votre plugin. Si la réponse ne contient pas de données, le champ contiendra un objet JSON vide.</p><p><strong>Note concernant le champ <code>timestamp</code> :</strong> Toutes les réponses contiennent également un champ <code>"timestamp"</code> qui contient le timestamp UNIX en millisecondes auquel votre requête a été traitée. Vous pouvez inclure un champ <code>"timestamp"</code> dans vos requêtes, mais il sera ignoré.</p><h2>S’abonner et se désabonner des <a href="Events/" target="_blank" rel="noopener noreferrer">événements</a></h2></p><p>Dans les versions précédentes de l’API, des informations comme le modèle chargé ou les éléments devaient être interrogées de manière répétée par les plugins. Désormais, VTube Studio prend en charge l’abonnement à des <strong>« événements »</strong>, ce qui fera que VTube Studio vous enverra des messages chaque fois que quelque chose de pertinent pour votre plugin se produit. Les événements incluent la notification du chargement des éléments, la perte ou la récupération du suivi, le clic sur le modèle et bien d’autres.</p><p>Veuillez consulter la page sur les événements <a href="Events/" target="_blank" rel="noopener noreferrer">juste ici</a>.</p><h2>Obtention des statistiques VTS actuelles</h2></p><p><strong><code>REQUÊTE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "StatisticsRequest"
+}</code></pre>
+<strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "StatisticsResponse",
+	"data": {
+		"uptime": 1439384,
+		"framerate": 73,
+		"vTubeStudioVersion": "1.9.0",
+		"allowedPlugins": 7,
+		"connectedPlugins": 2,
+		"startedWithSteam": true,
+		"windowWidth": 1031,
+		"windowHeight": 812,
+		"windowIsFullscreen": false
+	}
+}</code></pre>
+<code>"uptime"</code> contient le nombre de millisecondes depuis le démarrage de VTube Studio. <code>"framerate"</code> est la valeur actuelle des FPS de rendu. <code>"allowedPlugins"</code> est le nombre de plugins que l'utilisateur a actuellement autorisé à utiliser VTube Studio, <code>"connectedPlugins"</code> est le nombre de plugins actuellement connectés à l'API de VTube Studio. <code>"startedWithSteam"</code> est vrai si l'application a été lancée via Steam, faux sinon (si le fichier <code>.bat</code> a été utilisé pour démarrer VTS sans Steam).</p><p>La largeur et la hauteur de la fenêtre sont en pixels.</p><h2>Obtention de la liste des dossiers VTS</h2></p><p>Retourne le nom de divers dossiers de VTube Studio. Ils se trouvent dans le dossier <code>StreamingAssets</code> des fichiers du jeu.</p><p><strong><code>REQUÊTE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "VTSFolderInfoRequest"
+}</code></pre></p><p><strong><code>RÉPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "VTSFolderInfoResponse",
+	"data": {
+		"models": "Live2DModels",
+		"backgrounds": "Backgrounds",
+		"items": "Items",
+		"config": "Config",
+		"logs": "Logs",
+		"backup": "Backup"
+	}
+}</code></pre></p><h2>Récupérer le modèle actuellement chargé</h2></p><p><strong><code>DEMANDE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "CurrentModelRequest"
+}</code></pre>
+<strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "CurrentModelResponse",
+	"data": {
+		"modelLoaded": true,
+		"modelName": "My Currently Loaded Model",
+		"modelID": "UniqueIDToIdentifyThisModelBy",
+		"vtsModelName": "Model.vtube.json",
+		"vtsModelIconName": "ModelIconPNGorJPG.png",
+		"live2DModelName": "Model.model3.json",
+		"modelLoadTime": 3021,
+		"timeSinceModelLoaded": 419903,
+		"numberOfLive2DParameters": 29,
+		"numberOfLive2DArtmeshes": 136,
+		"hasPhysicsFile": true,
+		"numberOfTextures": 2,
+		"textureResolution": 4096,
+		"modelPosition": {
+			"positionX": -0.1,
+			"positionY": 0.4,
+			"rotation": 9.33,
+			"size": -61.9
+		}
+	}
+}</code></pre>
+<code>"modelLoaded"</code> sera <code>true</code> si un modèle est actuellement chargé. Si aucun modèle n’est chargé ou si un modèle est en cours de chargement, cela sera faux. Dans ce cas, toutes les autres valeurs seront vides (ou zéro pour les entiers).</p><p><code>"modelLoadTime"</code> est le temps en millisecondes qu’il a fallu pour charger le modèle actuel. <code>"timeSinceModelLoaded"</code> contient le temps en millisecondes écoulé depuis que le modèle a été chargé.</p><p><code>"vtsModelIconName"</code> contient le nom de l’icône utilisée pour ce modèle dans la barre de sélection des modèles dans VTube Studio. Si le modèle n’a pas d’icône définie, ce sera une chaîne vide. Tous les noms de fichiers retournés dans cette requête sont relatifs au dossier respectif du modèle.</p><p>Le tableau <code>"modelPosition"</code> contient la position, la rotation et la taille actuelles du modèle. Pour plus d’informations sur la manière d’interpréter ces valeurs, voir <code>MoveModelRequest</code>.</p><h2>Obtenir une liste des modèles VTS disponibles</h2></p><p><strong><code>REQUEST</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "AvailableModelsRequest"
+}</code></pre>
+<strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "AvailableModelsResponse",
+	"data": {
+		"numberOfModels": 2,
+		"availableModels": [
+			{
+				"modelLoaded": false,
+				"modelName": "My First Model",
+				"modelID": "UniqueIDToIdentifyThisModelBy1",
+				"vtsModelName": "Model_1.vtube.json",
+				"vtsModelIconName": "ModelIconPNGorJPG_1.png"
+			},
+			{
+				"modelLoaded": true,
+				"modelName": "My Second Model",
+				"modelID": "UniqueIDToIdentifyThisModelBy2",
+				"vtsModelName": "Model_2.vtube.json",
+				"vtsModelIconName": "ModelIconPNGorJPG_1.png"
+			}
+		]
+	}
+}</code></pre>
+<code>"modelLoaded"</code> est <code>true</code> si le modèle respectif est actuellement chargé dans VTube Studio, <code>false</code> sinon. </p><h2>Chargement d’un modèle VTS par son ID</h2></p><p><strong><code>REQUÊTE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ModelLoadRequest",
+	"data": {
+		"modelID": "UniqueIDOfModelToLoad"
+	}
+}</code></pre></p><p><strong><code>RÉPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ModelLoadResponse",
+	"data": {
+		"modelID": "UniqueIDOfModelThatWasJustLoaded"
+	}
+}</code></pre></p><p>Cela peut échouer et renvoyer une erreur si l’application est actuellement dans un état où aucun modèle ne peut être chargé/déchargé. Cela inclut le fait d’avoir des fenêtres de configuration ouvertes ou une opération de chargement de modèle déjà en cours. Il y a aussi un temps de recharge global de 2 secondes pour cette requête.</p><p>Si un ID de modèle vide est passé, le modèle actuellement chargé sera déchargé (ne fera rien si aucun modèle n’est chargé).</p><h2>Déplacement du modèle VTS actuellement chargé</h2></p><p>Si un modèle est chargé, cela vous permet de changer sa position, sa rotation et sa taille. Si aucun modèle n’est chargé, cela renverra une erreur, voir <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorsID.cs</a></p><p>Les champs requis dans cette requête sont <code>"timeInSeconds"</code> et <code>"valuesAreRelativeToModel"</code>. <code>"timeInSeconds"</code> est le temps en secondes que le déplacement doit prendre et doit être une valeur flottante entre 0 et 2. Si cela est réglé à 0, le modèle apparaîtra instantanément à la position donnée. Une valeur plus élevée fera que le modèle se déplacera, tournera et grandira/rétrécira en douceur vers la position donnée (fondu entrant/sortant). Pendant que le déplacement est en cours, l’utilisateur ne peut pas déplacer manuellement le modèle en le faisant glisser. Cela sera de nouveau possible environ une demi-seconde après que le modèle ait fini de se déplacer vers la destination.</p><p>Des <code>MoveModelRequest</code> successifs peuvent être envoyés sans attendre la fin de celui en cours. Si un est en cours, il sera interrompu et remplacé par le nouveau. Vous pouvez même prendre un contrôle complet du mouvement en envoyant une requête à chaque image avec 0 comme <code>"timeInSeconds"</code>.</p><p>La <code>"size"</code> est donnée comme un flottant entre -100 (plus petit) et +100 (plus grand). Pour <code>"positionX"</code>, <code>"positionY"</code> et <code>"rotation"</code>, veuillez vous référer à l’image suivante :</p><p>#### Le système de coordonnées VTS
+<img src="/Images/coordinate_explanation.png" alt="Le système de coordonnées VTS"></p><p>Les nombres sur les chats représentent les coordonnées <strong>[X/Y]</strong> que vous pouvez passer en utilisant <code>"positionX"</code> et <code>"positionY"</code>. Par exemple, envoyer [0/0] positionnera le milieu du modèle au milieu de l’écran. Ce que le « milieu du modèle » est peut être défini librement dans Live2D Cubism et peut varier entre les modèles. Vous pouvez bien sûr aussi envoyer des valeurs beaucoup plus grandes/petites pour déplacer le modèle hors écran. <code>"positionX"</code> et <code>"positionY"</code> doivent être entre -1000 et 1000.</p><p>Les nombres autour du cercle représentent les angles que vous pouvez définir en utilisant <code>"rotation"</code>. Les valeurs pour ce paramètre doivent être comprises entre -360 et 360. Notez qu’il y a deux représentations pour chaque angle : positive pour une rotation dans le sens horaire, négative pour une rotation dans le sens antihoraire. Celle que vous utilisez dépend de vous, il n’y a pas de différence. Lorsque vous envoyez une <code>CurrentModelRequest</code>, la réponse contiendra aussi la position/rotation/taille du modèle. Dans cette réponse, l’angle sera toujours représenté en notation positive.</p><p>Vous n’êtes pas obligé de fournir toutes les valeurs dans la requête. Par exemple, vous pourriez juste fournir des positions ou juste une rotation ou toute autre combinaison. Toutes les valeurs non incluses dans la requête seront ignorées lors du réglage de la position/rotation/taille. Ainsi, vous pourriez par exemple ne changer que la coordonnée X du modèle en laissant tout le reste tel quel.</p><p>Si <code>"valuesAreRelativeToModel"</code> est réglé sur <code>false</code>, les valeurs de votre requête seront prises comme des valeurs absolues et le modèle sera déplacé à cette position. Si <code>"valuesAreRelativeToModel"</code> est réglé sur <code>true</code>, les valeurs sont considérées comme relatives à la position actuelle du modèle. Supposons que vous le régliez sur <code>true</code> et n’incluiez qu’une rotation de <code>10</code> dans votre requête. Cela ferait tourner le modèle de 10 degrés dans le sens horaire, depuis la rotation actuelle sans toucher à la position ni à la taille. Cela peut être très utile pour implémenter des effets qui doivent déplacer le modèle sur place, comme le secouer indépendamment de sa position à l’écran.</p><p>Si vous souhaitez déplacer le modèle vers une position pixel fixe ou par un certain nombre de pixels, vous devrez calculer vous-même les coordonnées respectives. Vous pouvez le faire en obtenant la largeur et la hauteur de la fenêtre en pixels via la <code>StatisticsRequest</code>.</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "MoveModelRequest",
+	"data": {
+		"timeInSeconds": 0.2,
+		"valuesAreRelativeToModel": false,
+		"positionX": 0.1,
+		"positionY": -0.7,
+		"rotation": 16.3,
+		"size": -22.5
+	}
+}</code></pre>
+<strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "MoveModelResponse",
+	"data": { }
+}</code></pre>
+<h2>Demande de liste des raccourcis clavier disponibles dans le modèle VTS actuel ou un autre</h2></p><p><strong><code>REQUEST</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "HotkeysInCurrentModelRequest",
+	"data": {
+		"modelID": "Optional_UniqueIDOfModel",
+		"live2DItemFileName": "Optional_Live2DItemFileName"
+	}
+}</code></pre></p><p>Le <code>"modelID"</code> (et l'objet <code>"data"</code> en général ici) est optionnel. S'il n'est pas fourni, les raccourcis clavier pour le modèle actuel sont retournés. Si l'ID du modèle est fourni, les raccourcis clavier du modèle avec l'ID donné sont retournés. Si aucun modèle avec cet ID n'est trouvé, une erreur est retournée (voir <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorID.cs</a>, <code>ModelIDNotFound</code>).</p><p>Cela peut également retourner les raccourcis clavier de n'importe quel élément Live2D disponible. Pour ce faire, il suffit de passer le nom de fichier de l'élément dans le champ <code>"live2DItemFileName"</code>. Vous pouvez obtenir les noms de fichiers (uniques) de tous les éléments Live2D disponibles en utilisant la <code>ItemListRequest</code>.</p><p>Si à la fois <code>"modelID"</code> et <code>"live2DItemFileName"</code> sont fournis, seul <code>"modelID"</code> est utilisé et l'autre champ sera ignoré.</p><p><strong><code>RESPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "HotkeysInCurrentModelResponse",
+	"data": {
+		"modelLoaded": true,
+		"modelName": "My Currently Loaded Model",
+		"modelID": "UniqueIDOfModel",
+		"availableHotkeys": [
+			{
+				"name": "My first hotkey",
+				"type": "ToggleExpression",
+				"description": "Toggles an expression",
+				"file": "myExpression_1.exp3.json",
+				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith1",
+				"keyCombination": [],
+                		"onScreenButtonID": 8
+			},
+			{
+				"name": "My second hotkey",
+				"type": "TriggerAnimation",
+				"description": "Triggers an animation",
+				"file": "myAnimation.motion3.json",
+				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith2",
+				"keyCombination": [],
+                		"onScreenButtonID": -1
+			},
+			{
+				"name": "My third hotkey",
+				"type": "ChangeVTSModel",
+				"description": "Changes the VTS model",
+				"file": "someOtherModel.vtube.json",
+				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith3",
+				"keyCombination": [],
+                		"onScreenButtonID": -1
+			},
+			{
+				"name": "My fourth hotkey",
+				"type": "MoveModel",
+				"description": "Moves the Live2D model",
+				"file": "",
+				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith4",
+				"keyCombination": [],
+                		"onScreenButtonID": -1
+			},
+			{
+				"name": "My fifth hotkey",
+				"type": "Unset",
+				"description": "No action set for hotkey",
+				"file": "",
+				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith5",
+				"keyCombination": [],
+                		"onScreenButtonID": 5
+			}
+		]
+	}
+}</code></pre></p><p>Si aucun ID de modèle n’a été spécifié dans la requête et qu’aucun modèle n’est chargé, <code>"modelLoaded"</code> sera faux et le tableau <code>"availableHotkeys"</code> sera vide. Si un ID a été spécifié, le champ <code>"modelLoaded"</code> sera <code>true</code> ou <code>false</code> selon que le modèle avec l’ID donné est actuellement chargé ou non.</p><p>Le champ <code>"file"</code> contient le nom de fichier de l’expression/animation/modèle pour les raccourcis de type <code>TriggerAnimation</code>, <code>ChangeIdleAnimation</code>, <code>ToggleExpression</code> et <code>ChangeVTSModel</code>. Pour les raccourcis <code>ChangeBackground</code>, ce champ contient le nom de l’arrière-plan sans l’extension de fichier. Pour tous les autres types, il contient une chaîne vide.</p><p>Le champ <code>"description"</code> contient une description de ce que fait le raccourci. Vous pouvez afficher cette chaîne dans l’interface de votre plugin lorsque vous rencontrez un type de raccourci que votre plugin ne connaît pas, par exemple parce que ce type a été ajouté récemment à VTube Studio.</p><p>Le tableau <code>"keyCombination"</code> contient la combinaison de touches du clavier (ou de la souris) qui déclenchera le raccourci. Voir <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/RestrictedRawKey.cs" target="_blank" rel="noopener noreferrer">RestrictedRawKey.cs</a> pour toutes les valeurs possibles. Si le tableau est vide, aucune combinaison de touches n’a été définie. <strong>IMPORTANT :</strong> Pour des raisons de sécurité, le tableau <code>"keyCombination"</code> sera actuellement <strong>toujours vide</strong>, donc ces données ne seront pas disponibles pour les plugins pour l’instant. Peut être réintégré dans une mise à jour future.</p><p>Le champ <code>"onScreenButtonID"</code> contient tous les IDs de boutons à l’écran qui déclencheront le raccourci (1 (en haut) à 8 (en bas) ou -1). Si la valeur est <code>-1</code>, aucun bouton à l’écran n’a été défini pour ce raccourci.</p><p>Toutes les chaînes de type de raccourci se trouvent sur la page <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/HotkeyAction.cs" target="_blank" rel="noopener noreferrer">HotkeyActions.cs</a>.</p><h2>Demande d’exécution de raccourcis</h2></p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "HotkeyTriggerRequest",
+	"data": {
+		"hotkeyID": "HotkeyNameOrUniqueIdOfHotkeyToExecute",
+		"itemInstanceID": "Optional_ItemInstanceIdOfLive2DItemToTriggerThisHotkeyFor"
+	}
+}</code></pre>
+<strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "HotkeyTriggerResponse",
+	"data": {
+		"hotkeyID": "UniqueIdOfHotkeyThatWasExecuted"
+	}
+}</code></pre></p><p>Cela déclenche un raccourci clavier pour le modèle VTube Studio actuellement chargé, si vous laissez <code>"itemInstanceID"</code> vide ou ne le fournissez pas du tout. Si vous fournissez un ID dans ce champ, cela déclenchera le raccourci dans le modèle Live2D Item donné à la place (voir ci-dessous pour plus d'informations).</p><p>Vous pouvez déclencher des raccourcis soit par leur ID unique, soit par le nom du raccourci (insensible à la casse). Si plusieurs raccourcis ont le même nom, seul le premier sera exécuté (l'ordre correspond à l'ordre d'apparition dans l'interface utilisateur). Les raccourcis avec un nom vide ne peuvent être déclenchés que par ID.</p><p>Cela peut renvoyer une erreur si l'ID ou le nom du raccourci n'a pas été trouvé ou si le raccourci n'a pas pu être exécuté pour une raison quelconque. Les raisons incluent l'absence de modèle actuellement chargé ou le délai de recharge du raccourci non écoulé (un raccourci spécifique ne peut être déclenché qu'une fois toutes les 5 images). Vous pouvez envoyer différents raccourcis en succession rapide, ce qui les mettra en file d'attente. Toutes les 5 images, un raccourci est pris de la file et exécuté. La file peut contenir 32 raccourcis. Lorsque la file est pleine et que vous essayez d'en envoyer plus, une erreur sera renvoyée.</p><h3>Déclenchement des raccourcis dans les Live2D Items</h3></p><p>Vous pouvez également utiliser cette requête pour déclencher des raccourcis dans les Live2D items. Consultez <a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Live2D-Items" target="_blank" rel="noopener noreferrer">cette page</a> pour plus d'informations sur les Live2D items en général.</p><p>Pour ce faire, il suffit de définir <code>"itemInstanceID"</code> sur l'ID d'instance de l'item Live2D. Si aucun item Live2D avec cet ID d'instance n'est actuellement chargé, une erreur est renvoyée. Pour obtenir les ID d'instance de tous les items actuellement chargés, vous pouvez utiliser la <code>ItemListRequest</code>.</p><h2>Demande de la liste des états d'expression actuels</h2></p><p>Vous pouvez obtenir l'état actuel (actif ou inactif) d'une expression spécifique ou de toutes les expressions. Si vous incluez <code>"expressionFile"</code>, seul l'état de cette expression sera retourné. Si vous ne l'incluez pas ou le laissez vide, l'état de toutes les expressions du modèle actuel sera retourné.</p><p>Si vous incluez un nom de fichier mais qu'il est invalide (ne se termine pas par <code>.exp3.json</code>) ou introuvable dans le modèle actuel, une erreur est renvoyée (voir "<a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorID.cs</a>").</p><p>Définir <code>"details"</code> sur true retournera quelques détails supplémentaires dans la réponse (plus précisément, les tableaux <code>"usedInHotkeys"</code> et <code>"parameters"</code> seront vides si <code>"details"</code> est mis à false).</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ExpressionStateRequest",
+	"data": {
+		"details": true,
+		"expressionFile": "myExpression_optional_1.exp3.json",
+	}
+}</code></pre></p><p>Le tableau <code>expressions</code> sera vide si aucun modèle n’est chargé. Sinon, il contiendra des informations sur les expressions disponibles pour le modèle actuellement chargé.</p><p>Le champ <code>"file"</code> est le nom du fichier de l’expression tel qu’il est stocké dans le dossier du modèle. <code>"name"</code> est le même, mais sans l’extension <code>.exp3.json</code>. <code>"active"</code> indique si l’expression est actuellement active ou non.</p><p>Si l’expression a été activée à l’aide d’une touche de raccourci, <code>"deactivateWhenKeyIsLetGo"</code> et <code>"autoDeactivateAfterSeconds"</code> indiqueront si ces options ont été activées pour la touche de raccourci de l’expression. Si <code>"autoDeactivateAfterSeconds"</code> est <code>true</code>, le temps restant avant que l’expression soit automatiquement désactivée sera retourné dans <code>"secondsRemaining"</code> (sinon il sera à 0).</p><p>Si <code>"details"</code> a été défini à <code>true</code> dans la requête, le tableau <code>"usedInHotkeys"</code> contiendra la liste de toutes les touches de raccourci dans lesquelles cette expression est utilisée. De plus, le tableau <code>"parameters"</code> contiendra le contenu de l’expression, c’est-à-dire les identifiants des paramètres Live2D et les valeurs cibles de tous les paramètres utilisés dans l’expression.</p><p><strong><code>RÉPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ExpressionStateResponse",
+	"data": {
+		"modelLoaded": true,
+		"modelName": "My Currently Loaded Model",
+		"modelID": "UniqueIDOfModel",
+		"expressions": [
+			{
+				"name": "myExpression_optional_1",
+				"file": "myExpression_optional_1 .exp3.json",
+				"active": false,
+				"deactivateWhenKeyIsLetGo": false,
+				"autoDeactivateAfterSeconds": false,
+				"secondsRemaining": 0,
+				"usedInHotkeys": [
+					{
+						"name": "Some Hotkey",
+						"id": "SomeUniqueIdToIdentifyHotkeyWith1"
+					},
+					{
+						"name": "Some other Hotkey",
+						"id": "SomeUniqueIdToIdentifyHotkeyWith2"
+					}
+				],
+				"parameters": [
+					{
+						"name": "SomeLive2DParamID",
+						"value": 0
+					}
+				]
+			}
+		]
+	}
+}</code></pre></p><h2>Demande d'activation ou de désactivation des expressions</h2></p><p>Il est recommandé d'activer les expressions via des raccourcis clavier, sinon les utilisateurs pourraient se retrouver avec des expressions activées qu'ils ne peuvent pas désactiver faute de raccourcis configurés. Cependant, vous pouvez également activer et désactiver directement les raccourcis si votre plugin l'exige. Vous le faites en passant un nom de fichier d'expression et en précisant si l'expression doit être activée ou désactivée.</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ExpressionActivationRequest",
+	"data": {
+		"expressionFile": "myExpression_1.exp3.json",
+		"fadeTime": 0.5,
+		"active": true
+	}
+}</code></pre></p><p>Vous recevrez cette réponse vide si la requête a réussi. Si le nom de fichier est invalide (ne se terminant pas par <code>.exp3.json</code>) ou introuvable dans le modèle actuel ou aucun modèle n’est chargé, une erreur est renvoyée (voir "<a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorID.cs</a>").
+Le paramètre <code>fadeTime</code> est limité entre 0 et 2 secondes. Sa valeur par défaut est 0,25. Notez que le temps de fondu ne peut être réglé que lors de l’apparition progressive à cause des restrictions du système d’animation VTS. Lors de la disparition progressive d’une expression, le même temps que pour l’apparition sera toujours utilisé.</p><p><strong><code>RESPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ExpressionActivationResponse",
+	"data": { }
+}</code></pre></p><h2>Demande de liste des ArtMeshes dans le modèle actuel</h2></p><p>L'API utilise le terme <code>Nom ArtMesh</code>, mais cela fait en réalité référence à l'ID ArtMesh qui sera unique par modèle comme imposé par l'éditeur Live2D Cubism. Les <code>Tags ArtMesh</code> peuvent être ajoutés en sélectionnant un ArtMesh et en écrivant dans le champ UserData. Si vous souhaitez utiliser des tags, assurez-vous de cocher <code>Exporter le fichier UserData (userdata3.json)</code>. Vous devez ensuite inclure le fichier <code>.userdata3.json</code> lors de la copie du modèle dans le dossier Live2DModels de VTube Studio.</p><p>Les tags ArtMesh renvoyés dans le tableau <code>"artMeshTags"</code> ne contiendront pas de doublons.</p><p>Si aucun modèle n’est chargé, <code>"modelLoaded"</code> sera <code>false</code> et les tableaux seront vides.</p><p><strong>Note sur les "tags" :</strong> Des tags peuvent être ajoutés aux ArtMeshes dans le champ "UserData" de l’éditeur Live2D Cubism. Vous pouvez ajouter n’importe quel texte dans ce champ dans l’éditeur. VTube Studio divisera ce texte aux espaces et aux caractères de nouvelle ligne. Cela signifie que si votre texte de tag est "mon tag", il deviendra deux tags dans VTS : "mon" et "tag". Vous pouvez ajouter autant de tags que vous voulez à chaque ArtMesh.</p><p><strong><code>REQUÊTE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ArtMeshListRequest"
+}</code></pre>
+<strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ArtMeshListResponse",
+	"data": {
+		"modelLoaded": true,
+		"numberOfArtMeshNames": 5,
+		"numberOfArtMeshTags": 2,
+		"artMeshNames": ["ArtMesh1", "ArtMesh2", "HairFront1", "HairFront2", "SomeArtMesh"],
+		"artMeshTags": ["my_tag", "SomeOtherTag"]
+	}
+}</code></pre></p><h2>Teinter les ArtMeshes avec une couleur</h2></p><p>Vous pouvez teinter les ArtMeshes en fournissant une couleur et des critères de correspondance. Tout ArtMesh correspondant à l’un des critères donnés sera teinté avec la couleur indiquée. Pour réinitialiser la couleur d’un ArtMesh, teintez-le en blanc (R=G=B=A=255). Vous ne pouvez pas rendre un ArtMesh blanc avec cette requête, seulement plus foncé.</p><p>Ne pas fournir une des valeurs de couleur ou toute valeur en dehors de la plage 0-255 renverra une erreur. Tenter d’envoyer cette requête sans qu’aucun modèle soit chargé renverra également une erreur.</p><p>Optionnellement, vous pouvez fournir <code>mixWithSceneLightingColor</code> entre 0 et 1. Si fourni, cela déterminera comment la couleur de teinte est mélangée avec la couleur du système d’éclairage de la scène (voir <a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Display-Light-Overlay" target="_blank" rel="noopener noreferrer">ici</a> pour plus d’informations à ce sujet). Si réglé à 1, la couleur fournie écrasera complètement la valeur définie par l’éclairage de la scène. La valeur 0 fera que la couleur de l’éclairage de la scène écrasera votre couleur fournie. Toute valeur intermédiaire mélangera les deux couleurs. Si l’éclairage de la scène est désactivé, cela n’a aucun effet. Si vous ne fournissez pas <code>mixWithSceneLightingColor</code>, la valeur par défaut est 1, ce qui signifie que votre couleur écrasera complètement l’éclairage de la scène.</p><p>Tous les tableaux inclus dans l’objet <code>"artMeshMatcher"</code> sont optionnels. Si vous les incluez, cela sélectionnera les ArtMeshes selon que leurs noms ou tags correspondent exactement à l’une des chaînes données ou les contiennent (lors de l’utilisation des tableaux <code>"nameContains"</code>/<code>"tagContains"</code>). Le tableau <code>"artMeshNumber"</code> vous permet de sélectionner les ArtMeshes selon leur ordre dans le modèle. Si vous souhaitez simplement teinter tout le modèle, n’incluez aucun des tableaux de correspondance et réglez plutôt <code>"tintAll"</code> sur true.</p><p>Lorsque la session est déconnectée, tous les ArtMeshes qui ont été teintés dans cette session seront réinitialisés à leur valeur par défaut (blanc complètement opaque). Lorsque plusieurs plugins/sessions modifient la couleur d’un ArtMesh, celui-ci prendra la couleur définie par la requête la plus récente.</p><p>La correspondance est toujours effectuée <strong>sans distinction de casse</strong>.</p><p><strong><code>REQUÊTE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ColorTintRequest",
+	"data": {
+		"colorTint": {
+			"colorR": 255,
+			"colorG": 150,
+			"colorB": 0,
+			"colorA": 255,
+			"mixWithSceneLightingColor": 1
+		},
+		"artMeshMatcher": {
+			"tintAll": false,
+			"artMeshNumber": [1, 3, 5],
+			"nameExact": ["eye_white_left", "eye_white_right"],
+			"nameContains": ["mouth"],
+			"tagExact": [],
+			"tagContains": ["MyTag"]
+		}
+	}
+}</code></pre>
+<strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ColorTintResponse",
+	"data": {
+		"matchedArtMeshes": 3
+	}
+}</code></pre></p><h2>Obtenir la couleur de superposition de l'éclairage de la scène</h2></p><p>VTube Studio dispose d'une fonctionnalité permettant de superposer le modèle avec la couleur moyenne capturée à partir d'un écran (macOS/Windows) ou d'une fenêtre spécifique (Windows uniquement). Pour plus d'informations, voir <a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Display-Light-Overlay" target="_blank" rel="noopener noreferrer">cette page dans la documentation</a>.</p><p>Vous pouvez obtenir la configuration utilisateur actuelle et la couleur pour le système de superposition d'éclairage de la scène via l'API.</p><p>Au niveau supérieur de la réponse, vous avez le champ <code>active</code>, qui indique si la superposition d'éclairage est activée ou non. Si <code>itemsIncluded</code> est vrai, tous les éléments sont également affectés par la superposition d'éclairage. Si <code>isWindowCapture</code> est <code>true</code>, VTube Studio est configuré pour capturer la couleur moyenne d'une fenêtre. Si c'est <code>false</code>, la capture est configurée sur un écran.</p><p><code>baseBrightness</code> (entre 0 et 100), <code>colorBoost</code> (entre 0 et 100) et <code>smoothing</code> (entre 0 et 60) sont les trois valeurs que les utilisateurs peuvent sélectionner à l'aide des curseurs sur l'interface utilisateur. Pour une explication, veuillez consulter <a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Display-Light-Overlay" target="_blank" rel="noopener noreferrer">la page de documentation sur cette fonctionnalité</a>.</p><p><code>leftCapturePart</code>, <code>middleCapturePart</code> et <code>rightCapturePart</code> décrivent les couleurs moyennes des parties respectives de la fenêtre ou de l'écran capturé. Leur champ <code>active</code> indique si la partie de l'écran a été activée par l'utilisateur.</p><p>La couleur moyenne calculée à partir de toutes les parties d'écran activées se trouve dans les champs <code>colorAvg</code> (R, G et B entre 0 et 255).</p><p>La couleur finale qui sera utilisée pour superposer les ArtMeshes se trouve dans les champs <code>colorOverlay</code> (R, G et B entre 0 et 459). Notez que cela permet des valeurs supérieures à 255. La couleur finale est calculée comme suit :</p><p><code>colorAvg</code> <em>  (<code>colorBoost</code> / 50) + <code>WHITE_COLOR</code> </em> (<code>baseBrightness</code> / 100)</p><p>Cela peut produire des valeurs allant jusqu'à 2 <em> 255 pour R, G et B. Les valeurs sont plafonnées à 1,8 </em> 255 = 459.</p><p>Lorsque le système de superposition d'éclairage est désactivé, <code>active</code> au niveau supérieur de la charge utile sera <code>false</code> et toutes les couleurs seront renvoyées en blanc.</p><p><strong><code>REQUÊTE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "SceneColorOverlayInfoRequest"
+}</code></pre>
+<strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "SceneColorOverlayInfoResponse",
+	"data": {
+		"active": true,
+		"itemsIncluded": true,
+		"isWindowCapture": false,
+		"baseBrightness": 16,
+		"colorBoost": 35,
+		"smoothing": 6,
+		"colorOverlayR": 206,
+		"colorOverlayG": 150,
+		"colorOverlayB": 153,
+		"colorAvgR": 237,
+		"colorAvgG": 157,
+		"colorAvgB": 162,
+		"leftCapturePart": {
+			"active": true,
+			"colorR": 243,
+			"colorG": 231,
+			"colorB": 234
+		},
+		"middleCapturePart": {
+			"active": true,
+			"colorR": 230,
+			"colorG": 83,
+			"colorB": 89
+		},
+		"rightCapturePart": {
+			"active": false,
+			"colorR": 235,
+			"colorG": 95,
+			"colorB": 101
+		}
+	}
+}</code></pre></p><h2>Vérification si le visage est actuellement détecté par le traqueur</h2></p><p>Renvoie si le visage est actuellement détecté par le traqueur actif (smartphone via réseau/USB ou traqueur webcam).</p><p><strong><code>REQUÊTE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "FaceFoundRequest"
+}</code></pre></p><p><strong><code>RÉPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "FaceFoundResponse",
+	"data": {
+		"found": true
+	}
+}</code></pre></p><h2>Demande de liste des paramètres de suivi disponibles</h2></p><p>Vous pouvez demander une liste des paramètres actuellement disponibles dans VTube Studio.
+Cela inclut tous les paramètres réguliers ainsi que tous les paramètres personnalisés créés par les plugins. Les paramètres créés par des plugins seront indiqués comme tels lorsque vous les sélectionnerez dans la liste des paramètres de VTube Studio. Le nom du plugin qui les a créés sera également affiché.</p><p><strong>Important :</strong> Cela peut retourner beaucoup de données. Il n’est pas recommandé d’envoyer cette requête à des fréquences élevées (60+ FPS), car cela pourrait causer des problèmes de performance sur des PC plus lents.</p><p><strong><code>REQUÊTE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "InputParameterListRequest"
+}</code></pre>
+<strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "InputParameterListResponse",
+	"data": {
+		"modelLoaded": true,
+		"modelName": "My Currently Loaded Model",
+		"modelID": "UniqueIDOfModel",
+		"customParameters": [
+			{
+				"name": "MyCustomParamName1",
+				"addedBy": "My Plugin Name",
+				"value": 12.4,
+				"min": -30,
+				"max": 30,
+				"defaultValue": 0
+			},
+			{
+				"name": "MyCustomParamName2",
+				"addedBy": "My Plugin Name",
+				"value": 0.833,
+				"min": -10,
+				"max": 10,
+				"defaultValue": 0
+			},
+			{
+				"name": "MyCustomParamName3",
+				"addedBy": "My Other Plugin Name",
+				"value": 0,
+				"min": 0,
+				"max": 1,
+				"defaultValue": 0
+			}
+		],
+		"defaultParameters": [
+			{
+				"name": "FaceAngleX",
+				"addedBy": "VTube Studio",
+				"value": 45.78,
+				"min": -30,
+				"max": 30,
+				"defaultValue": 0
+			},
+			{
+				"name": "FacePositionX",
+				"addedBy": "VTube Studio",
+				"value": 8.33,
+				"min": -10,
+				"max": 10,
+				"defaultValue": 0
+			}
+		]
+	}
+}</code></pre>
+<strong>Remarque :</strong> Le tableau <code>"defaultParameters"</code> est incomplet dans cet exemple de charge utile. Il contiendra tous les paramètres de suivi par défaut du visage/souris/etc. proposés par VTube Studio </p><h2>Obtenir la valeur d'un paramètre spécifique, par défaut ou personnalisé</h2></p><p>Si le paramètre d'entrée demandé n'existe pas, une erreur sera renvoyée.</p><p><strong><code>REQUÊTE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ParameterValueRequest",
+	"data": {
+		"name": "MyCustomParamName1"
+	}
+}</code></pre>
+<strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ParameterValueResponse",
+	"data": {
+		"name": "MyCustomParamName1",
+		"addedBy": "My Plugin Name",
+		"value": 12.4,
+		"min": -30,
+		"max": 30,
+		"defaultValue": 0
+	}
+}</code></pre></p><h2>Obtenir la valeur de tous les paramètres Live2D dans le modèle actuel</h2></p><p>Cela renverra une erreur si aucun modèle n'est chargé.</p><p><strong><code>REQUÊTE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "Live2DParameterListRequest"
+}</code></pre></p><p><strong><code>RÉPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "Live2DParameterListResponse",
+	"data": {
+		"modelLoaded": true,
+		"modelName": "My Currently Loaded Model",
+		"modelID": "UniqueIDOfModel",
+		"parameters": [
+			{
+				"name": "MyLive2DParameterID1",
+				"value": 12.4,
+				"min": -30,
+				"max": 30,
+				"defaultValue": 0
+			},
+			{
+				"name": "MyLive2DParameterID2",
+				"value": 0,
+				"min": 0,
+				"max": 1,
+				"defaultValue": 0
+			}
+		]
+	}
+}</code></pre>
+Si aucun modèle n’est chargé, <code>"modelLoaded"</code> sera faux et le tableau de paramètres sera vide. Tous les autres champs seront des chaînes vides.</p><h2>Ajout de nouveaux paramètres de suivi (« paramètres personnalisés »)</h2></p><p>Vous pouvez également ajouter vos propres nouveaux paramètres de suivi et les utiliser dans vos modèles VTube Studio. Ils sont appelés paramètres « personnalisés ». Après avoir été ajoutés par votre plugin, l’utilisateur peut sélectionner vos paramètres comme entrées pour les correspondances de paramètres Live2D.</p><p>Les noms de paramètres doivent être uniques, alphanumériques (pas d’espaces autorisés) et doivent comporter entre 4 et 32 caractères. Les nouveaux paramètres de suivi sont créés comme ceci :</p><p><strong><code>REQUEST</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ParameterCreationRequest",
+	"data": {
+		"parameterName": "MyNewParamName",
+		"explanation": "This is my new parameter.",
+		"min": -50,
+		"max": 50,
+		"defaultValue": 10
+	}
+}</code></pre>
+<strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ParameterCreationResponse",
+	"data": {
+		"parameterName": "MyNewParamName"
+	}
+}</code></pre></p><p>La requête peut échouer et retourner une erreur si le nom du paramètre est invalide.</p><p>Elle échouera également si un paramètre avec le même nom créé par un plugin différent existe déjà. Si vous créez un paramètre plusieurs fois avec le même nom de plugin, la requête réussira. Vous pouvez aussi écraser les valeurs <code>min</code>, <code>max</code> et <code>defaultValue</code> de cette façon.</p><p>Les valeurs Min/Max/Par défaut doivent être des nombres à virgule flottante compris entre <code>-1000000</code> et <code>1000000</code>. Les valeurs min/max ne sont pas vraiment les valeurs minimale et maximale autorisées pour le paramètre. Ce sont les valeurs qui seront utilisées comme valeurs par défaut inférieure et supérieure lorsqu’un nouveau mappage de paramètre est créé avec ce paramètre.</p><p>L’explication est une description optionnelle, courte (moins de 256 caractères) indiquant ce que fait le paramètre et comment les utilisateurs doivent l’utiliser dans leurs modèles. Si vous la fournissez dans la requête, elle sera affichée lorsque l’utilisateur consultera les détails de ce paramètre personnalisé.</p><p>Il existe une limite globale dans VTS de 300 paramètres personnalisés et une limite de 100 paramètres personnalisés par plugin. Si vous essayez d’en créer plus, une erreur sera renvoyée.</p><p>Ces paramètres personnalisés que vous créez sont stockés dans la configuration de VTube Studio dans un fichier appelé <code>custom_parameters.json</code> dans le dossier <code>Config</code>, qui se trouve dans le dossier <code>StreamingAssets</code> de VTube Studio. Si vous révoquez le jeton d’authentification d’un plugin, tous les paramètres personnalisés créés par ce plugin seront également supprimés. Ils resteront définis dans les modèles VTube Studio qui les ont utilisés, mais seront affichés en rouge pour indiquer que le paramètre d’entrée n’existe plus. Les plugins peuvent obtenir un autre jeton et recréer ces paramètres à tout moment et ils continueront de fonctionner.</p><h2>Supprimer des paramètres personnalisés</h2></p><p>Vous pouvez supprimer des paramètres personnalisés. Les paramètres par défaut ne peuvent pas être supprimés. Vous ne pouvez pas non plus supprimer des paramètres créés par des plugins autres que celui que vous avez utilisé pour authentifier cette session.</p><p><strong><code>REQUÊTE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ParameterDeletionRequest",
+	"data": {
+		"parameterName": "MyNewParamName"
+	}
+}</code></pre>
+<strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ParameterDeletionResponse",
+	"data": {
+		"parameterName": "MyNewParamName"
+	}
+}</code></pre></p><h2>Saisie de données pour les paramètres par défaut ou personnalisés</h2></p><p>Vous pouvez saisir des données pour n'importe quel paramètre par défaut ou personnalisé. Ces paramètres de suivi seront alors utilisés comme entrées pour le modèle VTube Studio chargé et tous les <a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Live2D-Items" target="_blank" rel="noopener noreferrer">éléments Live2D</a> chargés.</p><p>La charge utile ressemble à ceci :</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "InjectParameterDataRequest",
+	"data": {
+		"faceFound": false,
+		"mode": "set",
+		"parameterValues": [
+			{
+				"id": "FaceAngleX",
+				"value": 12.31
+			},
+			{
+				"id": "MyNewParamName",
+				"weight": 0.8,
+				"value": 0.7
+			}
+		]
+	}
+}</code></pre>
+<strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "InjectParameterDataResponse",
+	"data": { }
+}</code></pre></p><p>Si un ou plusieurs des paramètres n'existent pas, une charge utile d'erreur sera renvoyée.</p><p>Les valeurs doivent être des nombres à virgule flottante compris entre <code>-1000000</code> et <code>1000000</code>. Les valeurs en dehors de cette plage renverront également une erreur.</p><p>Si des valeurs existent pour ces paramètres à partir du suivi webcam/iOS/Android, les valeurs provenant de l'API écraseront celles-ci tant que vous continuez à envoyer des données via l'API.
+Vous devez renvoyer les données pour un paramètre que vous souhaitez contrôler avec votre plugin <strong>au moins une fois par seconde</strong>. Sinon, le paramètre sera considéré comme "perdu" et reviendra à la valeur de ce qui le contrôlait auparavant. Si rien d'autre ne le contrôle, il reviendra à sa valeur par défaut.</p><p>Vous pouvez également ajouter un paramètre optionnel <code>"weight"</code> compris entre 0 et 1. Cela peut être utilisé pour mixer la <code>"value"</code> que vous envoyez pour le paramètre avec la valeur qui a été définie pour le paramètre via le suivi facial. Par exemple, vous pourriez contrôler un paramètre à 50 % avec le suivi facial et à 50 % via l'API. Toutefois, un seul plugin API peut écrire sur un paramètre à la fois. Un cas d'utilisation serait de faire apparaître/disparaître le contrôle d'un paramètre de suivi facial afin qu'il ne "saute" pas dès que vous en prenez le contrôle via l'API. Si vous n'incluez pas le paramètre <code>"weight"</code> dans votre requête pour un paramètre, il sera considéré comme ayant la valeur 1, ce qui signifie que le paramètre cible sera instantanément réglé à la valeur fournie par votre plugin.</p><p>Il convient également de noter que ces paramètres sont traités de manière similaire aux paramètres de suivi normaux. Ainsi, vous pouvez les sélectionner comme entrées normales pour les mappages de paramètres de VTube Studio et appliquer un lissage via les curseurs de l'interface utilisateur. Supprimer des paramètres personnalisés pendant qu'ils sont utilisés par un modèle ne pose également aucun problème et ils peuvent être recréés à tout moment.</p><p>Optionnellement, vous pouvez passer <code>"faceFound": true</code>, ce qui indiquera à VTube Studio de considérer que le visage de l'utilisateur est détecté. Ainsi, vous pouvez contrôler quand l'animation "suivi perdu" est jouée.</p><h3>Contrôler un paramètre avec plusieurs plugins</h3></p><p>Généralement, si un autre plugin contrôle déjà un paramètre (par défaut ou personnalisé), une erreur sera renvoyée. Cela se produit car un seul plugin peut "définir" (écraser) un paramètre donné à la fois, ce qui est le mode par défaut pour cette requête. C'est le mode utilisé lorsque vous ne fournissez pas de valeur dans le champ <code>"mode"</code> ou que vous la réglez sur <code>"set"</code>.</p><p>Alternativement, vous pouvez définir le champ <code>"mode"</code> sur <code>"add"</code>. Cela ajoutera alors les valeurs que vous envoyez à celles actuelles du paramètre. Les valeurs <code>"weight"</code> ne sont pas utilisées dans ce cas. Un nombre quelconque de plugins peut utiliser le mode <code>"add"</code> pour un paramètre donné en même temps. Cela peut être utile pour des plugins de type <strong>bonk/lancer</strong> et autres cas d'utilisation.</p><h2>Obtention des réglages physiques du modèle VTS actuellement chargé</h2></p><p>Les utilisateurs peuvent personnaliser les réglages physiques dans VTube Studio. Ils peuvent modifier les réglages suivants :</p><ul><li><strong>Force physique de base (par modèle) :</strong> Entier entre 0 (désactivé) et 100 (max). Par défaut 50, ce qui signifie que la physique se comporte comme dans Live2D Cubism Editor.</li>
+<li><strong>Force du vent de base (par modèle) :</strong> Entier entre 0 (désactivé) et 100 (max). Par défaut 0.</li>
+<li><strong>Multiplicateur de physique (par groupe de physique) :</strong> Pour chaque groupe de physique (configurable dans Live2D Cubism), les utilisateurs peuvent définir un multiplicateur. La valeur physique de base sera multipliée par cette valeur lors du traitement du groupe physique concerné. Nombre à virgule flottante entre 0 et 2, par défaut 1 ce qui signifie que la valeur de base reste inchangée.</li>
+<li><strong>Multiplicateur de vent (par groupe de physique) :</strong> Pour chaque groupe de physique (configurable dans Live2D Cubism), les utilisateurs peuvent définir un multiplicateur. La valeur de vent de base sera multipliée par cette valeur lors du traitement du groupe physique concerné. Nombre à virgule flottante entre 0 et 2, par défaut 1 ce qui signifie que la valeur de base reste inchangée.</li></p><p></ul>Ces valeurs définies par l'utilisateur peuvent être lues via l'API et également temporairement écrasées (voir <code>SetCurrentModelPhysicsRequest</code>).</p><p>Pour lire les valeurs du modèle actuellement chargé, utilisez cette requête :</p><p><strong><code>REQUEST</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "GetCurrentModelPhysicsRequest"
+}</code></pre>
+<strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "GetCurrentModelPhysicsResponse",
+	"data": {
+		"modelLoaded": true,
+		"modelName": "My Currently Loaded Model",
+		"modelID": "UniqueIDOfModel",
+		"modelHasPhysics": true,
+		"physicsSwitchedOn": true,
+		"usingLegacyPhysics": false,
+		"physicsFPSSetting": -1,
+		"baseStrength": 50,
+		"baseWind": 17,
+		"apiPhysicsOverrideActive": false,
+		"apiPhysicsOverridePluginName": "",
+		"physicsGroups": [
+			{
+				"groupID": "PhysicsSetting1",
+				"groupName": "Hair Front Physics",
+				"strengthMultiplier": 1.5,
+				"windMultiplier": 0.3
+			},
+			{
+				"groupID": "PhysicsSetting2",
+				"groupName": "Clothes Physics",
+				"strengthMultiplier": 1,
+				"windMultiplier": 2
+			}
+		]
+	}
+}</code></pre></p><p>Si aucun modèle n'est chargé, <code>modelLoaded</code> sera <code>false</code>. Toutes les autres valeurs n'ont aucune signification dans ce cas et le tableau <code>physicsGroups</code> sera vide.</p><p>Si un modèle est chargé, le champ <code>modelHasPhysics</code> vous indiquera si le modèle dispose ou non d'une configuration physique valide. Certains modèles n'ont pas de physique configurée ou ont un fichier physique corrompu, ce qui empêchera le système physique de démarrer correctement. <code>physicsSwitchedOn</code> sera vrai si le bouton bascule <code>Use Physics</code> a été activé pour ce modèle par l'utilisateur dans VTube Studio. <code>usingLegacyPhysics</code> correspond à l'état du bouton bascule <code>Legacy Physics</code>.</p><p><code>physicsFPSSetting</code> contient le réglage des FPS physiques pour ce modèle et peut être 30, 60, 120 ou -1, ce qui indique que l'utilisateur a sélectionné <code>Use same FPS as app</code>.</p><p>Les champs <code>apiPhysicsOverrideActive</code> et <code>apiPhysicsOverridePluginName</code> indiquent si un plugin est en train de remplacer certains réglages physiques. Si son champ actif est vrai, le champ nom contiendra le nom du plugin. Un seul plugin peut contrôler le système physique à la fois. Cela sera également expliqué dans la requête <code>SetCurrentModelPhysicsRequest</code>.</p><p>Si vous utilisez la requête <code>SetCurrentModelPhysicsRequest</code> pour modifier les valeurs de base ou les multiplicateurs de physique ou de vent, ces changements ne seront <strong>PAS</strong> reflétés dans cette requête Get. Vous devez vous souvenir de vos propres modifications physiques.</p><p>Note concernant le tableau <code>physicsGroup</code> : Chaque groupe a un ID mais tous les groupes n'ont pas forcément un nom. Dans ce cas, le champ <code>groupName</code> respectif sera une chaîne vide.</p><h2>Remplacement des réglages physiques du modèle VTS actuellement chargé</h2></p><p>Vous pouvez remplacer les réglages physiques du modèle actuellement chargé en utilisant cette requête. Une fois qu’un plugin a pris le contrôle du système physique via cette API, aucun autre plugin ne peut utiliser cette API tant que le premier plugin n’a pas renoncé au contrôle. Tenter de le faire renverra l’erreur correspondante, voir "<a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorID.cs</a>" (<code>SetCurrentModelPhysicsRequestPhysicsControlledByOtherPlugin</code>). Cela renverra également une erreur si aucun modèle n’est chargé, si un des IDs de groupe physique fournis n’existe pas dans le modèle actuel ou si vous avez oublié d’ajouter une valeur à vos remplacements.</p><p>Si l'utilisateur a désactivé la physique pour le modèle actuellement chargé, vous ne pouvez pas activer la physique via cette API. Vous ne pouvez utiliser cette API que pour remplacer les valeurs de base et les multiplicateurs de physique/vent.</p><p>Comme expliqué dans la section <code>GetCurrentModelPhysicsRequest</code> ci-dessus, les valeurs des multiplicateurs de physique/vent doivent être comprises entre 0 et 2 tandis que les valeurs des valeurs de base de physique/vent doivent être des entiers entre 0 et 100 (car c’est également ainsi qu’elles sont affichées à l’utilisateur dans l’application). Les valeurs en dehors de cette plage seront automatiquement limitées.</p><p>Si vous souhaitez définir des multiplicateurs pour la force ou le vent pour un groupe physique spécifique, utilisez les tableaux <code>strengthOverrides</code> et <code>windOverrides</code> avec l’ID de groupe respectif et <code>setBaseValue</code> à false. Si vous définissez <code>setBaseValue</code> à true, la valeur fournie sera définie comme valeur de base pour la force physique ou le vent au lieu d’un groupe spécifique. Vous pouvez laisser l’ID de groupe (<code>id</code>) vide dans ce cas.</p><p>En général, les valeurs définies via cette API sont utilisées pour remplacer les valeurs définies par l’utilisateur dans l’application. Elles ne sont pas réellement affichées à l’utilisateur dans l’interface et ne sont pas sauvegardées. Les valeurs de remplacement définies via cette API sont automatiquement désactivées lorsque leur minuterie expire (la valeur que vous définissez avec <code>overrideSeconds</code>). Si vous souhaitez continuer à remplacer les valeurs, vous devez envoyer cette requête de manière répétée.</p><p>Lorsque toutes les minuteries expirent, l’API ne considérera plus votre plugin comme contrôlant le système physique, ce qui permettra à un autre plugin de prendre le contrôle du système physique.</p><p>Les valeurs de minuterie de remplacement doivent être comprises entre 0,5 et 5 secondes. Les valeurs en dehors de cette plage seront automatiquement limitées.</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "SetCurrentModelPhysicsRequest",
+	"data": {
+		"strengthOverrides": [
+			{
+				"id": "PhysicsSetting1",
+				"value": 1.5,
+				"setBaseValue": false,
+				"overrideSeconds": 2
+			}
+		],
+		"windOverrides": [
+			{
+				"id": "",
+				"value": 85,
+				"setBaseValue": true,
+				"overrideSeconds": 5
+			}
+		]
+	}
+}</code></pre>
+<strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "SetCurrentModelPhysicsResponse",
+	"data": { }
+}</code></pre></p><h2>Obtenir et définir les paramètres NDI</h2></p><p>Vous pouvez demander les paramètres NDI actuels et les modifier via l'API. Cela vous permet d'activer/désactiver NDI, de définir une résolution fixe personnalisée et plus encore.</p><p>Des informations sur NDI et son utilisation dans VTube Studio sont disponibles sur cette page : https://github.com/DenchiSoft/VTubeStudio/wiki/Streaming-to-Mac-PC</p><p>Si vous définissez <code>"setNewConfig"</code> sur <code>false</code>, cela renvoie uniquement la configuration actuelle. Tous les autres champs sont ignorés dans ce cas. S'il est défini sur <code>true</code>, la configuration donnée sera appliquée si elle est valide.</p><p><code>"ndiActive"</code> active ou désactive NDI. Si NDI est activé, <code>"useNDI5"</code> utilise NDI 5 au lieu de NDI 4 (je recommande d'utiliser NDI 5).</p><p>Définir <code>"useCustomResolution"</code> sur <code>true</code> signifie que le flux NDI n'aura plus la même résolution que la fenêtre VTube Studio mais utilisera la résolution personnalisée définie via l'interface utilisateur. Cette résolution peut également être modifiée via l'API en utilisant les champs <code>"customWidthNDI"</code> et <code>"customHeightNDI"</code>. Les deux doivent être compris entre 256 et 8192. La largeur doit être un multiple de 16 et la hauteur un multiple de 8. Les définir tous les deux à <code>-1</code> dans la requête évitera de les modifier et ne changera que les champs booléens. Ainsi, vous pouvez par exemple activer/désactiver NDI sans changer la résolution.</p><p>Si la résolution NDI ne correspond pas à la résolution de la fenêtre, VTube Studio coupera et redimensionnera automatiquement le flux vidéo. VTube Studio veillera toujours à ce que le rapport d'aspect soit correct, même si cela signifie couper des parties en haut/bas ou à gauche/droite.</p><p><strong>Important :</strong> Cette requête possède une période de refroidissement de 3 secondes. La déclencher trop rapidement retournera une erreur de type <code>NDIConfigCooldownNotOver</code> (voir "<a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorID.cs</a>").</p><p><strong><code>REQUÊTE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "NDIConfigRequest",
+	"data": {
+		"setNewConfig": true,
+		"ndiActive": true,
+		"useNDI5": true,
+		"useCustomResolution": true,
+		"customWidthNDI": 1024,
+		"customHeightNDI": 512
+	}
+}</code></pre>
+La réponse contiendra uniquement les paramètres actuels (les nouveaux si vous avez demandé la configuration d’une nouvelle configuration). Le champ <code>"setNewConfig"</code> n’a aucune signification dans la réponse.</p><p><strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "NDIConfigResponse",
+	"data": {
+		"setNewConfig": true,
+		"ndiActive": true,
+		"useNDI5": true,
+		"useCustomResolution": true,
+		"customWidthNDI": 1024,
+		"customHeightNDI": 512
+	}
+}</code></pre></p><h2>Demande de liste des objets disponibles ou des objets dans la scène</h2></p><p>Cette demande vous permet de demander une liste des objets actuellement présents dans la scène. Elle vous permet également de demander une liste des fichiers d'objets disponibles à charger sur le PC de l'utilisateur, y compris les objets Live2D, les dossiers d'animation, ...</p><p>Si vous souhaitez savoir quels emplacements de commande sont disponibles pour charger des objets en ce moment, réglez <code>"includeAvailableSpots"</code> sur <code>true</code>. Sinon, le tableau <code>"availableSpots"</code> dans la réponse sera vide.</p><p>Si vous souhaitez savoir quels objets sont actuellement chargés dans la scène, réglez <code>"includeItemInstancesInScene"</code> sur <code>true</code>. Sinon, le tableau <code>"itemInstancesInScene"</code> dans la réponse sera vide.</p><p>Si vous souhaitez savoir quels fichiers d'objets sont disponibles pour être chargés, réglez <code>"includeAvailableItemFiles"</code> sur <code>true</code>. Sinon, le tableau <code>"availableItemFiles"</code> dans la réponse sera vide. <strong>IMPORTANT :</strong> Ceci lit la liste complète des fichiers d'objets depuis le PC de l'utilisateur. Cela peut ralentir l'application un court instant, donc n'utilisez pas cette demande avec <code>"includeAvailableItemFiles"</code> réglé sur <code>true</code> fréquemment. Utilisez-la uniquement si vous avez vraiment besoin de rafraîchir la liste des fichiers d'objets disponibles. Mettez-la sur <code>false</code> dans tout autre cas.</p><p>#### Filtrage pour des objets spécifiques</p><p>Si vous souhaitez que les listes d'objets ne contiennent que des objets avec un certain ID d'instance ou un certain nom de fichier, vous pouvez les fournir respectivement dans les champs <code>"onlyItemsWithInstanceID"</code> et <code>"onlyItemsWithFileName"</code>.</p><p>Il n'y aura jamais plus d'un objet avec un certain ID d'instance dans la scène, mais il pourrait y avoir plusieurs objets avec le même nom de fichier car vous pouvez charger plusieurs instances d'objets basées sur le même fichier d'objet.</p><p>Veuillez également noter que <strong>les noms de fichiers des objets sont uniques</strong>, ce qui signifie qu'il ne peut pas y avoir deux fichiers d'objets avec le même nom de fichier. Ils sont également <strong>sensibles à la casse</strong>, donc si vous souhaitez faire référence à un fichier spécifique, assurez-vous de ne pas modifier la capitalisation.</p><p><strong><code>REQUÊTE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemListRequest",
+	"data": {
+		"includeAvailableSpots": true,
+		"includeItemInstancesInScene": true,
+		"includeAvailableItemFiles": false,
+		"onlyItemsWithFileName": "OPTIONAL_my_item_filename.png",
+		"onlyItemsWithInstanceID": "OPTIONAL_InstanceIdOfItemInScene"
+	}
+}</code></pre></p><p>Les champs de la réponse devraient être en grande partie explicites.</p><p>Le nom de fichier est le nom du fichier de l'objet. C'est le nom que vous pouvez utiliser pour charger une instance de l'objet dans la scène. Pour les objets JPG/PNG/GIF, c'est le nom complet du fichier (sans le chemin) incluant l'extension du fichier (par exemple "mon_objet.jpg"). Pour les dossiers d'animation, c'est le nom du dossier. Pour les objets Live2D, c'est aussi le nom du dossier.</p><p>Le type d'objet peut être trouvé dans le champ <code>"type"</code>. Les valeurs possibles sont <code>PNG</code>, <code>JPG</code>, <code>GIF</code>, <code>AnimationFolder</code> ou <code>Live2D</code>. Une autre valeur possible est <code>Unknown</code>. Cela n'arriverait que si un autre type d'objet est ajouté à VTube Studio avant la mise à jour de l'API, donc cela ne devrait jamais arriver.</p><p><code>"canLoadItemsRightNow"</code> peut être <code>false</code> si l'utilisateur a certains menus ou dialogues ouverts dans VTube Studio. Cela empêche généralement des actions telles que le chargement d'objets, l'utilisation de raccourcis clavier, et plus encore.</p><p><code>"framerate"</code> et <code>"frameCount"</code> sont disponibles uniquement pour les objets animés (GIFs et dossiers de trames d'animation).</p><p>Si <code>"pinnedToModel"</code> est vrai, <code>"pinnedModelID"</code> contiendra l'ID du modèle auquel l'objet est attaché (qui sera le modèle actuellement chargé) et <code>"pinnedArtMeshID"</code> contiendra l'ID du ArtMesh auquel l'objet est attaché.</p><p>Si vous définissez <code>"includeAvailableItemFiles"</code> à <code>true</code>, <code>"availableItemFiles"</code> contiendra une liste de tous les fichiers d'objets dans le dossier <code>Items</code> de l'utilisateur. Vous pouvez utiliser les noms de fichiers retournés ici pour charger les objets dans la scène en utilisant <code>ItemLoadRequest</code>.</p><p><strong><code>RESPONSE</code></strong>
+<pre><code class="language-json">{
+    "apiName": "VTubeStudioPublicAPI",
+    "apiVersion": "1.0",
+    "timestamp": 1625405710728,
+    "messageType": "ItemListResponse",
+    "requestID": "SomeID",
+    "data": {
+        "itemsInSceneCount": 2,
+        "totalItemsAllowedCount": 60,
+        "canLoadItemsRightNow": true,
+        "availableSpots":
+	[
+            -30,-29,-28,-27,-26,-25,-24,-23,-22,-21,-20,-19,-18,-17,-16,-15,-14,
+            -13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,3,4,5,6,7,8,9,10,11,12,13,
+            14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30
+        ],
+        "itemInstancesInScene": [
+            {
+                "fileName": "Ribbon (@denchisoft)",
+                "instanceID": "18de53dc47154b00afdd382a6ebd2194",
+                "order": 1,
+                "type": "Live2D",
+                "censored": false,
+                "flipped": false,
+                "locked": false,
+                "smoothing": 0.0,
+                "framerate": 0.0,
+                "frameCount": -1,
+                "currentFrame": -1,
+                "pinnedToModel": true,
+                "pinnedModelID": "47c71722c5304a039b0570b60a189875",
+                "pinnedArtMeshID": "D_FACE_00",
+                "groupName": "",
+                "sceneName": "",
+                "fromWorkshop": false
+            },
+            {
+                "fileName": "akari_fly (@walfieee)",
+                "instanceID": "716cddf2e12a438ab5da05bbbf8b341c",
+                "order": 2,
+                "type": "AnimationFolder",
+                "censored": false,
+                "flipped": false,
+                "locked": false,
+                "smoothing": 0.0,
+                "framerate": 15.0,
+                "frameCount": 7,
+                "currentFrame": 0,
+                "pinnedToModel": false,
+                "pinnedModelID": "",
+                "pinnedArtMeshID": "",
+                "groupName": "",
+                "sceneName": "",
+                "fromWorkshop": false
+            }
+        ],
+        "availableItemFiles": [
+            {
+                "fileName": "Ribbon (@denchisoft)",
+                "type": "Live2D",
+                "loadedCount": 1
+            },
+            {
+                "fileName": "ANIM_headpat",
+                "type": "AnimationFolder",
+                "loadedCount": 0
+            },
+            {
+                "fileName": "workshop_2801215328_ANIM_loading gif",
+                "type": "AnimationFolder",
+                "loadedCount": 0
+            },
+            {
+                "fileName": "akari_fly (@walfieee)",
+                "type": "AnimationFolder",
+                "loadedCount": 1
+            },
+            {
+                "fileName": "b_woozy (@denchisoft).png",
+                "type": "PNG",
+                "loadedCount": 0
+            }
+        ]
+    }
+}</code></pre>
+<h2>Chargement d’un élément dans la scène</h2></p><p>Avec cette requête, vous pouvez charger des éléments dans la scène. Les éléments sont chargés depuis le dossier "Items" sur le PC de l’utilisateur.</p><p>Pour obtenir la liste des fichiers d’éléments disponibles, utilisez la <code>ItemListRequest</code>. Vous pouvez utiliser ces noms dans le champ <code>"fileName"</code>.</p><p>Les éléments peuvent être positionnés/redimensionnés/tournés en utilisant les champs <code>"positionX/Y"</code>, <code>"size"</code> et <code>"rotation"</code>. Veuillez vous référer à l’image montrant le <a href="#le-système-de-coordonnées-de-vts" target="_blank" rel="noopener noreferrer">système de coordonnées de VTube Studio</a> pour plus d’informations sur la façon d’utiliser ces valeurs. Concernant la taille, elle doit être comprise entre <code>0</code> et <code>1</code>, avec <code>0.32</code> étant à peu près la taille « par défaut » que les éléments auront lorsque l’utilisateur les charge manuellement.</p><p>Vous devez vous assurer que votre plugin nettoie ses éléments. Vous ne devez absolument jamais laisser d’éléments hors de la scène visible où l’utilisateur ne peut plus y accéder sans utiliser le bouton <strong>"Supprimer tous les éléments dans la scène"</strong>. Pour vous faciliter cette tâche, vous pouvez définir <code>"unloadWhenPluginDisconnects"</code> sur true.</p><p>Vous pouvez utiliser le champ <code>"fadeTime"</code> pour spécifier un temps de fondu entrant/sortant entre 0 et 2 secondes pour l’élément. Si vous le réglez à 0, l’élément apparaîtra instantanément.</p><p>Vous pouvez spécifier l’ordre de tri auquel l’élément doit être chargé dans la scène via le champ <code>"order"</code>. Si cet ordre est déjà pris, l’élément sera automatiquement chargé à l’ordre supérieur disponible et si tous les ordres supérieurs sont complets, il vérifiera les ordres inférieurs. Si vous souhaitez que le chargement de l’élément échoue si l’ordre demandé est pris, utilisez <code>failIfOrderTaken</code> à <code>true</code>. Dans ce cas, une erreur de type <code>ItemOrderAlreadyTaken</code> est retournée (voir <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorsID.cs</a>).</p><p>Il y a également des limites pour certaines valeurs. Plus précisément, la taille doit être comprise entre <code>0</code> et <code>1</code>, les positions doivent être comprises entre <code>-1000</code> et <code>1000</code> (bien que <code>-1</code>/<code>1</code> correspondent aux bords de l’écran), le temps de fondu doit être compris entre <code>0</code> et <code>2</code> secondes et la lissage doit être entre <code>0</code> et <code>1</code>. Si vous dépassez ces limites, une erreur de type <code>ItemLoadValuesInvalid</code> est renvoyée.</p><h3>Éléments de données personnalisées</h3></p><p>Les plugins peuvent également utiliser cette requête pour charger des données PNG/JPG/GIF arbitraires en tant qu’éléments en les passant via le champ <code>customDataBase64</code> (doit être un fichier JPG, PNG ou GIF encodé en base64). Laissez-le vide/NULL si vous ne l’utilisez pas.</p><p>Si vous souhaitez faire cela, vous avez besoin de la permission <code>LoadCustomImagesAsItems</code>. Pour plus d’informations sur la façon de demander des permissions, consultez la <a href="Permissions/" target="_blank" rel="noopener noreferrer">page des permissions</a>. Si vous ne disposez pas de cette permission, une erreur sera retournée si vous essayez de charger une image de données personnalisées (<code>RequestRequiresPermission</code>, voir <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorsID.cs</a>).</p><p>Pour demander le chargement de données arbitraires en tant qu’élément, <code>customDataBase64</code> doit contenir des données valides d’un fichier PNG, JPG ou GIF. Les éléments Live2D de données personnalisées ne sont pas actuellement pris en charge. Les dimensions doivent être comprises (incluses) entre 64 et 2048 pixels et les données doivent être inférieures à 5 Mo (les données binaires avant encodage en base64). Pour les données GIF, le GIF doit contenir 1024 images ou moins mais au moins 1 image et toutes les images doivent avoir la même taille.</p><p>Lors de la fourniture de données personnalisées, vous devez aussi fournir un nom de fichier dans le champ <code>fileName</code>. Le <code>fileName</code> doit être alphanumérique (mais peut contenir des tirets) et doit se terminer par <code>.jpg</code>, <code>.png</code> ou <code>.gif</code>. Il doit contenir entre 8 et 32 caractères (inclus).</p><p>Lors du chargement de données personnalisées, vous avez deux options :
+<ul><li>Charger simplement l’élément de données personnalisées instantanément.</li>
+<li>Afficher une petite fenêtre contextuelle à l’utilisateur (incluant la vignette de l’élément) et lui demander s’il souhaite charger l’élément.</li></p><p></ul>Choisissez l’option appropriée selon votre cas d’usage. Il est de votre responsabilité de vous assurer que votre plugin ne charge pas d’images pouvant causer des problèmes à l’utilisateur.</p><p>Si vous souhaitez simplement charger l’élément immédiatement, réglez <code>customDataAskUserFirst</code> sur <code>false</code>.</p><p>Si vous souhaitez afficher d’abord une fenêtre contextuelle à l’utilisateur, réglez <code>customDataAskUserFirst</code> sur <code>true</code>. Dans ce cas, la fenêtre suivante sera affichée à l’utilisateur :</p><p><img src="/Images/vts_load_custom_image_1.png" alt="Fenêtre de chargement d’image personnalisée"></p><p>6 fenêtres contextuelles de ce type peuvent être affichées simultanément (les fenêtres sont empilées verticalement). Lorsque 6 fenêtres contextuelles sont déjà affichées à l’utilisateur, les requêtes suivantes retourneront une erreur.</p><p>Lors de l’affichage du popup, la réponse à cette requête ne sera renvoyée qu’une fois que l’utilisateur aura pris une décision. Si l’utilisateur décide de refuser le chargement de l’élément de données personnalisé, une erreur sera renvoyée (<code>ItemCustomDataLoadRequestRejectedByUser</code>). Lorsque l’utilisateur décide de charger l’élément, celui-ci sera chargé et une réponse normale sera renvoyée. Cela l’ajoutera également à la liste blanche pour votre plugin afin que les chargements ultérieurs du même élément (tel que déterminé par son empreinte SHA256) ne déclenchent pas le popup. Si vous souhaitez forcer l’affichage du popup à chaque fois, vous pouvez définir <code>customDataSkipAskingUserIfWhitelisted</code> sur false.</p><p>Vous pouvez définir un délai d’attente pour le popup en utilisant le champ <code>customDataAskTimer</code>. Si vous le réglez à 0 (ou moins), le popup sera affiché indéfiniment (jusqu’à ce que l’utilisateur clique sur OK ou annuler). Si vous le réglez à un autre nombre positif, le popup sera affiché pendant ce nombre de secondes, avec un compte à rebours visible pour l’utilisateur. Si l’utilisateur ne prend pas de décision avant la fin du compte à rebours, la requête de chargement de l’élément est considérée comme rejetée par l’utilisateur.</p><p><strong><code>REQUEST</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemLoadRequest",
+	"data": {
+		"fileName": "some_item_name.jpg",
+		"positionX": 0,
+		"positionY": 0.5,
+		"size": 0.33,
+		"rotation": 90,
+		"fadeTime": 0.5,
+		"order": 4,
+		"failIfOrderTaken": false,
+		"smoothing": 0,
+		"censored": false,
+		"flipped": false,
+		"locked": false,
+		"unloadWhenPluginDisconnects": true,
+		"customDataBase64": "",
+		"customDataAskUserFirst": true,
+		"customDataSkipAskingUserIfWhitelisted": true,
+		"customDataAskTimer": -1,
+	}
+}</code></pre>
+La réponse contient l'ID d'instance de l'élément nouvellement chargé dans le champ <code>instanceID</code>. Elle contient également le nom du fichier.</p><p>Si vous avez chargé un élément de données personnalisé, le nom du fichier sera généré par VTube Studio, il sera donc différent du nom de fichier que vous avez passé. Vous pouvez utiliser ce nom de fichier pour demander à nouveau le chargement de cet élément sans passer de données personnalisées. Cependant, lorsque VTube Studio est redémarré, tous les fichiers temporaires sont supprimés, ce qui inclut les éléments de données personnalisés.</p><p><strong><code>RESPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemLoadResponse",
+	"data": {
+		"instanceID": "SomeUniqueItemInstanceId",
+		"fileName": "some_item_name.jpg"
+	}
+}</code></pre></p><h2>Suppression d’un élément de la scène</h2></p><p>Vous pouvez utiliser cette requête pour décharger un élément actuellement chargé dans la scène.</p><p>Définir <code>"unloadAllInScene"</code> à <code>true</code> décharge tous les éléments. Tous les autres champs sont ignorés dans ce cas.</p><p>Définir <code>"unloadAllLoadedByThisPlugin"</code> à <code>true</code> décharge tous les éléments chargés par ce plugin.</p><p>Si vous souhaitez empêcher cette requête de décharger des éléments chargés par l’utilisateur ou d’autres plugins, définissez <code>"allowUnloadingItemsLoadedByUserOrOtherPlugins"</code> à <code>false</code>.</p><p>Vous pouvez également demander des instances d’éléments spécifiques ou des instances d’éléments chargées à partir de certains noms de fichiers en utilisant les tableaux optionnels <code>"instanceIDs"</code> et <code>"fileNames"</code>. Même si ces éléments ne sont pas trouvés dans la scène, la requête ne renverra pas d’erreur. Elle renverra simplement une réponse avec un tableau vide.</p><p>Cela peut renvoyer une erreur de type <code>CannotCurrentlyUnloadItem</code> si l’utilisateur a actuellement des menus ouverts qui empêchent VTS de charger/décharger des éléments.</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemUnloadRequest",
+    	"data": {
+		"unloadAllInScene": false,
+		"unloadAllLoadedByThisPlugin": false,
+		"allowUnloadingItemsLoadedByUserOrOtherPlugins": true,
+		"instanceIDs":
+		[
+			"SomeInstanceIdOfItemToUnload", "SomeOtherInstanceIdOfItemToUnload"
+		],
+		"fileNames":
+		[
+			"UnloadAllItemInstancesWithThisFileName", "SomeOtherFileName"
+		]
+    	}
+}</code></pre>
+La réponse contient les ID d'instance et les noms de fichiers des éléments déchargés.</p><p><strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemUnloadResponse",
+    	"data": {
+		"unloadedItems":
+		[
+		    {
+			"instanceID": "SomeInstanceId",
+			"fileName": "SomeFileName"
+		    },
+		    {
+			"instanceID": "SomeOtherInstanceId",
+			"fileName": "SomeFileName"
+		    }
+		]
+    	}
+}</code></pre></p><h2>Contrôle des éléments et des animations d’éléments</h2></p><p>Vous pouvez contrôler certains aspects des éléments dans la scène. Cette requête vous permet de rendre les éléments plus sombres (superposition noire), de modifier l’opacité et de contrôler l’animation des éléments animés. Cette requête ne fonctionne pas avec les éléments Live2D et renverra une erreur de type <code>ItemAnimationControlUnsupportedItemType</code> si vous essayez (voir <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorsID.cs</a>). Cela peut être utile pour des plugins de type « PNG réactif » et plus encore.</p><p>Pour les éléments animés, vous pouvez définir la fréquence d’images (en images par seconde, sera automatiquement limitée entre <code>0.1</code> et <code>120</code>). Vous pouvez également faire sauter manuellement l’animation à une certaine image en utilisant le champ <code>"frame"</code>. Une erreur sera renvoyée si cet index d’image est invalide. Pour un élément animé avec (par exemple) 20 images, les indices d’image valides vont de 0 (première image) à 19 (dernière image). Le nombre d’images pour les éléments animés peut être demandé via <code>ItemListRequest</code>. Tenter cela pour des éléments JPG/PNG normaux renverra une erreur de type <code>ItemAnimationControlSimpleImageDoesNotSupportAnim</code>.</p><p>Si vous ne souhaitez pas modifier la fréquence d’images, l’image actuelle, la luminosité ou l’opacité, vous pouvez passer <code>-1</code> pour ces champs (ce qui est également leur valeur par défaut si vous omettez les champs dans la charge utile).</p><p>Vous pouvez démarrer/arrêter l’animation en utilisant le champ <code>"animationPlayState"</code> (<code>true</code> = jouer l’animation, <code>false</code> = arrêter l’animation). Ce champ est utilisé uniquement si vous définissez <code>"setAnimationPlayState"</code> à <code>true</code>, sinon l’état de lecture de l’animation ne sera pas modifié.</p><p>#### Utilisation des images d’arrêt automatique</p><p>Vous pouvez définir une liste d’indices d’images sur lesquels l’animation s’arrêtera automatiquement en utilisant le tableau <code>"autoStopFrames"</code>. Ce tableau est utilisé uniquement si vous définissez <code>"setAutoStopFrames"</code> à true, sinon les images d’arrêt automatique ne seront pas modifiées. Si vous souhaitez supprimer les images d’arrêt automatique, définissez <code>"setAutoStopFrames"</code> à true et mettez un tableau vide dans <code>"autoStopFrames"</code>. Vous pouvez avoir un maximum de 1024 images d’arrêt automatique.</p><p>Une fois que l’animation atteint l’une de ces images, elle s’arrêtera et ne pourra être relancée que via l’API en utilisant cette requête pour définir l’état de lecture de l’animation à <code>true</code> (voir ci-dessus).</p><p><strong><code>REQUÊTE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemAnimationControlRequest",
+	"data": {
+		"itemInstanceID": "ItemInstanceId",
+		"framerate": 12,
+		"frame": 3,
+		"brightness": 1,
+		"opacity": 1,
+		"setAutoStopFrames": true,
+		"autoStopFrames": [0, 7, 26],
+		"setAnimationPlayState": true,
+		"animationPlayState": true
+	}
+}</code></pre>
+La réponse contient l'indice de la trame actuelle et indique si l'animation est en cours de lecture (uniquement pour les éléments animés, pour les autres types d'éléments ces champs doivent être ignorés).</p><p><strong><code>RESPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemAnimationControlResponse",
+	"data": {
+		"frame": 3,
+		"animationPlaying": true
+	}
+}</code></pre></p><h2>Déplacement des éléments dans la scène</h2></p><p>Vous pouvez déplacer des éléments dans la scène. Pour ce faire, remplissez le tableau <code>"itemsToMove"</code> avec tous les éléments que vous souhaitez déplacer. Le tableau de réponse (<code>"movedItems"</code>) contiendra une entrée pour chaque élément demandé, indiquant si la demande de déplacement a réussi ou non pour celui-ci (voir le champ <code>"success"</code> respectif). Si cela n’a pas réussi, le champ <code>"errorID"</code> contiendra le code d’erreur, qui vous indiquera ce qui s’est mal passé (voir <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorsID.cs</a>). S’il a réussi, <code>"success"</code> sera <code>true</code> et <code>"errorID"</code> sera <code>-1</code>.</p><p>Le tableau <code>"itemsToMove"</code> peut contenir jusqu’à 64 entrées. Toutes les entrées au-delà seront ignorées. Si le tableau contient des entrées avec des identifiants d’instance d’élément en double, la dernière entrée du tableau pour cet ID sera utilisée.</p><p>Si vous souhaitez définir la position instantanément (par exemple lorsque vous voulez définir une nouvelle position à chaque image), réglez <code>"timeInSeconds"</code> à <code>0</code>. Sinon, vous pouvez utiliser ce champ pour définir la durée de la transition de déplacement (limité entre 0 et 30 secondes).</p><p>Si vous souhaitez définir l’état de retournement de l’élément, réglez <code>"setFlip"</code> à true. L’état de retournement peut alors être défini avec le champ <code>"flip"</code>.</p><p>Si vous souhaitez changer l’ordre d’un élément, vous pouvez utiliser le champ <code>"order"</code>. Vous ne pouvez changer l’ordre que vers des emplacements d’ordre non pris (voir <code>ItemListResponse</code>). Si vous ne voulez pas changer l’ordre, réglez ce champ à -1000 ou moins ou alternativement vous pouvez le régler à la valeur d’ordre actuelle de l’élément. De plus, vous ne pouvez pas changer l’ordre lorsque l’utilisateur a des fenêtres de configuration ouvertes. L’ordre ne sera pas fondu comme les autres paramètres (si demandé) mais changé instantanément à la valeur demandée dès que la requête est reçue.</p><p>Pour les champs qui définissent la cible du mouvement (<code>"positionX"</code>, <code>"positionY"</code>, <code>"size"</code> et <code>"rotation"</code>), veuillez vous référer à la documentation de la <code>ItemLoadRequest</code>. La seule différence est que cette <code>ItemMoveRequest</code> ne retournera pas d’erreur si les valeurs données sont trop élevées/basses. À la place, vous pouvez définir des valeurs de <code>-1000</code> ou moins si vous souhaitez qu’un champ respectif soit ignoré. Si vous faites cela, ce champ ne sera pas inclus dans le mouvement et la valeur actuelle respective sera utilisée.</p><p>
+#### Types de transition de fondu pour le déplacement des éléments</p><p>Vous pouvez définir le type de mouvement pour le fondu de position/rotation/taille en utilisant le champ <code>"fadeMode"</code>. Les valeurs acceptées sont <code>"linear"</code>, <code>"easeIn"</code>, <code>"easeOut"</code>, <code>"easeBoth"</code>, <code>"overshoot"</code> et <code>"zip"</code>. Elles ne seront utilisées que si le champ <code>"timeInSeconds"</code> a été réglé à plus de <code>0</code>.</p><p>Si vous voulez que l’utilisateur puisse arrêter le mouvement en cliquant/glissant l’élément pendant qu’il se déplace, réglez <code>"userCanStop"</code> à <code>true</code>. Si vous le réglez à <code>false</code>, les utilisateurs ne pourront pas interagir avec l’élément tant que le mouvement est en cours.</p><p>Voici une représentation visuelle des modes de déplacement :</p><p><img src="/Images/vts_movement_modes_smooth.png" alt="Modes de déplacement VTube Studio"></p><p><strong><code>REQUÊTE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemMoveRequest",
+	"data": {
+		"itemsToMove":
+		[
+			{
+				"itemInstanceID": "ItemInstanceId",
+				"timeInSeconds": 1,
+				"fadeMode": "easeOut",
+				"positionX": 0.2,
+				"positionY": -0.8,
+				"size": 0.6,
+				"rotation": 180,
+				"order": -1000,
+				"setFlip": true,
+				"flip": false,
+				"userCanStop": true
+			},
+			{
+				"itemInstanceID": "SomeOther_ItemInstanceId",
+				"timeInSeconds": 0.5,
+				"fadeMode": "zip",
+				"positionX": 1,
+				"positionY": 1,
+				"size": 0.3,
+				"rotation": 0,
+				"order": 25,
+				"setFlip": false,
+				"flip": false,
+				"userCanStop": false
+			}
+		]
+	}
+}</code></pre>
+Si la demande a réussi, vous recevrez une réponse contenant le statut de tous les éléments demandés.</p><p><strong><code>RÉPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemMoveResponse",
+	"data": {
+		"movedItems":
+		[
+			{
+				"itemInstanceID": "ItemInstanceId",
+				"success": true,
+				"errorID": -1
+			},
+			{
+				"itemInstanceID": "SomeOther_ItemInstanceId",
+				"success": false,
+				"errorID": 900
+			}
+		]
+	}
+}</code></pre></p><h2>Définir l'ordre de tri au sein du modèle pour un élément</h2></p><p>#### ⚠️ Cette requête est actuellement disponible uniquement sur la <a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Joining-the-Beta" target="_blank" rel="noopener noreferrer">branche bêta publique</a> ⚠️</p><p>VTube Studio vous permet de trier et d’épingler les éléments <strong>entre les calques</strong> de votre modèle principal. Pour des informations générales sur ce fonctionnement, consultez la page sur le "<a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Between-Layer-Item-Pinning" target="_blank" rel="noopener noreferrer">Pinning d’éléments entre calques</a>".</p><p>Pour les <a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Live2D-Items" target="_blank" rel="noopener noreferrer">éléments Live2D</a> en particulier, vous pouvez aussi diviser le <strong>modèle d’élément Live2D</strong> en une partie avant et une partie arrière et les insérer séparément dans le modèle principal.</p><p>Pour identifier l’élément dont vous souhaitez modifier les paramètres de tri au sein du modèle, passez son ID d’instance d’élément via le champ <code>"itemInstanceID"</code>. Une erreur <code>ItemSortRequestInstanceIDNotFound</code> est renvoyée si aucun élément avec cet ID n’est trouvé. Pour obtenir les IDs d’instance de tous les éléments chargés, vous pouvez utiliser la <code>ItemListRequest</code>. L’ID est aussi directement retourné lorsque vous utilisez la <code>ItemLoadRequest</code> pour charger un élément via l’API.</p><p>Pour toutes les erreurs que cette requête peut retourner, voir "<a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorsID.cs</a>".</p><p><em>Note :</em> Les éléments normaux (non Live2D) n’ont pas de « partie arrière » ni de « point de séparation », donc les champs arrière/séparation sont entièrement ignorés lorsqu’on utilise cette requête pour des éléments normaux. Vous pouvez les laisser vides/<code>null</code>. Le texte ci-dessous suppose que vous utilisez cette requête pour des éléments Live2D. De plus, VTube Studio s’assurera que même si vous placez la partie arrière devant la partie avant, elle ne dépassera pas cette dernière.</p><p>Pour insérer l’élément dans le modèle, définissez <code>"frontOn"</code> à <code>true</code>. Si vous avez un élément Live2D et souhaitez insérer sa partie arrière plus en arrière dans le modèle, vous pouvez aussi définir <code>"backOn"</code> à <code>true</code> (ignoré pour les éléments non Live2D).</p><p>Le point de séparation et les points d’insertion avant/arrière sont définis en utilisant <code>"splitAt"</code>, <code>"withinModelOrderFront"</code> et <code>"withinModelOrderBack"</code>. La manière dont ces champs sont interprétés dépend de ce que vous passez via <code>"setSplitPoint"</code>, <code>"setFrontOrder"</code> et <code>"setBackOrder"</code>.</p><p>Les champs suivants sont utilisés pour définir le point de séparation de l’élément et le(s) point(s) d’insertion :</p><ul><li><code>"splitAt"</code> : Définit le point de séparation utilisé pour diviser le modèle d’élément Live2D en partie avant et arrière.</li>
+  <li>Ignoré pour les éléments non Live2D.</li>
+  <li>Si <code>"setSplitPoint"</code> est défini sur <code>"Unchanged"</code> : la valeur dans <code>"splitAt"</code> sera ignorée et le point de séparation restera inchangé.</li>
+  <li>Si <code>"setSplitPoint"</code> est défini sur <code>"UseArtMeshID"</code> : <code>"splitAt"</code> attend un ID ArtMesh existant dans le modèle Live2D de l’élément et retournera l’erreur <code>ItemSortRequestInvalidSplitPoint</code> si cet ID n’existe pas.</li>
+<li><code>"withinModelOrderFront"</code> : Définit où insérer l’élément dans le modèle principal (ou la partie avant de l’élément dans le cas des éléments Live2D).</li>
+  <li>Si <code>"setFrontOrder"</code> est défini sur <code>"Unchanged"</code> : la valeur dans <code>"withinModelOrderFront"</code> sera ignorée et la position d’insertion de la partie avant restera inchangée.</li>
+  <li>Si <code>"setFrontOrder"</code> est défini sur <code>"UseArtMeshID"</code> : <code>"withinModelOrderFront"</code> attend un ID ArtMesh existant dans le modèle Live2D principal, mais si cet ID n’existe pas, la requête réussira quand même car il pourrait s’agir d’un ID d’un modèle Live2D non chargé actuellement.</li>
+  <li>Si <code>"setFrontOrder"</code> est défini sur <code>"UseSpecialID"</code> : <code>"withinModelOrderFront"</code> attend soit <code>"FullyInFront"</code> soit <code>"FullyInBack"</code> pour toujours placer l’élément (partie avant) complètement devant ou complètement derrière le modèle principal chargé. Toute autre valeur retournera une erreur <code>ItemSortRequestInvalidFrontOrder</code>.</li>
+<li><code>"withinModelOrderBack"</code> : Définit où insérer la partie arrière des éléments Live2D dans le modèle principal.</li>
+  <li>Ignoré pour les éléments non Live2D.</li>
+  <li>Si <code>"setBackOrder"</code> est défini sur <code>"Unchanged"</code> : la valeur dans <code>"withinModelOrderBack"</code> sera ignorée et la position d’insertion de la partie arrière restera inchangée.</li>
+  <li>Si <code>"setBackOrder"</code> est défini sur <code>"UseArtMeshID"</code> : <code>"withinModelOrderBack"</code> attend un ID ArtMesh existant dans le modèle Live2D principal, mais si cet ID n’existe pas, la requête réussira quand même car il pourrait s’agir d’un ID d’un modèle Live2D non chargé actuellement.</li>
+  <li>Si <code>"setBackOrder"</code> est défini sur <code>"UseSpecialID"</code> : <code>"withinModelOrderBack"</code> attend <code>"FullyInBack"</code> pour toujours placer l’élément (partie arrière) complètement derrière le modèle principal chargé. Toute autre valeur retournera une erreur <code>ItemSortRequestInvalidBackOrder</code>.</li></p><p></ul>Les valeurs invalides dans <code>"setSplitPoint"</code>, <code>"setFrontOrder"</code> et <code>"setBackOrder"</code> retourneront une erreur <code>ItemSortRequestInvalidValueSetType</code>.</p><p>Cette requête retournera aussi l’erreur <code>ItemSortRequestItemConfigWindowOpen</code> si la fenêtre de tri au sein du modèle est actuellement ouverte (c’est-à-dire que l’utilisateur est en train de définir manuellement les ordres d’insertion).</p><p><strong><code>REQUÊTE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemSortRequest",
+	"data": {
+		"itemInstanceID": "b616cf51fe3444729ccbf6ee54a14d1a",
+		"frontOn": true,
+		"backOn": true,
+		"setSplitPoint": "UseArtMeshID",
+		"setFrontOrder": "UseArtMeshID",
+		"setBackOrder": "UseSpecialID",
+		"splitAt": "MyArtMeshIDInItemModel91",		
+		"withinModelOrderFront": "MyArtMeshIDInMainModel73",
+		"withinModelOrderBack": "FullyInBack"
+	}
+}</code></pre></p><p>Si la requête a réussi, vous recevrez cette réponse.</p><p><code>"itemInstanceID"</code> renverra l'ID d'instance de l'élément pour lequel la requête a été effectuée.</p><p>Si un modèle principal est actuellement chargé, <code>"modelLoaded"</code> sera <code>true</code> et <code>"modelID"</code> et <code>"modelName"</code> contiendront l'ID et le nom du modèle. Si aucun modèle n'est chargé, ces champs seront vides.</p><p>Si un modèle principal est chargé, <code>"loadedModelHadRequestedFrontLayer"</code> et <code>"loadedModelHadRequestedBackLayer"</code> vous indiqueront si les points d'insertion avant/arrière que vous avez fournis ont été trouvés dans le modèle actuellement chargé. Si les points d'insertion sont restés inchangés, ces champs sont définis à <code>false</code>.</p><p><strong><code>RESPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemSortResponse",
+	"data": {
+		"itemInstanceID": "b616cf51fe3444729ccbf6ee54a14d1a",
+		"modelLoaded": true,
+		"modelID": "d87b771d2902473bbaa0226d03ef4754",
+		"modelName": "Akari",
+		"loadedModelHadRequestedFrontLayer": true,
+		"loadedModelHadRequestedBackLayer": true
+	}
+}</code></pre>
+<h2>Demander à l'utilisateur de sélectionner des ArtMeshes</h2></p><p>Vous pouvez utiliser cette requête pour afficher une liste dans VTube Studio contenant tous les ArtMeshes du modèle Live2D principal actuellement chargé et demander à l'utilisateur d'en sélectionner un ou plusieurs. Une fois que l'utilisateur a terminé la sélection des ArtMeshes, les ID des ArtMeshes seront renvoyés. Vous pouvez utiliser ces ID d'ArtMesh dans diverses autres requêtes API, par exemple pour appliquer une teinte de couleur ou les rendre invisibles.</p><p>Si aucun modèle n'est actuellement chargé ou si d'autres fenêtres sont ouvertes, la requête renverra une erreur.</p><p>L'utilisateur peut survoler les ArtMeshes pour afficher leur ID et cliquer dessus pour filtrer la liste affichée pour tous les ArtMeshes sous la position du clic. L'interface affichée par cette requête ressemble à ceci :</p><p><img src="/Images/vts_request_select_artmeshes.png" alt="Écran de sélection de l'API ArtMesh"></p><p>Utilisez le champ <code>requestedArtMeshCount</code> pour spécifier combien d'ArtMeshes l'utilisateur doit activer. Le bouton "OK" ne sera pas disponible tant que ce nombre exact d'ArtMeshes n'est pas activé. Si vous définissez <code>requestedArtMeshCount</code> à 0 ou moins, l'utilisateur sera invité à choisir un nombre arbitraire d'ArtMeshes (mais au moins un).</p><p>Si vous souhaitez pré-activer des ArtMeshes dans la liste, vous pouvez utiliser la liste <code>activeArtMeshes</code> et y passer certains ID d'ArtMesh. Si l'un de ces ID n'est pas contenu dans le modèle actuel, une erreur sera renvoyée. Si vous souhaitez obtenir une liste de tous les ArtMeshes du modèle actuellement chargé, utilisez la requête <code>ArtMeshListRequest</code>.</p><p>Comme vous pouvez le voir dans la capture d'écran ci-dessus, la liste contient un texte par défaut affiché, demandant à l'utilisateur de sélectionner des ArtMeshes pour le plugin. Le même texte est affiché dans une fenêtre popup lorsque vous appuyez sur le bouton <code>?</code> (aide) en haut à droite. Vous pouvez remplacer ces deux chaînes en utilisant respectivement les champs <code>textOverride</code> et <code>helpOverride</code>. Si vous les laissez vides (chaîne vide), null ou si vous les omettez dans la charge utile, le message par défaut ci-dessus sera utilisé. Si vous souhaitez remplacer ces messages, votre chaîne fournie doit contenir entre 4 et 1024 caractères, sinon la valeur par défaut sera utilisée. Vous pouvez utiliser <code>\n</code> pour les sauts de ligne dans les chaînes que vous fournissez.</p><p><strong><code>REQUÊTE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ArtMeshSelectionRequest",
+	"data": {
+		"textOverride": "This text is shown over the ArtMesh selection list.",
+		"helpOverride": "This text is shown when the user presses the ? button."
+		"requestedArtMeshCount": 5
+		"activeArtMeshes": [
+			"D_BODY_00",
+			"D_ARM_R_05"
+		]
+	}
+}</code></pre>
+Si la requête est réussie, la liste de sélection sera affichée à l'utilisateur. Il n'y aura pas de réponse immédiate. La réponse viendra une fois que l'utilisateur cliquera sur le bouton "OK" ou "Annuler". Le bouton "Annuler" est toujours disponible mais le bouton "OK" ne sera cliquable qu'une fois la quantité demandée d'ArtMeshes sélectionnée.</p><p>Les ArtMeshes activés/désactivés seront retournés dans les tableaux <code>activeArtMeshes</code> et <code>inactiveArtMeshes</code> respectivement. Il n'y aura <strong>aucun chevauchement</strong> entre ces tableaux, donc si vous combinez les ArtMeshes dans ces tableaux, vous obtiendrez une liste de tous les ArtMeshes dans le modèle.</p><p>Si l'utilisateur a cliqué sur "OK", le champ <code>success</code> sera <code>true</code>. Si l'utilisateur a cliqué sur "Annuler", le champ <code>success</code> sera <code>false</code> (dans ce cas, vous devriez probablement ignorer les tableaux <code>activeArtMeshes</code> et <code>inactiveArtMeshes</code>, bien qu'ils seront toujours retournés).</p><p><strong><code>RESPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ArtMeshSelectionResponse",
+	"data": {
+		"success": true
+		"activeArtMeshes": [
+			"D_BROW_00",
+			"D_EYE_BALL_03",
+			"D_EYE_BALL_02",
+			"D_EYE_BALL_01",
+			"D_EYE_BALL_00",
+			"D_EYE_11"
+		],
+		"inactiveArtMeshes": [
+			"D_EAR_06",
+			"D_BODY_00",
+			"D_ARM_R_05"
+		]
+	}
+}</code></pre></p><h2>Épingler des éléments au modèle</h2></p><p>Vous pouvez utiliser cette requête pour épingler des éléments dans la scène au modèle actuellement chargé.</p><p>L'ID de l'instance de l'élément pour identifier l'élément doit être spécifié dans le champ <code>itemInstanceID</code>. Si vous voulez désépingler l'élément, il suffit de définir <code>pin</code> à <code>false</code>. Aucune autre information n'a besoin d'être fournie dans ce cas. Si aucun élément avec cet ID n'est actuellement chargé, une erreur est renvoyée (voir <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorsID.cs</a>).</p><p>Si vous souhaitez épingler un élément, la position d'épingle doit être fournie dans l'objet <code>pinInfo</code>. Il existe plusieurs façons d’épingler un élément. Par exemple, vous pouvez fournir une position exacte à laquelle épingler ou simplement fournir un ArtMesh et laisser VTS épingler l’élément au centre de celui-ci ou à une position aléatoire sur l’ArtMesh. Le fonctionnement exact sera décrit ci-dessous.</p><p>Lorsque vous envoyez une <code>ItemPinRequest</code> pour un élément avec une <code>ItemMoveRequest</code> active, la <code>ItemMoveRequest</code> sera automatiquement annulée.</p><p>De plus, si votre plugin (ou plusieurs plugins différents) envoient plusieurs requêtes d’épingle pour le même élément et qu’elles sont reçues dans la même image dans VTS, seule la dernière requête d’épingle reçue est exécutée tandis que les autres sont rejetées.</p><h3>Options pour l’épinglage</h3></p><p>Il y a trois champs qui déterminent comment les données données dans <code>pinInfo</code> sont interprétées :</p><ul><li><code>angleRelativeTo</code> : Comment l’angle fourni doit-il être interprété ?</li>
+  <li><code>RelativeToWorld</code> : Angle absolu. Cela signifie que si vous passez 0 comme angle, l’élément sera épinglé droit à un angle de 0 par rapport à la fenêtre VTS. Vous utiliserez cela si vous voulez que l’élément fasse face à une certaine direction relative à la fenêtre VTS.</li>
+  <li><code>RelativeToCurrentItemRotation</code> : Relatif à l’angle auquel l’élément est actuellement. Si vous passez 0 comme angle, cela signifie que l’élément sera épinglé à l’angle où il se trouve déjà, ce qui signifie que sa rotation actuelle ne sera pas modifiée. Vous utiliserez cela si vous ne voulez pas changer la rotation de l’élément et juste l’épingler tel quel.</li>
+  <li><code>RelativeToModel</code> : Angle relatif à la rotation du modèle. Cela signifie que si vous passez 0 comme angle et que l’utilisateur a tourné le modèle, l’élément sera épinglé droit en relation avec le modèle. Cette « rotation du modèle » n’inclut pas la rotation causée par la déformation Live2D ArtMesh, uniquement la rotation réelle appliquée à l’ensemble du modèle par VTube Studio. Vous utiliserez cela si vous voulez que l’élément fasse face à une certaine direction relative à la rotation actuelle du modèle.</li>
+  <li><code>RelativeToPinPosition</code> : Angle relatif à la position d’épingle. C’est ce que vous devez utiliser si vous souhaitez épingler un élément à une certaine position dans un certain ArtMesh à un certain angle et que vous voulez que cet angle soit exactement le même peu importe comment le modèle est tourné actuellement ou comment l’ArtMesh est déformé. Cependant, l’angle que vous devez passer pour obtenir l’effet désiré sera complètement différent pour chaque position d’épingle.</li>
+<li><code>sizeRelativeTo</code> :</li>
+  <li><code>RelativeToWorld</code> : Taille absolue. Entre 0 (plus petit) et 1 (plus grand). Voir aussi <code>ItemLoadRequest</code>.</li>
+  <li><code>RelativeToCurrentItemSize</code> : Relatif à la taille actuelle de l’élément. Vous pouvez passer des nombres entre <code>-1</code> et <code>1</code>, qui seront ajoutés à la taille actuelle de l’élément, ce qui signifie que vous pouvez passer 0 si vous voulez épingler l’élément à sa taille actuelle sans la changer.</li>
+<li><code>vertexPinType</code> : </li>
+  <li><code>Provided</code> : L’élément sera épinglé à l’ArtMesh donné en utilisant la position d’épingle fournie dans les champs <code>vertexID1</code>, <code>vertexID2</code>, <code>vertexID3</code>, <code>vertexWeight1</code>, <code>vertexWeight2</code> et <code>vertexWeight3</code>. Les détails seront expliqués ci-dessous.</li>
+  <li><code>Center</code> : L’élément sera épinglé au « centre » de l’ArtMesh donné. Ce n’est pas vraiment le centre (spatial) mais en fait le triangle au milieu de la liste des triangles du maillage. Cela vous donnera la même position à chaque fois pour un ArtMesh donné.</li>
+  <li><code>Random</code> : L’élément sera épinglé à un triangle aléatoire dans l’ArtMesh donné.</li></p><p></ul>Si l’ID du modèle fourni ne correspond pas au modèle chargé, une erreur est renvoyée. Vous pouvez aussi laisser l’ID du modèle vide, ce qui tentera d’épingler au modèle actuellement chargé (si un est chargé).</p><p>Si le modèle ne possède pas l’ArtMesh avec l’ID d’ArtMesh que vous avez fourni, une erreur est renvoyée. Si vous laissez l’ID d’ArtMesh vide, un ArtMesh aléatoire sera choisi dans le modèle.</p><p>Par exemple, vous pourriez laisser vide à la fois l’ID du modèle et l’ID d’ArtMesh et définir <code>vertexPinType</code> à <code>Random</code>. Cela épinglera simplement l’élément à une position aléatoire sur un ArtMesh aléatoire du modèle actuellement chargé.</p><h3>Épingler à une position spécifique</h3></p><p>Si vous définissez <code>vertexPinType</code> sur <code>Provided</code>, vous devez utiliser les champs <code>vertexID1</code>, <code>vertexID2</code>, <code>vertexID3</code>, <code>vertexWeight1</code>, <code>vertexWeight2</code> et <code>vertexWeight3</code> pour fournir une position valide sur l’ArtMesh que vous avez sélectionné en utilisant les champs <code>modelID</code> et <code>artMeshID</code>.</p><p>Les trois champs d’ID de sommet doivent être les ID des sommets d’un triangle dans l’ArtMesh donné. Pour définir une position à l’intérieur de ce triangle spécifique, utilisez les champs de poids des sommets. Ces champs seront multipliés par les positions des sommets pour définir une position dans le triangle. Gardez à l’esprit que les poids doivent totaliser exactement 1, sinon la position résultante serait en dehors du triangle (et une erreur sera retournée). Ce sont des <a href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system" target="_blank" rel="noopener noreferrer">coordonnées barycentriques</a>.</p><p>Pour obtenir une de ces positions, vous pouvez utiliser l’<a href="https://github.com/DenchiSoft/VTubeStudio/tree/master/Events#model-clicked-event" target="_blank" rel="noopener noreferrer">événement ModelClickedEvent</a>. Cet événement retournera des positions d’épingles que vous pouvez utiliser avec la <code>ItemPinRequest</code> lorsque le modèle est cliqué.</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemPinRequest",
+	"data": {
+		"pin": true,
+		"itemInstanceID": "4a241269394f463ca16b8b21aa636568",
+		"angleRelativeTo": "RelativeToModel",
+		"sizeRelativeTo": "RelativeToWorld",
+		"vertexPinType": "Provided",
+		"pinInfo": {
+			"modelID": "d87b771d2902473bbaa0226d03ef4754",
+			"artMeshID": "hair_right_4",
+			"angle": 23.938,
+			"size": 0.33,
+			"vertexID1": 17,
+			"vertexID2": 9,
+			"vertexID3": 55,
+			"vertexWeight1": 0.25928378105163576,
+			"vertexWeight2": 0.6850675940513611,
+			"vertexWeight3": 0.055648624897003177
+		}
+	}
+}</code></pre></p><p>En cas de succès, la réponse contient l'ID de l'article, le nom du fichier de l'article et indique si l'article est maintenant épinglé ou non.</p><p><strong><code>RÉPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemPinResponse",
+	"data": {
+		"isPinned": true,
+		"itemInstanceID": "4a241269394f463ca16b8b21aa636568",
+		"itemFileName": "my_test_item_2.png",
+	}
+}</code></pre></p><h2>Obtenir la liste des effets de post-traitement et leur état</h2></p><p><strong>Note :</strong> Les termes effets visuels, VFX et effets de post-traitement sont utilisés de manière interchangeable dans ce document.</p><p>VTube Studio dispose d'un post-traitement intégré, vous permettant d'ajouter des effets visuels directement à la scène. Cela est disponible sur Windows et macOS. Pour plus d'informations, consultez la page <a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects" target="_blank" rel="noopener noreferrer">"Effets Visuels"</a>.</p><p>Cette requête renvoie l'état général du système de post-traitement, une liste de tous les préréglages de post-traitement existants (créés par l'utilisateur) et une liste de tous les effets de post-traitement disponibles avec leur valeur actuelle (état actuel du post-traitement).</p><p>Si vous définissez <code>fillPostProcessingPresetsArray</code> sur <code>false</code>, le tableau <code>postProcessingPresets</code> dans la charge utile de la réponse sera vide. La demande de la liste des préréglages de post-traitement nécessite la lecture des fichiers de préréglages depuis le disque (même s'ils sont mis en cache un certain temps dans VTS), ce qui peut être lent. Si vous envoyez cette requête à une fréquence élevée, assurez-vous que <code>fillPostProcessingPresetsArray</code> n'est pas <code>true</code>, sinon cela pourrait créer un décalage dû aux E/S disque.</p><p>Si vous définissez <code>fillPostProcessingEffectsArray</code> sur <code>false</code>, le tableau <code>postProcessingEffects</code> dans la charge utile de la réponse sera vide. Si vous n'avez pas besoin de la liste complète des effets de post-traitement et de leurs valeurs, il est recommandé de définir <code>fillPostProcessingEffectsArray</code> sur <code>false</code> car la charge utile de la réponse peut être assez volumineuse.</p><p>Si vous êtes uniquement intéressé par des effets de post-traitement spécifiques, vous pouvez les lister dans le tableau <code>effectIDFilter</code>. Sinon, laissez le tableau vide pour ne pas appliquer de filtre. Une liste de tous les effets actuels est disponible ici : https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/Effects.cs</p><p><strong>Note :</strong> Ces identifiants sont acceptés dans de nombreux formats différents, vous pouvez donc créer une énumération pour eux dans n'importe quel style d'énumération que vous souhaitez. Ils ne tiennent pas compte de la casse et <code>_</code> ou <code>-</code> est ignoré. Par exemple, cela signifie qu'au lieu de <code>ChromaticAberration</code> vous pouvez écrire <code>Chromatic_Aberration</code>, <code>chromatic_aberration</code>, <code>CHROMATIC_ABERRATION</code> ou tout autre style qui vous convient le mieux.</p><p><strong><code>REQUÊTE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "PostProcessingListRequest",
+	"data":
+	{
+		"fillPostProcessingPresetsArray": true,
+		"fillPostProcessingEffectsArray": true,
+		"effectIDFilter":
+		[
+			"ASCII",
+			"ColorGrading",
+			"WeatherEffects",
+			"ChromaticAberration"
+		]
+	}
+}</code></pre>
+La réponse contient des informations générales sur l'état du système de post-traitement ainsi que sur les tableaux <code>postProcessingEffects</code> et <code>postProcessingPresets</code> si demandés.</p><p><code>postProcessingSupported</code> vérifie si la plateforme supporte le post-traitement, ce qui doit toujours être <code>true</code> sur Windows et macOS. Le champ <code>postProcessingActive</code> indique si l'utilisateur a activé ou non le post-traitement. Gardez à l'esprit que vous pouvez également l'activer/désactiver via l'API en utilisant la <code>PostProcessingUpdateRequest</code> décrite ci-après. L'utilisation de la <code>PostProcessingUpdateRequest</code> peut ne pas être possible dans certaines situations, notamment lorsque certaines fenêtres ou popups liés aux configurations du post-traitement sont ouverts dans VTube Studio. Dans ce cas, <code>canSendPostProcessingUpdateRequestRightNow</code> sera <code>false</code>.</p><p>Il existe certains effets restreints/expérimentaux (voir <a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects#restrictedexperimental-effects" target="_blank" rel="noopener noreferrer">"Effets restreints/expérimentaux"</a>). L'utilisateur doit explicitement autoriser l'utilisation de ces effets. Le champ <code>restrictedEffectsAllowed</code> indique si l'utilisateur a autorisé ces effets à être utilisés.</p><p>Le champ <code>presetIsActive</code> indique si un preset de post-traitement est actif. Si un preset est actif, son nom sera dans le champ <code>activePreset</code>, sinon ce champ sera vide.</p><p><code>presetCount</code> contient le nombre de presets de post-traitement dans le tableau <code>postProcessingPresets</code>. Si vous n'avez pas demandé à remplir ce tableau, <code>presetCount</code> sera 0.</p><p><code>activeEffectCount</code> est le nombre d'effets de post-traitement actifs. La signification d'un effet "actif" est expliquée plus loin dans cette section.</p><p>Les champs "effectCount" et "configCount" contiennent respectivement le nombre d'effets et le nombre total de configurations pour tous les effets avant et après l'application du filtre (si vous avez demandé un filtrage).</p><h3>Le tableau <code>postProcessingEffects</code></h3></p><p>Le tableau <code>postProcessingEffects</code> contient la liste de tous les effets. Ce sont les mêmes effets qui sont affichés dans la liste VFX de VTube Studio. Chaque effet peut avoir plusieurs "configs" qui configurent certains aspects de l'effet, par exemple sa puissance ou une couleur.</p><p>L'ID utilisé pour identifier un effet est retourné dans le champ <code>enumID</code>. Il y a aussi le champ <code>internalID</code> qui contient l'ID que VTube Studio utilise en interne pour cet effet. C'est l'ID utilisé dans les fichiers JSON des presets de post-traitement, donc il ne devrait pas être pertinent pour la plupart des cas d'utilisation. Cependant, ces IDs peuvent aussi être utilisés dans l'API pour référencer les effets si vous souhaitez les utiliser pour une raison quelconque.</p><p>Les configs ont toutes l'un des types suivants (retournés dans le champ <code>type</code> de la config) :
+<ul><li>Float</li>
+<li>Int</li>
+<li>Bool</li>
+<li>String</li>
+<li>Color</li>
+<li>SceneItem</li></p><p></ul>Les configs pour un effet sont retournées dans le tableau <code>configEntries</code>. Chaque config possède aussi un <code>internalID</code> et un <code>enumID</code>. Toutes les IDs de config pour tous les effets avec explications sont disponibles ici : https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs</p><p>Pour une config, seuls les champs correspondant au type de cette config sont remplis. Les autres champs seront vides ou auront une valeur par défaut et doivent être ignorés. Par exemple, pour une config de type float, les champs comme <code>intMin</code> et <code>colorValue</code> sont vides (dans ce cas 0 et une chaîne vide). En plus d'une valeur par défaut (que tous les types ont), les configs <code>Float</code> et <code>Int</code> ont aussi un <code>min</code> et un <code>max</code>.</p><p>Pour les champs contenant des couleurs, une chaîne au format hexadécimal RGBA est retournée (comme "77CCAAFF") et <code>colorHasAlpha</code> indique si cette config possède une composante alpha. Si c'est <code>false</code>, l'alpha sera toujours <code>FF</code>.</p><p>Les configs de type <code>SceneItem</code> sont essentiellement des configs de type chaîne, mais la valeur doit être le nom de fichier d'un item (se terminant par .jpg ou .png) qui existe dans le dossier "Items" de VTube Studio. Ceux-ci sont par exemple utilisés dans l'effet de particules personnalisées.</p><h3>Quand un effet est-il considéré comme "actif" ?</h3></p><p>Chaque effet possède au moins une configuration flottante (mais peut en avoir plusieurs) avec <code>activationConfig</code> réglé sur <code>true</code>. Si l'une de ces configurations pour un effet a une valeur supérieure à 0, cet effet est considéré comme <code>actif</code>.</p><p>Pour l'effet <code>ColorGrading</code> par exemple, ce serait la configuration <code>ColorGrading_Strength</code>.</p><p><strong>Remarque :</strong> Les <code>postProcessingEffects</code> dans cet exemple de charge utile de réponse sont fortement abrégés. Lorsqu'aucun filtre n'est appliqué, cela peut représenter des milliers de lignes car il y a plus de 250 configurations d'effets.</p><p><strong><code>RÉPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "PostProcessingListResponse",
+	"data": {
+		"postProcessingSupported": true,
+		"postProcessingActive": true,
+		"canSendPostProcessingUpdateRequestRightNow": true,
+		"restrictedEffectsAllowed": false,
+		"presetIsActive": true,
+		"activePreset": "some_effects_preset_3",
+		"presetCount": 70,
+		"activeEffectCount": 5,
+		"effectCountBeforeFilter": 29,
+		"configCountBeforeFilter": 258,
+		"effectCountAfterFilter": 4,
+		"configCountAfterFilter": 31,
+		"postProcessingEffects": [
+			{
+				"internalID": "color_grading",
+				"enumID": "ColorGrading",
+				"explanation": "Color grading",
+				"effectIsActive": false,
+				"effectIsRestricted": false,
+				"configEntries": [
+					{
+						"internalID": "color_grading-strength",
+						"enumID": "ColorGrading_Strength",
+						"explanation": "Effect on/off",
+						"type": "Float",
+						"activationConfig": true,
+						"floatValue": 0.0,
+						"floatMin": 0.0,
+						"floatMax": 1.0,
+						"floatDefault": 0.0,
+						"intValue": 0,
+						"intMin": 0,
+						"intMax": 0,
+						"intDefault": 0,
+						"colorValue": "",
+						"colorDefault": "",
+						"colorHasAlpha": false,
+						"boolValue": false,
+						"boolDefault": false,
+						"stringValue": "",
+						"stringDefault": "",
+						"sceneItemValue": "",
+						"sceneItemDefault": ""
+					},
+					{
+						"internalID": "color_grading-color_filter",
+						"enumID": "ColorGrading_ColorFilter",
+						"explanation": "Color filter",
+						"type": "color",
+						"activationConfig": false,
+						"floatValue": 0.0,
+						"floatMin": 0.0,
+						"floatMax": 0.0,
+						"floatDefault": 0.0,
+						"intValue": 0,
+						"intMin": 0,
+						"intMax": 0,
+						"intDefault": 0,
+						"colorValue": "FFFFFFFF",
+						"colorDefault": "FFFFFFFF",
+						"colorHasAlpha": false,
+						"boolValue": false,
+						"boolDefault": false,
+						"stringValue": "",
+						"stringDefault": "",
+						"sceneItemValue": "",
+						"sceneItemDefault": ""
+					}
+				]
+			}
+		],
+		"postProcessingPresets": [
+			"My Cool Preset",
+			"some_effects_preset_1",
+			"some_effects_preset_2",
+			"some_effects_preset_3",
+			"test asdf 123456",
+			"blur and color grading",
+		]
+	}
+}</code></pre></p><h2>Définir les effets de post-traitement</h2></p><p><strong>Note :</strong> Les termes effets visuels, VFX et effets de post-traitement sont utilisés de manière interchangeable dans ce document.</p><p>VTube Studio possède un post-traitement intégré, vous permettant d’ajouter des effets visuels directement à la scène. Ceci est disponible sur Windows et macOS. Pour plus d’informations, consultez la page <a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects" target="_blank" rel="noopener noreferrer">"Effets Visuels"</a>.</p><p>En utilisant la <code>PostProcessingUpdateRequest</code>, vous pouvez contrôler le système de post-traitement. Vous pouvez l’activer/désactiver, charger/décharger des presets ou même contrôler directement et en détail des éléments de configuration individuels (couleurs, intensités, etc.).</p><p>Cette mise à jour ne peut être envoyée que si aucune fenêtre liée à la configuration du post-traitement n’est ouverte. Sinon, l’erreur <code>PostProcessingUpdateReqestCannotUpdateRightNow</code> sera retournée. Pour toutes les erreurs que cette requête peut retourner, voir <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">"ErrorsID.cs"</a>.</p><p>Utilisez <code>postProcessingOn</code> pour activer ou désactiver globalement le post-traitement. Cela fait la même chose que basculer l’interrupteur de post-traitement dans l’interface de VTS. Vous pouvez définir des presets ou des valeurs de configuration individuelles même en désactivant le post-traitement avec la même requête. Les valeurs seront quand même définies mais rien ne se passera à l’écran. En ouvrant la fenêtre de configuration du post-traitement dans VTube Studio, vous verrez que vos valeurs demandées ont été définies et seront visibles une fois le post-traitement activé. Gardez à l’esprit que si vous définissez un preset mais désactivez le post-traitement avec la même requête, toutes les valeurs du preset seront toujours définies mais le preset ne sera pas affiché comme actif dans l’interface car techniquement il n’est plus « actif ». Toutes les valeurs du preset seront visibles une fois le post-traitement activé à nouveau.</p><p>Vous pouvez définir des valeurs pour les éléments de configuration du post-traitement de deux manières :
+<ul><li>Définir un preset de post-traitement : Mettez <code>setPostProcessingPreset</code> à <code>true</code> et fournissez le nom du preset dans le champ <code>presetToSet</code> (juste le nom du preset sans l’extension de fichier). Si le preset n’existe pas, l’erreur <code>PostProcessingUpdateRequestPresetFileLoadFailed</code> est retournée.</li>
+<li>Définir des valeurs de configuration individuelles : Mettez <code>setPostProcessingValues</code> à <code>true</code> et fournissez une liste de paires clé/valeur dans le tableau <code>postProcessingValues</code>.</li></p><p></ul>Vous ne pouvez pas faire les deux en même temps : si <code>setPostProcessingPreset</code> et <code>setPostProcessingValues</code> sont tous deux <code>true</code>, l’erreur <code>PostProcessingUpdateRequestLoadingPresetAndValues</code> sera retournée. Cependant, les deux peuvent être <code>false</code>. Dans ce cas, aucune valeur ne sera définie. Cela peut être utile si vous voulez juste activer/désactiver globalement le post-traitement sans changer quoi que ce soit à la configuration actuelle.</p><p>Lors du changement des valeurs de configuration directement ou via des presets, les valeurs de configuration passeront en fondu doux des anciennes aux nouvelles valeurs que vous avez fournies. La durée du fondu doit être indiquée dans le champ <code>postProcessingFadeTime</code> et doit être comprise entre 0 et 2 (secondes). Toute valeur en dehors de cette plage retournera l’erreur <code>PostProcessingUpdateRequestFadeTimeInvalid</code>.</p><p>Lors de la définition de valeurs individuelles, le champ <code>setAllOtherValuesToDefault</code> détermine si toutes les autres valeurs (celles que vous n’avez pas mises dans votre charge utile) seront laissées inchangées ou fondues vers leur valeur par défaut, ce qui signifie que tous les effets non mentionnés seront désactivés.</p><p>Si vous souhaitez utiliser des <a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects#restrictedexperimental-effects" target="_blank" rel="noopener noreferrer">effets restreints/expérimentaux</a> lors de la définition directe des valeurs de configuration, assurez-vous que <code>usingRestrictedEffects</code> est défini à <code>true</code> dans votre charge utile. C’est juste un contrôle de cohérence pour éviter que ces effets ne soient utilisés par erreur. Sinon, l’erreur <code>PostProcessingUpdateRequestTriedToLoadRestrictedEffect</code> sera retournée. Cette erreur sera aussi retournée si l’utilisateur n’a pas encore activé l’utilisation de ces effets dans les paramètres VFX de VTube Studio. Cela doit être fait manuellement par l’utilisateur. Si un preset est chargé et contient des effets restreints, il sera quand même entièrement chargé et il n’y aura pas d’erreur mais les effets restreints ne seront pas activés.</p><p>Vous pouvez aussi demander que toutes les configurations d’effets soient aléatoirement modifiées. C’est juste pour le fun. Pour cela, mettez <code>randomizeAll</code> à <code>true</code>. Toutes les valeurs de configuration ou presets envoyés dans la charge utile seront ignorés si <code>randomizeAll</code> est <code>true</code>. Quand plusieurs effets sont actifs en même temps, vous obtenez juste du bruit aléatoire, donc cela limite le nombre d’effets et les valeurs de configuration ne deviennent pas trop folles. Cela peut être contrôlé avec le champ <code>randomizeAllChaosLevel</code>, qui accepte des valeurs entre 0 et 1 (les valeurs plus hautes/basses sont ramenées dans cette plage). <code>0</code> n’aura qu’un ou deux effets actifs avec des valeurs modérées tandis que <code>1</code> créera un chaos complet à l’écran. <code>0.4</code> à <code>0.5</code> est la plage de valeurs recommandée pour un bon effet. Les effets restreints seront inclus dans la randomisation uniquement si vous avez mis <code>usingRestrictedEffects</code> à <code>true</code> et que l’utilisateur a autorisé/activé l’utilisation de ces effets.</p><h3>Comment définir des valeurs de configuration individuelles</h3></p><p>Quand vous voulez contrôler la configuration du post-traitement en détail en définissant des valeurs individuelles, vous devez mettre <code>setPostProcessingValues</code> à <code>true</code> et définir les valeurs via le tableau <code>postProcessingValues</code>. <code>configID</code> est l’ID de l’effet de configuration que vous voulez configurer, <code>configValue</code> est la valeur que vous voulez définir sous forme de chaîne.</p><ul><li><code>configID</code> : ID de la configuration que vous voulez configurer, voir <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs" target="_blank" rel="noopener noreferrer">cette liste de tous les IDs de config</a>. Ces IDs sont acceptés dans plusieurs formats différents, vous pouvez donc créer une énumération pour eux dans le style d’énumération que vous voulez. Ils ne sont pas sensibles à la casse et <code>_</code> ou <code>-</code> sont ignorés. Par exemple, cela signifie qu’au lieu de <code>Backlight_OutlineSize</code> vous pouvez écrire <code>Backlight_Outline_Size</code>, <code>backlight_outlinesize</code>, <code>BACKLIGHT_OUTLINESIZE</code>, <code>backlight-outline_size</code> ou tout autre style qui vous convient le mieux (voir aussi le champ <code>enumID</code> dans le tableau <code>configEntries</code> de la <code>PostProcessingListResponse</code>).</li>
+<li><code>configValue</code> : La valeur à définir, sous forme de chaîne. Pour les floats ou int, les valeurs en dehors de la plage min/max de la config seront ramenées dans la plage. Les valeurs booléennes ne sont pas sensibles à la casse, donc <code>"True"</code> et <code>"true"</code> (ou <code>"TRUE"</code>, etc.) sont des valeurs acceptées.</li></p><p></ul>Si vous avez des clés dupliquées dans le tableau, l’erreur <code>PostProcessingUpdateRequestValueListContainsDuplicates</code> est retournée, et si des clés sont invalides (non trouvées) ou des valeurs invalides (échec de désérialisation float, bool, etc., correctement), l’erreur <code>PostProcessingUpdateRequestValueListInvalid</code> est retournée.</p><p><strong>Comment réellement activer un effet :</strong> Les effets peuvent avoir plusieurs entrées de configuration. Chaque effet a au moins une entrée de configuration (mais peut en avoir plusieurs) qui active l’effet si cette entrée est supérieure à 0. Dans la charge utile <code>PostProcessingListResponse</code>, ces configs (toujours de type float) sont marquées avec <code>"activationConfig": true</code>. Vous pouvez aussi regarder la liste de toutes les configs d’effets, où ces configs spéciales sont marquées avec <code>sets_active: True</code>, voir : https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs</p><h3>Conseils d’utilisation générale</h3></p><p>Vous ne devez pas envoyer cette requête à haute fréquence, par exemple à chaque image. Si vous souhaitez atténuer une valeur, utilisez le champ <code>postProcessingFadeTime</code> pour définir le temps d'atténuation approprié. En fonction de la combinaison de configurations, des mises à jour fréquentes <em>peuvent</em> être acceptables, mais vous devez tester cela attentivement. Le système de post-traitement est optimisé pour des mises à jour de configuration peu fréquentes, alors assurez-vous de vérifier si votre plugin provoque un quelconque décalage avant de le publier. </p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "PostProcessingUpdateRequest",
+	"data":
+	{
+		"postProcessingOn": true,
+		"setPostProcessingPreset": false,
+		"setPostProcessingValues": true,
+		"presetToSet": "",
+		"postProcessingFadeTime": 1.3,
+		"setAllOtherValuesToDefault": true,
+		"usingRestrictedEffects": false,
+		"randomizeAll": false,
+		"randomizeAllChaosLevel" : 0.0,
+		"postProcessingValues": [
+			{
+				"configID": "Backlight_Strength",
+				"configValue": "0.8"
+			},
+			{
+				"configID": "Bloom_Strength",
+				"configValue": "1.0"
+			},
+			{
+				"configID": "Bloom_StreakVertical",
+				"configValue": "false"
+			},
+			{
+				"configID": "Bloom_StreakColorTint",
+				"configValue": "220308FF"
+			}
+		]
+	}
+}</code></pre></p><p>S'il n'y a pas d'erreur, vous recevrez la réponse suivante avec quelques informations générales sur le nouvel état de post-traitement après votre mise à jour demandée.</p><p><strong><code>RÉPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "PostProcessingUpdateResponse",
+	"data":
+	{
+		"postProcessingActive": true,
+		"presetIsActive": false,
+		"activePreset": "",
+		"activeEffectCount": 2
+	}
+}</code></pre></p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-29
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/DenchiSoft/VTubeStudio/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-09-29 
+    </div>
+    
+</body>
+</html>

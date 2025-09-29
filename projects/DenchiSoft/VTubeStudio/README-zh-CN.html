@@ -1,0 +1,1746 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTubeStudio - VTube Studio API 开发页面</title>
+    <meta name="description" content="VTube Studio API 开发页面">
+    <meta name="keywords" content="VTubeStudio, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "VTubeStudio",
+  "description": "VTube Studio API 开发页面",
+  "author": {
+    "@type": "Person",
+    "name": "DenchiSoft"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 1083
+  },
+  "url": "https://OpenAiTx.github.io/projects/DenchiSoft/VTubeStudio/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/DenchiSoft/VTubeStudio/master/README.md",
+  "datePublished": "2025-09-29",
+  "dateModified": "2025-09-29"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/DenchiSoft/VTubeStudio" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    VTubeStudio
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 1083 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by DenchiSoft</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1><a href="https://denchisoft.com"><img src="https://raw.githubusercontent.com/DenchiSoft/VTubeStudio/master/Images/vtube_studio_logo_nyan_2.png" width="542" /></a><br> <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT"></a> <a href="https://discord.gg/VTubeStudio" target="_blank" rel="noopener noreferrer"><img src="https://discordapp.com/api/guilds/652602255748497449/widget.png?style=shield" alt="VTube Studio Discord"></a> <a href="https://github.com/DenchiSoft/VTubeStudio" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/stars/DenchiSoft/VTubeStudio?style=social" alt="Stars"></a> <a href="https://twitter.com/VTubeStudio" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/twitter/follow/VTubeStudio.svg?style=social" alt="Twitter Follow"></a></h1></p><p>
+<a href="https://discord.gg/VTubeStudio" target="_blank" rel="noopener noreferrer"><img src="https://discordapp.com/api/guilds/652602255748497449/widget.png?style=banner2" alt="VTube Studio Discord"></a></p><h2>您是否在寻找<a href="https://github.com/DenchiSoft/VTubeStudio/wiki" target="_blank" rel="noopener noreferrer">VTube Studio 手册</a>？</h2></p><p>可以在这里找到：https://github.com/DenchiSoft/VTubeStudio/wiki</p><h2>您是否在寻找<a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Plugins" target="_blank" rel="noopener noreferrer">VTube Studio 插件列表</a>？</h2></p><p>请查看此页面：https://github.com/DenchiSoft/VTubeStudio/wiki/Plugins</p><h2>您是开发者，想要接收来自 VTube Studio iPhone 应用的追踪数据吗？</h2></p><p>请求从 VTube Studio iOS 应用获取追踪数据的流程描述在这里：https://github.com/DenchiSoft/VTubeStudioBlendshapeUDPReceiverTest</p><h2>您是开发者，想了解如何创建 VTube Studio 插件吗？</h2></p><p>您所需的一切都在此页面。如果有任何问题，请在<a href="https://discord.gg/VTubeStudio" target="_blank" rel="noopener noreferrer">Discord</a>中提问。</p><h2>目录</h2></p><ul><li><a href="#general-info" target="_blank" rel="noopener noreferrer">一般信息</a></li>
+<li><a href="#legal-info" target="_blank" rel="noopener noreferrer">法律信息</a></li>
+<li><a href="#available-examples" target="_blank" rel="noopener noreferrer">可用插件和示例</a></li>
+<li><a href="#event-api" target="_blank" rel="noopener noreferrer">事件 API</a></li>
+<li><a href="#api-details" target="_blank" rel="noopener noreferrer">API 详情</a></li>
+  <li><a href="#api-permissions" target="_blank" rel="noopener noreferrer">API 权限</a></li>
+  <li><a href="#api-server-discovery-udp" target="_blank" rel="noopener noreferrer">API 服务器发现（UDP）</a></li>
+  <li><a href="#authentication" target="_blank" rel="noopener noreferrer">身份验证</a></li>
+  <li><a href="#subscribing-to-and-unsubscribing-from-events" target="_blank" rel="noopener noreferrer">订阅和取消订阅事件</a></li>
+  <li><a href="#getting-current-vts-statistics" target="_blank" rel="noopener noreferrer">获取当前 VTS 统计信息</a></li>
+  <li><a href="#getting-list-of-vts-folders" target="_blank" rel="noopener noreferrer">获取 VTS 文件夹列表</a></li>
+  <li><a href="#getting-the-currently-loaded-model" target="_blank" rel="noopener noreferrer">获取当前加载的模型</a></li>
+  <li><a href="#getting-a-list-of-available-vts-models" target="_blank" rel="noopener noreferrer">获取可用 VTS 模型列表</a></li>
+  <li><a href="#loading-a-vts-model-by-its-id" target="_blank" rel="noopener noreferrer">通过 ID 加载 VTS 模型</a></li>
+  <li><a href="#moving-the-currently-loaded-vts-model" target="_blank" rel="noopener noreferrer">移动当前加载的 VTS 模型</a></li>
+  <li><a href="#requesting-list-of-hotkeys-available-in-current-or-other-vts-model" target="_blank" rel="noopener noreferrer">请求当前或其他 VTS 模型中可用热键列表</a></li>
+  <li><a href="#requesting-execution-of-hotkeys" target="_blank" rel="noopener noreferrer">请求执行热键</a></li>
+  <li><a href="#requesting-current-expression-state-list" target="_blank" rel="noopener noreferrer">请求表情及其状态列表</a></li>
+  <li><a href="#requesting-activation-or-deactivation-of-expressions" target="_blank" rel="noopener noreferrer">请求表情的激活/停用</a></li>
+  <li><a href="#requesting-list-of-artmeshes-in-current-model" target="_blank" rel="noopener noreferrer">请求当前模型中的ArtMeshes列表</a></li>
+  <li><a href="#tint-artmeshes-with-color" target="_blank" rel="noopener noreferrer">为ArtMeshes着色</a></li>
+  <li><a href="#getting-scene-lighting-overlay-color" target="_blank" rel="noopener noreferrer">获取场景光照叠加色</a></li>
+  <li><a href="#checking-if-face-is-currently-found-by-tracker" target="_blank" rel="noopener noreferrer">检查面部跟踪器当前是否检测到面部</a></li>
+  <li><a href="#requesting-list-of-available-tracking-parameters" target="_blank" rel="noopener noreferrer">请求可用跟踪参数列表</a></li>
+  <li><a href="#get-the-value-for-one-specific-parameter-default-or-custom" target="_blank" rel="noopener noreferrer">获取某个特定参数的值，默认或自定义</a></li>
+  <li><a href="#get-the-value-for-all-live2d-parameters-in-the-current-model" target="_blank" rel="noopener noreferrer">获取当前模型中所有Live2D参数的值</a></li>
+  <li><a href="#adding-new-tracking-parameters-custom-parameters" target="_blank" rel="noopener noreferrer">添加新的跟踪参数（“自定义参数”）</a></li>
+  <li><a href="#delete-custom-parameters" target="_blank" rel="noopener noreferrer">删除自定义参数</a></li>
+  <li><a href="#feeding-in-data-for-default-or-custom-parameters" target="_blank" rel="noopener noreferrer">为默认或自定义参数提供数据</a></li>
+  <li><a href="#getting-physics-settings-of-currently-loaded-vts-model" target="_blank" rel="noopener noreferrer">获取当前加载的VTS模型的物理设置</a></li>
+  <li><a href="#overriding-physics-settings-of-currently-loaded-vts-model" target="_blank" rel="noopener noreferrer">覆盖当前加载的VTS模型的物理设置</a></li>
+  <li><a href="#get-and-set-ndi-settings" target="_blank" rel="noopener noreferrer">获取和/或设置NDI设置</a></li>
+  <li><a href="#requesting-list-of-available-items-or-items-in-scene" target="_blank" rel="noopener noreferrer">请求可用物品列表或场景中的物品</a></li>
+  <li><a href="#loading-item-into-the-scene" target="_blank" rel="noopener noreferrer">将物品加载到场景中</a></li>
+  <li><a href="#removing-item-from-the-scene" target="_blank" rel="noopener noreferrer">从场景中移除物品</a></li>
+  <li><a href="#controling-items-and-item-animations" target="_blank" rel="noopener noreferrer">控制物品及物品动画</a></li>
+  <li><a href="#moving-items-in-the-scene" target="_blank" rel="noopener noreferrer">移动场景中的物品</a></li>
+  <li><a href="#set-item-within-model-sorting-order" target="_blank" rel="noopener noreferrer">设置物品的模型内排序</a></li>
+  <li><a href="#asking-user-to-select-artmeshes" target="_blank" rel="noopener noreferrer">请求用户选择ArtMeshes</a></li>
+  <li><a href="#pin-items-to-the-model" target="_blank" rel="noopener noreferrer">将物品固定到模型上</a></li>
+  <li><a href="#get-list-of-post-processing-effects-and-state" target="_blank" rel="noopener noreferrer">获取后期处理效果及状态列表</a></li>
+  <li><a href="#set-post-processing-effects" target="_blank" rel="noopener noreferrer">设置后期处理效果</a></li>
+  
+</ul><h2>一般信息</h2></p><p>VTube Studio拥有一个<strong>公共API</strong>。这意味着您可以编写插件/脚本来触发快捷键、输入面部跟踪数据、加载物品、加载模型、获取各种事件的通知、为模型的ArtMeshes着色等等。</p><p>如果您开发了可以与VTube Studio配合使用的插件或任何应用程序，请提交PR，我会将其添加到本页的列表中。</p><h2>法律信息</h2></p><p>您可以自由编写、发布和销售任何适用于VTube Studio的插件。无需许可，也没有许可费或版税。</p><h2>可用示例</h2></p><p>如果您是VTube Studio的用户，正在寻找可以使用的插件，请查看<a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Plugins" target="_blank" rel="noopener noreferrer">插件列表维基页面</a>。</p><p>如果您是开发者，正在寻找示例/库以便更轻松地将 VTube Studio API 集成到您的应用中，请查看下表。</p><p>:warning: <strong>如果您制作了想要包含在此处的内容，请提交拉取请求修改表格！！</strong> :warning:</p><p>| 插件 | 开发者 | 类型 | 说明 |
+| --- | --- | --- | --- |
+| <a href="https://cheers.hawk.bar/" target="_blank" rel="noopener noreferrer">Cheers Bot</a> | <a href="https://twitter.com/HawkbarGaming" target="_blank" rel="noopener noreferrer">Hawkbar</a> | 应用 | 一个基于网页的 Twitch 集成平台，当观众兑换频道积分时，可触发 VTube Studio 中的动作，此外还具备许多其他功能。 |
+| <a href="https://github.com/Hawkbat/VTubeStudioJS" target="_blank" rel="noopener noreferrer">VTubeStudioJS</a> | <a href="https://twitter.com/HawkbarGaming" target="_blank" rel="noopener noreferrer">Hawkbar</a> | 库 | 一个供其他插件作者使用的 JavaScript 库，实现了 VTube Studio WebSocket API。兼容 NodeJS 和浏览器。 |
+| <a href="https://github.com/Renpona/VTStudio-Linker-SMB1" target="_blank" rel="noopener noreferrer">VTS Linker - SMB1</a> | <a href="https://twitter.com/renpona" target="_blank" rel="noopener noreferrer">Renpona</a> | 示例 | 一个原型项目，从模拟的超级马里奥兄弟游戏中读取数据，并根据游戏中发生的情况自动移动和重新着色 VTS 中的 Live2D 模型。 |
+| <a href="https://github.com/Raelice/VTchaos" target="_blank" rel="noopener noreferrer">VTchaos</a> | <a href="https://twitter.com/theraelice" target="_blank" rel="noopener noreferrer">Raelice</a> | 应用 | 一个读取 YouTube 和 Twitch 聊天的程序，通过简单的聊天命令在 VTube Studio 中执行模型切换、旋转、热键和移动等功能。 |
+| <a href="https://mixitupapp.com/" target="_blank" rel="noopener noreferrer">Mix It Up</a> | <a href="https://twitter.com/mixitupapp" target="_blank" rel="noopener noreferrer">Mix It Up</a> | 应用 | 用于聊天、事件及其他强大功能的流媒体软件机器人！ |
+| <a href="https://github.com/mlo40/VsPyYt" target="_blank" rel="noopener noreferrer">VsPyYt</a> | <a href="https://emlo40.com" target="_blank" rel="noopener noreferrer">emlo40</a> | 应用/框架 | VsPyYt 是一个命令行应用，可以读取 YouTube 聊天并执行保存在 token.json 中的命令。您也可以将其用作与 VTube Studio 交互的 Python 程序基础。 |
+| <a href="https://github.com/FomTarro/VTS-Sharp" target="_blank" rel="noopener noreferrer">VTS-Sharp</a> | <a href="https://www.twitter.com/FomTarro" target="_blank" rel="noopener noreferrer">Skeletom</a> | 库 | 一个供其他插件作者使用的 Unity/C# 库，实现了 VTube Studio WebSocket API。 |
+| <a href="https://github.com/eslym/node-red-contrib-vts" target="_blank" rel="noopener noreferrer">node-red-contrib-vts</a> | <a href="https://github.com/eslym" target="_blank" rel="noopener noreferrer">0nepeop1e</a> | 库 | 一个为 Node-RED 提供节点以集成 VTube Studio 的库包。 |
+| <a href="https://github.com/MechaWolfVtuberShin/VTS-Mod/releases/tag/vts-mod" target="_blank" rel="noopener noreferrer">VTS Mod</a> | <a href="https://github.com/MechaWolfVtuberShin" target="_blank" rel="noopener noreferrer">MechaWolfVtuber_Shin</a> | 应用 | 一个允许用户更改模型表面颜色（包括 RGB）及模型旋转的程序。 |
+| <a href="https://tie-tools.tiberiusx.me" target="_blank" rel="noopener noreferrer">Tie Tools: VTS Color Editor</a> | <a href="https://www.twitter.com/prof_tiberius" target="_blank" rel="noopener noreferrer">Prof. Tiberius</a> | 应用 | 一个网页应用，可深入控制模型特定部分的颜色和不透明度。 |
+| <a href="https://github.com/walfie/vtubestudio-rs" target="_blank" rel="noopener noreferrer">vtubestudio-rs</a> | <a href="https://www.twitter.com/walfieee" target="_blank" rel="noopener noreferrer">Walfie</a> | 库 | 一个供其他插件作者使用的 Rust 库，实现了 VTube Studio WebSocket API。 |
+| <a href="https://skeletom-ch.itch.io/vts-heartrate" target="_blank" rel="noopener noreferrer">vts-heartrate</a> | <a href="https://www.twitter.com/FomTarro" target="_blank" rel="noopener noreferrer">Skeletom</a> | 应用 | 一个连接实时心率数据到 VTube Studio 的插件，允许动态模型着色并基于脉搏提供自定义跟踪参数。 |
+| <a href="https://satetsu888.github.io/vts-chameleon/" target="_blank" rel="noopener noreferrer">vts-chameleon</a> | <a href="https://www.twitter.com/satetsu888" target="_blank" rel="noopener noreferrer">satetsu888</a> | 应用 | 一个用于应用颜色色调的插件。您可以尝试更改模型的头发、皮肤、制服等的色调。 |
+| <a href="https://kawaentertainment.itch.io/viewlink" target="_blank" rel="noopener noreferrer">ViewLink</a> | <a href="https://twitter.com/kawa_entertain" target="_blank" rel="noopener noreferrer">KawaEntertainment</a> | 应用 | 您是想直播 VR 游戏但只有 Live2D 模型的 VTuber 吗？使用 ViewLink，您的 Live2D 头像可以在无任何复杂设置或额外硬件的情况下对 VR 游戏做出反应！ |
+| <a href="https://lualucky.itch.io/vts-desktop-audio-plugin" target="_blank" rel="noopener noreferrer">VTS Desktop Audio</a> | <a href="https://twitter.com/LuaVLucky" target="_blank" rel="noopener noreferrer">Lua Lucky</a> | 应用 | 一个将桌面音频用作 VTS 输入参数的插件。 |
+| <a href="https://github.com/Genteki/pyvts" target="_blank" rel="noopener noreferrer">pyvts</a> | <a href="https://github.com/Genteki" target="_blank" rel="noopener noreferrer">Genteki</a> | 库 | 一个用于与 VTube Studio API 交互的 Python 库。 |
+| <a href="https://github.com/chuigda/Project-WG/tree/master/extra/dsys" target="_blank" rel="noopener noreferrer">DSYS: Dummy System</a> | <a href="https://github.com/chuigda" target="_blank" rel="noopener noreferrer">Chuigda</a> | 应用 | 一个用于记录/回放/半自动控制 VTS 模型参数的简单插件。 |
+| <a href="https://github.com/HueVirtualCreature/SAMMIVtubeStudioExtension" target="_blank" rel="noopener noreferrer">SAMMIVtubeStudioExtension</a> | <a href="https://twitter.com/Hue_SwordDevil" target="_blank" rel="noopener noreferrer">hue</a> | 插件 | 一个用于流媒体自动化工具 <a href="https://sammi.solutions/" target="_blank" rel="noopener noreferrer">SAMMI</a> 的插件。 |
+| <a href="https://streamer.bot" target="_blank" rel="noopener noreferrer">Streamer.bot</a> | <a href="https://streamer.bot" target="_blank" rel="noopener noreferrer">Streamer.bot</a> | 应用 | 先进的多平台流媒体软件，具有官方的 <a href="https://docs.streamer.bot/guide/integrations/vtube-studio" target="_blank" rel="noopener noreferrer">VTubeStudio 集成</a>。 |
+| <a href="https://github.com/lgc2333/coovts" target="_blank" rel="noopener noreferrer">coovts</a> | <a href="https://github.com/lgc2333" target="_blank" rel="noopener noreferrer">LgCookie</a> | 库 | 另一个用于使用 Python 制作 VTube Studio 插件的库（处于早期开发）。完整类型提示 | 异步设计 | 基于 Pydantic 的数据验证。 |
+| <a href="https://www.nekomaido.com/plugin/vts-terminal" target="_blank" rel="noopener noreferrer">VTS Terminal</a> | <a href="https://www.nekomaido.com" target="_blank" rel="noopener noreferrer">Neko Maido</a> | 应用 | 一个提供多种实用功能的插件，可以触发热键，调整模型位置和视觉效果，并为您的 Live2D 模型生成 PDF 手册。 |</p><h1>事件 API</h1></p><p>另有一篇维基页面介绍了<strong>事件 API</strong>，您可以用它来订阅 VTube Studio 中发生的事件，例如模型加载或热键执行。请查看有关事件的页面<a href="Events/" target="_blank" rel="noopener noreferrer">点击这里</a>。</p><h1>API 详情</h1></p><p>VTube Studio 的 websocket 服务器运行在 <code>ws://localhost:8001</code>。这是默认端口，但用户也可以在应用中更改端口。Websocket 通常支持 <code>binary</code> 和 <code>text</code> 消息。VTube Studio 始终以 <code>text</code> 消息响应，建议向 API 也发送 <code>text</code> 消息。您也可以发送 <code>binary</code> 消息，但如果发送，确保其以 UTF-8 编码。</p><p>如果您的插件无法连接到 websocket 服务器，请告知用户检查端口是否正确，或是否有防火墙/杀毒软件设置阻止连接。最重要的是，您应让用户在 VTube Studio 中“允许插件 API 访问”，该选项位于 VTS 的主配置页面。您还应确保插件支持配置用于连接的端口。</p><p>如果您能连接，您可以首先尝试检查会话状态。</p><p><strong><code>请求</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "MyIDWithLessThan64Characters",
+	"messageType": "APIStateRequest"
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"messageType": "APIStateResponse",
+	"requestID": "MyIDWithLessThan64Characters",
+	"data": {
+		"active": true,
+		"vTubeStudioVersion": "1.9.0",
+		"currentSessionAuthenticated": false
+	}
+}</code></pre>
+每个请求必须包含 <code>"apiName" : "VTubeStudioPublicAPI"</code> 和所使用的 API 版本，在首次发布时为 <code>"1.0"</code>。  
+该 API 版本将在行为/负载发生不兼容更改之前保持不变。 这意味着可能会向 API 添加新功能（包括现有负载中的新字段），而无需增加版本号。 确保您的应用能处理这种情况，并且在反序列化时遇到未知字段不会崩溃。  </p><p>不兼容更改的示例包括重命名现有字段或完全从负载中删除它。 如果发生任何不兼容更改，API 版本将相应增加，以便旧 API 仍可按原样使用。  </p><p>您可以在每个请求中添加 <code>"requestID"</code> 字段。 这是可选的，但建议添加，因为它允许您识别对请求的响应。  
+该 ID 还将用于在 VTube Studio 日志中记录请求及任何错误。 如果出现任何问题，您可以使用此 ID 作为参考，在日志中检查与该请求相关的任何错误。  </p><p>您可以为每个请求使用相同的 ID 或不同的 ID。 如果提供，ID 应仅包含 ASCII 字符，长度至少为 1 且最多为 64 个字符。  
+如果未添加 <code>"requestID"</code> 字段，VTube Studio 将为请求生成一个随机的 UUID，并随响应返回。  </p><p><code>"currentSessionAuthenticated"</code> 将告诉您当前会话是否已通过身份验证。  </p><p>所有可能的错误 ID 列在页面 <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorsID.cs</a> 上。  </p><p>连接后，客户端可以随时轮询当前应用状态信息。  </p><h2>API 权限  </h2></p><p>VTube Studio API 提供的某些功能需要插件在认证后请求额外的<strong>权限</strong>。 类似于 iOS 和 Android 的权限机制，这确保用户理解插件何时使用可能被视为风险或潜在危险的功能，例如加载任意图像作为项目。  </p><p>请求权限时，会向用户显示弹窗，解释该权限的用途。 用户可以选择授予或拒绝。 有关如何请求权限以及需要权限的详细信息，请查看<a href="Permissions/" target="_blank" rel="noopener noreferrer">权限页面</a>。  </p><p><a href="Permissions/" target="_blank" rel="noopener noreferrer"><img src="/Images/vts_api_permissions_1_transparent.png" alt="VTube Studio 权限请求界面"></a>  </p><h2>API 服务器发现（UDP）  </h2></p><p>VTube Studio 还通过本地网络在 UDP 端口 47779 上广播 API 状态。 即使用户关闭了 API，也会每两秒广播一次。  
+<code>instanceID</code> 是为 VTube Studio 实例启动时生成的随机 ID。 它在该实例运行期间保持不变，因此两个 VTube Studio 实例将拥有不同的 ID。  </p><p><code>windowTitle</code> 是窗口的标题文本。 在 Windows 上，不同的 VTS 实例标题不同。 当启动多个实例时，第一个实例的标题为 <code>VTube Studio</code>，第二个实例的标题为 <code>VTube Studio Window 2</code>，依此类推。 在 macOS 上，所有实例的标题均为 <code>VTube Studio</code>。  </p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1630159656406,
+	"messageType": "VTubeStudioAPIStateBroadcast",
+	"requestID": "VTubeStudioAPIStateBroadcast",
+	"data": {
+		"active": false,
+		"port": 8001,
+		"instanceID": "93aa0d0494304fddb057ae8a295c4e59",
+		"windowTitle": "VTube Studio"
+	}
+}</code></pre></p><h2>认证</h2></p><p>在使用API之前，您必须先进行一次认证。为此，您需要提供您的插件名称和开发者名称。它们都应在3到32个字符之间。</p><p>这是通过请求您的插件令牌来完成的。发送以下请求：</p><p><strong><code>请求</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "AuthenticationTokenRequest",
+	"data": {
+		"pluginName": "My Cool Plugin",
+		"pluginDeveloper": "My Name",
+		"pluginIcon": "iVBORw0.........KGgoA="
+	}
+}</code></pre></p><p>如果用户已激活API访问权限，这将在VTS内触发一个弹出窗口，询问用户是否允许由“My Name”开发的插件“My Cool Plugin”控制VTube Studio。可以选择添加“pluginIcon”。该图标必须是一个经过Base64编码的PNG或JPG图像，尺寸严格为128x128像素。如果添加了该图标，图标将在显示给用户的插件访问请求弹窗中使用。如果他们点击“允许”，您将收到以下响应：</p><p><strong><code>RESPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "AuthenticationTokenResponse",
+	"data": {
+		"authenticationToken": "adcd-123-ef09-some-token-string-abcd"
+	}
+}</code></pre></p><p>字段 <code>"authenticationToken"</code> 包含一个 ASCII 字符串，作为与 API 认证的令牌。长度最多为 64 个字符。
+如果他们拒绝访问，您将收到以下错误：</p><p><strong><code>RESPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "APIError",
+	"data": {
+		"errorID": 50,
+		"message": "User has denied API access for your plugin."
+	}
+}</code></pre>
+用户可以随时在 VTube Studio 内撤销对您的插件的 API 访问权限。如果他们这样做，当您尝试发送任何请求时也会收到此错误。在这种情况下，您可以尝试重新认证。</p><p>您只需获取一次令牌。使用此令牌，您现在可以为本次会话进行认证。在下一次会话（例如当 VTS 重启或您的插件因某些原因必须重新连接到 VTS）中，您可以使用相同的令牌再次认证，这样就不必再次发送请求以获取令牌，用户只会被询问一次是否允许您的插件。</p><p>要为一次会话认证，请使用您的令牌发送以下请求：</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "AuthenticationRequest",
+	"data": {
+		"pluginName": "My Cool Plugin",
+		"pluginDeveloper": "My Name",
+		"authenticationToken": "adcd-123-ef09-some-token-string-abcd"
+	}
+}</code></pre></p><p><code>"pluginName"</code> 和 <code>"pluginDeveloper"</code> 必须与您请求令牌时使用的值匹配，否则身份验证请求将失败。</p><p>如果令牌有效且用户未撤销 API 访问权限，您将收到以下响应：</p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "AuthenticationResponse",
+	"data": {
+		"authenticated": true,
+		"reason": "Token valid. The plugin is authenticated for the duration of this session."
+	}
+}</code></pre>
+恭喜，您已通过身份验证，可以使用 VTube Studio API。</p><p>如果缺少必填字段，您将收到错误响应。如果所有字段都存在且格式正确，但令牌无效或已被用户撤销，<code>"authenticated"</code> 将返回为 <code>false</code>。</p><p><strong>关于 <code>data</code> 字段的说明：</strong> 有些请求包含 <code>data</code> JSON 对象字段，有些则没有。为了方便您，您也可以在不需要该字段的请求中包含它。VTube Studio 会忽略它，即使您将其留空或设置为 <code>null</code>/<code>undefined</code>。VTube Studio 会在每个请求的响应中返回此字段，以便您的插件更容易反序列化。如果响应没有数据，该字段将包含一个空的 JSON 对象。</p><p><strong>关于 <code>timestamp</code> 字段的说明：</strong> 所有响应也都包含一个 <code>"timestamp"</code> 字段，里面包含处理您请求时的 UNIX 毫秒时间戳。您可以在请求中包含 <code>"timestamp"</code> 字段，但会被忽略。</p><h2>订阅和取消订阅 <a href="Events/" target="_blank" rel="noopener noreferrer">事件</a></h2></p><p>在之前的 API 版本中，插件需要反复轮询已加载的模型或项目等信息。现在，VTube Studio 支持订阅 <strong>“事件”</strong>，这样每当发生与您的插件相关的事情时，VTube Studio 会发送消息给您。事件包括加载项目时通知、丢失/恢复跟踪时通知、模型被点击时通知等。</p><p>请查看关于事件的页面<a href="Events/" target="_blank" rel="noopener noreferrer">就在这里</a>。</p><h2>获取当前 VTS 统计信息</h2></p><p><strong><code>请求</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "StatisticsRequest"
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "StatisticsResponse",
+	"data": {
+		"uptime": 1439384,
+		"framerate": 73,
+		"vTubeStudioVersion": "1.9.0",
+		"allowedPlugins": 7,
+		"connectedPlugins": 2,
+		"startedWithSteam": true,
+		"windowWidth": 1031,
+		"windowHeight": 812,
+		"windowIsFullscreen": false
+	}
+}</code></pre></p><p><code>"uptime"</code> 包含 VTube Studio 启动以来的毫秒数。<code>"framerate"</code> 是当前的渲染帧率值。<code>"allowedPlugins"</code> 是用户当前允许使用 VTube Studio 的插件数量，<code>"connectedPlugins"</code> 是当前连接到 VTube Studio API 的插件数量。<code>"startedWithSteam"</code> 如果应用是通过 Steam 启动则为 true，否则为 false（如果是通过 <code>.bat</code> 文件启动 VTS 而非 Steam）。</p><p>窗口宽度和高度以像素为单位。</p><h2>获取 VTS 文件夹列表</h2></p><p>返回各种 VTube Studio 文件夹的名称。它们位于游戏文件中的 <code>StreamingAssets</code> 文件夹内。</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "VTSFolderInfoRequest"
+}</code></pre>
+<strong><code>响应</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "VTSFolderInfoResponse",
+	"data": {
+		"models": "Live2DModels",
+		"backgrounds": "Backgrounds",
+		"items": "Items",
+		"config": "Config",
+		"logs": "Logs",
+		"backup": "Backup"
+	}
+}</code></pre></p><h2>获取当前加载的模型</h2></p><p><strong><code>请求</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "CurrentModelRequest"
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "CurrentModelResponse",
+	"data": {
+		"modelLoaded": true,
+		"modelName": "My Currently Loaded Model",
+		"modelID": "UniqueIDToIdentifyThisModelBy",
+		"vtsModelName": "Model.vtube.json",
+		"vtsModelIconName": "ModelIconPNGorJPG.png",
+		"live2DModelName": "Model.model3.json",
+		"modelLoadTime": 3021,
+		"timeSinceModelLoaded": 419903,
+		"numberOfLive2DParameters": 29,
+		"numberOfLive2DArtmeshes": 136,
+		"hasPhysicsFile": true,
+		"numberOfTextures": 2,
+		"textureResolution": 4096,
+		"modelPosition": {
+			"positionX": -0.1,
+			"positionY": 0.4,
+			"rotation": 9.33,
+			"size": -61.9
+		}
+	}
+}</code></pre>
+<code>"modelLoaded"</code> 如果当前已加载模型，则为 <code>true</code>。如果没有加载模型或模型正在加载中，则为 false。在这种情况下，所有其他值将为空（或整数为零）。</p><p><code>"modelLoadTime"</code> 是加载当前模型所用的时间，单位为毫秒。<code>"timeSinceModelLoaded"</code> 包含自模型加载以来经过的时间，单位为毫秒。</p><p><code>"vtsModelIconName"</code> 包含此模型在 VTube Studio 的模型选择栏中使用的图标名称。如果模型未设置图标，则该值为空字符串。此请求返回的所有文件名均相对于各自的模型文件夹。</p><p><code>"modelPosition"</code> 数组包含当前模型的位置、旋转和大小。有关如何解释这些值的更多信息，请参见 <code>MoveModelRequest</code>。</p><h2>获取可用 VTS 模型列表</h2></p><p><strong><code>REQUEST</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "AvailableModelsRequest"
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "AvailableModelsResponse",
+	"data": {
+		"numberOfModels": 2,
+		"availableModels": [
+			{
+				"modelLoaded": false,
+				"modelName": "My First Model",
+				"modelID": "UniqueIDToIdentifyThisModelBy1",
+				"vtsModelName": "Model_1.vtube.json",
+				"vtsModelIconName": "ModelIconPNGorJPG_1.png"
+			},
+			{
+				"modelLoaded": true,
+				"modelName": "My Second Model",
+				"modelID": "UniqueIDToIdentifyThisModelBy2",
+				"vtsModelName": "Model_2.vtube.json",
+				"vtsModelIconName": "ModelIconPNGorJPG_1.png"
+			}
+		]
+	}
+}</code></pre></p><p><code>"modelLoaded"</code> 如果相应的模型当前已加载到 VTube Studio 中，则为 <code>true</code>，否则为 <code>false</code>。</p><h2>通过其 ID 加载 VTS 模型</h2></p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ModelLoadRequest",
+	"data": {
+		"modelID": "UniqueIDOfModelToLoad"
+	}
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ModelLoadResponse",
+	"data": {
+		"modelID": "UniqueIDOfModelThatWasJustLoaded"
+	}
+}</code></pre>
+这可能会失败并返回错误，如果应用程序当前处于无法加载/卸载模型的状态。这包括打开配置窗口或当前已经有模型加载操作正在进行中。此请求还有一个全局的2秒冷却时间。</p><p>如果传入空的模型ID，当前加载的模型将被卸载（如果没有加载模型则不会执行任何操作）。</p><h2>移动当前加载的VTS模型</h2></p><p>如果已加载模型，则允许更改其位置、旋转和大小。如果没有加载模型，则会返回错误，参见<a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorsID.cs</a></p><p>此请求中必需的字段是 <code>"timeInSeconds"</code> 和 <code>"valuesAreRelativeToModel"</code>。<code>"timeInSeconds"</code> 是移动所需的时间，单位为秒，必须是介于0和2之间的浮点值。如果设置为0，模型将立即出现在给定位置。大于0的值将使模型平滑地移动、旋转和缩放到指定位置（淡入/淡出）。移动过程中，用户无法通过拖动手动移动模型。模型完成移动约半秒后，用户才可以再次手动移动。</p><p>后续的 <code>MoveModelRequest</code> 可以在当前移动未完成时发送。如果有移动进行中，将被中断并由新请求替换。你甚至可以通过每帧发送一次 <code>"timeInSeconds"</code> 为0的请求来完全控制移动。</p><p><code>"size"</code> 的取值是介于 -100（最小）和 +100（最大）之间的浮点数。关于 <code>"positionX"</code>、<code>"positionY"</code> 和 <code>"rotation"</code>，请参阅下图：</p><p>#### VTS坐标系统
+<img src="/Images/coordinate_explanation.png" alt="The VTS Coordinate System"></p><p>猫身上的数字代表你可以通过 <code>"positionX"</code> 和 <code>"positionY"</code> 传入的 <strong>[X/Y]</strong> 坐标。例如，传入 [0/0] 会将模型中点定位在屏幕中心。模型中点在 Live2D Cubism 中可以自由设置，不同模型可能不同。当然，你也可以传入更大或更小的值将模型移出屏幕。<code>"positionX"</code> 和 <code>"positionY"</code> 的取值范围必须在 -1000 到 1000 之间。</p><p>圆周上的数字代表你可以通过 <code>"rotation"</code> 设置的角度。该参数的取值必须介于 -360 到 360 之间。请注意，每个角度有两个表示法：顺时针旋转为正值，逆时针旋转为负值。使用哪种取决于你，二者无区别。当你发送 <code>CurrentModelRequest</code> 时，响应也会包含模型的位置/旋转/大小。在该响应中，角度总是用正数表示法。</p><p>你不必在请求中提供所有数值。例如，你可以只提供位置或只提供旋转，或任何其他组合。请求中未包含的值在设置位置/旋转/大小时将被忽略。这样，你就可以只更改模型的X坐标，而保持其他参数不变。</p><p>如果 <code>"valuesAreRelativeToModel"</code> 设置为 <code>false</code>，则请求中的数值被视为绝对值，模型将移动到该位置。如果设置为 <code>true</code>，则数值被视为相对于当前模型位置的相对值。假设你设置为 <code>true</code>，且请求中只包含旋转值 <code>10</code>，那么模型将顺时针旋转10度，而不会改变位置和大小。这对于实现模型原地移动的效果非常有用，比如独立于屏幕位置让模型抖动。</p><p>如果你想将模型移动到固定的像素位置或移动一定像素数，则需要自己计算相应的坐标。你可以通过 <code>StatisticsRequest</code> 获取窗口的宽高像素数来实现。</p><p><strong><code>请求</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "MoveModelRequest",
+	"data": {
+		"timeInSeconds": 0.2,
+		"valuesAreRelativeToModel": false,
+		"positionX": 0.1,
+		"positionY": -0.7,
+		"rotation": 16.3,
+		"size": -22.5
+	}
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "MoveModelResponse",
+	"data": { }
+}</code></pre>
+<h2>请求当前或其他VTS型号中可用快捷键列表</h2></p><p><strong><code>REQUEST</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "HotkeysInCurrentModelRequest",
+	"data": {
+		"modelID": "Optional_UniqueIDOfModel",
+		"live2DItemFileName": "Optional_Live2DItemFileName"
+	}
+}</code></pre></p><p><code>"modelID"</code>（以及这里的 <code>"data"</code> 对象）是可选的。如果未提供，则返回当前模型的快捷键。如果提供了模型ID，则返回具有该模型ID的模型的快捷键。如果未找到该ID的模型，则返回错误（参见 <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorID.cs</a>，<code>ModelIDNotFound</code>）。</p><p>这也可以返回任何可用 Live2D 项目的快捷键。要实现此目的，只需在 <code>"live2DItemFileName"</code> 字段中传入该项目的文件名。您可以使用 <code>ItemListRequest</code> 获取所有可用 Live2D 项目的（唯一）文件名。</p><p>如果同时提供了 <code>"modelID"</code> 和 <code>"live2DItemFileName"</code>，则仅使用 <code>"modelID"</code>，另一个字段将被忽略。</p><p><strong><code>RESPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "HotkeysInCurrentModelResponse",
+	"data": {
+		"modelLoaded": true,
+		"modelName": "My Currently Loaded Model",
+		"modelID": "UniqueIDOfModel",
+		"availableHotkeys": [
+			{
+				"name": "My first hotkey",
+				"type": "ToggleExpression",
+				"description": "Toggles an expression",
+				"file": "myExpression_1.exp3.json",
+				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith1",
+				"keyCombination": [],
+                		"onScreenButtonID": 8
+			},
+			{
+				"name": "My second hotkey",
+				"type": "TriggerAnimation",
+				"description": "Triggers an animation",
+				"file": "myAnimation.motion3.json",
+				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith2",
+				"keyCombination": [],
+                		"onScreenButtonID": -1
+			},
+			{
+				"name": "My third hotkey",
+				"type": "ChangeVTSModel",
+				"description": "Changes the VTS model",
+				"file": "someOtherModel.vtube.json",
+				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith3",
+				"keyCombination": [],
+                		"onScreenButtonID": -1
+			},
+			{
+				"name": "My fourth hotkey",
+				"type": "MoveModel",
+				"description": "Moves the Live2D model",
+				"file": "",
+				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith4",
+				"keyCombination": [],
+                		"onScreenButtonID": -1
+			},
+			{
+				"name": "My fifth hotkey",
+				"type": "Unset",
+				"description": "No action set for hotkey",
+				"file": "",
+				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith5",
+				"keyCombination": [],
+                		"onScreenButtonID": 5
+			}
+		]
+	}
+}</code></pre>
+如果请求中未指定模型 ID 且未加载任何模型，<code>"modelLoaded"</code> 将为 false，且 <code>"availableHotkeys"</code> 数组将为空。若指定了 ID，<code>"modelLoaded"</code> 字段将根据当前是否加载了该 ID 对应的模型而为 <code>true</code> 或 <code>false</code>。</p><p><code>"file"</code> 字段包含类型为 <code>TriggerAnimation</code>、<code>ChangeIdleAnimation</code>、<code>ToggleExpression</code> 和 <code>ChangeVTSModel</code> 的热键对应的表情/动画/模型文件名。对于 <code>ChangeBackground</code> 热键，此字段包含去掉文件扩展名的背景名称。对于所有其他类型，则为空字符串。</p><p><code>"description"</code> 字段包含热键功能的描述。当插件遇到未知的热键类型时（例如热键类型是 VTube Studio 新增的），可在插件 UI 上显示此字符串。</p><p><code>"keyCombination"</code> 数组包含触发热键的键盘（或鼠标键）组合。所有可能的值请参见 <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/RestrictedRawKey.cs" target="_blank" rel="noopener noreferrer">RestrictedRawKey.cs</a>。如果数组为空，表示未设置键盘组合。<strong>重要提示：</strong> 出于安全考虑，当前 <code>"keyCombination"</code> 数组<strong>始终为空</strong>，因此插件暂时无法获取此数据。未来版本可能会重新加入。</p><p><code>"onScreenButtonID"</code> 字段包含将触发热键的所有屏幕按钮 ID（1（顶部）至 8（底部）或 -1）。若值为 <code>-1</code>，表示该热键未设置屏幕按钮。</p><p>所有热键类型字符串均可在页面 <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/HotkeyAction.cs" target="_blank" rel="noopener noreferrer">HotkeyActions.cs</a> 中找到。</p><h2>请求执行热键</h2></p><p><strong><code>REQUEST</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "HotkeyTriggerRequest",
+	"data": {
+		"hotkeyID": "HotkeyNameOrUniqueIdOfHotkeyToExecute",
+		"itemInstanceID": "Optional_ItemInstanceIdOfLive2DItemToTriggerThisHotkeyFor"
+	}
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "HotkeyTriggerResponse",
+	"data": {
+		"hotkeyID": "UniqueIdOfHotkeyThatWasExecuted"
+	}
+}</code></pre>
+这会触发当前加载的 VTube Studio 模型的热键，如果你将 <code>"itemInstanceID"</code> 留空或根本不提供该字段。如果你在该字段中提供了一个 ID，则会触发指定 Live2D 项目模型中的热键（详情见下文）。</p><p>你可以通过唯一 ID 或热键名称（不区分大小写）来触发热键。如果多个热键名称相同，则只执行第一个（顺序为它们在 UI 中显示的顺序）。名称为空的热键只能通过 ID 触发。</p><p>如果未找到热键 ID 或名称，或者热键因某些原因无法执行，可能会返回错误。原因包括当前没有加载模型或热键冷却未结束（每个特定热键每 5 帧只能触发一次）。你可以快速连续发送不同热键，它们将被排队。每 5 帧会从队列中取出一个热键执行。队列最多可容纳 32 个热键。队列满时再尝试发送更多热键，将返回错误。</p><h3>在 Live2D 项目中触发热键</h3></p><p>你也可以使用此请求触发 Live2D 项目中的热键。有关 Live2D 项目的更多信息，请参见<a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Live2D-Items" target="_blank" rel="noopener noreferrer">此页面</a>。</p><p>只需将 <code>"itemInstanceID"</code> 设置为 Live2D 项目的实例 ID 即可。如果当前没有加载该实例 ID 的 Live2D 项目，将返回错误。要获取所有当前加载项目的实例 ID，可以使用 <code>ItemListRequest</code>。</p><h2>请求当前表情状态列表</h2></p><p>你可以获取一个特定表情或所有表情的当前状态（激活或未激活）。如果包含 <code>"expressionFile"</code>，则只返回该表情的状态。如果不包含或留空，则返回当前模型中所有表情的状态。</p><p>如果包含的文件名无效（不以 <code>.exp3.json</code> 结尾）或在当前模型中找不到，则返回错误（参见 "<a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorID.cs</a>"）。</p><p>将 <code>"details"</code> 设置为 true 将在响应中返回更多细节（具体而言，如果 <code>"details"</code> 设置为 false，<code>"usedInHotkeys"</code> 和 <code>"parameters"</code> 数组将为空）。</p><p><strong><code>REQUEST</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ExpressionStateRequest",
+	"data": {
+		"details": true,
+		"expressionFile": "myExpression_optional_1.exp3.json",
+	}
+}</code></pre>
+如果没有加载模型，<code>expressions</code> 数组将为空。否则，该数组将包含当前加载模型的可用表情信息。</p><p><code>"file"</code> 字段是表情文件名，存储在模型文件夹中。<code>"name"</code> 与其相同，但不带 <code>.exp3.json</code> 扩展名。<code>"active"</code> 表示表情当前是否处于激活状态。</p><p>如果表情是通过热键激活的，<code>"deactivateWhenKeyIsLetGo"</code> 和 <code>"autoDeactivateAfterSeconds"</code> 将告诉您这些选项是否被用于表情热键。如果 <code>"autoDeactivateAfterSeconds"</code> 为 <code>true</code>，则 <code>"secondsRemaining"</code> 会返回表情自动停用前剩余的时间（否则为 0）。</p><p>如果请求中 <code>"details"</code> 设置为 <code>true</code>，<code>"usedInHotkeys"</code> 数组将包含所有使用该表情的热键列表。同时，<code>"parameters"</code> 数组将包含表情内容，即表情中使用的所有 Live2D 参数 ID 及其目标值。</p><p><strong><code>RESPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ExpressionStateResponse",
+	"data": {
+		"modelLoaded": true,
+		"modelName": "My Currently Loaded Model",
+		"modelID": "UniqueIDOfModel",
+		"expressions": [
+			{
+				"name": "myExpression_optional_1",
+				"file": "myExpression_optional_1 .exp3.json",
+				"active": false,
+				"deactivateWhenKeyIsLetGo": false,
+				"autoDeactivateAfterSeconds": false,
+				"secondsRemaining": 0,
+				"usedInHotkeys": [
+					{
+						"name": "Some Hotkey",
+						"id": "SomeUniqueIdToIdentifyHotkeyWith1"
+					},
+					{
+						"name": "Some other Hotkey",
+						"id": "SomeUniqueIdToIdentifyHotkeyWith2"
+					}
+				],
+				"parameters": [
+					{
+						"name": "SomeLive2DParamID",
+						"value": 0
+					}
+				]
+			}
+		]
+	}
+}</code></pre></p><h2>请求激活或停用表情</h2></p><p>建议通过快捷键激活表情，否则用户可能会激活无法通过快捷键停用的表情，因为他们没有为其设置快捷键。 但是，如果您的插件需要，也可以直接激活和停用快捷键。 您可以通过传入表情文件名以及是否应激活或停用该表情来实现此操作。</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ExpressionActivationRequest",
+	"data": {
+		"expressionFile": "myExpression_1.exp3.json",
+		"fadeTime": 0.5,
+		"active": true
+	}
+}</code></pre></p><p>如果请求成功，您将获得此空响应。如果文件名无效（不是以 <code>.exp3.json</code> 结尾）或当前模型中未找到该文件，或未加载任何模型，将返回错误（参见 "<a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorID.cs</a>"）。
+<code>fadeTime</code> 参数被限制在 0 到 2 秒之间。默认值为 0.25。请注意，由于 VTS 动画系统的限制，淡入时才能设置淡出时间。淡出表情时，将始终使用淡入时的相同时长。</p><p><strong><code>RESPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ExpressionActivationResponse",
+	"data": { }
+}</code></pre></p><h2>请求当前模型中的 ArtMeshes 列表</h2></p><p>API 使用术语 <code>ArtMesh Name</code>，但这实际上指的是每个模型唯一的 ArtMesh ID，这是由 Live2D Cubism 编辑器强制执行的。可以通过选择一个 ArtMesh 并在 UserData 字段中填写内容来添加 <code>ArtMesh Tags</code>。如果你想使用标签，确保勾选了 <code>Export UserData file (userdata3.json)</code>。然后在将模型复制到 VTube Studio Live2DModels 文件夹时应包括 <code>.userdata3.json</code> 文件。</p><p>返回的 <code>"artMeshTags"</code> 数组中的 ArtMesh 标签不会包含重复标签。</p><p>如果没有加载模型，<code>"modelLoaded"</code> 将为 <code>false</code>，数组将为空。</p><p><strong>关于“标签”的说明：</strong> 可以在 Live2D Cubism 编辑器的 “UserData” 字段中为 ArtMeshes 添加标签。你可以在编辑器中向该字段添加任何文本。VTube Studio 会在空格和换行符处分割该文本。这意味着如果你的标签文本是“my tag”，它将在 VTS 中变成两个标签：“my”和“tag”。你可以为每个 ArtMesh 添加任意数量的标签。</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ArtMeshListRequest"
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ArtMeshListResponse",
+	"data": {
+		"modelLoaded": true,
+		"numberOfArtMeshNames": 5,
+		"numberOfArtMeshTags": 2,
+		"artMeshNames": ["ArtMesh1", "ArtMesh2", "HairFront1", "HairFront2", "SomeArtMesh"],
+		"artMeshTags": ["my_tag", "SomeOtherTag"]
+	}
+}</code></pre></p><h2>使用颜色着色 ArtMeshes</h2></p><p>您可以通过提供颜色和匹配条件来着色 ArtMeshes。任何符合任一给定条件的 ArtMesh 都将被着色为指定颜色。要重置 ArtMesh 颜色，请将其着色为白色（R=G=B=A=255）。此请求无法将 ArtMesh 设置为白色，只能使其变暗。</p><p>未提供某个颜色值或任何值超出 0-255 范围将返回错误。尝试在未加载模型时发送此请求也会返回错误。</p><p>可选地，您可以提供介于 0 到 1 之间的 <code>mixWithSceneLightingColor</code>。如果提供，该值将决定着色颜色与场景照明系统颜色的混合方式（更多信息请参见<a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Display-Light-Overlay" target="_blank" rel="noopener noreferrer">此处</a>）。如果设置为 1，您提供的颜色值将完全覆盖场景照明设置的颜色。设置为 0 则场景照明颜色覆盖您提供的颜色。介于两者之间的值将混合两种颜色。如果场景照明关闭，则无效。如果未提供 <code>mixWithSceneLightingColor</code>，默认设置为 1，即您的颜色将完全覆盖场景照明。</p><p><code>"artMeshMatcher"</code> 对象中的所有数组均为可选。如果包含，它将根据 ArtMesh 名称或标签是否与任何给定字符串完全匹配或包含它们（使用 <code>"nameContains"</code>/<code>"tagContains"</code> 数组时）来选择 ArtMeshes。<code>"artMeshNumber"</code> 数组可根据模型中 ArtMesh 的顺序进行选择。如果您想为整个模型着色，请不要包含任何匹配数组，而是将 <code>"tintAll"</code> 设置为 true。</p><p>当会话断开时，此会话中所有被着色的 ArtMeshes 将重置为默认（完全不透明的白色）。当多个插件/会话覆盖同一 ArtMesh 的颜色时，将使用最近请求设置的颜色。</p><p>匹配始终为<strong>不区分大小写</strong>。</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ColorTintRequest",
+	"data": {
+		"colorTint": {
+			"colorR": 255,
+			"colorG": 150,
+			"colorB": 0,
+			"colorA": 255,
+			"mixWithSceneLightingColor": 1
+		},
+		"artMeshMatcher": {
+			"tintAll": false,
+			"artMeshNumber": [1, 3, 5],
+			"nameExact": ["eye_white_left", "eye_white_right"],
+			"nameContains": ["mouth"],
+			"tagExact": [],
+			"tagContains": ["MyTag"]
+		}
+	}
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ColorTintResponse",
+	"data": {
+		"matchedArtMeshes": 3
+	}
+}</code></pre></p><h2>获取场景光照叠加颜色</h2></p><p>VTube Studio 具有将模型覆盖为从屏幕（macOS/Windows）或特定窗口（仅限 Windows）捕获的平均颜色的功能。更多信息，请参见<a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Display-Light-Overlay" target="_blank" rel="noopener noreferrer">文档中的此页面</a>。</p><p>您可以通过 API 获取场景光照叠加系统的当前用户配置和颜色。</p><p>在响应的顶层，有一个 <code>active</code> 字段，告诉您光照叠加是否开启。如果 <code>itemsIncluded</code> 为真，则所有项目也会受到光照叠加的影响。如果 <code>isWindowCapture</code> 为 <code>true</code>，则 VTube Studio 设置为捕获窗口的平均颜色。如果为 <code>false</code>，则捕获设置为屏幕。</p><p><code>baseBrightness</code>（介于 0 到 100 之间）、<code>colorBoost</code>（介于 0 到 100 之间）和 <code>smoothing</code>（介于 0 到 60 之间）是用户可通过 UI 滑块选择的三个值。有关说明，请查看<a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Display-Light-Overlay" target="_blank" rel="noopener noreferrer">此功能的文档页面</a>。</p><p><code>leftCapturePart</code>、<code>middleCapturePart</code> 和 <code>rightCapturePart</code> 描述了捕获的窗口或屏幕相应部分的平均颜色。它们的 <code>active</code> 字段告诉您该屏幕部分是否已被用户激活。</p><p>从所有激活的屏幕部分计算得出的平均颜色可以在 <code>colorAvg</code> 字段中找到（R、G 和 B 介于 0 到 255 之间）。</p><p>将用于覆盖 ArtMeshes 的最终颜色位于 <code>colorOverlay</code> 字段中（R、G 和 B 介于 0 到 459 之间）。请注意，这允许值高于 255。最终颜色按以下公式计算：</p><p><code>colorAvg</code> <em>  (<code>colorBoost</code> / 50) + <code>WHITE_COLOR</code> </em> (<code>baseBrightness</code> / 100)</p><p>这可能会产生高达 2 <em> 255 的 R、G 和 B 值。数值被限制在 1.8 </em> 255 = 459。</p><p>当光照叠加系统关闭时，顶层负载的 <code>active</code> 将为 <code>false</code>，所有颜色将返回为白色。</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "SceneColorOverlayInfoRequest"
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "SceneColorOverlayInfoResponse",
+	"data": {
+		"active": true,
+		"itemsIncluded": true,
+		"isWindowCapture": false,
+		"baseBrightness": 16,
+		"colorBoost": 35,
+		"smoothing": 6,
+		"colorOverlayR": 206,
+		"colorOverlayG": 150,
+		"colorOverlayB": 153,
+		"colorAvgR": 237,
+		"colorAvgG": 157,
+		"colorAvgB": 162,
+		"leftCapturePart": {
+			"active": true,
+			"colorR": 243,
+			"colorG": 231,
+			"colorB": 234
+		},
+		"middleCapturePart": {
+			"active": true,
+			"colorR": 230,
+			"colorG": 83,
+			"colorB": 89
+		},
+		"rightCapturePart": {
+			"active": false,
+			"colorR": 235,
+			"colorG": 95,
+			"colorB": 101
+		}
+	}
+}</code></pre>
+<h2>检查人脸当前是否被跟踪器检测到</h2></p><p>返回当前是否被活动跟踪器（通过网络/USB的智能手机或网络摄像头跟踪器）检测到人脸。</p><p><strong><code>请求</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "FaceFoundRequest"
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "FaceFoundResponse",
+	"data": {
+		"found": true
+	}
+}</code></pre></p><h2>请求可用追踪参数列表</h2></p><p>您可以请求当前在 VTube Studio 中可用的参数列表。
+这包括所有常规参数和插件创建的所有自定义参数。插件创建的参数在您从 VTube Studio 的参数列表中选择时会标记为插件参数。它还会显示创建该参数的插件名称。</p><p><strong>重要提示：</strong> 这可能会返回大量数据。不建议以高频率（60+ FPS）发送此请求，因为这可能会导致较慢电脑的性能问题。</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "InputParameterListRequest"
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "InputParameterListResponse",
+	"data": {
+		"modelLoaded": true,
+		"modelName": "My Currently Loaded Model",
+		"modelID": "UniqueIDOfModel",
+		"customParameters": [
+			{
+				"name": "MyCustomParamName1",
+				"addedBy": "My Plugin Name",
+				"value": 12.4,
+				"min": -30,
+				"max": 30,
+				"defaultValue": 0
+			},
+			{
+				"name": "MyCustomParamName2",
+				"addedBy": "My Plugin Name",
+				"value": 0.833,
+				"min": -10,
+				"max": 10,
+				"defaultValue": 0
+			},
+			{
+				"name": "MyCustomParamName3",
+				"addedBy": "My Other Plugin Name",
+				"value": 0,
+				"min": 0,
+				"max": 1,
+				"defaultValue": 0
+			}
+		],
+		"defaultParameters": [
+			{
+				"name": "FaceAngleX",
+				"addedBy": "VTube Studio",
+				"value": 45.78,
+				"min": -30,
+				"max": 30,
+				"defaultValue": 0
+			},
+			{
+				"name": "FacePositionX",
+				"addedBy": "VTube Studio",
+				"value": 8.33,
+				"min": -10,
+				"max": 10,
+				"defaultValue": 0
+			}
+		]
+	}
+}</code></pre>
+<strong>注意：</strong> 此示例负载中的 <code>"defaultParameters"</code> 数组不完整。该数组将包含 VTube Studio 提供的所有默认面部/鼠标等跟踪参数</p><h2>获取一个特定参数的值，默认或自定义</h2></p><p>如果请求的输入参数不存在，将返回错误。</p><p><strong><code>请求</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ParameterValueRequest",
+	"data": {
+		"name": "MyCustomParamName1"
+	}
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ParameterValueResponse",
+	"data": {
+		"name": "MyCustomParamName1",
+		"addedBy": "My Plugin Name",
+		"value": 12.4,
+		"min": -30,
+		"max": 30,
+		"defaultValue": 0
+	}
+}</code></pre></p><h2>获取当前模型中所有 Live2D 参数的值</h2></p><p>如果未加载模型，将返回错误。</p><p><strong><code>请求</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "Live2DParameterListRequest"
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "Live2DParameterListResponse",
+	"data": {
+		"modelLoaded": true,
+		"modelName": "My Currently Loaded Model",
+		"modelID": "UniqueIDOfModel",
+		"parameters": [
+			{
+				"name": "MyLive2DParameterID1",
+				"value": 12.4,
+				"min": -30,
+				"max": 30,
+				"defaultValue": 0
+			},
+			{
+				"name": "MyLive2DParameterID2",
+				"value": 0,
+				"min": 0,
+				"max": 1,
+				"defaultValue": 0
+			}
+		]
+	}
+}</code></pre></p><p>如果没有加载模型，<code>"modelLoaded"</code> 将为 false，参数数组将为空。所有其他字段将是空字符串。</p><h2>添加新的追踪参数（“自定义参数”）</h2></p><p>您还可以添加自己的新追踪参数，并在您的 VTube Studio 模型中使用它们。它们被称为“自定义”参数。插件添加后，用户可以选择您的参数作为 Live2D 参数映射的输入。</p><p>参数名称必须唯一，且为字母数字（不允许空格），长度必须在 4 到 32 个字符之间。新追踪参数的创建方式如下：</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ParameterCreationRequest",
+	"data": {
+		"parameterName": "MyNewParamName",
+		"explanation": "This is my new parameter.",
+		"min": -50,
+		"max": 50,
+		"defaultValue": 10
+	}
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ParameterCreationResponse",
+	"data": {
+		"parameterName": "MyNewParamName"
+	}
+}</code></pre>
+请求可能会失败并返回错误，如果参数名称无效。</p><p>如果由不同插件创建的同名参数已存在，也会失败。如果使用相同插件名称多次创建参数，请求将成功。您也可以通过这种方式覆盖 <code>min</code>、<code>max</code> 和 <code>defaultValue</code> 值。</p><p>最小/最大/默认值必须是介于 <code>-1000000</code> 和 <code>1000000</code> 之间的浮点数。最小/最大值实际上并不是参数允许的最小和最大值。它们是在使用此参数创建新的参数映射时，将用作默认下限和上限的值。</p><p>说明是一个可选的简短（少于 256 字符）解释，说明参数的作用以及用户应如何在模型中使用它。如果您在请求中提供此内容，当用户查看此自定义参数的详细信息时会显示。</p><p>VTS 中有全局限制为 300 个自定义参数，每个插件限制为 100 个自定义参数。如果您尝试创建更多，将返回错误。</p><p>您创建的这些自定义参数作为 VTube Studio 配置的一部分存储在名为 <code>custom_parameters.json</code> 的文件中，该文件位于 VTube Studio <code>StreamingAssets</code> 文件夹中的 <code>Config</code> 文件夹内。如果您撤销插件的身份验证令牌，该插件创建的所有自定义参数也将被删除。它们仍会保留在使用它们的 VTube Studio 模型中，但会以红色文本显示，表明输入参数不再存在。插件可以随时获取另一个令牌并重新创建这些参数，它们将继续工作。</p><h2>删除自定义参数</h2></p><p>您可以删除自定义参数。默认参数无法删除。您也不能删除由除您用于验证此会话的插件之外的插件创建的参数。</p><p><strong><code>REQUEST</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ParameterDeletionRequest",
+	"data": {
+		"parameterName": "MyNewParamName"
+	}
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ParameterDeletionResponse",
+	"data": {
+		"parameterName": "MyNewParamName"
+	}
+}</code></pre></p><h2>为默认或自定义参数输入数据</h2></p><p>您可以为任何默认或自定义参数输入数据。这些跟踪参数随后将作为加载的 VTube Studio 模型和任何加载的 <a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Live2D-Items" target="_blank" rel="noopener noreferrer">Live2D 项目</a> 的输入。</p><p>数据载荷如下所示：</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "InjectParameterDataRequest",
+	"data": {
+		"faceFound": false,
+		"mode": "set",
+		"parameterValues": [
+			{
+				"id": "FaceAngleX",
+				"value": 12.31
+			},
+			{
+				"id": "MyNewParamName",
+				"weight": 0.8,
+				"value": 0.7
+			}
+		]
+	}
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "InjectParameterDataResponse",
+	"data": { }
+}</code></pre>
+如果一个或多个参数不存在，将返回错误负载。</p><p>值必须是介于 <code>-1000000</code> 和 <code>1000000</code> 之间的浮点数。超出该范围的值也会返回错误。</p><p>如果来自摄像头/iOS/Android 跟踪的参数值存在，API 中的值将覆盖这些值，只要您继续通过 API 发送数据。
+您必须<strong>至少每秒重新发送一次</strong>您想用插件控制的参数的数据。未能做到这一点将导致参数被视为“丢失”，并且它将返回到之前控制它的值。如果没有其他控制它的，将返回其默认值。</p><p>您还可以添加一个可选的 <code>"weight"</code> 参数，范围在 0 到 1 之间。该参数可用于将您发送的参数 <code>"value"</code> 与面部跟踪设置的参数值混合。例如，您可以将一个参数 50% 用面部跟踪控制，50% 用 API 控制。但一次只能有一个 API 插件写入一个参数。一个用例是淡入/淡出面部跟踪参数的控制，这样通过 API 接管时参数不会“跳变”。如果请求中未包含 <code>"weight"</code> 参数，则默认为 1，意味着目标参数将立即设置为插件提供的值。</p><p>还应注意，这些参数的处理方式类似于普通的跟踪参数。因此，您可以像选择普通输入一样选择它们作为 VTube Studio 参数映射的输入，并通过 UI 上的滑块应用平滑处理。在模型使用这些自定义参数期间删除它们也不会造成任何问题，可以随时重新创建。</p><p>可选地，您可以传入 <code>"faceFound": true</code>，这将告诉 VTube Studio 认为用户面部已被找到。这样，您可以控制“跟踪丢失”动画的播放时机。</p><h3>使用多个插件控制一个参数</h3></p><p>通常，如果另一个插件已控制某个（默认或自定义）参数，将返回错误。这是因为一次只能有一个插件“设置”（覆盖）给定参数，这是该请求的默认模式。当您不在 <code>"mode"</code> 字段中提供值或将其设置为 <code>"set"</code> 时，即使用该模式。</p><p>或者，您可以将 <code>"mode"</code> 字段设置为 <code>"add"</code>。这将把您发送的值加到当前参数值上。在这种情况下不使用 <code>"weight"</code> 值。任意数量的插件可以同时对某个参数使用 <code>"add"</code> 模式。这对于 <strong>bonk/throwing</strong> 类型的插件和其他用例非常有用。</p><h2>获取当前加载的 VTS 模型的物理设置</h2></p><p>用户可以在 VTube Studio 中自定义物理设置。他们可以更改以下设置：</p><ul><li><strong>基础物理强度（每个模型）：</strong> 整数，介于 0（关闭）和 100（最大）之间。默认是 50，表示物理表现与 Live2D Cubism 编辑器一致。</li>
+<li><strong>基础风力强度（每个模型）：</strong> 整数，介于 0（关闭）和 100（最大）之间。默认是 0。</li>
+<li><strong>物理乘数（每个物理组）：</strong> 对于每个物理组（可在 Live2D Cubism 中设置），用户可以设置乘数。处理相应物理组时，基础物理值将乘以该值。浮点数，介于 0 到 2 之间，默认是 1，表示基础值保持不变。</li>
+<li><strong>风力乘数（每个物理组）：</strong> 对于每个物理组（可在 Live2D Cubism 中设置），用户可以设置乘数。处理相应物理组时，基础风力值将乘以该值。浮点数，介于 0 到 2 之间，默认是 1，表示基础值保持不变。</li></p><p></ul>用户设置的这些值可以通过 API 读取，也可以临时覆盖（见 <code>SetCurrentModelPhysicsRequest</code>）。</p><p>要读取当前加载模型的值，请使用此请求：</p><p>
+<strong><code>REQUEST</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "GetCurrentModelPhysicsRequest"
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "GetCurrentModelPhysicsResponse",
+	"data": {
+		"modelLoaded": true,
+		"modelName": "My Currently Loaded Model",
+		"modelID": "UniqueIDOfModel",
+		"modelHasPhysics": true,
+		"physicsSwitchedOn": true,
+		"usingLegacyPhysics": false,
+		"physicsFPSSetting": -1,
+		"baseStrength": 50,
+		"baseWind": 17,
+		"apiPhysicsOverrideActive": false,
+		"apiPhysicsOverridePluginName": "",
+		"physicsGroups": [
+			{
+				"groupID": "PhysicsSetting1",
+				"groupName": "Hair Front Physics",
+				"strengthMultiplier": 1.5,
+				"windMultiplier": 0.3
+			},
+			{
+				"groupID": "PhysicsSetting2",
+				"groupName": "Clothes Physics",
+				"strengthMultiplier": 1,
+				"windMultiplier": 2
+			}
+		]
+	}
+}</code></pre></p><p>如果没有加载模型，<code>modelLoaded</code> 将为 <code>false</code>。在这种情况下，所有其他值都没有任何意义，<code>physicsGroups</code> 数组将为空。</p><p>如果加载了模型，<code>modelHasPhysics</code> 字段将告诉您模型是否具有有效的物理设置。有些模型没有设置物理，或者物理文件损坏，这将导致物理系统无法正确启动。<code>physicsSwitchedOn</code> 如果用户在 VTube Studio 中激活了该模型的“使用物理”开关，则为 true。<code>usingLegacyPhysics</code> 是“旧版物理”开关的状态。</p><p><code>physicsFPSSetting</code> 包含该模型的物理 FPS 设置，可以是 30、60、120 或 -1，-1 表示用户选择了“使用与应用程序相同的 FPS”。</p><p><code>apiPhysicsOverrideActive</code> 和 <code>apiPhysicsOverridePluginName</code> 字段指示当前是否有插件覆盖了一些物理设置。如果其 active 字段为 true，则 name 字段将包含插件的名称。一次只能有一个插件控制物理系统。这也将在 <code>SetCurrentModelPhysicsRequest</code> 请求中进行说明。</p><p>如果您使用 <code>SetCurrentModelPhysicsRequest</code> 来覆盖物理或风的基础值或乘数，这些更改 <strong>不会</strong> 反映在此获取请求中。您必须自行记住物理覆盖。</p><p>关于 <code>physicsGroup</code> 数组的注意事项：每个组都有一个 ID，但不是每个组都必须有名称。在这种情况下，相应的 <code>groupName</code> 字段将是空字符串。</p><h2>覆盖当前加载的 VTS 模型的物理设置</h2></p><p>您可以使用此请求覆盖当前加载模型的物理设置。一旦某个插件通过此 API 控制了物理系统，其他插件就无法使用此 API，直到第一个插件放弃控制。尝试这样做将返回相应的错误，参见 "<a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorID.cs</a>"（<code>SetCurrentModelPhysicsRequestPhysicsControlledByOtherPlugin</code>）。如果未加载模型，或者您提供的任何物理组 ID 在当前模型中不存在，或者您忘记为覆盖添加值，也会返回错误。</p><p>如果用户关闭了当前加载模型的物理，您无法使用此 API 打开物理。您只能使用此 API 覆盖物理/风的基础值和乘数。</p><p>如上文 <code>GetCurrentModelPhysicsRequest</code> 部分所述，物理/风乘数的值应在 0 到 2 之间，而物理/风基础值应为 0 到 100 之间的整数（因为这也是应用程序中向用户显示的方式）。超出该范围的值将自动被限制。</p><p>如果您想为特定物理组设置强度或风的乘数，请使用带有相应组 ID 且 <code>setBaseValue</code> 设置为 false 的 <code>strengthOverrides</code> 和 <code>windOverrides</code> 数组。如果您将 <code>setBaseValue</code> 设置为 true，则提供的值将作为物理强度或风的基础值设置，而不是特定组。此时您可以将组 ID (<code>id</code>) 留空。</p><p>通常，使用此 API 设置的值用于覆盖用户在应用程序中设置的值。它们不会实际显示给用户，也不会保存。使用此 API 设置的覆盖值会在计时器结束时自动取消（您使用 <code>overrideSeconds</code> 设置的值）。如果要持续覆盖值，必须反复发送此请求。</p><p>当所有计时器结束时，API 将不再认为您的插件控制物理系统，因此其他插件可以开始控制物理系统。</p><p>覆盖计时器值必须在 0.5 到 5 秒之间。超出该范围的值将自动被限制。</p><p><strong><code>请求</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "SetCurrentModelPhysicsRequest",
+	"data": {
+		"strengthOverrides": [
+			{
+				"id": "PhysicsSetting1",
+				"value": 1.5,
+				"setBaseValue": false,
+				"overrideSeconds": 2
+			}
+		],
+		"windOverrides": [
+			{
+				"id": "",
+				"value": 85,
+				"setBaseValue": true,
+				"overrideSeconds": 5
+			}
+		]
+	}
+}</code></pre></p><p><strong><code>响应</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "SetCurrentModelPhysicsResponse",
+	"data": { }
+}</code></pre></p><h2>获取和设置 NDI 设置</h2></p><p>您可以通过 API 请求当前的 NDI 设置并更改它们。这允许您打开/关闭 NDI，设置自定义固定分辨率等。</p><p>有关 NDI 及其在 VTube Studio 中的使用信息，请访问此页面：https://github.com/DenchiSoft/VTubeStudio/wiki/Streaming-to-Mac-PC</p><p>如果将 <code>"setNewConfig"</code> 设置为 <code>false</code>，则只返回当前配置。此情况下，所有其他字段将被忽略。如果设置为 <code>true</code>，则会在配置有效时设置给定的配置。</p><p><code>"ndiActive"</code> 用于打开/关闭 NDI。如果 NDI 打开，<code>"useNDI5"</code> 则使用 NDI 5 替代 NDI 4（我推荐使用 NDI 5）。</p><p>将 <code>"useCustomResolution"</code> 设置为 <code>true</code> 意味着 NDI 流将不再与 VTube Studio 窗口具有相同分辨率，而是使用通过 UI 设置的自定义分辨率。此分辨率也可以通过 API 使用 <code>"customWidthNDI"</code> 和 <code>"customHeightNDI"</code> 字段更改。两者必须在 256 到 8192 之间。宽度必须是 16 的倍数，高度必须是 8 的倍数。在请求中将它们都设置为 <code>-1</code> 将跳过设置它们，仅设置布尔字段。这样您就可以例如在不更改分辨率的情况下打开/关闭 NDI。</p><p>如果 NDI 分辨率与窗口分辨率不匹配，VTube Studio 将自动裁剪和缩放视频流。VTube Studio 始终确保纵横比正确，即使这意味着裁剪顶部/底部或左/右的部分。</p><p><strong>重要提示：</strong> 此请求有 3 秒的冷却时间。触发过快将返回类型为 <code>NDIConfigCooldownNotOver</code> 的错误（参见 “<a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorID.cs</a>”）。</p><p><strong><code>请求</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "NDIConfigRequest",
+	"data": {
+		"setNewConfig": true,
+		"ndiActive": true,
+		"useNDI5": true,
+		"useCustomResolution": true,
+		"customWidthNDI": 1024,
+		"customHeightNDI": 512
+	}
+}</code></pre>
+响应将仅包含当前设置（如果您请求设置新的配置，则为新的设置）。响应中的 <code>"setNewConfig"</code> 字段没有任何意义。</p><p><strong><code>响应</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "NDIConfigResponse",
+	"data": {
+		"setNewConfig": true,
+		"ndiActive": true,
+		"useNDI5": true,
+		"useCustomResolution": true,
+		"customWidthNDI": 1024,
+		"customHeightNDI": 512
+	}
+}</code></pre></p><h2>请求可用物品列表或场景中的物品列表</h2></p><p>此请求允许您请求当前场景中物品的列表。它还允许您请求可在用户PC上加载的物品文件列表，包括Live2D物品、动画文件夹等。</p><p>如果您想知道当前有哪些订单点可用来加载物品，请将 <code>"includeAvailableSpots"</code> 设置为 <code>true</code>。否则，响应中的 <code>"availableSpots"</code> 数组将为空。</p><p>如果您想知道当前场景中加载了哪些物品，请将 <code>"includeItemInstancesInScene"</code> 设置为 <code>true</code>。否则，响应中的 <code>"itemInstancesInScene"</code> 数组将为空。</p><p>如果您想知道有哪些物品文件可供加载，请将 <code>"includeAvailableItemFiles"</code> 设置为 <code>true</code>。否则，响应中的 <code>"availableItemFiles"</code> 数组将为空。<strong>重要提示：</strong> 这会从用户的PC读取完整的物品文件列表。可能会导致应用程序短暂卡顿，因此不要频繁使用 <code>"includeAvailableItemFiles"</code> 设置为 <code>true</code> 的请求。仅在确实需要刷新可用物品文件列表时使用。其他情况下请设置为 <code>false</code>。</p><p>#### 筛选特定物品</p><p>如果您只想让物品列表包含具有特定物品实例ID或特定文件名的物品，可以分别在 <code>"onlyItemsWithInstanceID"</code> 和 <code>"onlyItemsWithFileName"</code> 字段中提供它们。</p><p>场景中最多只有一个具有特定实例ID的物品，但可能有多个具有相同文件名的物品，因为您可以基于同一物品文件加载多个物品实例。</p><p>请注意，<strong>物品文件名是唯一的</strong>，意味着不会有两个物品文件具有相同的文件名。它们也是<strong>区分大小写</strong>的，因此如果您想引用某个特定文件，请确保不要更改大小写。</p><p><strong><code>请求</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemListRequest",
+	"data": {
+		"includeAvailableSpots": true,
+		"includeItemInstancesInScene": true,
+		"includeAvailableItemFiles": false,
+		"onlyItemsWithFileName": "OPTIONAL_my_item_filename.png",
+		"onlyItemsWithInstanceID": "OPTIONAL_InstanceIdOfItemInScene"
+	}
+}</code></pre></p><p>响应中的字段大多是自解释的。</p><p>filename 是物品文件的名称。这个名称可以用来将物品实例加载到场景中。对于 JPG/PNG/GIF 物品，这是完整的文件名（不含路径），包括文件扩展名（例如 "my_item.jpg"）。对于动画文件夹，则是文件夹名称。对于 Live2D 物品，也是文件夹名称。</p><p>物品类型可以在 <code>"type"</code> 字段中找到。可能的值有 <code>PNG</code>、<code>JPG</code>、<code>GIF</code>、<code>AnimationFolder</code> 或 <code>Live2D</code>。另一个可能的值是 <code>Unknown</code>。这只有在 VTube Studio 中添加了新的物品类型而 API 尚未更新时才会出现，因此理论上不应发生。</p><p><code>"canLoadItemsRightNow"</code> 可能为 <code>false</code>，如果用户在 VTube Studio 中打开了某些菜单或对话框。这通常会阻止加载物品、使用快捷键等操作。</p><p><code>"framerate"</code> 和 <code>"frameCount"</code> 仅适用于动画物品（GIF 和动画帧文件夹）。</p><p>如果 <code>"pinnedToModel"</code> 为 true，则 <code>"pinnedModelID"</code> 会包含物品所绑定模型的 ID（即当前加载的模型），而 <code>"pinnedArtMeshID"</code> 会包含物品绑定的 ArtMesh 的 ID。</p><p>如果你将 <code>"includeAvailableItemFiles"</code> 设置为 <code>true</code>，<code>"availableItemFiles"</code> 将包含用户 <code>Items</code> 文件夹中所有物品文件的列表。你可以使用这里返回的文件名通过 <code>ItemLoadRequest</code> 将物品加载到场景中。</p><p><strong><code>RESPONSE</code></strong>
+<pre><code class="language-json">{
+    "apiName": "VTubeStudioPublicAPI",
+    "apiVersion": "1.0",
+    "timestamp": 1625405710728,
+    "messageType": "ItemListResponse",
+    "requestID": "SomeID",
+    "data": {
+        "itemsInSceneCount": 2,
+        "totalItemsAllowedCount": 60,
+        "canLoadItemsRightNow": true,
+        "availableSpots":
+	[
+            -30,-29,-28,-27,-26,-25,-24,-23,-22,-21,-20,-19,-18,-17,-16,-15,-14,
+            -13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,3,4,5,6,7,8,9,10,11,12,13,
+            14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30
+        ],
+        "itemInstancesInScene": [
+            {
+                "fileName": "Ribbon (@denchisoft)",
+                "instanceID": "18de53dc47154b00afdd382a6ebd2194",
+                "order": 1,
+                "type": "Live2D",
+                "censored": false,
+                "flipped": false,
+                "locked": false,
+                "smoothing": 0.0,
+                "framerate": 0.0,
+                "frameCount": -1,
+                "currentFrame": -1,
+                "pinnedToModel": true,
+                "pinnedModelID": "47c71722c5304a039b0570b60a189875",
+                "pinnedArtMeshID": "D_FACE_00",
+                "groupName": "",
+                "sceneName": "",
+                "fromWorkshop": false
+            },
+            {
+                "fileName": "akari_fly (@walfieee)",
+                "instanceID": "716cddf2e12a438ab5da05bbbf8b341c",
+                "order": 2,
+                "type": "AnimationFolder",
+                "censored": false,
+                "flipped": false,
+                "locked": false,
+                "smoothing": 0.0,
+                "framerate": 15.0,
+                "frameCount": 7,
+                "currentFrame": 0,
+                "pinnedToModel": false,
+                "pinnedModelID": "",
+                "pinnedArtMeshID": "",
+                "groupName": "",
+                "sceneName": "",
+                "fromWorkshop": false
+            }
+        ],
+        "availableItemFiles": [
+            {
+                "fileName": "Ribbon (@denchisoft)",
+                "type": "Live2D",
+                "loadedCount": 1
+            },
+            {
+                "fileName": "ANIM_headpat",
+                "type": "AnimationFolder",
+                "loadedCount": 0
+            },
+            {
+                "fileName": "workshop_2801215328_ANIM_loading gif",
+                "type": "AnimationFolder",
+                "loadedCount": 0
+            },
+            {
+                "fileName": "akari_fly (@walfieee)",
+                "type": "AnimationFolder",
+                "loadedCount": 1
+            },
+            {
+                "fileName": "b_woozy (@denchisoft).png",
+                "type": "PNG",
+                "loadedCount": 0
+            }
+        ]
+    }
+}</code></pre>
+<h2>将物品加载到场景中</h2></p><p>通过此请求，您可以将物品加载到场景中。物品从用户电脑上的“Items”文件夹加载。</p><p>要获取可用物品文件列表，请使用 <code>ItemListRequest</code>。您可以在 <code>"fileName"</code> 字段中使用这些名称。</p><p>物品可以通过 <code>"positionX/Y"</code>、<code>"size"</code> 和 <code>"rotation"</code> 字段来定位/缩放/旋转。有关如何使用这些值的更多信息，请参阅显示 <a href="#the-vts-coordinate-system" target="_blank" rel="noopener noreferrer">VTube Studio 坐标系统</a> 的图片。至于大小，必须在 <code>0</code> 到 <code>1</code> 之间，<code>0.32</code> 大约是用户手动加载物品时的“默认”大小。</p><p>您应确保插件清理其物品。绝对不要留下任何物品在用户无法访问的可见场景之外，除非使用 <strong>“删除场景中的所有物品”</strong> 按钮。为了方便您操作，可以将 <code>"unloadWhenPluginDisconnects"</code> 设置为 true。</p><p>您可以使用 <code>"fadeTime"</code> 字段指定物品的淡入/淡出时间，范围为 0 到 2 秒。如果设置为 0，物品将立即出现。</p><p>您可以使用 <code>"order"</code> 字段指定物品加载到场景中的排序顺序。如果该顺序已被占用，物品将自动加载到下一个更高的可用顺序；如果所有更高顺序均已满，则会检查更低顺序。如果您希望请求的顺序被占用时加载失败，请将 <code>failIfOrderTaken</code> 设置为 <code>true</code>。此时会返回类型为 <code>ItemOrderAlreadyTaken</code> 的错误（参见 <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorsID.cs</a>）。</p><p>某些值也有限制。具体来说，大小必须在 <code>0</code> 到 <code>1</code> 之间，位置必须在 <code>-1000</code> 到 <code>1000</code> 之间（虽然 <code>-1</code>/<code>1</code> 是屏幕边缘），淡出时间必须在 <code>0</code> 到 <code>2</code> 秒之间，平滑度必须在 <code>0</code> 到 <code>1</code> 之间。超出这些限制会返回类型为 <code>ItemLoadValuesInvalid</code> 的错误。</p><h3>自定义数据物品</h3></p><p>插件也可以使用此请求通过 <code>customDataBase64</code> 字段加载任意 PNG/JPG/GIF 数据作为物品（必须是 base64 编码的 JPG、PNG 或 GIF 文件）。如果不使用此功能，请保持为空或 NULL。</p><p>如果要使用此功能，您需要 <code>LoadCustomImagesAsItems</code> 权限。有关如何请求权限的更多信息，请查看<a href="Permissions/" target="_blank" rel="noopener noreferrer">权限页面</a>。如果没有该权限，尝试加载自定义数据图片时会返回错误（<code>RequestRequiresPermission</code>，参见 <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorsID.cs</a>）。</p><p>请求加载任意数据作为物品时，<code>customDataBase64</code> 必须包含有效的 PNG、JPG 或 GIF 文件数据。目前不支持自定义数据的 Live2D 物品。尺寸必须在（含）64 到 2048 像素之间，数据大小必须小于 5 MB（编码为 base64 之前的二进制数据）。对于 GIF 数据，GIF 必须包含不超过 1024 帧且至少 1 帧，且所有帧尺寸必须相同。</p><p>提供自定义数据时，仍需在 <code>fileName</code> 字段中提供文件名。<code>fileName</code> 必须是字母数字（可包含连字符），且以 <code>.jpg</code>、<code>.png</code> 或 <code>.gif</code> 结尾。长度必须在（含）8 到 32 个字符之间。</p><p>加载自定义数据时，您有两个选项：
+<ul><li>直接立即加载自定义数据物品。</li>
+<li>显示小弹窗给用户（包括物品缩略图），询问是否加载该物品。</li></p><p></ul>根据您的用例选择合适的选项。确保您的插件不会加载可能给用户带来问题的图片是您的责任。</p><p>如果您想直接加载物品，请将 <code>customDataAskUserFirst</code> 设置为 <code>false</code>。</p><p>如果您想先显示弹窗给用户，请将 <code>customDataAskUserFirst</code> 设置为 <code>true</code>。这样会显示如下弹窗：</p><p><img src="/Images/vts_load_custom_image_1.png" alt="自定义图片加载弹窗"></p><p>最多可同时显示 6 个此类弹窗（弹窗垂直堆叠）。当已有 6 个弹窗显示时，后续请求将返回错误。</p><p>当显示弹出窗口时，此请求的响应仅在用户做出决定后返回。如果用户决定拒绝加载自定义数据项，将返回错误（<code>ItemCustomDataLoadRequestRejectedByUser</code>）。当用户决定加载该项时，它将被加载并返回正常响应。这也会将其添加到您的插件的白名单中，因此随后加载相同项（由其 SHA256 哈希确定）将不会触发弹出窗口。如果您希望每次都强制触发弹出窗口，可以将 <code>customDataSkipAskingUserIfWhitelisted</code> 设置为 false。</p><p>您可以使用 <code>customDataAskTimer</code> 字段设置弹出窗口的超时时间。如果设置为 0（或更小），弹出窗口将永远显示（直到用户点击确定或取消）。如果设置为其他正数，弹出窗口将显示该秒数，并向用户显示可见的倒计时。如果用户未在倒计时结束前做出决定，项加载请求将被视为用户拒绝。</p><p><strong><code>REQUEST</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemLoadRequest",
+	"data": {
+		"fileName": "some_item_name.jpg",
+		"positionX": 0,
+		"positionY": 0.5,
+		"size": 0.33,
+		"rotation": 90,
+		"fadeTime": 0.5,
+		"order": 4,
+		"failIfOrderTaken": false,
+		"smoothing": 0,
+		"censored": false,
+		"flipped": false,
+		"locked": false,
+		"unloadWhenPluginDisconnects": true,
+		"customDataBase64": "",
+		"customDataAskUserFirst": true,
+		"customDataSkipAskingUserIfWhitelisted": true,
+		"customDataAskTimer": -1,
+	}
+}</code></pre></p><p>响应包含新加载项目的实例 ID，位于 <code>instanceID</code> 字段中。它还包含文件名。</p><p>如果您加载了自定义数据项，文件名将由 VTube Studio 生成，因此它将不同于您传入的文件名。您可以使用该文件名请求再次加载该项目，而无需传入自定义数据。但是，当 VTube Studio 重启时，所有临时文件都会被清除，其中包括自定义数据项。</p><p><strong><code>RESPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemLoadResponse",
+	"data": {
+		"instanceID": "SomeUniqueItemInstanceId",
+		"fileName": "some_item_name.jpg"
+	}
+}</code></pre></p><h2>从场景中移除物品</h2></p><p>您可以使用此请求卸载当前加载在场景中的任何物品。</p><p>将 <code>"unloadAllInScene"</code> 设置为 <code>true</code> 将卸载所有物品。在这种情况下，所有其他字段将被忽略。</p><p>将 <code>"unloadAllLoadedByThisPlugin"</code> 设置为 <code>true</code> 将卸载所有由此插件加载的物品。</p><p>如果您想阻止此请求卸载由用户或其他插件加载的物品，请将 <code>"allowUnloadingItemsLoadedByUserOrOtherPlugins"</code> 设置为 <code>false</code>。</p><p>您还可以使用可选的 <code>"instanceIDs"</code> 和 <code>"fileNames"</code> 数组请求特定的物品实例或从特定文件名加载的物品实例。即使这些物品未在场景中找到，请求也不会返回错误。它只会返回一个空数组的响应。</p><p>如果用户当前打开的菜单阻止 VTS 加载/卸载物品，可能会返回类型为 <code>CannotCurrentlyUnloadItem</code> 的错误。</p><p><strong><code>请求</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemUnloadRequest",
+    	"data": {
+		"unloadAllInScene": false,
+		"unloadAllLoadedByThisPlugin": false,
+		"allowUnloadingItemsLoadedByUserOrOtherPlugins": true,
+		"instanceIDs":
+		[
+			"SomeInstanceIdOfItemToUnload", "SomeOtherInstanceIdOfItemToUnload"
+		],
+		"fileNames":
+		[
+			"UnloadAllItemInstancesWithThisFileName", "SomeOtherFileName"
+		]
+    	}
+}</code></pre>
+响应包含已卸载项目的实例 ID 和文件名。</p><p><strong><code>RESPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemUnloadResponse",
+    	"data": {
+		"unloadedItems":
+		[
+		    {
+			"instanceID": "SomeInstanceId",
+			"fileName": "SomeFileName"
+		    },
+		    {
+			"instanceID": "SomeOtherInstanceId",
+			"fileName": "SomeFileName"
+		    }
+		]
+    	}
+}</code></pre></p><h2>控制物品和物品动画</h2></p><p>您可以控制场景中物品的某些方面。此请求允许您使物品变暗（黑色覆盖层）、更改不透明度以及控制动画物品的动画。此请求不适用于 Live2D 物品，如果尝试使用将返回类型为 <code>ItemAnimationControlUnsupportedItemType</code> 的错误（参见 <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorsID.cs</a>）。这对于“反应型 PNG”类型的插件等非常有用。</p><p>对于动画物品，您可以设置帧率（以每秒帧数为单位，自动限制在 <code>0.1</code> 到 <code>120</code> 之间）。您还可以使用 <code>"frame"</code> 字段手动使动画跳转到某一帧。如果帧索引无效，将返回错误。对于一个具有（例如）20 帧的动画物品，有效帧索引从 0（第一帧）到 19（最后一帧）。动画物品的帧数可以通过 <code>ItemListRequest</code> 请求。尝试对普通 JPG/PNG 物品执行此操作将返回类型为 <code>ItemAnimationControlSimpleImageDoesNotSupportAnim</code> 的错误。</p><p>如果您不想更改帧率、当前帧、亮度或不透明度，可以为这些字段传入 <code>-1</code>（如果从负载中省略字段，默认值也是 <code>-1</code>）。</p><p>您可以使用 <code>"animationPlayState"</code> 字段启动/停止动画（<code>true</code> = 播放动画，<code>false</code> = 停止动画）。只有当您将 <code>"setAnimationPlayState"</code> 设置为 <code>true</code> 时，此字段才会生效，否则动画播放状态不会更改。</p><p>#### 使用自动停止帧</p><p>您可以使用 <code>"autoStopFrames"</code> 数组设置动画自动停止播放的帧索引列表。只有当您将 <code>"setAutoStopFrames"</code> 设置为 true 时，此数组才会生效，否则自动停止帧不会更改。如果要移除自动停止帧，请将 <code>"setAutoStopFrames"</code> 设置为 true，并在 <code>"autoStopFrames"</code> 中设置空数组。最多可设置 1024 个自动停止帧。</p><p>动画一旦达到这些帧中的任意一帧，将停止播放，且只能通过此请求使用 API 将动画播放状态设置为 <code>true</code> 来重新启动（见上文）。</p><p><strong><code>请求</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemAnimationControlRequest",
+	"data": {
+		"itemInstanceID": "ItemInstanceId",
+		"framerate": 12,
+		"frame": 3,
+		"brightness": 1,
+		"opacity": 1,
+		"setAutoStopFrames": true,
+		"autoStopFrames": [0, 7, 26],
+		"setAnimationPlayState": true,
+		"animationPlayState": true
+	}
+}</code></pre>
+响应包含当前帧索引以及动画是否正在播放的信息（仅针对动画项目，其他项目类型应忽略这些字段）。</p><p><strong><code>RESPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemAnimationControlResponse",
+	"data": {
+		"frame": 3,
+		"animationPlaying": true
+	}
+}</code></pre></p><h2>场景中移动物品</h2></p><p>您可以在场景中移动物品。为此，请将所有想要移动的物品填入 <code>"itemsToMove"</code> 数组。响应数组（<code>"movedItems"</code>）将包含每个请求物品的一条记录，显示该移动请求是否成功（见对应的 <code>"success"</code> 字段）。如果未成功，<code>"errorID"</code> 字段将包含错误代码，告诉您出了什么问题（参见 <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorsID.cs</a>）。如果成功，<code>"success"</code> 将为 <code>true</code>，<code>"errorID"</code> 将为 <code>-1</code>。</p><p><code>"itemsToMove"</code> 数组最多可包含 64 条记录。超过部分将被忽略。如果数组中有重复的物品实例 ID，最后一条该 ID 的记录将被使用。</p><p>如果您想立即设置位置（例如每帧都想设置新位置），请将 <code>"timeInSeconds"</code> 设为 <code>0</code>。否则，您可以用此字段设置移动渐变所用时间（限制在 0 到 30 秒之间）。</p><p>如果想设置物品的翻转状态，请将 <code>"setFlip"</code> 设为 true。翻转状态可通过 <code>"flip"</code> 字段设置。</p><p>如果想更改物品的顺序，可以使用 <code>"order"</code> 字段。您只能更改为未被占用的顺序位置（见 <code>ItemListResponse</code>）。如果不想更改顺序，请将此字段设为 -1000 或更低，或者设置为物品当前的顺序值。此外，当用户打开任何配置窗口时，您无法更改顺序。顺序不会像其他参数那样渐变（如果请求的话），而是在接收到请求后立即更改为指定值。</p><p>对于设置移动目标的字段（<code>"positionX"</code>、<code>"positionY"</code>、<code>"size"</code> 和 <code>"rotation"</code>），请参考 <code>ItemLoadRequest</code> 的文档。唯一不同的是，如果给定值过高或过低，<code>ItemMoveRequest</code> 不会返回错误。相反，如果您希望忽略某字段，可设置其值为 -1000 或更低。这样，该字段不会包含在移动中，而是使用相应的当前值。</p><p>
+#### 物品移动过渡渐变类型</p><p>您可以通过 <code>"fadeMode"</code> 字段设置位置/旋转/大小渐变的移动类型。接受的值有 <code>"linear"</code>、<code>"easeIn"</code>、<code>"easeOut"</code>、<code>"easeBoth"</code>、<code>"overshoot"</code> 和 <code>"zip"</code>。仅当 <code>"timeInSeconds"</code> 字段大于 <code>0</code> 时才会使用。</p><p>如果您希望用户在物品移动时通过点击/拖动停止移动，请将 <code>"userCanStop"</code> 设为 <code>true</code>。若设为 <code>false</code>，则用户无法在移动过程中与物品交互。</p><p>以下是移动模式的示意图：</p><p><img src="/Images/vts_movement_modes_smooth.png" alt="VTube Studio Movement Modes"></p><p><strong><code>请求</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemMoveRequest",
+	"data": {
+		"itemsToMove":
+		[
+			{
+				"itemInstanceID": "ItemInstanceId",
+				"timeInSeconds": 1,
+				"fadeMode": "easeOut",
+				"positionX": 0.2,
+				"positionY": -0.8,
+				"size": 0.6,
+				"rotation": 180,
+				"order": -1000,
+				"setFlip": true,
+				"flip": false,
+				"userCanStop": true
+			},
+			{
+				"itemInstanceID": "SomeOther_ItemInstanceId",
+				"timeInSeconds": 0.5,
+				"fadeMode": "zip",
+				"positionX": 1,
+				"positionY": 1,
+				"size": 0.3,
+				"rotation": 0,
+				"order": 25,
+				"setFlip": false,
+				"flip": false,
+				"userCanStop": false
+			}
+		]
+	}
+}</code></pre>
+如果请求成功，您将收到包含所有请求项目状态的响应。</p><p><strong><code>响应</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemMoveResponse",
+	"data": {
+		"movedItems":
+		[
+			{
+				"itemInstanceID": "ItemInstanceId",
+				"success": true,
+				"errorID": -1
+			},
+			{
+				"itemInstanceID": "SomeOther_ItemInstanceId",
+				"success": false,
+				"errorID": 900
+			}
+		]
+	}
+}</code></pre></p><h2>设置模型内项目排序顺序</h2></p><p>#### ⚠️ 此请求目前仅在<a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Joining-the-Beta" target="_blank" rel="noopener noreferrer">公开测试分支</a>可用 ⚠️</p><p>VTube Studio 允许您对主模型的<strong>层间</strong>项目进行排序和固定。有关此功能的基本信息，请参阅“<a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Between-Layer-Item-Pinning" target="_blank" rel="noopener noreferrer">层间项目固定</a>”页面。</p><p>针对<a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Live2D-Items" target="_blank" rel="noopener noreferrer">Live2D项目</a>，您还可以将<strong>Live2D项目模型</strong>拆分为前部和后部，并分别插入到主模型中。</p><p>要识别您想更改模型内排序设置的项目，请通过 <code>"itemInstanceID"</code> 字段传入其项目实例ID。如果找不到该ID对应的项目，将返回 <code>ItemSortRequestInstanceIDNotFound</code> 错误。要获取所有已加载项目的实例ID，您可以使用 <code>ItemListRequest</code>。使用 <code>ItemLoadRequest</code> 通过API加载项目时，也会直接返回该ID。</p><p>有关此请求可能返回的所有错误，请参见“<a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorsID.cs</a>”。</p><p><em>注意：</em> 普通项目（非Live2D项目）没有“后部”或“拆分点”，因此在对普通项目使用此请求时，后部/拆分字段将完全被忽略。您可以将它们留空或设为 <code>null</code>。以下内容假设您对Live2D项目使用此请求。另外，VTube Studio 会确保即使您将后部设置在前部之前，它也不会越过前部。</p><p>要将项目插入模型，设置 <code>"frontOn"</code> 为 <code>true</code>。如果您有Live2D项目并想将其后部插入模型更靠后的位置，也可以将 <code>"backOn"</code> 设置为 <code>true</code>（对非Live2D项目忽略此设置）。</p><p>拆分点和前/后插入点通过 <code>"splitAt"</code>、<code>"withinModelOrderFront"</code> 和 <code>"withinModelOrderBack"</code> 设置。这些字段的解释取决于您通过 <code>"setSplitPoint"</code>、<code>"setFrontOrder"</code> 和 <code>"setBackOrder"</code> 传入的值。</p><p>以下字段用于设置项目拆分点和插入点：</p><ul><li><code>"splitAt"</code>：设置用于将Live2D项目模型拆分为前部和后部的拆分点。</li>
+  <li>对非Live2D项目忽略。</li>
+  <li>如果 <code>"setSplitPoint"</code> 设置为 <code>"Unchanged"</code>：将忽略 <code>"splitAt"</code> 中的值，拆分点保持不变。</li>
+  <li>如果 <code>"setSplitPoint"</code> 设置为 <code>"UseArtMeshID"</code>：<code>"splitAt"</code> 期望是存在于Live2D项目模型中的ArtMesh ID，若该ArtMesh ID不存在，则返回错误 <code>ItemSortRequestInvalidSplitPoint</code>。</li>
+<li><code>"withinModelOrderFront"</code>：设置将项目插入主模型的位置（对于Live2D项目为前部插入位置）。</li>
+  <li>如果 <code>"setFrontOrder"</code> 设置为 <code>"Unchanged"</code>：将忽略 <code>"withinModelOrderFront"</code> 的值，前部插入位置保持不变。</li>
+  <li>如果 <code>"setFrontOrder"</code> 设置为 <code>"UseArtMeshID"</code>：<code>"withinModelOrderFront"</code> 期望是主Live2D模型中存在的ArtMesh ID，但如果不存在，请求仍会成功返回，因为它可能是当前未加载的Live2D模型的ID。</li>
+  <li>如果 <code>"setFrontOrder"</code> 设置为 <code>"UseSpecialID"</code>：<code>"withinModelOrderFront"</code> 期望为 <code>"FullyInFront"</code> 或 <code>"FullyInBack"</code>，用于始终将项目（前部）完全置于已加载主模型的最前或最后。其他任何值都会返回 <code>ItemSortRequestInvalidFrontOrder</code> 错误。</li>
+<li><code>"withinModelOrderBack"</code>：设置Live2D项目后部插入主模型的位置。</li>
+  <li>对非Live2D项目忽略。</li>
+  <li>如果 <code>"setBackOrder"</code> 设置为 <code>"Unchanged"</code>：将忽略 <code>"withinModelOrderBack"</code> 的值，后部插入位置保持不变。</li>
+  <li>如果 <code>"setBackOrder"</code> 设置为 <code>"UseArtMeshID"</code>：<code>"withinModelOrderBack"</code> 期望是主Live2D模型中存在的ArtMesh ID，但如果不存在，请求仍会成功返回，因为它可能是当前未加载的Live2D模型的ID。</li>
+  <li>如果 <code>"setBackOrder"</code> 设置为 <code>"UseSpecialID"</code>：<code>"withinModelOrderBack"</code> 期望为 <code>"FullyInBack"</code>，用于始终将项目（后部）完全置于已加载主模型的最后。其他任何值都会返回 <code>ItemSortRequestInvalidBackOrder</code> 错误。</li></p><p></ul>在 <code>"setSplitPoint"</code>、<code>"setFrontOrder"</code> 和 <code>"setBackOrder"</code> 中传入无效值将返回 <code>ItemSortRequestInvalidValueSetType</code> 错误。</p><p>如果模型内排序窗口当前打开（即用户正在手动设置插入顺序），此请求也会返回错误 <code>ItemSortRequestItemConfigWindowOpen</code>。</p><p><strong><code>请求</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemSortRequest",
+	"data": {
+		"itemInstanceID": "b616cf51fe3444729ccbf6ee54a14d1a",
+		"frontOn": true,
+		"backOn": true,
+		"setSplitPoint": "UseArtMeshID",
+		"setFrontOrder": "UseArtMeshID",
+		"setBackOrder": "UseSpecialID",
+		"splitAt": "MyArtMeshIDInItemModel91",		
+		"withinModelOrderFront": "MyArtMeshIDInMainModel73",
+		"withinModelOrderBack": "FullyInBack"
+	}
+}</code></pre>
+如果请求成功，您将收到此响应。</p><p><code>"itemInstanceID"</code> 将返回请求对应的项目实例ID。</p><p>如果当前已加载主模型，<code>"modelLoaded"</code> 将为 <code>true</code>，<code>"modelID"</code> 和 <code>"modelName"</code> 将包含模型的ID和名称。 如果未加载模型，这些字段将为空。</p><p>如果加载了主模型，<code>"loadedModelHadRequestedFrontLayer"</code> 和 <code>"loadedModelHadRequestedBackLayer"</code> 将告诉您所提供的前/后插入点是否在当前加载的模型中找到。 如果插入点未更改，这些字段设置为 <code>false</code>。</p><p><strong><code>响应</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemSortResponse",
+	"data": {
+		"itemInstanceID": "b616cf51fe3444729ccbf6ee54a14d1a",
+		"modelLoaded": true,
+		"modelID": "d87b771d2902473bbaa0226d03ef4754",
+		"modelName": "Akari",
+		"loadedModelHadRequestedFrontLayer": true,
+		"loadedModelHadRequestedBackLayer": true
+	}
+}</code></pre>
+<h2>让用户选择 ArtMeshes</h2></p><p>您可以使用此请求在 VTube Studio 中显示当前加载的主 Live2D 模型的所有 ArtMeshes 列表，并让用户选择一个或多个。一旦用户完成选择，ArtMesh ID 将被返回。您可以在其他各种 API 请求中使用这些 ArtMesh ID，例如为它们应用颜色滤镜或使其不可见。</p><p>如果当前没有加载模型或有其他窗口打开，请求将返回错误。</p><p>用户可以将鼠标悬停在 ArtMeshes 上以显示其 ID，点击它们可以过滤显示列表，只显示点击位置下的所有 ArtMeshes。此请求显示的 UI 如下图所示：</p><p><img src="/Images/vts_request_select_artmeshes.png" alt="API ArtMesh selection request screen"></p><p>使用 <code>requestedArtMeshCount</code> 字段指定用户必须激活多少个 ArtMeshes。直到恰好激活这么多 ArtMeshes，“确定”按钮才可用。如果将 <code>requestedArtMeshCount</code> 设置为 0 或更低，用户将被要求选择任意数量的 ArtMeshes（但至少一个）。</p><p>如果您想在列表中预先激活 ArtMeshes，可以使用 <code>activeArtMeshes</code> 列表传入一些 ArtMesh ID。如果这些 ID 中有任何不属于当前模型，将返回错误。如果您想获取当前加载模型中所有 ArtMeshes 的列表，请使用 <code>ArtMeshListRequest</code>。</p><p>如上图所示，列表有一些默认文本，提示用户为插件选择 ArtMeshes。当您按右上角的 <code>?</code>（帮助）按钮时，会弹出相同的文本。您可以分别使用 <code>textOverride</code> 和 <code>helpOverride</code> 字段覆盖这两个字符串。如果留空（空字符串）、null 或不包含在请求负载中，将使用上述默认消息。若要覆盖这些消息，您提供的字符串长度必须在 4 到 1024 个字符之间，否则将使用默认值。您可以在字符串中使用 <code>\n</code> 进行换行。</p><p><strong><code>REQUEST</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ArtMeshSelectionRequest",
+	"data": {
+		"textOverride": "This text is shown over the ArtMesh selection list.",
+		"helpOverride": "This text is shown when the user presses the ? button."
+		"requestedArtMeshCount": 5
+		"activeArtMeshes": [
+			"D_BODY_00",
+			"D_ARM_R_05"
+		]
+	}
+}</code></pre>
+如果请求成功，选择列表将显示给用户。不会有即时响应。响应将在用户点击“确定”或“取消”按钮后出现。“取消”按钮始终可用，但“确定”按钮仅在选择了请求数量的ArtMeshes后才可点击。</p><p>激活/停用的ArtMeshes将分别返回在<code>activeArtMeshes</code>和<code>inactiveArtMeshes</code>数组中。这些数组之间<strong>没有重叠</strong>，因此如果将这些数组中的ArtMeshes合并，您将获得模型中所有ArtMeshes的列表。</p><p>如果用户点击了“确定”，<code>success</code>字段将为<code>true</code>。如果用户点击了“取消”，<code>success</code>字段将为<code>false</code>（在这种情况下，您可能应该忽略<code>activeArtMeshes</code>和<code>inactiveArtMeshes</code>数组，尽管它们仍会返回）。</p><p><strong><code>RESPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ArtMeshSelectionResponse",
+	"data": {
+		"success": true
+		"activeArtMeshes": [
+			"D_BROW_00",
+			"D_EYE_BALL_03",
+			"D_EYE_BALL_02",
+			"D_EYE_BALL_01",
+			"D_EYE_BALL_00",
+			"D_EYE_11"
+		],
+		"inactiveArtMeshes": [
+			"D_EAR_06",
+			"D_BODY_00",
+			"D_ARM_R_05"
+		]
+	}
+}</code></pre>
+<h2>将物品固定到模型</h2></p><p>您可以使用此请求将场景中的物品固定到当前加载的模型上。</p><p>必须在 <code>itemInstanceID</code> 字段中指定用于识别物品的物品实例 ID。 如果您想取消固定该物品，只需将 <code>pin</code> 设置为 <code>false</code>。 在这种情况下不需要提供其他信息。 如果当前未加载具有该 ID 的物品，将返回错误（请参见 <a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">ErrorsID.cs</a>）。</p><p>如果您想固定物品，必须在 <code>pinInfo</code> 对象中提供固定位置。 固定物品有多种方式。 例如，您可以提供一个精确的位置进行固定，或者只提供一个 ArtMesh，让 VTS 将物品固定到其中心或 ArtMesh 上的随机位置。 具体如何操作将在下文说明。</p><p>当您发送针对具有活动 <code>ItemMoveRequest</code> 的物品的 <code>ItemPinRequest</code> 时，<code>ItemMoveRequest</code> 将被自动取消。</p><p>此外，如果您的插件（或多个不同插件）在同一帧内向同一物品发送多个固定请求，VTS 仅执行最后接收到的固定请求，其他请求将被丢弃。</p><h3>固定选项</h3></p><p>有三个字段决定如何解释 <code>pinInfo</code> 中提供的数据：</p><ul><li><code>angleRelativeTo</code>：如何解释提供的角度？</li>
+  <li><code>RelativeToWorld</code>：绝对角度。也就是说，如果您传入角度为 0，物品将以相对于 VTS 窗口的角度 0 直立固定。 如果您想让物品面向相对于 VTS 窗口的某个方向，您会使用此选项。</li>
+  <li><code>RelativeToCurrentItemRotation</code>：相对于物品当前角度。 如果您传入角度为 0，表示物品将固定在当前角度，即不会改变其当前旋转。 如果您不想改变物品旋转，只想按原样固定，您会使用此选项。</li>
+  <li><code>RelativeToModel</code>：相对于模型旋转的角度。 也就是说，如果传入角度为 0，且用户旋转了模型，物品将相对于模型直立固定。 此“模型旋转”不包括由 Live2D ArtMesh 变形引起的旋转，仅指 VTube Studio 对整个模型应用的实际旋转。 如果您想让物品面向相对于模型当前旋转的某个方向，会使用此选项。</li>
+  <li><code>RelativeToPinPosition</code>：相对于固定位置的角度。 如果您想在某个特定 ArtMesh 的某个特定位置以固定角度固定物品，且无论模型当前如何旋转或 ArtMesh 如何变形，该角度都保持完全相同，您应使用此选项。 但要实现所需效果，传入的角度对每个固定位置会完全不同。</li>
+<li><code>sizeRelativeTo</code>：</li>
+  <li><code>RelativeToWorld</code>：绝对大小。范围从 0（最小）到 1（最大）。详见 <code>ItemLoadRequest</code>。</li>
+  <li><code>RelativeToCurrentItemSize</code>：相对于当前物品大小。您可以传入介于 <code>-1</code> 和 <code>1</code> 之间的数字，将加到当前物品大小上。 也就是说，如果想以当前大小固定物品且不改变，传入 0 即可。</li>
+<li><code>vertexPinType</code>：</li>
+  <li><code>Provided</code>：物品将根据 <code>vertexID1</code>、<code>vertexID2</code>、<code>vertexID3</code>、<code>vertexWeight1</code>、<code>vertexWeight2</code> 和 <code>vertexWeight3</code> 字段中提供的固定位置固定到指定 ArtMesh。 详情将在下文说明。</li>
+  <li><code>Center</code>：物品将固定到指定 ArtMesh 的“中心”。这其实不是空间上的中心，而是网格的三角形列表中间的三角形。对于给定的 ArtMesh，这将每次提供相同的位置。</li>
+  <li><code>Random</code>：物品将固定到指定 ArtMesh 中的随机三角形。</li></p><p></ul>如果提供的模型 ID 与加载的模型不匹配，将返回错误。 您也可以将模型 ID 留空，这样将尝试固定到当前加载的模型（如果有加载）。</p><p>如果模型没有您提供的 ArtMesh ID 对应的 ArtMesh，将返回错误。 如果您将 ArtMesh ID 留空，将在模型中随机选择一个 ArtMesh。</p><p>例如，您可以将模型 ID 和 ArtMesh ID 都留空，并将 <code>vertexPinType</code> 设置为 <code>Random</code>。 这将把物品固定到当前加载模型的随机 ArtMesh 上的随机位置。</p><h3>固定到特定位置</h3></p><p>如果您将 <code>vertexPinType</code> 设置为 <code>Provided</code>，必须使用字段 <code>vertexID1</code>、<code>vertexID2</code>、<code>vertexID3</code>、<code>vertexWeight1</code>、<code>vertexWeight2</code> 和 <code>vertexWeight3</code>，以提供基于您使用 <code>modelID</code> 和 <code>artMeshID</code> 字段选择的 ArtMesh 上的有效位置。</p><p>
+三个顶点ID字段必须是给定ArtMesh中三角形的顶点ID。要定义该特定三角形内的位置，请使用顶点权重字段。那些字段将与顶点位置相乘以定义三角形中的一个位置。请记住，权重必须正好加起来等于1，否则结果位置将位于三角形外部（并且会返回错误）。这些就是<a href="https://zh.wikipedia.org/wiki/%E9%87%8D%E5%BF%83%E7%9B%B8%E5%85%B3%E7%B3%BB%E7%BB%9F" target="_blank" rel="noopener noreferrer">重心坐标</a>。</p><p>要获取其中一个位置，您可以使用<a href="https://github.com/DenchiSoft/VTubeStudio/tree/master/Events#model-clicked-event" target="_blank" rel="noopener noreferrer">ModelClickedEvent</a>。当模型被点击时，该事件将返回可用于<code>ItemPinRequest</code>的固定点位置。</p><p><strong><code>REQUEST</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemPinRequest",
+	"data": {
+		"pin": true,
+		"itemInstanceID": "4a241269394f463ca16b8b21aa636568",
+		"angleRelativeTo": "RelativeToModel",
+		"sizeRelativeTo": "RelativeToWorld",
+		"vertexPinType": "Provided",
+		"pinInfo": {
+			"modelID": "d87b771d2902473bbaa0226d03ef4754",
+			"artMeshID": "hair_right_4",
+			"angle": 23.938,
+			"size": 0.33,
+			"vertexID1": 17,
+			"vertexID2": 9,
+			"vertexID3": 55,
+			"vertexWeight1": 0.25928378105163576,
+			"vertexWeight2": 0.6850675940513611,
+			"vertexWeight3": 0.055648624897003177
+		}
+	}
+}</code></pre>
+如果成功，响应将包含项目ID、项目文件名以及该项目当前是否已固定。</p><p><strong><code>RESPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemPinResponse",
+	"data": {
+		"isPinned": true,
+		"itemInstanceID": "4a241269394f463ca16b8b21aa636568",
+		"itemFileName": "my_test_item_2.png",
+	}
+}</code></pre></p><h2>获取后处理效果列表及状态</h2></p><p><strong>注意：</strong> 本文档中视觉效果、VFX 和后处理效果这几个术语可互换使用。</p><p>VTube Studio 内置后处理功能，允许您直接向场景添加视觉效果。该功能适用于 Windows 和 macOS。更多信息请查看页面 <a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects" target="_blank" rel="noopener noreferrer">"Visual Effects"</a>。</p><p>此请求返回后处理系统的总体状态、所有现有（用户创建的）后处理预设列表及所有可用后处理效果及其当前值（当前后处理状态）。</p><p>如果将 <code>fillPostProcessingPresetsArray</code> 设置为 <code>false</code>，响应负载中的 <code>postProcessingPresets</code> 数组将为空。请求后处理预设列表需要从磁盘读取预设文件（尽管它们在 VTS 中会缓存一段时间），这可能较慢。如果频繁发送此请求，请确保 <code>fillPostProcessingPresetsArray</code> 不是 <code>true</code>，否则可能因磁盘 I/O 导致卡顿。</p><p>如果将 <code>fillPostProcessingEffectsArray</code> 设置为 <code>false</code>，响应负载中的 <code>postProcessingEffects</code> 数组将为空。如果您不需要完整的后处理效果及其数值列表，建议将 <code>fillPostProcessingEffectsArray</code> 设置为 <code>false</code>，因为响应负载可能非常大。</p><p>如果您只关注特定的后处理效果，可以在 <code>effectIDFilter</code> 数组中列出它们。否则请保持数组为空表示不应用过滤器。所有当前效果的列表见此处：https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/Effects.cs</p><p><strong>注意：</strong> 这些 ID 支持多种格式，因此您可以用任何枚举风格为它们创建枚举。它们不区分大小写，并且忽略 <code>_</code> 或 <code>-</code>。例如，您可以写成 <code>Chromatic_Aberration</code>、<code>chromatic_aberration</code>、<code>CHROMATIC_ABERRATION</code> 等，而不仅限于 <code>ChromaticAberration</code>。</p><p><strong><code>请求</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "PostProcessingListRequest",
+	"data":
+	{
+		"fillPostProcessingPresetsArray": true,
+		"fillPostProcessingEffectsArray": true,
+		"effectIDFilter":
+		[
+			"ASCII",
+			"ColorGrading",
+			"WeatherEffects",
+			"ChromaticAberration"
+		]
+	}
+}</code></pre>
+响应包含有关后期处理系统状态的一些常规信息，以及 <code>postProcessingEffects</code> 和 <code>postProcessingPresets</code> 数组（如果请求的话）。</p><p><code>postProcessingSupported</code> 检查平台是否支持后期处理，在 Windows 和 macOS 上应始终为 <code>true</code>。<code>postProcessingActive</code> 字段包含用户是否开启了后期处理。请记住，你也可以通过 API 使用接下来描述的 <code>PostProcessingUpdateRequest</code> 来打开/关闭它。在某些情况下，使用 <code>PostProcessingUpdateRequest</code> 可能不可行，特别是当 VTube Studio 中有一些与后期处理配置相关的窗口或弹出窗口打开时。在这种情况下，<code>canSendPostProcessingUpdateRequestRightNow</code> 将为 <code>false</code>。</p><p>有一些受限/实验性效果（参见<a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects#restrictedexperimental-effects" target="_blank" rel="noopener noreferrer">“受限/实验性效果”</a>）。用户必须明确允许使用这些效果。用户是否允许使用这些效果会在 <code>restrictedEffectsAllowed</code> 字段中返回。</p><p>后期处理预设是否激活会在 <code>presetIsActive</code> 字段中返回。如果有激活的预设，其名称将显示在 <code>activePreset</code> 字段中，否则该字段为空。</p><p><code>presetCount</code> 包含 <code>postProcessingPresets</code> 数组中的后期处理预设数量。如果你没有请求填充该数组，<code>presetCount</code> 将为 0。</p><p><code>activeEffectCount</code> 是激活的后期处理效果数量。后续章节将解释效果“激活”的含义。</p><p>“effectCount”和“configCount”字段包含所有效果在应用过滤器前后（如果你请求了过滤）的效果数量和所有配置的总数。</p><h3><code>postProcessingEffects</code> 数组</h3></p><p><code>postProcessingEffects</code> 数组包含所有效果的列表。这些效果与 VTube Studio 中 VFX 列表中显示的效果相同。每个效果可以有多个“配置”，用于配置效果的某些方面，例如强度或颜色。</p><p>用来标识效果的 ID 返回在 <code>enumID</code> 字段中。还有一个 <code>internalID</code> 字段，包含 VTube Studio 内部用于该效果的 ID。这是后期处理预设 JSON 文件中使用的 ID，因此对大多数用例来说并不重要。不过，如果你有需要，也可以在 API 中使用这些 ID 来引用效果。</p><p>配置项具有以下类型之一（返回在配置的 <code>type</code> 字段中）：
+<ul><li>Float</li>
+<li>Int</li>
+<li>Bool</li>
+<li>String</li>
+<li>Color</li>
+<li>SceneItem</li></p><p></ul>一个效果的配置项返回在 <code>configEntries</code> 数组中。每个配置项还有一个 <code>internalID</code> 和 <code>enumID</code>。所有效果的所有配置 ID 及说明可见此处：https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs</p><p>对于一个配置项，仅填写与该配置类型匹配的字段。其他字段将为空或为默认值，应忽略。例如，对于浮点型配置项，<code>intMin</code> 和 <code>colorValue</code> 字段为空（此时为 0 和空字符串）。除所有类型都有的默认值外，<code>Float</code> 和 <code>Int</code> 配置还具有 <code>min</code> 和 <code>max</code>。</p><p>对于包含颜色的字段，返回 RGBA 十六进制格式的字符串（如 "77CCAAFF"），<code>colorHasAlpha</code> 会告诉你该配置是否实际有 alpha。如果为 <code>false</code>，alpha 始终为 <code>FF</code>。</p><p>类型为 <code>SceneItem</code> 的配置本质上是字符串配置，但其值必须是 VTube Studio “Items” 文件夹中存在的项目的文件名（以 .jpg 或 .png 结尾）。例如，这些用于自定义粒子效果。</p><h3>何时认为一个效果是“激活”的？</h3></p><p>每个效果至少有一个浮点配置（但可以有多个），其 <code>activationConfig</code> 设置为 <code>true</code>。如果某个效果的其中一个配置值大于 0，则该效果被视为“激活”。</p><p>例如，对于 <code>ColorGrading</code> 效果，相关配置即为 <code>ColorGrading_Strength</code>。</p><p><strong>注意：</strong> 此响应负载示例中的 <code>postProcessingEffects</code> 大大缩短。未应用任何滤镜时，由于存在 250 多个效果配置，内容可能长达数千行。</p><p><strong><code>RESPONSE</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "PostProcessingListResponse",
+	"data": {
+		"postProcessingSupported": true,
+		"postProcessingActive": true,
+		"canSendPostProcessingUpdateRequestRightNow": true,
+		"restrictedEffectsAllowed": false,
+		"presetIsActive": true,
+		"activePreset": "some_effects_preset_3",
+		"presetCount": 70,
+		"activeEffectCount": 5,
+		"effectCountBeforeFilter": 29,
+		"configCountBeforeFilter": 258,
+		"effectCountAfterFilter": 4,
+		"configCountAfterFilter": 31,
+		"postProcessingEffects": [
+			{
+				"internalID": "color_grading",
+				"enumID": "ColorGrading",
+				"explanation": "Color grading",
+				"effectIsActive": false,
+				"effectIsRestricted": false,
+				"configEntries": [
+					{
+						"internalID": "color_grading-strength",
+						"enumID": "ColorGrading_Strength",
+						"explanation": "Effect on/off",
+						"type": "Float",
+						"activationConfig": true,
+						"floatValue": 0.0,
+						"floatMin": 0.0,
+						"floatMax": 1.0,
+						"floatDefault": 0.0,
+						"intValue": 0,
+						"intMin": 0,
+						"intMax": 0,
+						"intDefault": 0,
+						"colorValue": "",
+						"colorDefault": "",
+						"colorHasAlpha": false,
+						"boolValue": false,
+						"boolDefault": false,
+						"stringValue": "",
+						"stringDefault": "",
+						"sceneItemValue": "",
+						"sceneItemDefault": ""
+					},
+					{
+						"internalID": "color_grading-color_filter",
+						"enumID": "ColorGrading_ColorFilter",
+						"explanation": "Color filter",
+						"type": "color",
+						"activationConfig": false,
+						"floatValue": 0.0,
+						"floatMin": 0.0,
+						"floatMax": 0.0,
+						"floatDefault": 0.0,
+						"intValue": 0,
+						"intMin": 0,
+						"intMax": 0,
+						"intDefault": 0,
+						"colorValue": "FFFFFFFF",
+						"colorDefault": "FFFFFFFF",
+						"colorHasAlpha": false,
+						"boolValue": false,
+						"boolDefault": false,
+						"stringValue": "",
+						"stringDefault": "",
+						"sceneItemValue": "",
+						"sceneItemDefault": ""
+					}
+				]
+			}
+		],
+		"postProcessingPresets": [
+			"My Cool Preset",
+			"some_effects_preset_1",
+			"some_effects_preset_2",
+			"some_effects_preset_3",
+			"test asdf 123456",
+			"blur and color grading",
+		]
+	}
+}</code></pre>
+<h2>设置后期处理效果</h2></p><p><strong>注意：</strong> 本文档中视觉效果、VFX 和后期处理效果一词可互换使用。</p><p>VTube Studio 内置后期处理，允许您直接向场景添加视觉效果。该功能适用于 Windows 和 macOS。更多信息，请查看页面<a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects" target="_blank" rel="noopener noreferrer">"视觉效果"</a>。</p><p>通过使用 <code>PostProcessingUpdateRequest</code>，您可以控制后期处理系统。可以开启/关闭后期处理，加载/卸载预设，甚至直接详细控制单个配置项（颜色、强度等）。</p><p>仅当没有与后期处理配置相关的窗口打开时，才能发送此更新。否则，将返回错误 <code>PostProcessingUpdateReqestCannotUpdateRightNow</code>。有关此请求可能返回的所有错误，请参见<a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs" target="_blank" rel="noopener noreferrer">"ErrorsID.cs"</a>。</p><p>使用 <code>postProcessingOn</code> 可全局开启或关闭后期处理。此操作与在 VTS UI 中切换后期处理开关相同。即使关闭后期处理，您也可以使用相同请求设置预设或单个配置值。值仍会被设置，但屏幕上不会有变化。打开 VTube Studio 的后期处理配置窗口时，您会看到请求的值已被设置，并且一旦开启后期处理，这些值将可见。请注意，如果您设置了预设但使用同一请求关闭后期处理，预设中的所有值仍将被设置，但 UI 上不会显示该预设为激活状态，因为技术上它不再“激活”。当再次开启后期处理时，预设中的所有值都将可见。</p><p>您可以使用两种方法为后期处理配置项设置值：
+<ul><li>设置后期处理预设：将 <code>setPostProcessingPreset</code> 设为 <code>true</code>，并在 <code>presetToSet</code> 字段中提供预设名称（仅预设名称，不含文件扩展名）。如果预设不存在，将返回错误 <code>PostProcessingUpdateRequestPresetFileLoadFailed</code>。</li>
+<li>设置单个配置值：将 <code>setPostProcessingValues</code> 设为 <code>true</code>，并在 <code>postProcessingValues</code> 数组中提供配置键值列表。</li></p><p></ul>不能同时执行这两者：如果 <code>setPostProcessingPreset</code> 和 <code>setPostProcessingValues</code> 都为 <code>true</code>，将返回错误 <code>PostProcessingUpdateRequestLoadingPresetAndValues</code>。不过，两者都可以为 <code>false</code>。此时不会设置任何值。如果您仅想全局开启/关闭后期处理而不更改当前配置，这非常有用。</p><p>直接或通过预设更改配置值时，配置值会从旧值平滑过渡到您提供的新值。过渡持续时间应在 <code>postProcessingFadeTime</code> 字段中指定，且必须介于 0 到 2（秒）之间。超出该范围将返回错误 <code>PostProcessingUpdateRequestFadeTimeInvalid</code>。</p><p>设置单个值时，字段 <code>setAllOtherValuesToDefault</code> 决定未在负载中提供的其他所有值是否保持不变，还是淡出回默认值，即所有未提及的效果将被关闭。</p><p>如果您想在直接设置配置值时使用任何<a href="https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects#restrictedexperimental-effects" target="_blank" rel="noopener noreferrer">受限/实验性效果</a>，请确保在负载中将 <code>usingRestrictedEffects</code> 设为 <code>true</code>。这只是为了确保这些效果不会被意外使用。否则，将返回错误 <code>PostProcessingUpdateRequestTriedToLoadRestrictedEffect</code>。如果用户尚未在 VTube Studio VFX 设置中启用这些效果，也会返回此错误。此设置必须由用户手动完成。如果加载的预设包含受限效果，预设仍会完全加载且不会报错，但受限效果不会被激活。</p><p>您还可以请求随机化所有效果配置。这纯属娱乐用途。为此，将 <code>randomizeAll</code> 设为 <code>true</code>。如果 <code>randomizeAll</code> 为 <code>true</code>，负载中发送的任何配置值或预设将被忽略。当多个效果同时激活时，屏幕上会出现纯随机噪声，因此该功能会限制激活效果数量，并避免配置值过于疯狂。此功能可通过 <code>randomizeAllChaosLevel</code> 字段控制，接受 0 到 1 之间的值（超出范围的值会被限制在此范围内）。<code>0</code> 仅激活一两个效果且数值温和，<code>1</code> 则在屏幕上制造完全混乱。推荐的值范围为 <code>0.4</code> 到 <code>0.5</code>，效果较好。仅当您将 <code>usingRestrictedEffects</code> 设为 <code>true</code> 且用户允许/启用这些效果时，受限效果才会包含在随机化中。</p><h3>如何设置单个配置值</h3></p><p>当您想通过设置单个配置值详细控制后期处理配置时，必须将 <code>setPostProcessingValues</code> 设为 <code>true</code>，并通过 <code>postProcessingValues</code> 数组设置值。<code>configID</code> 是您想配置的效果配置的 ID，<code>configValue</code> 是您想设置的字符串值。</p><ul><li><code>configID</code>：您想配置的配置 ID，参见<a href="https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs" target="_blank" rel="noopener noreferrer">所有配置 ID 列表</a>。这些 ID 支持多种格式，因此您可以以任何枚举样式创建它们。它们不区分大小写，且忽略 <code>_</code> 或 <code>-</code>。例如，您可以将 <code>Backlight_OutlineSize</code> 写为 <code>Backlight_Outline_Size</code>、<code>backlight_outlinesize</code>、<code>BACKLIGHT_OUTLINESIZE</code>、<code>backlight-outline_size</code> 或任何适合您的格式（另见 <code>PostProcessingListResponse</code> 的 <code>configEntries</code> 数组中的 <code>enumID</code> 字段）。</li>
+<li><code>configValue</code>：要设置的值，字符串类型。对于浮点数或整数，超出配置的最小/最大范围的值会被限制。布尔值不区分大小写，接受 <code>"True"</code>、<code>"true"</code>（或 <code>"TRUE"</code> 等）等值。</li></p><p></ul>如果数组中有重复键，将返回错误 <code>PostProcessingUpdateRequestValueListContainsDuplicates</code>；如果有无效键（未找到）或无效值（无法正确反序列化为浮点数、布尔值等），则返回错误 <code>PostProcessingUpdateRequestValueListInvalid</code>。</p><p><strong>如何真正开启一个效果：</strong> 效果可能有多个配置项。每个效果至少有一个配置项（可能多个）用于开启该效果，条件是该配置项的值大于 0。在 <code>PostProcessingListResponse</code> 负载中，这些配置（总是浮点类型配置）通过 <code>"activationConfig": true</code> 标记。您也可以查看所有效果配置列表，其中这些特殊配置标记为 <code>sets_active: True</code>，见：https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs</p><h3>一般使用建议</h3></p><p>
+您不应以高频率发送此请求，例如每帧发送一次。 如果您想淡出一个值，请使用 <code>postProcessingFadeTime</code> 字段设置适当的淡出时间。 根据配置组合，频繁更新<em>可能</em>是可以的，但您应仔细测试。后处理系统针对不频繁的配置更新进行了优化，因此请确保在发布插件之前检查是否会导致任何延迟。</p><p><strong><code>REQUEST</code></strong>
+<pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "PostProcessingUpdateRequest",
+	"data":
+	{
+		"postProcessingOn": true,
+		"setPostProcessingPreset": false,
+		"setPostProcessingValues": true,
+		"presetToSet": "",
+		"postProcessingFadeTime": 1.3,
+		"setAllOtherValuesToDefault": true,
+		"usingRestrictedEffects": false,
+		"randomizeAll": false,
+		"randomizeAllChaosLevel" : 0.0,
+		"postProcessingValues": [
+			{
+				"configID": "Backlight_Strength",
+				"configValue": "0.8"
+			},
+			{
+				"configID": "Bloom_Strength",
+				"configValue": "1.0"
+			},
+			{
+				"configID": "Bloom_StreakVertical",
+				"configValue": "false"
+			},
+			{
+				"configID": "Bloom_StreakColorTint",
+				"configValue": "220308FF"
+			}
+		]
+	}
+}</code></pre>
+如果没有错误，您将收到以下响应，其中包含有关您请求的更新后新后处理状态的一些常规信息。</p><p><strong><code>RESPONSE</code></strong></p><pre><code class="language-json">{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "PostProcessingUpdateResponse",
+	"data":
+	{
+		"postProcessingActive": true,
+		"presetIsActive": false,
+		"activePreset": "",
+		"activeEffectCount": 2
+	}
+}</code></pre></p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-29
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/DenchiSoft/VTubeStudio/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-09-29 
+    </div>
+    
+</body>
+</html>

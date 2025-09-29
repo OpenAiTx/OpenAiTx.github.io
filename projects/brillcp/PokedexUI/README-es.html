@@ -1,0 +1,444 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokedexUI - Una aplicaci&#243;n sencilla de Pokedex escrita en SwiftUI que implementa la PokeAPI, utilizando Swift Concurrency, arquitectura MVVM y paginaci&#243;n.</title>
+    <meta name="description" content="Una aplicaci&#243;n sencilla de Pokedex escrita en SwiftUI que implementa la PokeAPI, utilizando Swift Concurrency, arquitectura MVVM y paginaci&#243;n.">
+    <meta name="keywords" content="PokedexUI, Spanish, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PokedexUI",
+  "description": "Una aplicación sencilla de Pokedex escrita en SwiftUI que implementa la PokeAPI, utilizando Swift Concurrency, arquitectura MVVM y paginación.",
+  "author": {
+    "@type": "Person",
+    "name": "brillcp"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 97
+  },
+  "url": "https://OpenAiTx.github.io/projects/brillcp/PokedexUI/README-es.html",
+  "sameAs": "https://raw.githubusercontent.com/brillcp/PokedexUI/master/README.md",
+  "datePublished": "2025-09-29",
+  "dateModified": "2025-09-29"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/brillcp/PokedexUI" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    PokedexUI
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 97 stars</span>
+                <span class="language">Spanish</span>
+                <span>by brillcp</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><img src="https://github.com/user-attachments/assets/5abf1763-b290-4f12-a661-986e58fbeaad" alt="icon"></p><p><img src="https://img.shields.io/badge/Swift-5.0%2B-green" alt="swift">
+<img src="https://img.shields.io/github/v/release/brillcp/pokedexui" alt="release">
+<img src="https://img.shields.io/badge/Platforms-iOS%20iPadOS%20macOS-blue" alt="platforms">
+<a href="#swift-package-manager" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-green" alt="spm"></a>
+<a href="/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/license/brillcp/pokedexui" alt="license"></a>
+<img src="https://img.shields.io/github/stars/brillcp/pokedexui?style=social" alt="stars"></p><h1>PokedexUI</h1>
+PokedexUI es una aplicación de ejemplo moderna construida con <strong>SwiftUI</strong> por <a href="https://viktorgidlof.com" target="_blank" rel="noopener noreferrer">Viktor Gidlöf</a>.
+Se integra con la <a href="https://pokeapi.co" target="_blank" rel="noopener noreferrer">PokeAPI</a> para obtener y mostrar datos de Pokémon usando una arquitectura limpia y reactiva con <code>async / await</code> y Swift Concurrency.</p><p><img width="360" alt="pd1" src="https://github.com/user-attachments/assets/13c2362d-4519-4457-8e8f-94c0b97ad1f9" />
+<img width="360" alt="pd2" src="https://github.com/user-attachments/assets/facfadbd-da67-4de8-9e7d-ac6c4207fbee" /></p><h1>Arquitectura 🏛</h1></p><p>PokedexUI implementa una arquitectura <strong>MVVM Orientada a Protocolos</strong> con principios de <strong>Arquitectura Limpia</strong>. Cuenta con obtención genérica de datos, persistencia con SwiftData y actualizaciones reactivas de UI usando el macro <code>@Observable</code> de Swift.</p><h2>Beneficios Clave de la Arquitectura</h2>
+<ul><li>✅ <strong>Orientada a Protocolos</strong>: Permite inyección de dependencias y pruebas fáciles</li>
+<li>✅ <strong>Flujo Genérico de Datos</strong>: Patrón unificado para todas las fuentes de datos  </li>
+<li>✅ <strong>Almacenamiento Primero</strong>: Capacidad offline con sincronización automática</li>
+<li>✅ <strong>Concurrencia Basada en Actores</strong>: Operaciones de datos seguras en hilos</li>
+<li>✅ <strong>Separación Limpia</strong>: Límites claros entre capas</li>
+<li>✅ <strong>Seguridad de Tipos</strong>: Garantías en tiempo de compilación mediante genéricos</li>
+<li>✅ <strong>UI Reactiva</strong>: Actualizaciones automáticas vía @Observable</li></p><p></ul><h3>Puntaje de Cumplimiento SOLID: 0.92 / 1.0</h3>
+<ul><li><strong>S</strong>olo Responsabilidad: Cada componente tiene un propósito enfocado</li>
+<li><strong>A</strong>berto/Cerrado: Extensible vía protocolos sin modificar  </li>
+<li><strong>S</strong>ustitución de Liskov: La conformidad con protocolos asegura sustituibilidad</li>
+<li><strong>S</strong>egregación de Interfaces: Protocolos enfocados y cohesionados</li>
+<li><strong>I</strong>nversión de Dependencias: Depende de abstracciones, no concreciones</li></p><p></ul><h2>Capa de Vista 📱</h2></p><p>La vista raíz <code>PokedexView</code> es una vista genérica que acepta ViewModels conformes a protocolos, habilitando inyección de dependencias y capacidad de prueba:
+<pre><code class="language-swift">struct PokedexView<
+    PokedexViewModel: PokedexViewModelProtocol,
+    ItemListViewModel: ItemListViewModelProtocol,
+>: View {
+    @State var viewModel: PokedexViewModel
+    let itemListViewModel: ItemListViewModel
+    
+    var body: some View {
+        TabView(selection: $viewModel.selectedTab) {
+            Tab(Tabs.pokedex.title, systemImage: viewModel.grid.icon, value: Tabs.pokedex) {
+                PokedexContent(viewModel: $viewModel)
+            }
+            // Additional tabs...
+        }
+        .applyPokedexConfiguration(viewModel: viewModel)
+    }
+}</code></pre></p><h2>Capa ViewModel 🧾</h2></p><h3>Diseño Orientado a Protocolos</h3>
+Los ViewModels cumplen con protocolos, lo que permite implementaciones flexibles y pruebas más fáciles:
+<pre><code class="language-swift">protocol PokedexViewModelProtocol {
+    var pokemon: [PokemonViewModel] { get }
+    var isLoading: Bool { get }
+    var selectedTab: Tabs { get set }
+    var grid: GridLayout { get set }
+    
+    func requestPokemon() async
+    func sort(by type: SortType)
+}</code></pre></p><h3>Obtención Genérica de Datos</h3>
+El protocolo <code>DataFetcher</code> ofrece un patrón unificado para la carga de datos con prioridad de almacenamiento:
+<pre><code class="language-swift">protocol DataFetcher {
+    associatedtype StoredData
+    associatedtype APIData  
+    associatedtype ViewModel
+    
+    func fetchStoredData() async throws -> [StoredData]
+    func fetchAPIData() async throws -> [APIData]
+    func storeData(_ data: [StoredData]) async throws
+    func transformToViewModel(_ data: StoredData) -> ViewModel
+    func transformForStorage(_ data: APIData) -> StoredData
+}</p><p>extension DataFetcher {
+    func fetchDataFromStorageOrAPI() async -> [ViewModel] {
+        // Storage-first approach with API fallback
+        guard let localData = await fetchStoredDataSafely(), !localData.isEmpty else {
+            return await fetchDataFromAPI()
+        }
+        return localData.map(transformToViewModel)
+    }
+}</code></pre></p><h3>Implementación Concreta</h3>
+El <code>PokedexViewModel</code> implementa ambos protocolos:
+<pre><code class="language-swift">@Observable
+final class PokedexViewModel: PokedexViewModelProtocol, DataFetcher {
+    private let pokemonService: PokemonServiceProtocol
+    private let storageReader: DataStorageReader
+    
+    var pokemon: [PokemonViewModel] = []
+    var isLoading: Bool = false
+    
+    func requestPokemon() async {
+        guard !isLoading else { return }
+        pokemon = await withLoadingState {
+            await fetchDataFromStorageOrAPI()
+        }
+    }
+}</code></pre></p><h2>Capa de Datos 📦</h2></p><h3>Persistencia SwiftData</h3>
+<code>DataStorageReader</code> ofrece una interfaz genérica basada en actores para operaciones SwiftData:
+<pre><code class="language-swift">@ModelActor
+actor DataStorageReader {
+    func store<M: PersistentModel>(_ models: [M]) throws {
+        models.forEach { modelContext.insert($0) }
+        try modelContext.save()
+    }
+    
+    func fetch<M: PersistentModel>(
+        sortBy: SortDescriptor<M>
+    ) throws -> [M] {
+        let descriptor = FetchDescriptor<M>(sortBy: [sortBy])
+        return try modelContext.fetch(descriptor)
+    }
+}</code></pre></p><h1>Sistema de Búsqueda Inteligente 🔍</h1></p><p>Una implementación de búsqueda de alto rendimiento, basada en protocolos, con filtrado sofisticado de múltiples términos y resultados en tiempo real.</p><h2>Arquitectura de Búsqueda</h2></p><p>El sistema de búsqueda sigue el mismo patrón unificado <code>DataFetcher</code>, asegurando una carga de datos consistente y capacidades sin conexión:</p><pre><code class="language-swift">@Observable
+final class SearchViewModel: SearchViewModelProtocol, DataFetcher {
+    var pokemon: [PokemonViewModel] = []
+    var filtered: [PokemonViewModel] = []
+    var query: String = ""
+    
+    func loadData() async {
+        pokemon = await fetchDataFromStorageOrAPI() // Uses unified data fetching
+    }
+}</code></pre></p><h2>Algoritmo de Filtrado Avanzado</h2></p><h3>Procesamiento y Coincidencia de Múltiples Términos</h3>
+<pre><code class="language-swift">func updateFilteredPokemon() {
+    let queryTerms = query
+        .split(whereSeparator: \.isWhitespace)  // Split on whitespace
+        .map { $0.normalize }                   // Diacritic-insensitive
+        .filter { !$0.isEmpty }
+    
+    filtered = pokemon.filter { pokemonVM in
+        let name = pokemonVM.name.normalize
+        let types = pokemonVM.types.components(separatedBy: ",").map { $0.normalize }
+        
+        return queryTerms.allSatisfy { term in
+            name.contains(term) || types.contains(where: { $0.contains(term) })
+        }
+    }
+}</code></pre></p><h2>Características clave</h2>
+<ul><li>✅ <strong>Filtrado en tiempo real</strong>: Los resultados se actualizan al instante mientras escribes</li>
+<li>✅ <strong>Soporte para múltiples términos</strong>: "dragón de fuego" encuentra Pokémon que coinciden con ambos términos</li>
+<li>✅ <strong>Búsqueda consciente del tipo</strong>: Busca por tipo (p. ej., "agua", "eléctrico") o por nombre</li>
+<li>✅ <strong>Insensible a diacríticos</strong>: Maneja automáticamente caracteres acentuados</li>
+<li>✅ <strong>Integración de almacenamiento</strong>: Busca en SwiftData local con respaldo de API</li></p><p></ul>El algoritmo de búsqueda asegura que <strong>todos los términos deben coincidir</strong> para resultados precisos mientras soporta coincidencias parciales de nombres y combinaciones de tipos.</p><h2>Carga y caché de sprites 🎨</h2>
+Carga asíncrona de imágenes con caché inteligente:
+<pre><code class="language-swift">actor SpriteLoader {
+    func loadSprite(from urlString: String) async -> UIImage? {
+        // Check cache first, then network with automatic caching
+    }
+}</code></pre></p><h1>Dependencias 🔗</h1>
+PokedexUI utiliza el framework HTTP <a href="https://github.com/brillcp/Networking" target="_blank" rel="noopener noreferrer">Networking</a> para todas las llamadas API a la PokeAPI. Puedes leer más sobre esto <a href="https://github.com/brillcp/Networking#readme" target="_blank" rel="noopener noreferrer">aquí</a>. Se puede instalar a través de Swift Package Manager:
+<pre><code class="language-">dependencies: [
+    .package(url: "https://github.com/brillcp/Networking.git", .upToNextMajor(from: "0.9.3"))
+]</code></pre></p><h1>Requisitos ❗️</h1>
+<ul><li>Xcode 15+</li>
+<li>iOS 17+ (para @Observable y SwiftData)</li>
+<li>Swift 5.9+</li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-29
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/brillcp/PokedexUI/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-09-29 
+    </div>
+    
+</body>
+</html>
