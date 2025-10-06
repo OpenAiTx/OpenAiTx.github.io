@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weibo-archiver - Script Tampermonkey pour exporter et sauvegarder Weibo, une pr&#233;caution avant que le compte ne soit compl&#232;tement supprim&#233; &#128557;</title>
+    <meta name="description" content="Script Tampermonkey pour exporter et sauvegarder Weibo, une pr&#233;caution avant que le compte ne soit compl&#232;tement supprim&#233; &#128557;">
+    <meta name="keywords" content="Weibo-archiver, French, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Weibo-archiver",
+  "description": "Script Tampermonkey pour exporter et sauvegarder Weibo, une précaution avant que le compte ne soit complètement supprimé 😭",
+  "author": {
+    "@type": "Person",
+    "name": "Chilfish"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 392
+  },
+  "url": "https://OpenAiTx.github.io/projects/Chilfish/Weibo-archiver/README-fr.html",
+  "sameAs": "https://raw.githubusercontent.com/Chilfish/Weibo-archiver/main/README.md",
+  "datePublished": "2025-10-06",
+  "dateModified": "2025-10-06"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Chilfish/Weibo-archiver" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Weibo-archiver
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 392 stars</span>
+                <span class="language">French</span>
+                <span>by Chilfish</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><div align="center">
+  <img
+    alt="logo"
+    width="100"
+    src="https://p.chilfish.top/weibo/icon.webp"
+  /></p><p>  <div>
+    <a href="https://deepwiki.com/Chilfish/Weibo-archiver"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
+    <img src="https://wakatime.com/badge/user/0842a71f-c026-4b09-8aa0-f8398b4c3423/project/3416f224-f0dc-4b08-805c-af30dbd396b2.svg" alt="wakatime">
+    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/chilfish/weibo-archiver">
+    <img alt="GitHub Downloads" src="https://img.shields.io/github/downloads/chilfish/weibo-archiver/total">
+    <img alt="beta build" src="https://github.com/Chilfish/Weibo-archiver/actions/workflows/beta-build.yml/badge.svg">
+  </div>
+</div></p><h2>Weibo-archiver</h2></p><p>Archivez vos souvenirs Sina Weibo, préparez-vous avant que votre compte ne soit complètement supprimé 😭 Site officiel : <a href="https://weibo-archiver.chilfish.top" target="_blank" rel="noopener noreferrer">weibo-archiver.chilfish.top</a></p><p><img src="https://p.chilfish.top/weibo/cover.webp" alt="Couverture"></p><h3>Mode d'emploi</h3></p><p>Voir les instructions détaillées dans la [documentation en ligne]</p><blockquote>Les anciennes versions sont disponibles sur la <a href="https://github.com/Chilfish/Weibo-archiver/tree/v0.5" target="_blank" rel="noopener noreferrer">branche v0.5</a> ou sur https://weibo.chilfish.top/, voir la section <a href="https://weibo-archiver.chilfish.top/docs/intro.html#从旧版本迁移" target="_blank" rel="noopener noreferrer">Documentation : migration depuis les anciennes versions</a></blockquote></p><h3>Pour les développeurs</h3></p><p>Le projet utilise une structure monorepo, gérée avec pnpm, il faut donc d'abord installer pnpm : <code>npm i -g pnpm</code></p><p>Dans le répertoire packages :</p><ul><li><a href="packages/core/" target="_blank" rel="noopener noreferrer">/core</a> contient les fonctions utilitaires et le cœur du traitement des données</li></p><p></ul>Dans le répertoire apps, les applications finales</p><ul><li><a href="apps/web-v2/" target="_blank" rel="noopener noreferrer">/web</a> est la page web pour consulter les données Weibo, actuellement hébergée sur [vercel]</li>
+<li><a href="apps/monkey/" target="_blank" rel="noopener noreferrer">/monkey</a> sert à empaqueter le script Tampermonkey</li>
+<li><a href="apps/cli" target="_blank" rel="noopener noreferrer">/cli</a> Version en ligne de commande Nodejs</li></p><p></ul>> Avant de déployer directement sur vercel, il faut d'abord aller dans les paramètres du projet vercel et définir le répertoire racine (<code>Root Directory</code>) sur <code>apps/web-v2</code> pour que le projet soit correctement reconnu et construit</p><p>Dans le répertoire server se trouve un serveur local écrit en langage go, utilisé pour télécharger des images et parcourir les données Weibo, pour les instructions d'utilisation voir <a href="https://raw.githubusercontent.com/Chilfish/Weibo-archiver/main/server/README.md" target="_blank" rel="noopener noreferrer">Instructions d'utilisation du serveur local</a></p><h3>Remerciements</h3></p><ul><li>Merci à [speechless] pour l'idée de base</li>
+<li>[vite-plugin-monkey] a fourni l'outil pour empaqueter en script Tampermonkey</li>
+<li>Shadcn/ui pour la belle bibliothèque de composants UI</li>
+<li>[vercel] pour la plateforme cloud en ligne 😚</li>
+<li>Github Copilot & v0.dev 😇</li></p><p></ul><h3>Sponsoring</h3></p><p>Si ce projet vous aide, vous pouvez envisager de me sponsoriser 😇 cela me donnera plus de motivation pour maintenir ce projet : [Adresse de sponsoring]</p><p>[releases]: https://raw.githubusercontent.com/Chilfish/Weibo-archiver/monkey/weibo-archiver.user.js
+[scripts.zip]: https://github.com/Chilfish/Weibo-archiver/raw/monkey/scripts.zip
+[speechless]: https://github.com/meterscao/Speechless
+[naive-ui]: https://www.naiveui.com/zh-CN/os-theme
+[#1]: https://github.com/Chilfish/Weibo-archiver/issues/1
+[#5]: https://github.com/Chilfish/Weibo-archiver/issues/5
+[Node.js 官网]: https://nodejs.org/en/download
+[vite-plugin-monkey]: https://github.com/lisonge/vite-plugin-monkey
+[镜像地址]: https://p.chilfish.top/weibo-archiver.user.js
+[项目的 Todo]: https://github.com/Chilfish/Weibo-archiver/issues/7
+[赞助地址]: https://chilfish.top/sponsors
+[vercel]: https://vercel.com
+[使用教程]: https://docs.qq.com/doc/DTWttbXlMUGxZZnZq
+[actions]: https://github.com/Chilfish/Weibo-archiver/actions/workflows/beta-build.yml?query=branch:main+event:push+is:success
+[微博网页版]: https://weibo.com
+[在线文档]: https://weibo-archiver.chilfish.top/docs/</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-10-06
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Chilfish/Weibo-archiver/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-10-06 
+    </div>
+    
+</body>
+</html>

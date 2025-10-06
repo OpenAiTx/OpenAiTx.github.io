@@ -1,0 +1,393 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLMs-from-scratch - Impl&#233;mentez un LLM de type ChatGPT en PyTorch from scratch, &#233;tape par &#233;tape.</title>
+    <meta name="description" content="Impl&#233;mentez un LLM de type ChatGPT en PyTorch from scratch, &#233;tape par &#233;tape.">
+    <meta name="keywords" content="LLMs-from-scratch, French, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "LLMs-from-scratch",
+  "description": "Implémentez un LLM de type ChatGPT en PyTorch from scratch, étape par étape.",
+  "author": {
+    "@type": "Person",
+    "name": "rasbt"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 74489
+  },
+  "url": "https://OpenAiTx.github.io/projects/rasbt/LLMs-from-scratch/README-fr.html",
+  "sameAs": "https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/README.md",
+  "datePublished": "2025-10-05",
+  "dateModified": "2025-10-05"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/rasbt/LLMs-from-scratch" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    LLMs-from-scratch
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 74489 stars</span>
+                <span class="language">French</span>
+                <span>by rasbt</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Construire un Grand Modèle de Langage (De A à Z)</h1></p><p>Ce dépôt contient le code pour développer, préentraîner et affiner un LLM de type GPT et constitue le dépôt officiel du livre <a href="https://amzn.to/4fqvn0D" target="_blank" rel="noopener noreferrer">Construire un Grand Modèle de Langage (De A à Z)</a>.</p><p><br>
+<br></p><p><a href="https://amzn.to/4fqvn0D"><img src="https://sebastianraschka.com/images/LLMs-from-scratch-images/cover.jpg?123" width="250px"></a></p><p><br></p><p>Dans <a href="http://mng.bz/orYv" target="_blank" rel="noopener noreferrer"><em>Construire un Grand Modèle de Langage (De A à Z)</em></a>, vous apprendrez et comprendrez le fonctionnement interne des grands modèles de langage (LLM) en les codant de zéro, étape par étape. Dans ce livre, je vous guide à travers la création de votre propre LLM, en expliquant chaque étape avec un texte clair, des diagrammes et des exemples.</p><p>La méthode décrite dans ce livre pour entraîner et développer votre propre modèle petit mais fonctionnel à des fins éducatives reflète l’approche utilisée pour créer des modèles fondamentaux à grande échelle comme ceux derrière ChatGPT. De plus, ce livre inclut du code pour charger les poids de modèles préentraînés plus grands afin de les affiner.</p><ul><li>Lien vers le <a href="https://github.com/rasbt/LLMs-from-scratch" target="_blank" rel="noopener noreferrer">dépôt officiel du code source</a></li>
+<li><a href="http://mng.bz/orYv" target="_blank" rel="noopener noreferrer">Lien vers le livre chez Manning (site de l’éditeur)</a></li>
+<li><a href="https://www.amazon.com/gp/product/1633437167" target="_blank" rel="noopener noreferrer">Lien vers la page du livre sur Amazon.com</a></li>
+<li>ISBN 9781633437166</li></p><p></ul><a href="http://mng.bz/orYv#reviews"><img src="https://sebastianraschka.com//images/LLMs-from-scratch-images/other/reviews.png" width="220px"></a></p><p>
+<br>
+<br></p><p>Pour télécharger une copie de ce dépôt, cliquez sur le bouton <a href="https://github.com/rasbt/LLMs-from-scratch/archive/refs/heads/main.zip" target="_blank" rel="noopener noreferrer">Download ZIP</a> ou exécutez la commande suivante dans votre terminal :</p><pre><code class="language-bash">git clone --depth 1 https://github.com/rasbt/LLMs-from-scratch.git</code></pre></p><p><br></p><p>(If you downloaded the code bundle from the Manning website, please consider visiting the official code repository on GitHub at <a href="https://github.com/rasbt/LLMs-from-scratch" target="_blank" rel="noopener noreferrer">https://github.com/rasbt/LLMs-from-scratch</a> for the latest updates.)</p><p><br>
+<br></p><h1>Table of Contents</h1></p><p>Please note that this <code>README.md</code> file is a Markdown (<code>.md</code>) file. If you have downloaded this code bundle from the Manning website and are viewing it on your local computer, I recommend using a Markdown editor or previewer for proper viewing. If you haven't installed a Markdown editor yet, <a href="https://ghostwriter.kde.org" target="_blank" rel="noopener noreferrer">Ghostwriter</a> is a good free option.</p><p>You can alternatively view this and other files on GitHub at <a href="https://github.com/rasbt/LLMs-from-scratch" target="_blank" rel="noopener noreferrer">https://github.com/rasbt/LLMs-from-scratch</a> in your browser, which renders Markdown automatically.</p><p><br>
+<br></p><blockquote><strong>Tip:</strong></blockquote>
+<blockquote>If you're seeking guidance on installing Python and Python packages and setting up your code environment, I suggest reading the <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/setup/README.md" target="_blank" rel="noopener noreferrer">README.md</a> file located in the <a href="setup" target="_blank" rel="noopener noreferrer">setup</a> directory.</blockquote></p><p><br>
+<br></p><p><a href="https://github.com/rasbt/LLMs-from-scratch/actions/workflows/basic-tests-linux-uv.yml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/rasbt/LLMs-from-scratch/actions/workflows/basic-tests-linux-uv.yml/badge.svg" alt="Code tests Linux"></a>
+<a href="https://github.com/rasbt/LLMs-from-scratch/actions/workflows/basic-tests-windows-uv-pip.yml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/rasbt/LLMs-from-scratch/actions/workflows/basic-tests-windows-uv-pip.yml/badge.svg" alt="Code tests Windows"></a>
+<a href="https://github.com/rasbt/LLMs-from-scratch/actions/workflows/basic-tests-macos-uv.yml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/rasbt/LLMs-from-scratch/actions/workflows/basic-tests-macos-uv.yml/badge.svg" alt="Code tests macOS"></a></p><p>
+<br></p><p>| Chapter Title                                              | Main Code (for Quick Access)                                                                                                    | All Code + Supplementary      |
+|------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|-------------------------------|
+| <a href="setup" target="_blank" rel="noopener noreferrer">Setup recommendations</a>                             | -                                                                                                                               | -                             |
+| Ch 1: Understanding Large Language Models                  | No code                                                                                                                         | -                             |
+| Ch 2: Working with Text Data                               | - <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch02/01_main-chapter-code/ch02.ipynb" target="_blank" rel="noopener noreferrer">ch02.ipynb</a><br/>- <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch02/01_main-chapter-code/dataloader.ipynb" target="_blank" rel="noopener noreferrer">dataloader.ipynb</a> (summary)<br/>- <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch02/01_main-chapter-code/exercise-solutions.ipynb" target="_blank" rel="noopener noreferrer">exercise-solutions.ipynb</a>               | <a href="./ch02" target="_blank" rel="noopener noreferrer">./ch02</a>            |
+| Ch 3: Coding Attention Mechanisms                          | - <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch03/01_main-chapter-code/ch03.ipynb" target="_blank" rel="noopener noreferrer">ch03.ipynb</a><br/>- <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch03/01_main-chapter-code/multihead-attention.ipynb" target="_blank" rel="noopener noreferrer">multihead-attention.ipynb</a> (summary) <br/>- <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch03/01_main-chapter-code/exercise-solutions.ipynb" target="_blank" rel="noopener noreferrer">exercise-solutions.ipynb</a>| <a href="./ch03" target="_blank" rel="noopener noreferrer">./ch03</a>             |
+| Chap 4 : Implémentation d’un modèle GPT from scratch          | - <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch04/01_main-chapter-code/ch04.ipynb" target="_blank" rel="noopener noreferrer">ch04.ipynb</a><br/>- <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch04/01_main-chapter-code/gpt.py" target="_blank" rel="noopener noreferrer">gpt.py</a> (résumé)<br/>- <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch04/01_main-chapter-code/exercise-solutions.ipynb" target="_blank" rel="noopener noreferrer">exercise-solutions.ipynb</a> | <a href="./ch04" target="_blank" rel="noopener noreferrer">./ch04</a>           |
+| Chap 5 : Préentraînement sur données non étiquetées          | - <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch05/01_main-chapter-code/ch05.ipynb" target="_blank" rel="noopener noreferrer">ch05.ipynb</a><br/>- <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch05/01_main-chapter-code/gpt_train.py" target="_blank" rel="noopener noreferrer">gpt_train.py</a> (résumé) <br/>- <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch05/01_main-chapter-code/gpt_generate.py" target="_blank" rel="noopener noreferrer">gpt_generate.py</a> (résumé) <br/>- <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch05/01_main-chapter-code/exercise-solutions.ipynb" target="_blank" rel="noopener noreferrer">exercise-solutions.ipynb</a> | <a href="./ch05" target="_blank" rel="noopener noreferrer">./ch05</a>              |
+| Chap 6 : Ajustement fin pour la classification de texte       | - <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch06/01_main-chapter-code/ch06.ipynb" target="_blank" rel="noopener noreferrer">ch06.ipynb</a>  <br/>- <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch06/01_main-chapter-code/gpt_class_finetune.py" target="_blank" rel="noopener noreferrer">gpt_class_finetune.py</a>  <br/>- <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch06/01_main-chapter-code/exercise-solutions.ipynb" target="_blank" rel="noopener noreferrer">exercise-solutions.ipynb</a> | <a href="./ch06" target="_blank" rel="noopener noreferrer">./ch06</a>              |
+| Chap 7 : Ajustement fin pour suivre des instructions          | - <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch07/01_main-chapter-code/ch07.ipynb" target="_blank" rel="noopener noreferrer">ch07.ipynb</a><br/>- <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch07/01_main-chapter-code/gpt_instruction_finetuning.py" target="_blank" rel="noopener noreferrer">gpt_instruction_finetuning.py</a> (résumé)<br/>- <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch07/01_main-chapter-code/ollama_evaluate.py" target="_blank" rel="noopener noreferrer">ollama_evaluate.py</a> (résumé)<br/>- <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch07/01_main-chapter-code/exercise-solutions.ipynb" target="_blank" rel="noopener noreferrer">exercise-solutions.ipynb</a> | <a href="./ch07" target="_blank" rel="noopener noreferrer">./ch07</a>  |
+| Annexe A : Introduction à PyTorch                             | - <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/appendix-A/01_main-chapter-code/code-part1.ipynb" target="_blank" rel="noopener noreferrer">code-part1.ipynb</a><br/>- <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/appendix-A/01_main-chapter-code/code-part2.ipynb" target="_blank" rel="noopener noreferrer">code-part2.ipynb</a><br/>- <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/appendix-A/01_main-chapter-code/DDP-script.py" target="_blank" rel="noopener noreferrer">DDP-script.py</a><br/>- <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/appendix-A/01_main-chapter-code/exercise-solutions.ipynb" target="_blank" rel="noopener noreferrer">exercise-solutions.ipynb</a> | <a href="./appendix-A" target="_blank" rel="noopener noreferrer">./appendix-A</a> |
+| Annexe B : Références et lectures complémentaires             | Pas de code                                                                                                                     | -                             |
+| Annexe C : Solutions des exercices                            | Pas de code                                                                                                                     | -                             |
+| Annexe D : Ajout de fonctionnalités supplémentaires à la boucle d’entraînement | - <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/appendix-D/01_main-chapter-code/appendix-D.ipynb" target="_blank" rel="noopener noreferrer">appendix-D.ipynb</a>                                                          | <a href="./appendix-D" target="_blank" rel="noopener noreferrer">./appendix-D</a>  |
+| Annexe E : Ajustement fin paramètre-efficace avec LoRA       | - <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/appendix-E/01_main-chapter-code/appendix-E.ipynb" target="_blank" rel="noopener noreferrer">appendix-E.ipynb</a>                                                          | <a href="./appendix-E" target="_blank" rel="noopener noreferrer">./appendix-E</a> |</p><p><br>
+&nbsp;</p><p>Le modèle mental ci-dessous résume les contenus abordés dans ce livre.</p><p><img src="https://sebastianraschka.com/images/LLMs-from-scratch-images/mental-model.jpg" width="650px"></p><p>
+<br>
+&nbsp;</p><h2>Prérequis</h2></p><p>Le prérequis le plus important est une solide base en programmation Python.
+Avec ces connaissances, vous serez bien préparé pour explorer le monde fascinant des LLM
+et comprendre les concepts ainsi que les exemples de code présentés dans ce livre.</p><p>Si vous avez une certaine expérience des réseaux neuronaux profonds, vous trouverez peut-être certains concepts plus familiers, car les LLM reposent sur ces architectures.</p><p>Ce livre utilise PyTorch pour implémenter le code from scratch sans utiliser de bibliothèques LLM externes. Bien qu’une maîtrise de PyTorch ne soit pas obligatoire, une familiarité avec les bases de PyTorch est certainement utile. Si vous débutez avec PyTorch, l’annexe A propose une introduction concise à PyTorch. Sinon, vous pouvez trouver mon livre, <a href="https://sebastianraschka.com/teaching/pytorch-1h/" target="_blank" rel="noopener noreferrer">PyTorch en une heure : des tenseurs à l’entraînement de réseaux neuronaux sur plusieurs GPU</a>, utile pour apprendre les notions essentielles.</p><p><br>
+&nbsp;</p><h2>Exigences matérielles</h2></p><p>Le code des chapitres principaux de ce livre est conçu pour s’exécuter sur des ordinateurs portables conventionnels dans un délai raisonnable et ne nécessite pas de matériel spécialisé. Cette approche garantit qu’un large public peut s’engager avec le matériel. De plus, le code utilise automatiquement les GPU s’ils sont disponibles. (Veuillez consulter la documentation de <a href="https://github.com/rasbt/LLMs-from-scratch/blob/main/setup/README.md" target="_blank" rel="noopener noreferrer">configuration</a> pour des recommandations supplémentaires.)</p><p>&nbsp;
+<h2>Cours Vidéo</h2></p><p><a href="https://www.manning.com/livevideo/master-and-build-large-language-models" target="_blank" rel="noopener noreferrer">Un cours vidéo compagnon de 17 heures et 15 minutes</a> où je code chaque chapitre du livre. Le cours est organisé en chapitres et sections qui reflètent la structure du livre afin qu'il puisse être utilisé comme une alternative autonome au livre ou comme ressource complémentaire pour coder en parallèle.</p><p><a href="https://www.manning.com/livevideo/master-and-build-large-language-models"><img src="https://sebastianraschka.com/images/LLMs-from-scratch-images/video-screenshot.webp?123" width="350px"></a></p><p>
+&nbsp;</p><h2>Livre Compagnon / Suite</h2></p><p><a href="https://mng.bz/lZ5B" target="_blank" rel="noopener noreferrer"><em>Construire un Modèle de Raisonnement (From Scratch)</em></a>, bien qu’étant un livre autonome, peut être considéré comme une suite à <em>Construire un Grand Modèle de Langage (From Scratch)</em>.</p><p>Il commence avec un modèle préentraîné et implémente différentes approches de raisonnement, incluant la mise à l’échelle au moment de l’inférence, l’apprentissage par renforcement et la distillation, pour améliorer les capacités de raisonnement du modèle.</p><p>Similaire à <em>Construire un Grand Modèle de Langage (From Scratch)</em>, <a href="https://mng.bz/lZ5B" target="_blank" rel="noopener noreferrer"><em>Construire un Modèle de Raisonnement (From Scratch)</em></a> adopte une approche pratique en implémentant ces méthodes à partir de zéro.</p><p><a href="https://mng.bz/lZ5B"><img src="https://sebastianraschka.com/images/reasoning-from-scratch-images/cover.webp?123" width="120px"></a></p><ul><li>Lien Amazon (À venir)</li>
+<li><a href="https://mng.bz/lZ5B" target="_blank" rel="noopener noreferrer">Lien Manning</a></li>
+<li><a href="https://github.com/rasbt/reasoning-from-scratch" target="_blank" rel="noopener noreferrer">Dépôt GitHub</a></li></p><p></ul><br></p><p>&nbsp;
+<h2>Exercices</h2></p><p>Chaque chapitre du livre comprend plusieurs exercices. Les solutions sont résumées en Annexe C, et les notebooks de code correspondants sont disponibles dans les dossiers principaux des chapitres de ce dépôt (par exemple, <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/./ch02/01_main-chapter-code/exercise-solutions.ipynb" target="_blank" rel="noopener noreferrer">./ch02/01_main-chapter-code/exercise-solutions.ipynb</a>).</p><p>En plus des exercices de code, vous pouvez télécharger un PDF gratuit de 170 pages intitulé <a href="https://www.manning.com/books/test-yourself-on-build-a-large-language-model-from-scratch" target="_blank" rel="noopener noreferrer">Testez-vous sur Construire un Grand Modèle de Langage (From Scratch)</a> depuis le site de Manning. Il contient environ 30 questions de quiz et leurs solutions par chapitre pour vous aider à tester votre compréhension.</p><p><a href="https://www.manning.com/books/test-yourself-on-build-a-large-language-model-from-scratch"><img src="https://sebastianraschka.com/images/LLMs-from-scratch-images/test-yourself-cover.jpg?123" width="150px"></a></p><p>&nbsp;</p><h2>Matériel Bonus</h2></p><p>Plusieurs dossiers contiennent des matériaux optionnels en bonus pour les lecteurs intéressés :</p><ul><li><strong>Installation</strong></li>
+  <li><a href="setup/01_optional-python-setup-preferences" target="_blank" rel="noopener noreferrer">Conseils pour la configuration de Python</a></li>
+  <li><a href="setup/02_installing-python-libraries" target="_blank" rel="noopener noreferrer">Installation des packages et bibliothèques Python utilisés dans ce livre</a></li>
+  <li><a href="setup/03_optional-docker-environment" target="_blank" rel="noopener noreferrer">Guide de configuration de l'environnement Docker</a></li>
+<li><strong>Chapitre 2 : Travailler avec des données textuelles</strong></li>
+  <li><a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch02/05_bpe-from-scratch/bpe-from-scratch.ipynb" target="_blank" rel="noopener noreferrer">Tokeniseur Byte Pair Encoding (BPE) depuis zéro</a></li>
+  <li><a href="ch02/02_bonus_bytepair-encoder" target="_blank" rel="noopener noreferrer">Comparaison de différentes implémentations de Byte Pair Encoding (BPE)</a></li>
+  <li><a href="ch02/03_bonus_embedding-vs-matmul" target="_blank" rel="noopener noreferrer">Comprendre la différence entre couches d’embedding et couches linéaires</a></li>
+  <li><a href="ch02/04_bonus_dataloader-intuition" target="_blank" rel="noopener noreferrer">Intuition sur le dataloader avec des nombres simples</a></li>
+<li><strong>Chapitre 3 : Coder les mécanismes d’attention</strong></li>
+  <li><a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch03/02_bonus_efficient-multihead-attention/mha-implementations.ipynb" target="_blank" rel="noopener noreferrer">Comparaison des implémentations efficaces de Multi-Head Attention</a></li>
+  <li><a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch03/03_understanding-buffers/understanding-buffers.ipynb" target="_blank" rel="noopener noreferrer">Comprendre les buffers PyTorch</a></li>
+<li><strong>Chapitre 4 : Implémenter un modèle GPT depuis zéro</strong></li>
+  <li><a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch04/02_performance-analysis/flops-analysis.ipynb" target="_blank" rel="noopener noreferrer">Analyse des FLOPS</a></li>
+  <li><a href="ch04/03_kv-cache" target="_blank" rel="noopener noreferrer">Cache KV</a></li>
+<li><strong>Chapitre 5 : Pré-entraînement sur données non étiquetées :</strong></li>
+  <li><a href="ch05/02_alternative_weight_loading/" target="_blank" rel="noopener noreferrer">Méthodes alternatives de chargement de poids</a></li>
+  <li><a href="ch05/03_bonus_pretraining_on_gutenberg" target="_blank" rel="noopener noreferrer">Pré-entraînement de GPT sur le dataset Project Gutenberg</a></li>
+  <li><a href="ch05/04_learning_rate_schedulers" target="_blank" rel="noopener noreferrer">Ajout de fonctionnalités supplémentaires à la boucle d’entraînement</a></li>
+  <li><a href="ch05/05_bonus_hparam_tuning" target="_blank" rel="noopener noreferrer">Optimisation des hyperparamètres pour le pré-entraînement</a></li>
+  <li><a href="ch05/06_user_interface" target="_blank" rel="noopener noreferrer">Création d’une interface utilisateur pour interagir avec le LLM pré-entraîné</a></li>
+  <li><a href="ch05/07_gpt_to_llama" target="_blank" rel="noopener noreferrer">Conversion de GPT en Llama</a></li>
+  <li><a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch05/07_gpt_to_llama/standalone-llama32.ipynb" target="_blank" rel="noopener noreferrer">Llama 3.2 depuis zéro</a></li>
+  <li><a href="ch05/11_qwen3/" target="_blank" rel="noopener noreferrer">Qwen3 Dense et Mixture-of-Experts (MoE) depuis zéro</a></li>
+  <li><a href="ch05/12_gemma3/" target="_blank" rel="noopener noreferrer">Gemma 3 depuis zéro</a></li>
+  <li><a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch05/08_memory_efficient_weight_loading/memory-efficient-state-dict.ipynb" target="_blank" rel="noopener noreferrer">Chargement de poids de modèle économe en mémoire</a></li>
+  <li><a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch05/09_extending-tokenizers/extend-tiktoken.ipynb" target="_blank" rel="noopener noreferrer">Extension du tokeniseur Tiktoken BPE avec de nouveaux tokens</a></li>
+  <li><a href="ch05/10_llm-training-speed" target="_blank" rel="noopener noreferrer">Conseils PyTorch pour accélérer l’entraînement des LLM</a></li>
+<li><strong>Chapitre 6 : Affinage pour la classification</strong></li>
+  <li><a href="ch06/02_bonus_additional-experiments" target="_blank" rel="noopener noreferrer">Expériences supplémentaires d’affinage de différentes couches et utilisation de modèles plus grands</a></li>
+  <li><a href="ch06/03_bonus_imdb-classification" target="_blank" rel="noopener noreferrer">Affinage de différents modèles sur un dataset de 50k critiques de films IMDb</a></li>
+  <li><a href="ch06/04_user_interface" target="_blank" rel="noopener noreferrer">Création d’une interface utilisateur pour interagir avec le classificateur anti-spam basé sur GPT</a></li>
+<li><strong>Chapitre 7 : Affinage pour suivre des instructions</strong></li>
+  <li><a href="ch07/02_dataset-utilities" target="_blank" rel="noopener noreferrer">Utilitaires de dataset pour trouver des doublons proches et créer des entrées à la voix passive</a></li>
+  <li><a href="ch07/03_model-evaluation" target="_blank" rel="noopener noreferrer">Évaluation des réponses aux instructions via l’API OpenAI et Ollama</a></li>
+  <li><a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch07/05_dataset-generation/llama3-ollama.ipynb" target="_blank" rel="noopener noreferrer">Génération d’un dataset pour l’affinage sur instructions</a></li>
+  <li><a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch07/05_dataset-generation/reflection-gpt4.ipynb" target="_blank" rel="noopener noreferrer">Améliorer un jeu de données pour le finetuning d'instructions</a></li>
+  <li><a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch07/04_preference-tuning-with-dpo/create-preference-data-ollama.ipynb" target="_blank" rel="noopener noreferrer">Générer un jeu de données de préférences avec Llama 3.1 70B et Ollama</a></li>
+  <li><a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/ch07/04_preference-tuning-with-dpo/dpo-from-scratch.ipynb" target="_blank" rel="noopener noreferrer">Optimisation directe des préférences (DPO) pour l'alignement des LLM</a></li>
+  <li><a href="ch07/06_user_interface" target="_blank" rel="noopener noreferrer">Créer une interface utilisateur pour interagir avec le modèle GPT finetuné sur instructions</a></li></p><p></ul><br>
+&nbsp;</p><h2>Questions, retours et contributions à ce dépôt</h2></p><p>
+Je suis ouvert à toutes sortes de retours, à partager de préférence via le <a href="https://livebook.manning.com/forum?product=raschka&page=1" target="_blank" rel="noopener noreferrer">Forum Manning</a> ou les <a href="https://github.com/rasbt/LLMs-from-scratch/discussions" target="_blank" rel="noopener noreferrer">Discussions GitHub</a>. De même, si vous avez des questions ou souhaitez simplement échanger des idées avec d'autres, n'hésitez pas à les poster sur le forum.</p><p>Veuillez noter que puisque ce dépôt contient le code correspondant à un livre imprimé, je ne peux actuellement pas accepter de contributions qui étendraient le contenu du code principal des chapitres, car cela créerait des divergences avec le livre physique. Maintenir la cohérence garantit une expérience fluide pour tous.</p><p>
+&nbsp;
+<h2>Citation</h2></p><p>Si vous trouvez ce livre ou ce code utile pour vos recherches, merci de bien vouloir le citer.</p><p>Citation au format Chicago :</p><blockquote>Raschka, Sebastian. <em>Build A Large Language Model (From Scratch)</em>. Manning, 2024. ISBN : 978-1633437166.</blockquote></p><p>Entrée BibTeX :</p><pre><code class="language-">@book{build-llms-from-scratch-book,
+  author       = {Sebastian Raschka},
+  title        = {Build A Large Language Model (From Scratch)},
+  publisher    = {Manning},
+  year         = {2024},
+  isbn         = {978-1633437166},
+  url          = {https://www.manning.com/books/build-a-large-language-model-from-scratch},
+  github       = {https://github.com/rasbt/LLMs-from-scratch}
+}</code></pre></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-10-05
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-10-05 
+    </div>
+    
+</body>
+</html>
