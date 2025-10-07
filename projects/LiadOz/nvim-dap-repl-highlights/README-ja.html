@@ -1,0 +1,341 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nvim-dap-repl-highlights - nvim-dap REPLに構文ハイライトを追加する</title>
+    <meta name="description" content="nvim-dap REPLに構文ハイライトを追加する">
+    <meta name="keywords" content="nvim-dap-repl-highlights, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "nvim-dap-repl-highlights",
+  "description": "nvim-dap REPLに構文ハイライトを追加する",
+  "author": {
+    "@type": "Person",
+    "name": "LiadOz"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 140
+  },
+  "url": "https://OpenAiTx.github.io/projects/LiadOz/nvim-dap-repl-highlights/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/LiadOz/nvim-dap-repl-highlights/master/README.md",
+  "datePublished": "2025-10-07",
+  "dateModified": "2025-10-07"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/LiadOz/nvim-dap-repl-highlights" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    nvim-dap-repl-highlights
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 140 stars</span>
+                <span class="language">Japanese</span>
+                <span>by LiadOz</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>nvim-dap-repl-highlights</h1>
+treesitterを使用して、<a href="https://github.com/mfussenegger/nvim-dap" target="_blank" rel="noopener noreferrer">nvim-dap</a>のREPLバッファに構文ハイライトを追加します。
+| Before                                                                                                          | After                                                                                                          |
+| --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| <img src="https://user-images.githubusercontent.com/20954878/235993939-a3ad95eb-9dfa-41a4-b70e-3a4e890e2adf.png" alt="before"> | <img src="https://user-images.githubusercontent.com/20954878/235993604-642fe658-6cc9-40e0-846c-00df11d963e1.png" alt="image">|</p><h2>Requirements</h2>
+<ul><li>Neovim 0.9以降</li>
+<li><a href="https://github.com/nvim-treesitter/nvim-treesitter" target="_blank" rel="noopener noreferrer">nvim-treesitter</a></li></p><p></ul><h2>Setup</h2>
+お好みの方法でプラグインと要件をインストールします。インストール後、treesitterの<a href="https://github.com/nvim-treesitter/nvim-treesitter#modules" target="_blank" rel="noopener noreferrer">ハイライト</a>を設定し、次の内容をlua設定に追加してください。
+<pre><code class="language-lua">require('nvim-dap-repl-highlights').setup()</code></pre>
+プラグインの初期設定後、dap_repl パーサーをインストールする必要があります。これは <code>:TSInstall dap_repl</code> を実行して手動で行うことができます。</p><p>または、Treesitter の設定を通じて自動的に行うことも可能です。</p><p><strong><code>ensure_installed</code> を使用する場合（nvim-treesitter マスターブランチ）</strong>
+<blockquote>⚠️ <strong>注意:</strong> Treesitter の前に必ず nvim-dap-repl-highlights.setup() を呼び出してください。そうしないと dap_repl パーサーが見つかりません。</blockquote>
+<pre><code class="language-lua">require('nvim-dap-repl-highlights').setup()
+require('nvim-treesitter.configs').setup {
+  highlight = {
+    enable = true,
+  },
+  ensure_installed = { 'dap_repl', ... },
+  ...
+}</code></pre>
+<strong><code>nvim-treesitter.install</code> の使用（nvim-treesitter メインブランチ）</strong>
+<pre><code class="language-lua">require('nvim-dap-repl-highlights').setup()
+require('nvim-treesitter').install { 'dap_repl' }</code></pre>
+<blockquote>⚠️ もしこれが動かなくなったりAPIが変更された場合は、最新のインストール方法について公式Treesitterドキュメントを確認してください：</blockquote>
+<blockquote>👉 https://github.com/nvim-treesitter/nvim-treesitter</blockquote></p><h2>使用方法</h2>
+デフォルトでは、プラグインはdapを起動する際に使用される<strong>filetype</strong>を見てREPLで使う言語を検出します。特定の言語の構文ハイライトを有効にするには、その言語のtreesitterパーサーと<code>dap_repl</code>パーサーが必要です。
+これはすべてのユースケースに合うとは限りません。</p><p>代わりに、コマンド<code>:lua require('nvim-dap-repl-highlights').setup_highlights('python')</code>を使うと、現在のreplバッファでpythonのハイライトを設定できます。
+また、言語を指定せずに関数を呼び出すと、ユーザーに言語の入力を促します。</p><p>さらに、<strong>dap</strong>の設定で使用するrepl言語を指定することも可能です。例えば、pythonのreplにjavascriptのハイライトを適用したい場合：
+<pre><code class="language-lua">local dap = require('dap')
+dap.configurations.python = {
+  {
+    name = "Python with javascript repl because I like to watch the world burn 🔥🔥🔥",
+    type = "python",
+    request = "launch",
+    program = "${file}",
+    repl_lang = "javascript"
+  },
+}</code></pre>
+repl_lang オプションは filetype よりも優先されます。</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-10-07
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/LiadOz/nvim-dap-repl-highlights/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-10-07 
+    </div>
+    
+</body>
+</html>
