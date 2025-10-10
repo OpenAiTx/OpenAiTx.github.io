@@ -1,0 +1,409 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feat2GS - [CVPR2025] Feat2GS：使用高斯溅射探测视觉基础模型</title>
+    <meta name="description" content="[CVPR2025] Feat2GS：使用高斯溅射探测视觉基础模型">
+    <meta name="keywords" content="Feat2GS, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Feat2GS",
+  "description": "[CVPR2025] Feat2GS：使用高斯溅射探测视觉基础模型",
+  "author": {
+    "@type": "Person",
+    "name": "fanegg"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 216
+  },
+  "url": "https://OpenAiTx.github.io/projects/fanegg/Feat2GS/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/fanegg/Feat2GS/main/README.md",
+  "datePublished": "2025-10-10",
+  "dateModified": "2025-10-10"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/fanegg/Feat2GS" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Feat2GS
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 216 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by fanegg</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>
+<h2 align="center"> <a href="https://arxiv.org/abs/2412.09606">Feat2GS：使用高斯喷溅探测视觉基础模型</a>
+</h2></p><p><h5 align="center"></p><p><a href="https://arxiv.org/abs/2412.09606" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Arxiv-2412.09606-b31b1b.svg?logo=arXiv" alt="arXiv"></a> 
+<a href="https://fanegg.github.io/Feat2GS/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Project-Website-green.svg" alt="Home Page"></a>  <a href="https://youtu.be/4fT5lzcAJqo?si=_fCSIuXNBSmov2VA" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video-E33122?logo=Youtube" alt="youtube"></a>  <a href="https://huggingface.co/spaces/endless-ai/Feat2GS" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-orange" alt="Gradio"></a>  <a href="https://twitter.com/faneggchen" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/@Yue%20Chen-black?logo=X" alt="X"></a>  <a href="https://bsky.app/profile/fanegg.bsky.social" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/@Yue%20Chen-white?logo=Bluesky" alt="Bluesky"></a></p><p><a href="https://fanegg.github.io/" target="_blank" rel="noopener noreferrer">Yue Chen</a>,
+<a href="https://rover-xingyu.github.io/" target="_blank" rel="noopener noreferrer">Xingyu Chen</a>,
+<a href="https://apchenstu.github.io/" target="_blank" rel="noopener noreferrer">Anpei Chen</a>,
+<a href="https://virtualhumans.mpi-inf.mpg.de/" target="_blank" rel="noopener noreferrer">Gerard Pons-Moll</a>,
+<a href="https://xiuyuliang.cn/" target="_blank" rel="noopener noreferrer">Yuliang Xiu</a>
+</h5></p><p><div align="center">
+本仓库是 Feat2GS 的官方实现，Feat2GS 是一个统一框架，用于探测视觉基础模型的“纹理和几何感知”。新颖视角合成作为三维评估的有效代理。
+</div>
+<br></p><p>https://github.com/user-attachments/assets/07ebb8e1-6001-47bf-bf74-984b0032cc17</p><h2>更新</h2></p><ul><li>[2025年7月10日] 新增 VGGT 编码器和解码器特征的评估。结果见<a href="https://raw.githubusercontent.com/fanegg/Feat2GS/main/assets/Feat2GS_Benchmark.pdf" target="_blank" rel="noopener noreferrer">这里</a>。</li></p><p></ul><h2>快速开始</h2></p><h3>安装</h3>
+<ul><li>克隆 Feat2GS 并从 <a href="https://github.com/naver/dust3r" target="_blank" rel="noopener noreferrer">DUSt3R</a>/<a href="https://github.com/naver/mast3r" target="_blank" rel="noopener noreferrer">MASt3R</a> 下载预训练模型。</li>
+</ul><pre><code class="language-bash">git clone https://github.com/fanegg/Feat2GS.git
+cd Feat2GS/submodules/mast3r/
+mkdir -p checkpoints/
+wget https://download.europe.naverlabs.com/ComputerVision/DUSt3R/DUSt3R_ViTLarge_BaseDecoder_512_dpt.pth -P checkpoints/
+wget https://download.europe.naverlabs.com/ComputerVision/MASt3R/MASt3R_ViTLarge_BaseDecoder_512_catmlpdpt_metric.pth -P checkpoints/
+cd ../../</code></pre>
+<ul><li>创建环境，这里我们展示一个使用 conda 的示例。</li></p><p></ul><pre><code class="language-bash">conda create -n feat2gs python=3.11 cmake=3.14.0
+conda activate feat2gs
+pip install "torch==2.5.1" "torchvision==0.20.1" "numpy<2" --index-url https://download.pytorch.org/whl/cu121  # use the correct version of cuda for your system
+cd Feat2GS/
+pip install -r requirements.txt
+pip install submodules/simple-knn</code></pre></p><ul><li>可选但强烈建议，为 RoPE 编译 cuda 内核（如 CroCo v2 中所示）。</li>
+</ul><pre><code class="language-bash"># DUST3R relies on RoPE positional embeddings for which you can compile some cuda kernels for faster runtime.
+cd submodules/mast3r/dust3r/croco/models/curope/
+python setup.py build_ext --inplace
+cd ../../../../../../</code></pre>
+4.（可选）按照<a href="https://github.com/cvlab-columbia/zero123?tab=readme-ov-file#novel-view-synthesis-1" target="_blank" rel="noopener noreferrer">此说明</a>安装探测<a href="https://github.com/cvlab-columbia/zero123" target="_blank" rel="noopener noreferrer">Zero123</a>的依赖项。</p><h3>使用方法</h3>
+<ul><li>数据准备（我们提供了评估和推理数据集：<a href="https://drive.google.com/file/d/1PLTFcvJfiPucrB-pIwfp5QG-AIHcJdjN/view?usp=drive_link" target="_blank" rel="noopener noreferrer">链接</a>）</li></p><p></ul><pre><code class="language-bash">  cd <data_root>/Feat2GS/</code></pre></p><blockquote>如果您想构建自定义数据集，请按照并编辑：</blockquote>
+<blockquote><pre><code class="language-">> build_dataset/0_create_json.py ## 创建 dataset_split.json 以划分训练/测试集</blockquote>
+<blockquote>build_dataset/1_create_feat2gs_dataset.py ## 使用 dataset_split.json 创建数据集</blockquote>
+<blockquote>``<code></blockquote></p><ul><li>评估视觉基础模型：</li></p><p>  </ul>| 步骤 | 描述（命令链接） |
+  |------|-------------|
+  | (1)  | <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L245-L250" target="_blank" rel="noopener noreferrer">DUSt3R 初始化与特征提取</a> |
+  | (2)  | <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L253-L262" target="_blank" rel="noopener noreferrer">从特征读取 3DGS 并联合优化姿态</a> |
+  | (3)  | <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L265-L270" target="_blank" rel="noopener noreferrer">测试姿态初始化</a> |
+  | (4)  | <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L273-L282" target="_blank" rel="noopener noreferrer">渲染测试视图以进行评估</a> |
+  | (5)  | <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L298-L301" target="_blank" rel="noopener noreferrer">指标</a> |
+  | (可选)  | <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L304-L315" target="_blank" rel="noopener noreferrer">使用生成的轨迹渲染视频</a> |
+</code></pre>bash
+  # Run evaluation for all datasets, all VFM features, all probing modes
+  bash scripts/run_feat2gs_eval_parallel.sh</p><p>  # (Example) Run evaluation for a single scene, DINO feature, Geometry mode
+  bash scripts/run_feat2gs_eval.sh
+<pre><code class="language-">> [!注意]
+<blockquote>为了并行运行实验，我们添加了<strong>GPU锁</strong>功能，确保每个GPU上只有一个评估实验在运行。实验结束后，GPU会自动解锁。<strong>如果通过</code>Ctrl+C<code>中断，GPU不会自动解锁。</strong>解决方法是在你的</code>LOCK_DIR<code>中手动删除</code>.lock<code>文件。要禁用此功能，请注释脚本中的以下行：</blockquote>
+    <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L4-L5" target="_blank" rel="noopener noreferrer">L4-L5</a>,
+    <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L9-L22" target="_blank" rel="noopener noreferrer">L9-L22</a>,
+    <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L223-L233" target="_blank" rel="noopener noreferrer">L223-L233</a>,
+    <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L330-L331" target="_blank" rel="noopener noreferrer">L330-L331</a>.</p><p>  | 配置 | 操作 |
+  |--------|-----------------|
+  | GPU | 在<a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L7" target="_blank" rel="noopener noreferrer"></code><AVAILABLE_GPUS><code></a>中编辑 |
+  | 数据集 | 在[</code><SCENES[$Dataset]><code>](https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L105-L111)中编辑 |
+  | 场景 | 在<a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L31-L99" target="_blank" rel="noopener noreferrer"></code><SCENES_$Dataset><code></a>中编辑 |
+  | 视觉基础模型 | 在<a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L120-L162" target="_blank" rel="noopener noreferrer"></code><FEATURES><code></a>中编辑 |
+  | 探测模式 | 在<a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L181-L188" target="_blank" rel="noopener noreferrer"></code><MODELS><code></a>中编辑 |
+  | 仅推理模式 | 注释<a href="https://github.com/fanegg/Feat2GS/blob/main/scripts/run_feat2gs_eval_parallel.sh#L325-L327" target="_blank" rel="noopener noreferrer"></code>execute_command<code></a>中步骤 (3)(4)(5) |
+</code></pre>bash
+  # Evaluate Visual Foundation Models on DTU dataset
+  bash scripts/run_feat2gs_eval_dtu_parallel.sh</p><p>  # Run InstantSplat for evaluation
+  bash scripts/run_instantsplat_eval_parallel.sh
+<pre><code class="language-">3. 训练完成后，使用生成的轨迹渲染 RGB/深度/法线视频。</p><p></code></pre>bash
+  # If render depth/normal, set RENDER_DEPTH_NORMAL=true
+  # Set type of generated trjectory by editing <TRAJ_SCENES>
+  bash scripts/run_video_render.sh</p><p>  # Render video on DTU dataset
+  bash scripts/run_video_render_dtu.sh
+<pre><code class="language-">### 🎮 交互式演示</p><p>#### 🚀 快速开始
+<ul><li><strong>输入图像</strong></li>
+<li>上传2张或更多同一场景的不同视角图像</li>
+<li>为获得最佳效果，请确保图像有良好的重叠部分</li></p><p><li><strong>步骤1：DUSt3R 初始化与特征提取</strong></li>
+<li>点击“运行步骤1”处理您的图像</li>
+<li>此步骤估计初始DUSt3R点云和相机位姿，并提取每个像素的DUSt3R特征</li></p><p><li><strong>步骤2：从特征中读取3DGS</strong></li>
+<li>设置训练迭代次数，次数越多质量越好但时间更长（默认：2000，最大：8000）</li>
+<li>点击“运行步骤2”优化3D模型</li></p><p><li><strong>步骤3：视频渲染</strong></li>
+<li>选择相机轨迹</li>
+<li>点击“运行步骤3”生成您的3D模型视频</li>
+  </ul></code></pre>bash
+gradio demo.py
+<pre><code class="language-">
+#### 💡 小贴士
+<ul><li>处理时间取决于图像分辨率和数量</li>
+<li>为获得最佳性能，请在高端GPU（A100/4090）上测试</li>
+<li>使用鼠标与3D模型交互：</li>
+  <li>左键：旋转</li>
+  <li>滚轮：缩放</li>
+  <li>右键：平移</li></p><p>
+</ul><h2>致谢</h2></p><p>本工作建立在许多优秀的研究成果和开源项目基础上，感谢所有作者的分享！</p><ul><li><a href="https://github.com/graphdeco-inria/gaussian-splatting" target="_blank" rel="noopener noreferrer">Gaussian-Splatting</a> 和 <a href="https://github.com/graphdeco-inria/diff-gaussian-rasterization" target="_blank" rel="noopener noreferrer">diff-gaussian-rasterization</a></li>
+<li><a href="https://github.com/nerfstudio-project/gsplat" target="_blank" rel="noopener noreferrer">gsplat</a></li>
+<li><a href="https://github.com/naver/dust3r" target="_blank" rel="noopener noreferrer">DUSt3R</a> 和 <a href="https://github.com/naver/mast3r" target="_blank" rel="noopener noreferrer">MASt3R</a></li>
+<li><a href="https://github.com/NVlabs/InstantSplat" target="_blank" rel="noopener noreferrer">InstantSplat</a></li>
+<li><a href="https://github.com/mbanani/probe3d" target="_blank" rel="noopener noreferrer">Probe3D</a></li>
+<li><a href="https://github.com/mhamilton723/FeatUp" target="_blank" rel="noopener noreferrer">FeatUp</a></li>
+<li><a href="https://github.com/vye16/shape-of-motion/" target="_blank" rel="noopener noreferrer">Shape of Motion</a></li>
+<li><a href="https://github.com/btsmart/splatt3r" target="_blank" rel="noopener noreferrer">Splatt3R</a></li>
+<li><a href="https://github.com/facebookresearch/vggt" target="_blank" rel="noopener noreferrer">VGGT</a></li></p><p></ul><h2>引用</h2>
+如果您在研究中发现我们的工作有用，请考虑点赞 :star: 并引用以下论文 :pencil:。
+</code></pre>bibTeX
+@inproceedings{chen2025feat2gs,
+  title={Feat2gs: Probing visual foundation models with gaussian splatting},
+  author={Chen, Yue and Chen, Xingyu and Chen, Anpei and Pons-Moll, Gerard and Xiu, Yuliang},
+  booktitle={Proceedings of the Computer Vision and Pattern Recognition Conference},
+  pages={6348--6361},
+  year={2025}
+}
+</code>``</p><h2>联系方式</h2></p><p>如有反馈、问题或媒体咨询，请联系 <a href="https://raw.githubusercontent.com/fanegg/Feat2GS/main/mailto:faneggchen@gmail.com" target="_blank" rel="noopener noreferrer">Yue Chen</a> 和 <a href="https://raw.githubusercontent.com/fanegg/Feat2GS/main/mailto:roverxingyu@gmail.com" target="_blank" rel="noopener noreferrer">Xingyu Chen</a>。</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-10-10
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/fanegg/Feat2GS/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-10-10 
+    </div>
+    
+</body>
+</html>

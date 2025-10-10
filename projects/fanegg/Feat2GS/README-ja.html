@@ -1,0 +1,407 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feat2GS - [CVPR2025] Feat2GS: ガウシアンスプラッティングによる視覚基盤モデルの解析</title>
+    <meta name="description" content="[CVPR2025] Feat2GS: ガウシアンスプラッティングによる視覚基盤モデルの解析">
+    <meta name="keywords" content="Feat2GS, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Feat2GS",
+  "description": "[CVPR2025] Feat2GS: ガウシアンスプラッティングによる視覚基盤モデルの解析",
+  "author": {
+    "@type": "Person",
+    "name": "fanegg"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 216
+  },
+  "url": "https://OpenAiTx.github.io/projects/fanegg/Feat2GS/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/fanegg/Feat2GS/main/README.md",
+  "datePublished": "2025-10-10",
+  "dateModified": "2025-10-10"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/fanegg/Feat2GS" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Feat2GS
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 216 stars</span>
+                <span class="language">Japanese</span>
+                <span>by fanegg</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><h2 align="center"> <a href="https://arxiv.org/abs/2412.09606">Feat2GS: ガウススプラッティングによる視覚基盤モデルのプロービング</a>
+</h2></p><p><h5 align="center"></p><p><a href="https://arxiv.org/abs/2412.09606" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Arxiv-2412.09606-b31b1b.svg?logo=arXiv" alt="arXiv"></a> 
+<a href="https://fanegg.github.io/Feat2GS/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Project-Website-green.svg" alt="Home Page"></a>  <a href="https://youtu.be/4fT5lzcAJqo?si=_fCSIuXNBSmov2VA" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video-E33122?logo=Youtube" alt="youtube"></a>  <a href="https://huggingface.co/spaces/endless-ai/Feat2GS" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-orange" alt="Gradio"></a>  <a href="https://twitter.com/faneggchen" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/@Yue%20Chen-black?logo=X" alt="X"></a>  <a href="https://bsky.app/profile/fanegg.bsky.social" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/@Yue%20Chen-white?logo=Bluesky" alt="Bluesky"></a></p><p><a href="https://fanegg.github.io/" target="_blank" rel="noopener noreferrer">Yue Chen</a>,
+<a href="https://rover-xingyu.github.io/" target="_blank" rel="noopener noreferrer">Xingyu Chen</a>,
+<a href="https://apchenstu.github.io/" target="_blank" rel="noopener noreferrer">Anpei Chen</a>,
+<a href="https://virtualhumans.mpi-inf.mpg.de/" target="_blank" rel="noopener noreferrer">Gerard Pons-Moll</a>,
+<a href="https://xiuyuliang.cn/" target="_blank" rel="noopener noreferrer">Yuliang Xiu</a>
+</h5></p><p><div align="center">
+本リポジトリは、視覚基盤モデルの「テクスチャおよびジオメトリ認識」を探る統一フレームワークであるFeat2GSの公式実装です。新規視点合成は3D評価の効果的な代理として機能します。
+</div>
+<br></p><p>https://github.com/user-attachments/assets/07ebb8e1-6001-47bf-bf74-984b0032cc17</p><h2>更新情報</h2></p><ul><li>[2025年7月10日] VGGTエンコーダおよびデコーダ特徴の新評価を追加しました。結果はこちらでご覧ください。<a href="https://raw.githubusercontent.com/fanegg/Feat2GS/main/assets/Feat2GS_Benchmark.pdf" target="_blank" rel="noopener noreferrer">こちら</a>。</li></p><p></ul><h2>はじめに</h2></p><h3>インストール</h3>
+<ul><li>Feat2GSをクローンし、<a href="https://github.com/naver/dust3r" target="_blank" rel="noopener noreferrer">DUSt3R</a>/<a href="https://github.com/naver/mast3r" target="_blank" rel="noopener noreferrer">MASt3R</a>から事前学習済みモデルをダウンロードします。</li></p><p></ul><pre><code class="language-bash">git clone https://github.com/fanegg/Feat2GS.git
+cd Feat2GS/submodules/mast3r/
+mkdir -p checkpoints/
+wget https://download.europe.naverlabs.com/ComputerVision/DUSt3R/DUSt3R_ViTLarge_BaseDecoder_512_dpt.pth -P checkpoints/
+wget https://download.europe.naverlabs.com/ComputerVision/MASt3R/MASt3R_ViTLarge_BaseDecoder_512_catmlpdpt_metric.pth -P checkpoints/
+cd ../../</code></pre>
+<ul><li>環境を作成します。ここではcondaを使用した例を示します。</li></p><p></ul><pre><code class="language-bash">conda create -n feat2gs python=3.11 cmake=3.14.0
+conda activate feat2gs
+pip install "torch==2.5.1" "torchvision==0.20.1" "numpy<2" --index-url https://download.pytorch.org/whl/cu121  # use the correct version of cuda for your system
+cd Feat2GS/
+pip install -r requirements.txt
+pip install submodules/simple-knn</code></pre>
+<ul><li>任意ですが強く推奨されます。RoPE用のCUDAカーネルをコンパイルしてください（CroCo v2のように）。</li></p><p></ul><pre><code class="language-bash"># DUST3R relies on RoPE positional embeddings for which you can compile some cuda kernels for faster runtime.
+cd submodules/mast3r/dust3r/croco/models/curope/
+python setup.py build_ext --inplace
+cd ../../../../../../</code></pre></p><ul><li>（オプション）<a href="https://github.com/cvlab-columbia/zero123?tab=readme-ov-file#novel-view-synthesis-1" target="_blank" rel="noopener noreferrer">こちらの指示</a>に従って、<a href="https://github.com/cvlab-columbia/zero123" target="_blank" rel="noopener noreferrer">Zero123</a>のプロービング用の要件をインストールしてください。</li></p><p></ul><h3>使用方法</h3>
+<ul><li>データ準備（評価および推論用データセットを提供しています：<a href="https://drive.google.com/file/d/1PLTFcvJfiPucrB-pIwfp5QG-AIHcJdjN/view?usp=drive_link" target="_blank" rel="noopener noreferrer">リンク</a>）</li>
+</ul><pre><code class="language-bash">  cd <data_root>/Feat2GS/</code></pre></p><blockquote>カスタムデータセットを構築したい場合は、以下を参照して編集してください：</blockquote>
+<blockquote><pre><code class="language-">> build_dataset/0_create_json.py ## train/testセットを分割するためのdataset_split.jsonを作成</blockquote>
+<blockquote>build_dataset/1_create_feat2gs_dataset.py ## dataset_split.jsonを使ってデータセットを作成</blockquote>
+<blockquote>``<code></blockquote></p><ul><li>Visual Foundation Modelsの評価：</li></p><p>  </ul>| ステップ | 説明（コマンドへのリンク） |
+  |------|-------------|
+  | (1)  | <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L245-L250" target="_blank" rel="noopener noreferrer">DUSt3Rの初期化＆特徴抽出</a> |
+  | (2)  | <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L253-L262" target="_blank" rel="noopener noreferrer">特徴から3DGSを読み出し＆ポーズを共同最適化</a> |
+  | (3)  | <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L265-L270" target="_blank" rel="noopener noreferrer">ポーズ初期化のテスト</a> |
+  | (4)  | <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L273-L282" target="_blank" rel="noopener noreferrer">評価用のテストビューをレンダリング</a> |
+  | (5)  | <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L298-L301" target="_blank" rel="noopener noreferrer">評価指標</a> |
+  | (オプション)  | <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L304-L315" target="_blank" rel="noopener noreferrer">生成された軌跡で動画をレンダリング</a> |
+</code></pre>bash
+  # Run evaluation for all datasets, all VFM features, all probing modes
+  bash scripts/run_feat2gs_eval_parallel.sh</p><p>  # (Example) Run evaluation for a single scene, DINO feature, Geometry mode
+  bash scripts/run_feat2gs_eval.sh
+<pre><code class="language-">> [!NOTE]
+<blockquote>並列で実験を実行するために、1つのGPUにつき1つの評価実験のみが実行されるようにする <strong>GPUロック</strong> 機能を追加しました。実験が終了するとGPUは自動的にアンロックされます。<strong></code>Ctrl+C<code>で中断した場合、GPUは自動的にアンロックされません。</strong> これを修正するには、</code>LOCK_DIR<code>内の</code>.lock<code>ファイルを手動で削除してください。この機能を無効にするには、スクリプト内の以下の行をコメントアウトしてください：</blockquote>
+    <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L4-L5" target="_blank" rel="noopener noreferrer">L4-L5</a>,
+    <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L9-L22" target="_blank" rel="noopener noreferrer">L9-L22</a>,
+    <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L223-L233" target="_blank" rel="noopener noreferrer">L223-L233</a>,
+    <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L330-L331" target="_blank" rel="noopener noreferrer">L330-L331</a>.</p><p>  | 設定 | 操作 |
+  |--------|-----------------|
+  | GPU | <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L7" target="_blank" rel="noopener noreferrer"></code><AVAILABLE_GPUS><code></a> で編集 |
+  | データセット | [</code><SCENES[$Dataset]><code>](https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L105-L111) で編集 |
+  | シーン | <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L31-L99" target="_blank" rel="noopener noreferrer"></code><SCENES_$Dataset><code></a> で編集 |
+  | ビジュアルファウンデーションモデル | <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L120-L162" target="_blank" rel="noopener noreferrer"></code><FEATURES><code></a> で編集 |
+  | プロービングモード | <a href="https://github.com/fanegg/Feat2GS/blob/b8eadaa54549d34420eba61b388548b8ec8e7325/scripts/run_feat2gs_eval_parallel.sh#L181-L188" target="_blank" rel="noopener noreferrer"></code><MODELS><code></a> で編集 |
+  | 推論専用モード | <a href="https://github.com/fanegg/Feat2GS/blob/main/scripts/run_feat2gs_eval_parallel.sh#L325-L327" target="_blank" rel="noopener noreferrer"></code>execute_command<code></a> のSTEP (3)(4)(5)をコメントアウト |
+</code></pre>bash
+  # Evaluate Visual Foundation Models on DTU dataset
+  bash scripts/run_feat2gs_eval_dtu_parallel.sh</p><p>  # Run InstantSplat for evaluation
+  bash scripts/run_instantsplat_eval_parallel.sh
+<pre><code class="language-">3. トレーニング後、生成された軌跡を用いてRGB／深度／法線ビデオをレンダリングします。</p><p></code></pre>bash
+  # If render depth/normal, set RENDER_DEPTH_NORMAL=true
+  # Set type of generated trjectory by editing <TRAJ_SCENES>
+  bash scripts/run_video_render.sh</p><p>  # Render video on DTU dataset
+  bash scripts/run_video_render_dtu.sh
+<pre><code class="language-">### 🎮 インタラクティブデモ</p><p>#### 🚀 クイックスタート
+<ul><li><strong>入力画像</strong></li>
+<li>同じシーンを異なる視点から撮影した画像を2枚以上アップロードしてください</li>
+<li>最良の結果を得るために、画像間の重なりが十分であることを確認してください</li></p><p><li><strong>ステップ1：DUSt3Rの初期化と特徴抽出</strong></li>
+<li>「RUN Step 1」をクリックして画像を処理します</li>
+<li>このステップでは初期のDUSt3R点群とカメラ位置を推定し、各ピクセルのDUSt3R特徴を抽出します</li></p><p><li><strong>ステップ2：特徴から3DGSの読み出し</strong></li>
+<li>トレーニング反復回数を設定します。数が大きいほど品質は良くなりますが時間も長くなります（デフォルト：2000、最大：8000）</li>
+<li>「RUN Step 2」をクリックして3Dモデルを最適化します</li></p><p><li><strong>ステップ3：ビデオレンダリング</strong></li>
+<li>カメラ軌道を選択します</li>
+<li>「RUN Step 3」をクリックして3Dモデルのビデオを生成します</li>
+</ul></code></pre>bash
+gradio demo.py
+<pre><code class="language-">
+#### 💡 ヒント
+<ul><li>処理時間は画像の解像度と数量に依存します</li>
+<li>最適なパフォーマンスのために、高性能GPU（A100/4090）でテストしてください</li>
+<li>3Dモデルとの操作にはマウスを使用します：</li>
+  <li>左ボタン：回転</li>
+  <li>スクロールホイール：ズーム</li>
+  <li>右ボタン：パン</li></p><p>
+</ul><h2>謝辞</h2></p><p>本研究は多くの素晴らしい研究成果とオープンソースプロジェクトに基づいています。共有してくださったすべての著者に感謝します！</p><ul><li><a href="https://github.com/graphdeco-inria/gaussian-splatting" target="_blank" rel="noopener noreferrer">Gaussian-Splatting</a> および <a href="https://github.com/graphdeco-inria/diff-gaussian-rasterization" target="_blank" rel="noopener noreferrer">diff-gaussian-rasterization</a></li>
+<li><a href="https://github.com/nerfstudio-project/gsplat" target="_blank" rel="noopener noreferrer">gsplat</a></li>
+<li><a href="https://github.com/naver/dust3r" target="_blank" rel="noopener noreferrer">DUSt3R</a> および <a href="https://github.com/naver/mast3r" target="_blank" rel="noopener noreferrer">MASt3R</a></li>
+<li><a href="https://github.com/NVlabs/InstantSplat" target="_blank" rel="noopener noreferrer">InstantSplat</a></li>
+<li><a href="https://github.com/mbanani/probe3d" target="_blank" rel="noopener noreferrer">Probe3D</a></li>
+<li><a href="https://github.com/mhamilton723/FeatUp" target="_blank" rel="noopener noreferrer">FeatUp</a></li>
+<li><a href="https://github.com/vye16/shape-of-motion/" target="_blank" rel="noopener noreferrer">Shape of Motion</a></li>
+<li><a href="https://github.com/btsmart/splatt3r" target="_blank" rel="noopener noreferrer">Splatt3R</a></li>
+<li><a href="https://github.com/facebookresearch/vggt" target="_blank" rel="noopener noreferrer">VGGT</a></li></p><p></ul><h2>引用</h2>
+本研究があなたの研究に役立った場合は、スター :star: を付け、以下の論文 :pencil: を引用していただけると幸いです。
+</code></pre>bibTeX
+@inproceedings{chen2025feat2gs,
+  title={Feat2gs: Probing visual foundation models with gaussian splatting},
+  author={Chen, Yue and Chen, Xingyu and Chen, Anpei and Pons-Moll, Gerard and Xiu, Yuliang},
+  booktitle={Proceedings of the Computer Vision and Pattern Recognition Conference},
+  pages={6348--6361},
+  year={2025}
+}
+</code>``</p><h2>お問い合わせ</h2></p><p>ご意見、ご質問、またはプレス関係のお問い合わせは、<a href="https://raw.githubusercontent.com/fanegg/Feat2GS/main/mailto:faneggchen@gmail.com" target="_blank" rel="noopener noreferrer">Yue Chen</a> および <a href="https://raw.githubusercontent.com/fanegg/Feat2GS/main/mailto:roverxingyu@gmail.com" target="_blank" rel="noopener noreferrer">Xingyu Chen</a> までご連絡ください。</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-10-10
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/fanegg/Feat2GS/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-10-10 
+    </div>
+    
+</body>
+</html>
