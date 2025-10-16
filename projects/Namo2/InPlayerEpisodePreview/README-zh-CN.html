@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InPlayerEpisodePreview - 一个适用于网页和客户端版本的 Jellyfin 插件，在播放器内显示剧集列表。</title>
+    <meta name="description" content="一个适用于网页和客户端版本的 Jellyfin 插件，在播放器内显示剧集列表。">
+    <meta name="keywords" content="InPlayerEpisodePreview, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "InPlayerEpisodePreview",
+  "description": "一个适用于网页和客户端版本的 Jellyfin 插件，在播放器内显示剧集列表。",
+  "author": {
+    "@type": "Person",
+    "name": "Namo2"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 238
+  },
+  "url": "https://OpenAiTx.github.io/projects/Namo2/InPlayerEpisodePreview/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/Namo2/InPlayerEpisodePreview/master/README.md",
+  "datePublished": "2025-10-16",
+  "dateModified": "2025-10-16"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Namo2/InPlayerEpisodePreview" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    InPlayerEpisodePreview
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 238 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by Namo2</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>In Player 集数预览
+====================
+<h2>关于 ##</h2>
+此插件为视频播放器添加了一个剧集列表，允许您在播放器内预览电视剧的每一集，无需离开播放器。</p><p>此修改支持以下客户端：
+<ul><li><a href="https://github.com/jellyfin/jellyfin-web" target="_blank" rel="noopener noreferrer">Jellyfin Web 客户端</a></li>
+<li><a href="https://github.com/jellyfin/jellyfin-media-player" target="_blank" rel="noopener noreferrer">Jellyfin 媒体播放器</a>（JMP）桌面客户端</li></p><p></ul><h3>功能 ###</h3>
+<ul><li>列出一季中的所有剧集</li>
+<li>在季之间切换</li>
+<li>显示剧集标题、简介、缩略图和播放进度</li>
+<li>显示剧集详情，如社区评分</li>
+<li>标记剧集为已播放或收藏</li>
+<li>开始新的剧集播放</li>
+<li>应支持自定义主题</li></p><p></ul><h2>预览 ##</h2>
+<img src="https://github.com/Namo2/InPlayerEpisodePreview/blob/master/Images/preview.gif" width="550" height="450"></p><p>使用主题：（SkinManager）Kaleidochromic
+<br>
+此预览缺少标记剧集为完成或收藏的新按钮。</p><h2>安装 ##</h2></p><h3>Jellyfin Web 客户端（服务器） ###</h3>
+<ul><li>将清单 <code>https://raw.githubusercontent.com/Namo2/InPlayerEpisodePreview/master/manifest.json</code> 添加为服务器的 Jellyfin 插件仓库。</li>
+<li>从该仓库安装插件 <code>InPlayerEpisodePreview</code>。</li>
+<li>重启 Jellyfin 服务器。</li></p><p></ul><br/></p><h3>Jellyfin 媒体播放器（JMP）桌面客户端 ###</h3>
+<h3><strong>自 JMP 版本 <a href="https://github.com/jellyfin/jellyfin-media-player/releases/tag/v1.11.0" target="_blank" rel="noopener noreferrer">1.11.0</a> 起已废弃</strong> ###</h3>
+由于新版 JMP 客户端使用的是来自服务器本身的当前网页版播放器，因此不再需要直接修改客户端代码。</p><p>这是在桌面客户端上安装脚本的推荐方式。
+如果您对自行编辑 nativeshell.js 文件（步骤3至6）不熟悉，可以下载完整版本，该版本已将脚本添加到 nativeshell.js 文件中。
+目前尚不清楚用发布版的 nativeshell.js 文件替换原文件是否会出现潜在问题，因此建议按照以下所有步骤操作。</p><ul><li>下载最新版本 <a href="https://github.com/Namo2/InPlayerEpisodePreview/releases/download/v1.1.0.0/inPlayerEpisodePreview-1.1.0.0-jmp.zip" target="_blank" rel="noopener noreferrer">JMP</a> 或 <a href="https://github.com/Namo2/InPlayerEpisodePreview/releases/download/v1.1.0.0/inPlayerEpisodePreview-1.1.0.0-jmp-full.zip" target="_blank" rel="noopener noreferrer">JMP-full</a>（已包含添加至 nativeshell.js 文件的脚本）</li>
+<li>将压缩包解压到你的 Jellyfin 目录（例如 C:\Program Files\Jellyfin\Jellyfin Media Player）</li>
+<li>在 Jellyfin 目录中，依次进入文件夹路径 "web-client\extension"</li>
+<li>用文本编辑器打开 "nativeshell.js" 文件。</li>
+<li>在文件中找到 <code>const plugins = [];</code> 这一部分。在列表开头添加一行，粘贴 <code>'inPlayerEpisodePreviewPlugin',</code>。该部分应类似如下所示：</li>
+</ul><pre><code class="language-javascript">const plugins = [
+    'inPlayerEpisodePreviewPlugin',
+    'mpvVideoPlayer',
+    'mpvAudioPlayer',
+    'jmpInputPlugin',
+    'jmpUpdatePlugin',
+    'jellyscrubPlugin',
+    'skipIntroPlugin'
+];</code></pre>
+<ul><li>保存文件并重启 JMP 客户端。</li></p><p></ul><h2>故障排除 ##</h2></p><h3>1. 预览按钮不可见 ###</h3>
+这很可能与 <code>index.html</code> 文件的权限错误有关。</p><p>#### 1.1 在 Docker 容器内更改所有权 ####
+如果您在 Docker 容器中运行 jellyfin，可以使用以下命令更改所有权
+（将 jellyfin 替换为您的容器名称，user 和 group 替换为您的容器的用户和组）：
+<pre><code class="language-">docker exec -it --user root jellyfin chown user:group /jellyfin/jellyfin-web/index.html && docker restart jellyfin</code></pre>
+您可以将此作为系统启动时的cron作业运行。</p><p>（感谢 <a href="https://github.com/muisje" target="_blank" rel="noopener noreferrer">muisje</a> 帮助解决了 <a href="https://github.com/Namo2/InPlayerEpisodePreview/issues/49#issue-2825745530" target="_blank" rel="noopener noreferrer">此问题</a>）</p><p>#### 1.2 在Windows安装上更改所有权 ####
+<ul><li>进入路径：<code>C:\Program Files\Jellyfin\Server\jellyfin-web\</code></li>
+<li>右键点击 <code>index.html</code> → <code>属性</code> → <code>安全</code> 选项卡 → 点击 <code>编辑</code></li>
+<li>从列表中选择您的用户并勾选写入 <code>权限</code> 框。</li>
+<li>重启服务器和客户端。</li></p><p></ul>（感谢 <a href="https://github.com/xeuc" target="_blank" rel="noopener noreferrer">xeuc</a> 提供了 <a href="https://github.com/Namo2/InPlayerEpisodePreview/issues/49#issuecomment-2746136069" target="_blank" rel="noopener noreferrer">此解决方案</a>）</p><p>如果这仍然不起作用，请参阅 <a href="https://github.com/Namo2/InPlayerEpisodePreview/issues/10" target="_blank" rel="noopener noreferrer">此</a>（或 <a href="https://github.com/Namo2/InPlayerEpisodePreview/issues/49" target="_blank" rel="noopener noreferrer">此</a>）问题中的讨论。</p><p><br/>
+如果您遇到无法自行解决的错误，欢迎随时提交问题。
+<br/>请记住，每个系统都有所不同，这可能导致意外行为，因此请尽可能提供详细信息。
+<br/>Jellyfin日志和浏览器控制台日志（带有 [InPlayerEpisodePreview] 前缀）总是非常有用。</p><h2>缺点 ##</h2>
+<ul><li>插件会从服务器下载一些额外的数据，如剧集描述。</li></p><p></ul><h2>致谢 ##</h2>
+该插件结构基于并受到了 <a href="https://github.com/nicknsy" target="_blank" rel="noopener noreferrer">NickNSY</a> 的 <a href="https://github.com/nicknsy/jellyscrub" target="_blank" rel="noopener noreferrer">Jellyscrub</a> 插件的启发。</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-10-16
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Namo2/InPlayerEpisodePreview/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-10-16 
+    </div>
+    
+</body>
+</html>
