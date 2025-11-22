@@ -1,0 +1,420 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>igcc - Interactive GCC - C/C++ REPL（対話型実行環境）。</title>
+    <meta name="description" content="Interactive GCC - C/C++ REPL（対話型実行環境）。">
+    <meta name="keywords" content="igcc, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "igcc",
+  "description": "Interactive GCC - C/C++ REPL（対話型実行環境）。",
+  "author": {
+    "@type": "Person",
+    "name": "alexandru-dinu"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 208
+  },
+  "url": "https://OpenAiTx.github.io/projects/alexandru-dinu/igcc/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/alexandru-dinu/igcc/main/README.md",
+  "datePublished": "2025-11-22",
+  "dateModified": "2025-11-22"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/alexandru-dinu/igcc" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    igcc
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 208 stars</span>
+                <span class="language">Japanese</span>
+                <span>by alexandru-dinu</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>インタラクティブGCC</h1></p><p><a href="https://github.com/alexandru-dinu/igcc/actions/workflows/main.yml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/alexandru-dinu/igcc/actions/workflows/main.yml/badge.svg" alt="tests"></a>
+<a href="https://github.com/alexandru-dinu/igcc/issues" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="contrib"></a>
+<a href="https://github.com/psf/black" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code style: black"></a></p><blockquote>[!NOTE]</blockquote>
+<blockquote>元のリポジトリはAndy Balaamによるものです: https://codeberg.org/andybalaam/igcc.</blockquote>
+<blockquote>このフォークでは、リファクタリングを行い、より使いやすくしようと試みています。</blockquote></p><blockquote>[!WARNING]</blockquote>
+<blockquote>本プロジェクトは、C/C++作業時のフィードバックループを短縮するためのハッキーな試みであり、真剣な用途には明らかに適していません。</blockquote></p><p>インタラクティブGCC（<code>igcc</code>）はC/C++のリード・イバル・プリントループ（REPL）です。ユーザーコマンドでベースのソースファイルを操作し、変更ごとにソースをコンパイルし、生成されたバイナリを実行して標準出力と標準エラー出力を収集します。
+複数行（ブロック）入力に対応しており、一度に複数行を追加してコンパイラを一度だけ呼び出すことができます（以下の例参照）。</p><p>様々なヘッダーファイルをインクルード可能です。便宜上、デフォルトのヘッダーとして <a href="https://github.com/alexandru-dinu/igcc/blob/main/igcc/assets/boilerplate.h" target="_blank" rel="noopener noreferrer"><code>boilerplate.h</code></a> が含まれています。また、<code>using namespace std;</code> はデフォルトでは利用できませんが、明示的に追加することも可能です（以下の例参照）。</p><p><code>igcc</code> の様々な設定は <a href="https://github.com/alexandru-dinu/igcc/blob/main/igcc/assets/config.yaml" target="_blank" rel="noopener noreferrer"><code>config.yaml</code></a> を参照してください。</p><h2>はじめに</h2>
+最も簡単な始め方は <a href="https://pipx.pypa.io/stable/" target="_blank" rel="noopener noreferrer">pipx</a> を使うことです:
+<pre><code class="language-">pipx install git+https://github.com/alexandru-dinu/igcc.git</code></pre>
+または、<code>pip</code> を使用することもできます（専用の仮想環境を推奨します）。</p><p>これで REPL を次のコマンドで起動できます：
+<pre><code class="language-">igcc</code></pre>
+利用可能な引数:</p><pre><code class="language-">$ igcc --help
+usage: igcc [-h] [-I INCLUDE [INCLUDE ...]] [-L LIBDIR [LIBDIR ...]] [-l LIB [LIB ...]]</p><p>options:
+  -h, --help            show this help message and exit
+  -I INCLUDE [INCLUDE ...]
+                        Add INCLUDE to the list of directories to be searched for header files.
+  -L LIBDIR [LIBDIR ...]
+                        Add LIBDIR to the list of directories to be searched for library files.
+  -l LIB [LIB ...]      Search the library LIB when linking.</code></pre>
+コードはGCC（<code>g++</code>）でコンパイルされ、結果（ある場合）が表示されます。  
+ヘルプは<code>.h</code>と入力してください：  </p><pre><code class="language-">$ igcc
+[1]> .h
+.h  Show this help message
+.e  Show the last compile errors/warnings
+.l  List the code you have entered
+.L  List the whole program as given to the compiler
+.r  Redo undone command
+.u  Undo previous command
+.q  Quit</code></pre></p><h2>例</h2>
+<pre><code class="language-">$ igcc
+[1]> int a = 5;
+[2]> a += 2;
+[3]> using namespace std;
+[4]> cout << a << endl;
+7</p><p>[5]> int b = 17;
+[6]> a *= b;
+[7]> cout << a << ", " << b << endl;
+119, 17</p><p>[8]> .L
+#include "boilerplate.h"
+using namespace std;</p><p>int main(void) {
+    int a = 5;
+    a += 2;
+    cout << a << endl;
+    int b = 17;
+    a *= b;
+    cout << a << ", " << b << endl;</p><p>    return 0;
+}</code></pre></p><p><strong>複数行入力</strong>がサポートされています（設定の<code>multiline_marker</code>を確認してください）。利点は複数回のコンパイラ呼び出しを回避できることです。
+<pre><code class="language-">$ igcc
+[1]> .m
+... for (int i = 0; i < 10; i++) {
+...   std::cout << i << " ";
+... }
+... std::cout << "\n";
+... .m
+0 1 2 3 4 5 6 7 8 9</code></pre></p><p>ヘッダーを含めることができます：
+<pre><code class="language-">$ igcc
+[1]> #include <vector>
+[2]> std::vector<int> xs{1,2,3};
+[3]> xs.push_back(17);
+[4]> .m
+... for (auto x : xs) {
+...   std::cout << x << " ";
+... }
+... .m
+1 2 3 17</code></pre>
+ライブラリはリンク可能です:</p><pre><code class="language-">$ igcc -lpthread
+[  1]> #include <pthread.h>
+[  2]> pthread_t thr;
+[  3]> const char* msg = "Hello, World!";
+[  4]> // assuming print_msg is defined somewhere
+[  5]> int ret = pthread_create(&thr, NULL, print_msg, (void*) msg); pthread_join(thr, NULL);
+Hello, World!</code></pre></p><p>コマンドを<strong>元に戻す</strong>こともできます:
+<pre><code class="language-">$ igcc
+[1]> int x = 2
+ Compile error - type .e to see it</p><p>[2]> .e
+<stdin>: In function ‘int main()’:
+<stdin>:7:5: error: expected ‘,’ or ‘;’ before ‘return’
+<stdin>:5:9: warning: unused variable ‘x’ [-Wunused-variable]</p><p>[2]> .u
+Undone <code>int x = 2</code>
+[1]> int x = 2;
+[2]> .L
+#include "boilerplate.h"</p><p>
+int main(void) {
+    int x = 2;</p><p>    return 0;
+}</code></pre></p><p>... または以前に取り消したコマンドを<strong>やり直す</strong>:
+<pre><code class="language-">$ igcc
+[1]> int x = 2;
+[2]> std::cout << x;
+2
+[3]> .u
+Undone <code>std::cout << x;</code>
+[2]> .L
+#include "boilerplate.h"</p><p>
+int main(void) {
+    int x = 2;</p><p>    return 0;
+}
+[2]> .r
+Redone <code>std::cout << x;</code>
+2
+[3]> .L
+#include "boilerplate.h"</p><p>
+int main(void) {
+    int x = 2;
+    std::cout << x;</p><p>    return 0;
+}</code></pre></p><h2>将来の作業</h2>
+https://github.com/alexandru-dinu/igcc/issues を参照してください</p><h2>類似プロジェクト</h2>
+<ul><li>https://github.com/BenBrock/reple: コンパイル言語向けの「リプレイベース」REPL</li>
+<li>https://github.com/root-project/cling: cling C++インタープリタ</li></p><p>
+</ul><h2>クレジット</h2>
+<ul><li><a href="http://www.artificialworlds.net/wiki/IGCC/IGCC" target="_blank" rel="noopener noreferrer">IGCC ホームページ</a></li>
+<li><a href="http://sourceforge.net/projects/igcc/" target="_blank" rel="noopener noreferrer">IGCC Sourceforge ページ</a></li>
+<li><a href="http://www.artificialworlds.net" target="_blank" rel="noopener noreferrer">Andy Balaam のホームページ</a></li>
+<li><a href="http://www.artificialworlds.net/blog" target="_blank" rel="noopener noreferrer">Andy Balaam のブログ</a></li>
+<li>Andy Balaam への連絡は axis3x3 at users dot sourceforge dot net で可能です</li>
+<li>IGCC は 2009 年 Andy Balaam に著作権があります</li>
+<li>IGCC は GNU 一般公衆利用許諾契約書バージョン3の条件の下でリリースされたフリーソフトウェアです</li>
+<li>IGCC は無保証で提供されます</li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-11-22
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/alexandru-dinu/igcc/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-11-22 
+    </div>
+    
+</body>
+</html>
