@@ -1,0 +1,367 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>coffi - JDK 22+용 Clojure의 외부 함수 인터페이스입니다.</title>
+    <meta name="description" content="JDK 22+용 Clojure의 외부 함수 인터페이스입니다.">
+    <meta name="keywords" content="coffi, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "coffi",
+  "description": "JDK 22+용 Clojure의 외부 함수 인터페이스입니다.",
+  "author": {
+    "@type": "Person",
+    "name": "IGJoshua"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 357
+  },
+  "url": "https://OpenAiTx.github.io/projects/IGJoshua/coffi/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/IGJoshua/coffi/develop/README.md",
+  "datePublished": "2025-11-30",
+  "dateModified": "2025-11-30"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/IGJoshua/coffi" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    coffi
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 357 stars</span>
+                <span class="language">Korean</span>
+                <span>by IGJoshua</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>coffi</h1>
+<a href="https://clojars.org/org.suskalo/coffi" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/clojars/v/org.suskalo/coffi.svg" alt="Clojars Project"></a>
+<a href="https://cljdoc.org/d/org.suskalo/coffi" target="_blank" rel="noopener noreferrer"><img src="https://cljdoc.org/badge/org.suskalo/coffi" alt="cljdoc badge"></a></p><p>Coffi는 JDK 22 이상에서 <a href="https://openjdk.org/jeps/454" target="_blank" rel="noopener noreferrer">Foreign Function & Memory API</a>를 사용하는 Clojure용 외부 함수 인터페이스 라이브러리입니다.  
+이는 JNI처럼 라이브러리 전용 자바 또는 네이티브 코드를 필요로 하지 않고 Clojure에서 네이티브 코드를 직접 호출할 수 있게 합니다. Coffi는 사용 편의성에 중점을 두어 래퍼를 생성하는 함수와 매크로를 포함하여 네이티브 함수가 마치 Clojure 함수처럼 동작하도록 합니다. 그러나 이는 FF&M API가 제공하는 저수준 접근을 활용하여 데이터 마샬링 비용을 최소화하고 성능 최적화를 위한 시스템을 작성하는 능력을 제한하지 않습니다.</p><ul><li><a href="https://cljdoc.org/d/org.suskalo/coffi/CURRENT/doc/getting-started" target="_blank" rel="noopener noreferrer">시작하기</a></li>
+<li><a href="https://cljdoc.org/d/org.suskalo/coffi/CURRENT/api/coffi" target="_blank" rel="noopener noreferrer">API 문서</a></li>
+<li><a href="https://raw.githubusercontent.com/IGJoshua/coffi/develop/CHANGELOG.md" target="_blank" rel="noopener noreferrer">최근 변경사항</a></li></p><p></ul><h2>설치</h2>
+이 라이브러리는 Clojars에서 사용 가능하며, git 의존성으로도 사용할 수 있습니다.  
+다음 항목 중 하나를 <code>deps.edn</code>의 <code>:deps</code> 키에 추가하세요:</p><pre><code class="language-clojure">org.suskalo/coffi {:mvn/version "1.0.615"}
+io.github.IGJoshua/coffi {:git/tag "v1.0.615" :git/sha "7401485"}</code></pre>
+이 라이브러리를 git 종속성으로 사용할 경우, 라이브러리를 준비해야 합니다.</p><pre><code class="language-sh">$ clj -X:deps prep</code></pre>
+Coffi는 <code>java.lang.foreign</code> 패키지의 사용을 요구하며, 대부분의
+작업은 JDK에서 안전하지 않은 것으로 간주되어
+명령줄 플래그를 전달하지 않으면 코드에서 사용할 수 없습니다.
+coffi를 사용하려면 애플리케이션에 다음 JVM 인수를 추가하세요.</p><pre><code class="language-sh">--enable-native-access=ALL-UNNAMED</code></pre></p><p>JVM 인수를 Clojure CLI의 특정 호출에서 지정하려면
+다음과 같이 <code>-J</code> 플래그를 사용합니다:</p><p>``<code> sh
+clj -J--enable-native-access=ALL-UNNAMED
+<pre><code class="language-">
+</code>deps.edn<code> 파일의 </code>:jvm-opts<code> 키 아래에 별칭으로 지정할 수도 있습니다(다음 예 참조).
+그런 다음 해당 별칭을 사용하여 CLI를 </code>-M<code>, </code>-A<code> 또는 </code>-X<code>와 함께 호출합니다.</p><p></code></pre> clojure
+{:aliases {:dev {:jvm-opts ["--enable-native-access=ALL-UNNAMED"]}}}
+<pre><code class="language-">다른 빌드 도구들도 문서를 확인하면 유사한 기능을 제공할 것입니다.</p><p>실행 가능한 jar 파일을 만들 때, 매니페스트 속성 </code>Enable-Native-Access: ALL-UNNAMED<code>를
+jar에 추가하면 이 인수를 전달할 필요가 없습니다. 추가 방법은 빌드 도구의 문서를 참고하세요.</p><p>Coffi는 또한 린터 clj-kondo를 지원합니다. clj-kondo를 사용 중이고
+이 라이브러리의 매크로가 올바르게 린팅되지 않는 경우, 라이브러리와 함께 제공되는
+설정을 설치해야 할 수 있습니다. 프로젝트 디렉토리에서 다음 셸 명령어를 실행하여 설치할 수 있습니다:</p><p>
+</code></pre>sh
+$ clj-kondo --copy-configs --dependencies --lint "$(clojure -Spath)"
+<pre><code class="language-">
+<h2>사용법</h2>
+두 개의 주요 네임스페이스는 </code>coffi.mem<code>으로, 오프힙 메모리를 할당하고 조작하며 값을 (역)직렬화하는 기능을 제공합니다, 그리고 </code>coffi.ffi<code>로, 네이티브 라이브러리를 로드하고 네이티브 함수 래퍼를 선언하며 콜백으로서 함수를 (역)직렬화할 수 있습니다.</p><p></code></pre>clojure
+(require '[coffi.mem :as mem])
+(require '[coffi.ffi :as ffi :refer [defcfn]])</p><p>(defcfn strlen
+  "Given a string, measures its length in bytes."
+  strlen [::mem/c-string] ::mem/long)</p><p>(strlen "hello")
+;; => 5</p><p>(ffi/load-system-library "z")
+</code>`<code>
+</code>coffi.mem<code> 네임스페이스에는 C의 모든 부호 있는 원시 숫자형 타입과 </code>::mem/pointer<code>, </code>::mem/c-string<code> 타입이 있으며,
+malli와 유사한 타입 선언을 사용하여 구조체, 공용체, 배열, 열거형, 플래그셋을 정의하는 방법이 포함되어 있습니다.</p><h2>대안들</h2>
+이 라이브러리는 네이티브 코드에 접근할 수 있는 유일한 클로저 라이브러리가 아닙니다. 
+추가로 다음과 같은 라이브러리들이 존재합니다(그 외에도 다수 있음):</p><ul><li><a href="https://github.com/cnuernber/dtype-next" target="_blank" rel="noopener noreferrer">dtype-next</a></li>
+<li><a href="https://github.com/techascent/tech.jna" target="_blank" rel="noopener noreferrer">tech.jna</a></li>
+<li><a href="https://github.com/Chouser/clojure-jna" target="_blank" rel="noopener noreferrer">clojure-jna</a></li></p><p></ul>Dtype-next는 Java 8-15, 17+, 그리고 GraalVM을 지원하지만, 주로 배열 기반 프로그래밍에 집중하며,
+데이터를 클로저 네이티브 구조로 마샬링하기보다는 네이티브 쪽 메모리를 유지하는 데 중점을 둡니다.
+Java 17+에서는 Foreign Function & Memory API(프로젝트 파나마의 일부로 JDK 22에서 안정화 예정)를 사용하며,
+다른 Java 버전에서는 JNA를 사용합니다.</p><p>Tech.jna와 clojure-jna는 모두 모든 경우에 JNA 라이브러리를 사용하며, 콜백에 대한 명시적 지원은 제공하지 않습니다.
+JNA는 </code>java.nio.ByteBuffer<code>를 사용하여 구조체를 값으로 전달하는 것을 허용하며,
+두 라이브러리 모두 이 값 전달 방식을 이용해 참조로 API를 호출하는 방법을 제공합니다.</p><p>coffi의 또 다른 대안은 JNI를 직접 사용하는 것인데, 이는 JVM에서 네이티브 코드를 래핑하는 가장 오래된 방법입니다.
+하지만 네이티브 코드와 자바 코드를 모두 작성해야 한다는 단점이 있으며,
+클로저에서만 사용하려는 경우에도 마찬가지입니다.</p><p>애플리케이션이 JVM 22 이전 버전에서 실행되어야 한다면,
+다른 옵션들을 고려하는 것이 좋습니다. Dtype-next가 네이티브 코드에 대해 가장 견고한 지원을 제공하지만,
+단순한 라이브러리를 래핑하는 경우에는 API 표면적이 더 작고 함수 래핑이 더 쉬운 다른 라이브러리들이 더 매력적일 수 있습니다.</p><p>또한 클로저용 FFI 옵션에 대한 <a href="https://docs.google.com/spreadsheets/d/1ViLHNUgrO2osh2AH0h7MaCaXz8g0UpLbyWojY5f10kk/edit?gid=332155605#gid=332155605" target="_blank" rel="noopener noreferrer">서드파티 정리</a>도 있습니다.</p><h2>알려진 문제</h2>
+프로젝트 작성자는 이 문제들을 인지하고 있으며 향후 릴리스에서 수정할 계획입니다:</p><ul><li>coffi에 의존하는 라이브러리에서 codox로 문서를 생성할 때 아래와 같은 오류가 발생합니다. 임시 해결책으로는 codox 빌드에 명시적으로 insn 0.2.1 버전을 의존성으로 추가하는 것입니다.</li></p><p>  </ul></code>`<code>
+  Unable to find static field: ACC_OPEN in interface org.objectweb.asm.Opcodes
+  </code>``
+<h2>미래 계획</h2>
+이 기능들은 향후 릴리스에서 계획되어 있습니다.</p><ul><li>va_args 타입 지원</li>
+<li>데이터 모델 생성을 위한 헤더 파싱 도구? (아마도 <a href="https://github.com/phronmophobic/clong" target="_blank" rel="noopener noreferrer">clong</a>과 함께 작동 가능?)</li>
+<li>제네릭 타입 별칭</li>
+<li>부호 없는 정수 타입</li>
+<li>출력 인자를 위한 헬퍼 매크로</li>
+<li>defcfn 매크로의 오류 메시지 개선</li>
+<li>매핑된 메모리</li>
+<li>더 복합적인 데이터 타입을 위한 사용자 정의 serde 구현용 헬퍼 매크로</li>
+<li>GraalVM Native Image 지원 (FFM 지원이 성숙해지면)</li></p><p></ul><h2>라이선스</h2></p><p>저작권 © 2023 Joshua Suskalo</p><p>Eclipse Public License 버전 1.0에 따라 배포됩니다.</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-11-30
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/IGJoshua/coffi/develop/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-11-30 
+    </div>
+    
+</body>
+</html>
