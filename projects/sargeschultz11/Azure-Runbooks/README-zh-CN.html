@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure-Runbooks - 我用于 Intune 和其他 Microsoft 365 操作的各种 Azure 自动化运行簿</title>
+    <meta name="description" content="我用于 Intune 和其他 Microsoft 365 操作的各种 Azure 自动化运行簿">
+    <meta name="keywords" content="Azure-Runbooks, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Azure-Runbooks",
+  "description": "我用于 Intune 和其他 Microsoft 365 操作的各种 Azure 自动化运行簿",
+  "author": {
+    "@type": "Person",
+    "name": "sargeschultz11"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 61
+  },
+  "url": "https://OpenAiTx.github.io/projects/sargeschultz11/Azure-Runbooks/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/sargeschultz11/Azure-Runbooks/main/README.md",
+  "datePublished": "2025-12-06",
+  "dateModified": "2025-12-06"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/sargeschultz11/Azure-Runbooks" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Azure-Runbooks
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 61 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by sargeschultz11</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Azure-Runbooks </h1></p><p><a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+<a href="https://github.com/PowerShell/PowerShell" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PowerShell-7.2+-blue.svg" alt="PowerShell"></a>
+<a href="https://www.microsoft.com/microsoft-365" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Microsoft_365-compatible-brightgreen.svg" alt="Microsoft 365"></a>
+<a href="https://developer.microsoft.com/en-us/graph" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Microsoft_Graph-v1.0-blue.svg" alt="Graph API"></a>
+<a href="https://azure.microsoft.com/en-us/products/automation" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Azure_Automation-compatible-0089D6.svg" alt="Azure"></a>
+<a href="https://GitHub.com/sargeschultz11/Azure-Runbooks/releases/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/release/sargeschultz11/Azure-Runbooks.svg" alt="GitHub release"></a>
+<a href="https://github.com/sargeschultz11/Azure-Runbooks" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Maintained-yes-green.svg" alt="Maintenance"></a>
+<a href="https://www.microsoft.com/powershell" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Made%20with-PowerShell-1f425f.svg" alt="Made with"></a></p><p>A collection of Azure Automation runbooks for Microsoft 365 and Intune management.</p><h2>Overview</h2></p><p>This repository contains PowerShell scripts designed to be used as Azure Automation runbooks for automating various Microsoft 365 and Intune management tasks. These scripts help streamline administrative processes, maintain consistency across your environment, and reduce manual overhead.</p><h2>Repository Structure</h2></p><p>The repository is organized into folders, with each folder containing a specific runbook solution:</p><pre><code class="language-">Azure-Runbooks/
+├── DeviceCategorySync/             # Sync device categories with user departments
+├── Report-DiscoveredApps/          # Generate reports of discovered applications
+├── Report-IntuneDeviceCompliance/  # Generate device compliance reports
+├── Report-DevicesWithApp/          # Find devices with specific applications
+├── Alert-DeviceSyncReminder/       # Send reminders for devices needing sync
+├── Update-AutopilotDeviceGroupTags/ # Sync Autopilot group tags with Intune categories
+├── Alert-IntuneAppleTokenMonitor/  # Monitor Apple token expirations
+├── Report-UserManagers/            # Generate reports of users and their managers
+├── Report-MissingSecurityUpdates/  # Report on devices missing security updates
+├── Sync-IntuneDevices/             # Force sync all managed Intune devices
+├── Report-DeviceSyncOverdue/       # Report on devices overdue for sync
+├── Report-OneDriveSharedItems/     # Generate reports of shared items in OneDrive
+├── Task-SetCompanyAttribute/       # Set company attribute for all users
+├── Snipe-IT-UserSync/              # Sync Microsoft 365 users to Snipe-IT users
+├── Sync-IntuneToAction1Categories/ # Sync Intune device categories to Action1 custom attributes</code></pre>
+每个运行簿文件夹包含：  
+<ul><li>主要的 PowerShell 脚本（<code>.ps1</code>）  </li>
+<li>用于设置权限的辅助脚本（<code>Add-GraphPermissions.ps1</code>）  </li>
+<li>详细的文档（<code>README.md</code>）  </li></p><p></ul><h2>认证  </h2></p><p>本仓库中的所有运行簿均设计为使用 Azure 自动化的系统分配托管身份进行认证，这是 Azure 自动化推荐的认证方式。每个文件夹都包含一个 <code>Add-GraphPermissions.ps1</code> 脚本，帮助为您的自动化帐户的托管身份分配所需的 Microsoft Graph API 权限。  </p><h2>快速开始  </h2></p><p>每个运行簿都包含详细的实现和使用文档。一般而言，使用这些运行簿的步骤如下：  </p><ul><li>将脚本导入到您的 Azure 自动化帐户  </li>
+<li>在您的自动化帐户上启用系统分配托管身份  </li>
+<li>使用包含的 <code>Add-GraphPermissions.ps1</code> 脚本分配必要的 Graph API 权限  </li>
+<li>配置特定于您环境的任何必需参数  </li>
+<li>按需安排运行簿运行或手动运行  </li></p><p></ul><h2>可用运行簿  </h2></p><h3>报告  </h3>
+<ul><li><strong>设备合规性报告</strong>：生成 Intune 管理设备的全面合规性报告。  </li>
+<li><strong>发现应用报告</strong>：创建管理设备上发现的应用程序详细报告。  </li>
+<li><strong>特定应用设备报告</strong>：识别所有安装了特定应用的设备。  </li>
+<li><strong>用户经理报告</strong>：生成所有已授权内部用户及其经理信息的报告。  </li>
+<li><strong>缺失安全更新报告</strong>：识别缺少多个安全更新的 Windows 设备并自动生成报告。  </li>
+<li><strong>设备同步逾期报告</strong>：生成未在指定阈值内同步的设备报告。  </li>
+<li><strong>OneDrive 共享项目报告</strong>：创建 OneDrive for Business 中外部共享项目的报告。  </li></p><p></ul><h3>设备管理  </h3>
+<ul><li><strong>设备类别同步</strong>：根据用户部门信息自动同步 Intune 设备类别。  </li>
+<li><strong>Autopilot 组标签同步</strong>：保持 Autopilot 设备组标签与 Intune 设备类别同步。  </li>
+<li><strong>强制设备同步</strong>：对所有受管理的 Intune 设备发起同步命令，支持批处理和节流保护。  </li>
+<li><strong>Intune 到 Action1 类别同步</strong>：通过匹配序列号将 Intune 设备类别同步到 Action1 自定义属性。  </li></p><p></ul><h3>警报和通知  </h3>
+<ul><li><strong>设备同步提醒</strong>：向最近未同步设备的用户发送自动电子邮件提醒。  </li>
+<li><strong>Apple 令牌监控</strong>：监控并提醒 Apple 推送通知证书和令牌的过期情况。</li></p><p>
+</ul><h3>用户管理</h3>
+<ul><li><strong>公司属性设置</strong>：在您的 Microsoft 365 租户中的所有用户帐户中设置一致的公司属性。</li>
+<li><strong>Snipe-IT 用户同步</strong>：使用电子邮件作为锚点，从您的 Microsoft 365 租户创建或更新 Snipe-IT 用户，为新用户设置安全密码，并提供可选的登录/邀请切换。</li></p><p></ul><h3>第三方集成</h3>
+<ul><li><strong>Action1 集成</strong>：将 Intune 设备类别同步到 Action1 RMM 自定义属性，实现跨平台的统一设备管理。</li></p><p></ul><h2>分支管理</h2></p><p>本仓库遵循简化的 Git 工作流程：</p><ul><li><code>main</code> 分支包含稳定的、可用于生产的脚本</li>
+<li>开发分支用于新功能或重大修改</li>
+<li>开发工作合并到 <code>main</code> 后，开发分支通常会被删除</li>
+<li>对于已克隆此仓库的用户，请注意开发分支在工作完成后可能会消失</li></p><p></ul>如果您正在使用特定的开发分支，建议创建自己的分叉，以确保分支被删除时您的工作不会受到影响。</p><h2>v1.4.0 新功能</h2></p><h3>新运行手册：Sync-IntuneToAction1Categories</h3>
+此版本引入了与 Action1 RMM 的新集成，实现 Intune 设备类别自动同步到 Action1 自定义属性。主要功能包括：</p><ul><li>通过序列号自动匹配 Intune 与 Action1 设备</li>
+<li>将 Intune 设备类别同步到可配置的 Action1 自定义属性</li>
+<li>支持多个 Action1 区域（北美、欧洲、澳大利亚）</li>
+<li>通过 Azure Automation 加密变量进行安全凭据管理</li>
+<li>WhatIf 模式用于测试而不进行更改</li>
+<li>全面的日志记录和统计功能</li>
+<li>基于 PSAction1 PowerShell 模块构建</li></p><p></ul>该集成帮助组织在 Microsoft Intune 和 Action1 RMM 平台之间保持设备分类一致，促进更好的报告、策略应用和设备管理流程。</p><h2>讨论区</h2></p><p>我已为本仓库启用 GitHub 讨论区，以促进用户之间的协作和支持。这里是：</p><ul><li>询问关于实现特定运行手册的问题</li>
+<li>分享您的成功案例和实施经验 </li>
+<li>建议新的运行手册创意或改进  </li>
+<li>讨论 Azure 自动化的最佳实践  </li>
+<li>获取故障排除帮助  </li></p><p></ul>查看<a href="https://github.com/sargeschultz11/Azure-Runbooks/discussions" target="_blank" rel="noopener noreferrer">讨论</a>标签加入讨论。我们鼓励您使用讨论区进行一般问题和社区互动，而问题区应仅用于报告脚本的错误或具体问题。  </p><h2>贡献  </h2></p><p>欢迎将这些脚本作为您自动化需求的起点。我们欢迎贡献、改进和建议！  </p><h2>许可  </h2></p><p>本项目采用 MIT 许可证授权 - 详情请参阅<a href="LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a>文件。
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-06
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/sargeschultz11/Azure-Runbooks/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-06 
+    </div>
+    
+</body>
+</html>
