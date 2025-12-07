@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>publish-vscode-extension - VS Code 확장 프로그램을 Open VSX 레지스트리 또는 Visual Studio 마켓플레이스에 게시하는 GitHub 액션입니다.</title>
+    <meta name="description" content="VS Code 확장 프로그램을 Open VSX 레지스트리 또는 Visual Studio 마켓플레이스에 게시하는 GitHub 액션입니다.">
+    <meta name="keywords" content="publish-vscode-extension, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "publish-vscode-extension",
+  "description": "VS Code 확장 프로그램을 Open VSX 레지스트리 또는 Visual Studio 마켓플레이스에 게시하는 GitHub 액션입니다.",
+  "author": {
+    "@type": "Person",
+    "name": "HaaLeo"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 236
+  },
+  "url": "https://OpenAiTx.github.io/projects/HaaLeo/publish-vscode-extension/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/HaaLeo/publish-vscode-extension/master/README.md",
+  "datePublished": "2025-12-07",
+  "dateModified": "2025-12-07"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/HaaLeo/publish-vscode-extension" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    publish-vscode-extension
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 236 stars</span>
+                <span class="language">Korean</span>
+                <span>by HaaLeo</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>VS Code 확장 프로그램 배포 — GitHub 액션</h1></p><p><a href="https://github.com/HaaLeo/publish-vscode-extension/actions?query=workflow%3A%22Build%2C+Lint%2C+Test+and+Deploy%22" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/actions/workflow/status/HaaLeo/publish-vscode-extension/CI.yml?style=flat-square&label=Lint%2C%20Build%2C%20Test%20and%20Deploy" alt="빌드, 린트, 테스트 및 배포"></a> <a href="https://coveralls.io/github/HaaLeo/publish-vscode-extension" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/coveralls/github/HaaLeo/publish-vscode-extension?style=flat-square" alt="커버리지 상태"></a>  
+<a href="https://raw.githubusercontent.com/HaaLeo/publish-vscode-extension/master/LICENSE.txt" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="라이선스"></a> <a href="https://github.com/HaaLeo/publish-vscode-extension/stargazers" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/stars/HaaLeo/publish-vscode-extension.svg?label=Stars&logo=github&style=flat-square" alt="별점"></a>  
+<a href="https://www.paypal.me/LeoHanisch/3eur" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/☕️-Buy%20Me%20a%20Coffee-blue.svg?&style=flat-square" alt="기부"></a></p><p>GitHub 액션을 사용하여 VS Code 확장 프로그램을 <a href="https://open-vsx.org/" target="_blank" rel="noopener noreferrer">Open VSX Registry</a> 또는 <a href="https://marketplace.visualstudio.com" target="_blank" rel="noopener noreferrer">Visual Studio Marketplace</a>에 배포합니다.</p><blockquote><strong>v2</strong>의 모든 주요 변경 사항은 <a href="https://raw.githubusercontent.com/HaaLeo/publish-vscode-extension/master/CHANGELOG.md#changelog" target="_blank" rel="noopener noreferrer">변경 로그</a>에 나열되어 있습니다.</blockquote></p><h2>사용법</h2></p><p>GitHub 액션을 사용하려면 워크플로우 파일에서 <a href="https://help.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#referencing-actions-in-your-workflow" target="_blank" rel="noopener noreferrer">액션을 참조</a>하기만 하면 됩니다.</p><h3>예제</h3></p><p>다음 예제는 새 태그가 생성될 때 Open VSX Registry와 Visual Studio Marketplace에 확장 프로그램을 배포하는 워크플로우를 보여줍니다:</p><pre><code class="language-yaml">on:
+  push:
+    tags:
+      <ul><li>"*"</li></p><p></ul>name: Deploy Extension
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+      <li>uses: actions/setup-node@v4</li>
+        </ul>with:
+          node-version: 20
+      <ul><li>run: npm ci</li>
+      <li>name: Publish to Open VSX Registry</li>
+        </ul>uses: HaaLeo/publish-vscode-extension@v2
+        with:
+          pat: ${{ secrets.OPEN_VSX_TOKEN }}
+      <ul><li>name: Publish to Visual Studio Marketplace</li>
+        </ul>uses: HaaLeo/publish-vscode-extension@v2
+        with:
+          pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
+          registryUrl: https://marketplace.visualstudio.com</code></pre>
+확장 프로그램을 한 번만 패키징하고 <strong>동일한</strong> <code>.vsix</code> 파일을 두 레지스트리에 모두 게시하려면 다음 두 단계를 대신 사용할 수 있습니다:</p><pre><code class="language-yaml">- name: Publish to Open VSX Registry
+  uses: HaaLeo/publish-vscode-extension@v2
+  id: publishToOpenVSX
+  with:
+    pat: ${{ secrets.OPEN_VSX_TOKEN }}
+<ul><li>name: Publish to Visual Studio Marketplace</li>
+  </ul>uses: HaaLeo/publish-vscode-extension@v2
+  with:
+    pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
+    registryUrl: https://marketplace.visualstudio.com
+    extensionFile: ${{ steps.publishToOpenVSX.outputs.vsixPath }}</code></pre>
+더 완전하고 복잡한 예제를 원한다면 <a href="https://github.com/HaaLeo/vscode-timing/blob/master/.github/workflows/cicd.yml#L1" target="_blank" rel="noopener noreferrer"><code>HaaLeo/vscode-timing</code></a>의 워크플로우를 확인할 수 있습니다.</p><h3>Open VSX 레지스트리</h3></p><p>Open VSX 레지스트리에 게시하려면 <a href="https://github.com/eclipse/openvsx/wiki/Publishing-Extensions#2-create-the-namespace" target="_blank" rel="noopener noreferrer">확장 프로그램의 네임스페이스</a>가 <strong>사전에</strong> 생성되어 있어야 합니다.  
+<code>pat</code> 매개변수에는 <a href="https://github.com/eclipse/openvsx/wiki/Publishing-Extensions#1-create-an-access-token" target="_blank" rel="noopener noreferrer">Open VSX 액세스 토큰</a>을 설정해야 합니다.  
+또한, 라이선스가 명시된 확장 프로그램만 게시해야 합니다.  
+Open VSX의 일정 및 확장 프로그램 라이선스에 관한 자세한 내용은 <a href="https://blogs.eclipse.org/post/brian-king/open-vsx-registry-under-new-management" target="_blank" rel="noopener noreferrer">Brian King의 블로그</a> (섹션 "Licensing" 및 "Timeline")를 참고하세요.</p><p>현재 이 GitHub 액션은 라이선스 조건을 명시하지 않은 확장 프로그램의 게시도 허용합니다.  
+하지만 이 동작은 더 이상 권장되지 않으며, 향후 릴리스에서는 라이선스가 없는 확장 프로그램을 거부할 예정입니다.  
+따라서 <a href="https://choosealicense.com/licenses/mit/" target="_blank" rel="noopener noreferrer">MIT 라이선스</a>와 같은 (허용적인) 라이선스를 가진 확장 프로그램을 게시하는 것을 강력히 권장합니다.</p><h3>Visual Studio 마켓플레이스</h3></p><p>VS 마켓플레이스에 확장 프로그램을 업로드하려면 <code>pat</code> 옵션에 해당 <a href="https://code.visualstudio.com/api/working-with-extensions/publishing-extension#get-a-personal-access-token" target="_blank" rel="noopener noreferrer">액세스 토큰</a>을 설정해야 합니다.  
+또한, <code>registryUrl</code>은 <code>https://marketplace.visualstudio.com</code>으로 설정해야 합니다.</p><h2>입력 매개변수</h2></p><p>다음 입력 매개변수 중 일부 또는 모두를 설정할 수 있습니다:</p><p>|이름 |타입 |필수? |기본값 |설명
+|-|-|-|-|-
+|<code>pat</code> |string  |예 |-|해당 레지스트리의 개인 액세스 토큰입니다.
+|<code>extensionFile</code> |string  |아니오 | - |게시할 vsix 파일 경로입니다. <code>packagePath</code>와 함께 설정할 경우 이 옵션이 우선합니다.
+|<code>registryUrl</code> |string  |아니오 |<code>https://open-vsx.org</code> |이 기본 URL의 레지스트리 API를 사용합니다.
+|<code>packagePath</code> |string |아니오 | <code>./</code> |패키징 및 게시할 확장 프로그램 경로입니다. <code>extensionFile</code>이 설정되면 무시됩니다.
+|<code>baseContentUrl</code> |string |아니오 | - |README.md 내 모든 상대 링크에 이 URL을 접두어로 붙입니다.
+|<code>baseImagesUrl</code> |string |아니오 | - |README.md 내 모든 상대 이미지 링크에 이 URL을 접두어로 붙입니다.
+|<code>yarn</code> |boolean |아니오 | <code>false</code> |확장 파일을 패키징할 때 npm 대신 yarn을 사용합니다.
+|<code>dryRun</code> |boolean |아니오 | <code>false</code> |이 옵션을 <code>true</code>로 설정하면 확장 프로그램을 패키징만 하고 게시하지 않습니다. 이 옵션 사용 시 <code>pat</code> 옵션은 임시값으로 설정하세요.
+|<code>noVerify</code> |boolean| 아니오 |<code>false</code> |제안된 API(enableProposedApi: true)를 사용하는 확장 프로그램을 Visual Studio 마켓플레이스에 게시할 수 있게 허용합니다. vsce의 <code>--noVerify</code> 명령줄 인수와 유사합니다.
+|<code>preRelease</code> |boolean| 아니오 |<code>false</code> |확장 프로그램 릴리스를 사전 릴리스로 표시합니다. 확장 프로그램 패키징 시에만 적용됩니다.
+|<code>dependencies</code> |boolean| 아니오 |<code>true</code> |<code>package.json</code>에 정의된 의존성이 <code>node_modules</code>에 존재하는지 확인합니다. pnpm 또는 yarn v2+의 PnP를 사용하는 경우 <code>false</code>로 설정하세요.
+|<code>skipDuplicate</code> |boolean| 아니오 |<code>false</code> |버전이 이미 마켓플레이스에 존재하면 조용히 실패합니다. vsce CLI의 <code>--skip-duplicate</code> 옵션과 동일합니다.
+|<code>target</code> |string| 아니오 | - |확장 프로그램이 실행될 대상 아키텍처입니다. 여러 대상을 공백으로 구분합니다. 예: <code>'win32-x64 linux-x64'</code></p><h2>출력값</h2></p><p>이 액션은 다음과 같은 출력값을 제공합니다:</p><p>|이름 |유형 |설명
+|-|-|-
+|<code>vsixPath</code> |string |패키징되고 게시된 VSIX 파일의 경로입니다.</p><h2>기여</h2></p><p>버그를 발견했거나 기능이 부족한 경우 주저하지 말고 <a href="https://github.com/HaaLeo/publish-vscode-extension/issues/new/choose" target="_blank" rel="noopener noreferrer">이슈를 등록</a>하세요.  
+풀 리퀘스트도 환영합니다!  
+코드 변경을 제출하려면 먼저 <a href="https://raw.githubusercontent.com/HaaLeo/publish-vscode-extension/master/./CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">CONTRIBUTING.md</a> 파일을 확인하세요.</p><h2>지원</h2></p><p>이 확장 기능이 마음에 든다면 꼭 <a href="https://github.com/HaaLeo/publish-vscode-extension/stargazers" target="_blank" rel="noopener noreferrer">저장소에 별표를 주세요</a>. 저는 항상 새로운 아이디어와 피드백을 기다리고 있습니다.  
+또한 <a href="https://www.paypal.me/LeoHanisch/3eur" target="_blank" rel="noopener noreferrer">페이팔을 통한 기부</a>도 가능합니다.</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-07
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/HaaLeo/publish-vscode-extension/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-07 
+    </div>
+    
+</body>
+</html>
