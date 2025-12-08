@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>missForest - missForest 是一种非参数、混合类型的插补方法，适用于统计软件 R 中几乎任何类型的数据。</title>
+    <meta name="description" content="missForest 是一种非参数、混合类型的插补方法，适用于统计软件 R 中几乎任何类型的数据。">
+    <meta name="keywords" content="missForest, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "missForest",
+  "description": "missForest 是一种非参数、混合类型的插补方法，适用于统计软件 R 中几乎任何类型的数据。",
+  "author": {
+    "@type": "Person",
+    "name": "stekhoven"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 105
+  },
+  "url": "https://OpenAiTx.github.io/projects/stekhoven/missForest/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/stekhoven/missForest/master/README.md",
+  "datePublished": "2025-12-08",
+  "dateModified": "2025-12-08"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/stekhoven/missForest" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    missForest
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 105 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by stekhoven</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>missForest</h1></p><p><!-- badges: start --></p><p><a href="https://CRAN.R-project.org/package=missForest" target="_blank" rel="noopener noreferrer"><img src="https://www.r-pkg.org/badges/version/missForest" alt="CRAN status"></a>
+<a href="https://r-pkg.org/pkg/missForest" target="_blank" rel="noopener noreferrer"><img src="https://cranlogs.r-pkg.org/badges/last-month/missForest?color=blue" alt="CRAN RStudio mirror downloads"></a>
+<a href="https://r-pkg.org/pkg/missForest" target="_blank" rel="noopener noreferrer"><img src="https://cranlogs.r-pkg.org/badges/grand-total/missForest?color=blue" alt="CRAN RStudio mirror downloads"></a>
+<a href="https://github.com/stekhoven/missForest/actions/workflows/R-CMD-check.yaml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/stekhoven/missForest/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a>
+<a href="https://github.com/stekhoven/missForest/actions/workflows/test-coverage.yaml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/stekhoven/missForest/actions/workflows/test-coverage.yaml/badge.svg" alt="test-coverage"></a>
+<a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/license-GPL%20(%E2%89%A5%202" alt="License: GPL (≥ 2)">-blue.svg)</a></p><p><!-- badges: end --></p><p><strong>missForest</strong> 是 R 中用于 <strong>混合类型</strong> 表格数据的非参数插补方法。它通过迭代训练随机森林，从已观测的数据中预测缺失项，能够同时处理 <strong>数值型和分类型</strong> 变量。无需显式建模假设，无需矩阵分解——只是强大的预测基线，开箱即用，表现优异。</p><ul><li>适用于 <strong>任意混合的数值和因子列</strong></li>
+<li>捕捉 <strong>非线性</strong> 和 <strong>交互作用</strong></li>
+<li>报告 <strong>袋外（OOB）</strong> 插补误差（NRMSE/PFC）</li>
+<li>支持 <strong>并行执行</strong>（按变量或按森林）</li>
+<li>两种森林后端：<strong><a href="https://cran.r-project.org/package=ranger" target="_blank" rel="noopener noreferrer"><code>ranger</code></a></strong>（默认）和 <strong><a href="https://cran.r-project.org/package=randomForest" target="_blank" rel="noopener noreferrer"><code>randomForest</code></a></strong>（传统/兼容）</li></p><p></ul>该包还包括用于衡量插补误差、生成缺失数据进行实验以及检查变量类型的实用工具。</p><hr></p><h2>安装</h2></p><pre><code class="language-r"># CRAN (recommended)
+install.packages("missForest")</p><h1>Development version (from GitHub)</h1>
+<h1>install.packages("remotes")</h1>
+remotes::install_github("stekhoven/missForest")</code></pre></p><hr></p><h2>Quick start</h2></p><pre><code class="language-r">library(missForest)</p><h1>Example data</h1>
+data(iris)</p><h1>Introduce ~20% MCAR missingness</h1>
+set.seed(81)
+iris_mis <- prodNA(iris, noNA = 0.20)</p><h1>Impute with default backend (ranger)</h1>
+imp <- missForest(iris_mis, xtrue = iris, verbose = TRUE)</p><h1>Imputed data</h1>
+head(imp$ximp)</p><h1>Estimated OOB errors (NRMSE for numeric, PFC for factors)</h1>
+imp$OOBerror</p><h1>True error if xtrue was provided (for benchmarking only)</h1>
+imp$error</code></pre></p><h3>选择后端</h3></p><pre><code class="language-r"># Legacy behavior using randomForest
+imp_rf <- missForest(iris_mis, backend = "randomForest")</p><h1>Explicitly use ranger with limited threads</h1>
+imp_rg <- missForest(iris_mis, backend = "ranger", num.threads = 2)</code></pre></p><h3>并行化</h3></p><p>通过 <code>parallelize</code> 提供两种模式：</p><ul><li><code>"variables"</code>：为不同变量并行构建森林（注册 foreach 后端）。</li>
+<li><code>"forests"</code>：在单个变量的森林内进行并行（ranger 线程；或 randomForest 的 foreach 子森林）。</li></p><p></ul><pre><code class="language-r"># Not run:
+<h1>library(doParallel)</h1>
+<h1>registerDoParallel(2)</h1>
+<h1>imp_vars <- missForest(iris_mis, parallelize = "variables", verbose = TRUE)</h1>
+<h1>imp_fors <- missForest(iris_mis, parallelize = "forests",  verbose = TRUE, num.threads = 2)</code></pre></h1></p><hr></p><h2>API 概述</h2></p><h3><code>missForest(xmis, ...)</code></h3></p><p>核心插补函数。</p><p>主要参数：</p><ul><li><code>xmis</code> — 含缺失值的数据框/矩阵（列必须为 <code>numeric</code> 或 <code>factor</code>）。</li>
+<li><code>maxiter</code> — 最大迭代次数（默认 <code>10</code>）。</li>
+<li><code>ntree</code> — 每个森林的树数（默认 <code>100</code>）。</li>
+<li><code>mtry</code> — 每次分裂尝试的变量数（默认 <code>sqrt(p)</code>）。</li>
+<li><code>nodesize</code> — <strong>长度为2的数值</strong>：最小节点大小，分别用于 <strong>c(数值型, 因子型)</strong>。默认 <code>c(5, 1)</code>。</li>
+<li><code>variablewise</code> — 若为 <code>TRUE</code>，返回每变量的 OOB 误差。</li>
+<li><code>parallelize</code> — <code>"no"</code>、<code>"variables"</code> 或 <code>"forests"</code>。</li>
+<li><code>num.threads</code> — <code>ranger</code> 的线程数（<code>randomForest</code> 忽略）。</li>
+<li><code>backend</code> — <code>"ranger"</code>（默认）或 <code>"randomForest"</code>。</li>
+<li><code>xtrue</code> — 可选的完整数据，用于<strong>基准测试</strong>（添加 <code>$error</code>）。</li></p><p></ul><code>backend = "ranger"</code> 的部分参数映射：</p><ul><li><code>ntree → num.trees</code></li>
+<li><code>nodesize → min.bucket</code>（分别用于回归/分类；默认 <code>c(5,1)</code>）</li>
+<li><code>sampsize</code>（计数）→ <code>sample.fraction</code>（比例；整体或按类别）</li>
+<li><code>classwt → class.weights</code></li>
+<li><code>cutoff</code> 通过拟合<strong>概率森林</strong>并后置阈值处理</li></p><p></ul><h3>工具函数</h3></p><ul><li><code>mixError(ximp, xmis, xtrue)</code> — 计算真实缺失条目上的<strong>NRMSE</strong>（数值）和<strong>PFC</strong>（因子）。</li>
+<li><code>nrmse(ximp, xmis, xtrue)</code> — 仅对连续数据计算 NRMSE。</li>
+<li><code>prodNA(x, noNA = 0.1)</code> — 向数据框注入 MCAR 缺失。</li>
+<li><code>varClass(x)</code> — 返回每列的 <code>"numeric"</code>/<code>"factor"</code> 类型。</li></p><p></ul>---</p><h2>使用建议与最佳实践</h2></p><ul><li>在调用 <code>missForest</code> 之前将字符列转换为因子。</li>
+<li>对于宽数据，考虑使用 <code>parallelize = "variables"</code>。对于深度/计算量大的树，考虑使用 <code>parallelize = "forests"</code>。</li>
+<li>设置种子以获得准可重复的结果：</li></p><p>  </ul><pre><code class="language-r">  set.seed(123); imp <- missForest(x)
+  ``<code>
+<ul><li>你可以在原型设计阶段降低 </code>ntree<code> 来加快迭代速度。</li></p><p></ul>---</p><h2>引用</h2></p><p>如果你使用 <strong>missForest</strong>，请引用：</p><p><em> Stekhoven, D. J. & Bühlmann, P. (2012). </em>MissForest—混合类型数据的非参数缺失值插补方法。* <strong>Bioinformatics</strong>, 28(1), 112–118. <a href="https://doi.org/10.1093/bioinformatics/btr597" target="_blank" rel="noopener noreferrer">https://doi.org/10.1093/bioinformatics/btr597</a></p><p>你也可以引用该包：
+</code></pre>r
+citation("missForest")
+</code>``</p><hr></p><h2>Contributing</h2></p><p>Issues and pull requests are welcome. Please include a minimal reproducible example when reporting bugs. For performance discussions, share small benchmarks and session info.</p><hr></p><h2>License</h2></p><p>GPL (≥ 2)</p><hr></p><h2>Contact</h2></p><p>Daniel J. Stekhoven — <a href="https://raw.githubusercontent.com/stekhoven/missForest/master/mailto:stekhoven@nexus.ethz.ch" target="_blank" rel="noopener noreferrer">stekhoven@nexus.ethz.ch</a></p><hr></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-08
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/stekhoven/missForest/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-08 
+    </div>
+    
+</body>
+</html>

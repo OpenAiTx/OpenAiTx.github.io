@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>missForest - missForest est une m&#233;thode d&#39;imputation non param&#233;trique pour donn&#233;es de types mixtes, applicable &#224; quasiment tout type de donn&#233;es, pour le logiciel statistique R.</title>
+    <meta name="description" content="missForest est une m&#233;thode d&#39;imputation non param&#233;trique pour donn&#233;es de types mixtes, applicable &#224; quasiment tout type de donn&#233;es, pour le logiciel statistique R.">
+    <meta name="keywords" content="missForest, French, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "missForest",
+  "description": "missForest est une méthode d'imputation non paramétrique pour données de types mixtes, applicable à quasiment tout type de données, pour le logiciel statistique R.",
+  "author": {
+    "@type": "Person",
+    "name": "stekhoven"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 105
+  },
+  "url": "https://OpenAiTx.github.io/projects/stekhoven/missForest/README-fr.html",
+  "sameAs": "https://raw.githubusercontent.com/stekhoven/missForest/master/README.md",
+  "datePublished": "2025-12-08",
+  "dateModified": "2025-12-08"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/stekhoven/missForest" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    missForest
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 105 stars</span>
+                <span class="language">French</span>
+                <span>by stekhoven</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>missForest</h1></p><p><!-- badges: start --></p><p><a href="https://CRAN.R-project.org/package=missForest" target="_blank" rel="noopener noreferrer"><img src="https://www.r-pkg.org/badges/version/missForest" alt="CRAN status"></a>
+<a href="https://r-pkg.org/pkg/missForest" target="_blank" rel="noopener noreferrer"><img src="https://cranlogs.r-pkg.org/badges/last-month/missForest?color=blue" alt="CRAN RStudio mirror downloads"></a>
+<a href="https://r-pkg.org/pkg/missForest" target="_blank" rel="noopener noreferrer"><img src="https://cranlogs.r-pkg.org/badges/grand-total/missForest?color=blue" alt="CRAN RStudio mirror downloads"></a>
+<a href="https://github.com/stekhoven/missForest/actions/workflows/R-CMD-check.yaml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/stekhoven/missForest/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a>
+<a href="https://github.com/stekhoven/missForest/actions/workflows/test-coverage.yaml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/stekhoven/missForest/actions/workflows/test-coverage.yaml/badge.svg" alt="test-coverage"></a>
+<a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/license-GPL%20(%E2%89%A5%202" alt="License: GPL (≥ 2)">-blue.svg)</a></p><p><!-- badges: end --></p><p><strong>missForest</strong> est une méthode d'imputation non paramétrique pour les données tabulaires de <strong>type mixte</strong> dans R. Elle gère simultanément les variables <strong>numériques et catégorielles</strong> en entraînant itérativement des forêts aléatoires pour prédire les valeurs manquantes à partir des valeurs observées. Aucune hypothèse de modélisation explicite, pas de factorisation de matrice—juste des bases prédictives solides qui fonctionnent bien dès le départ.</p><ul><li>Fonctionne avec <strong>n'importe quelle combinaison de colonnes numériques et factorielles</strong></li>
+<li>Capture les <strong>non-linéarités</strong> et les <strong>interactions</strong></li>
+<li>Fournit une estimation de l'erreur d'imputation <strong>hors échantillon (OOB)</strong> (NRMSE/PFC)</li>
+<li>Supporte l’<strong>exécution parallèle</strong> (par variable ou par forêt)</li>
+<li>Deux moteurs de forêt : <strong><a href="https://cran.r-project.org/package=ranger" target="_blank" rel="noopener noreferrer"><code>ranger</code></a></strong> (par défaut) et <strong><a href="https://cran.r-project.org/package=randomForest" target="_blank" rel="noopener noreferrer"><code>randomForest</code></a></strong> (héritage/compatibilité)</li></p><p></ul>Le package inclut également des utilitaires pour mesurer l'erreur d'imputation, générer des données manquantes pour les expériences, et inspecter les types de variables.</p><hr></p><h2>Installation</h2></p><pre><code class="language-r"># CRAN (recommended)
+install.packages("missForest")</p><h1>Development version (from GitHub)</h1>
+<h1>install.packages("remotes")</h1>
+remotes::install_github("stekhoven/missForest")</code></pre></p><hr></p><h2>Quick start</h2></p><pre><code class="language-r">library(missForest)</p><h1>Example data</h1>
+data(iris)</p><h1>Introduce ~20% MCAR missingness</h1>
+set.seed(81)
+iris_mis <- prodNA(iris, noNA = 0.20)</p><h1>Impute with default backend (ranger)</h1>
+imp <- missForest(iris_mis, xtrue = iris, verbose = TRUE)</p><h1>Imputed data</h1>
+head(imp$ximp)</p><h1>Estimated OOB errors (NRMSE for numeric, PFC for factors)</h1>
+imp$OOBerror</p><h1>True error if xtrue was provided (for benchmarking only)</h1>
+imp$error</code></pre></p><h3>Choisir un backend</h3></p><pre><code class="language-r"># Legacy behavior using randomForest
+imp_rf <- missForest(iris_mis, backend = "randomForest")</p><h1>Explicitly use ranger with limited threads</h1>
+imp_rg <- missForest(iris_mis, backend = "ranger", num.threads = 2)</code></pre></p><h3>Parallélisation</h3></p><p>Deux modes sont disponibles via <code>parallelize</code> :</p><ul><li><code>"variables"</code> : construire des forêts pour différentes variables en parallèle (enregistrer un backend foreach).</li>
+<li><code>"forests"</code> : paralléliser au sein de la forêt d’une seule variable (threads ranger ; ou sous-forêts foreach pour randomForest).</li></p><p></ul><pre><code class="language-r"># Not run:
+<h1>library(doParallel)</h1>
+<h1>registerDoParallel(2)</h1>
+<h1>imp_vars <- missForest(iris_mis, parallelize = "variables", verbose = TRUE)</h1>
+<h1>imp_fors <- missForest(iris_mis, parallelize = "forests",  verbose = TRUE, num.threads = 2)</code></pre></h1></p><hr></p><h2>Vue d'ensemble de l'API</h2></p><h3><code>missForest(xmis, ...)</code></h3></p><p>Fonction principale d'imputation.</p><p>Arguments clés :</p><ul><li><code>xmis</code> — data frame/matrice avec valeurs manquantes (les colonnes doivent être <code>numeric</code> ou <code>factor</code>).</li>
+<li><code>maxiter</code> — nombre maximal d'itérations (par défaut <code>10</code>).</li>
+<li><code>ntree</code> — arbres par forêt (par défaut <code>100</code>).</li>
+<li><code>mtry</code> — variables essayées à chaque division (par défaut <code>sqrt(p)</code>).</li>
+<li><code>nodesize</code> — <strong>numérique de longueur 2</strong> : taille minimale des nœuds pour <strong>c(numérique, facteur)</strong>. Par défaut <code>c(5, 1)</code>.</li>
+<li><code>variablewise</code> — retourne l'erreur OOB par variable si <code>TRUE</code>.</li>
+<li><code>parallelize</code> — <code>"no"</code>, <code>"variables"</code>, ou <code>"forests"</code>.</li>
+<li><code>num.threads</code> — threads pour <code>ranger</code> (ignoré par <code>randomForest</code>).</li>
+<li><code>backend</code> — <code>"ranger"</code> (par défaut) ou <code>"randomForest"</code>.</li>
+<li><code>xtrue</code> — données complètes optionnelles pour <strong>benchmark</strong> (ajoute <code>$error</code>).</li></p><p></ul>Quelques correspondances d'arguments pour <code>backend = "ranger"</code> :</p><ul><li><code>ntree → num.trees</code></li>
+<li><code>nodesize → min.bucket</code> (séparément pour régression/classification ; par défaut <code>c(5,1)</code>)</li>
+<li><code>sampsize</code> (comptes) → <code>sample.fraction</code> (fractions ; global ou par classe)</li>
+<li><code>classwt → class.weights</code></li>
+<li><code>cutoff</code> géré en ajustant des <strong>forêts de probabilité</strong> puis post-seuillage</li></p><p></ul><h3>Utilitaires</h3></p><ul><li><code>mixError(ximp, xmis, xtrue)</code> — calcule le <strong>NRMSE</strong> (numérique) et le <strong>PFC</strong> (facteur) sur les entrées manquantes réelles.</li>
+<li><code>nrmse(ximp, xmis, xtrue)</code> — NRMSE pour données uniquement continues.</li>
+<li><code>prodNA(x, noNA = 0.1)</code> — injecte des valeurs manquantes MCAR dans un data frame.</li>
+<li><code>varClass(x)</code> — retourne <code>"numeric"</code>/<code>"factor"</code> par colonne.</li></p><p></ul>---</p><h2>Conseils & bonnes pratiques</h2></p><ul><li>Convertir les colonnes de caractères en facteurs avant d'appeler <code>missForest</code>.</li>
+<li>Pour les données larges, envisager <code>parallelize = "variables"</code>. Pour les arbres profonds/coûteux, envisager <code>parallelize = "forests"</code>.</li>
+<li>Définir une graine pour des résultats quasi-reproductibles :</li></p><p>  </ul><pre><code class="language-r">  set.seed(123); imp <- missForest(x)
+  ``<code>
+<ul><li>Vous pouvez réduire </code>ntree<code> lors du prototypage pour accélérer les itérations.</li></p><p></ul>---</p><h2>Citation</h2></p><p>Si vous utilisez <strong>missForest</strong>, veuillez citer :</p><p><em> Stekhoven, D. J. & Bühlmann, P. (2012). </em>MissForest—imputation non paramétrique des valeurs manquantes pour des données de type mixte.* <strong>Bioinformatics</strong>, 28(1), 112–118. <a href="https://doi.org/10.1093/bioinformatics/btr597" target="_blank" rel="noopener noreferrer">https://doi.org/10.1093/bioinformatics/btr597</a></p><p>Vous pouvez également citer le package :
+</code></pre>r
+citation("missForest")
+</code>``</p><hr></p><h2>Contributing</h2></p><p>Issues and pull requests are welcome. Please include a minimal reproducible example when reporting bugs. For performance discussions, share small benchmarks and session info.</p><hr></p><h2>License</h2></p><p>GPL (≥ 2)</p><hr></p><h2>Contact</h2></p><p>Daniel J. Stekhoven — <a href="https://raw.githubusercontent.com/stekhoven/missForest/master/mailto:stekhoven@nexus.ethz.ch" target="_blank" rel="noopener noreferrer">stekhoven@nexus.ethz.ch</a></p><hr></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-08
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/stekhoven/missForest/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-08 
+    </div>
+    
+</body>
+</html>
