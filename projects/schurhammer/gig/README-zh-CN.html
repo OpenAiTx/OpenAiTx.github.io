@@ -1,0 +1,402 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gig - 用 Gleam 编写的 Gleam 编译器</title>
+    <meta name="description" content="用 Gleam 编写的 Gleam 编译器">
+    <meta name="keywords" content="gig, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "gig",
+  "description": "用 Gleam 编写的 Gleam 编译器",
+  "author": {
+    "@type": "Person",
+    "name": "schurhammer"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 117
+  },
+  "url": "https://OpenAiTx.github.io/projects/schurhammer/gig/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/schurhammer/gig/main/README.md",
+  "datePublished": "2025-12-11",
+  "dateModified": "2025-12-11"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/schurhammer/gig" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    gig
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 117 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by schurhammer</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>gig</h1></p><p>Gig 是一个用 gleam 编写的 gleam 编译器。</p><h2>如何使用</h2></p><h3>编译并运行示例文件：</h3></p><pre><code class="language-bash"># clone the repository
+git clone https://github.com/schurhammer/gig
+cd gig</p><h1>compile a sample</h1>
+gleam run samples/hello_world.gleam</p><h1>run the sample</h1>
+samples/hello_world.exe</code></pre>
+<ul><li>这将把文件 <code>samples/hello_world.gleam</code> 编译为 <code>samples/hello_world.c</code>，然后使用 C 编译器创建位于 <code>samples/hello_world.exe</code> 的二进制文件。</li>
+<li>Gig 添加 <code>.exe</code> 扩展名以避免与源代码目录的常见命名冲突。</li></p><p></ul><h3>编译 gig：</h3></p><pre><code class="language-bash"># compile gig into a binary
+gleam run src/gig.gleam --gc --release</p><h1>compile a sample using the gig binary</h1>
+src/gig.exe samples/hello_world.gleam</p><h1>run the sample</h1>
+samples/hello_world.exe</code></pre></p><h3>使用 gig 可执行文件编译你的项目：</h3></p><ul><li>将 <code>gig</code> 可执行文件添加到你的路径中或复制到你的项目中。</li>
+<li>将 <code>patch</code> 目录复制到你的项目中。</li></p><p></ul><pre><code class="language-bash"># you should be in your project root
+cd <your project root></p><h1>copy patch directory (adjust file paths to match your system)</h1>
+cp -r ../gig/patch patch</p><h1>ensure dependencies are downloaded</h1>
+gleam deps download</p><h1>compile your main module</h1>
+gig src/<main module>.gleam</p><h1>run your main module</h1>
+src/<main module>.exe</code></pre>
+<ul><li>你应该从项目的根目录运行 gig。</li>
+<li>Gig 将包含主模块目录、<code>patch</code> 目录以及每个下载依赖的源代码目录中的源文件（即 <code>build/packages/<package_name>/src</code>）。</li>
+<li>使用 <code>gleam deps download</code> 下载依赖。</li>
+<li>你的主模块应为非嵌套的，即直接位于 <code>src</code> 目录中。</li></p><p></ul><h3>使用 gig 作为路径依赖编译你的项目</h3></p><ul><li>在你的 <code>gleam.toml</code> 文件中添加 gig 作为路径依赖 <code>gig = { path = "../gig" }</code>。</li>
+<li>将 <code>patch</code> 目录复制到你的项目中。</li></p><p>
+</ul><pre><code class="language-bash"># you should be in your project root
+cd <your project root></p><h1>copy patch directory (adjust file paths to match your system)</h1>
+cp -r ../gig/patch patch</p><h1>ensure dependencies are downloaded</h1>
+gleam deps download</p><h1>compile your project using gig as a path dependency</h1>
+gleam run -m gig src/<main module>.gleam</p><h1>run your main module</h1>
+src/<main module>.exe</code></pre></p><h3>可选标志：</h3></p><ul><li><code>--release</code>：启用优化。</li>
+<li><code>--gc</code>：启用垃圾回收（否则不进行垃圾回收）。</li>
+<li><code>--debug</code>：包含调试符号。</li>
+<li><code>--headers</code>：为 FFI 函数生成头文件。</li>
+<li><code>--compiler=name</code>：指定 C 编译器的名称/路径。</li>
+<li><code>-c</code>：仅生成 C 文件（不生成二进制文件）。</li></p><p></ul>> [!重要]
+<blockquote>如果很可能遇到栈溢出，请增加栈大小。这些通常表现为段错误。</blockquote>
+>
+<blockquote><pre><code class="language-">> ulimit -s unlimited</blockquote>
+<blockquote>``<code></blockquote></p><h2>必要依赖：</h2></p><ul><li>C 编译器（clang 似乎效果最好）</li>
+<li></code>--gc<code> 需要 Boehm GC（即 </code>libgc<code>）</li></p><p></ul><h2>标准库</h2></p><p>由于标准库的大部分是通过 </code>@external<code> 调用实现的，目前并非所有函数都可用。
+一些函数已通过补丁重新实现，见 </code>patch<code> 目录。若使用未实现的函数，编译器将发出警告，并使用“todo”作为函数体。</p><h2>补丁系统</h2></p><p>由于 gig 是第三方项目，大多数现有的 gleam 库
+可能不支持它。针对这种情况，我们有一个补丁系统，
+允许你覆盖某些本来无法工作的模块。只需创建一个名为
+</code>x.patch.gleam<code> 的模块，其中 </code>x<code> 是你想要修补的模块名称。
+补丁将与原模块合并，因此你只需实现那些有问题的函数。
+补丁可放置在 </code>patch<code> 目录或任何源码目录中。</p><p>为了在编辑器中更好地支持 C 语言，你可以为项目添加 </code>.clangd<code> 和
+</code>compile_flags.txt<code> 文件。</p><p>
+</code>.clangd<code>：
+</code></pre>
+CompileFlags:
+  Add: [-Ipatch]
+</code>`<code></p><p></code>compile_flags.txt<code>：（空文件）</p><h2>FFI</h2></p><p>你可以使用 </code>@external(c, "", "function_name")<code> 注解来定义 C 函数，类似于普通 gleam 中的 FFI。  
+之后，使用 </code>--headers<code> 选项运行编译器以生成包含实现外部函数所需的函数和类型声明的头文件。  
+你的实现 C 文件应 </code>#include<code> 该头文件，并且命名应与头文件相同。  
+最好你的函数应带有命名空间，例如 </code>module_name_function_name()`。</p><h2>功能 / 待办列表</h2></p><h3>基础</h3></p><ul><li>[x] 布尔值  </li>
+<li>[x] 整数  </li>
+<li>[x] 浮点数  </li>
+<li>[x] 数字格式（十进制以外）  </li>
+<li>[x] 字符串  </li>
+<li>[x] 列表  </li>
+<li>[x] 相等性  </li>
+<li>[x] 赋值  </li>
+<li>[x] 丢弃模式  </li>
+<li>[x] 类型推断  </li>
+<li>[x] 类型注解  </li>
+<li>[x] 模块（注：模块相对于目标文件解析）  </li>
+<li>[x] 依赖  </li>
+<li>[x] 非限定导入  </li>
+<li>[x] 类型别名  </li>
+<li>[x] 代码块  </li>
+<li>[x] 常量  </li>
+<li>[x] 内存管理（GC/RC）</li></p><p></ul><h3>函数</h3></p><ul><li>[x] 函数  </li>
+<li>[x] 高阶函数</li></p><p><li>[x] 匿名函数</li>
+<li>[x] 函数捕获</li>
+<li>[x] 泛型函数</li>
+<li>[x] 管道</li>
+<li>[x] 带标签的参数</li>
+<li>[ ] 文档注释（忽略）</li>
+<li>[ ] 弃用（忽略）</li></p><p></ul><h3>流程控制</h3></p><ul><li>[x] Case 表达式</li>
+<li>[x] 变量模式</li>
+<li>[x] 构造函数模式</li>
+<li>[x] 字符串模式</li>
+<li>[x] 列表模式</li>
+<li>[x] 递归</li>
+<li>[ ] 尾调用（注意：c 编译器可能为我们完成此项）</li>
+<li>[x] 多主体</li>
+<li>[x] 备选模式</li>
+<li>[x] 模式别名</li>
+<li>[x] 守卫</li>
+<li>[ ] 完备性检查</li></p><p></ul><h3>其他数据类型</h3></p><ul><li>[x] 元组</li>
+<li>[x] 自定义类型</li>
+<li>[x] 记录</li>
+<li>[x] 记录访问器</li>
+<li>[x] 记录更新</li>
+<li>[x] 泛型自定义类型</li>
+<li>[x] 结果</li>
+<li>[ ] 位数组（部分支持）</li></p><p></ul><h3>高级特性</h3></p><ul><li>[ ] 不透明类型</li>
+<li>[x] 使用</li>
+<li>[x] 待办</li>
+<li>[x] 恐慌</li>
+<li>[x] 让 assert</li>
+<li>[x] 外部依赖</li></p><p></ul><h2>贡献</h2></p><p>我目前不接受代码贡献。不过欢迎提交问题、建议或参与讨论。</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-11
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/schurhammer/gig/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-11 
+    </div>
+    
+</body>
+</html>

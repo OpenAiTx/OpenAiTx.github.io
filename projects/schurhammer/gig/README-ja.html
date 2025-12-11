@@ -1,0 +1,406 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gig - Gleamで書かれたGleamコンパイラ</title>
+    <meta name="description" content="Gleamで書かれたGleamコンパイラ">
+    <meta name="keywords" content="gig, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "gig",
+  "description": "Gleamで書かれたGleamコンパイラ",
+  "author": {
+    "@type": "Person",
+    "name": "schurhammer"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 117
+  },
+  "url": "https://OpenAiTx.github.io/projects/schurhammer/gig/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/schurhammer/gig/main/README.md",
+  "datePublished": "2025-12-11",
+  "dateModified": "2025-12-11"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/schurhammer/gig" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    gig
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 117 stars</span>
+                <span class="language">Japanese</span>
+                <span>by schurhammer</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>gig</h1></p><p>Gigはgleamで書かれたgleamコンパイラです。</p><h2>使い方</h2></p><h3>サンプルファイルのコンパイルと実行：</h3></p><pre><code class="language-bash"># clone the repository
+git clone https://github.com/schurhammer/gig
+cd gig</p><h1>compile a sample</h1>
+gleam run samples/hello_world.gleam</p><h1>run the sample</h1>
+samples/hello_world.exe</code></pre>
+<ul><li>これはファイル <code>samples/hello_world.gleam</code> を <code>samples/hello_world.c</code> にコンパイルし、その後 C コンパイラを使用してバイナリを <code>samples/hello_world.exe</code> に作成します。</li>
+<li>Gig はソースディレクトリとの一般的な名前の競合を避けるために <code>.exe</code> 拡張子を追加します。</li></p><p></ul><h3>gig をコンパイルする:</h3></p><pre><code class="language-bash"># compile gig into a binary
+gleam run src/gig.gleam --gc --release</p><h1>compile a sample using the gig binary</h1>
+src/gig.exe samples/hello_world.gleam</p><h1>run the sample</h1>
+samples/hello_world.exe</code></pre></p><h3>gigバイナリを使用してプロジェクトをコンパイルする方法：</h3></p><ul><li><code>gig</code>実行ファイルをパスに追加するか、プロジェクトにコピーしてください。</li>
+<li><code>patch</code>ディレクトリをプロジェクトにコピーしてください。</li></p><p></ul><pre><code class="language-bash"># you should be in your project root
+cd <your project root></p><h1>copy patch directory (adjust file paths to match your system)</h1>
+cp -r ../gig/patch patch</p><h1>ensure dependencies are downloaded</h1>
+gleam deps download</p><h1>compile your main module</h1>
+gig src/<main module>.gleam</p><h1>run your main module</h1>
+src/<main module>.exe</code></pre>
+<ul><li>プロジェクトのルートディレクトリからgigを実行する必要があります。  </li>
+<li>Gigはメインモジュールのディレクトリ、<code>patch</code>ディレクトリ、およびダウンロードされた依存関係の各ソースディレクトリ（例：<code>build/packages/<package_name>/src</code>）からソースファイルを含みます。  </li>
+<li><code>gleam deps download</code>を使って依存関係をダウンロードしてください。  </li>
+<li>メインモジュールはネストされていない、すなわち<code>src</code>ディレクトリに直接存在する必要があります。  </li></p><p></ul><h3>gigをパス依存関係として使ってプロジェクトをコンパイルする  </h3></p><ul><li><code>gleam.toml</code>ファイルにgigをパス依存関係として追加します：<code>gig = { path = "../gig" }</code>。  </li>
+<li><code>patch</code>ディレクトリをプロジェクトにコピーしてください。</li></p><p>
+</ul><pre><code class="language-bash"># you should be in your project root
+cd <your project root></p><h1>copy patch directory (adjust file paths to match your system)</h1>
+cp -r ../gig/patch patch</p><h1>ensure dependencies are downloaded</h1>
+gleam deps download</p><h1>compile your project using gig as a path dependency</h1>
+gleam run -m gig src/<main module>.gleam</p><h1>run your main module</h1>
+src/<main module>.exe</code></pre>
+<h3>オプションフラグ:</h3></p><ul><li><code>--release</code>: 最適化を有効にします。</li>
+<li><code>--gc</code>: ガベージコレクションを有効にします（無効の場合はガベージコレクションなし）。</li>
+<li><code>--debug</code>: デバッグシンボルを含めます。</li>
+<li><code>--headers</code>: FFI関数用のヘッダーファイルを生成します。</li>
+<li><code>--compiler=name</code>: Cコンパイラの名前またはパスを指定します。</li>
+<li><code>-c</code>: Cファイルのみを生成します（バイナリは生成しません）。</li></p><p></ul>> [!重要]
+<blockquote>スタックオーバーフローが発生する可能性が高いため、スタックサイズを増やしてください。これらはしばしばセグフォルトとして現れます。</blockquote>
+>
+<blockquote><pre><code class="language-">> ulimit -s unlimited</blockquote>
+<blockquote>``<code></blockquote></p><h2>必須依存関係:</h2></p><ul><li>Cコンパイラ（clangが最も適しているようです）</li>
+<li></code>--gc<code>用にBoehm GC（別名 </code>libgc<code>）が必要です</li></p><p></ul><h2>標準ライブラリ</h2></p><p>標準ライブラリの多くは </code>@external<code> 呼び出しで実装されているため、現時点ではすべての関数が利用できるわけではありません。
+いくつかの関数はすでにパッチで再実装されています。詳細は </code>patch<code> ディレクトリを参照してください。未実装の関数が使用されるとコンパイラは警告を表示し、関数本体は「todo」として扱われます。</p><h2>パッチシステム</h2></p><p>gigはサードパーティプロジェクトのため、一般に流通している多くのgleamライブラリは
+対応していない可能性があります。このような場合に対応するために、
+動作しないモジュールを上書きできるパッチシステムがあります。
+これを行うには、修正したいモジュール名を </code>x<code> として、
+</code>x.patch.gleam<code> というモジュールを作成してください。パッチは元のモジュールとマージされるため、
+壊れている関数だけを実装すれば十分です。
+パッチは </code>patch<code> ディレクトリまたは任意のソースディレクトリに配置できます。</p><p>より良いC言語サポートのために、プロジェクトに </code>.clangd<code> と
+</code>compile_flags.txt<code> ファイルを追加できます。</p><p>
+</code>.clangd<code>:
+</code></pre>
+CompileFlags:
+  Add: [-Ipatch]
+</code>`<code></p><p></code>compile_flags.txt<code>: (空ファイル)</p><h2>FFI</h2></p><p></code>@external(c, "", "function_name")<code> アノテーションを使用して、通常の gleam の FFI と同様に C 関数を定義できます。
+これを行った後、</code>--headers<code> オプションを付けてコンパイラを実行すると、
+外部関数を実装するために必要な関数および型宣言を含むヘッダーファイルが生成されます。
+実装する C ファイルはこのヘッダーファイルを </code>#include<code> し、
+ヘッダーファイルと同じ名前である必要があります。
+関数はできるだけ名前空間を付けて、例えば </code>module_name_function_name()` のようにしてください。</p><h2>機能 / Todo リスト</h2></p><h3>基本</h3></p><ul><li>[x] Bool</li>
+<li>[x] Int</li>
+<li>[x] Float</li>
+<li>[x] 10進数以外の数値フォーマット</li>
+<li>[x] String</li>
+<li>[x] List</li>
+<li>[x] 等価性</li>
+<li>[x] 代入</li>
+<li>[x] 破棄パターン</li>
+<li>[x] 型推論</li>
+<li>[x] 型注釈</li>
+<li>[x] モジュール（注：モジュールはターゲットファイルを基準に解決されます）</li>
+<li>[x] 依存関係</li>
+<li>[x] 修飾されていないインポート</li>
+<li>[x] 型エイリアス</li>
+<li>[x] ブロック</li>
+<li>[x] 定数</li>
+<li>[x] メモリ管理（GC/RC）</li></p><p></ul><h3>関数</h3></p><ul><li>[x] 関数</li>
+<li>[x] 高階関数</li></p><p><li>[x] 無名関数  </li>
+<li>[x] 関数のキャプチャ  </li>
+<li>[x] ジェネリック関数  </li>
+<li>[x] パイプライン  </li>
+<li>[x] ラベル付き引数  </li>
+<li>[ ] ドキュメンテーションコメント（無視）  </li>
+<li>[ ] 廃止予定（無視）  </li></p><p></ul><h3>フロー制御  </h3></p><ul><li>[x] case式  </li>
+<li>[x] 変数パターン  </li>
+<li>[x] コンストラクタパターン  </li>
+<li>[x] 文字列パターン  </li>
+<li>[x] リストパターン  </li>
+<li>[x] 再帰  </li>
+<li>[ ] 尾再帰呼び出し（注：Cコンパイラがこれを行う可能性あり）  </li>
+<li>[x] 複数のサブジェクト  </li>
+<li>[x] 代替パターン  </li>
+<li>[x] パターンエイリアス  </li>
+<li>[x] ガード  </li>
+<li>[ ] 網羅性チェック  </li></p><p></ul><h3>その他のデータ型  </h3></p><ul><li>[x] タプル  </li>
+<li>[x] カスタム型  </li>
+<li>[x] レコード  </li>
+<li>[x] レコードアクセサ  </li>
+<li>[x] レコード更新  </li>
+<li>[x] ジェネリックカスタム型  </li>
+<li>[x] 結果型  </li>
+<li>[ ] ビット配列（部分サポート）  </li></p><p></ul><h3>高度な機能  </h3></p><ul><li>[ ] 不透明型  </li>
+<li>[x] use  </li>
+<li>[x] todo  </li>
+<li>[x] panic</li>
+<li>[x] let assert</li>
+<li>[x] 外部モジュール</li></p><p></ul><h2>貢献について</h2></p><p>現時点ではコードの貢献は受け付けていません。問題提起、提案、または議論は自由に行ってください。</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-11
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/schurhammer/gig/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-11 
+    </div>
+    
+</body>
+</html>

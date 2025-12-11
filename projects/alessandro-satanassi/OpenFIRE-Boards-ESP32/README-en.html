@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenFIRE-Boards-ESP32 - Porting the shared board repository between the OpenFIRE firmware and the desktop app where the ESP32 boards are used.</title>
+    <meta name="description" content="Porting the shared board repository between the OpenFIRE firmware and the desktop app where the ESP32 boards are used.">
+    <meta name="keywords" content="OpenFIRE-Boards-ESP32, English, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "OpenFIRE-Boards-ESP32",
+  "description": "Porting the shared board repository between the OpenFIRE firmware and the desktop app where the ESP32 boards are used.",
+  "author": {
+    "@type": "Person",
+    "name": "alessandro-satanassi"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 0
+  },
+  "url": "https://OpenAiTx.github.io/projects/alessandro-satanassi/OpenFIRE-Boards-ESP32/README-en.html",
+  "sameAs": "https://raw.githubusercontent.com/alessandro-satanassi/OpenFIRE-Boards-ESP32/main/README.md",
+  "datePublished": "2025-12-11",
+  "dateModified": "2025-12-11"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/alessandro-satanassi/OpenFIRE-Boards-ESP32" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    OpenFIRE-Boards-ESP32
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 0 stars</span>
+                <span class="language">English</span>
+                <span>by alessandro-satanassi</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h2>... porting OpenFIRE-Boards for EPS32</h2></p><p>This repository is a porting of the original 'OpenFIRE-Boards' project by TeamOpenFIRE, adapted to work on the ESP32S3 microcontroller.  
+Apart from some adaptations and minor adjustments, the code remains largely faithful to the original by TeamOpenFIRE.  
+The code in this repository also works on the RP2040 microcontroller.  
+Whenever changes are made to the original 'OpenFIRE-Boards' project by TeamOpenFIRE, I will update the code in this repository accordingly.  
+I sincerely thank TeamOpenFIRE for creating the 'OpenFIRE-Boards' project; all credit and gratitude go to them for their work.  
+This is simply an adaptation to make it work on ESP32S3.  </p><p>
+This repository is a porting of the original 'OpenFIRE-Boards' project by TeamOpenFIRE, adapted to work on the ESP32S3 microcontroller.  
+Apart from some adaptations and minor adjustments, the code remains largely faithful to the original by TeamOpenFIRE.  
+The code in this repository also works on the RP2040 microcontroller.  
+Whenever changes are made to the original 'OpenFIRE-Boards' project by TeamOpenFIRE, I will update the code in this repository accordingly.  
+I sincerely thank TeamOpenFIRE for creating the 'OpenFIRE-Boards' project; all credit and gratitude go to them for their work.  
+This is simply an adaptation to make it work on ESP32S3.  </p><p>
+<img src="https://github.com/user-attachments/assets/2ce848f3-f308-43cc-b753-3b1dac1647e4" alt="Waveshare-esp32-s3-pico">  </p><p><img src="https://github.com/user-attachments/assets/080baf9b-f050-4b3e-ba59-4fb4aa784909" alt="YD-esp32-s3-wroom1-DevKitC-1-N16R8">  </p><h2>... segue la pagina originale del progetto  </h2>
+<h2>... follows the original project page  </h2></p><h1>OpenFIRE-Boards  </h1>
+Common repository of boards that are shared between OpenFIRE Firmware & Desktop App  </p><h1>OpenFIRE Shared Resources  </h1>
+This repository contains resources that can be shared between implementations of the microcontroller Firmware and Applications intended to interface with and configure them on a PC device.  </p><h2><code>OpenFIREshared.h</code>  </h2>
+The top half of this file defines the following that are common in both Firmware and App implementations:  
+ <ul><li>Definitions of board names that the microcontroller will report on initial docking, as string literals.  </li>
+ <li>Enums of pin function types, toggles, settings, I2C devices and their settings, and commands used in serial communication between firmware and app.  </li>
+ <li>Presets for defined boards that are loaded on bootup, and referenced by apps that show default board layouts.  </li></p><p></ul>Below the preprocessor check for <code>OF_APP</code> are 'pretty' strings for supported boards and pin functions, and board layouts that are used only by Desktop Apps to graphically represent GPIO pins for defined boards - showing where they should be rendered relative to a center-bound board vector, and alternative layouts for boards that the app should present as options to the user, if any.  </p><h3><code>boardPresetsMap</code></h3>
+Supported boards should have a name that corresponds to the <code>OPENFIRE_BOARD</code> definition as defined at the top of the file, followed by a map of what function each GPIO should have as a default (this is loaded when <code>OF_Prefs::toggles[OF_Const::customPins]</code> is set as <em>true</em> in the board's current prefs). Each GPIO the microcontroller has should be represented here, with unmapped pins given <code>btnUnmapped</code> and pins that are either reserved or not exposed to the user to be given <code>unavailable</code>. RP2040 and RP235X-A boards should have thirty pins maximum - note that even if the <code>rpipico</code> only exposes around 26 pins, it still takes the hidden GPIO into consideration.</p><h3><code>boardBoxPositions</code></h3>
+Like <code>boardPresetsMap</code>, for each supported <code>OPENFIRE_BOARD</code>, this presents a map of roughly <em>where</em> each pin should be located in a Desktop App's graphical board view represented as a sum of two values - the left being the relative position as an positive integer starting from 1, and the right being an enum value of which side of the board the pin elements should be positioned by. Adding <code>posLeft</code>, <code>posRight</code>, and <code>posMiddle</code> will place this GPIO in the respective side of the board view, and adding <code>posNothing</code> (literally 0) will inform the app not to show this pin at all, which should be used for <code>unavailable</code> pins in <code>boardPresetsMap</code>. The amount of values should match the amount of GPIO as defined in the presets map.</p><h3><code>boardsAltPresets</code></h3>
+This is for optional alternative board presets, which are to be presented in a Board Layout view as a drop-down list of alt layout names. Each supported <code>OPENFIRE_BOARD</code> can be listed multiple times, one for each alt layout - the string after the board name indicating what label it should show in the interface, followed by a curly braced map of GPIO board functions indentically to <code>boardPresetsMap</code>; the same conventions and stipulations apply. This is primarily intended for matching the layout of adapter boards that use different suggested button mappings/wiring, such as <code>adafruitItsy</code>'s SAMCO 1.1 layout for those boards which has a different mapping from the default SAMCO 2.0 layout; also note that the current reference Desktop App supports exporting and importing custom layouts.</p><h2><code>boardPics/</code> - Board Vectors and Pin Highlights</h2>
+This is the repository of board vectors that Desktop Apps should use for Board Layout views to graphically represent the current board that's docked to the application. Board vectors should be exported as <em>Plain SVG</em> (or equivalent), and added to the <code>vectors.qrc</code> resource file, where the alias for each file should match the names as defined in <code>OpenFIREshared.h</code>'s <code>OPENFIRE_BOARD</code> string for the board.</p><p>The current reference Desktop App is capable of showing <em>highlighted pins</em> when the user hovers over a GPIO pin item in the interface. To do this, the SVGs will need to be modified with the following (using Inkscape as the primary interface example):
+ <ul><li>If it's not already, group all of the image's existing board objects into its own group (name doesn't matter). Also make sure that the pin holes are actually transparent beneath and are not filled with a background color.</li>
+ <li>Create a new group that's <em>below</em> the board group - again, name doesn't matter, but for ease of use you should call it something like <code>OF</code></li>
+ <li>Inside this newly made highlights group, create the highlight elements with no stroke, and basic single flat color fill (existing boards uses RGBA <code>ebe713</code>, or <em>R253/G231/B19</em>).</li>
+ <li>Select the highlight element and go to the <em>Object Properties</em> tab (or equivalent that shows the <em>"ID"</em> line): each highlight element needs to have an ID named <code>OF_pinX</code> - where X == GPIO pin number, without a leading 0.</li>
+ <li>While the element is highlighted, go to the <em>Fill and Stroke</em> tab (or equivalent that shows <em>"Opacity (%)"</em>) and set the Opacity to <strong>0.0</strong>.</li>
+ <li>Once the placement, naming, and opacity of everything is satisfactory, save the file as a <strong><em>Plain SVG</strong></em> file inside of the <code>boardPics</code> directory. Make sure <code>vectors.qrc</code> has this board listed as an alias to the <code>OPENFIRE_BOARD</code> string you set for this microcontroller in <code>OpenFIREshared.h</code>!</li></p><p></ul>> [!NOTE]
+<blockquote>This procedure should be done <strong>only</strong> for every <em>accessible</em> GPIO pin for the board (i.e. the pins that would be <code>unavailable</code> in the <code>boardPresetsMap</code> should not be added, as these will be hidden by the application).</blockquote></p><p>Once this is finished, rebuild the application and test out the board picture; the easiest way being to use the <em>Help->View Compatible Boards</em> window, and hover the mouse cursor over the labels corresponding to the GPIO.</p><blockquote>[!NOTE]</blockquote>
+<blockquote>- If the board picture doesn't display at all, it's likely that the vector either isn't named appropriately or wasn't exported properly - double check that you followed Step 6 above correctly.</blockquote>
+<blockquote>- If the board picture displays, but highlights do not (or show up to the wrong pins), it's likely that you might need to manually edit some lines in the exported SVG in a text editor, such as Notepad. The technical requirements for vectors to work - and the things to check - are:</blockquote>
+<blockquote>  - That the <code>id="OF_pinX"</code> lines are <em>above</em> the <code>style="</code> line.</blockquote>
+<blockquote>  - That the <code>style="</code> line has <code>opacity:0</code> inside of it (preferably either <code>0</code> or <code>0.0</code>; whichever one it is doesn't matter, so long as it matches).</blockquote>
+<blockquote>Refer to the following example below (snippit from <a href="https://raw.githubusercontent.com/alessandro-satanassi/OpenFIRE-Boards-ESP32/main/boardPics/pico.svg" target="_blank" rel="noopener noreferrer"><code>pico.svg</code></a>) for the general ideal formatting of each highlight element:</blockquote>
+<blockquote>``<code>html</blockquote>
+<blockquote>  <g</blockquote>
+<blockquote>     id="OF"></blockquote>
+<blockquote>    <path</blockquote>
+<blockquote>       id="OF_pin1"</blockquote>
+<blockquote>       style="opacity:0;fill:#ebe713;fill-opacity:1"</blockquote>
+<blockquote>       class="st10"</blockquote>
+<blockquote>       d="M19.7,47.4c0,3.4-2.9,6.2-6.3,6.2s-6.2-2.8-6.3-6.2,2.7-6.3,6.1-6.4c3.4,0,6.3,2.6,6.5,6" /></blockquote>
+<blockquote>    <path</blockquote>
+<blockquote>       id="OF_pin2"</blockquote>
+<blockquote>       style="opacity:0;fill:#ebe713;fill-opacity:1"</blockquote>
+<blockquote>       class="st10"</blockquote>
+<blockquote>       d="M19.8,88.1c0,3.4-2.9,6.2-6.3,6.2s-6.2-2.8-6.3-6.2c0-3.4,2.7-6.3,6.1-6.4,3.4,0,6.3,2.6,6.5,6" /></blockquote>
+<blockquote>...</blockquote>
+<blockquote></code>``</blockquote></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-11
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/alessandro-satanassi/OpenFIRE-Boards-ESP32/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-11 
+    </div>
+    
+</body>
+</html>

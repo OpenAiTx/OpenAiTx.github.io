@@ -1,0 +1,406 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gig - Un compilador de Gleam escrito en Gleam</title>
+    <meta name="description" content="Un compilador de Gleam escrito en Gleam">
+    <meta name="keywords" content="gig, Spanish, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "gig",
+  "description": "Un compilador de Gleam escrito en Gleam",
+  "author": {
+    "@type": "Person",
+    "name": "schurhammer"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 117
+  },
+  "url": "https://OpenAiTx.github.io/projects/schurhammer/gig/README-es.html",
+  "sameAs": "https://raw.githubusercontent.com/schurhammer/gig/main/README.md",
+  "datePublished": "2025-12-11",
+  "dateModified": "2025-12-11"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/schurhammer/gig" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    gig
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 117 stars</span>
+                <span class="language">Spanish</span>
+                <span>by schurhammer</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>gig</h1></p><p>Gig es un compilador de gleam escrito en gleam.</p><h2>Cómo usar</h2></p><h3>Compilar y ejecutar un archivo de ejemplo:</h3></p><pre><code class="language-bash"># clone the repository
+git clone https://github.com/schurhammer/gig
+cd gig</p><h1>compile a sample</h1>
+gleam run samples/hello_world.gleam</p><h1>run the sample</h1>
+samples/hello_world.exe</code></pre>
+<ul><li>Esto compilará el archivo <code>samples/hello_world.gleam</code> a <code>samples/hello_world.c</code> y luego usará un compilador de C para crear el binario en <code>samples/hello_world.exe</code>.</li>
+<li>Gig añade la extensión <code>.exe</code> para evitar conflictos comunes de nombres con directorios de código fuente.</li></p><p></ul><h3>Compilar gig:</h3></p><pre><code class="language-bash"># compile gig into a binary
+gleam run src/gig.gleam --gc --release</p><h1>compile a sample using the gig binary</h1>
+src/gig.exe samples/hello_world.gleam</p><h1>run the sample</h1>
+samples/hello_world.exe</code></pre></p><h3>Compila tu proyecto usando el binario gig:</h3></p><ul><li>Añade el ejecutable <code>gig</code> a tu ruta o cópialo en tu proyecto.</li>
+<li>Copia el directorio <code>patch</code> en tu proyecto.</li></p><p></ul><pre><code class="language-bash"># you should be in your project root
+cd <your project root></p><h1>copy patch directory (adjust file paths to match your system)</h1>
+cp -r ../gig/patch patch</p><h1>ensure dependencies are downloaded</h1>
+gleam deps download</p><h1>compile your main module</h1>
+gig src/<main module>.gleam</p><h1>run your main module</h1>
+src/<main module>.exe</code></pre>
+<ul><li>Debes ejecutar gig desde el directorio raíz del proyecto.  </li>
+<li>Gig incluirá archivos fuente del directorio del módulo principal, el directorio <code>patch</code> y cada directorio fuente de las dependencias descargadas (es decir, <code>build/packages/<package_name>/src</code>).  </li>
+<li>Descarga las dependencias usando <code>gleam deps download</code>.  </li>
+<li>Tu módulo principal debe estar no anidado, es decir, directamente en el directorio <code>src</code>.  </li></p><p></ul><h3>Compila tu proyecto usando gig como dependencia de ruta  </h3></p><ul><li>Añade gig como dependencia de ruta en tu archivo <code>gleam.toml</code> <code>gig = { path = "../gig" }</code>.  </li>
+<li>Copia el directorio <code>patch</code> dentro de tu proyecto.</li></p><p>
+</ul><pre><code class="language-bash"># you should be in your project root
+cd <your project root></p><h1>copy patch directory (adjust file paths to match your system)</h1>
+cp -r ../gig/patch patch</p><h1>ensure dependencies are downloaded</h1>
+gleam deps download</p><h1>compile your project using gig as a path dependency</h1>
+gleam run -m gig src/<main module>.gleam</p><h1>run your main module</h1>
+src/<main module>.exe</code></pre></p><h3>Banderas opcionales:</h3></p><ul><li><code>--release</code>: habilitar optimización.</li>
+<li><code>--gc</code>: habilitar recolección de basura (de lo contrario no hay recolección de basura).</li>
+<li><code>--debug</code>: incluir símbolos de depuración.</li>
+<li><code>--headers</code>: generar archivos de cabecera para funciones FFI.</li>
+<li><code>--compiler=name</code>: el nombre/ruta del compilador c.</li>
+<li><code>-c</code>: solo generar el archivo c (no el binario).</li></p><p></ul>> [!IMPORTANTE]
+<blockquote>En el caso probable de que encuentres desbordamientos de pila, aumenta el tamaño de tu pila. Estos suelen aparecer como fallos de segmentación.</blockquote>
+>
+<blockquote><pre><code class="language-">> ulimit -s unlimited</blockquote>
+<blockquote>``<code></blockquote></p><h2>Dependencias Requeridas:</h2></p><ul><li>Compilador C (clang parece funcionar mejor)</li>
+<li>Boehm GC es necesario para </code>--gc<code> (también llamado </code>libgc<code>)</li></p><p></ul><h2>Biblioteca Estándar</h2></p><p>Dado que gran parte de la biblioteca estándar está implementada con llamadas </code>@external<code>, no todas las funciones están disponibles en este momento.
+Algunas funciones ya han sido reimplementadas con parches, ver el directorio </code>patch<code>. El compilador mostrará una advertencia si se usa una función no implementada, y se usará un "todo" como cuerpo de la función.</p><h2>Sistema de Parches</h2></p><p>Dado que gig es un proyecto de terceros, la mayoría de las bibliotecas gleam en el ecosistema
+probablemente no lo soporten. Para estas situaciones tenemos un sistema de parches que
+te permite sobrescribir algunos módulos que de otro modo no funcionarían. Para hacer esto simplemente
+crea un módulo llamado </code>x.patch.gleam<code> donde </code>x<code> es el nombre del módulo
+que deseas parchear. El parche se fusionará con el módulo original, por lo que
+solo necesitas implementar las funciones que están rotas.
+Los parches pueden colocarse en el directorio </code>patch<code> o en cualquiera de los directorios de código fuente.</p><p>Para mejor soporte del lenguaje c en tu editor, puedes agregar un archivo </code>.clangd<code> y
+</code>compile_flags.txt<code> a tu proyecto.</p><p></code>.clangd<code>:
+</code></pre>
+CompileFlags:
+  Add: [-Ipatch]
+</code>`<code>
+</code>compile_flags.txt<code>: (archivo vacío)</p><h2>FFI</h2></p><p>Puedes usar la anotación </code>@external(c, "", "function_name")<code> para definir funciones C,  
+similar al FFI en gleam normal.  
+Después de esto, ejecuta el compilador con la opción </code>--headers<code> para generar un archivo  
+de encabezado con las declaraciones de funciones y tipos requeridas para implementar la función externa.  
+Tu archivo de implementación en C debe </code>#include<code> el archivo de encabezado y debe llamarse de la  
+misma manera que el archivo de encabezado.  
+Preferiblemente, tus funciones deberían tener un espacio de nombres, por ejemplo, </code>module_name_function_name()`.</p><h2>Lista de características / tareas pendientes</h2></p><h3>Básicos</h3></p><ul><li>[x] Bool  </li>
+<li>[x] Int  </li>
+<li>[x] Float  </li>
+<li>[x] Formatos numéricos (distintos a decimal)  </li>
+<li>[x] String  </li>
+<li>[x] Lista  </li>
+<li>[x] Igualdad  </li>
+<li>[x] Asignaciones  </li>
+<li>[x] Patrones de descarte  </li>
+<li>[x] Inferencia de tipos  </li>
+<li>[x] Anotaciones de tipos  </li>
+<li>[x] Módulos (nota: los módulos se resuelven relativos al archivo objetivo)  </li>
+<li>[x] Dependencias  </li>
+<li>[x] Importaciones no calificadas  </li>
+<li>[x] Alias de tipos  </li>
+<li>[x] Bloques  </li>
+<li>[x] Constantes  </li>
+<li>[x] Gestión de memoria (GC/RC)</li></p><p></ul><h3>Funciones</h3></p><ul><li>[x] Funciones  </li>
+<li>[x] Funciones de orden superior</li></p><p><li>[x] Funciones anónimas</li>
+<li>[x] Capturas de funciones</li>
+<li>[x] Funciones genéricas</li>
+<li>[x] Pipelines</li>
+<li>[x] Argumentos etiquetados</li>
+<li>[ ] Comentarios de documentación (ignorados)</li>
+<li>[ ] Deprecaciones (ignoradas)</li></p><p></ul><h3>Control de flujo</h3></p><ul><li>[x] Expresiones case</li>
+<li>[x] Patrones de variables</li>
+<li>[x] Patrones de constructores</li>
+<li>[x] Patrones de cadenas</li>
+<li>[x] Patrones de listas</li>
+<li>[x] Recursión</li>
+<li>[ ] Llamadas en cola (nota: el compilador c puede hacer esto por nosotros)</li>
+<li>[x] Múltiples sujetos</li>
+<li>[x] Patrones alternativos</li>
+<li>[x] Alias de patrones</li>
+<li>[x] Guards</li>
+<li>[ ] Verificación de exhaustividad</li></p><p></ul><h3>Otros tipos de datos</h3></p><ul><li>[x] Tuplas</li>
+<li>[x] Tipos personalizados</li>
+<li>[x] Registros</li>
+<li>[x] Accesores de registros</li>
+<li>[x] Actualizaciones de registros</li>
+<li>[x] Tipos personalizados genéricos</li>
+<li>[x] Resultados</li>
+<li>[ ] Arreglos de bits (soporte parcial)</li></p><p></ul><h3>Características avanzadas</h3></p><ul><li>[ ] Tipos opacos</li>
+<li>[x] Uso</li>
+<li>[x] Todo</li>
+<li>[x] Panic</li>
+<li>[x] Dejar assert</li>
+<li>[x] Externos</li></p><p></ul><h2>Contribuyendo</h2></p><p>No estoy aceptando contribuciones de código en este momento. Sin embargo, siéntase libre de crear problemas, sugerencias o discusiones.</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-11
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/schurhammer/gig/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-11 
+    </div>
+    
+</body>
+</html>
