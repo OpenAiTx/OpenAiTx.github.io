@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 353
+    "ratingCount": 374
   },
   "url": "https://OpenAiTx.github.io/projects/Virviil/oci2git/README-vi.html",
   "sameAs": "https://raw.githubusercontent.com/Virviil/oci2git/main/README.md",
-  "datePublished": "2025-09-16",
-  "dateModified": "2025-09-16"
+  "datePublished": "2025-12-12",
+  "dateModified": "2025-12-12"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 353 stars</span>
+                <span class="stars">⭐ 374 stars</span>
                 <span class="language">Vietnamese</span>
                 <span>by Virviil</span>
             </div>
@@ -308,19 +308,25 @@
         | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=tr">Türkçe</a>
         | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=vi">Tiếng Việt</a>
         | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=id">Bahasa Indonesia</a>
-        | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=as">অসমীয়া</
+        | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=as">অসমীয়া</a>
       </div>
     </div>
   </details>
-</div></p><h1>OCI2Git</h1></p><p>Một ứng dụng Rust chuyển đổi hình ảnh container (Docker, v.v.) thành kho lưu trữ Git. Mỗi lớp của container được thể hiện dưới dạng một lần commit trong Git, giữ nguyên lịch sử và cấu trúc của hình ảnh gốc.</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="Demo OCI2Git chuyển đổi hình ảnh nginx"></p><h2>Tính năng</h2></p><ul><li>Phân tích các ảnh Docker và trích xuất thông tin về các lớp</li>
-<li>Tạo kho Git nơi mỗi lớp ảnh được đại diện bằng một commit</li>
-<li>Hỗ trợ các lớp rỗng (ENV, WORKDIR, v.v.) dưới dạng các commit rỗng</li>
+</div></p><p><div align="center">
+<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/assets/logo.png" width="140px" /></p><h1>OCI2Git</h1></p><p>[<img src="https://docs.rs/oci2git/badge.svg" alt="Tài liệu">][documentation]
+<a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/v/oci2git.svg" alt="Crates.io"></a>
+<a href="https://github.com/Virviil/oci2git/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/l/oci2git.svg" alt="Giấy phép"></a>
+<a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/d/oci2git.svg" alt="Số lượt tải xuống"></a></p><p>[//]: # (giả lập cho future test.yaml)
+[//]: # ([![Trạng thái kiểm thử]&#40;https://img.shields.io/github/actions/workflow/status/Virviil/oci2git/rust.yml?branch=master&event=push&label=Test&#41;]&#40;https://github.com/Virviil/oci2git/actions&#41;)</p><p><div align="left"> </div>  
+</div></p><p>Một ứng dụng Rust giúp chuyển đổi các image container (Docker, v.v.) sang kho lưu trữ Git. Mỗi layer của container sẽ được biểu diễn dưới dạng một commit Git, giữ nguyên lịch sử và cấu trúc của image gốc.</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="Demo OCI2Git chuyển đổi image nginx"></p><h2>Tính năng</h2></p><ul><li>Phân tích image Docker và trích xuất thông tin layer</li>
+<li>Tạo kho Git, trong đó mỗi layer của image là một commit</li>
+<li>Hỗ trợ các layer rỗng (ENV, WORKDIR, v.v.) dưới dạng commit rỗng</li>
 <li>Trích xuất đầy đủ metadata sang định dạng Markdown</li>
-<li>Kiến trúc mở rộng để hỗ trợ các engine container khác nhau</li></p><p></ul><h2>Các trường hợp sử dụng</h2></p><h3>So sánh các lớp</h3>
-Khi xử lý sự cố container, bạn có thể sử dụng khả năng so sánh mạnh mẽ của Git để xác định chính xác sự thay đổi giữa hai lớp bất kỳ. Bằng cách chạy <code>git diff</code> giữa các commit, kỹ sư có thể xem rõ những tệp nào đã được thêm, sửa đổi hoặc xóa, giúp dễ dàng hiểu tác động của mỗi lệnh Dockerfile và xác định các thay đổi gây ra lỗi.
-<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="Ví dụ về so sánh lớp"></p><h3>Theo dõi nguồn gốc</h3>
-Sử dụng <code>git blame</code>, các lập trình viên có thể nhanh chóng xác định lớp nào đã tạo ra một tệp hoặc dòng mã cụ thể. Điều này đặc biệt hữu ích khi kiểm tra các vấn đề về tệp cấu hình hoặc phụ thuộc. Thay vì kiểm tra thủ công từng lớp, bạn có thể ngay lập tức truy dấu nguồn gốc của bất kỳ tệp nào về lớp nguồn và lệnh Dockerfile tương ứng.</p><h3>Theo dõi vòng đời tệp</h3>
-OCI2Git cho phép bạn theo dõi quá trình phát triển của một tệp cụ thể xuyên suốt lịch sử ảnh container. Bạn có thể quan sát thời điểm tệp được tạo lần đầu, cách nó bị chỉnh sửa qua các lớp, và nếu/khi nó bị xóa. Góc nhìn toàn diện này giúp hiểu rõ sự phát triển của tệp mà không cần phải kiểm tra thủ công qua hàng chục lớp.</p><p>Để theo dõi lịch sử của một tệp trong ảnh container — bao gồm thời điểm xuất hiện, bị thay đổi hoặc xóa — bạn có thể sử dụng các lệnh Git sau khi chuyển đổi:</p><pre><code class="language-bash"># Full history of a file (including renames)
+<li>Kiến trúc mở rộng, hỗ trợ nhiều engine container khác nhau</li></p><p></ul><h2>Trường hợp sử dụng</h2></p><h3>So sánh các layer</h3>
+Khi xử lý sự cố container, bạn có thể sử dụng khả năng diff mạnh mẽ của Git để xác định chính xác những gì đã thay đổi giữa hai layer bất kỳ. Bằng cách chạy <code>git diff</code> giữa các commit, kỹ sư có thể thấy rõ tệp nào được thêm, sửa đổi hoặc xóa, giúp dễ dàng hiểu tác động của từng lệnh Dockerfile và xác định thay đổi gây vấn đề.
+<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="Ví dụ về diff layer"></p><h3>Theo dõi nguồn gốc</h3>
+Sử dụng <code>git blame</code>, các nhà phát triển có thể nhanh chóng xác định layer nào đã giới thiệu một tệp hoặc dòng mã cụ thể. Điều này đặc biệt hữu ích khi xử lý sự cố với file cấu hình hoặc phụ thuộc. Thay vì kiểm tra từng layer một cách thủ công, bạn có thể truy dấu nguồn gốc bất kỳ tệp nào về đúng layer gốc và chỉ thị Dockerfile tương ứng.</p><h3>Theo dõi vòng đời tệp tin</h3>
+OCI2Git cho phép bạn theo dõi hành trình của một tệp cụ thể xuyên suốt lịch sử của image container. Bạn có thể xem khi nào tệp lần đầu xuất hiện, bị chỉnh sửa qua các layer, và khi nào (nếu có) bị xóa. Góc nhìn toàn diện này giúp hiểu quá trình phát triển của file mà không cần theo dõi thủ công qua hàng chục layer.</p><p>Để theo dõi lịch sử của một tệp trong image container — gồm khi nào nó xuất hiện, bị thay đổi, hoặc bị xóa — bạn có thể dùng các lệnh Git sau sau khi chuyển đổi:</p><pre><code class="language-bash"># Full history of a file (including renames)
 git log --follow -- /rootfs/my/file/path</p><h1>First appearance (i.e. creation) - see which layer introduced the file</h1>
 git log --diff-filter=A -- /rootfs/my/file/path</p><h1>All changes made to the file (with diffs)</h1>
 git log -p --follow -- /rootfs/my/file/path</p><h1>When the file was deleted</h1>
@@ -364,13 +370,13 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Điều nà
 <li>Các commit bao gồm lệnh Dockerfile như thông điệp commit</li></p><p></ul><h2>Cấu trúc Kho lưu trữ</h2></p><pre><code class="language-">repository/
 ├── .git/
 ├── Image.md     # Complete image metadata
-└── rootfs/      # Filesystem content from the container</code></pre></p><h2>Yêu cầu</h2></p><ul><li>Phiên bản Rust 2021</li>
+└── rootfs/      # Filesystem content from the container</code></pre>
+<h2>Yêu cầu</h2></p><ul><li>Rust phiên bản 2021</li>
 <li>Docker CLI (hỗ trợ Docker engine)</li>
-<li>Git</li></p><p></ul><h2>Giấy phép</h2></p><p>MIT
-
+<li>Git</li></p><p></ul><h2>Giấy phép</h2></p><p>MIT</p><p>[tài liệu]: https://docs.rs/oci2git/</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-26
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-12
 
 ---</p>
         </div>
@@ -382,7 +388,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Điều nà
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-09-16 
+        Last updated: 2025-12-12 
     </div>
     
 </body>

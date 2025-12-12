@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>oci2git - Gitのように簡単にDockerイメージを内省</title>
-    <meta name="description" content="Gitのように簡単にDockerイメージを内省">
+    <title>oci2git - Gitのように簡単にDockerイメージをインスペクト</title>
+    <meta name="description" content="Gitのように簡単にDockerイメージをインスペクト">
     <meta name="keywords" content="oci2git, Japanese, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "oci2git",
-  "description": "Gitのように簡単にDockerイメージを内省",
+  "description": "Gitのように簡単にDockerイメージをインスペクト",
   "author": {
     "@type": "Person",
     "name": "Virviil"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 353
+    "ratingCount": 374
   },
   "url": "https://OpenAiTx.github.io/projects/Virviil/oci2git/README-ja.html",
   "sameAs": "https://raw.githubusercontent.com/Virviil/oci2git/main/README.md",
-  "datePublished": "2025-09-16",
-  "dateModified": "2025-09-16"
+  "datePublished": "2025-12-12",
+  "dateModified": "2025-12-12"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 353 stars</span>
+                <span class="stars">⭐ 374 stars</span>
                 <span class="language">Japanese</span>
                 <span>by Virviil</span>
             </div>
@@ -308,19 +308,25 @@
         | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=tr">Türkçe</a>
         | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=vi">Tiếng Việt</a>
         | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=id">Bahasa Indonesia</a>
-        | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=as">অসমীয়া</
+        | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=as">অসমীয়া</a>
       </div>
     </div>
   </details>
-</div></p><h1>OCI2Git</h1></p><p>コンテナイメージ（Docker等）をGitリポジトリへ変換するRustアプリケーションです。各コンテナレイヤーはGitコミットとして表現され、元のイメージの履歴と構造が保持されます。</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="OCI2Gitがnginxイメージを変換するデモ"></p><h2>特徴</h2></p><ul><li>Dockerイメージを解析し、レイヤー情報を抽出</li>
+</div></p><p><div align="center">
+<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/assets/logo.png" width="140px" /></p><h1>OCI2Git</h1></p><p>[<img src="https://docs.rs/oci2git/badge.svg" alt="ドキュメント">][documentation]
+<a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/v/oci2git.svg" alt="Crates.io"></a>
+<a href="https://github.com/Virviil/oci2git/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/l/oci2git.svg" alt="ライセンス"></a>
+<a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/d/oci2git.svg" alt="Downloads"></a></p><p>[//]: # (mock for future test.yaml)
+[//]: # ([![Test Status]&#40;https://img.shields.io/github/actions/workflow/status/Virviil/oci2git/rust.yml?branch=master&event=push&label=Test&#41;]&#40;https://github.com/Virviil/oci2git/actions&#41;)</p><p><div align="left"> </div>  
+</div></p><p>Rustで開発されたアプリケーションで、コンテナイメージ（Dockerなど）をGitリポジトリへ変換します。各コンテナレイヤーはGitコミットとして表現され、元のイメージの履歴と構造を維持します。</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="Demo of OCI2Git converting the nginx image"></p><h2>特長</h2></p><ul><li>Dockerイメージを解析し、レイヤー情報を抽出</li>
 <li>各イメージレイヤーをコミットとして表現するGitリポジトリを作成</li>
-<li>空のレイヤー（ENV、WORKDIRなど）を空のコミットとしてサポート</li>
-<li>完全なメタデータ抽出をMarkdown形式で対応</li>
-<li>異なるコンテナエンジンをサポート可能な拡張性のあるアーキテクチャ</li></p><p></ul><h2>ユースケース</h2></p><h3>レイヤー差分</h3>
-コンテナの問題をトラブルシュートする際、Gitの強力なdiff機能を使って任意の2つのレイヤー間で何が変更されたか正確に特定できます。<code>git diff</code>をコミット間で実行することで、エンジニアはどのファイルが追加、変更、削除されたかを正確に把握でき、各Dockerfile命令の影響や問題のある変更箇所を簡単に見つけられます。
-<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="レイヤー差分の例"></p><h3>オリジントラッキング</h3>
-<code>git blame</code>を使うことで、開発者は特定のファイルやコード行がどのレイヤーで導入されたかを素早く特定できます。これは設定ファイルや依存関係の問題を診断する際に特に有用です。各レイヤーを手作業で調査する代わりに、任意のファイルの起源を即座にその元レイヤーや対応するDockerfile命令まで遡ることができます。</p><h3>ファイルのライフサイクルトラッキング</h3>
-OCI2Gitは、特定ファイルがコンテナイメージの履歴全体でどのように変遷したかを追跡できます。ファイルが最初に作成された時期、各レイヤーでどのように変更されたか、最終的に削除されたかどうかを観察できます。この包括的な視点により、多数のレイヤーにまたがる変更を手作業で追跡することなく、ファイルの進化を理解できます。</p><p>コンテナイメージ内のファイル履歴を追跡するには（作成時期、変更、削除など）、変換後にこれらのGitコマンドを使用できます。</p><pre><code class="language-bash"># Full history of a file (including renames)
+<li>空のレイヤー（ENV, WORKDIRなど）も空コミットとしてサポート</li>
+<li>メタデータをMarkdown形式で完全抽出</li>
+<li>様々なコンテナエンジンに対応可能な拡張性の高いアーキテクチャ</li></p><p></ul><h2>ユースケース</h2></p><h3>レイヤーの差分比較</h3>
+コンテナの問題をトラブルシュートする際、Gitの強力な差分機能を使って任意の2つのレイヤー間で何が変更されたか正確に特定できます。<code>git diff</code>をコミット間で実行することで、エンジニアはどのファイルが追加・変更・削除されたかを把握でき、各Dockerfile命令の影響や問題のある変更箇所を素早く特定できます。
+<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="Example for layer diff"></p><h3>由来追跡</h3>
+<code>git blame</code>を利用することで、特定のファイルやコード行がどのレイヤーで導入されたかを素早く特定できます。これは設定ファイルや依存関係の問題を診断する際に特に有用です。各レイヤーを手作業で確認することなく、ファイルの由来や対応するDockerfile命令まで即座に遡ることができます。</p><h3>ファイルのライフサイクル追跡</h3>
+OCI2Gitを使うことで、特定のファイルがコンテナイメージの履歴の中でどのように変遷したかを追跡できます。ファイルがいつ作成され、各レイヤーでどのように変更され、最終的に削除されたかどうかまで観察できます。この包括的な視点により、多数のレイヤー間で手作業で変更を追跡することなく、ファイルの変遷を把握できます。</p><p>コンテナイメージ内のファイルの履歴（生成・変更・削除）を追跡するには、変換後に以下のGitコマンドを利用できます。</p><pre><code class="language-bash"># Full history of a file (including renames)
 git log --follow -- /rootfs/my/file/path</p><h1>First appearance (i.e. creation) - see which layer introduced the file</h1>
 git log --diff-filter=A -- /rootfs/my/file/path</p><h1>All changes made to the file (with diffs)</h1>
 git log -p --follow -- /rootfs/my/file/path</p><h1>When the file was deleted</h1>
@@ -365,12 +371,12 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>これに�
 <li>コミットメッセージにはDockerfileのコマンドが含まれる</li></p><p></ul><h2>リポジトリ構成</h2></p><pre><code class="language-">repository/
 ├── .git/
 ├── Image.md     # Complete image metadata
-└── rootfs/      # Filesystem content from the container</code></pre></p><h2>要件</h2></p><ul><li>Rust 2021 エディション</li>
-<li>Docker CLI（Dockerエンジンのサポート用）</li>
-<li>Git</li></p><p></ul><h2>ライセンス</h2></p><p>MIT</p><p>
+└── rootfs/      # Filesystem content from the container</code></pre></p><h2>必要条件</h2></p><ul><li>Rust 2021 エディション</li>
+<li>Docker CLI（Docker エンジン対応）</li>
+<li>Git</li></p><p></ul><h2>ライセンス</h2></p><p>MIT</p><p>[documentation]: https://docs.rs/oci2git/</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-26
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-12
 
 ---</p>
         </div>
@@ -382,7 +388,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>これに�
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-09-16 
+        Last updated: 2025-12-12 
     </div>
     
 </body>

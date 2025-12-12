@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 353
+    "ratingCount": 374
   },
   "url": "https://OpenAiTx.github.io/projects/Virviil/oci2git/README-fr.html",
   "sameAs": "https://raw.githubusercontent.com/Virviil/oci2git/main/README.md",
-  "datePublished": "2025-09-16",
-  "dateModified": "2025-09-16"
+  "datePublished": "2025-12-12",
+  "dateModified": "2025-12-12"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 353 stars</span>
+                <span class="stars">⭐ 374 stars</span>
                 <span class="language">French</span>
                 <span>by Virviil</span>
             </div>
@@ -308,19 +308,25 @@
         | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=tr">Türkçe</a>
         | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=vi">Tiếng Việt</a>
         | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=id">Bahasa Indonesia</a>
-        | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=as">অসমীয়া</
+        | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=as">অসমীয়া</a>
       </div>
     </div>
   </details>
-</div></p><h1>OCI2Git</h1></p><p>Une application Rust qui convertit les images de conteneur (Docker, etc.) en dépôts Git. Chaque couche du conteneur est représentée comme un commit Git, préservant l’historique et la structure de l’image originale.</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="Démo d'OCI2Git convertissant l'image nginx"></p><h2>Fonctionnalités</h2></p><ul><li>Analysez les images Docker et extrayez les informations des couches</li>
-<li>Créez un dépôt Git où chaque couche d'image est représentée comme un commit</li>
-<li>Prise en charge des couches vides (ENV, WORKDIR, etc.) sous forme de commits vides</li>
+</div></p><p><div align="center">
+<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/assets/logo.png" width="140px" /></p><h1>OCI2Git</h1></p><p>[<img src="https://docs.rs/oci2git/badge.svg" alt="Documentation">][documentation]
+<a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/v/oci2git.svg" alt="Crates.io"></a>
+<a href="https://github.com/Virviil/oci2git/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/l/oci2git.svg" alt="Licence"></a>
+<a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/d/oci2git.svg" alt="Téléchargements"></a></p><p>[//]: # (simulation pour un futur test.yaml)
+[//]: # ([![Statut du test]&#40;https://img.shields.io/github/actions/workflow/status/Virviil/oci2git/rust.yml?branch=master&event=push&label=Test&#41;]&#40;https://github.com/Virviil/oci2git/actions&#41;)</p><p><div align="left"> </div>  
+</div></p><p>Une application Rust qui convertit des images de conteneur (Docker, etc.) en dépôts Git. Chaque couche du conteneur est représentée comme un commit Git, préservant l’historique et la structure de l’image d’origine.</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="Démonstration d’OCI2Git convertissant l’image nginx"></p><h2>Fonctionnalités</h2></p><ul><li>Analyse des images Docker et extraction des informations de couche</li>
+<li>Création d’un dépôt Git où chaque couche d’image est représentée comme un commit</li>
+<li>Prise en charge des couches vides (ENV, WORKDIR, etc.) comme commits vides</li>
 <li>Extraction complète des métadonnées au format Markdown</li>
-<li>Architecture extensible pour supporter différents moteurs de conteneurs</li></p><p></ul><h2>Cas d'utilisation</h2></p><h3>Comparaison des couches</h3>
-Lors du dépannage des problèmes de conteneur, vous pouvez utiliser les puissantes capacités de comparaison de Git pour identifier exactement ce qui a changé entre deux couches. En exécutant <code>git diff</code> entre des commits, les ingénieurs peuvent voir précisément quels fichiers ont été ajoutés, modifiés ou supprimés, ce qui facilite grandement la compréhension de l'impact de chaque instruction Dockerfile et la localisation des changements problématiques.
-<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="Exemple de comparaison de couches"></p><h3>Suivi de l'origine</h3>
-À l'aide de <code>git blame</code>, les développeurs peuvent rapidement déterminer quelle couche a introduit un fichier ou une ligne de code spécifique. Ceci est particulièrement utile lors du diagnostic de problèmes liés aux fichiers de configuration ou aux dépendances. Au lieu d'inspecter manuellement chaque couche, vous pouvez immédiatement retracer l'origine de tout fichier jusqu'à sa couche source et à l'instruction Dockerfile correspondante.</p><h3>Suivi du cycle de vie des fichiers</h3>
-OCI2Git vous permet de suivre le parcours d'un fichier spécifique tout au long de l'historique de l'image du conteneur. Vous pouvez observer quand un fichier a été initialement créé, comment il a été modifié à travers les couches, et si/quand il a finalement été supprimé. Cette vue complète aide à comprendre l'évolution d'un fichier sans avoir à suivre manuellement les changements sur potentiellement des dizaines de couches.</p><p>Pour suivre l'historique d'un fichier dans votre image de conteneur — y compris quand il est apparu pour la première fois, a été modifié ou supprimé — vous pouvez utiliser ces commandes Git après conversion :</p><pre><code class="language-bash"># Full history of a file (including renames)
+<li>Architecture extensible pour la prise en charge de différents moteurs de conteneur</li></p><p></ul><h2>Cas d’utilisation</h2></p><h3>Différenciation des couches</h3>
+Pour le dépannage des problèmes de conteneur, vous pouvez utiliser les puissantes fonctionnalités de comparaison de Git pour identifier exactement ce qui a changé entre deux couches. En exécutant <code>git diff</code> entre des commits, les ingénieurs peuvent voir précisément quels fichiers ont été ajoutés, modifiés ou supprimés, ce qui facilite grandement la compréhension de l’impact de chaque instruction Dockerfile et la localisation des modifications problématiques.
+<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="Exemple de diff de couche"></p><h3>Traçabilité de l’origine</h3>
+Grâce à <code>git blame</code>, les développeurs peuvent rapidement déterminer quelle couche a introduit un fichier ou une ligne de code spécifique. Ceci est particulièrement utile lors du diagnostic de problèmes avec des fichiers de configuration ou des dépendances. Au lieu d’inspecter manuellement chaque couche, vous pouvez immédiatement retracer l’origine de n’importe quel fichier jusqu’à sa couche source et l’instruction Dockerfile correspondante.</p><h3>Suivi du cycle de vie d’un fichier</h3>
+OCI2Git vous permet de suivre le parcours d’un fichier spécifique à travers l’historique de l’image du conteneur. Vous pouvez observer quand un fichier a été créé, comment il a été modifié à travers les couches, et s’il a éventuellement été supprimé. Cette vue complète aide à comprendre l’évolution d’un fichier sans avoir à suivre manuellement les changements sur des dizaines de couches potentielles.</p><p>Pour suivre l’historique d’un fichier dans votre image de conteneur — y compris sa première apparition, ses modifications ou sa suppression — vous pouvez utiliser ces commandes Git après conversion :</p><pre><code class="language-bash"># Full history of a file (including renames)
 git log --follow -- /rootfs/my/file/path</p><h1>First appearance (i.e. creation) - see which layer introduced the file</h1>
 git log --diff-filter=A -- /rootfs/my/file/path</p><h1>All changes made to the file (with diffs)</h1>
 git log -p --follow -- /rootfs/my/file/path</p><h1>When the file was deleted</h1>
@@ -366,13 +372,12 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Cela créer
 ├── .git/
 ├── Image.md     # Complete image metadata
 └── rootfs/      # Filesystem content from the container</code></pre>
-<h2>Exigences</h2></p><ul><li>Rust édition 2021</li>
-<li>CLI Docker (pour le support du moteur Docker)</li>
-<li>Git</li></p><p></ul><h2>Licence</h2></p><p>MIT</p><p>
-
+<h2>Prérequis</h2></p><ul><li>Édition Rust 2021</li>
+<li>Docker CLI (pour la prise en charge du moteur Docker)</li>
+<li>Git</li></p><p></ul><h2>Licence</h2></p><p>MIT</p><p>[documentation]: https://docs.rs/oci2git/</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-26
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-12
 
 ---</p>
         </div>
@@ -384,7 +389,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Cela créer
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-09-16 
+        Last updated: 2025-12-12 
     </div>
     
 </body>

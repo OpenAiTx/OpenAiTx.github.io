@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>oci2git - Docker-Images so einfach wie mit Git inspizieren</title>
-    <meta name="description" content="Docker-Images so einfach wie mit Git inspizieren">
+    <title>oci2git - Introspecting Docker images as easy as using Git</title>
+    <meta name="description" content="Introspecting Docker images as easy as using Git">
     <meta name="keywords" content="oci2git, German, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "oci2git",
-  "description": "Docker-Images so einfach wie mit Git inspizieren",
+  "description": "Introspecting Docker images as easy as using Git",
   "author": {
     "@type": "Person",
     "name": "Virviil"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 353
+    "ratingCount": 374
   },
   "url": "https://OpenAiTx.github.io/projects/Virviil/oci2git/README-de.html",
   "sameAs": "https://raw.githubusercontent.com/Virviil/oci2git/main/README.md",
-  "datePublished": "2025-09-16",
-  "dateModified": "2025-09-16"
+  "datePublished": "2025-12-12",
+  "dateModified": "2025-12-12"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 353 stars</span>
+                <span class="stars">⭐ 374 stars</span>
                 <span class="language">German</span>
                 <span>by Virviil</span>
             </div>
@@ -308,19 +308,25 @@
         | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=tr">Türkçe</a>
         | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=vi">Tiếng Việt</a>
         | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=id">Bahasa Indonesia</a>
-        | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=as">অসমীয়া</
+        | <a href="https://openaitx.github.io/view.html?user=Virviil&project=oci2git&lang=as">অসমীয়া</a>
       </div>
     </div>
   </details>
-</div></p><h1>OCI2Git</h1></p><p>Eine Rust-Anwendung, die Container-Images (Docker, etc.) in Git-Repositories umwandelt. Jede Container-Schicht wird als Git-Commit dargestellt, wodurch die Historie und Struktur des ursprünglichen Images erhalten bleiben.</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="Demo von OCI2Git bei der Umwandlung des nginx-Images"></p><h2>Funktionen</h2></p><ul><li>Analysiere Docker-Images und extrahiere Layer-Informationen</li>
-<li>Erstelle ein Git-Repository, in dem jede Image-Schicht als Commit dargestellt wird</li>
-<li>Unterstützung für leere Layer (ENV, WORKDIR, usw.) als leere Commits</li>
+</div></p><p><div align="center">
+<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/assets/logo.png" width="140px" /></p><h1>OCI2Git</h1></p><p>[<img src="https://docs.rs/oci2git/badge.svg" alt="Dokumentation">][documentation]
+<a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/v/oci2git.svg" alt="Crates.io"></a>
+<a href="https://github.com/Virviil/oci2git/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/l/oci2git.svg" alt="Lizenz"></a>
+<a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/d/oci2git.svg" alt="Downloads"></a></p><p>[//]: # (Mock für zukünftige test.yaml)
+[//]: # ([![Teststatus]&#40;https://img.shields.io/github/actions/workflow/status/Virviil/oci2git/rust.yml?branch=master&event=push&label=Test&#41;]&#40;https://github.com/Virviil/oci2git/actions&#41;)</p><p><div align="left"> </div>  
+</div></p><p>Eine Rust-Anwendung, die Container-Images (Docker, etc.) in Git-Repositories umwandelt. Jede Container-Schicht wird als Git-Commit dargestellt, wobei die Historie und Struktur des Original-Images erhalten bleiben.</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="Demo von OCI2Git bei der Konvertierung des nginx-Images"></p><h2>Funktionen</h2></p><ul><li>Analysieren von Docker-Images und Extrahieren von Schichtinformationen</li>
+<li>Erstellen eines Git-Repositories, in dem jede Image-Schicht als Commit dargestellt wird</li>
+<li>Unterstützung für leere Schichten (ENV, WORKDIR, etc.) als leere Commits</li>
 <li>Vollständige Metadatenextraktion im Markdown-Format</li>
-<li>Erweiterbare Architektur zur Unterstützung verschiedener Container-Engines</li></p><p></ul><h2>Anwendungsfälle</h2></p><h3>Layer-Vergleich</h3>
-Beim Troubleshooting von Container-Problemen kannst du die leistungsfähigen Vergleichsfunktionen von Git nutzen, um genau zu identifizieren, was sich zwischen zwei Layern geändert hat. Durch das Ausführen von <code>git diff</code> zwischen Commits können Ingenieure genau sehen, welche Dateien hinzugefügt, geändert oder gelöscht wurden, was das Verständnis der Auswirkungen jeder Dockerfile-Anweisung erleichtert und problematische Änderungen schneller auffindbar macht.
-<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="Beispiel für Layer-Vergleich"></p><h3>Herkunftsnachverfolgung</h3>
-Mit <code>git blame</code> können Entwickler schnell feststellen, welche Schicht eine bestimmte Datei oder Codezeile eingeführt hat. Das ist besonders wertvoll bei der Diagnose von Problemen mit Konfigurationsdateien oder Abhängigkeiten. Anstatt jede Schicht manuell zu inspizieren, kannst du sofort die Herkunft einer Datei bis zur Ursprungs-Schicht und der entsprechenden Dockerfile-Anweisung zurückverfolgen.</p><h3>Nachverfolgung des Datei-Lebenszyklus</h3>
-OCI2Git ermöglicht es dir, die Entwicklung einer bestimmten Datei über die gesamte Historie des Container-Images hinweg zu verfolgen. Du kannst sehen, wann eine Datei erstmals erstellt wurde, wie sie in den einzelnen Layern verändert wurde und ob/wann sie schließlich entfernt wurde. Dieser umfassende Überblick hilft, die Entwicklung von Dateien zu verstehen, ohne Änderungen manuell über potenziell dutzende Layer nachverfolgen zu müssen.</p><p>Um die Historie einer Datei in deinem Container-Image zu verfolgen – einschließlich ihres ersten Auftretens, ihrer Änderungen oder Löschungen – kannst du nach der Konvertierung diese Git-Befehle verwenden:</p><pre><code class="language-bash"># Full history of a file (including renames)
+<li>Erweiterbare Architektur zur Unterstützung verschiedener Container-Engines</li></p><p></ul><h2>Anwendungsfälle</h2></p><h3>Layer-Diffing</h3>
+Beim Troubleshooting von Container-Problemen können Sie mit den leistungsfähigen Diff-Funktionen von Git genau feststellen, was sich zwischen zwei Schichten geändert hat. Durch Ausführen von <code>git diff</code> zwischen Commits sehen Entwickler exakt, welche Dateien hinzugefügt, geändert oder gelöscht wurden, was das Verständnis der Auswirkungen jeder Dockerfile-Anweisung erleichtert und problematische Änderungen schnell auffindbar macht.
+<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="Beispiel für Layer-Diff"></p><h3>Herkunftsnachverfolgung</h3>
+Mit <code>git blame</code> können Entwickler schnell ermitteln, welche Schicht eine bestimmte Datei oder Codezeile eingeführt hat. Dies ist besonders wertvoll bei der Fehlersuche in Konfigurationsdateien oder Abhängigkeiten. Anstatt jede Schicht manuell zu prüfen, können Sie die Herkunft jeder Datei sofort bis zur Ursprungs-Schicht und der zugehörigen Dockerfile-Anweisung zurückverfolgen.</p><h3>Lebenszyklus-Verfolgung von Dateien</h3>
+OCI2Git ermöglicht es, die Entwicklung einer bestimmten Datei über die gesamte Historie eines Container-Images hinweg nachzuverfolgen. Sie sehen, wann eine Datei erstmals erstellt, wie sie über die Schichten hinweg verändert und ob/wann sie schließlich entfernt wurde. Diese umfassende Ansicht hilft, die Entwicklung von Dateien nachzuvollziehen, ohne Änderungen über dutzende Schichten manuell verfolgen zu müssen.</p><p>Um die Historie einer Datei in Ihrem Container-Image nachzuverfolgen – einschließlich wann sie erstmals auftrat, geändert oder gelöscht wurde – können Sie nach der Konvertierung diese Git-Befehle verwenden:</p><pre><code class="language-bash"># Full history of a file (including renames)
 git log --follow -- /rootfs/my/file/path</p><h1>First appearance (i.e. creation) - see which layer introduced the file</h1>
 git log --diff-filter=A -- /rootfs/my/file/path</p><h1>All changes made to the file (with diffs)</h1>
 git log -p --follow -- /rootfs/my/file/path</p><h1>When the file was deleted</h1>
@@ -363,14 +369,12 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Dadurch wir
 <li>Commits enthalten den Dockerfile-Befehl als Commit-Nachricht</li></p><p></ul><h2>Repository-Struktur</h2></p><pre><code class="language-">repository/
 ├── .git/
 ├── Image.md     # Complete image metadata
-└── rootfs/      # Filesystem content from the container</code></pre>
-  
-<h2>Anforderungen</h2></p><ul><li>Rust Edition 2021</li>
+└── rootfs/      # Filesystem content from the container</code></pre></p><h2>Anforderungen</h2></p><ul><li>Rust 2021 Edition</li>
 <li>Docker CLI (für Docker-Engine-Unterstützung)</li>
-<li>Git</li></p><p></ul><h2>Lizenz</h2></p><p>MIT</p><p>
+<li>Git</li></p><p></ul><h2>Lizenz</h2></p><p>MIT</p><p>[dokumentation]: https://docs.rs/oci2git/</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-08-26
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-12
 
 ---</p>
         </div>
@@ -382,7 +386,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Dadurch wir
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-09-16 
+        Last updated: 2025-12-12 
     </div>
     
 </body>
