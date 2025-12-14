@@ -1,0 +1,330 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoCLI - HNで紹介されたbootromエクスプロイトを使用して、Amazon Echo Dot第2世代をroot化するためのPythonコマンドラインツール。</title>
+    <meta name="description" content="HNで紹介されたbootromエクスプロイトを使用して、Amazon Echo Dot第2世代をroot化するためのPythonコマンドラインツール。">
+    <meta name="keywords" content="EchoCLI, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "EchoCLI",
+  "description": "HNで紹介されたbootromエクスプロイトを使用して、Amazon Echo Dot第2世代をroot化するためのPythonコマンドラインツール。",
+  "author": {
+    "@type": "Person",
+    "name": "Dragon863"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 166
+  },
+  "url": "https://OpenAiTx.github.io/projects/Dragon863/EchoCLI/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/Dragon863/EchoCLI/main/README.md",
+  "datePublished": "2025-12-14",
+  "dateModified": "2025-12-14"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Dragon863/EchoCLI" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    EchoCLI
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 166 stars</span>
+                <span class="language">Japanese</span>
+                <span>by Dragon863</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>[!IMPORTANT]</blockquote>
+<blockquote>echoのroot化をお探しの場合、このプロジェクトは現在廃止されています；代わりに<a href="https://xdaforums.com/t/unlock-root-twrp-unbrick-amazon-echo-dot-2nd-gen-2016-biscuit.4761416/" target="_blank" rel="noopener noreferrer">こちら</a>に記載された方法をご利用ください。これを可能にしてくださった皆様、本当にありがとうございました。このプロジェクトに取り組むのはとても楽しかったです！ :)</blockquote></p><h1>EchoCLI</h1>
+Echo Dot 第2世代向けのテザードrootソリューションです。
+開始するには、<code>main.py</code>を実行してください。
+<br></p><p><a href="https://dragon863.github.io/blog/echoroot.html" target="_blank" rel="noopener noreferrer"><kbd> <br> これはどう動作するのか？ <br> </kbd></a></p><h2>注意</h2>
+<ul><li>ソフトウェアアップデートが常に配信されているため、これがあなたのechoで動作することを保証できません。問題が発生した場合はお気軽にご連絡ください。バグを発見した場合はプルリクエストも歓迎します。</li>
+<li>Windowsでの動作テストができておらず、Windows特有のバグが存在しない保証もないため、<strong>Linux環境での実行を強く推奨します</strong>。</li></p><p></ul>> <strong>警告</strong>
+<blockquote></blockquote>
+<blockquote><strong>これはテザードrootソリューションです</strong> デバイス上のrootを破損または削除するアップデートを防ぐために、AmazonのOTAサーバー（https://d1s31zyz7dcc2d.cloudfront.net および https://d1s31zyz7dcc2d.cloudfront.prod.ota-cloudfront.net）をブロックすることを_推奨_します。デバイスの損害については責任を負いかねます。</blockquote></p><h2>機能</h2>
+<ul><li>USBまたはWi-Fi経由でのrooted ADBシェル</li>
+<li>デバイスからの音声録音</li>
+<li>インターネットなしでHome AssistantのインジケーターとしてEchoを使用</li>
+<li>デバイスを工場出荷時設定に復元</li></p><p></ul><h2>インストール</h2>
+<ul><li>このプロジェクトはpython 3が必要です。</li>
+<li>このプログラムの実行にはLinuxの使用を推奨します。ModemManagerをインストールしている場合は無効化してください。</li>
+</ul><code>pip</code>を使って必要なパッケージをインストールしてください：
+<pre><code class="language-sh">pip install -r requirements.txt</code></pre>
+<ul><li>また、fastbootとADBも必要です。これらのインストール方法については<a href="https://wiki.lineageos.org/adb_fastboot_guide" target="_blank" rel="noopener noreferrer">こちら</a>に良いガイドがあります。ダウンロード後、config.jsonファイルで実行可能パスを設定できます。  </li>
+<li>Echo Dotを接続するためのマイクロUSBケーブルは、データ転送対応のものを使用し、電源供給のみのケーブルではないことを確認してください。</li></p><p></ul><h2>ドキュメント  </h2>
+このツールの動作については<a href="https://dragon863.github.io/blog/echoroot.html" target="_blank" rel="noopener noreferrer">私のウェブサイト</a>で確認できます。</p><p>デバイスのroot化が完了すると、<code>preloader_no_hdr.bin</code>というファイルが生成されます。デバイスを起動するには<a href="https://github.com/bkerler/mtkclient" target="_blank" rel="noopener noreferrer">mtkclient</a>をインストールし、そのディレクトリにファイルをコピーして <code>python mtk plstage --ptype=kamakiri2 --preloader=preloader_no_hdr.bin</code> を実行してください。インストールされているPythonのバージョンに応じて<code>python</code>を<code>python3</code>に置き換えてください。</p><h2>Home assistant インジケーター  </h2>
+Home assistant インジケーター機能を使用する場合、raspberry pi zero wやその他の小型SBCでpython flaskサーバーを実行し、デバイスを起動することを推奨します。crontabを使って起動時にmtkclientを自動実行することが可能です。</p><h2>Echoがブリックした？  </h2>
+root化または部分的にroot化されたEchoのアンブリックには、<a href="https://github.com/Dragon863/EchoCLI/blob/main/debrick.md" target="_blank" rel="noopener noreferrer">こちらのガイド</a>に従い、mtkclientを使用してください。</p><h2>感謝</h2></p><p>このプロジェクトは以下の方々なしでは実現できませんでした：  
+<ul><li><a href="https://forum.xda-developers.com/m/j10hx40r.11878441/" target="_blank" rel="noopener noreferrer">j10hx40r</a> - デバイスの初期root化の支援、パッチシステムの再設計、fos_flagsの組み合わせ使用方法の指導、および資源探しの適切な方向付けをしていただきました  </li>
+<li><a href="https://github.com/xyzz/amonet" target="_blank" rel="noopener noreferrer">xyzz's Amonet</a> - このデバイス用に適応したエクスプロイトで、bootromエクスプロイトも含みます  </li>
+<li><a href="https://github.com/chaosmaster" target="_blank" rel="noopener noreferrer">chaosmaster</a> - 多くの有用なamonetコードを作成し、その中のいくつかのスニペットを使用させていただきました。GPT修正用のコードも含まれます  </li></p><p></ul><h2>連絡先  </h2>
+<ul><li>メールアドレス: dragon863.dev@gmail.com  </li>
+<li><a href="https://forum.xda-developers.com/m/lemon86.12487447/" target="_blank" rel="noopener noreferrer">XDAフォーラム</a>で会話を始めることもできます</li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-14
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Dragon863/EchoCLI/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-14 
+    </div>
+    
+</body>
+</html>
