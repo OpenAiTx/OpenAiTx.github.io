@@ -1,0 +1,404 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bigtree - Implementaci&#243;n de &#193;rbol y M&#233;todos para Python, integrado con list, dictionary, pandas y polars DataFrame.</title>
+    <meta name="description" content="Implementaci&#243;n de &#193;rbol y M&#233;todos para Python, integrado con list, dictionary, pandas y polars DataFrame.">
+    <meta name="keywords" content="bigtree, Spanish, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "bigtree",
+  "description": "Implementación de Árbol y Métodos para Python, integrado con list, dictionary, pandas y polars DataFrame.",
+  "author": {
+    "@type": "Person",
+    "name": "kayjan"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 198
+  },
+  "url": "https://OpenAiTx.github.io/projects/kayjan/bigtree/README-es.html",
+  "sameAs": "https://raw.githubusercontent.com/kayjan/bigtree/master/README.md",
+  "datePublished": "2025-12-16",
+  "dateModified": "2025-12-16"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/kayjan/bigtree" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    bigtree
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 198 stars</span>
+                <span class="language">Spanish</span>
+                <span>by kayjan</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Paquete Big Tree para Python</h1></p><p>Implementación de Árbol y Métodos para Python, integrado con listas, diccionarios, pandas y DataFrame de polars.</p><p>Es pythonico, lo que facilita su aprendizaje y es extensible a muchos tipos de flujos de trabajo.</p><p>----</p><p>Enlaces Relacionados:
+<ul><li><a href="https://bigtree.readthedocs.io/" target="_blank" rel="noopener noreferrer">Documentación</a></li>
+<li><a href="https://github.com/kayjan/bigtree/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+<li>Comunidad</li>
+  <li><a href="https://github.com/kayjan/bigtree/issues" target="_blank" rel="noopener noreferrer">Issues</a></li>
+  </ul>/ <a href="https://github.com/kayjan/bigtree/discussions" target="_blank" rel="noopener noreferrer">Discussions</a>
+  / <a href="https://github.com/kayjan/bigtree/blob/master/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Changelog</a>
+  / <a href="https://bigtree.readthedocs.io/stable/home/contributing/" target="_blank" rel="noopener noreferrer">Contributing</a>
+<ul><li>Paquete</li>
+  <li><a href="https://pypi.org/project/bigtree/" target="_blank" rel="noopener noreferrer">PyPI</a></li>
+  </ul>/ <a href="https://anaconda.org/conda-forge/bigtree" target="_blank" rel="noopener noreferrer">Conda</a>
+<ul><li>Artículos</li>
+  <li><a href="https://medium.com/data-science/python-tree-implementation-with-bigtree-13cdabd77adc#245a-94ae81f0b3f1" target="_blank" rel="noopener noreferrer">Implementación de Árbol en Python con BigTree</a></li>
+  <li><a href="https://medium.com/data-science/reingold-tilford-algorithm-explained-with-walkthrough-be5810e8ed93?sk=2db8e10398cee76c486c4b06b0b33322" target="_blank" rel="noopener noreferrer">El Algoritmo Reingold Tilford Explicado, con Ejemplo</a></li>
+<li><div><p>Si quieres apoyar bigtree, <a href="https://www.buymeacoffee.com/kayjan"><img src="https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me a Coffee" style="vertical-align:middle"></a></p></div></li></p><p></ul>-----</p><h2>Componentes</h2>
+Big Tree consta de 3 segmentos que incluyen la implementación de Árbol, Árbol Binario y Grafo Acíclico Dirigido (DAG).</p><p>Para la implementación de <strong>Árbol</strong>, hay 12 componentes principales.</p><ul><li><a href="https://bigtree.readthedocs.io/stable/bigtree/node/node/" target="_blank" rel="noopener noreferrer"><strong>🌺 Nodo</strong></a></li>
+   <li>`<code>BaseNode</code><code>, clase extensible</li>
+   <li></code><code>Node</code><code>, BaseNode con atributo de nombre de nodo</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/tree/tree/" target="_blank" rel="noopener noreferrer"><strong>🎄 Árbol</strong></a></li>
+   <li></code><code>Tree</code><code>, envoltorio alrededor de </code><code>Node</code><code>, que proporciona APIs de alto nivel para construir, iterar, consultar y exportar toda la estructura del árbol</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/tree/construct/" target="_blank" rel="noopener noreferrer"><strong>✨ Construcción del Árbol</strong></a></li>
+   <li>Desde </code>Node<code>, usando constructores de padre e hijos</li>
+   <li>Desde <em>str</em>, usando visualización de árbol o notación en cadena Newick</li>
+   <li>Desde <em>list</em>, usando rutas o tuplas padre-hijo</li>
+   <li>Desde <em>diccionario anidado</em>, usando pares clave-valor de atributos de ruta o estructura recursiva</li>
+   <li>Desde <em>pandas DataFrame</em>, usando rutas o columnas padre-hijo</li>
+   <li>Desde <em>polars DataFrame</em>, usando rutas o columnas padre-hijo</li>
+   <li>Desde <em>interfaz de usuario interactiva</em></li>
+   <li>Agregar nodos al árbol existente usando cadena de ruta</li>
+   <li>Agregar nodos y atributos al árbol existente usando <em>diccionario</em>, <em>pandas DataFrame</em> o <em>polars DataFrame</em>, usando ruta</li>
+   <li>Agregar solo atributos al árbol existente usando <em>diccionario</em>, <em>pandas DataFrame</em> o <em>polars DataFrame</em>, usando nombre del nodo</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/utils/iterators/" target="_blank" rel="noopener noreferrer"><strong>➰ Recorrido del Árbol</strong></a></li>
+   <li>Recorrido Preorden</li>
+   <li>Recorrido Postorden</li>
+   <li>Recorrido por Niveles</li>
+   <li>Recorrido por Grupos de Niveles</li>
+   <li>Recorrido ZigZag</li>
+   <li>Recorrido por Grupos ZigZag</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/tree/parsing/" target="_blank" rel="noopener noreferrer"><strong>🧩 Análisis del Árbol</strong></a></li>
+   <li>Obtener ancestros comunes entre nodos</li>
+   <li>Obtener ruta de un nodo a otro nodo</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/tree/modify/" target="_blank" rel="noopener noreferrer"><strong>📝 Modificación del Árbol</strong></a></li>
+   <li>Copiar nodos de una ubicación a otra</li>
+   <li>Mover nodos de una ubicación a otra</li>
+   <li>Mover y reemplazar nodos de una ubicación a otra</li>
+   <li>Copiar nodos de un árbol a otro</li>
+   <li>Copiar y reemplazar nodos de un árbol a otro</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/tree/query/" target="_blank" rel="noopener noreferrer"><strong>📌 Consulta del Árbol</strong></a></li>
+   <li>Filtrar árbol usando Lenguaje de Consulta de Árbol</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/tree/search/" target="_blank" rel="noopener noreferrer"><strong>🔍 Búsqueda en el Árbol</strong></a></li>
+   <li>Encontrar múltiples nodos basados en nombre, ruta parcial, ruta relativa, valor de atributo, condición definida por el usuario</li>
+   <li>Encontrar un solo nodo basado en nombre, ruta parcial, ruta relativa, ruta completa, valor de atributo, condición definida por el usuario</li>
+   <li>Encontrar múltiples nodos hijos basados en condición definida por el usuario</li>
+   <li>Encontrar un solo nodo hijo basado en nombre, condición definida por el usuario</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/tree/helper/" target="_blank" rel="noopener noreferrer"><strong>🔧 Funciones Auxiliares</strong></a></li>
+   <li>Clonar árbol a otro tipo </code>Node<code></li>
+   <li>Obtener subárbol (árbol más pequeño con raíz diferente)</li>
+   <li>Podar árbol (árbol más pequeño con misma raíz)</li>
+   <li>Obtener diferencias entre dos árboles</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/utils/plot/" target="_blank" rel="noopener noreferrer"><strong>📊 Graficar Árbol</strong></a></li>
+   <li>Algoritmo Reingold Tilford mejorado para obtener coordenadas (x, y) para una estructura de árbol</li>
+   <li>Graficar árbol usando matplotlib (dependencia opcional)</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/tree/export/" target="_blank" rel="noopener noreferrer"><strong>🔨 Exportar Árbol</strong></a></li>
+   <li>Imprimir en consola, en orientación vertical u horizontal</li>
+   <li>Exportar a <em>notación de cadena Newick</em>, <em>diccionario</em>, <em>diccionario anidado</em>, <em>DataFrame de pandas</em> o <em>DataFrame de polars</em></li>
+   <li>Exportar árbol a <em>dot</em> (puede guardar en archivos .dot, .png, .svg, .jpeg)</li>
+   <li>Exportar árbol a <em>Pillow</em> (puede guardar en .png, .jpg)</li>
+   <li>Exportar árbol a <em>Mermaid Flowchart</em> (puede mostrarse en .md)</li>
+   <li>Exportar árbol a <em>Pyvis Network</em> (puede mostrarse interactivo en .html)</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/workflows/app_todo" target="_blank" rel="noopener noreferrer"><strong>✔️ Flujos de trabajo</strong></a></li>
+   <li>¡Ejemplos de flujos de trabajo para demostración de árboles!</li></p><p></ul>--------</p><p>Para la implementación de <strong>Árbol Binario</strong>, hay 4 componentes principales.
+El Nodo Binario hereda de Nodo, por lo que los componentes en la implementación de Árbol también están disponibles en Árbol Binario.</p><ul><li><a href="https://bigtree.readthedocs.io/stable/bigtree/node/binarynode" target="_blank" rel="noopener noreferrer"><strong>🌿 Nodo</strong></a></li>
+   <li></code><code>BinaryNode</code><code>, Nodo con reglas de árbol binario</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/binarytree/binarytree/" target="_blank" rel="noopener noreferrer"><strong>🎄 Árbol Binario</strong></a></li>
+   <li></code><code>BinaryTree</code><code>, envoltorio alrededor de </code><code>BinaryNode</code><code>, que proporciona APIs de alto nivel para construir, iterar, consultar y exportar toda la estructura del árbol</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/binarytree/construct/" target="_blank" rel="noopener noreferrer"><strong>✨ Construcción de Árbol Binario</strong></a></li>
+   <li>Desde <em>lista</em>, usando estructura de lista aplanada</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/utils/iterators/" target="_blank" rel="noopener noreferrer"><strong>➰ Recorrido de Árbol Binario</strong></a></li>
+   <li>Recorrido In-Order</li></p><p></ul>-----</p><p>Para la implementación de <strong>Grafo Acíclico Dirigido (DAG)</strong>, hay 6 componentes principales.</p><ul><li><a href="https://bigtree.readthedocs.io/stable/bigtree/node/dagnode/" target="_blank" rel="noopener noreferrer"><strong>🌼 Nodo</strong></a></li>
+   <li></code><code>DAGNode</code><code>, clase extensible para construir Grafos Acíclicos Dirigidos (DAG)</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/dag/dag/" target="_blank" rel="noopener noreferrer"><strong>🎄 DAG</strong></a></li>
+   <li></code><code>DAG</code><code>, envoltorio alrededor de </code><code>DAGNode</code><code>, que proporciona APIs de alto nivel para construir, exportar e iterar todo el DAG</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/dag/construct/" target="_blank" rel="noopener noreferrer"><strong>✨ Construcción de DAG</strong></a></li>
+   <li>Desde <em>lista</em>, que contiene tuplas padre-hijo</li>
+   <li>Desde <em>diccionario anidado</em></li>
+   <li>Desde <em>DataFrame de pandas</em></li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/utils/iterators/" target="_blank" rel="noopener noreferrer"><strong>➰ Recorrido de DAG</strong></a></li>
+   <li>Método genérico de recorrido</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/dag/parsing/" target="_blank" rel="noopener noreferrer"><strong>🧩 Análisis de DAG</strong></a></li>
+   <li>Obtener posibles rutas desde un nodo a otro nodo</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/dag/export/" target="_blank" rel="noopener noreferrer"><strong>🔨 Exportación de DAG</strong></a></li>
+   <li>Exportar a <em>lista</em>, <em>diccionario</em> o <em>DataFrame de pandas</em></li>
+   <li>Exportar DAG a <em>dot</em> (puede guardarse en archivos .dot, .png, .svg, .jpeg)</li></p><p></ul>-----</p><h2>Instalación</h2></p><p></code>bigtree<code> requiere Python 3.10+. Hay dos formas de instalar </code>bigtree<code>, con pip (recomendado) o conda.</p><h3>a) Instalación con pip</h3></p><p>#### Instalación básica</p><p>Para instalar </code>bigtree<code>, ejecute la siguiente línea en el símbolo del sistema:</p><pre><code class="language-console">$ pip install bigtree</code></pre>
+#### Instalación de dependencias opcionales</p><p></code>bigtree<code> tiene una serie de dependencias opcionales, que se pueden instalar usando la sintaxis de "extras".</p><pre><code class="language-console">$ pip install 'bigtree[extra_1, extra_2]'</code></pre></p><p>Ejemplos de paquetes adicionales incluyen:</p><ul><li></code>all<code>: incluye todas las dependencias opcionales</li>
+<li></code>image<code>: para exportar el árbol a imagen</li>
+<li></code>matplotlib<code>: para graficar árboles</li>
+<li></code>pandas<code>: para métodos de pandas</li>
+<li></code>polars<code>: para métodos de polars</li>
+<li></code>query<code>: para métodos de consulta del árbol</li>
+<li></code>vis<code>: para visualización con pyvis</li></p><p></ul>Para la dependencia extra </code>image<code>, puede que necesite instalar más complementos.</p><pre><code class="language-console">$ brew install gprof2dot  # for MacOS
+$ conda install graphviz  # for Windows</code></pre></p><h3>b) Instalación con conda</h3></p><p>Para instalar </code>bigtree` con conda, ejecute la siguiente línea en el símbolo del sistema:</p><pre><code class="language-console">$ conda install -c conda-forge bigtree</code></pre></p><p>-----</p><h2>Star History</h2></p><p><a href="https://star-history.com/#kayjan/bigtree&Date" target="_blank" rel="noopener noreferrer"><img src="https://api.star-history.com/svg?repos=kayjan/bigtree&type=Date" alt="Star History Chart"></a></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-16
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/kayjan/bigtree/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-16 
+    </div>
+    
+</body>
+</html>

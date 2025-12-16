@@ -1,0 +1,404 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bigtree - Python向けのツリー実装とメソッド。list、dictionary、pandasおよびpolarsのDataFrameと統合。</title>
+    <meta name="description" content="Python向けのツリー実装とメソッド。list、dictionary、pandasおよびpolarsのDataFrameと統合。">
+    <meta name="keywords" content="bigtree, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "bigtree",
+  "description": "Python向けのツリー実装とメソッド。list、dictionary、pandasおよびpolarsのDataFrameと統合。",
+  "author": {
+    "@type": "Person",
+    "name": "kayjan"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 198
+  },
+  "url": "https://OpenAiTx.github.io/projects/kayjan/bigtree/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/kayjan/bigtree/master/README.md",
+  "datePublished": "2025-12-16",
+  "dateModified": "2025-12-16"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/kayjan/bigtree" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    bigtree
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 198 stars</span>
+                <span class="language">Japanese</span>
+                <span>by kayjan</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Big Tree Python パッケージ</h1></p><p>Python向けのツリー実装とメソッドで、リスト、辞書、pandasおよびpolarsのDataFrameと統合されています。</p><p>Pythonらしく、学習しやすく多様なワークフローに拡張可能です。</p><p>----</p><p>関連リンク：
+<ul><li><a href="https://bigtree.readthedocs.io/" target="_blank" rel="noopener noreferrer">ドキュメント</a></li>
+<li><a href="https://github.com/kayjan/bigtree/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+<li>コミュニティ</li>
+  <li><a href="https://github.com/kayjan/bigtree/issues" target="_blank" rel="noopener noreferrer">Issues</a></li>
+  </ul>/ <a href="https://github.com/kayjan/bigtree/discussions" target="_blank" rel="noopener noreferrer">Discussions</a>
+  / <a href="https://github.com/kayjan/bigtree/blob/master/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Changelog</a>
+  / <a href="https://bigtree.readthedocs.io/stable/home/contributing/" target="_blank" rel="noopener noreferrer">Contributing</a>
+<ul><li>パッケージ</li>
+  <li><a href="https://pypi.org/project/bigtree/" target="_blank" rel="noopener noreferrer">PyPI</a></li>
+  </ul>/ <a href="https://anaconda.org/conda-forge/bigtree" target="_blank" rel="noopener noreferrer">Conda</a>
+<ul><li>記事</li>
+  <li><a href="https://medium.com/data-science/python-tree-implementation-with-bigtree-13cdabd77adc#245a-94ae81f0b3f1" target="_blank" rel="noopener noreferrer">BigTreeによるPythonのツリー実装</a></li>
+  <li><a href="https://medium.com/data-science/reingold-tilford-algorithm-explained-with-walkthrough-be5810e8ed93?sk=2db8e10398cee76c486c4b06b0b33322" target="_blank" rel="noopener noreferrer">Reingold-Tilfordアルゴリズムの説明とウォークスルー</a></li>
+<li><div><p>bigtreeをサポートしたい方は、<a href="https://www.buymeacoffee.com/kayjan"><img src="https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me a Coffee" style="vertical-align:middle"></a></p></div></li></p><p></ul>-----</p><h2>コンポーネント</h2>
+Big Treeは、ツリー、二分木、そして有向非巡回グラフ（DAG）の3つのセグメントで構成されています。</p><p><strong>ツリー</strong>実装には、12の主要コンポーネントがあります。</p><ul><li><a href="https://bigtree.readthedocs.io/stable/bigtree/node/node/" target="_blank" rel="noopener noreferrer"><strong>🌺 ノード</strong></a></li>
+   <li>`<code>BaseNode</code><code>, 拡張可能なクラス</li>
+   <li></code><code>Node</code><code>, ノード名属性を持つBaseNode</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/tree/tree/" target="_blank" rel="noopener noreferrer"><strong>🎄 ツリー</strong></a></li>
+   <li></code><code>Tree</code><code>, </code><code>Node</code><code>をラップし、ツリー全体の構築、反復、クエリ、エクスポートのための高レベルAPIを提供</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/tree/construct/" target="_blank" rel="noopener noreferrer"><strong>✨ ツリーの構築</strong></a></li>
+   <li></code>Node<code>から、親子コンストラクタを使用</li>
+   <li><em>str</em>から、ツリー表示やNewick文字列表記を使用</li>
+   <li><em>list</em>から、パスや親子タプルを使用</li>
+   <li><em>ネストされた辞書</em> から、パス属性のキー・バリューのペアまたは再帰的構造を使用して</li>
+   <li><em>pandas DataFrame</em> から、パスまたは親子カラムを使用して</li>
+   <li><em>polars DataFrame</em> から、パスまたは親子カラムを使用して</li>
+   <li><em>インタラクティブUI</em> から</li>
+   <li>パス文字列を使用して既存のツリーにノードを追加</li>
+   <li>パスを使用して <em>辞書</em>、<em>pandas DataFrame</em>、または <em>polars DataFrame</em> から既存のツリーにノードと属性を追加</li>
+   <li>ノード名を使用して <em>辞書</em>、<em>pandas DataFrame</em>、または <em>polars DataFrame</em> から既存のツリーに属性のみを追加</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/utils/iterators/" target="_blank" rel="noopener noreferrer"><strong>➰ ツリーの走査</strong></a></li>
+   <li>前順走査</li>
+   <li>後順走査</li>
+   <li>レベル順走査</li>
+   <li>レベル順グループ走査</li>
+   <li>ジグザグ走査</li>
+   <li>ジグザググループ走査</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/tree/parsing/" target="_blank" rel="noopener noreferrer"><strong>🧩 ツリーの解析</strong></a></li>
+   <li>ノード間の共通祖先を取得</li>
+   <li>あるノードから別のノードへのパスを取得</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/tree/modify/" target="_blank" rel="noopener noreferrer"><strong>📝 ツリーの変更</strong></a></li>
+   <li>ノードをある場所から別の場所へコピー</li>
+   <li>ノードをある場所から別の場所へ移動</li>
+   <li>ノードをある場所から別の場所へ移動して置換</li>
+   <li>ノードをあるツリーから別のツリーへコピー</li>
+   <li>ノードをあるツリーから別のツリーへコピーして置換</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/tree/query/" target="_blank" rel="noopener noreferrer"><strong>📌 ツリーのクエリ</strong></a></li>
+   <li>Tree Query Language を使用してツリーをフィルタリング</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/tree/search/" target="_blank" rel="noopener noreferrer"><strong>🔍 ツリー検索</strong></a></li>
+   <li>名前、部分パス、相対パス、属性値、ユーザー定義条件に基づいて複数ノードを検索</li>
+   <li>名前、部分パス、相対パス、完全パス、属性値、ユーザー定義条件に基づいて単一ノードを検索</li>
+   <li>ユーザー定義条件に基づいて複数の子ノードを検索</li>
+   <li>名前、ユーザー定義条件に基づいて単一の子ノードを検索</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/tree/helper/" target="_blank" rel="noopener noreferrer"><strong>🔧 ヘルパー関数</strong></a></li>
+   <li>別の </code>Node<code> タイプへのツリーのクローン作成</li>
+   <li>部分ツリーを取得（異なるルートの小さいツリー）</li>
+   <li>ツリーを剪定（同じルートの小さいツリー）</li>
+   <li>2つのツリーの差分を取得</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/utils/plot/" target="_blank" rel="noopener noreferrer"><strong>📊 ツリーの描画</strong></a></li>
+   <li>拡張Reingold-Tilfordアルゴリズムによるツリー構造の (x, y) 座標取得</li>
+   <li>matplotlib（オプション依存）を使用したツリーの描画</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/tree/export/" target="_blank" rel="noopener noreferrer"><strong>🔨 ツリーのエクスポート</strong></a></li>
+   <li>縦方向または横方向の向きでコンソールに出力</li>
+   <li><em>Newick文字列表記</em>、<em>辞書</em>、<em>ネスト辞書</em>、<em>pandas DataFrame</em>、または<em>polars DataFrame</em>へのエクスポート</li>
+   <li>ツリーを<em>dot</em>へエクスポート（.dot、.png、.svg、.jpegファイルに保存可能）</li>
+   <li>ツリーを<em>Pillow</em>へエクスポート（.png、.jpgに保存可能）</li>
+   <li>ツリーを<em>Mermaidフローチャート</em>へエクスポート（.md上で表示可能）</li>
+   <li>ツリーを<em>Pyvisネットワーク</em>へエクスポート（インタラクティブな.htmlで表示可能）</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/workflows/app_todo" target="_blank" rel="noopener noreferrer"><strong>✔️ ワークフロー</strong></a></li>
+   <li>ツリーのデモ用サンプルワークフロー！</li></p><p></ul>--------</p><p><strong>二分木（Binary Tree）</strong>の実装には4つの主要なコンポーネントがあります。
+Binary NodeはNodeを継承しているため、Tree実装のコンポーネントもBinary Treeで利用可能です。</p><ul><li><a href="https://bigtree.readthedocs.io/stable/bigtree/node/binarynode" target="_blank" rel="noopener noreferrer"><strong>🌿 ノード</strong></a></li>
+   <li></code><code>BinaryNode</code><code>、二分木のルールを持つノード</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/binarytree/binarytree/" target="_blank" rel="noopener noreferrer"><strong>🎄 二分木</strong></a></li>
+   <li></code><code>BinaryTree</code><code>、</code><code>BinaryNode</code><code>をラップし、高レベルのAPIでツリー全体の構築、反復、問い合わせ、エクスポートを提供</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/binarytree/construct/" target="_blank" rel="noopener noreferrer"><strong>✨ 二分木の構築</strong></a></li>
+   <li><em>リスト</em>から、平坦化されたリスト構造を使用</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/utils/iterators/" target="_blank" rel="noopener noreferrer"><strong>➰ 二分木の走査</strong></a></li>
+   <li>中間順走査</li></p><p></ul>-----</p><p><strong>有向非巡回グラフ（DAG）</strong>の実装には6つの主要なコンポーネントがあります。</p><ul><li><a href="https://bigtree.readthedocs.io/stable/bigtree/node/dagnode/" target="_blank" rel="noopener noreferrer"><strong>🌼 ノード</strong></a></li>
+   <li></code><code>DAGNode</code><code>、有向非巡回グラフ（DAG）構築用の拡張可能なクラス</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/dag/dag/" target="_blank" rel="noopener noreferrer"><strong>🎄 DAG</strong></a></li>
+   <li></code><code>DAG</code><code>、</code><code>DAGNode</code><code>をラップし、高レベルのAPIでDAG全体の構築、エクスポート、反復を提供</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/dag/construct/" target="_blank" rel="noopener noreferrer"><strong>✨ DAGの構築</strong></a></li>
+   <li><em>リスト</em>から、親子のタプルを含む</li>
+   <li><em>ネスト辞書</em>から</li>
+   <li><em>pandas DataFrame</em>から</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/utils/iterators/" target="_blank" rel="noopener noreferrer"><strong>➰ DAGの走査</strong></a></li>
+   <li>汎用的な走査メソッド</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/dag/parsing/" target="_blank" rel="noopener noreferrer"><strong>🧩 DAGの解析</strong></a></li>
+   <li>あるノードから別のノードへの可能な経路を取得</li>
+<li><a href="https://bigtree.readthedocs.io/stable/bigtree/dag/export/" target="_blank" rel="noopener noreferrer"><strong>🔨 DAGのエクスポート</strong></a></li>
+   <li><em>リスト</em>、<em>辞書</em>、または<em>pandas DataFrame</em>へエクスポート</li>
+   <li>DAGを<em>dot</em>形式でエクスポート（.dot、.png、.svg、.jpegファイルに保存可能）</li></p><p></ul>-----</p><h2>インストール</h2></p><p></code>bigtree<code>はPython 3.10以上が必要です。</code>bigtree<code>のインストール方法は、pip（推奨）かcondaの2つがあります。</p><h3>a) pipでのインストール</h3></p><p>#### 基本インストール</p><p></code>bigtree<code>をインストールするには、コマンドプロンプトで以下の行を実行してください：</p><pre><code class="language-console">$ pip install bigtree</code></pre></p><p>#### オプション依存関係のインストール</p><p></code>bigtree<code> にはいくつかのオプション依存関係があり、「extras」構文を使ってインストールできます。</p><pre><code class="language-console">$ pip install 'bigtree[extra_1, extra_2]'</code></pre>
+追加パッケージの例は以下の通りです:</p><ul><li></code>all<code>: すべてのオプション依存関係を含む</li>
+<li></code>image<code>: ツリーを画像にエクスポートするため</li>
+<li></code>matplotlib<code>: ツリーをプロットするため</li>
+<li></code>pandas<code>: pandas メソッド用</li>
+<li></code>polars<code>: polars メソッド用</li>
+<li></code>query<code>: ツリークエリメソッド用</li>
+<li></code>vis<code>: pyvis ビジュアライゼーション用</li></p><p></ul></code>image<code> 追加依存関係の場合、さらにプラグインをインストールする必要があります。</p><pre><code class="language-console">$ brew install gprof2dot  # for MacOS
+$ conda install graphviz  # for Windows</code></pre></p><h3>b) condaによるインストール</h3></p><p></code>bigtree`をcondaでインストールするには、コマンドプロンプトで次の行を実行してください:</p><pre><code class="language-console">$ conda install -c conda-forge bigtree</code></pre></p><p>-----</p><h2>Star History</h2></p><p><a href="https://star-history.com/#kayjan/bigtree&Date" target="_blank" rel="noopener noreferrer"><img src="https://api.star-history.com/svg?repos=kayjan/bigtree&type=Date" alt="Star History Chart"></a></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-16
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/kayjan/bigtree/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-16 
+    </div>
+    
+</body>
+</html>
