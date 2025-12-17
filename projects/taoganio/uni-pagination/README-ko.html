@@ -1,0 +1,396 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uni-pagination - Uni Pagination은 Java 기반의 범용 페이징 프레임워크로, 추상화된 설계를 통해 다양한 데이터 소스에 통일된 페이징 조회 인터페이스를 제공합니다. 이 프레임워크는 모듈화 아키텍처를 채택하여 현재 JDBC, Mybatis, MongoDB, Elasticsearch 등 여러 데이터 소스를 통합하며 유연한 확장 메커니즘을 제공합니다.</title>
+    <meta name="description" content="Uni Pagination은 Java 기반의 범용 페이징 프레임워크로, 추상화된 설계를 통해 다양한 데이터 소스에 통일된 페이징 조회 인터페이스를 제공합니다. 이 프레임워크는 모듈화 아키텍처를 채택하여 현재 JDBC, Mybatis, MongoDB, Elasticsearch 등 여러 데이터 소스를 통합하며 유연한 확장 메커니즘을 제공합니다.">
+    <meta name="keywords" content="uni-pagination, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "uni-pagination",
+  "description": "Uni Pagination은 Java 기반의 범용 페이징 프레임워크로, 추상화된 설계를 통해 다양한 데이터 소스에 통일된 페이징 조회 인터페이스를 제공합니다. 이 프레임워크는 모듈화 아키텍처를 채택하여 현재 JDBC, Mybatis, MongoDB, Elasticsearch 등 여러 데이터 소스를 통합하며 유연한 확장 메커니즘을 제공합니다.",
+  "author": {
+    "@type": "Person",
+    "name": "taoganio"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 191
+  },
+  "url": "https://OpenAiTx.github.io/projects/taoganio/uni-pagination/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/taoganio/uni-pagination/main/README.md",
+  "datePublished": "2025-12-17",
+  "dateModified": "2025-12-17"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/taoganio/uni-pagination" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    uni-pagination
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 191 stars</span>
+                <span class="language">Korean</span>
+                <span>by taoganio</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><div align="right">
+  <details>
+    <summary >🌐 Language</summary>
+    <div>
+      <div align="center">
+        <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=en">English</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=zh-CN">简体中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=zh-TW">繁體中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=ja">日本語</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=ko">한국어</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=hi">हिन्दी</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=th">ไทย</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=fr">Français</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=de">Deutsch</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=es">Español</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=it">Italiano</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=ru">Русский</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=pt">Português</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=nl">Nederlands</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=pl">Polski</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=ar">العربية</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=fa">فارسی</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=tr">Türkçe</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=vi">Tiếng Việt</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=id">Bahasa Indonesia</a>
+        | <a href="https://openaitx.github.io/view.html?user=taoganio&project=uni-pagination&lang=as">অসমীয়া</a>
+      </div>
+    </div>
+  </details>
+</div></p><h1>Uni-Pagination 페이징 프레임워크</h1></p><p>Uni Pagination은 Java 기반의 범용 페이징 프레임워크로, 추상화된 설계를 통해 다양한 데이터 소스에 대해 통일된 페이징 쿼리 인터페이스를 제공합니다. 프레임워크는 모듈화 아키텍처를 채택하여 현재 JDBC, Mybatis, MongoDB, Elasticsearch 등 여러 데이터 소스를 통합하고 유연한 확장 메커니즘을 제공합니다.</p><h2>핵심 설계</h2></p><p>프레임워크의 핵심 설계는 네 가지 주요 컴포넌트를 중심으로 전개됩니다:</p><ul><li><strong>페이징 문장(PaginationStatement)</strong></li>
+    <li>모든 언어의 페이징 쿼리 문장 정의 지원</li>
+    <li>통일된 페이징 파라미터 인터페이스 제공</li>
+    <li>커스텀 페이징 로직 허용</li></p><p><li><strong>페이징 실행기(PaginationStatementExecutor)</strong></li>
+    <li>페이징 쿼리 문장 실행 담당</li>
+    <li>페이징 정보 조회 기능 제공</li>
+    <li>확장 가능한 실행기 메커니즘</li></p><p><li><strong>페이징 결과 집합(PaginationResultSet)</strong></li>
+    <li>통일된 결과 집합 인터페이스</li>
+    <li>컬럼명 및 인덱스로 데이터 접근 지원</li>
+    <li>타입 변환 기능 제공</li>
+    <li>JDBC ResultSet과 유사한 설계</li></p><p><li><strong>결과 집합 처리기(PaginationResultSetHandler)</strong></li>
+    <li>커스텀 결과 집합 변환 지원</li>
+    <li>객체 매핑 기능 제공</li></p><p>
+</ul><h2>설계 목표</h2></p><ul><li><strong>통일성</strong></li>
+    <li>통일된 페이징 쿼리 인터페이스 제공</li>
+    <li>서로 다른 데이터 소스 구현 차이 감추기</li>
+    <li>페이징 쿼리 사용 방식 단순화</li></p><p><li><strong>유연성</strong></li>
+    <li>커스텀 페이징 문장 지원</li>
+    <li>실행기 확장 허용</li>
+    <li>풍부한 결과 집합 처리 방식 제공</li></p><p><li><strong>확장성</strong></li>
+    <li>모듈화 설계</li>
+    <li>신규 데이터 소스 빠른 접속 지원</li>
+    <li>확장 포인트 메커니즘 제공</li></p><p><li><strong>사용 편의성</strong></li>
+    <li>간단하고 직관적인 API</li>
+    <li>완벽한 타입 변환</li>
+    <li>풍부한 유틸리티 클래스 지원</li>
+</ul><h2>적용 시나리오</h2></p><ul><li>여러 데이터 소스의 페이징 쿼리를 통합 관리해야 하는 프로젝트</li>
+<li>다양한 데이터 소스 페이징을 지원해야 하는 엔터프라이즈 애플리케이션</li></p><p></ul><h2>핵심 모듈</h2></p><h3><a href="https://github.com/taoganio/uni-pagination/tree/main/uni-pagination" target="_blank" rel="noopener noreferrer">uni-pagination</a></h3>
+핵심 페이징 라이브러리로, 기본 페이징 인터페이스와 추상 구현을 제공.</p><h3><a href="https://github.com/taoganio/uni-pagination/tree/main/uni-pagination-jdbc" target="_blank" rel="noopener noreferrer">uni-pagination-jdbc</a></h3>
+JDBC 데이터 소스 지원 모듈로, JDBC 기반 페이징 구현 제공.</p><h3><a href="https://github.com/taoganio/uni-pagination/tree/main/uni-pagination-mybatis" target="_blank" rel="noopener noreferrer">uni-pagination-jdbc-mybatis</a></h3>
+MyBatis 통합 모듈로, MyBatis 프레임워크와의 통합 지원 제공.</p><h3><a href="https://github.com/taoganio/uni-pagination/tree/main/uni-pagination-mongodb" target="_blank" rel="noopener noreferrer">uni-pagination-mongodb</a></h3>
+MongoDB 통합 컴포넌트로, MongoDB 페이징 쿼리 지원.</p><h3><a href="https://github.com/taoganio/uni-pagination/tree/main/spring-boot-starter-web-uni-pagination" target="_blank" rel="noopener noreferrer">spring-boot-starter-web-uni-pagination</a></h3>
+Spring MVC 환경에서의 페이징 지원 모듈로, Spring MVC와의 통합 지원을 제공하며 일반 컨트롤러 작성처럼 간단함.
+<ul><li>페이징 파라미터 자동 바인딩</li>
+<li>페이징 결과 자동 변환</li></p><p></ul><h3><a href="https://github.com/taoganio/uni-pagination/tree/main/web-uni-pagination-test" target="_blank" rel="noopener noreferrer">web-uni-pagination-test</a></h3>
+Spring Boot Web 환경에서의 페이징 테스트 모듈로, 페이징 기능 통합 테스트 제공.</p><h2>빠른 시작, uni-pagination-jdbc를 예로</h2></p><h3>Maven 의존성</h3></p><pre><code class="language-xml"><dependency>
+   <groupId>io.github.taoganio</groupId>
+   <artifactId>uni-pagination-jdbc</artifactId>
+   <version>1.0.0</version>
+</dependency></code></pre></p><h3>간단한 예제</h3></p><pre><code class="language-java">public class PaginationTest {
+   
+    public void page() {
+        PaginationStatementTemplate operations = new PaginationStatementTemplate();
+        operations.addStatementExecutor(new Sql2oPaginationNamedParameterStatementExecutor(dataSource));
+        
+        // 1. 创建分页语句
+        PaginationStatement statement = of(b -> b
+                .sql("SELECT * FROM user WHERE username LIKE :username")
+                .paramMap("username", "%admin%")
+                .pageable(0, 10)
+                .sort("id", Sort.Direction.DESC));
+        
+        // 2. 执行查询
+        PageInformation information = operations.queryForInformation(statement);
+        Page<User> page = operations.queryForResultSet(statement, new JdbcBeanPropertyPaginationRowMapper<>(User.class));
+    }</p><p>    // User实体类
+    class User {
+        private Long id;
+        private String username;
+        // getters and setters
+    }
+}</code></pre>
+<h2>감사의 말</h2></p><p>이 프레임워크를 개발하는 과정에서 저는 오픈 소스 커뮤니티의 영향과 영감을 많이 받았습니다. 기술 경험을 아낌없이 공유해 주신 고수분들께 감사드리며, 여러분의 지혜와 기여 덕분에 이 프레임워크가 탄생할 수 있었습니다. 특히 뛰어난 오픈 소스 프로젝트들이 제공한 디자인 영감과 구현 아이디어에 특별히 감사드립니다. 이 소중한 경험 덕분에 거인의 어깨 위에 서서 계속 나아갈 수 있었습니다.</p><p>오픈 소스 커뮤니티에 기여한 모든 기술 고수분들께 감사드립니다!</p><h2>🌟 프로젝트 지원</h2>
+이 프로젝트가 도움이 되었다면, 우측 상단의 ⭐Star 를 클릭하여 저를 응원해 주세요!</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-17
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/taoganio/uni-pagination/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-17 
+    </div>
+    
+</body>
+</html>
