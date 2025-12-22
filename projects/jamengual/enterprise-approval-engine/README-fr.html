@@ -1,0 +1,1356 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>enterprise-approval-engine - Flux de travail d&#39;approbation de niveau entreprise avec seuils par groupe (X sur N), logique OU entre les groupes, et cr&#233;ation automatique de tags semver</title>
+    <meta name="description" content="Flux de travail d&#39;approbation de niveau entreprise avec seuils par groupe (X sur N), logique OU entre les groupes, et cr&#233;ation automatique de tags semver">
+    <meta name="keywords" content="enterprise-approval-engine, French, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "enterprise-approval-engine",
+  "description": "Flux de travail d'approbation de niveau entreprise avec seuils par groupe (X sur N), logique OU entre les groupes, et création automatique de tags semver",
+  "author": {
+    "@type": "Person",
+    "name": "jamengual"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 4
+  },
+  "url": "https://OpenAiTx.github.io/projects/jamengual/enterprise-approval-engine/README-fr.html",
+  "sameAs": "https://raw.githubusercontent.com/jamengual/enterprise-approval-engine/main/README.md",
+  "datePublished": "2025-12-22",
+  "dateModified": "2025-12-22"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/jamengual/enterprise-approval-engine" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    enterprise-approval-engine
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 4 stars</span>
+                <span class="language">French</span>
+                <span>by jamengual</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Moteur d’Approbation d’Entreprise</h1></p><p><a href="README.md" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/lang-en-blue.svg" alt="en"></a>
+<a href="ES/README.md" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/lang-es-yellow.svg" alt="es"></a></p><p>Action GitHub de niveau entreprise pour des workflows d’approbation basés sur des politiques avec des seuils par groupe (X sur N), logique OU entre groupes, et création automatique de tags semver.</p><h2>Fonctionnalités</h2></p><ul><li><strong>Logique d’Approbation Flexible</strong> : Support de la logique ET (tout doit approuver) et de seuil (X sur N) au sein des groupes</li>
+<li><strong>Logique OU Entre Groupes</strong> : Plusieurs chemins d’approbation – l’approbation de n’importe quel groupe valide la demande</li>
+<li><strong>Approbateurs Mixtes</strong> : Combinaison d’utilisateurs individuels et d’équipes GitHub dans un même groupe</li>
+<li><strong>Pipelines de Déploiement Progressifs</strong> : Suivi d’un seul ticket à travers plusieurs environnements (dev → qa → stage → prod)</li>
+<li><strong>Visualisation du Pipeline</strong> : Diagrammes Mermaid codés par couleur montrant la progression du déploiement</li>
+<li><strong>Approbations par Sous-Tickets</strong> : Création de sous-tickets dédiés à l’approbation pour chaque étape – fermeture pour approuver</li>
+<li><strong>UX Améliorée des Commentaires</strong> : Réactions emoji sur les commentaires d’approbation, section Quick Actions avec référence des commandes</li>
+<li><strong>Protection contre la Fermeture des Tickets</strong> : Empêche les utilisateurs non autorisés de fermer les tickets d’approbation (réouverture automatique)</li>
+<li><strong>Modes d’Approbation Hybrides</strong> : Mix de validations par commentaire et par sous-ticket selon le workflow ou l’étape</li>
+<li><strong>Suivi des PR et Commits</strong> : Liste automatique des PR et commits dans les tickets de déploiement pour la gestion des releases</li>
+<li><strong>Création de Tags Semver</strong> : Création automatique de tags git après approbation</li>
+<li><strong>Configuration Basée sur des Politiques</strong> : Définition de politiques d’approbation réutilisables en YAML</li>
+<li><strong>Workflow Basé sur les Tickets</strong> : Traçabilité transparente via les issues GitHub</li>
+<li><strong>Intégration Jira</strong> : Extraction des clés d’issues depuis les commits, affichage dans les tickets d’approbation, mise à jour des Fix Versions</li>
+<li><strong>Suivi des Déploiements</strong> : Création de déploiements GitHub pour visibilité dans le tableau de bord de déploiement</li>
+<li><strong>Configuration Externe</strong> : Centralisation des politiques d’approbation dans un dépôt partagé</li>
+<li><strong>Gestion des Limites de Taux</strong> : Reprise automatique avec backoff exponentiel pour les limites d’API GitHub</li>
+<li><strong>Support GitHub Enterprise Server</strong> : Compatibilité complète avec les environnements GHES</li>
+<li><strong>Pas de Dépendances Externes</strong> : Pure GitHub Actions, aucun service externe requis</li></p><p></ul>📋 <strong>Voir en action :</strong> <a href="https://github.com/jamengual/enterprise-approval-engine/issues/7" target="_blank" rel="noopener noreferrer">Exemple de ticket d’approbation</a></p><h2>Table des Matières</h2></p><ul><li><a href="#quick-start" target="_blank" rel="noopener noreferrer">Démarrage Rapide</a></li>
+<li><a href="#action-reference" target="_blank" rel="noopener noreferrer">Référence de l’Action</a></li>
+  <li><a href="#actions" target="_blank" rel="noopener noreferrer">Actions</a></li>
+  <li><a href="#inputs" target="_blank" rel="noopener noreferrer">Entrées</a></li>
+  <li><a href="#outputs" target="_blank" rel="noopener noreferrer">Sorties</a></li>
+<li><a href="#configuration-reference" target="_blank" rel="noopener noreferrer">Référence de Configuration</a></li>
+  <li><a href="#policies" target="_blank" rel="noopener noreferrer">Politiques</a></li>
+  <li><a href="#workflows" target="_blank" rel="noopener noreferrer">Flux de travail</a></li>
+  <li><a href="#tagging-configuration" target="_blank" rel="noopener noreferrer">Étiquetage</a></li>
+  <li><a href="#custom-issue-templates" target="_blank" rel="noopener noreferrer">Modèles personnalisés</a></li>
+  <li><a href="#defaults" target="_blank" rel="noopener noreferrer">Valeurs par défaut</a></li>
+  <li><a href="#semver" target="_blank" rel="noopener noreferrer">Semver</a></li>
+<li><a href="#complete-configuration-reference" target="_blank" rel="noopener noreferrer">Référence complète de la configuration</a></li>
+<li><a href="#feature-details" target="_blank" rel="noopener noreferrer">Détails des fonctionnalités</a></li>
+  <li><a href="#approval-keywords" target="_blank" rel="noopener noreferrer">Mots-clés d'approbation</a></li>
+  <li><a href="#team-support" target="_blank" rel="noopener noreferrer">Support des équipes</a></li>
+  <li><a href="#progressive-deployment-pipelines" target="_blank" rel="noopener noreferrer">Pipelines de déploiement progressif</a></li>
+  <li><a href="#release-candidate-strategies" target="_blank" rel="noopener noreferrer">Stratégies de version candidate</a></li>
+  <li><a href="#jira-integration" target="_blank" rel="noopener noreferrer">Intégration Jira</a></li>
+  <li><a href="#deployment-tracking" target="_blank" rel="noopener noreferrer">Suivi des déploiements</a></li>
+  <li><a href="#external-config-repository" target="_blank" rel="noopener noreferrer">Répertoire de configuration externe</a></li>
+  <li><a href="#blocking-approvals" target="_blank" rel="noopener noreferrer">Approbations bloquantes</a></li>
+  <li><a href="#tag-deletion-on-issue-close" target="_blank" rel="noopener noreferrer">Suppression des tags</a></li>
+<li><a href="#complete-examples" target="_blank" rel="noopener noreferrer">Exemples complets</a></li>
+<li><a href="#schema-validation" target="_blank" rel="noopener noreferrer">Validation du schéma</a></li>
+<li><a href="#github-enterprise-server" target="_blank" rel="noopener noreferrer">Serveur GitHub Enterprise</a></li></p><p></ul><h2>Démarrage rapide</h2></p><h3>1. Créer la configuration</h3></p><p>Créez <code>.github/approvals.yml</code> dans votre dépôt :</p><pre><code class="language-yaml">version: 1</p><p>policies:
+  dev-team:
+    approvers: [alice, bob, charlie]
+    min_approvals: 2</p><p>  platform-team:
+    approvers: [team:platform-engineers]
+    require_all: true</p><p>workflows:
+  production-deploy:
+    require:
+      # OR logic: either path satisfies approval
+      <ul><li>policy: dev-team        # 2 of 3 developers</li>
+      <li>policy: platform-team   # ALL platform engineers</li>
+    </ul>on_approved:
+      create_tag: true
+      close_issue: true</code></pre></p><h3>2. Flux de travail d'approbation de demande</h3></p><p>Créez <code>.github/workflows/request-approval.yml</code> :</p><pre><code class="language-yaml">name: Request Deployment Approval</p><p>on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to deploy (e.g., v1.2.3)'
+        required: true
+        type: string</p><p>jobs:
+  request:
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+      <li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: approval
+        with:
+          action: request
+          workflow: production-deploy
+          version: ${{ inputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}</p><ul><li>name: Output Results</li>
+        </ul>run: |
+          echo "Issue: ${{ steps.approval.outputs.issue_url }}"
+          echo "Status: ${{ steps.approval.outputs.status }}"</code></pre></p><h3>3. Gérer les Commentaires d'Approbation</h3></p><p>Créez <code>.github/workflows/handle-approval.yml</code> :</p><pre><code class="language-yaml">name: Handle Approval Comments</p><p>on:
+  issue_comment:
+    types: [created]</p><p>jobs:
+  process:
+    if: contains(github.event.issue.labels.*.name, 'approval-required')
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+      <li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: process
+        with:
+          action: process-comment
+          issue_number: ${{ github.event.issue.number }}
+          token: ${{ secrets.GITHUB_TOKEN }}</p><ul><li>name: Trigger Deployment</li>
+        </ul>if: steps.process.outputs.status == 'approved'
+        run: |
+          echo "Approved by: ${{ steps.process.outputs.approvers }}"
+          echo "Tag created: ${{ steps.process.outputs.tag }}"</code></pre></p><hr></p><h2>Référence de l’Action</h2></p><h3>Actions</h3></p><p>L’action prend en charge quatre modes d’opération via l’entrée <code>action</code> :</p><p>| Action | Description | Quand l’utiliser |
+|--------|-------------|-----------------|
+| <code>request</code> | Créer une nouvelle demande d’approbation sous forme de ticket | Lors du démarrage d’un workflow de déploiement/publication |
+| <code>process-comment</code> | Traiter un commentaire d’approbation/refus | Sur les événements <code>issue_comment</code> |
+| <code>check</code> | Vérifier le statut actuel de l’approbation | Pour interroger la fin de l’approbation |
+| <code>close-issue</code> | Gérer les événements de fermeture de ticket | Sur les événements <code>issues: [closed]</code> |</p><h3>Entrées</h3></p><p>#### Entrées principales</p><p>| Entrée | Description | Obligatoire | Par défaut |
+|--------|-------------|-------------|------------|
+| <code>action</code> | Action à effectuer : <code>request</code>, <code>check</code>, <code>process-comment</code>, <code>close-issue</code> | Oui | - |
+| <code>workflow</code> | Nom du workflow dans la config (pour l’action <code>request</code>) | Pour <code>request</code> | - |
+| <code>version</code> | Version semver pour la création de tag (ex., <code>1.2.3</code> ou <code>v1.2.3</code>) | Non | - |
+| <code>issue_number</code> | Numéro du ticket (pour <code>check</code>, <code>process-comment</code>, <code>close-issue</code>) | Pour check/process/close | - |
+| <code>token</code> | Jeton GitHub pour les opérations API | Oui | - |</p><p>#### Entrées de configuration</p><p>| Entrée | Description | Obligatoire | Par défaut |
+|--------|-------------|-------------|------------|
+| <code>config_path</code> | Chemin vers le fichier de config approvals.yml | Non | <code>.github/approvals.yml</code> |
+| <code>config_repo</code> | Répertoire externe pour config partagée (ex., <code>org/.github</code>) | Non | - |</p><p>#### Entrées de sondage (pour l’action <code>check</code>)</p><p>| Entrée | Description | Obligatoire | Par défaut |
+|--------|-------------|-------------|------------|
+| <code>wait</code> | Attendre l’approbation (sondage) au lieu de retourner immédiatement | Non | <code>false</code> |
+| <code>timeout</code> | Délai d'attente (par exemple, <code>24h</code>, <code>1h30m</code>, <code>30m</code>) | Non | <code>72h</code> |</p><p>#### Entrées de support d'équipe</p><p>| Entrée | Description | Obligatoire | Par défaut |
+|--------|-------------|-------------|------------|
+| <code>app_id</code> | ID de l'application GitHub pour les vérifications d'appartenance à l'équipe | Non | - |
+| <code>app_private_key</code> | Clé privée de l'application GitHub pour les vérifications d'appartenance à l'équipe | Non | - |</p><p>#### Entrées d'intégration Jira</p><p>| Entrée | Description | Obligatoire | Par défaut |
+|--------|-------------|-------------|------------|
+| <code>jira_base_url</code> | URL de base de Jira Cloud (par exemple, <code>https://yourcompany.atlassian.net</code>) | Non | - |
+| <code>jira_user_email</code> | Email utilisateur Jira pour l'authentification API | Non | - |
+| <code>jira_api_token</code> | Jeton API Jira pour l'authentification | Non | - |
+| <code>jira_update_fix_version</code> | Met à jour les tickets Jira avec la version corrigée lors de l'approbation | Non | <code>true</code> |
+| <code>include_jira_issues</code> | Inclure les tickets Jira dans le corps de la demande d'approbation | Non | <code>true</code> |</p><p>#### Entrées de suivi de déploiement</p><p>| Entrée | Description | Obligatoire | Par défaut |
+|--------|-------------|-------------|------------|
+| <code>create_deployment</code> | Créer un déploiement GitHub pour le suivi | Non | <code>true</code> |
+| <code>deployment_environment</code> | Environnement cible (par exemple, <code>production</code>, <code>staging</code>) | Non | <code>production</code> |
+| <code>deployment_environment_url</code> | URL vers l'environnement déployé | Non | - |</p><p>#### Autres entrées</p><p>| Entrée | Description | Obligatoire | Par défaut |
+|--------|-------------|-------------|------------|
+| <code>issue_action</code> | Action de l'événement issue pour <code>close-issue</code> (<code>closed</code>, <code>reopened</code>) | Non | - |
+| <code>previous_tag</code> | Tag précédent pour comparer les commits (détecté automatiquement si non spécifié) | Non | - |</p><h3>Sorties</h3></p><p>#### Sorties principales</p><p>| Sortie | Description | Disponible pour |
+|--------|-------------|----------------|
+| <code>status</code> | Statut d'approbation : <code>pending</code>, <code>approved</code>, <code>denied</code>, <code>timeout</code>, <code>tag_deleted</code>, <code>skipped</code> | Toutes les actions |
+| <code>issue_number</code> | Numéro du ticket créé ou vérifié | Toutes les actions |
+| <code>issue_url</code> | URL vers le ticket d'approbation | Toutes les actions |</p><p>#### Sorties d'Approbation</p><p>| Sortie | Description | Disponible Pour |
+|--------|-------------|-----------------|
+| <code>approvers</code> | Liste séparée par des virgules des utilisateurs ayant approuvé | <code>process-comment</code>, <code>check</code> |
+| <code>denier</code> | Utilisateur ayant refusé la demande | <code>process-comment</code>, <code>check</code> |
+| <code>satisfied_group</code> | Nom du groupe ayant satisfait l'approbation | <code>process-comment</code>, <code>check</code> |
+| <code>tag</code> | Nom du tag créé | <code>process-comment</code> (à l'approbation) |
+| <code>tag_deleted</code> | Tag qui a été supprimé | <code>close-issue</code> |</p><p>#### Sorties Jira</p><p>| Sortie | Description | Disponible Pour |
+|--------|-------------|-----------------|
+| <code>jira_issues</code> | Liste séparée par des virgules des clés des tickets Jira dans cette version | <code>request</code> |
+| <code>jira_issues_json</code> | Tableau JSON des détails des tickets Jira (clé, résumé, type, statut) | <code>request</code> |</p><p>#### Sorties de Déploiement</p><p>| Sortie | Description | Disponible Pour |
+|--------|-------------|-----------------|
+| <code>deployment_id</code> | ID du déploiement GitHub pour les mises à jour de statut | <code>request</code> |
+| <code>deployment_url</code> | URL vers le déploiement dans GitHub | <code>request</code> |</p><p>#### Sorties des Notes de Version</p><p>| Sortie | Description | Disponible Pour |
+|--------|-------------|-----------------|
+| <code>release_notes</code> | Notes de version générées automatiquement à partir des commits et des tickets Jira | <code>request</code> |
+| <code>commits_count</code> | Nombre de commits dans cette version | <code>request</code> |</p><hr></p><h2>Référence de Configuration</h2></p><h3>Politiques</h3></p><p>Les politiques définissent des groupes réutilisables d'approbateurs. Il existe deux formats :</p><p>#### Format simple</p><pre><code class="language-yaml">policies:
+  # Threshold-based: X of N must approve
+  dev-team:
+    approvers: [alice, bob, charlie]
+    min_approvals: 2</p><p>  # All must approve (AND logic)
+  security:
+    approvers: [team:security, security-lead]
+    require_all: true</p><p>  # Mixed teams and individuals
+  production:
+    approvers:
+      <ul><li>team:sre</li>
+      <li>tech-lead</li>
+      <li>product-owner</li>
+    </ul>min_approvals: 2</code></pre></p><p>#### Format avancé (seuils par source)</p><p>Pour des exigences complexes telles que "2 de la plateforme ET 1 de la sécurité" :</p><pre><code class="language-yaml">policies:
+  # Complex AND gate
+  production-gate:
+    from:
+      <ul><li>team: platform-engineers</li>
+        </ul>min_approvals: 2        # 2 of the platform team
+      <ul><li>team: security</li>
+        </ul>min_approvals: 1        # 1 of the security team
+      <ul><li>user: alice             # alice must also approve</li>
+    </ul>logic: and                  # ALL sources must be satisfied</p><p>  # Flexible OR gate
+  flexible-review:
+    from:
+      <ul><li>team: security</li>
+        </ul>require_all: true       # All security team
+      <ul><li>team: platform</li>
+        </ul>min_approvals: 2        # OR 2 platform members
+    logic: or                   # ANY source is enough</p><p>  # Executive approval: any one exec
+  exec-approval:
+    from:
+      <ul><li>user: ceo</li>
+      <li>user: cto</li>
+      <li>user: vp-engineering</li>
+    </ul>logic: or</p><p>  # User list with threshold
+  leads:
+    from:
+      <ul><li>users: [tech-lead, product-lead, design-lead]</li>
+        </ul>min_approvals: 2</code></pre></p><p><strong>Types de sources :</strong></p><ul><li><code>team: slug</code> - Équipe GitHub (nécessite un jeton App)</li>
+<li><code>user: username</code> - Utilisateur unique (require_all implicite)</li>
+<li><code>users: [a, b, c]</code> - Liste d'utilisateurs</li></p><p></ul><strong>Logique au niveau de la politique :</strong></p><ul><li><code>logic: and</code> - TOUS les sources doivent être satisfaites (par défaut)</li>
+<li><code>logic: or</code> - QUELQUE source satisfaite suffit</li></p><p></ul>#### Logique en ligne (mélange AND/OR)</p><p>Pour des expressions complexes, utilisez <code>logic:</code> sur chaque source pour spécifier comment elle se connecte à la suivante :</p><pre><code class="language-yaml">policies:
+  # (2 security AND 2 platform) OR alice
+  complex-gate:
+    from:
+      <ul><li>team: security</li>
+        </ul>min_approvals: 2
+        logic: and              # AND with next source
+      <ul><li>team: platform</li>
+        </ul>min_approvals: 2
+        logic: or               # OR with next source
+      <ul><li>user: alice            # alice alone can satisfy</li></p><p>  </ul># (security AND platform) OR (alice AND bob) OR manager
+  multi-path:
+    from:
+      <ul><li>team: security</li>
+        </ul>min_approvals: 1
+        logic: and
+      <ul><li>team: platform</li>
+        </ul>min_approvals: 1
+        logic: or               # End first AND group
+      <ul><li>user: alice</li>
+        </ul>logic: and
+      <ul><li>user: bob</li>
+        </ul>logic: or               # End second AND group
+      <ul><li>user: manager          # Third path</code></pre></li></p><p></ul><strong>Priorité des opérateurs :</strong> AND a une priorité plus élevée que OR (logique booléenne standard).</p><p>L’expression <code>A and B or C and D</code> est évaluée comme <code>(A AND B) OR (C AND D)</code>.</p><h3>Flux de travail</h3></p><p>Les flux de travail définissent les exigences d’approbation et les actions :</p><pre><code class="language-yaml">workflows:
+  my-workflow:
+    description: "Optional description"</p><p>    # Trigger conditions (for filtering)
+    trigger:
+      environment: production</p><p>    # Approval requirements (OR logic between items)
+    require:
+      <ul><li>policy: dev-team</li>
+      <li>policy: security</li>
+      </ul># Or inline approvers:
+      <ul><li>approvers: [alice, bob]</li>
+        </ul>require_all: true</p><p>    # Issue configuration
+    issue:
+      title: "Approval: {{version}}"
+      body: |                          # Inline custom template (optional)
+        ## My Custom Approval Issue
+        Version: {{.Version}}
+        Requested by: @{{.Requestor}}
+        {{.GroupsTable}}
+      body_file: "templates/my-template.md"  # Or load from file
+      labels: [production, deploy]
+      assignees_from_policy: true</p><p>    # Actions on approval
+    on_approved:
+      create_tag: true
+      tag_prefix: "v"  # Creates v1.2.3
+      close_issue: true
+      comment: "Approved! Tag {{version}} created."</p><p>    # Actions on denial
+    on_denied:
+      close_issue: true
+      comment: "Denied by {{denier}}."</p><p>    # Actions when issue is manually closed
+    on_closed:
+      delete_tag: true   # Delete the tag if issue is closed
+      comment: "Deployment cancelled. Tag {{tag}} deleted."</code></pre></p><h3>Configuration des Étiquettes</h3></p><p>Contrôlez la manière dont les étiquettes sont créées par flux de travail :</p><pre><code class="language-yaml">workflows:
+  dev-deploy:
+    require:
+      <ul><li>policy: dev-team</li>
+    </ul>on_approved:
+      tagging:
+        enabled: true
+        start_version: "0.1.0"      # No 'v' prefix, start at 0.1.0
+        auto_increment: patch        # Auto-bump: 0.1.0 -> 0.1.1 -> 0.1.2
+        env_prefix: "dev-"           # Creates: dev-0.1.0, dev-0.1.1</p><p>  staging-deploy:
+    require:
+      <ul><li>policy: qa-team</li>
+    </ul>on_approved:
+      tagging:
+        enabled: true
+        start_version: "v1.0.0"     # 'v' prefix (inferred from start_version)
+        auto_increment: minor        # v1.0.0 -> v1.1.0 -> v1.2.0
+        env_prefix: "staging-"       # Creates: staging-v1.0.0</p><p>  production-deploy:
+    require:
+      <ul><li>policy: prod-team</li>
+    </ul>on_approved:
+      tagging:
+        enabled: true
+        start_version: "v1.0.0"     # Manual version required (no auto_increment)</code></pre></p><p><strong>Options de marquage :</strong></p><p>| Option | Description |
+|--------|-------------|
+| <code>enabled</code> | Activer la création de tags |
+| <code>start_version</code> | Version de départ et format (par ex., "v1.0.0" ou "1.0.0") |
+| <code>prefix</code> | Préfixe de version (déduit de <code>start_version</code> si non défini) |
+| <code>auto_increment</code> | Incrément automatique : <code>major</code>, <code>minor</code>, <code>patch</code>, ou omission pour manuel |
+| <code>env_prefix</code> | Préfixe d'environnement (par ex., "dev-" crée "dev-v1.0.0") |</p><h3>Modèles personnalisés pour les issues</h3></p><p>Vous pouvez entièrement personnaliser le corps de l’issue en utilisant des templates Go. Utilisez <code>body</code> pour les templates en ligne ou <code>body_file</code> pour charger depuis un fichier.</p><p><strong>Variables de template disponibles :</strong></p><p>| Variable | Description |
+|----------|-------------|
+| <code>{{.Title}}</code> | Titre de l’issue |
+| <code>{{.Description}}</code> | Description du workflow |
+| <code>{{.Version}}</code> | Version Semver |
+| <code>{{.Requestor}}</code> | Nom d’utilisateur GitHub ayant demandé |
+| <code>{{.Environment}}</code> | Nom de l’environnement |
+| <code>{{.RunURL}}</code> | Lien vers l’exécution du workflow |
+| <code>{{.RepoURL}}</code> | URL du dépôt |
+| <code>{{.CommitSHA}}</code> | SHA complet du commit |
+| <code>{{.CommitURL}}</code> | Lien vers le commit |
+| <code>{{.Branch}}</code> | Nom de la branche |
+| <code>{{.GroupsTable}}</code> | Tableau pré-rendu du statut d’approbation |
+| <code>{{.Timestamp}}</code> | Horodatage de la demande |
+| <code>{{.PreviousVersion}}</code> | Version/tag précédent(e) |
+| <code>{{.CommitsCount}}</code> | Nombre de commits dans cette version |
+| <code>{{.HasJiraIssues}}</code> | Booléen - existence de tickets Jira |
+| <code>{{.JiraIssues}}</code> | Tableau de données des tickets Jira |
+| <code>{{.JiraIssuesTable}}</code> | Tableau pré-rendu des tickets Jira |
+| <code>{{.PipelineTable}}</code> | Tableau pré-rendu de la pipeline de déploiement |
+| <code>{{.PipelineMermaid}}</code> | Diagramme Mermaid pré-rendu du flux |
+| <code>{{.Vars.key}}</code> | Variables personnalisées |</p><p><strong>Fonctions de template :</strong></p><p>| Fonction | Exemple | Description |
+|----------|---------|-------------|
+| <code>slice</code> | <code>{{slice .CommitSHA 0 7}}</code> | Sous-chaîne (SHA court) |
+| <code>title</code> | <code>{{.Environment \| title}}</code> | Majuscules en début de mot |
+| <code>upper</code> | <code>{{.Version \| upper}}</code> | Majuscules |
+| <code>lower</code> | <code>{{.Version \| lower}}</code> | Minuscules |
+| <code>join</code> | <code>{{join .Groups ","}}</code> | Joindre un tableau |
+| <code>contains</code> | <code>{{if contains .Branch "feature"}}</code> | Vérifier une sous-chaîne |
+| <code>replace</code> | <code>{{replace .Version "v" ""}}</code> | Remplacer une chaîne |
+| <code>default</code> | <code>{{default "N/A" .Environment}}</code> | Valeur par défaut |</p><p><strong>Exemple de fichier template personnalisé</strong> (<code>.github/templates/deploy.md</code>):</p><pre><code class="language-markdown">## {{.Title}}</p><h3>Release Information</h3></p><ul><li><strong>Version:</strong> <code>{{.Version}}</code></li>
+<li><strong>Requested by:</strong> @{{.Requestor}}</li>
+</ul>{{- if .CommitSHA}}
+<ul><li><strong>Commit:</strong> <a href="https://raw.githubusercontent.com/jamengual/enterprise-approval-engine/main/{{.CommitURL}}" target="_blank" rel="noopener noreferrer">{{slice .CommitSHA 0 7}}</a></li>
+</ul>{{- end}}
+{{- if .CommitsCount}}
+<ul><li><strong>Changes:</strong> {{.CommitsCount}} commits since {{.PreviousVersion}}</li>
+</ul>{{- end}}</p><p>{{if .HasJiraIssues}}
+<h3>Jira Issues</h3></p><p>{{.JiraIssuesTable}}
+{{end}}</p><h3>Approval Status</h3></p><p>{{.GroupsTable}}</p><hr></p><p><strong>Approve:</strong> Comment <code>approve</code> | <strong>Deny:</strong> Comment <code>deny</code></code></pre></p><h3>Valeurs par défaut</h3></p><p>Valeurs par défaut globales qui s'appliquent à tous les flux de travail :</p><pre><code class="language-yaml">defaults:
+  timeout: 72h                    # Default approval timeout
+  allow_self_approval: false      # Whether requestors can approve their own requests
+  issue_labels:                   # Labels added to all approval issues
+    <ul><li>approval-required</code></pre></li></p><p></ul><h3>Semver</h3></p><p>Configurer la gestion des versions :</p><pre><code class="language-yaml">semver:
+  prefix: "v"              # Tag prefix (v1.2.3)
+  strategy: input          # Use version from input
+  validate: true           # Validate semver format
+  allow_prerelease: true   # Allow prerelease versions (e.g., v1.0.0-beta.1)
+  auto:                    # Label-based auto-increment (when strategy: auto)
+    major_labels: [breaking, major]
+    minor_labels: [feature, minor]
+    patch_labels: [fix, patch, bug]</code></pre></p><hr></p><h2>Référence Complète de Configuration</h2></p><p>Cette section documente <strong>toutes les options de configuration</strong> disponibles dans <code>approvals.yml</code>.</p><h3>Structure de Niveau Supérieur</h3></p><pre><code class="language-yaml">version: 1                    # Required: config version (always 1)
+defaults: { ... }             # Optional: global defaults
+policies: { ... }             # Required: reusable approval policies
+workflows: { ... }            # Required: approval workflows
+semver: { ... }               # Optional: version handling settings</code></pre></p><h3>Options <code>defaults</code></h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>timeout</code> | durée | <code>72h</code> | Délai d’attente pour l’action <code>check</code> bloquante avec <code>wait: true</code>. Utilisez des heures (par ex., <code>168h</code> pour 1 semaine). Non nécessaire pour les workflows pilotés par événements. |
+| <code>allow_self_approval</code> | booléen | <code>false</code> | Indique si le demandeur peut approuver sa propre demande |
+| <code>issue_labels</code> | string[] | <code>[]</code> | Étiquettes ajoutées à tous les tickets d’approbation |</p><h3>Options <code>policies.<name></code> (Format Simple)</h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>approvers</code> | string[] | - | Liste des noms d’utilisateur ou références <code>team:slug</code> |
+| <code>min_approvals</code> | int | 0 | Nombre d’approbations requises (0 = utiliser <code>require_all</code>) |
+| <code>require_all</code> | booléen | <code>false</code> | Si vrai, TOUS les approbateurs doivent approuver |</p><h3>Options <code>policies.<name></code> (Format Avancé)</h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>from</code> | source[] | - | Liste des sources d’approbateurs avec seuils individuels |
+| <code>logic</code> | string | <code>"and"</code> | Comment combiner les sources : <code>"and"</code> ou <code>"or"</code> |</p><p><strong>Options des sources d’approbateurs (<code>from[]</code>) :</strong></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>team</code> | string | - | Identifiant de l’équipe (par ex. <code>"platform"</code> ou <code>"org/platform"</code>) |
+| <code>user</code> | string | - | Nom d’utilisateur unique |
+| <code>users</code> | string[] | - | Liste de noms d’utilisateur |
+| <code>min_approvals</code> | int | 1 | Nombre d’approbations requises de cette source |
+| <code>require_all</code> | booléen | <code>false</code> | Tous les membres de cette source doivent approuver |
+| <code>logic</code> | string | - | Logique vers la source suivante : <code>"and"</code> ou <code>"or"</code> |</p><h3>Options <code>workflows.<name></code></h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>description</code> | string | - | Description lisible par l’humain |
+| <code>trigger</code> | map | - | Conditions de déclenchement (pour le filtrage) |
+| <code>require</code> | requirement[] | - | <strong>Requis :</strong> Exigences d'approbation (logique OU entre les éléments) |
+| <code>issue</code> | object | - | Paramètres de création de problème |
+| <code>on_approved</code> | object | - | Actions en cas d'approbation |
+| <code>on_denied</code> | object | - | Actions en cas de refus |
+| <code>on_closed</code> | object | - | Actions lorsque le problème est fermé manuellement |
+| <code>pipeline</code> | object | - | Configuration du pipeline de déploiement progressif |</p><h3><code>workflows.<name>.require[]</code> Options</h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>policy</code> | string | - | Référence à une politique définie |
+| <code>approvers</code> | string[] | - | Approbateurs en ligne (alternative à la politique) |
+| <code>min_approvals</code> | int | - | Remplace min_approvals de la politique |
+| <code>require_all</code> | bool | - | Remplace require_all de la politique |</p><h3><code>workflows.<name>.issue</code> Options</h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>title</code> | string | <code>"Approbation requise : {workflow}"</code> | Titre du problème (supporte <code>{{version}}</code>, <code>{{environment}}</code>, <code>{{workflow}}</code>) |
+| <code>body</code> | string | - | Modèle personnalisé du corps du problème (syntaxe modèle Go) |
+| <code>body_file</code> | string | - | Chemin vers le fichier modèle (relatif à <code>.github/</code>) |
+| <code>labels</code> | string[] | <code>[]</code> | Étiquettes supplémentaires pour ce workflow |
+| <code>assignees_from_policy</code> | bool | <code>false</code> | Attribution automatique des utilisateurs individuels depuis les politiques (max 10) |</p><h3><code>workflows.<name>.on_approved</code> Options</h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>create_tag</code> | bool | <code>false</code> | Créer une étiquette git (utilise la version entrée) |
+| <code>close_issue</code> | bool | <code>false</code> | Fermer le problème après approbation |
+| <code>comment</code> | string | - | Commentaire à publier (supporte <code>{{version}}</code>, <code>{{satisfied_group}}</code>) |
+| <code>tagging</code> | object | - | Configuration avancée de l'étiquetage |</p><h3><code>workflows.<name>.on_approved.tagging</code> Options</h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>enabled</code> | bool | <code>false</code> | Activer la création de tags |
+| <code>start_version</code> | string | <code>"0.0.0"</code> | Version initiale (par ex., <code>"v1.0.0"</code> ou <code>"1.0.0"</code>) |
+| <code>prefix</code> | string | (inféré) | Préfixe de version (inféré depuis <code>start_version</code>) |
+| <code>auto_increment</code> | string | - | Incrément automatique : <code>"major"</code>, <code>"minor"</code>, <code>"patch"</code>, ou omettre pour manuel |
+| <code>env_prefix</code> | string | - | Préfixe d’environnement (par ex., <code>"dev-"</code> crée <code>"dev-v1.0.0"</code>) |</p><h3>Options <code>workflows.<name>.on_denied</code></h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>close_issue</code> | bool | <code>false</code> | Fermer le ticket après refus |
+| <code>comment</code> | string | - | Commentaire à poster (supporte <code>{{denier}}</code>) |</p><h3>Options <code>workflows.<name>.on_closed</code></h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>delete_tag</code> | bool | <code>false</code> | Supprimer le tag associé à la fermeture du ticket |
+| <code>comment</code> | string | - | Commentaire à poster (supporte <code>{{tag}}</code>, <code>{{version}}</code>) |</p><h3>Options <code>workflows.<name>.pipeline</code></h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>stages</code> | stage[] | - | <strong>Requis :</strong> Liste ordonnée des étapes de déploiement |
+| <code>track_prs</code> | bool | <code>false</code> | Inclure les PR fusionnées dans le corps du ticket |
+| <code>track_commits</code> | bool | <code>false</code> | Inclure les commits dans le corps du ticket |
+| <code>compare_from_tag</code> | string | - | Motif de tag pour comparaison (par ex., <code>"v*"</code>) |
+| <code>show_mermaid_diagram</code> | bool | <code>true</code> | Afficher le diagramme Mermaid visuel des étapes |
+| <code>release_strategy</code> | object | - | Stratégie de sélection du candidat à la release |</p><h3>Options <code>workflows.<name>.pipeline.stages[]</code></h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>name</code> | string | - | <strong>Requis :</strong> Nom de l’étape (par ex., <code>"dev"</code>, <code>"prod"</code>) |
+| <code>environment</code> | string | - | Nom de l’environnement GitHub |
+| <code>policy</code> | string | - | Politique d’approbation pour cette étape |
+| <code>approvers</code> | string[] | - | Approveurs en ligne (alternative à la politique) |
+| <code>on_approved</code> | string | - | Commentaire à poster lorsque l’étape est approuvée |
+| <code>create_tag</code> | booléen | <code>false</code> | Crée une étiquette git à cette étape |
+| <code>is_final</code> | booléen | <code>false</code> | Ferme le problème après cette étape |
+| <code>auto_approve</code> | booléen | <code>false</code> | Approuve automatiquement sans intervention humaine |</p><h3>Options de <code>workflows.<name>.pipeline.release_strategy</code></h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>type</code> | chaîne | <code>"tag"</code> | Stratégie : <code>"tag"</code>, <code>"branch"</code>, <code>"label"</code>, <code>"milestone"</code> |
+| <code>branch</code> | objet | - | Paramètres de la stratégie de branche |
+| <code>label</code> | objet | - | Paramètres de la stratégie d’étiquette |
+| <code>milestone</code> | objet | - | Paramètres de la stratégie de jalon |
+| <code>auto_create</code> | objet | - | Création automatique du prochain artefact de version |</p><h3>Options de <code>release_strategy.branch</code></h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>pattern</code> | chaîne | <code>"release/{{version}}"</code> | Modèle de nommage de branche |
+| <code>base_branch</code> | chaîne | <code>"main"</code> | Branche de référence pour la comparaison |
+| <code>delete_after_release</code> | booléen | <code>false</code> | Supprime la branche après le déploiement en production |</p><h3>Options de <code>release_strategy.label</code></h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>pattern</code> | chaîne | <code>"release:{{version}}"</code> | Modèle de nommage d’étiquette |
+| <code>pending_label</code> | chaîne | - | Étiquette pour les PR en attente d’assignation de version |
+| <code>remove_after_release</code> | booléen | <code>false</code> | Supprime les étiquettes après le déploiement en production |</p><h3>Options de <code>release_strategy.milestone</code></h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>pattern</code> | chaîne | <code>"v{{version}}"</code> | Modèle de nommage de jalon |
+| <code>close_after_release</code> | booléen | <code>false</code> | Ferme le jalon après le déploiement en production |</p><h3>Options de <code>release_strategy.auto_create</code></h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>enabled</code> | bool | <code>false</code> | Activer la création automatique à la fin de l'étape finale |
+| <code>next_version</code> | string | <code>"patch"</code> | Incrément de version : <code>"patch"</code>, <code>"minor"</code>, <code>"major"</code> |
+| <code>create_issue</code> | bool | <code>false</code> | Créer un nouveau ticket d'approbation pour la prochaine version |
+| <code>comment</code> | string | - | Commentaire à publier concernant la prochaine version |</p><h3>Options <code>semver</code></h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>prefix</code> | string | <code>"v"</code> | Préfixe de tag |
+| <code>strategy</code> | string | <code>"input"</code> | Stratégie de version : <code>"input"</code>, <code>"auto"</code> |
+| <code>validate</code> | bool | <code>false</code> | Valider le format semver |
+| <code>allow_prerelease</code> | bool | <code>false</code> | Autoriser les versions préliminaires (ex. : <code>v1.0.0-beta.1</code>) |
+| <code>auto</code> | object | - | Paramètres d’incrémentation automatique basés sur les labels |</p><h3>Options <code>semver.auto</code></h3></p><p>| Clé | Type | Défaut | Description |
+|-----|------|---------|-------------|
+| <code>major_labels</code> | string[] | <code>[]</code> | Labels de PR qui déclenchent une montée majeure |
+| <code>minor_labels</code> | string[] | <code>[]</code> | Labels de PR qui déclenchent une montée mineure |
+| <code>patch_labels</code> | string[] | <code>[]</code> | Labels de PR qui déclenchent une montée de patch |</p><hr></p><h2>Détails de la fonctionnalité</h2></p><h3>Mots-clés d’approbation</h3></p><p>Les utilisateurs peuvent approuver ou refuser les requêtes en commentant sur le ticket :</p><p><strong>Mots-clés d’approbation :</strong> <code>approve</code>, <code>approved</code>, <code>lgtm</code>, <code>yes</code>, <code>/approve</code></p><p><strong>Mots-clés de refus :</strong> <code>deny</code>, <code>denied</code>, <code>reject</code>, <code>rejected</code>, <code>no</code>, <code>/deny</code></p><h3>Support des équipes</h3></p><p>Pour utiliser les approbateurs basés sur les équipes GitHub, vous avez besoin de permissions élevées. Le <code>GITHUB_TOKEN</code> standard ne peut pas lister les membres de l’équipe. Utilisez un token d’application GitHub :</p><pre><code class="language-yaml">jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li></p><p>      </ul># Generate GitHub App token
+      <ul><li>uses: actions/create-github-app-token@v2</li>
+        </ul>id: app-token
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}</p><p>      # Use the app token for team membership checks
+      <ul><li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>with:
+          action: process-comment
+          issue_number: ${{ github.event.issue.number }}
+          token: ${{ steps.app-token.outputs.token }}</code></pre></p><p><strong>Autorisations requises pour l’application GitHub :</strong></p><ul><li><code>Organisation > Membres : Lecture</code> - Pour lister les membres de l’équipe</li></p><p></ul><h3>Pipelines de déploiement progressif</h3></p><p>Suivez les déploiements à travers plusieurs environnements avec un seul ticket d’approbation. À chaque étape approuvée, le ticket se met à jour pour montrer la progression et passe automatiquement à l’étape suivante.</p><p>#### Configuration du pipeline</p><pre><code class="language-yaml"># .github/approvals.yml or external config
+version: 1</p><p>policies:
+  developers:
+    approvers: [dev1, dev2, dev3]
+    min_approvals: 1</p><p>  qa-team:
+    approvers: [qa1, qa2]
+    min_approvals: 1</p><p>  tech-leads:
+    approvers: [lead1, lead2]
+    min_approvals: 1</p><p>  production-approvers:
+    approvers: [sre1, sre2, security-lead]
+    require_all: true</p><p>workflows:
+  deploy:
+    description: "Deploy through all environments (dev → qa → stage → prod)"
+    require:
+      <ul><li>policy: developers  # Initial approval to start pipeline</li>
+    </ul>pipeline:
+      track_prs: true       # Include PRs in the issue body
+      track_commits: true   # Include commits in the issue body
+      stages:
+        <ul><li>name: dev</li>
+          </ul>environment: development
+          policy: developers
+          on_approved: "✅ <strong>DEV</strong> deployment approved! Proceeding to QA..."
+        <ul><li>name: qa</li>
+          </ul>environment: qa
+          policy: qa-team
+          on_approved: "✅ <strong>QA</strong> deployment approved! Proceeding to STAGING..."
+        <ul><li>name: stage</li>
+          </ul>environment: staging
+          policy: tech-leads
+          on_approved: "✅ <strong>STAGING</strong> deployment approved! Ready for PRODUCTION..."
+        <ul><li>name: prod</li>
+          </ul>environment: production
+          policy: production-approvers
+          on_approved: "🚀 <strong>PRODUCTION</strong> deployment complete!"
+          create_tag: true   # Create tag when PROD is approved
+          is_final: true     # Close issue after this stage
+    on_approved:
+      close_issue: true
+      comment: |
+        🎉 <strong>Deployment Complete!</strong></p><p>        Version <code>{{version}}</code> has been deployed to all environments.</code></pre>
+#### Exemple de flux de travail de pipeline</p><pre><code class="language-yaml"># .github/workflows/request-pipeline.yml
+name: Request Pipeline Deployment</p><p>on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to deploy'
+        required: true
+        type: string</p><p>permissions:
+  contents: write
+  issues: write
+  pull-requests: read  # Required for PR tracking</p><p>jobs:
+  request:
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+        </ul>with:
+          fetch-depth: 0  # Needed for commit/PR comparison</p><ul><li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: approval
+        with:
+          action: request
+          workflow: deploy
+          version: ${{ inputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}</p><ul><li>name: Output Results</li>
+        </ul>run: |
+          echo "## Pipeline Deployment Started" >> $GITHUB_STEP_SUMMARY
+          echo "- <strong>Issue:</strong> #${{ steps.approval.outputs.issue_number }}" >> $GITHUB_STEP_SUMMARY
+          echo "- <strong>URL:</strong> ${{ steps.approval.outputs.issue_url }}" >> $GITHUB_STEP_SUMMARY</code></pre></p><p>#### Comment ça fonctionne</p><ul><li><strong>Création de problème</strong> : Lorsqu'il est déclenché, crée un seul problème affichant toutes les étapes avec un diagramme Mermaid visuel et un tableau de progression :</li></p><p></ul><pre><code class="language-markdown">## 🚀 Pipeline de déploiement : v1.2.0</p><h3>Flux du pipeline</h3></p><p>​``<code>mermaid
+flowchart LR
+    DEV(⏳ DEV)
+    QA(⬜ QA)
+    STAGE(⬜ STAGE)
+    PROD(⬜ PROD)
+    DEV --> QA --> STAGE --> PROD</p><p>    classDef completed fill:#28a745,stroke:#1e7e34,color:#fff
+    classDef current fill:#ffc107,stroke:#d39e00,color:#000
+    classDef pending fill:#6c757d,stroke:#545b62,color:#fff
+    class DEV current
+    class QA,STAGE,PROD pending
+​</code>`<code></p><h3>Deployment Progress</h3></p><p>| Stage | Status | Approver | Time |
+|-------|--------|----------|------|
+| DEV | ⏳ Awaiting | - | - |
+| QA | ⬜ Pending | - | - |
+| STAGE | ⬜ Pending | - | - |
+| PROD | ⬜ Pending | - | - |</p><p><strong>Current Stage:</strong> DEV</code></pre></p><p>Le diagramme Mermaid fournit une vue d'ensemble avec des nœuds codés par couleur :
+<ul><li>🟢 <strong>Vert</strong> - Étapes terminées</li>
+<li>🟡 <strong>Jaune</strong> - Étape actuelle en attente d'approbation</li>
+<li>⚪ <strong>Gris</strong> - Étapes en attente</li>
+<li>🔵 <strong>Cyan</strong> - Étapes d'approbation automatique</li></p><p></ul>Pour désactiver le diagramme Mermaid, définissez </code>show_mermaid_diagram: false<code> dans la configuration du pipeline.</p><ul><li><strong>Progression des étapes</strong> : Commentez </code>approve<code> pour passer à l'étape suivante. Le diagramme et le tableau se mettent à jour automatiquement :</li></p><p></ul><pre><code class="language-markdown">| Stage | Status | Approver | Time |
+|-------|--------|----------|------|
+| DEV | ✅ Deployed | @developer1 | Dec 9 10:30 |
+| QA | ✅ Deployed | @qa-lead | Dec 9 14:15 |
+| STAGE | ⏳ Awaiting | - | - |
+| PROD | ⬜ Pending | - | - |</p><p><strong>Current Stage:</strong> STAGE</code></pre>
+<ul><li><strong>Suivi des PR et des commits</strong> : Les responsables des versions voient exactement ce qui est déployé :</li></p><p>
+</ul><pre><code class="language-markdown">### Pull Requests in this Release</p><p>| PR | Title | Author |
+|----|-------|--------|
+| <a href="https://..." target="_blank" rel="noopener noreferrer">#42</a> | Add user authentication | @alice |
+| <a href="https://..." target="_blank" rel="noopener noreferrer">#45</a> | Fix payment processing bug | @bob |</p><h3>Commits</h3></p><ul><li><a href="https://..." target="_blank" rel="noopener noreferrer"></code>abc1234<code></a> feat: add OAuth2 support</li>
+<li><a href="https://..." target="_blank" rel="noopener noreferrer"></code>def5678<code></a> fix: handle null payments</code></pre></li></p><p><li><strong>Achèvement</strong> : Lorsque l’étape finale est approuvée :</li>
+   <li>Un tag est créé (si </code>create_tag: true<code>)</li>
+   <li>Un commentaire d’achèvement est posté</li>
+   <li>Le problème est automatiquement fermé</li></p><p></ul>#### Options de l’étape du pipeline</p><p>| Option | Description |
+|--------|-------------|
+| </code>name<code> | Nom de l’étape (affiché dans le tableau) |
+| </code>environment<code> | Nom de l’environnement GitHub |
+| </code>policy<code> | Politique d’approbation pour cette étape |
+| </code>approvers<code> | Approbateurs en ligne (alternative à la politique) |
+| </code>on_approved<code> | Message à poster lorsque l’étape est approuvée |
+| </code>create_tag<code> | Créer un tag git à cette étape |
+| </code>is_final<code> | Fermer le problème après cette étape |
+| </code>auto_approve<code> | Approuver automatiquement cette étape sans intervention humaine |
+| </code>approval_mode<code> | Remplacer le mode d’approbation du workflow pour cette étape |</p><p>#### Modes d’approbation</p><p>Choisissez comment les approbateurs interagissent avec les demandes d’approbation :</p><p>| Mode | Description |
+|------|-------------|
+| </code>comments<code> | (Par défaut) Les approbateurs commentent </code>/approve<code> ou </code>approve<code> sur le problème |
+| </code>sub_issues<code> | Crée une sous-issue pour chaque étape - fermer pour approuver |
+| </code>hybrid<code> | Mélange des modes par étape - utiliser </code>approval_mode<code> sur chaque étape |</p><p><strong>Exemple d’approbation par sous-issue :</strong></p><pre><code class="language-yaml">workflows:
+  deploy:
+    approval_mode: sub_issues
+    sub_issue_settings:
+      title_template: "⏳ Approve: {{stage}} for {{version}}"  # Changes to ✅ when approved
+      labels: [approval-stage]
+      protection:
+        only_assignee_can_close: true   # Prevents unauthorized approvals
+        prevent_parent_close: true       # Parent can't close until all approved
+    pipeline:
+      stages:
+        <ul><li>name: dev</li>
+          </ul>policy: developers
+        <ul><li>name: prod</li>
+          </ul>policy: production-approvers</code></pre>
+Avec des sous-problèmes, le problème principal affiche un tableau des sous-problèmes d'approbation :</p><pre><code class="language-markdown">### 📋 Approval Sub-Issues</p><p>| Stage | Sub-Issue | Status | Assignees |
+|-------|-----------|--------|----------|
+| DEV | #124 | ⏳ Awaiting | @alice, @bob |
+| PROD | #125 | ⏳ Awaiting | @sre1, @sre2 |</code></pre></p><p><strong>Mode Hybride (surcharge par étape) :</strong></p><pre><code class="language-yaml">workflows:
+  deploy:
+    approval_mode: comments  # Default for this workflow
+    pipeline:
+      stages:
+        <ul><li>name: dev</li>
+          </ul>policy: developers
+          # Uses comments (workflow default)
+        <ul><li>name: prod</li>
+          </ul>policy: production-approvers
+          approval_mode: sub_issues  # Override for production only</code></pre></p><p>#### Expérience Utilisateur Améliorée des Commentaires</p><p>L’action inclut une expérience utilisateur améliorée pour l’approbation basée sur les commentaires :</p><ul><li><strong>Réactions Emoji</strong> : Réactions automatiques sur les commentaires d’approbation</li>
+  <li>👍 Approuvé</li>
+  <li>👎 Refusé</li>
+  <li>👀 Vu (en cours)</li></p><p><li><strong>Section Actions Rapides</strong> : Le corps de l’issue inclut un tableau de référence des commandes :</li></p><p></ul><pre><code class="language-markdown">### ⚡ Quick Actions</p><p>| Action | Command | Description |
+|--------|---------|-------------|
+| ✅ Approve | </code>/approve<code> | Approve the <strong>DEV</strong> stage |
+| ❌ Deny | </code>/deny [reason]<code> | Deny with optional reason |
+| 📊 Status | </code>/status<code> | Show current approval status |</code></pre></p><p><strong>Configurer via </code>comment_settings<code> :</strong></p><pre><code class="language-yaml">workflows:
+  deploy:
+    comment_settings:
+      react_to_comments: true     # Add emoji reactions (default: true)
+      show_quick_actions: true    # Show Quick Actions section (default: true)</code></pre></p><p>#### Approbation automatique pour les environnements inférieurs</p><p>Utilisez </code>auto_approve: true<code> sur les étapes du pipeline qui doivent être approuvées automatiquement sans intervention humaine. Cela est idéal pour les environnements inférieurs comme </code>dev<code> ou </code>integration<code> où vous souhaitez accélérer le pipeline tout en conservant des étapes d'approbation pour la production.</p><p><strong>Exemple avec approbation automatique :</strong></p><pre><code class="language-yaml">workflows:
+  deploy:
+    description: "Deploy through environments"
+    pipeline:
+      stages:
+        <ul><li>name: dev</li>
+          </ul>environment: development
+          auto_approve: true              # Automatically approved
+          on_approved: "🤖 DEV auto-deployed"
+        <ul><li>name: integration</li>
+          </ul>environment: integration
+          auto_approve: true              # Automatically approved
+          on_approved: "🤖 INTEGRATION auto-deployed"
+        <ul><li>name: staging</li>
+          </ul>environment: staging
+          policy: qa-team                 # Requires manual approval
+          on_approved: "✅ STAGING approved"
+        <ul><li>name: production</li>
+          </ul>environment: production
+          policy: production-approvers    # Requires manual approval
+          create_tag: true
+          is_final: true</code></pre></p><p><strong>Comment ça fonctionne :</strong></p><ul><li>Lorsqu'un problème de pipeline est créé, toutes les étapes initiales avec </code>auto_approve: true<code> sont automatiquement terminées  </li>
+<li>Lorsqu'une étape est approuvée manuellement, toutes les étapes consécutives avec </code>auto_approve: true<code> qui suivent sont également automatiquement terminées  </li>
+<li>Les étapes auto-approuvées s'affichent avec l'indicateur 🤖 dans le tableau du pipeline  </li>
+<li>L'approbateur est enregistré comme </code>[auto]<code> dans l'historique de l'étape  </li></p><p></ul><strong>Cas d'utilisation :</strong></p><ul><li><strong>Environnements de développement</strong> : Déployer immédiatement sans attendre l'approbation  </li>
+<li><strong>Tests d'intégration</strong> : Laisser le pipeline CI/CD progresser automatiquement à travers les environnements de test  </li>
+<li><strong>Déploiements canaris</strong> : Auto-approuver l'étape canaris, exiger une approbation pour le déploiement complet  </li></p><p></ul>#### Options de configuration du pipeline</p><p>| Option | Par défaut | Description |
+|--------|------------|-------------|
+| </code>track_prs<code> | </code>false<code> | Inclure les PR fusionnées dans le corps du problème |
+| </code>track_commits<code> | </code>false<code> | Inclure les commits depuis la dernière étiquette |
+| </code>compare_from_tag<code> | - | Modèle personnalisé d'étiquette à comparer |
+| </code>show_mermaid_diagram<code> | </code>true<code> | Afficher le diagramme Mermaid visuel des étapes du pipeline |</p><p><strong>Note :</strong> Le suivi des PR nécessite la permission </code>pull-requests: read<code> dans votre workflow.  </p><h3>Stratégies de candidat à la release</h3></p><p>Dans les environnements d'entreprise, les PR fusionnées dans la branche principale ne sont pas toujours des candidats à la release immédiate. Le moteur d'approbation prend en charge trois stratégies pour sélectionner les PR appartenant à une release :  </p><p>#### Types de stratégies</p><p>| Stratégie | Description | Cas d'utilisation |
+|-----------|-------------|-------------------|
+| </code>tag<code> | PR entre deux étiquettes git (par défaut) | Releases simples, développement basé sur la branche principale |
+| </code>branch<code> | PR fusionnées dans une branche de release | GitFlow, branches de release |
+| </code>label<code> | PR avec un label spécifique de release | Sélection flexible, releases groupées |
+| </code>milestone<code> | PR assignées à un jalon GitHub | Releases alignées sur la feuille de route |</p><p>#### Configuration</p><pre><code class="language-yaml"># .github/approvals.yml
+workflows:
+  deploy:
+    description: "Production deployment pipeline"
+    pipeline:
+      track_prs: true
+      track_commits: true</p><p>      # Configure release selection strategy
+      release_strategy:
+        type: milestone  # or: tag, branch, label</p><p>        # Milestone strategy settings
+        milestone:
+          pattern: "v{{version}}"        # e.g., "v1.2.0"
+          close_after_release: true       # Close milestone on prod completion</p><p>        # Auto-create next release artifact on completion
+        auto_create:
+          enabled: true
+          next_version: patch             # or: minor, major
+          create_issue: true              # Create new approval issue</p><p>      stages:
+        <ul><li>name: dev</li>
+          </ul>policy: developers
+        <ul><li>name: prod</li>
+          </ul>policy: production-approvers
+          is_final: true</code></pre>
+#### Stratégie de branche</p><p>Utilisez des branches de version pour un développement de type GitFlow :</p><pre><code class="language-yaml">release_strategy:
+  type: branch
+  branch:
+    pattern: "release/{{version}}"  # Creates release/v1.2.0
+    base_branch: main               # Compare against main
+    delete_after_release: true      # Cleanup after prod deploy</p><p>  auto_create:
+    enabled: true
+    next_version: minor</code></pre></p><p><strong>Comment ça marche :</strong>
+<ul><li>Créez une branche de version : </code>release/v1.2.0<code></li>
+<li>Les PR fusionnées dans la branche sont des candidats à la version</li>
+<li>Demandez l'approbation pour cette version</li>
+<li>L'issue d'approbation affiche toutes les PR de la branche de version</li>
+<li>Après la production, la branche est supprimée (optionnel) et la branche suivante est créée</li></p><p></ul>#### Stratégie de labels</p><p>Utilisez des labels pour une sélection flexible des PR :</p><pre><code class="language-yaml">release_strategy:
+  type: label
+  label:
+    pattern: "release:{{version}}"      # e.g., "release:v1.2.0"
+    pending_label: "pending-release"    # Applied to merged PRs awaiting release
+    remove_after_release: true          # Remove label after prod deploy</p><p>  auto_create:
+    enabled: true
+    next_version: patch</code></pre></p><p><strong>Comment ça fonctionne :</strong>
+<ul><li>Les PR fusionnées dans main reçoivent le label </code>pending-release<code></li>
+<li>Le responsable des versions applique </code>release:v1.2.0<code> aux PR sélectionnées</li>
+<li>Demander l'approbation pour la v1.2.0</li>
+<li>L’issue d’approbation affiche uniquement les PR avec ce label</li>
+<li>Après la production, les labels sont supprimés et le label de la prochaine version est créé</li></p><p></ul>#### Stratégie de jalons</p><p>Utilisez des jalons pour les versions alignées sur la feuille de route :</p><pre><code class="language-yaml">release_strategy:
+  type: milestone
+  milestone:
+    pattern: "Release {{version}}"       # e.g., "Release 1.2.0"
+    close_after_release: true            # Close milestone on completion</p><p>  auto_create:
+    enabled: true
+    next_version: minor
+    create_issue: true                   # Auto-create next approval issue</code></pre></p><p><strong>Comment ça fonctionne :</strong>
+<ul><li>Créer un jalon : « Release 1.2.0 »</li>
+<li>Assigner les PRs au jalon pendant le développement</li>
+<li>Demander l'approbation pour la v1.2.0</li>
+<li>L’issue d’approbation affiche toutes les PRs du jalon</li>
+<li>Après la prod, le jalon est fermé et le jalon suivant est créé</li></p><p></ul>#### Création automatique à la fin</p><p>Lorsque la dernière étape (prod) est approuvée, préparer automatiquement la prochaine version :</p><pre><code class="language-yaml">auto_create:
+  enabled: true
+  next_version: patch      # Calculate next: patch, minor, or major
+  create_issue: true       # Create new approval issue immediately
+  comment: |               # Custom message (optional)
+    🚀 <strong>Next release prepared:</strong> {{version}}</code></pre></p><p>Cela crée :
+<ul><li><strong>Stratégie de branche :</strong> Nouvelle branche de release à partir de main</li>
+<li><strong>Stratégie d’étiquette :</strong> Nouvelle étiquette de release</li>
+<li><strong>Stratégie de jalon :</strong> Nouveau jalon</li></p><p></ul>#### Options de nettoyage</p><p>Chaque stratégie possède des actions de nettoyage optionnelles qui s’exécutent lorsque l’étape finale (prod) est approuvée. <strong>Toutes les options de nettoyage sont désactivées par défaut (</code>false<code>)</strong> - le nettoyage est à activer :</p><p>| Stratégie | Option de nettoyage | Description |
+|-----------|---------------------|-------------|
+| Branche | </code>delete_after_release<code> | Supprimer la branche de release |
+| Étiquette | </code>remove_after_release<code> | Supprimer les étiquettes de release des PR |
+| Jalon | </code>close_after_release<code> | Fermer le jalon |</p><pre><code class="language-yaml">release_strategy:
+  type: branch
+  branch:
+    pattern: "release/{{version}}"
+    delete_after_release: false   # Keep branch for reference (default)</p><p>  type: milestone
+  milestone:
+    pattern: "v{{version}}"
+    close_after_release: true     # Close milestone when done</code></pre></p><p>#### Déploiements de Correctifs Urgents</p><p>Pour les correctifs d'urgence qui doivent contourner les flux de travail de publication normaux, créez un flux de travail séparé :</p><pre><code class="language-yaml"># .github/approvals.yml
+workflows:
+  # Standard releases - full pipeline with milestone tracking
+  deploy:
+    description: "Standard release pipeline (dev → qa → stage → prod)"
+    pipeline:
+      release_strategy:
+        type: milestone
+        milestone:
+          pattern: "v{{version}}"
+          close_after_release: true
+        auto_create:
+          enabled: true
+          next_version: minor
+      stages:
+        <ul><li>name: dev</li>
+          </ul>policy: developers
+        <ul><li>name: qa</li>
+          </ul>policy: qa-team
+        <ul><li>name: stage</li>
+          </ul>policy: tech-leads
+        <ul><li>name: prod</li>
+          </ul>policy: production-approvers
+          is_final: true</p><p>  # Hotfixes - skip stages, direct to prod
+  hotfix:
+    description: "Emergency hotfix - direct to production"
+    pipeline:
+      release_strategy:
+        type: tag              # Simple tag-based, no cleanup needed
+        # No auto_create - hotfixes are one-off
+      stages:
+        <ul><li>name: prod</li>
+          </ul>policy: production-approvers
+          create_tag: true
+          is_final: true
+    on_approved:
+      close_issue: true
+      comment: "🚨 Hotfix {{version}} deployed to production"</code></pre></p><p><strong>Correction urgente par rapport à une version régulière :</strong></p><pre><code class="language-bash"># Regular release - goes through all stages
+gh workflow run request-approval.yml -f workflow_name=deploy -f version=v1.3.0</p><h1>Hotfix - goes straight to prod</h1>
+gh workflow run request-approval.yml -f workflow_name=hotfix -f version=v1.2.1</code></pre></p><p><strong>Modèles de correctifs rapides :</strong></p><p>| Scénario | Stratégie | Nettoyage | Création automatique |
+|----------|----------|---------|-------------|
+| Correction d'urgence | </code>tag<code> | Aucun | Désactivé |
+| Version patch | </code>milestone<code> | </code>close_after_release: false<code> | Désactivé |
+| Plusieurs correctifs rapides | </code>branch<code> | </code>delete_after_release: false<code> | Désactivé |</p><p>#### Avantages de la stratégie de publication</p><p>| Stratégie | Avantages | Inconvénients |
+|----------|------|------|
+| <strong>Tag</strong> | Simple, pas de workflow supplémentaire | Tous les PR fusionnés inclus |
+| <strong>Branche</strong> | Portée claire de la version, isolation | Surcharge de gestion des branches |
+| <strong>Étiquette</strong> | Sélection flexible, facile à modifier | Étiquetage manuel requis |
+| <strong>Milestone</strong> | Visibilité de la feuille de route, intégration de la planification | Nécessite une discipline sur les milestones |</p><p><strong>Recommandation :</strong></p><ul><li>Utiliser <strong>tag</strong> pour les projets simples avec déploiement continu</li>
+<li>Utiliser <strong>branche</strong> pour les environnements réglementés nécessitant une isolation des versions</li>
+<li>Utiliser <strong>étiquette</strong> pour les versions groupées avec portée flexible</li>
+<li>Utiliser <strong>milestone</strong> pour un développement guidé par la feuille de route avec une planification claire des versions</li></p><p></ul><h3>Intégration Jira</h3></p><p>Extraire automatiquement les tickets Jira à partir des commits et des noms de branches. L’action supporte deux modes :</p><p>#### Mode liens uniquement (sans authentification requise)</p><p>Fournissez simplement </code>jira_base_url<code> pour extraire les clés des tickets et les afficher comme liens cliquables :</p><pre><code class="language-yaml">- uses: jamengual/enterprise-approval-engine@v1
+  with:
+    action: request
+    workflow: production-deploy
+    version: v1.2.0
+    token: ${{ secrets.GITHUB_TOKEN }}
+    jira_base_url: https://yourcompany.atlassian.net  # That's it!</code></pre></p><p>Cela extrait les clés des tickets (par ex., </code>PROJ-123<code>) des messages de commit et des noms de branches, en les affichant comme des liens dans le ticket d'approbation :</p><pre><code class="language-markdown">### Jira Issues
+<ul><li><a href="https://yourcompany.atlassian.net/browse/PROJ-123" target="_blank" rel="noopener noreferrer">PROJ-123</a></li>
+<li><a href="https://yourcompany.atlassian.net/browse/PROJ-456" target="_blank" rel="noopener noreferrer">PROJ-456</a></code></pre></li>
+</ul>#### Mode Complet (Avec accès API)</p><p>Ajoutez des identifiants pour également récupérer les détails des problèmes et mettre à jour les versions corrigées :</p><pre><code class="language-yaml">- uses: jamengual/enterprise-approval-engine@v1
+  with:
+    action: request
+    workflow: production-deploy
+    version: v1.2.0
+    token: ${{ secrets.GITHUB_TOKEN }}
+    # Jira configuration
+    jira_base_url: https://yourcompany.atlassian.net
+    jira_user_email: ${{ secrets.JIRA_EMAIL }}
+    jira_api_token: ${{ secrets.JIRA_API_TOKEN }}
+    jira_update_fix_version: 'true'</code></pre></p><p>Cela affiche des informations détaillées sur le problème :</p><pre><code class="language-markdown">### Jira Issues in this Release</p><p>| Key | Summary | Type | Status |
+|-----|---------|------|--------|
+| <a href="https://..." target="_blank" rel="noopener noreferrer">PROJ-123</a> | Fix login bug | Bug | Done |
+| <a href="https://..." target="_blank" rel="noopener noreferrer">PROJ-456</a> | Add dark mode | Feature | In Progress |</code></pre></p><p><strong>Comparaison des modes :</strong></p><p>| Mode | Auth requise | Fonctionnalités |
+|------|--------------|-----------------|
+| Liens uniquement | Non | Génère des clés sous forme de liens cliquables |
+| Complet | Oui | Liens + résumé, statut, emojis de type, mises à jour de la version corrigée |</p><p><strong>Sorties Jira :</strong></p><pre><code class="language-yaml">- name: Use Jira Outputs
+  run: |
+    echo "Issues: ${{ steps.approval.outputs.jira_issues }}"
+    # Output: PROJ-123,PROJ-456</p><p>    echo "Details: ${{ steps.approval.outputs.jira_issues_json }}"
+    # Output: [{"key":"PROJ-123","summary":"Fix login bug",...}]</code></pre></p><h3>Suivi du déploiement</h3></p><p>Créez des déploiements GitHub pour la visibilité dans le tableau de bord de déploiement de GitHub. Cela fonctionne indépendamment de la clé </code>environment:<code> dans le YAML du workflow.</p><pre><code class="language-yaml">- uses: jamengual/enterprise-approval-engine@v1
+  id: approval
+  with:
+    action: request
+    workflow: production-deploy
+    version: v1.2.0
+    token: ${{ secrets.GITHUB_TOKEN }}
+    # Deployment tracking
+    create_deployment: 'true'
+    deployment_environment: production
+    deployment_environment_url: https://myapp.example.com</p><ul><li>name: Update Deployment Status</li>
+  </ul>if: steps.approval.outputs.status == 'approved'
+  run: |
+    # Use the deployment_id to update status after actual deployment
+    echo "Deployment ID: ${{ steps.approval.outputs.deployment_id }}"</code></pre></p><p><strong>Où les déploiements apparaissent :</strong></p><ul><li>Onglet <strong>Déploiements</strong> du dépôt</li>
+<li>Badges d’état de l’environnement sur la page du dépôt</li>
+<li>Intégration GitHub pour Jira (si configurée)</li>
+<li>API GitHub pour les outils CI/CD</li></p><p></ul><strong>Remarque :</strong> Cela crée des déploiements via l’API GitHub Deployments, qui est distincte des règles natives de protection des environnements de GitHub. Vous pouvez utiliser les deux conjointement ou indépendamment.</p><h3>Dépôt de configuration externe</h3></p><p>Stockez les configurations d’approbation dans un dépôt partagé pour une gestion centralisée des politiques :</p><pre><code class="language-yaml">- uses: jamengual/enterprise-approval-engine@v1
+  with:
+    action: request
+    workflow: production-deploy
+    token: ${{ secrets.GITHUB_TOKEN }}
+    config_repo: myorg/.github  # Shared config repo</code></pre></p><p><strong>Ordre de résolution de la configuration :</strong></p><ul><li></code>{repo-name}_approvals.yml<code> dans le dépôt externe (ex. : </code>myapp_approvals.yml<code>)</li>
+<li></code>approvals.yml<code> dans le dépôt externe (par défaut partagé)</li>
+<li></code>.github/approvals.yml<code> dans le dépôt actuel (repli local)</li></p><p></ul><strong>Exemple de structure d’organisation :</strong></p><pre><code class="language-text">myorg/.github/
+├── myapp_approvals.yml      # App-specific config
+├── backend_approvals.yml    # Backend repos config
+└── approvals.yml            # Default for all repos</code></pre></p><h3>Approbations bloquantes</h3></p><p>Pour les flux de travail qui doivent attendre une approbation avant de continuer :</p><pre><code class="language-yaml">name: Deploy with Blocking Approval</p><p>on:
+  workflow_dispatch:
+    inputs:
+      version:
+        required: true
+        type: string</p><p>jobs:
+  request-approval:
+    runs-on: ubuntu-latest
+    outputs:
+      issue_number: ${{ steps.request.outputs.issue_number }}
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+      <li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: request
+        with:
+          action: request
+          workflow: production-deploy
+          version: ${{ inputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}</p><p>  wait-for-approval:
+    needs: request-approval
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.check.outputs.status }}
+      tag: ${{ steps.check.outputs.tag }}
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+      <li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: check
+        with:
+          action: check
+          issue_number: ${{ needs.request-approval.outputs.issue_number }}
+          wait: 'true'           # Poll until approved/denied
+          timeout: '4h'          # Max wait time
+          token: ${{ secrets.GITHUB_TOKEN }}</p><p>  deploy:
+    needs: [request-approval, wait-for-approval]
+    if: needs.wait-for-approval.outputs.status == 'approved'
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>name: Deploy</li>
+        </ul>run: |
+          echo "Deploying ${{ needs.wait-for-approval.outputs.tag }}"</code></pre></p><p><strong>Remarque :</strong> Les workflows bloquants maintiennent le runner actif, ce qui consomme des minutes GitHub Actions. Pour les scénarios sensibles aux coûts, utilisez l’approche basée sur les événements (workflow </code>process-comment<code> séparé).</p><h3>Suppression des tags à la fermeture d’une issue</h3></p><p>Supprimez éventuellement les tags lorsque les issues d’approbation sont fermées manuellement :</p><pre><code class="language-yaml">workflows:
+  dev-deploy:
+    on_closed:
+      delete_tag: true   # Delete tag when issue is closed
+      comment: "Cancelled. Tag {{tag}} deleted."</p><p>  production-deploy:
+    on_closed:
+      delete_tag: false  # NEVER delete production tags</code></pre></p><p><strong>Gérer les événements de fermeture :</strong></p><pre><code class="language-yaml"># .github/workflows/handle-close.yml
+name: Handle Issue Close</p><p>on:
+  issues:
+    types: [closed]</p><p>jobs:
+  handle:
+    if: contains(github.event.issue.labels.*.name, 'approval-required')
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+      <li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: close
+        with:
+          action: close-issue
+          issue_number: ${{ github.event.issue.number }}
+          issue_action: ${{ github.event.action }}
+          token: ${{ secrets.GITHUB_TOKEN }}</p><ul><li>name: Report</li>
+        </ul>run: |
+          echo "Status: ${{ steps.close.outputs.status }}"
+          echo "Deleted tag: ${{ steps.close.outputs.tag_deleted }}"</code></pre></p><hr></p><h2>Complete Examples</h2></p><h3>Full-Featured Request Workflow</h3></p><pre><code class="language-yaml">name: Request Production Deployment</p><p>on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to deploy'
+        required: true
+        type: string
+      environment:
+        description: 'Target environment'
+        required: true
+        type: choice
+        options: [staging, production]</p><p>permissions:
+  contents: write
+  issues: write
+  deployments: write</p><p>jobs:
+  request:
+    runs-on: ubuntu-latest
+    outputs:
+      issue_number: ${{ steps.approval.outputs.issue_number }}
+      issue_url: ${{ steps.approval.outputs.issue_url }}
+      deployment_id: ${{ steps.approval.outputs.deployment_id }}
+      jira_issues: ${{ steps.approval.outputs.jira_issues }}
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+        </ul>with:
+          fetch-depth: 0  # Needed for commit comparison</p><ul><li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: approval
+        with:
+          action: request
+          workflow: ${{ inputs.environment }}-deploy
+          version: ${{ inputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Jira integration
+          jira_base_url: https://mycompany.atlassian.net
+          jira_user_email: ${{ secrets.JIRA_EMAIL }}
+          jira_api_token: ${{ secrets.JIRA_API_TOKEN }}
+          # Deployment tracking
+          create_deployment: 'true'
+          deployment_environment: ${{ inputs.environment }}
+          deployment_environment_url: https://${{ inputs.environment }}.myapp.com</p><ul><li>name: Summary</li>
+        </ul>run: |
+          echo "## Approval Request Created" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- <strong>Issue:</strong> #${{ steps.approval.outputs.issue_number }}" >> $GITHUB_STEP_SUMMARY
+          echo "- <strong>URL:</strong> ${{ steps.approval.outputs.issue_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "- <strong>Jira Issues:</strong> ${{ steps.approval.outputs.jira_issues }}" >> $GITHUB_STEP_SUMMARY
+          echo "- <strong>Commits:</strong> ${{ steps.approval.outputs.commits_count }}" >> $GITHUB_STEP_SUMMARY</code></pre></p><h3>Traiter les commentaires avec le support de l'équipe</h3></p><pre><code class="language-yaml">name: Handle Approval Comments</p><p>on:
+  issue_comment:
+    types: [created]</p><p>permissions:
+  contents: write
+  issues: write</p><p>jobs:
+  process:
+    if: |
+      github.event.issue.pull_request == null &&
+      contains(github.event.issue.labels.*.name, 'approval-required')
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li></p><p>      </ul># Generate GitHub App token for team membership checks
+      <ul><li>uses: actions/create-github-app-token@v2</li>
+        </ul>id: app-token
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}</p><ul><li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: process
+        with:
+          action: process-comment
+          issue_number: ${{ github.event.issue.number }}
+          token: ${{ steps.app-token.outputs.token }}
+          # Jira integration to update Fix Version on approval
+          jira_base_url: https://mycompany.atlassian.net
+          jira_user_email: ${{ secrets.JIRA_EMAIL }}
+          jira_api_token: ${{ secrets.JIRA_API_TOKEN }}</p><ul><li>name: Trigger Deployment</li>
+        </ul>if: steps.process.outputs.status == 'approved'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'deploy.yml',
+              ref: 'main',
+              inputs: { version: '${{ steps.process.outputs.tag }}' }
+            });</code></pre>
+<h3>Promotion Multi-Environnement</h3></p><pre><code class="language-yaml"># .github/approvals.yml
+version: 1</p><p>policies:
+  dev-team:
+    approvers: [dev1, dev2, dev3]
+    min_approvals: 1</p><p>  qa-team:
+    approvers: [qa1, qa2]
+    min_approvals: 1</p><p>  prod-team:
+    approvers: [team:sre, tech-lead]
+    min_approvals: 2</p><p>workflows:
+  dev-deploy:
+    require:
+      <ul><li>policy: dev-team</li>
+    </ul>on_approved:
+      tagging:
+        enabled: true
+        auto_increment: patch
+        env_prefix: "dev-"
+      close_issue: true</p><p>  staging-deploy:
+    require:
+      <ul><li>policy: qa-team</li>
+    </ul>on_approved:
+      tagging:
+        enabled: true
+        auto_increment: minor
+        env_prefix: "staging-"
+      close_issue: true</p><p>  production-deploy:
+    require:
+      <ul><li>policy: prod-team</li>
+    </ul>on_approved:
+      create_tag: true
+      close_issue: true
+    on_closed:
+      delete_tag: false  # Never delete production tags</code></pre></p><h3>Utilisation des sorties dans les tâches suivantes</h3></p><pre><code class="language-yaml">name: Deploy with Approval</p><p>on:
+  workflow_dispatch:
+    inputs:
+      version:
+        required: true</p><p>jobs:
+  approval:
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.check.outputs.status }}
+      tag: ${{ steps.check.outputs.tag }}
+      approvers: ${{ steps.check.outputs.approvers }}
+      jira_issues: ${{ steps.request.outputs.jira_issues }}
+    steps:
+      <ul><li>uses: actions/checkout@v4</li></p><p>      <li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: request
+        with:
+          action: request
+          workflow: production-deploy
+          version: ${{ inputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          jira_base_url: https://mycompany.atlassian.net</p><ul><li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: check
+        with:
+          action: check
+          issue_number: ${{ steps.request.outputs.issue_number }}
+          wait: 'true'
+          timeout: '2h'
+          token: ${{ secrets.GITHUB_TOKEN }}</p><p>  deploy:
+    needs: approval
+    if: needs.approval.outputs.status == 'approved'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      <ul><li>name: Deploy</li>
+        </ul>run: |
+          echo "Deploying ${{ needs.approval.outputs.tag }}"
+          echo "Approved by: ${{ needs.approval.outputs.approvers }}"
+          echo "Jira Issues: ${{ needs.approval.outputs.jira_issues }}"</p><p>  notify:
+    needs: [approval, deploy]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>name: Notify Slack</li>
+        </ul>run: |
+          if [ "${{ needs.approval.outputs.status }}" == "approved" ]; then
+            echo "Deployment of ${{ needs.approval.outputs.tag }} completed!"
+          else
+            echo "Deployment was ${{ needs.approval.outputs.status }}"
+          fi</code></pre></p><hr></p><h2>Schema Validation</h2></p><p>Validate your configuration using the JSON schema:</p><pre><code class="language-yaml"># .github/approvals.yml
+<h1>yaml-language-server: $schema=https://raw.githubusercontent.com/jamengual/enterprise-approval-engine/main/schema.json</h1></p><p>version: 1</p><p>policies:
+  # ... your config</code></pre>
+Ou valider dans CI :</p><pre><code class="language-yaml">- name: Validate Config
+  run: |
+    npm install -g ajv-cli
+    ajv validate -s schema.json -d .github/approvals.yml</code></pre></p><hr></p><h2>GitHub Enterprise Server</h2></p><p>L'action prend en charge pleinement GitHub Enterprise Server. Elle détecte automatiquement les environnements GHES en utilisant les variables d'environnement </code>GITHUB_SERVER_URL<code> et </code>GITHUB_API_URL`.</p><p>Aucune configuration supplémentaire n'est requise - l'action utilisera automatiquement les points d'accès API corrects.</p><p><strong>Limitation de débit :</strong></p><p>L'action inclut une réessai automatique avec un recul exponentiel pour les erreurs de limitation de débit. Configuration :</p><ul><li>Délai initial : 1 seconde</li>
+<li>Délai max : 60 secondes</li>
+<li>Nombre maximal de tentatives : 5</li>
+<li>Jitter : 0-500ms aléatoire ajouté pour éviter l'effet de masse</li></p><p></ul>---</p><h2>Licence</h2></p><p>Licence MIT</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-22
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/jamengual/enterprise-approval-engine/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-22 
+    </div>
+    
+</body>
+</html>

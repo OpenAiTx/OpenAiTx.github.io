@@ -1,0 +1,1360 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>enterprise-approval-engine - 그룹별 임계값(X of N), 그룹 간 OR 논리, 자동 semver 태그 생성 기능을 갖춘 엔터프라이즈급 승인 워크플로우</title>
+    <meta name="description" content="그룹별 임계값(X of N), 그룹 간 OR 논리, 자동 semver 태그 생성 기능을 갖춘 엔터프라이즈급 승인 워크플로우">
+    <meta name="keywords" content="enterprise-approval-engine, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "enterprise-approval-engine",
+  "description": "그룹별 임계값(X of N), 그룹 간 OR 논리, 자동 semver 태그 생성 기능을 갖춘 엔터프라이즈급 승인 워크플로우",
+  "author": {
+    "@type": "Person",
+    "name": "jamengual"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 4
+  },
+  "url": "https://OpenAiTx.github.io/projects/jamengual/enterprise-approval-engine/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/jamengual/enterprise-approval-engine/main/README.md",
+  "datePublished": "2025-12-22",
+  "dateModified": "2025-12-22"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/jamengual/enterprise-approval-engine" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    enterprise-approval-engine
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 4 stars</span>
+                <span class="language">Korean</span>
+                <span>by jamengual</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>엔터프라이즈 승인 엔진</h1></p><p><a href="README.md" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/lang-en-blue.svg" alt="en"></a>
+<a href="ES/README.md" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/lang-es-yellow.svg" alt="es"></a></p><p>엔터프라이즈급 GitHub 액션으로, 그룹별 임계값(X of N), 그룹 간 OR 논리, 자동 semver 태그 생성이 가능한 정책 기반 승인 워크플로우를 제공합니다.</p><h2>특징</h2></p><ul><li><strong>유연한 승인 논리</strong>: 그룹 내에서 AND(모두 승인해야 함) 및 임계값(X of N) 논리를 지원</li>
+<li><strong>그룹 간 OR 논리</strong>: 다중 승인 경로 - 하나의 그룹이 요구사항을 충족하면 요청 승인</li>
+<li><strong>혼합 승인자</strong>: 동일 그룹 내 개인 사용자와 GitHub 팀을 결합 가능</li>
+<li><strong>점진적 배포 파이프라인</strong>: 단일 이슈로 여러 환경(dev → qa → stage → prod) 추적</li>
+<li><strong>파이프라인 시각화</strong>: 배포 진행 상황을 보여주는 색상 코드 머메이드 플로우차트 다이어그램</li>
+<li><strong>하위 이슈 승인</strong>: 각 단계별 전용 승인 하위 이슈 생성 - 닫으면 승인</li>
+<li><strong>향상된 댓글 UX</strong>: 승인 댓글에 이모지 반응, 명령어 참조가 포함된 빠른 작업 섹션</li>
+<li><strong>이슈 닫기 보호</strong>: 승인 이슈를 비인가 사용자가 닫는 것을 방지(자동 재오픈)</li>
+<li><strong>하이브리드 승인 모드</strong>: 워크플로우나 단계별로 댓글 기반과 하위 이슈 승인을 혼합</li>
+<li><strong>PR 및 커밋 추적</strong>: 배포 이슈에 PR 및 커밋 자동 목록화로 릴리스 관리 지원</li>
+<li><strong>Semver 태그 생성</strong>: 승인 시 git 태그 자동 생성</li>
+<li><strong>정책 기반 구성</strong>: YAML로 재사용 가능한 승인 정책 정의</li>
+<li><strong>이슈 기반 워크플로우</strong>: GitHub 이슈를 통한 투명한 감사 추적</li>
+<li><strong>Jira 통합</strong>: 커밋에서 이슈 키 추출, 승인 이슈에 표시, Fix Versions 업데이트</li>
+<li><strong>배포 추적</strong>: 배포 대시보드에 가시성을 위한 GitHub 배포 생성</li>
+<li><strong>외부 구성</strong>: 공유 저장소에 승인 정책 중앙 집중화</li>
+<li><strong>속도 제한 처리</strong>: GitHub API 속도 제한에 대한 지수 백오프 자동 재시도</li>
+<li><strong>GitHub 엔터프라이즈 서버</strong>: GHES 환경 완전 지원</li>
+<li><strong>외부 종속성 없음</strong>: 순수 GitHub Actions, 외부 서비스 불필요</li></p><p></ul>📋 <strong>실제 사용 예:</strong> <a href="https://github.com/jamengual/enterprise-approval-engine/issues/7" target="_blank" rel="noopener noreferrer">승인 이슈 예제</a></p><h2>목차</h2></p><ul><li><a href="#quick-start" target="_blank" rel="noopener noreferrer">빠른 시작</a></li>
+<li><a href="#action-reference" target="_blank" rel="noopener noreferrer">액션 참조</a></li>
+  <li><a href="#actions" target="_blank" rel="noopener noreferrer">액션</a></li>
+  <li><a href="#inputs" target="_blank" rel="noopener noreferrer">입력값</a></li>
+  <li><a href="#outputs" target="_blank" rel="noopener noreferrer">출력값</a></li>
+<li><a href="#configuration-reference" target="_blank" rel="noopener noreferrer">구성 참조</a></li>
+  <li><a href="#policies" target="_blank" rel="noopener noreferrer">정책</a></li>
+  <li><a href="#workflows" target="_blank" rel="noopener noreferrer">워크플로우</a></li>
+  <li><a href="#tagging-configuration" target="_blank" rel="noopener noreferrer">태깅</a></li>
+  <li><a href="#custom-issue-templates" target="_blank" rel="noopener noreferrer">커스텀 템플릿</a></li>
+  <li><a href="#defaults" target="_blank" rel="noopener noreferrer">기본값</a></li>
+  <li><a href="#semver" target="_blank" rel="noopener noreferrer">Semver</a></li>
+<li><a href="#complete-configuration-reference" target="_blank" rel="noopener noreferrer">완전한 구성 참조</a></li>
+<li><a href="#feature-details" target="_blank" rel="noopener noreferrer">기능 세부사항</a></li>
+  <li><a href="#approval-keywords" target="_blank" rel="noopener noreferrer">승인 키워드</a></li>
+  <li><a href="#team-support" target="_blank" rel="noopener noreferrer">팀 지원</a></li>
+  <li><a href="#progressive-deployment-pipelines" target="_blank" rel="noopener noreferrer">점진적 배포 파이프라인</a></li>
+  <li><a href="#release-candidate-strategies" target="_blank" rel="noopener noreferrer">릴리스 후보 전략</a></li>
+  <li><a href="#jira-integration" target="_blank" rel="noopener noreferrer">지라 통합</a></li>
+  <li><a href="#deployment-tracking" target="_blank" rel="noopener noreferrer">배포 추적</a></li>
+  <li><a href="#external-config-repository" target="_blank" rel="noopener noreferrer">외부 구성 저장소</a></li>
+  <li><a href="#blocking-approvals" target="_blank" rel="noopener noreferrer">차단 승인</a></li>
+  <li><a href="#tag-deletion-on-issue-close" target="_blank" rel="noopener noreferrer">이슈 종료 시 태그 삭제</a></li>
+<li><a href="#complete-examples" target="_blank" rel="noopener noreferrer">완전한 예제</a></li>
+<li><a href="#schema-validation" target="_blank" rel="noopener noreferrer">스키마 검증</a></li>
+<li><a href="#github-enterprise-server" target="_blank" rel="noopener noreferrer">GitHub 엔터프라이즈 서버</a></li></p><p></ul><h2>빠른 시작</h2></p><h3>1. 구성 생성</h3></p><p>레포지토리에 <code>.github/approvals.yml</code> 파일을 생성하세요:</p><pre><code class="language-yaml">version: 1</p><p>policies:
+  dev-team:
+    approvers: [alice, bob, charlie]
+    min_approvals: 2</p><p>  platform-team:
+    approvers: [team:platform-engineers]
+    require_all: true</p><p>workflows:
+  production-deploy:
+    require:
+      # OR logic: either path satisfies approval
+      <ul><li>policy: dev-team        # 2 of 3 developers</li>
+      <li>policy: platform-team   # ALL platform engineers</li>
+    </ul>on_approved:
+      create_tag: true
+      close_issue: true</code></pre></p><h3>2. 요청 승인 워크플로우</h3></p><p><code>.github/workflows/request-approval.yml</code> 파일을 생성하세요:</p><pre><code class="language-yaml">name: Request Deployment Approval</p><p>on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to deploy (e.g., v1.2.3)'
+        required: true
+        type: string</p><p>jobs:
+  request:
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+      <li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: approval
+        with:
+          action: request
+          workflow: production-deploy
+          version: ${{ inputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}</p><ul><li>name: Output Results</li>
+        </ul>run: |
+          echo "Issue: ${{ steps.approval.outputs.issue_url }}"
+          echo "Status: ${{ steps.approval.outputs.status }}"</code></pre></p><h3>3. 승인 코멘트 처리</h3></p><p><code>.github/workflows/handle-approval.yml</code> 생성:</p><pre><code class="language-yaml">name: Handle Approval Comments</p><p>on:
+  issue_comment:
+    types: [created]</p><p>jobs:
+  process:
+    if: contains(github.event.issue.labels.*.name, 'approval-required')
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+      <li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: process
+        with:
+          action: process-comment
+          issue_number: ${{ github.event.issue.number }}
+          token: ${{ secrets.GITHUB_TOKEN }}</p><ul><li>name: Trigger Deployment</li>
+        </ul>if: steps.process.outputs.status == 'approved'
+        run: |
+          echo "Approved by: ${{ steps.process.outputs.approvers }}"
+          echo "Tag created: ${{ steps.process.outputs.tag }}"</code></pre></p><hr></p><h2>작업 참조</h2></p><h3>작업들</h3></p><p>작업은 <code>action</code> 입력을 통해 네 가지 동작 모드를 지원합니다:</p><p>| 작업 | 설명 | 사용 시점 |
+|--------|-------------|-------------|
+| <code>request</code> | 새로운 승인 요청 이슈 생성 | 배포/릴리스 워크플로 시작 시 |
+| <code>process-comment</code> | 승인/거부 댓글 처리 | <code>issue_comment</code> 이벤트 발생 시 |
+| <code>check</code> | 현재 승인 상태 확인 | 승인 완료를 폴링할 때 |
+| <code>close-issue</code> | 이슈 종료 이벤트 처리 | <code>issues: [closed]</code> 이벤트 시 |</p><h3>입력 값</h3></p><p>#### 핵심 입력 값</p><p>| 입력 | 설명 | 필수 | 기본값 |
+|-------|-------------|----------|---------|
+| <code>action</code> | 수행할 작업: <code>request</code>, <code>check</code>, <code>process-comment</code>, <code>close-issue</code> | 예 | - |
+| <code>workflow</code> | 설정에서 워크플로 이름 (<code>request</code> 작업용) | <code>request</code> 작업 시 | - |
+| <code>version</code> | 태그 생성용 세멘틱 버전 (예: <code>1.2.3</code> 또는 <code>v1.2.3</code>) | 아니요 | - |
+| <code>issue_number</code> | 이슈 번호 (<code>check</code>, <code>process-comment</code>, <code>close-issue</code> 작업용) | <code>check</code>/<code>process</code>/<code>close</code> 작업 시 | - |
+| <code>token</code> | API 작업용 GitHub 토큰 | 예 | - |</p><p>#### 구성 입력 값</p><p>| 입력 | 설명 | 필수 | 기본값 |
+|-------|-------------|----------|---------|
+| <code>config_path</code> | approvals.yml 구성 파일 경로 | 아니요 | <code>.github/approvals.yml</code> |
+| <code>config_repo</code> | 공유 구성을 위한 외부 리포지토리 (예: <code>org/.github</code>) | 아니요 | - |</p><p>#### 폴링 입력 값 (<code>check</code> 작업용)</p><p>| 입력 | 설명 | 필수 | 기본값 |
+|-------|-------------|----------|---------|
+| <code>wait</code> | 즉시 반환하지 않고 승인 대기(폴링) 여부 | 아니요 | <code>false</code> |
+| <code>timeout</code> | 대기 시간 제한 (예: <code>24h</code>, <code>1h30m</code>, <code>30m</code>) | 아니요 | <code>72h</code> |</p><p>#### 팀 지원 입력값</p><p>| 입력 | 설명 | 필수 | 기본값 |
+|-------|-------------|----------|---------|
+| <code>app_id</code> | 팀 멤버십 확인용 GitHub 앱 ID | 아니요 | - |
+| <code>app_private_key</code> | 팀 멤버십 확인용 GitHub 앱 개인 키 | 아니요 | - |</p><p>#### Jira 통합 입력값</p><p>| 입력 | 설명 | 필수 | 기본값 |
+|-------|-------------|----------|---------|
+| <code>jira_base_url</code> | Jira 클라우드 기본 URL (예: <code>https://yourcompany.atlassian.net</code>) | 아니요 | - |
+| <code>jira_user_email</code> | API 인증용 Jira 사용자 이메일 | 아니요 | - |
+| <code>jira_api_token</code> | 인증용 Jira API 토큰 | 아니요 | - |
+| <code>jira_update_fix_version</code> | 승인 시 Jira 이슈에 Fix Version 업데이트 | 아니요 | <code>true</code> |
+| <code>include_jira_issues</code> | 승인 요청 본문에 Jira 이슈 포함 | 아니요 | <code>true</code> |</p><p>#### 배포 추적 입력값</p><p>| 입력 | 설명 | 필수 | 기본값 |
+|-------|-------------|----------|---------|
+| <code>create_deployment</code> | 추적을 위한 GitHub 배포 생성 | 아니요 | <code>true</code> |
+| <code>deployment_environment</code> | 대상 환경 (예: <code>production</code>, <code>staging</code>) | 아니요 | <code>production</code> |
+| <code>deployment_environment_url</code> | 배포된 환경의 URL | 아니요 | - |</p><p>#### 기타 입력값</p><p>| 입력 | 설명 | 필수 | 기본값 |
+|-------|-------------|----------|---------|
+| <code>issue_action</code> | <code>close-issue</code>용 이슈 이벤트 액션 (<code>closed</code>, <code>reopened</code>) | 아니요 | - |
+| <code>previous_tag</code> | 커밋 비교용 이전 태그 (지정하지 않으면 자동 감지) | 아니요 | - |</p><h3>출력값</h3></p><p>#### 핵심 출력값</p><p>| 출력 | 설명 | 사용 가능 대상 |
+|--------|-------------|---------------|
+| <code>status</code> | 승인 상태: <code>pending</code>, <code>approved</code>, <code>denied</code>, <code>timeout</code>, <code>tag_deleted</code>, <code>skipped</code> | 모든 작업 |
+| <code>issue_number</code> | 생성되거나 확인된 이슈 번호 | 모든 작업 |
+| <code>issue_url</code> | 승인 이슈의 URL | 모든 작업 |</p><p>#### 승인 출력값</p><p>| 출력값 | 설명 | 사용 가능 작업 |
+|--------|-------------|---------------|
+| <code>approvers</code> | 승인한 사용자들의 쉼표로 구분된 목록 | <code>process-comment</code>, <code>check</code> |
+| <code>denier</code> | 요청을 거부한 사용자 | <code>process-comment</code>, <code>check</code> |
+| <code>satisfied_group</code> | 승인을 만족시킨 그룹 이름 | <code>process-comment</code>, <code>check</code> |
+| <code>tag</code> | 생성된 태그 이름 | <code>process-comment</code> (승인 시) |
+| <code>tag_deleted</code> | 삭제된 태그 | <code>close-issue</code> |</p><p>#### Jira 출력값</p><p>| 출력값 | 설명 | 사용 가능 작업 |
+|--------|-------------|---------------|
+| <code>jira_issues</code> | 이번 릴리스의 Jira 이슈 키 쉼표로 구분된 목록 | <code>request</code> |
+| <code>jira_issues_json</code> | Jira 이슈 세부정보(JSON 배열, 키, 요약, 유형, 상태) | <code>request</code> |</p><p>#### 배포 출력값</p><p>| 출력값 | 설명 | 사용 가능 작업 |
+|--------|-------------|---------------|
+| <code>deployment_id</code> | 상태 업데이트용 GitHub 배포 ID | <code>request</code> |
+| <code>deployment_url</code> | GitHub 내 배포 URL | <code>request</code> |</p><p>#### 릴리스 노트 출력값</p><p>| 출력값 | 설명 | 사용 가능 작업 |
+|--------|-------------|---------------|
+| <code>release_notes</code> | 커밋 및 Jira 이슈로부터 자동 생성된 릴리스 노트 | <code>request</code> |
+| <code>commits_count</code> | 이번 릴리스의 커밋 수 | <code>request</code> |</p><hr></p><h2>구성 참조</h2></p><h3>정책들</h3>
+정책은 재사용 가능한 승인자 그룹을 정의합니다. 두 가지 형식이 있습니다:</p><p>#### 간단한 형식</p><pre><code class="language-yaml">policies:
+  # Threshold-based: X of N must approve
+  dev-team:
+    approvers: [alice, bob, charlie]
+    min_approvals: 2</p><p>  # All must approve (AND logic)
+  security:
+    approvers: [team:security, security-lead]
+    require_all: true</p><p>  # Mixed teams and individuals
+  production:
+    approvers:
+      <ul><li>team:sre</li>
+      <li>tech-lead</li>
+      <li>product-owner</li>
+    </ul>min_approvals: 2</code></pre></p><p>#### 고급 형식 (소스별 임계값)</p><p>"플랫폼에서 2개 AND 보안에서 1개"와 같은 복잡한 요구사항의 경우:</p><pre><code class="language-yaml">policies:
+  # Complex AND gate
+  production-gate:
+    from:
+      <ul><li>team: platform-engineers</li>
+        </ul>min_approvals: 2        # 2 of the platform team
+      <ul><li>team: security</li>
+        </ul>min_approvals: 1        # 1 of the security team
+      <ul><li>user: alice             # alice must also approve</li>
+    </ul>logic: and                  # ALL sources must be satisfied</p><p>  # Flexible OR gate
+  flexible-review:
+    from:
+      <ul><li>team: security</li>
+        </ul>require_all: true       # All security team
+      <ul><li>team: platform</li>
+        </ul>min_approvals: 2        # OR 2 platform members
+    logic: or                   # ANY source is enough</p><p>  # Executive approval: any one exec
+  exec-approval:
+    from:
+      <ul><li>user: ceo</li>
+      <li>user: cto</li>
+      <li>user: vp-engineering</li>
+    </ul>logic: or</p><p>  # User list with threshold
+  leads:
+    from:
+      <ul><li>users: [tech-lead, product-lead, design-lead]</li>
+        </ul>min_approvals: 2</code></pre></p><p><strong>출처 유형:</strong></p><ul><li><code>team: slug</code> - GitHub 팀 (앱 토큰 필요)</li>
+<li><code>user: username</code> - 단일 사용자 (암묵적 require_all)</li>
+<li><code>users: [a, b, c]</code> - 사용자 목록</li></p><p></ul><strong>정책 수준 논리:</strong></p><ul><li><code>logic: and</code> - 모든 출처가 충족되어야 함 (기본값)</li>
+<li><code>logic: or</code> - 어느 하나의 출처가 충족되면 충분</li></p><p></ul>#### 인라인 논리 (AND/OR 혼합)</p><p>복잡한 표현식의 경우, 각 출처에 <code>logic:</code>을 사용하여 다음과 어떻게 연결되는지 지정:</p><pre><code class="language-yaml">policies:
+  # (2 security AND 2 platform) OR alice
+  complex-gate:
+    from:
+      <ul><li>team: security</li>
+        </ul>min_approvals: 2
+        logic: and              # AND with next source
+      <ul><li>team: platform</li>
+        </ul>min_approvals: 2
+        logic: or               # OR with next source
+      <ul><li>user: alice            # alice alone can satisfy</li></p><p>  </ul># (security AND platform) OR (alice AND bob) OR manager
+  multi-path:
+    from:
+      <ul><li>team: security</li>
+        </ul>min_approvals: 1
+        logic: and
+      <ul><li>team: platform</li>
+        </ul>min_approvals: 1
+        logic: or               # End first AND group
+      <ul><li>user: alice</li>
+        </ul>logic: and
+      <ul><li>user: bob</li>
+        </ul>logic: or               # End second AND group
+      <ul><li>user: manager          # Third path</code></pre></li></p><p></ul><strong>연산자 우선순위:</strong> AND는 OR보다 결합력이 더 강합니다 (표준 불 대수 논리).</p><p>식 <code>A and B or C and D</code>는 <code>(A AND B) OR (C AND D)</code>로 평가됩니다.</p><h3>워크플로우</h3></p><p>워크플로우는 승인 요구 사항과 작업을 정의합니다:</p><pre><code class="language-yaml">workflows:
+  my-workflow:
+    description: "Optional description"</p><p>    # Trigger conditions (for filtering)
+    trigger:
+      environment: production</p><p>    # Approval requirements (OR logic between items)
+    require:
+      <ul><li>policy: dev-team</li>
+      <li>policy: security</li>
+      </ul># Or inline approvers:
+      <ul><li>approvers: [alice, bob]</li>
+        </ul>require_all: true</p><p>    # Issue configuration
+    issue:
+      title: "Approval: {{version}}"
+      body: |                          # Inline custom template (optional)
+        ## My Custom Approval Issue
+        Version: {{.Version}}
+        Requested by: @{{.Requestor}}
+        {{.GroupsTable}}
+      body_file: "templates/my-template.md"  # Or load from file
+      labels: [production, deploy]
+      assignees_from_policy: true</p><p>    # Actions on approval
+    on_approved:
+      create_tag: true
+      tag_prefix: "v"  # Creates v1.2.3
+      close_issue: true
+      comment: "Approved! Tag {{version}} created."</p><p>    # Actions on denial
+    on_denied:
+      close_issue: true
+      comment: "Denied by {{denier}}."</p><p>    # Actions when issue is manually closed
+    on_closed:
+      delete_tag: true   # Delete the tag if issue is closed
+      comment: "Deployment cancelled. Tag {{tag}} deleted."</code></pre></p><h3>태깅 구성</h3></p><p>워크플로우별로 태그가 생성되는 방식을 제어합니다:</p><pre><code class="language-yaml">workflows:
+  dev-deploy:
+    require:
+      <ul><li>policy: dev-team</li>
+    </ul>on_approved:
+      tagging:
+        enabled: true
+        start_version: "0.1.0"      # No 'v' prefix, start at 0.1.0
+        auto_increment: patch        # Auto-bump: 0.1.0 -> 0.1.1 -> 0.1.2
+        env_prefix: "dev-"           # Creates: dev-0.1.0, dev-0.1.1</p><p>  staging-deploy:
+    require:
+      <ul><li>policy: qa-team</li>
+    </ul>on_approved:
+      tagging:
+        enabled: true
+        start_version: "v1.0.0"     # 'v' prefix (inferred from start_version)
+        auto_increment: minor        # v1.0.0 -> v1.1.0 -> v1.2.0
+        env_prefix: "staging-"       # Creates: staging-v1.0.0</p><p>  production-deploy:
+    require:
+      <ul><li>policy: prod-team</li>
+    </ul>on_approved:
+      tagging:
+        enabled: true
+        start_version: "v1.0.0"     # Manual version required (no auto_increment)</code></pre></p><p><strong>태깅 옵션:</strong></p><p>| 옵션 | 설명 |
+|--------|-------------|
+| <code>enabled</code> | 태그 생성 활성화 |
+| <code>start_version</code> | 시작 버전 및 형식 (예: "v1.0.0" 또는 "1.0.0") |
+| <code>prefix</code> | 버전 접두사 (<code>start_version</code>에서 추론, 설정하지 않으면) |
+| <code>auto_increment</code> | 자동 증가: <code>major</code>, <code>minor</code>, <code>patch</code> 또는 수동 생략 |
+| <code>env_prefix</code> | 환경 접두사 (예: "dev-"는 "dev-v1.0.0" 생성) |</p><h3>맞춤 이슈 템플릿</h3></p><p>Go 템플릿을 사용하여 이슈 본문을 완전히 사용자 정의할 수 있습니다. 인라인 템플릿은 <code>body</code>를, 파일에서 불러오려면 <code>body_file</code>을 사용하세요.</p><p><strong>사용 가능한 템플릿 변수:</strong></p><p>| 변수 | 설명 |
+|----------|-------------|
+| <code>{{.Title}}</code> | 이슈 제목 |
+| <code>{{.Description}}</code> | 워크플로우 설명 |
+| <code>{{.Version}}</code> | 세멘틱 버전 |
+| <code>{{.Requestor}}</code> | 요청한 GitHub 사용자명 |
+| <code>{{.Environment}}</code> | 환경 이름 |
+| <code>{{.RunURL}}</code> | 워크플로우 실행 링크 |
+| <code>{{.RepoURL}}</code> | 저장소 URL |
+| <code>{{.CommitSHA}}</code> | 전체 커밋 SHA |
+| <code>{{.CommitURL}}</code> | 커밋 링크 |
+| <code>{{.Branch}}</code> | 브랜치 이름 |
+| <code>{{.GroupsTable}}</code> | 사전 렌더링된 승인 상태 표 |
+| <code>{{.Timestamp}}</code> | 요청 타임스탬프 |
+| <code>{{.PreviousVersion}}</code> | 이전 버전/태그 |
+| <code>{{.CommitsCount}}</code> | 이번 릴리스의 커밋 수 |
+| <code>{{.HasJiraIssues}}</code> | 불리언 - Jira 이슈 존재 여부 |
+| <code>{{.JiraIssues}}</code> | Jira 이슈 데이터 배열 |
+| <code>{{.JiraIssuesTable}}</code> | 사전 렌더링된 Jira 이슈 표 |
+| <code>{{.PipelineTable}}</code> | 사전 렌더링된 배포 파이프라인 표 |
+| <code>{{.PipelineMermaid}}</code> | 사전 렌더링된 Mermaid 플로우차트 다이어그램 |
+| <code>{{.Vars.key}}</code> | 사용자 정의 변수 |</p><p><strong>템플릿 함수:</strong></p><p>| 함수 | 예제 | 설명 |
+|----------|---------|-------------|
+| <code>slice</code> | <code>{{slice .CommitSHA 0 7}}</code> | 부분 문자열 (짧은 SHA) |
+| <code>title</code> | <code>{{.Environment \| title}}</code> | 제목 대문자 |
+| <code>upper</code> | <code>{{.Version \| upper}}</code> | 대문자 |
+| <code>lower</code> | <code>{{.Version \| lower}}</code> | 소문자 |
+| <code>join</code> | <code>{{join .Groups ","}}</code> | 배열 연결 |
+| <code>contains</code> | <code>{{if contains .Branch "feature"}}</code> | 부분 문자열 확인 |
+| <code>replace</code> | <code>{{replace .Version "v" ""}}</code> | 문자열 치환 |
+| <code>default</code> | <code>{{default "N/A" .Environment}}</code> | 기본값 |</p><p><strong>예제 사용자 정의 템플릿 파일</strong> (<code>.github/templates/deploy.md</code>):</p><pre><code class="language-markdown">## {{.Title}}</p><h3>Release Information</h3></p><ul><li><strong>Version:</strong> <code>{{.Version}}</code></li>
+<li><strong>Requested by:</strong> @{{.Requestor}}</li>
+</ul>{{- if .CommitSHA}}
+<ul><li><strong>Commit:</strong> <a href="https://raw.githubusercontent.com/jamengual/enterprise-approval-engine/main/{{.CommitURL}}" target="_blank" rel="noopener noreferrer">{{slice .CommitSHA 0 7}}</a></li>
+</ul>{{- end}}
+{{- if .CommitsCount}}
+<ul><li><strong>Changes:</strong> {{.CommitsCount}} commits since {{.PreviousVersion}}</li>
+</ul>{{- end}}</p><p>{{if .HasJiraIssues}}
+<h3>Jira Issues</h3></p><p>{{.JiraIssuesTable}}
+{{end}}</p><h3>Approval Status</h3></p><p>{{.GroupsTable}}</p><hr></p><p><strong>Approve:</strong> Comment <code>approve</code> | <strong>Deny:</strong> Comment <code>deny</code></code></pre></p><h3>기본값</h3></p><p>모든 워크플로에 적용되는 전역 기본값:</p><pre><code class="language-yaml">defaults:
+  timeout: 72h                    # Default approval timeout
+  allow_self_approval: false      # Whether requestors can approve their own requests
+  issue_labels:                   # Labels added to all approval issues
+    <ul><li>approval-required</code></pre></li></p><p></ul><h3>Semver</h3></p><p>버전 처리 구성:</p><pre><code class="language-yaml">semver:
+  prefix: "v"              # Tag prefix (v1.2.3)
+  strategy: input          # Use version from input
+  validate: true           # Validate semver format
+  allow_prerelease: true   # Allow prerelease versions (e.g., v1.0.0-beta.1)
+  auto:                    # Label-based auto-increment (when strategy: auto)
+    major_labels: [breaking, major]
+    minor_labels: [feature, minor]
+    patch_labels: [fix, patch, bug]</code></pre></p><hr></p><h2>전체 구성 참조</h2></p><p>이 섹션에서는 <code>approvals.yml</code>에서 사용할 수 있는 <strong>모든 구성 옵션</strong>을 문서화합니다.</p><h3>최상위 구조</h3></p><pre><code class="language-yaml">version: 1                    # Required: config version (always 1)
+defaults: { ... }             # Optional: global defaults
+policies: { ... }             # Required: reusable approval policies
+workflows: { ... }            # Required: approval workflows
+semver: { ... }               # Optional: version handling settings</code></pre>
+<h3><code>defaults</code> 옵션</h3></p><p>| 키 | 타입 | 기본값 | 설명 |
+|-----|------|---------|-------------|
+| <code>timeout</code> | duration | <code>72h</code> | <code>wait: true</code>인 <code>check</code> 작업의 차단 타임아웃. 시간 단위 사용 (예: 1주일은 <code>168h</code>). 이벤트 기반 워크플로우에는 필요 없음. |
+| <code>allow_self_approval</code> | bool | <code>false</code> | 요청자가 자신의 요청을 승인할 수 있는지 여부 |
+| <code>issue_labels</code> | string[] | <code>[]</code> | 모든 승인 이슈에 추가되는 라벨 |</p><h3><code>policies.<name></code> 옵션 (간단한 형식)</h3></p><p>| 키 | 타입 | 기본값 | 설명 |
+|-----|------|---------|-------------|
+| <code>approvers</code> | string[] | - | 사용자명 또는 <code>team:slug</code> 참조 목록 |
+| <code>min_approvals</code> | int | 0 | 필요한 승인 수 (0 = <code>require_all</code> 사용) |
+| <code>require_all</code> | bool | <code>false</code> | 참이면, 모든 승인자가 승인해야 함 |</p><h3><code>policies.<name></code> 옵션 (고급 형식)</h3></p><p>| 키 | 타입 | 기본값 | 설명 |
+|-----|------|---------|-------------|
+| <code>from</code> | source[] | - | 개별 임계값이 있는 승인자 소스 목록 |
+| <code>logic</code> | string | <code>"and"</code> | 소스 결합 방식: <code>"and"</code> 또는 <code>"or"</code> |</p><p><strong>승인자 소스 옵션 (<code>from[]</code>):</strong></p><p>| 키 | 타입 | 기본값 | 설명 |
+|-----|------|---------|-------------|
+| <code>team</code> | string | - | 팀 슬러그 (예: <code>"platform"</code> 또는 <code>"org/platform"</code>) |
+| <code>user</code> | string | - | 단일 사용자명 |
+| <code>users</code> | string[] | - | 사용자명 목록 |
+| <code>min_approvals</code> | int | 1 | 이 소스에서 필요한 승인 수 |
+| <code>require_all</code> | bool | <code>false</code> | 이 소스의 모든 사용자가 승인해야 함 |
+| <code>logic</code> | string | - | 다음 소스로 가는 논리: <code>"and"</code> 또는 <code>"or"</code> |</p><h3><code>workflows.<name></code> 옵션</h3></p><p>| 키 | 타입 | 기본값 | 설명 |
+|-----|------|---------|-------------|
+| <code>description</code> | string | - | 사람이 읽을 수 있는 설명 |</p><p>| <code>trigger</code> | map | - | 트리거 조건 (필터링용) |
+| <code>require</code> | requirement[] | - | <strong>필수:</strong> 승인 요구사항 (항목 간 OR 논리) |
+| <code>issue</code> | object | - | 이슈 생성 설정 |
+| <code>on_approved</code> | object | - | 승인 시 동작 |
+| <code>on_denied</code> | object | - | 거부 시 동작 |
+| <code>on_closed</code> | object | - | 수동으로 이슈가 닫힐 때 동작 |
+| <code>pipeline</code> | object | - | 점진적 배포 파이프라인 구성 |</p><h3><code>workflows.<name>.require[]</code> 옵션</h3></p><p>| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| <code>policy</code> | string | - | 정의된 정책 참조 |
+| <code>approvers</code> | string[] | - | 인라인 승인자 (정책 대체) |
+| <code>min_approvals</code> | int | - | 정책의 min_approvals 재정의 |
+| <code>require_all</code> | bool | - | 정책의 require_all 재정의 |</p><h3><code>workflows.<name>.issue</code> 옵션</h3></p><p>| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| <code>title</code> | string | <code>"Approval Required: {workflow}"</code> | 이슈 제목 (<code>{{version}}</code>, <code>{{environment}}</code>, <code>{{workflow}}</code> 지원) |
+| <code>body</code> | string | - | 커스텀 이슈 본문 템플릿 (Go 템플릿 문법) |
+| <code>body_file</code> | string | - | 템플릿 파일 경로 (<code>.github/</code> 상대 경로) |
+| <code>labels</code> | string[] | <code>[]</code> | 해당 워크플로우에 추가할 라벨 |
+| <code>assignees_from_policy</code> | bool | <code>false</code> | 정책에서 개별 사용자 자동 할당 (최대 10명) |</p><h3><code>workflows.<name>.on_approved</code> 옵션</h3></p><p>| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| <code>create_tag</code> | bool | <code>false</code> | git 태그 생성 (입력된 버전 사용) |
+| <code>close_issue</code> | bool | <code>false</code> | 승인 후 이슈 닫기 |
+| <code>comment</code> | string | - | 게시할 코멘트 (<code>{{version}}</code>, <code>{{satisfied_group}}</code> 지원) |
+| <code>tagging</code> | object | - | 고급 태깅 구성 |</p><h3><code>workflows.<name>.on_approved.tagging</code> 옵션</h3></p><p>| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| <code>enabled</code> | bool | <code>false</code> | 태그 생성 활성화 |
+| <code>start_version</code> | string | <code>"0.0.0"</code> | 초기 버전 (예: <code>"v1.0.0"</code> 또는 <code>"1.0.0"</code>) |
+| <code>prefix</code> | string | (추론됨) | 버전 접두사 (<code>start_version</code>에서 추론) |
+| <code>auto_increment</code> | string | - | 자동 증가: <code>"major"</code>, <code>"minor"</code>, <code>"patch"</code> 또는 수동 생략 |
+| <code>env_prefix</code> | string | - | 환경 접두사 (예: <code>"dev-"</code>는 <code>"dev-v1.0.0"</code> 생성) |</p><h3><code>workflows.<name>.on_denied</code> 옵션</h3></p><p>| 키 | 타입 | 기본값 | 설명 |
+|-----|------|---------|-------------|
+| <code>close_issue</code> | bool | <code>false</code> | 거부 후 이슈 닫기 |
+| <code>comment</code> | string | - | 게시할 댓글 (<code>{{denier}}</code> 지원) |</p><h3><code>workflows.<name>.on_closed</code> 옵션</h3></p><p>| 키 | 타입 | 기본값 | 설명 |
+|-----|------|---------|-------------|
+| <code>delete_tag</code> | bool | <code>false</code> | 이슈가 닫힐 때 관련 태그 삭제 |
+| <code>comment</code> | string | - | 게시할 댓글 (<code>{{tag}}</code>, <code>{{version}}</code> 지원) |</p><h3><code>workflows.<name>.pipeline</code> 옵션</h3></p><p>| 키 | 타입 | 기본값 | 설명 |
+|-----|------|---------|-------------|
+| <code>stages</code> | stage[] | - | <strong>필수:</strong> 배포 단계의 순서 있는 목록 |
+| <code>track_prs</code> | bool | <code>false</code> | 병합된 PR을 이슈 본문에 포함 |
+| <code>track_commits</code> | bool | <code>false</code> | 커밋을 이슈 본문에 포함 |
+| <code>compare_from_tag</code> | string | - | 비교할 태그 패턴 (예: <code>"v*"</code>) |
+| <code>show_mermaid_diagram</code> | bool | <code>true</code> | 파이프라인 단계의 Mermaid 시각 흐름도 표시 |
+| <code>release_strategy</code> | object | - | 릴리스 후보 선택 전략 |</p><h3><code>workflows.<name>.pipeline.stages[]</code> 옵션</h3></p><p>| 키 | 타입 | 기본값 | 설명 |
+|-----|------|---------|-------------|
+| <code>name</code> | string | - | <strong>필수:</strong> 단계 이름 (예: <code>"dev"</code>, <code>"prod"</code>) |
+| <code>environment</code> | string | - | GitHub 환경 이름 |
+| <code>policy</code> | string | - | 이 단계의 승인 정책 |
+| <code>approvers</code> | string[] | - | 인라인 승인자 (정책 대안) |
+| <code>on_approved</code> | string | - | 단계 승인 시 게시할 댓글 |
+| <code>create_tag</code> | bool | <code>false</code> | 이 단계에서 git 태그 생성 |
+| <code>is_final</code> | bool | <code>false</code> | 이 단계 후 이슈 종료 |
+| <code>auto_approve</code> | bool | <code>false</code> | 사람 개입 없이 자동 승인 |</p><h3><code>workflows.<name>.pipeline.release_strategy</code> 옵션</h3></p><p>| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| <code>type</code> | string | <code>"tag"</code> | 전략: <code>"tag"</code>, <code>"branch"</code>, <code>"label"</code>, <code>"milestone"</code> |
+| <code>branch</code> | object | - | 브랜치 전략 설정 |
+| <code>label</code> | object | - | 라벨 전략 설정 |
+| <code>milestone</code> | object | - | 마일스톤 전략 설정 |
+| <code>auto_create</code> | object | - | 다음 릴리스 아티팩트 자동 생성 |</p><h3><code>release_strategy.branch</code> 옵션</h3></p><p>| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| <code>pattern</code> | string | <code>"release/{{version}}"</code> | 브랜치 명명 패턴 |
+| <code>base_branch</code> | string | <code>"main"</code> | 비교 대상 브랜치 |
+| <code>delete_after_release</code> | bool | <code>false</code> | 프로덕션 배포 후 브랜치 삭제 |</p><h3><code>release_strategy.label</code> 옵션</h3></p><p>| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| <code>pattern</code> | string | <code>"release:{{version}}"</code> | 라벨 명명 패턴 |
+| <code>pending_label</code> | string | - | 릴리스 할당 대기 PR용 라벨 |
+| <code>remove_after_release</code> | bool | <code>false</code> | 프로덕션 배포 후 라벨 제거 |</p><h3><code>release_strategy.milestone</code> 옵션</h3></p><p>| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| <code>pattern</code> | string | <code>"v{{version}}"</code> | 마일스톤 명명 패턴 |
+| <code>close_after_release</code> | bool | <code>false</code> | 프로덕션 배포 후 마일스톤 종료 |</p><h3><code>release_strategy.auto_create</code> 옵션</h3></p><p>| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| <code>enabled</code> | bool | <code>false</code> | 최종 단계 완료 시 자동 생성 활성화 |
+| <code>next_version</code> | string | <code>"patch"</code> | 버전 증가: <code>"patch"</code>, <code>"minor"</code>, <code>"major"</code> |
+| <code>create_issue</code> | bool | <code>false</code> | 다음 릴리스를 위한 새 승인 이슈 생성 |
+| <code>comment</code> | string | - | 다음 릴리스에 대한 댓글 작성 |</p><h3><code>semver</code> 옵션</h3></p><p>| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| <code>prefix</code> | string | <code>"v"</code> | 태그 접두사 |
+| <code>strategy</code> | string | <code>"input"</code> | 버전 전략: <code>"input"</code>, <code>"auto"</code> |
+| <code>validate</code> | bool | <code>false</code> | semver 형식 검증 |
+| <code>allow_prerelease</code> | bool | <code>false</code> | 프리릴리스 버전 허용 (예: <code>v1.0.0-beta.1</code>) |
+| <code>auto</code> | object | - | 라벨 기반 자동 증가 설정 |</p><h3><code>semver.auto</code> 옵션</h3></p><p>| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| <code>major_labels</code> | string[] | <code>[]</code> | 메이저 버전 증가를 트리거하는 PR 라벨 |
+| <code>minor_labels</code> | string[] | <code>[]</code> | 마이너 버전 증가를 트리거하는 PR 라벨 |
+| <code>patch_labels</code> | string[] | <code>[]</code> | 패치 버전 증가를 트리거하는 PR 라벨 |</p><hr></p><h2>기능 세부사항</h2></p><h3>승인 키워드</h3></p><p>사용자는 이슈에 댓글을 달아 요청을 승인하거나 거부할 수 있습니다:</p><p><strong>승인 키워드:</strong> <code>approve</code>, <code>approved</code>, <code>lgtm</code>, <code>yes</code>, <code>/approve</code></p><p><strong>거부 키워드:</strong> <code>deny</code>, <code>denied</code>, <code>reject</code>, <code>rejected</code>, <code>no</code>, <code>/deny</code></p><h3>팀 지원</h3></p><p>GitHub 팀 기반 승인자를 사용하려면 권한 상승이 필요합니다. 기본 <code>GITHUB_TOKEN</code>은 팀 멤버 목록을 가져올 수 없습니다. GitHub 앱 토큰을 사용하세요:</p><pre><code class="language-yaml">jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li></p><p>      </ul># Generate GitHub App token
+      <ul><li>uses: actions/create-github-app-token@v2</li>
+        </ul>id: app-token
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}</p><p>      # Use the app token for team membership checks
+      <ul><li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>with:
+          action: process-comment
+          issue_number: ${{ github.event.issue.number }}
+          token: ${{ steps.app-token.outputs.token }}</code></pre></p><p><strong>필수 GitHub 앱 권한:</strong></p><ul><li><code>Organization > Members: Read</code> - 팀 구성원 목록 조회를 위해</li></p><p></ul><h3>점진적 배포 파이프라인</h3></p><p>단일 승인 이슈로 여러 환경에 걸친 배포를 추적합니다. 각 단계가 승인되면 이슈가 진행 상황을 표시하도록 업데이트되고 자동으로 다음 단계로 진행합니다.</p><p>#### 파이프라인 구성</p><pre><code class="language-yaml"># .github/approvals.yml or external config
+version: 1</p><p>policies:
+  developers:
+    approvers: [dev1, dev2, dev3]
+    min_approvals: 1</p><p>  qa-team:
+    approvers: [qa1, qa2]
+    min_approvals: 1</p><p>  tech-leads:
+    approvers: [lead1, lead2]
+    min_approvals: 1</p><p>  production-approvers:
+    approvers: [sre1, sre2, security-lead]
+    require_all: true</p><p>workflows:
+  deploy:
+    description: "Deploy through all environments (dev → qa → stage → prod)"
+    require:
+      <ul><li>policy: developers  # Initial approval to start pipeline</li>
+    </ul>pipeline:
+      track_prs: true       # Include PRs in the issue body
+      track_commits: true   # Include commits in the issue body
+      stages:
+        <ul><li>name: dev</li>
+          </ul>environment: development
+          policy: developers
+          on_approved: "✅ <strong>DEV</strong> deployment approved! Proceeding to QA..."
+        <ul><li>name: qa</li>
+          </ul>environment: qa
+          policy: qa-team
+          on_approved: "✅ <strong>QA</strong> deployment approved! Proceeding to STAGING..."
+        <ul><li>name: stage</li>
+          </ul>environment: staging
+          policy: tech-leads
+          on_approved: "✅ <strong>STAGING</strong> deployment approved! Ready for PRODUCTION..."
+        <ul><li>name: prod</li>
+          </ul>environment: production
+          policy: production-approvers
+          on_approved: "🚀 <strong>PRODUCTION</strong> deployment complete!"
+          create_tag: true   # Create tag when PROD is approved
+          is_final: true     # Close issue after this stage
+    on_approved:
+      close_issue: true
+      comment: |
+        🎉 <strong>Deployment Complete!</strong></p><p>        Version <code>{{version}}</code> has been deployed to all environments.</code></pre></p><p>#### 파이프라인 워크플로우 예시</p><pre><code class="language-yaml"># .github/workflows/request-pipeline.yml
+name: Request Pipeline Deployment</p><p>on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to deploy'
+        required: true
+        type: string</p><p>permissions:
+  contents: write
+  issues: write
+  pull-requests: read  # Required for PR tracking</p><p>jobs:
+  request:
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+        </ul>with:
+          fetch-depth: 0  # Needed for commit/PR comparison</p><ul><li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: approval
+        with:
+          action: request
+          workflow: deploy
+          version: ${{ inputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}</p><ul><li>name: Output Results</li>
+        </ul>run: |
+          echo "## Pipeline Deployment Started" >> $GITHUB_STEP_SUMMARY
+          echo "- <strong>Issue:</strong> #${{ steps.approval.outputs.issue_number }}" >> $GITHUB_STEP_SUMMARY
+          echo "- <strong>URL:</strong> ${{ steps.approval.outputs.issue_url }}" >> $GITHUB_STEP_SUMMARY</code></pre></p><p>#### 작동 방식</p><ul><li><strong>이슈 생성</strong>: 트리거되면, 모든 단계를 시각적인 Mermaid 다이어그램과 진행 표로 보여주는 단일 이슈를 생성합니다:</li></p><p></ul><pre><code class="language-markdown">## 🚀 배포 파이프라인: v1.2.0</p><h3>파이프라인 흐름</h3></p><p>​``<code>mermaid
+flowchart LR
+    DEV(⏳ 개발)
+    QA(⬜ QA)
+    STAGE(⬜ 스테이지)
+    PROD(⬜ 운영)
+    DEV --> QA --> STAGE --> PROD</p><p>    classDef completed fill:#28a745,stroke:#1e7e34,color:#fff
+    classDef current fill:#ffc107,stroke:#d39e00,color:#000
+    classDef pending fill:#6c757d,stroke:#545b62,color:#fff
+    class DEV current
+    class QA,STAGE,PROD pending
+​</code>`<code></p><h3>Deployment Progress</h3></p><p>| Stage | Status | Approver | Time |
+|-------|--------|----------|------|
+| DEV | ⏳ Awaiting | - | - |
+| QA | ⬜ Pending | - | - |
+| STAGE | ⬜ Pending | - | - |
+| PROD | ⬜ Pending | - | - |</p><p><strong>Current Stage:</strong> DEV</code></pre>
+머메이드 다이어그램은 색상으로 구분된 노드를 통해 한눈에 상태를 보여줍니다:
+<ul><li>🟢 <strong>초록색</strong> - 완료된 단계</li>
+<li>🟡 <strong>노란색</strong> - 승인 대기 중인 현재 단계</li>
+<li>⚪ <strong>회색</strong> - 대기 중인 단계</li>
+<li>🔵 <strong>청록색</strong> - 자동 승인 단계</li></p><p></ul>머메이드 다이어그램을 비활성화하려면 파이프라인 설정에서 </code>show_mermaid_diagram: false<code>로 설정하세요.</p><ul><li><strong>단계 진행</strong>: 다음 단계로 진행하려면 </code>approve<code> 댓글을 남기세요. 다이어그램과 표가 자동으로 업데이트됩니다:</li></p><p>
+</ul><pre><code class="language-markdown">| Stage | Status | Approver | Time |
+|-------|--------|----------|------|
+| DEV | ✅ Deployed | @developer1 | Dec 9 10:30 |
+| QA | ✅ Deployed | @qa-lead | Dec 9 14:15 |
+| STAGE | ⏳ Awaiting | - | - |
+| PROD | ⬜ Pending | - | - |</p><p><strong>Current Stage:</strong> STAGE</code></pre></p><ul><li><strong>PR 및 커밋 추적</strong>: 릴리스 관리자는 배포되는 내용을 정확히 확인할 수 있습니다:</li></p><p></ul><pre><code class="language-markdown">### Pull Requests in this Release</p><p>| PR | Title | Author |
+|----|-------|--------|
+| <a href="https://..." target="_blank" rel="noopener noreferrer">#42</a> | Add user authentication | @alice |
+| <a href="https://..." target="_blank" rel="noopener noreferrer">#45</a> | Fix payment processing bug | @bob |</p><h3>Commits</h3></p><ul><li><a href="https://..." target="_blank" rel="noopener noreferrer"></code>abc1234<code></a> feat: add OAuth2 support</li>
+<li><a href="https://..." target="_blank" rel="noopener noreferrer"></code>def5678<code></a> fix: handle null payments</code></pre></li>
+<li><strong>완료</strong>: 최종 단계가 승인되면:</li>
+   <li>태그가 생성됩니다 (</code>create_tag: true<code>인 경우)</li>
+   <li>완료 댓글이 게시됩니다</li>
+   <li>이슈가 자동으로 종료됩니다</li></p><p></ul>#### 파이프라인 단계 옵션</p><p>| 옵션 | 설명 |
+|--------|-------------|
+| </code>name<code> | 단계 이름 (표에 표시됨) |
+| </code>environment<code> | GitHub 환경 이름 |
+| </code>policy<code> | 이 단계의 승인 정책 |
+| </code>approvers<code> | 인라인 승인자 (정책의 대안) |
+| </code>on_approved<code> | 단계가 승인될 때 게시할 메시지 |
+| </code>create_tag<code> | 이 단계에서 git 태그 생성 |
+| </code>is_final<code> | 이 단계 후 이슈 종료 |
+| </code>auto_approve<code> | 사람 개입 없이 이 단계를 자동 승인 |
+| </code>approval_mode<code> | 이 단계의 워크플로우 승인 모드 재정의 |</p><p>#### 승인 모드</p><p>승인자가 승인 요청과 상호작용하는 방식을 선택하세요:</p><p>| 모드 | 설명 |
+|------|-------------|
+| </code>comments<code> | (기본) 승인자가 이슈에 </code>/approve<code> 또는 </code>approve<code> 댓글 작성 |
+| </code>sub_issues<code> | 각 단계별 하위 이슈 생성 - 종료 시 승인 |
+| </code>hybrid<code> | 단계별로 모드 혼합 - 각 단계에서 </code>approval_mode<code> 사용 |</p><p><strong>하위 이슈 승인 예시:</strong></p><pre><code class="language-yaml">workflows:
+  deploy:
+    approval_mode: sub_issues
+    sub_issue_settings:
+      title_template: "⏳ Approve: {{stage}} for {{version}}"  # Changes to ✅ when approved
+      labels: [approval-stage]
+      protection:
+        only_assignee_can_close: true   # Prevents unauthorized approvals
+        prevent_parent_close: true       # Parent can't close until all approved
+    pipeline:
+      stages:
+        <ul><li>name: dev</li>
+          </ul>policy: developers
+        <ul><li>name: prod</li>
+          </ul>policy: production-approvers</code></pre></p><p>하위 이슈가 있는 경우, 상위 이슈는 승인 하위 이슈의 표를 표시합니다:</p><pre><code class="language-markdown">### 📋 Approval Sub-Issues</p><p>| Stage | Sub-Issue | Status | Assignees |
+|-------|-----------|--------|----------|
+| DEV | #124 | ⏳ Awaiting | @alice, @bob |
+| PROD | #125 | ⏳ Awaiting | @sre1, @sre2 |</code></pre></p><p><strong>하이브리드 모드 (단계별 오버라이드):</strong></p><pre><code class="language-yaml">workflows:
+  deploy:
+    approval_mode: comments  # Default for this workflow
+    pipeline:
+      stages:
+        <ul><li>name: dev</li>
+          </ul>policy: developers
+          # Uses comments (workflow default)
+        <ul><li>name: prod</li>
+          </ul>policy: production-approvers
+          approval_mode: sub_issues  # Override for production only</code></pre>
+#### 향상된 댓글 UX</p><p>이 작업에는 향상된 댓글 기반 승인 UX가 포함되어 있습니다:</p><ul><li><strong>이모지 반응</strong>: 승인 댓글에 자동 반응</li>
+  <li>👍 승인됨</li>
+  <li>👎 거부됨</li>
+  <li>👀 확인됨 (처리 중)</li></p><p><li><strong>빠른 작업 섹션</strong>: 이슈 본문에 명령어 참조 표 포함:</li></p><p>
+</ul><pre><code class="language-markdown">### ⚡ Quick Actions</p><p>| Action | Command | Description |
+|--------|---------|-------------|
+| ✅ Approve | </code>/approve<code> | Approve the <strong>DEV</strong> stage |
+| ❌ Deny | </code>/deny [reason]<code> | Deny with optional reason |
+| 📊 Status | </code>/status<code> | Show current approval status |</code></pre></p><p><strong></code>comment_settings<code>을 통해 구성:</strong></p><pre><code class="language-yaml">workflows:
+  deploy:
+    comment_settings:
+      react_to_comments: true     # Add emoji reactions (default: true)
+      show_quick_actions: true    # Show Quick Actions section (default: true)</code></pre></p><p>#### 하위 환경에 대한 자동 승인</p><p>사람의 개입 없이 자동으로 승인되어야 하는 파이프라인 단계에 </code>auto_approve: true<code>를 사용하세요. 이는 </code>dev<code> 또는 </code>integration<code>과 같은 하위 환경에서 파이프라인 속도를 높이면서도 프로덕션에 대한 승인 문턱을 유지하는 데 이상적입니다.</p><p><strong>자동 승인 예시:</strong></p><pre><code class="language-yaml">workflows:
+  deploy:
+    description: "Deploy through environments"
+    pipeline:
+      stages:
+        <ul><li>name: dev</li>
+          </ul>environment: development
+          auto_approve: true              # Automatically approved
+          on_approved: "🤖 DEV auto-deployed"
+        <ul><li>name: integration</li>
+          </ul>environment: integration
+          auto_approve: true              # Automatically approved
+          on_approved: "🤖 INTEGRATION auto-deployed"
+        <ul><li>name: staging</li>
+          </ul>environment: staging
+          policy: qa-team                 # Requires manual approval
+          on_approved: "✅ STAGING approved"
+        <ul><li>name: production</li>
+          </ul>environment: production
+          policy: production-approvers    # Requires manual approval
+          create_tag: true
+          is_final: true</code></pre>
+<strong>작동 원리:</strong></p><ul><li>파이프라인 이슈가 생성되면, 모든 초기 </code>auto_approve: true<code> 단계가 자동으로 완료됩니다  </li>
+<li>단계가 수동으로 승인되면, 그 다음에 이어지는 모든 </code>auto_approve: true<code> 단계도 자동으로 완료됩니다  </li>
+<li>자동 승인된 단계는 파이프라인 테이블에 🤖 표시가 나타납니다  </li>
+<li>승인은 단계 기록에 </code>[auto]<code>로 기록됩니다  </li></p><p></ul><strong>사용 사례:</strong></p><ul><li><strong>개발 환경</strong>: 승인 대기 없이 즉시 배포  </li>
+<li><strong>통합 테스트</strong>: CI/CD 파이프라인이 테스트 환경을 자동으로 진행하도록 설정  </li>
+<li><strong>카나리 배포</strong>: 카나리 단계는 자동 승인, 전체 롤아웃은 수동 승인 필요  </li></p><p></ul>#### 파이프라인 구성 옵션</p><p>| 옵션 | 기본값 | 설명 |
+|--------|---------|-------------|
+| </code>track_prs<code> | </code>false<code> | 병합된 PR을 이슈 본문에 포함 |
+| </code>track_commits<code> | </code>false<code> | 마지막 태그 이후 커밋 포함 |
+| </code>compare_from_tag<code> | - | 비교할 사용자 지정 태그 패턴 |
+| </code>show_mermaid_diagram<code> | </code>true<code> | 파이프라인 단계의 Mermaid 시각적 흐름도 표시 |</p><p><strong>참고:</strong> PR 추적을 위해서는 워크플로우에서 </code>pull-requests: read<code> 권한이 필요합니다.  </p><h3>릴리스 후보 전략</h3></p><p>기업 환경에서 메인으로 병합된 PR이 항상 즉시 릴리스 후보가 되는 것은 아닙니다. 승인 엔진은 릴리스에 포함될 PR을 선택하기 위해 세 가지 전략을 지원합니다:  </p><p>#### 전략 유형</p><p>| 전략 | 설명 | 사용 사례 |
+|----------|-------------|----------|
+| </code>tag<code> | 두 git 태그 사이의 PR (기본값) | 간단한 릴리스, 트렁크 기반 개발 |
+| </code>branch<code> | 릴리스 브랜치에 병합된 PR | GitFlow, 릴리스 브랜치 |
+| </code>label<code> | 특정 릴리스 레이블이 붙은 PR | 유연한 선택, 배치 릴리스 |
+| </code>milestone<code> | GitHub 마일스톤에 할당된 PR | 로드맵에 맞춘 릴리스 |</p><p>#### 구성</p><pre><code class="language-yaml"># .github/approvals.yml
+workflows:
+  deploy:
+    description: "Production deployment pipeline"
+    pipeline:
+      track_prs: true
+      track_commits: true</p><p>      # Configure release selection strategy
+      release_strategy:
+        type: milestone  # or: tag, branch, label</p><p>        # Milestone strategy settings
+        milestone:
+          pattern: "v{{version}}"        # e.g., "v1.2.0"
+          close_after_release: true       # Close milestone on prod completion</p><p>        # Auto-create next release artifact on completion
+        auto_create:
+          enabled: true
+          next_version: patch             # or: minor, major
+          create_issue: true              # Create new approval issue</p><p>      stages:
+        <ul><li>name: dev</li>
+          </ul>policy: developers
+        <ul><li>name: prod</li>
+          </ul>policy: production-approvers
+          is_final: true</code></pre>
+#### 브랜치 전략</p><p>GitFlow 스타일 개발을 위해 릴리스 브랜치를 사용하세요:</p><pre><code class="language-yaml">release_strategy:
+  type: branch
+  branch:
+    pattern: "release/{{version}}"  # Creates release/v1.2.0
+    base_branch: main               # Compare against main
+    delete_after_release: true      # Cleanup after prod deploy</p><p>  auto_create:
+    enabled: true
+    next_version: minor</code></pre></p><p><strong>작동 방식:</strong>
+<ul><li>릴리즈 브랜치 생성: </code>release/v1.2.0<code></li>
+<li>브랜치에 병합된 PR은 릴리즈 후보</li>
+<li>해당 버전에 대한 승인 요청</li>
+<li>승인 이슈에 릴리즈 브랜치의 모든 PR 표시</li>
+<li>프로덕션 후 브랜치 삭제(선택 사항) 및 다음 브랜치 생성</li></p><p></ul>#### 라벨 전략</p><p>유연한 PR 선택을 위해 라벨 사용:</p><pre><code class="language-yaml">release_strategy:
+  type: label
+  label:
+    pattern: "release:{{version}}"      # e.g., "release:v1.2.0"
+    pending_label: "pending-release"    # Applied to merged PRs awaiting release
+    remove_after_release: true          # Remove label after prod deploy</p><p>  auto_create:
+    enabled: true
+    next_version: patch</code></pre></p><p><strong>작동 방식:</strong>
+<ul><li>main에 병합된 PR에 </code>pending-release<code> 라벨이 붙음</li>
+<li>릴리스 관리자가 선택된 PR에 </code>release:v1.2.0<code> 라벨을 적용함</li>
+<li>v1.2.0 승인을 요청함</li>
+<li>승인 이슈에는 해당 라벨이 붙은 PR만 표시됨</li>
+<li>운영 배포 후 라벨이 제거되고 다음 릴리스 라벨이 생성됨</li></p><p></ul>#### 마일스톤 전략</p><p>로드맵에 맞춘 릴리스를 위해 마일스톤을 사용하세요:</p><pre><code class="language-yaml">release_strategy:
+  type: milestone
+  milestone:
+    pattern: "Release {{version}}"       # e.g., "Release 1.2.0"
+    close_after_release: true            # Close milestone on completion</p><p>  auto_create:
+    enabled: true
+    next_version: minor
+    create_issue: true                   # Auto-create next approval issue</code></pre></p><p><strong>작동 방식:</strong>
+<ul><li>마일스톤 생성: "Release 1.2.0"</li>
+<li>개발 중에 PR을 마일스톤에 할당</li>
+<li>v1.2.0 승인 요청</li>
+<li>승인 이슈에 마일스톤 내 모든 PR 표시</li>
+<li>프로덕션 후 마일스톤 종료 및 다음 마일스톤 생성</li></p><p></ul>#### 완료 시 자동 생성</p><p>최종 단계(프로덕션)가 승인되면 다음 릴리스를 자동으로 준비:</p><pre><code class="language-yaml">auto_create:
+  enabled: true
+  next_version: patch      # Calculate next: patch, minor, or major
+  create_issue: true       # Create new approval issue immediately
+  comment: |               # Custom message (optional)
+    🚀 <strong>Next release prepared:</strong> {{version}}</code></pre>
+이것은 다음을 생성합니다:
+<ul><li><strong>브랜치 전략:</strong> 메인에서 새 릴리스 브랜치 생성</li>
+<li><strong>레이블 전략:</strong> 새 릴리스 레이블</li>
+<li><strong>마일스톤 전략:</strong> 새 마일스톤</li></p><p></ul>#### 정리 옵션</p><p>각 전략에는 최종 단계(프로덕션)가 승인될 때 실행되는 선택적 정리 작업이 있습니다. <strong>모든 정리 옵션은 기본값이 </code>false<code>입니다</strong> - 정리는 선택 사항입니다:</p><p>| 전략 | 정리 옵션 | 설명 |
+|----------|----------------|-------------|
+| 브랜치 | </code>delete_after_release<code> | 릴리스 브랜치 삭제 |
+| 레이블 | </code>remove_after_release<code> | PR에서 릴리스 레이블 제거 |
+| 마일스톤 | </code>close_after_release<code> | 마일스톤 닫기 |</p><pre><code class="language-yaml">release_strategy:
+  type: branch
+  branch:
+    pattern: "release/{{version}}"
+    delete_after_release: false   # Keep branch for reference (default)</p><p>  type: milestone
+  milestone:
+    pattern: "v{{version}}"
+    close_after_release: true     # Close milestone when done</code></pre>
+#### 긴급 수정 배포</p><p>정상 릴리스 워크플로를 우회해야 하는 긴급 수정의 경우, 별도의 워크플로를 만듭니다:</p><pre><code class="language-yaml"># .github/approvals.yml
+workflows:
+  # Standard releases - full pipeline with milestone tracking
+  deploy:
+    description: "Standard release pipeline (dev → qa → stage → prod)"
+    pipeline:
+      release_strategy:
+        type: milestone
+        milestone:
+          pattern: "v{{version}}"
+          close_after_release: true
+        auto_create:
+          enabled: true
+          next_version: minor
+      stages:
+        <ul><li>name: dev</li>
+          </ul>policy: developers
+        <ul><li>name: qa</li>
+          </ul>policy: qa-team
+        <ul><li>name: stage</li>
+          </ul>policy: tech-leads
+        <ul><li>name: prod</li>
+          </ul>policy: production-approvers
+          is_final: true</p><p>  # Hotfixes - skip stages, direct to prod
+  hotfix:
+    description: "Emergency hotfix - direct to production"
+    pipeline:
+      release_strategy:
+        type: tag              # Simple tag-based, no cleanup needed
+        # No auto_create - hotfixes are one-off
+      stages:
+        <ul><li>name: prod</li>
+          </ul>policy: production-approvers
+          create_tag: true
+          is_final: true
+    on_approved:
+      close_issue: true
+      comment: "🚨 Hotfix {{version}} deployed to production"</code></pre></p><p><strong>핫픽스 트리거 vs 정규 릴리스:</strong></p><pre><code class="language-bash"># Regular release - goes through all stages
+gh workflow run request-approval.yml -f workflow_name=deploy -f version=v1.3.0</p><h1>Hotfix - goes straight to prod</h1>
+gh workflow run request-approval.yml -f workflow_name=hotfix -f version=v1.2.1</code></pre>
+<strong>핫픽스 패턴:</strong></p><p>| 시나리오 | 전략 | 정리 | 자동 생성 |
+|----------|----------|---------|-------------|
+| 긴급 수정 | </code>tag<code> | 없음 | 비활성화 |
+| 패치 릴리스 | </code>milestone<code> | </code>close_after_release: false<code> | 비활성화 |
+| 다중 핫픽스 | </code>branch<code> | </code>delete_after_release: false<code> | 비활성화 |</p><p>#### 릴리스 전략 장점</p><p>| 전략 | 장점 | 단점 |
+|----------|------|------|
+| <strong>Tag</strong> | 간단하며 추가 워크플로우 없음 | 모든 병합된 PR 포함 |
+| <strong>Branch</strong> | 명확한 릴리스 범위, 격리 | 브랜치 관리 오버헤드 |
+| <strong>Label</strong> | 유연한 선택, 변경 용이 | 수동 라벨링 필요 |
+| <strong>Milestone</strong> | 로드맵 가시성, 계획 통합 | 마일스톤 규율 필요 |</p><p><strong>권장 사항:</strong></p><ul><li>연속 배포가 필요한 단순 프로젝트에는 <strong>tag</strong> 사용</li>
+<li>릴리스 격리가 필요한 규제 환경에는 <strong>branch</strong> 사용</li>
+<li>유연한 범위의 일괄 릴리스에는 <strong>label</strong> 사용</li>
+<li>명확한 릴리스 계획이 있는 로드맵 기반 개발에는 <strong>milestone</strong> 사용</li></p><p></ul><h3>Jira 통합</h3></p><p>커밋 및 브랜치 이름에서 Jira 이슈를 자동으로 추출합니다. 이 액션은 두 가지 모드를 지원합니다:</p><p>#### 링크 전용 모드 (인증 불필요)</p><p></code>jira_base_url<code>만 제공하면 이슈 키를 추출하여 클릭 가능한 링크로 표시합니다:</p><pre><code class="language-yaml">- uses: jamengual/enterprise-approval-engine@v1
+  with:
+    action: request
+    workflow: production-deploy
+    version: v1.2.0
+    token: ${{ secrets.GITHUB_TOKEN }}
+    jira_base_url: https://yourcompany.atlassian.net  # That's it!</code></pre></p><p>이것은 커밋 메시지와 브랜치 이름에서 이슈 키(예: </code>PROJ-123<code>)를 추출하여 승인 이슈에 링크로 표시합니다:</p><pre><code class="language-markdown">### Jira Issues
+<ul><li><a href="https://yourcompany.atlassian.net/browse/PROJ-123" target="_blank" rel="noopener noreferrer">PROJ-123</a></li>
+<li><a href="https://yourcompany.atlassian.net/browse/PROJ-456" target="_blank" rel="noopener noreferrer">PROJ-456</a></code></pre></li></p><p></ul>#### 전체 모드 (API 접근 포함)</p><p>이슈 세부정보를 가져오고 수정 버전을 업데이트하기 위해 자격 증명을 추가하세요:</p><pre><code class="language-yaml">- uses: jamengual/enterprise-approval-engine@v1
+  with:
+    action: request
+    workflow: production-deploy
+    version: v1.2.0
+    token: ${{ secrets.GITHUB_TOKEN }}
+    # Jira configuration
+    jira_base_url: https://yourcompany.atlassian.net
+    jira_user_email: ${{ secrets.JIRA_EMAIL }}
+    jira_api_token: ${{ secrets.JIRA_API_TOKEN }}
+    jira_update_fix_version: 'true'</code></pre>
+이것은 자세한 이슈 정보를 표시합니다:</p><pre><code class="language-markdown">### Jira Issues in this Release</p><p>| Key | Summary | Type | Status |
+|-----|---------|------|--------|
+| <a href="https://..." target="_blank" rel="noopener noreferrer">PROJ-123</a> | Fix login bug | Bug | Done |
+| <a href="https://..." target="_blank" rel="noopener noreferrer">PROJ-456</a> | Add dark mode | Feature | In Progress |</code></pre></p><p><strong>모드 비교:</strong></p><p>| 모드 | 인증 필요 | 기능 |
+|------|-----------|------|
+| 링크 전용 | 아니요 | 클릭 가능한 링크로 이슈 키 제공 |
+| 전체 | 예 | 링크 + 요약, 상태, 유형 이모지, Fix Version 업데이트 |</p><p><strong>Jira 출력:</strong></p><pre><code class="language-yaml">- name: Use Jira Outputs
+  run: |
+    echo "Issues: ${{ steps.approval.outputs.jira_issues }}"
+    # Output: PROJ-123,PROJ-456</p><p>    echo "Details: ${{ steps.approval.outputs.jira_issues_json }}"
+    # Output: [{"key":"PROJ-123","summary":"Fix login bug",...}]</code></pre></p><h3>배포 추적</h3></p><p>GitHub의 배포 대시보드에서 가시성을 위해 GitHub 배포를 생성합니다. 이것은 워크플로우 YAML의 </code>environment:<code> 키와는 독립적으로 작동합니다.</p><pre><code class="language-yaml">- uses: jamengual/enterprise-approval-engine@v1
+  id: approval
+  with:
+    action: request
+    workflow: production-deploy
+    version: v1.2.0
+    token: ${{ secrets.GITHUB_TOKEN }}
+    # Deployment tracking
+    create_deployment: 'true'
+    deployment_environment: production
+    deployment_environment_url: https://myapp.example.com</p><ul><li>name: Update Deployment Status</li>
+  </ul>if: steps.approval.outputs.status == 'approved'
+  run: |
+    # Use the deployment_id to update status after actual deployment
+    echo "Deployment ID: ${{ steps.approval.outputs.deployment_id }}"</code></pre></p><p><strong>배포가 표시되는 위치:</strong></p><ul><li>저장소의 <strong>배포(Deployments)</strong> 탭</li>
+<li>저장소 페이지의 환경 상태 배지</li>
+<li>GitHub for Jira 통합(구성된 경우)</li>
+<li>CI/CD 도구용 GitHub API</li></p><p></ul><strong>참고:</strong> 이는 GitHub의 기본 환경 보호 규칙과 별개인 GitHub 배포 API를 통해 배포를 생성합니다. 두 가지를 함께 또는 독립적으로 사용할 수 있습니다.</p><h3>외부 구성 저장소</h3></p><p>중앙 집중식 정책 관리를 위해 승인가 구성을 공유 저장소에 저장:</p><pre><code class="language-yaml">- uses: jamengual/enterprise-approval-engine@v1
+  with:
+    action: request
+    workflow: production-deploy
+    token: ${{ secrets.GITHUB_TOKEN }}
+    config_repo: myorg/.github  # Shared config repo</code></pre></p><p><strong>구성 해석 순서:</strong></p><ul><li>외부 저장소의 </code>{repo-name}_approvals.yml<code> (예: </code>myapp_approvals.yml<code>)</li>
+<li>외부 저장소의 </code>approvals.yml<code> (공유 기본값)</li>
+<li>현재 저장소의 </code>.github/approvals.yml<code> (로컬 대체)</li></p><p></ul><strong>예시 조직 구조:</strong></p><pre><code class="language-text">myorg/.github/
+├── myapp_approvals.yml      # App-specific config
+├── backend_approvals.yml    # Backend repos config
+└── approvals.yml            # Default for all repos</code></pre></p><h3>승인 차단</h3></p><p>승인 대기 후 진행해야 하는 워크플로우의 경우:</p><pre><code class="language-yaml">name: Deploy with Blocking Approval</p><p>on:
+  workflow_dispatch:
+    inputs:
+      version:
+        required: true
+        type: string</p><p>jobs:
+  request-approval:
+    runs-on: ubuntu-latest
+    outputs:
+      issue_number: ${{ steps.request.outputs.issue_number }}
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+      <li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: request
+        with:
+          action: request
+          workflow: production-deploy
+          version: ${{ inputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}</p><p>  wait-for-approval:
+    needs: request-approval
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.check.outputs.status }}
+      tag: ${{ steps.check.outputs.tag }}
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+      <li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: check
+        with:
+          action: check
+          issue_number: ${{ needs.request-approval.outputs.issue_number }}
+          wait: 'true'           # Poll until approved/denied
+          timeout: '4h'          # Max wait time
+          token: ${{ secrets.GITHUB_TOKEN }}</p><p>  deploy:
+    needs: [request-approval, wait-for-approval]
+    if: needs.wait-for-approval.outputs.status == 'approved'
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>name: Deploy</li>
+        </ul>run: |
+          echo "Deploying ${{ needs.wait-for-approval.outputs.tag }}"</code></pre></p><p><strong>참고:</strong> 차단 워크플로우는 러너를 활성 상태로 유지하여 GitHub Actions 사용 시간을 소모합니다. 비용에 민감한 시나리오에서는 이벤트 기반 접근 방식(별도의 </code>process-comment<code> 워크플로우)을 사용하세요.</p><h3>이슈 종료 시 태그 삭제</h3></p><p>승인 이슈가 수동으로 종료될 때 선택적으로 태그를 삭제합니다:</p><pre><code class="language-yaml">workflows:
+  dev-deploy:
+    on_closed:
+      delete_tag: true   # Delete tag when issue is closed
+      comment: "Cancelled. Tag {{tag}} deleted."</p><p>  production-deploy:
+    on_closed:
+      delete_tag: false  # NEVER delete production tags</code></pre></p><p><strong>닫기 이벤트 처리:</strong></p><pre><code class="language-yaml"># .github/workflows/handle-close.yml
+name: Handle Issue Close</p><p>on:
+  issues:
+    types: [closed]</p><p>jobs:
+  handle:
+    if: contains(github.event.issue.labels.*.name, 'approval-required')
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+      <li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: close
+        with:
+          action: close-issue
+          issue_number: ${{ github.event.issue.number }}
+          issue_action: ${{ github.event.action }}
+          token: ${{ secrets.GITHUB_TOKEN }}</p><ul><li>name: Report</li>
+        </ul>run: |
+          echo "Status: ${{ steps.close.outputs.status }}"
+          echo "Deleted tag: ${{ steps.close.outputs.tag_deleted }}"</code></pre></p><hr></p><h2>Complete Examples</h2></p><h3>Full-Featured Request Workflow</h3></p><pre><code class="language-yaml">name: Request Production Deployment</p><p>on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to deploy'
+        required: true
+        type: string
+      environment:
+        description: 'Target environment'
+        required: true
+        type: choice
+        options: [staging, production]</p><p>permissions:
+  contents: write
+  issues: write
+  deployments: write</p><p>jobs:
+  request:
+    runs-on: ubuntu-latest
+    outputs:
+      issue_number: ${{ steps.approval.outputs.issue_number }}
+      issue_url: ${{ steps.approval.outputs.issue_url }}
+      deployment_id: ${{ steps.approval.outputs.deployment_id }}
+      jira_issues: ${{ steps.approval.outputs.jira_issues }}
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+        </ul>with:
+          fetch-depth: 0  # Needed for commit comparison</p><ul><li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: approval
+        with:
+          action: request
+          workflow: ${{ inputs.environment }}-deploy
+          version: ${{ inputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Jira integration
+          jira_base_url: https://mycompany.atlassian.net
+          jira_user_email: ${{ secrets.JIRA_EMAIL }}
+          jira_api_token: ${{ secrets.JIRA_API_TOKEN }}
+          # Deployment tracking
+          create_deployment: 'true'
+          deployment_environment: ${{ inputs.environment }}
+          deployment_environment_url: https://${{ inputs.environment }}.myapp.com</p><ul><li>name: Summary</li>
+        </ul>run: |
+          echo "## Approval Request Created" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- <strong>Issue:</strong> #${{ steps.approval.outputs.issue_number }}" >> $GITHUB_STEP_SUMMARY
+          echo "- <strong>URL:</strong> ${{ steps.approval.outputs.issue_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "- <strong>Jira Issues:</strong> ${{ steps.approval.outputs.jira_issues }}" >> $GITHUB_STEP_SUMMARY
+          echo "- <strong>Commits:</strong> ${{ steps.approval.outputs.commits_count }}" >> $GITHUB_STEP_SUMMARY</code></pre></p><h3>팀 지원과 함께 프로세스 의견 처리</h3></p><pre><code class="language-yaml">name: Handle Approval Comments</p><p>on:
+  issue_comment:
+    types: [created]</p><p>permissions:
+  contents: write
+  issues: write</p><p>jobs:
+  process:
+    if: |
+      github.event.issue.pull_request == null &&
+      contains(github.event.issue.labels.*.name, 'approval-required')
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li></p><p>      </ul># Generate GitHub App token for team membership checks
+      <ul><li>uses: actions/create-github-app-token@v2</li>
+        </ul>id: app-token
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}</p><ul><li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: process
+        with:
+          action: process-comment
+          issue_number: ${{ github.event.issue.number }}
+          token: ${{ steps.app-token.outputs.token }}
+          # Jira integration to update Fix Version on approval
+          jira_base_url: https://mycompany.atlassian.net
+          jira_user_email: ${{ secrets.JIRA_EMAIL }}
+          jira_api_token: ${{ secrets.JIRA_API_TOKEN }}</p><ul><li>name: Trigger Deployment</li>
+        </ul>if: steps.process.outputs.status == 'approved'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'deploy.yml',
+              ref: 'main',
+              inputs: { version: '${{ steps.process.outputs.tag }}' }
+            });</code></pre></p><h3>다중 환경 프로모션</h3></p><pre><code class="language-yaml"># .github/approvals.yml
+version: 1</p><p>policies:
+  dev-team:
+    approvers: [dev1, dev2, dev3]
+    min_approvals: 1</p><p>  qa-team:
+    approvers: [qa1, qa2]
+    min_approvals: 1</p><p>  prod-team:
+    approvers: [team:sre, tech-lead]
+    min_approvals: 2</p><p>workflows:
+  dev-deploy:
+    require:
+      <ul><li>policy: dev-team</li>
+    </ul>on_approved:
+      tagging:
+        enabled: true
+        auto_increment: patch
+        env_prefix: "dev-"
+      close_issue: true</p><p>  staging-deploy:
+    require:
+      <ul><li>policy: qa-team</li>
+    </ul>on_approved:
+      tagging:
+        enabled: true
+        auto_increment: minor
+        env_prefix: "staging-"
+      close_issue: true</p><p>  production-deploy:
+    require:
+      <ul><li>policy: prod-team</li>
+    </ul>on_approved:
+      create_tag: true
+      close_issue: true
+    on_closed:
+      delete_tag: false  # Never delete production tags</code></pre></p><h3>후속 작업에서 출력물 사용하기</h3></p><pre><code class="language-yaml">name: Deploy with Approval</p><p>on:
+  workflow_dispatch:
+    inputs:
+      version:
+        required: true</p><p>jobs:
+  approval:
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.check.outputs.status }}
+      tag: ${{ steps.check.outputs.tag }}
+      approvers: ${{ steps.check.outputs.approvers }}
+      jira_issues: ${{ steps.request.outputs.jira_issues }}
+    steps:
+      <ul><li>uses: actions/checkout@v4</li></p><p>      <li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: request
+        with:
+          action: request
+          workflow: production-deploy
+          version: ${{ inputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          jira_base_url: https://mycompany.atlassian.net</p><ul><li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: check
+        with:
+          action: check
+          issue_number: ${{ steps.request.outputs.issue_number }}
+          wait: 'true'
+          timeout: '2h'
+          token: ${{ secrets.GITHUB_TOKEN }}</p><p>  deploy:
+    needs: approval
+    if: needs.approval.outputs.status == 'approved'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      <ul><li>name: Deploy</li>
+        </ul>run: |
+          echo "Deploying ${{ needs.approval.outputs.tag }}"
+          echo "Approved by: ${{ needs.approval.outputs.approvers }}"
+          echo "Jira Issues: ${{ needs.approval.outputs.jira_issues }}"</p><p>  notify:
+    needs: [approval, deploy]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>name: Notify Slack</li>
+        </ul>run: |
+          if [ "${{ needs.approval.outputs.status }}" == "approved" ]; then
+            echo "Deployment of ${{ needs.approval.outputs.tag }} completed!"
+          else
+            echo "Deployment was ${{ needs.approval.outputs.status }}"
+          fi</code></pre></p><hr></p><h2>Schema Validation</h2></p><p>Validate your configuration using the JSON schema:</p><pre><code class="language-yaml"># .github/approvals.yml
+<h1>yaml-language-server: $schema=https://raw.githubusercontent.com/jamengual/enterprise-approval-engine/main/schema.json</h1></p><p>version: 1</p><p>policies:
+  # ... your config</code></pre></p><p>또는 CI에서 검증:</p><pre><code class="language-yaml">- name: Validate Config
+  run: |
+    npm install -g ajv-cli
+    ajv validate -s schema.json -d .github/approvals.yml</code></pre></p><hr></p><h2>GitHub Enterprise Server</h2></p><p>이 액션은 GitHub Enterprise Server를 완벽하게 지원합니다. </code>GITHUB_SERVER_URL<code> 및 </code>GITHUB_API_URL` 환경 변수를 사용하여 GHES 환경을 자동으로 감지합니다.</p><p>추가 구성 없이도 액션이 자동으로 올바른 API 엔드포인트를 사용합니다.</p><p><strong>속도 제한:</strong></p><p>이 액션은 속도 제한 오류에 대해 지수 백오프를 사용하는 자동 재시도를 포함합니다. 구성:</p><ul><li>초기 지연: 1초</li>
+<li>최대 지연: 60초</li>
+<li>최대 재시도 횟수: 5회</li>
+<li>지터: 무작위 0-500ms를 추가하여 동시 폭주 방지</li></p><p></ul>---</p><h2>라이선스</h2></p><p>MIT 라이선스</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-22
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/jamengual/enterprise-approval-engine/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-22 
+    </div>
+    
+</body>
+</html>

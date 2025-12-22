@@ -1,0 +1,1352 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>enterprise-approval-engine - 企业级审批工作流，支持每组阈值（N选X）、组间或逻辑，以及自动语义版本标签创建。</title>
+    <meta name="description" content="企业级审批工作流，支持每组阈值（N选X）、组间或逻辑，以及自动语义版本标签创建。">
+    <meta name="keywords" content="enterprise-approval-engine, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "enterprise-approval-engine",
+  "description": "企业级审批工作流，支持每组阈值（N选X）、组间或逻辑，以及自动语义版本标签创建。",
+  "author": {
+    "@type": "Person",
+    "name": "jamengual"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 4
+  },
+  "url": "https://OpenAiTx.github.io/projects/jamengual/enterprise-approval-engine/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/jamengual/enterprise-approval-engine/main/README.md",
+  "datePublished": "2025-12-22",
+  "dateModified": "2025-12-22"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/jamengual/enterprise-approval-engine" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    enterprise-approval-engine
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 4 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by jamengual</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>企业审批引擎</h1></p><p><a href="README.md" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/lang-en-blue.svg" alt="en"></a>
+<a href="ES/README.md" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/lang-es-yellow.svg" alt="es"></a></p><p>企业级 GitHub Action，支持基于策略的审批工作流，具备每组阈值（N 中 X）、组间或逻辑，以及自动语义版本标签创建功能。</p><h2>功能特性</h2></p><ul><li><strong>灵活的审批逻辑</strong>：支持组内的与（全部必须审批）和阈值（N 中 X）逻辑</li>
+<li><strong>组间或逻辑</strong>：多审批路径——任意一组满足要求即可批准请求</li>
+<li><strong>混合审批人</strong>：同一组内可组合个人用户和 GitHub 团队</li>
+<li><strong>渐进式部署流水线</strong>：单一议题跨多个环境跟踪（开发 → 测试 → 预发布 → 生产）</li>
+<li><strong>流水线可视化</strong>：色彩编码的 Mermaid 流程图展示部署进度</li>
+<li><strong>子议题审批</strong>：为每个阶段创建专用审批子议题——关闭即为批准</li>
+<li><strong>增强的评论用户体验</strong>：审批评论支持表情反应，快速操作区含命令参考</li>
+<li><strong>议题关闭保护</strong>：防止未授权用户关闭审批议题（自动重新打开）</li>
+<li><strong>混合审批模式</strong>：按工作流或阶段混合基于评论和子议题的审批</li>
+<li><strong>PR 和提交跟踪</strong>：自动在部署议题列出 PR 和提交以便发布管理</li>
+<li><strong>语义版本标签创建</strong>：审批通过后自动创建 git 标签</li>
+<li><strong>基于策略的配置</strong>：以 YAML 定义可复用的审批策略</li>
+<li><strong>基于议题的工作流</strong>：通过 GitHub 议题实现透明审计轨迹</li>
+<li><strong>Jira 集成</strong>：从提交中提取议题键，显示在审批议题，更新修复版本</li>
+<li><strong>部署跟踪</strong>：创建 GitHub 部署以便部署仪表盘可视化</li>
+<li><strong>外部配置</strong>：将审批策略集中存放于共享仓库</li>
+<li><strong>速率限制处理</strong>：针对 GitHub API 速率限制自动指数退避重试</li>
+<li><strong>GitHub 企业服务器支持</strong>：完全支持 GHES 环境</li>
+<li><strong>无外部依赖</strong>：纯 GitHub Actions，无需外部服务</li></p><p></ul>📋 <strong>演示示例：</strong> <a href="https://github.com/jamengual/enterprise-approval-engine/issues/7" target="_blank" rel="noopener noreferrer">审批示例议题</a></p><h2>目录</h2></p><ul><li><a href="#quick-start" target="_blank" rel="noopener noreferrer">快速开始</a></li>
+<li><a href="#action-reference" target="_blank" rel="noopener noreferrer">Action 参考</a></li>
+  <li><a href="#actions" target="_blank" rel="noopener noreferrer">操作</a></li>
+  <li><a href="#inputs" target="_blank" rel="noopener noreferrer">输入</a></li>
+  <li><a href="#outputs" target="_blank" rel="noopener noreferrer">输出</a></li>
+<li><a href="#configuration-reference" target="_blank" rel="noopener noreferrer">配置参考</a></li>
+  <li><a href="#policies" target="_blank" rel="noopener noreferrer">策略</a></li>
+  <li><a href="#workflows" target="_blank" rel="noopener noreferrer">工作流</a></li>
+  <li><a href="#tagging-configuration" target="_blank" rel="noopener noreferrer">标签配置</a></li>
+  <li><a href="#custom-issue-templates" target="_blank" rel="noopener noreferrer">自定义模板</a></li>
+  <li><a href="#defaults" target="_blank" rel="noopener noreferrer">默认值</a></li>
+  <li><a href="#semver" target="_blank" rel="noopener noreferrer">语义化版本</a></li>
+<li><a href="#complete-configuration-reference" target="_blank" rel="noopener noreferrer">完整配置参考</a></li>
+<li><a href="#feature-details" target="_blank" rel="noopener noreferrer">功能详情</a></li>
+  <li><a href="#approval-keywords" target="_blank" rel="noopener noreferrer">审批关键字</a></li>
+  <li><a href="#team-support" target="_blank" rel="noopener noreferrer">团队支持</a></li>
+  <li><a href="#progressive-deployment-pipelines" target="_blank" rel="noopener noreferrer">渐进式部署流水线</a></li>
+  <li><a href="#release-candidate-strategies" target="_blank" rel="noopener noreferrer">候选版本策略</a></li>
+  <li><a href="#jira-integration" target="_blank" rel="noopener noreferrer">Jira 集成</a></li>
+  <li><a href="#deployment-tracking" target="_blank" rel="noopener noreferrer">部署跟踪</a></li>
+  <li><a href="#external-config-repository" target="_blank" rel="noopener noreferrer">外部配置仓库</a></li>
+  <li><a href="#blocking-approvals" target="_blank" rel="noopener noreferrer">阻塞审批</a></li>
+  <li><a href="#tag-deletion-on-issue-close" target="_blank" rel="noopener noreferrer">关闭 Issue 时删除标签</a></li>
+<li><a href="#complete-examples" target="_blank" rel="noopener noreferrer">完整示例</a></li>
+<li><a href="#schema-validation" target="_blank" rel="noopener noreferrer">模式验证</a></li>
+<li><a href="#github-enterprise-server" target="_blank" rel="noopener noreferrer">GitHub 企业服务器</a></li></p><p></ul><h2>快速开始</h2></p><h3>1. 创建配置</h3></p><p>在你的仓库中创建 <code>.github/approvals.yml</code> 文件：</p><pre><code class="language-yaml">version: 1</p><p>policies:
+  dev-team:
+    approvers: [alice, bob, charlie]
+    min_approvals: 2</p><p>  platform-team:
+    approvers: [team:platform-engineers]
+    require_all: true</p><p>workflows:
+  production-deploy:
+    require:
+      # OR logic: either path satisfies approval
+      <ul><li>policy: dev-team        # 2 of 3 developers</li>
+      <li>policy: platform-team   # ALL platform engineers</li>
+    </ul>on_approved:
+      create_tag: true
+      close_issue: true</code></pre></p><h3>2. 请求审批工作流</h3></p><p>创建 <code>.github/workflows/request-approval.yml</code>：</p><pre><code class="language-yaml">name: Request Deployment Approval</p><p>on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to deploy (e.g., v1.2.3)'
+        required: true
+        type: string</p><p>jobs:
+  request:
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+      <li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: approval
+        with:
+          action: request
+          workflow: production-deploy
+          version: ${{ inputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}</p><ul><li>name: Output Results</li>
+        </ul>run: |
+          echo "Issue: ${{ steps.approval.outputs.issue_url }}"
+          echo "Status: ${{ steps.approval.outputs.status }}"</code></pre></p><h3>3. 处理审批意见</h3></p><p>创建 <code>.github/workflows/handle-approval.yml</code>：</p><pre><code class="language-yaml">name: Handle Approval Comments</p><p>on:
+  issue_comment:
+    types: [created]</p><p>jobs:
+  process:
+    if: contains(github.event.issue.labels.*.name, 'approval-required')
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+      <li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: process
+        with:
+          action: process-comment
+          issue_number: ${{ github.event.issue.number }}
+          token: ${{ secrets.GITHUB_TOKEN }}</p><ul><li>name: Trigger Deployment</li>
+        </ul>if: steps.process.outputs.status == 'approved'
+        run: |
+          echo "Approved by: ${{ steps.process.outputs.approvers }}"
+          echo "Tag created: ${{ steps.process.outputs.tag }}"</code></pre></p><hr></p><h2>操作参考</h2></p><h3>操作</h3></p><p>该操作通过 <code>action</code> 输入支持四种操作模式：</p><p>| 操作 | 描述 | 何时使用 |
+|--------|-------------|-------------|
+| <code>request</code> | 创建一个新的审批请求 issue | 在启动部署/发布工作流时 |
+| <code>process-comment</code> | 处理审批/拒绝评论 | 在 <code>issue_comment</code> 事件时 |
+| <code>check</code> | 检查当前审批状态 | 用于轮询审批完成情况 |
+| <code>close-issue</code> | 处理 issue 关闭事件 | 在 <code>issues: [closed]</code> 事件时 |</p><h3>输入</h3></p><p>#### 核心输入</p><p>| 输入 | 描述 | 必填 | 默认值 |
+|-------|-------------|----------|---------|
+| <code>action</code> | 要执行的操作：<code>request</code>，<code>check</code>，<code>process-comment</code>，<code>close-issue</code> | 是 | - |
+| <code>workflow</code> | 配置中的工作流名称（用于 <code>request</code> 操作） | <code>request</code> 时必填 | - |
+| <code>version</code> | 用于标签创建的语义版本号（例如，<code>1.2.3</code> 或 <code>v1.2.3</code>） | 否 | - |
+| <code>issue_number</code> | issue 编号（用于 <code>check</code>、<code>process-comment</code>、<code>close-issue</code>） | <code>check</code>/<code>process</code>/<code>close</code> 时必填 | - |
+| <code>token</code> | 用于 API 操作的 GitHub 令牌 | 是 | - |</p><p>#### 配置输入</p><p>| 输入 | 描述 | 必填 | 默认值 |
+|-------|-------------|----------|---------|
+| <code>config_path</code> | approvals.yml 配置文件路径 | 否 | <code>.github/approvals.yml</code> |
+| <code>config_repo</code> | 用于共享配置的外部仓库（例如，<code>org/.github</code>） | 否 | - |</p><p>#### 轮询输入（用于 <code>check</code> 操作）</p><p>| 输入 | 描述 | 必填 | 默认值 |
+|-------|-------------|----------|---------|
+| <code>wait</code> | 等待审批完成（轮询）而非立即返回 | 否 | <code>false</code> |
+| <code>timeout</code> | 等待超时时间（例如，<code>24h</code>，<code>1h30m</code>，<code>30m</code>） | 否 | <code>72h</code> |</p><p>#### 团队支持输入</p><p>| 输入 | 描述 | 是否必需 | 默认值 |
+|-------|-------------|----------|---------|
+| <code>app_id</code> | 用于团队成员检查的 GitHub 应用 ID | 否 | - |
+| <code>app_private_key</code> | 用于团队成员检查的 GitHub 应用私钥 | 否 | - |</p><p>#### Jira 集成输入</p><p>| 输入 | 描述 | 是否必需 | 默认值 |
+|-------|-------------|----------|---------|
+| <code>jira_base_url</code> | Jira Cloud 基础 URL（例如，<code>https://yourcompany.atlassian.net</code>） | 否 | - |
+| <code>jira_user_email</code> | 用于 API 认证的 Jira 用户邮箱 | 否 | - |
+| <code>jira_api_token</code> | 用于认证的 Jira API 令牌 | 否 | - |
+| <code>jira_update_fix_version</code> | 审批时更新 Jira 问题的修复版本 | 否 | <code>true</code> |
+| <code>include_jira_issues</code> | 在审批请求正文中包含 Jira 问题 | 否 | <code>true</code> |</p><p>#### 部署跟踪输入</p><p>| 输入 | 描述 | 是否必需 | 默认值 |
+|-------|-------------|----------|---------|
+| <code>create_deployment</code> | 创建 GitHub 部署以进行跟踪 | 否 | <code>true</code> |
+| <code>deployment_environment</code> | 目标环境（例如，<code>production</code>，<code>staging</code>） | 否 | <code>production</code> |
+| <code>deployment_environment_url</code> | 部署环境的 URL | 否 | - |</p><p>#### 其他输入</p><p>| 输入 | 描述 | 是否必需 | 默认值 |
+|-------|-------------|----------|---------|
+| <code>issue_action</code> | 用于 <code>close-issue</code> 的问题事件动作（<code>closed</code>，<code>reopened</code>） | 否 | - |
+| <code>previous_tag</code> | 用于比较提交的先前标签（未指定时自动检测） | 否 | - |</p><h3>输出</h3></p><p>#### 核心输出</p><p>| 输出 | 描述 | 适用范围 |
+|--------|-------------|---------------|
+| <code>status</code> | 审批状态：<code>pending</code>（待处理）、<code>approved</code>（已批准）、<code>denied</code>（已拒绝）、<code>timeout</code>（超时）、<code>tag_deleted</code>（标签已删除）、<code>skipped</code>（已跳过） | 所有操作 |
+| <code>issue_number</code> | 创建或检查的问题编号 | 所有操作 |
+| <code>issue_url</code> | 审批问题的 URL | 所有操作 |</p><p>#### 审批输出</p><p>| 输出 | 描述 | 适用范围 |
+|--------|-------------|---------------|
+| <code>approvers</code> | 已批准用户的逗号分隔列表 | <code>process-comment</code>、<code>check</code> |
+| <code>denier</code> | 拒绝请求的用户 | <code>process-comment</code>、<code>check</code> |
+| <code>satisfied_group</code> | 满足审批条件的组名 | <code>process-comment</code>、<code>check</code> |
+| <code>tag</code> | 创建的标签名称 | <code>process-comment</code>（审批通过时） |
+| <code>tag_deleted</code> | 被删除的标签 | <code>close-issue</code> |</p><p>#### Jira 输出</p><p>| 输出 | 描述 | 适用范围 |
+|--------|-------------|---------------|
+| <code>jira_issues</code> | 此版本中的 Jira 问题键逗号分隔列表 | <code>request</code> |
+| <code>jira_issues_json</code> | Jira 问题详情的 JSON 数组（键、摘要、类型、状态） | <code>request</code> |</p><p>#### 部署输出</p><p>| 输出 | 描述 | 适用范围 |
+|--------|-------------|---------------|
+| <code>deployment_id</code> | 用于状态更新的 GitHub 部署 ID | <code>request</code> |
+| <code>deployment_url</code> | GitHub 中部署的 URL | <code>request</code> |</p><p>#### 发布说明输出</p><p>| 输出 | 描述 | 适用范围 |
+|--------|-------------|---------------|
+| <code>release_notes</code> | 根据提交和 Jira 问题自动生成的发布说明 | <code>request</code> |
+| <code>commits_count</code> | 此版本中的提交数量 | <code>request</code> |</p><hr></p><h2>配置参考</h2></p><h3>策略</h3></p><p>策略定义了可重用的审批人组。共有两种格式：</p><p>#### 简单格式</p><pre><code class="language-yaml">policies:
+  # Threshold-based: X of N must approve
+  dev-team:
+    approvers: [alice, bob, charlie]
+    min_approvals: 2</p><p>  # All must approve (AND logic)
+  security:
+    approvers: [team:security, security-lead]
+    require_all: true</p><p>  # Mixed teams and individuals
+  production:
+    approvers:
+      <ul><li>team:sre</li>
+      <li>tech-lead</li>
+      <li>product-owner</li>
+    </ul>min_approvals: 2</code></pre></p><p>#### 高级格式（每源阈值）</p><p>对于复杂的需求，如“2个平台且1个安全”：</p><pre><code class="language-yaml">policies:
+  # Complex AND gate
+  production-gate:
+    from:
+      <ul><li>team: platform-engineers</li>
+        </ul>min_approvals: 2        # 2 of the platform team
+      <ul><li>team: security</li>
+        </ul>min_approvals: 1        # 1 of the security team
+      <ul><li>user: alice             # alice must also approve</li>
+    </ul>logic: and                  # ALL sources must be satisfied</p><p>  # Flexible OR gate
+  flexible-review:
+    from:
+      <ul><li>team: security</li>
+        </ul>require_all: true       # All security team
+      <ul><li>team: platform</li>
+        </ul>min_approvals: 2        # OR 2 platform members
+    logic: or                   # ANY source is enough</p><p>  # Executive approval: any one exec
+  exec-approval:
+    from:
+      <ul><li>user: ceo</li>
+      <li>user: cto</li>
+      <li>user: vp-engineering</li>
+    </ul>logic: or</p><p>  # User list with threshold
+  leads:
+    from:
+      <ul><li>users: [tech-lead, product-lead, design-lead]</li>
+        </ul>min_approvals: 2</code></pre></p><p><strong>源类型：</strong></p><ul><li><code>team: slug</code> - GitHub 团队（需要应用令牌）</li>
+<li><code>user: username</code> - 单个用户（隐式 require_all）</li>
+<li><code>users: [a, b, c]</code> - 用户列表</li></p><p></ul><strong>策略级逻辑：</strong></p><ul><li><code>logic: and</code> - 必须满足所有源（默认）</li>
+<li><code>logic: or</code> - 满足任一源即可</li></p><p></ul>#### 内联逻辑（混合 AND/OR）</p><p>对于复杂表达式，在每个源上使用 <code>logic:</code> 指定其与下一个的连接方式：</p><pre><code class="language-yaml">policies:
+  # (2 security AND 2 platform) OR alice
+  complex-gate:
+    from:
+      <ul><li>team: security</li>
+        </ul>min_approvals: 2
+        logic: and              # AND with next source
+      <ul><li>team: platform</li>
+        </ul>min_approvals: 2
+        logic: or               # OR with next source
+      <ul><li>user: alice            # alice alone can satisfy</li></p><p>  </ul># (security AND platform) OR (alice AND bob) OR manager
+  multi-path:
+    from:
+      <ul><li>team: security</li>
+        </ul>min_approvals: 1
+        logic: and
+      <ul><li>team: platform</li>
+        </ul>min_approvals: 1
+        logic: or               # End first AND group
+      <ul><li>user: alice</li>
+        </ul>logic: and
+      <ul><li>user: bob</li>
+        </ul>logic: or               # End second AND group
+      <ul><li>user: manager          # Third path</code></pre></li></p><p></ul><strong>运算符优先级：</strong> AND 的绑定优先级高于 OR（标准布尔逻辑）。</p><p>表达式 <code>A and B or C and D</code> 被解析为 <code>(A AND B) OR (C AND D)</code>。</p><h3>工作流</h3></p><p>工作流定义审批要求和操作：</p><pre><code class="language-yaml">workflows:
+  my-workflow:
+    description: "Optional description"</p><p>    # Trigger conditions (for filtering)
+    trigger:
+      environment: production</p><p>    # Approval requirements (OR logic between items)
+    require:
+      <ul><li>policy: dev-team</li>
+      <li>policy: security</li>
+      </ul># Or inline approvers:
+      <ul><li>approvers: [alice, bob]</li>
+        </ul>require_all: true</p><p>    # Issue configuration
+    issue:
+      title: "Approval: {{version}}"
+      body: |                          # Inline custom template (optional)
+        ## My Custom Approval Issue
+        Version: {{.Version}}
+        Requested by: @{{.Requestor}}
+        {{.GroupsTable}}
+      body_file: "templates/my-template.md"  # Or load from file
+      labels: [production, deploy]
+      assignees_from_policy: true</p><p>    # Actions on approval
+    on_approved:
+      create_tag: true
+      tag_prefix: "v"  # Creates v1.2.3
+      close_issue: true
+      comment: "Approved! Tag {{version}} created."</p><p>    # Actions on denial
+    on_denied:
+      close_issue: true
+      comment: "Denied by {{denier}}."</p><p>    # Actions when issue is manually closed
+    on_closed:
+      delete_tag: true   # Delete the tag if issue is closed
+      comment: "Deployment cancelled. Tag {{tag}} deleted."</code></pre></p><h3>标签配置</h3></p><p>控制每个工作流中标签的创建方式：</p><pre><code class="language-yaml">workflows:
+  dev-deploy:
+    require:
+      <ul><li>policy: dev-team</li>
+    </ul>on_approved:
+      tagging:
+        enabled: true
+        start_version: "0.1.0"      # No 'v' prefix, start at 0.1.0
+        auto_increment: patch        # Auto-bump: 0.1.0 -> 0.1.1 -> 0.1.2
+        env_prefix: "dev-"           # Creates: dev-0.1.0, dev-0.1.1</p><p>  staging-deploy:
+    require:
+      <ul><li>policy: qa-team</li>
+    </ul>on_approved:
+      tagging:
+        enabled: true
+        start_version: "v1.0.0"     # 'v' prefix (inferred from start_version)
+        auto_increment: minor        # v1.0.0 -> v1.1.0 -> v1.2.0
+        env_prefix: "staging-"       # Creates: staging-v1.0.0</p><p>  production-deploy:
+    require:
+      <ul><li>policy: prod-team</li>
+    </ul>on_approved:
+      tagging:
+        enabled: true
+        start_version: "v1.0.0"     # Manual version required (no auto_increment)</code></pre></p><p><strong>标签选项：</strong></p><p>| 选项 | 描述 |
+|--------|-------------|
+| <code>enabled</code> | 启用标签创建 |
+| <code>start_version</code> | 起始版本和格式（例如，“v1.0.0”或“1.0.0”） |
+| <code>prefix</code> | 版本前缀（如果未设置，则从<code>start_version</code>推断） |
+| <code>auto_increment</code> | 自动递增：<code>major</code>、<code>minor</code>、<code>patch</code>，或省略以手动操作 |
+| <code>env_prefix</code> | 环境前缀（例如，“dev-”创建“dev-v1.0.0”） |</p><h3>自定义问题模板</h3></p><p>您可以使用 Go 模板完全自定义问题正文。使用 <code>body</code> 进行内联模板，或使用 <code>body_file</code> 从文件加载。</p><p><strong>可用模板变量：</strong></p><p>| 变量 | 描述 |
+|----------|-------------|
+| <code>{{.Title}}</code> | 问题标题 |
+| <code>{{.Description}}</code> | 工作流描述 |
+| <code>{{.Version}}</code> | Semver 版本 |
+| <code>{{.Requestor}}</code> | 发起请求的 GitHub 用户名 |
+| <code>{{.Environment}}</code> | 环境名称 |
+| <code>{{.RunURL}}</code> | 工作流运行链接 |
+| <code>{{.RepoURL}}</code> | 仓库 URL |
+| <code>{{.CommitSHA}}</code> | 完整提交 SHA |
+| <code>{{.CommitURL}}</code> | 提交链接 |
+| <code>{{.Branch}}</code> | 分支名称 |
+| <code>{{.GroupsTable}}</code> | 预渲染的审批状态表 |
+| <code>{{.Timestamp}}</code> | 请求时间戳 |
+| <code>{{.PreviousVersion}}</code> | 上一个版本/标签 |
+| <code>{{.CommitsCount}}</code> | 此次发布的提交数量 |
+| <code>{{.HasJiraIssues}}</code> | 布尔值 - 是否存在 Jira 问题 |
+| <code>{{.JiraIssues}}</code> | Jira 问题数据数组 |
+| <code>{{.JiraIssuesTable}}</code> | 预渲染的 Jira 问题表 |
+| <code>{{.PipelineTable}}</code> | 预渲染的部署流水线表 |
+| <code>{{.PipelineMermaid}}</code> | 预渲染的 Mermaid 流程图 |
+| <code>{{.Vars.key}}</code> | 自定义变量 |</p><p><strong>模板函数：</strong></p><p>| 函数 | 示例 | 描述 |
+|----------|---------|-------------|
+| <code>slice</code> | <code>{{slice .CommitSHA 0 7}}</code> | 子字符串（短SHA） |
+| <code>title</code> | <code>{{.Environment \| title}}</code> | 标题大小写 |
+| <code>upper</code> | <code>{{.Version \| upper}}</code> | 大写 |
+| <code>lower</code> | <code>{{.Version \| lower}}</code> | 小写 |
+| <code>join</code> | <code>{{join .Groups ","}}</code> | 连接数组 |
+| <code>contains</code> | <code>{{if contains .Branch "feature"}}</code> | 检查子字符串 |
+| <code>replace</code> | <code>{{replace .Version "v" ""}}</code> | 替换字符串 |
+| <code>default</code> | <code>{{default "N/A" .Environment}}</code> | 默认值 |</p><p><strong>示例自定义模板文件</strong> (<code>.github/templates/deploy.md</code>):</p><pre><code class="language-markdown">## {{.Title}}</p><h3>Release Information</h3></p><ul><li><strong>Version:</strong> <code>{{.Version}}</code></li>
+<li><strong>Requested by:</strong> @{{.Requestor}}</li>
+</ul>{{- if .CommitSHA}}
+<ul><li><strong>Commit:</strong> <a href="https://raw.githubusercontent.com/jamengual/enterprise-approval-engine/main/{{.CommitURL}}" target="_blank" rel="noopener noreferrer">{{slice .CommitSHA 0 7}}</a></li>
+</ul>{{- end}}
+{{- if .CommitsCount}}
+<ul><li><strong>Changes:</strong> {{.CommitsCount}} commits since {{.PreviousVersion}}</li>
+</ul>{{- end}}</p><p>{{if .HasJiraIssues}}
+<h3>Jira Issues</h3></p><p>{{.JiraIssuesTable}}
+{{end}}</p><h3>Approval Status</h3></p><p>{{.GroupsTable}}</p><hr></p><p><strong>Approve:</strong> Comment <code>approve</code> | <strong>Deny:</strong> Comment <code>deny</code></code></pre></p><h3>默认值</h3></p><p>适用于所有工作流的全局默认值：</p><pre><code class="language-yaml">defaults:
+  timeout: 72h                    # Default approval timeout
+  allow_self_approval: false      # Whether requestors can approve their own requests
+  issue_labels:                   # Labels added to all approval issues
+    <ul><li>approval-required</code></pre></li></p><p></ul><h3>语义化版本控制</h3></p><p>配置版本处理：</p><pre><code class="language-yaml">semver:
+  prefix: "v"              # Tag prefix (v1.2.3)
+  strategy: input          # Use version from input
+  validate: true           # Validate semver format
+  allow_prerelease: true   # Allow prerelease versions (e.g., v1.0.0-beta.1)
+  auto:                    # Label-based auto-increment (when strategy: auto)
+    major_labels: [breaking, major]
+    minor_labels: [feature, minor]
+    patch_labels: [fix, patch, bug]</code></pre></p><hr></p><h2>完整配置参考</h2></p><p>本节记录了 <code>approvals.yml</code> 中<strong>所有配置选项</strong>。</p><h3>顶层结构</h3></p><pre><code class="language-yaml">version: 1                    # Required: config version (always 1)
+defaults: { ... }             # Optional: global defaults
+policies: { ... }             # Required: reusable approval policies
+workflows: { ... }            # Required: approval workflows
+semver: { ... }               # Optional: version handling settings</code></pre></p><h3><code>defaults</code> 选项</h3></p><p>| Key | 类型 | 默认值 | 描述 |
+|-----|------|---------|-------------|
+| <code>timeout</code> | duration | <code>72h</code> | 阻塞 <code>check</code> 操作且 <code>wait: true</code> 的超时时间。使用小时（例如，<code>168h</code> 表示 1 周）。事件驱动工作流不需要。 |
+| <code>allow_self_approval</code> | bool | <code>false</code> | 请求者是否可以批准自己的请求 |
+| <code>issue_labels</code> | string[] | <code>[]</code> | 添加到所有审批问题的标签 |</p><h3><code>policies.<name></code> 选项（简单格式）</h3></p><p>| Key | 类型 | 默认值 | 描述 |
+|-----|------|---------|-------------|
+| <code>approvers</code> | string[] | - | 用户名列表或 <code>team:slug</code> 引用 |
+| <code>min_approvals</code> | int | 0 | 所需的审批数量（0 = 使用 <code>require_all</code>） |
+| <code>require_all</code> | bool | <code>false</code> | 若为 true，则所有审批者必须批准 |</p><h3><code>policies.<name></code> 选项（高级格式）</h3></p><p>| Key | 类型 | 默认值 | 描述 |
+|-----|------|---------|-------------|
+| <code>from</code> | source[] | - | 带有单独阈值的审批者来源列表 |
+| <code>logic</code> | string | <code>"and"</code> | 如何组合来源：<code>"and"</code> 或 <code>"or"</code> |</p><p><strong>审批者来源选项（<code>from[]</code>）：</strong></p><p>| Key | 类型 | 默认值 | 描述 |
+|-----|------|---------|-------------|
+| <code>team</code> | string | - | 团队简称（例如，<code>"platform"</code> 或 <code>"org/platform"</code>） |
+| <code>user</code> | string | - | 单个用户名 |
+| <code>users</code> | string[] | - | 用户名列表 |
+| <code>min_approvals</code> | int | 1 | 该来源所需的审批数 |
+| <code>require_all</code> | bool | <code>false</code> | 该来源的所有人必须批准 |
+| <code>logic</code> | string | - | 到下一个来源的逻辑：<code>"and"</code> 或 <code>"or"</code> |</p><h3><code>workflows.<name></code> 选项</h3></p><p>| Key | 类型 | 默认值 | 描述 |
+|-----|------|---------|-------------|
+| <code>description</code> | string | - | 人类可读的描述 |
+| <code>trigger</code> | map | - | 触发条件（用于过滤） |
+| <code>require</code> | requirement[] | - | <strong>必需：</strong> 审批要求（项之间为 OR 逻辑） |
+| <code>issue</code> | object | - | 问题创建设置 |
+| <code>on_approved</code> | object | - | 审批通过时的操作 |
+| <code>on_denied</code> | object | - | 审批拒绝时的操作 |
+| <code>on_closed</code> | object | - | 手动关闭问题时的操作 |
+| <code>pipeline</code> | object | - | 渐进式部署流水线配置 |</p><h3><code>workflows.<name>.require[]</code> 选项</h3></p><p>| 键 | 类型 | 默认值 | 描述 |
+|-----|------|---------|-------------|
+| <code>policy</code> | string | - | 引用已定义的策略 |
+| <code>approvers</code> | string[] | - | 内联审批人（策略的替代方案） |
+| <code>min_approvals</code> | int | - | 覆盖策略的最小审批数 |
+| <code>require_all</code> | bool | - | 覆盖策略的全部通过要求 |</p><h3><code>workflows.<name>.issue</code> 选项</h3></p><p>| 键 | 类型 | 默认值 | 描述 |
+|-----|------|---------|-------------|
+| <code>title</code> | string | <code>"Approval Required: {workflow}"</code> | 问题标题（支持 <code>{{version}}</code>、<code>{{environment}}</code>、<code>{{workflow}}</code>） |
+| <code>body</code> | string | - | 自定义问题正文模板（Go 模板语法） |
+| <code>body_file</code> | string | - | 模板文件路径（相对于 <code>.github/</code>） |
+| <code>labels</code> | string[] | <code>[]</code> | 此工作流的额外标签 |
+| <code>assignees_from_policy</code> | bool | <code>false</code> | 自动分配策略中的个人用户（最多 10 个） |</p><h3><code>workflows.<name>.on_approved</code> 选项</h3></p><p>| 键 | 类型 | 默认值 | 描述 |
+|-----|------|---------|-------------|
+| <code>create_tag</code> | bool | <code>false</code> | 创建 git 标签（使用输入版本） |
+| <code>close_issue</code> | bool | <code>false</code> | 审批后关闭问题 |
+| <code>comment</code> | string | - | 发布评论（支持 <code>{{version}}</code>、<code>{{satisfied_group}}</code>） |
+| <code>tagging</code> | object | - | 高级标签配置 |</p><h3><code>workflows.<name>.on_approved.tagging</code> 选项</h3></p><p>| 键 | 类型 | 默认值 | 描述 |
+|-----|------|---------|-------------|
+| <code>enabled</code> | bool | <code>false</code> | 启用标签创建 |
+| <code>start_version</code> | string | <code>"0.0.0"</code> | 初始版本（例如，<code>"v1.0.0"</code> 或 <code>"1.0.0"</code>） |
+| <code>prefix</code> | string | （推断） | 版本前缀（根据 <code>start_version</code> 推断） |
+| <code>auto_increment</code> | string | - | 自动递增：<code>"major"</code>、<code>"minor"</code>、<code>"patch"</code>，或省略以手动方式 |
+| <code>env_prefix</code> | string | - | 环境前缀（例如，<code>"dev-"</code> 创建 <code>"dev-v1.0.0"</code>） |</p><h3><code>workflows.<name>.on_denied</code> 选项</h3></p><p>| 键 | 类型 | 默认值 | 描述 |
+|-----|------|---------|-------------|
+| <code>close_issue</code> | bool | <code>false</code> | 拒绝后关闭 issue |
+| <code>comment</code> | string | - | 要发布的评论（支持 <code>{{denier}}</code>） |</p><h3><code>workflows.<name>.on_closed</code> 选项</h3></p><p>| 键 | 类型 | 默认值 | 描述 |
+|-----|------|---------|-------------|
+| <code>delete_tag</code> | bool | <code>false</code> | 关闭 issue 时删除关联标签 |
+| <code>comment</code> | string | - | 要发布的评论（支持 <code>{{tag}}</code>、<code>{{version}}</code>） |</p><h3><code>workflows.<name>.pipeline</code> 选项</h3></p><p>| 键 | 类型 | 默认值 | 描述 |
+|-----|------|---------|-------------|
+| <code>stages</code> | stage[] | - | <strong>必需：</strong> 有序的部署阶段列表 |
+| <code>track_prs</code> | bool | <code>false</code> | 在 issue 内容中包含合并的 PR |
+| <code>track_commits</code> | bool | <code>false</code> | 在 issue 内容中包含提交 |
+| <code>compare_from_tag</code> | string | - | 用于比较的标签模式（例如，<code>"v*"</code>） |
+| <code>show_mermaid_diagram</code> | bool | <code>true</code> | 显示管道阶段的 Mermaid 流程图 |
+| <code>release_strategy</code> | object | - | 发布候选选择策略 |</p><h3><code>workflows.<name>.pipeline.stages[]</code> 选项</h3></p><p>| 键 | 类型 | 默认值 | 描述 |
+|-----|------|---------|-------------|
+| <code>name</code> | string | - | <strong>必需：</strong> 阶段名称（例如，<code>"dev"</code>、<code>"prod"</code>） |
+| <code>environment</code> | string | - | GitHub 环境名称 |
+| <code>policy</code> | string | - | 本阶段的审批策略 |
+| <code>approvers</code> | string[] | - | 内联审批人（作为策略的替代） |
+| <code>on_approved</code> | string | - | 阶段被批准时发布的评论 |
+| <code>create_tag</code> | bool | <code>false</code> | 在此阶段创建 git 标签 |
+| <code>is_final</code> | bool | <code>false</code> | 此阶段后关闭问题 |
+| <code>auto_approve</code> | bool | <code>false</code> | 自动批准，无需人工干预 |</p><h3><code>workflows.<name>.pipeline.release_strategy</code> 选项</h3></p><p>| 键 | 类型 | 默认值 | 描述 |
+|-----|------|---------|-------------|
+| <code>type</code> | string | <code>"tag"</code> | 策略: <code>"tag"</code>，<code>"branch"</code>，<code>"label"</code>，<code>"milestone"</code> |
+| <code>branch</code> | object | - | 分支策略设置 |
+| <code>label</code> | object | - | 标签策略设置 |
+| <code>milestone</code> | object | - | 里程碑策略设置 |
+| <code>auto_create</code> | object | - | 自动创建下一个发布产物 |</p><h3><code>release_strategy.branch</code> 选项</h3></p><p>| 键 | 类型 | 默认值 | 描述 |
+|-----|------|---------|-------------|
+| <code>pattern</code> | string | <code>"release/{{version}}"</code> | 分支命名模式 |
+| <code>base_branch</code> | string | <code>"main"</code> | 比较基准分支 |
+| <code>delete_after_release</code> | bool | <code>false</code> | 生产部署后删除分支 |</p><h3><code>release_strategy.label</code> 选项</h3></p><p>| 键 | 类型 | 默认值 | 描述 |
+|-----|------|---------|-------------|
+| <code>pattern</code> | string | <code>"release:{{version}}"</code> | 标签命名模式 |
+| <code>pending_label</code> | string | - | 等待发布分配的 PR 标签 |
+| <code>remove_after_release</code> | bool | <code>false</code> | 生产部署后移除标签 |</p><h3><code>release_strategy.milestone</code> 选项</h3></p><p>| 键 | 类型 | 默认值 | 描述 |
+|-----|------|---------|-------------|
+| <code>pattern</code> | string | <code>"v{{version}}"</code> | 里程碑命名模式 |
+| <code>close_after_release</code> | bool | <code>false</code> | 生产部署后关闭里程碑 |</p><h3><code>release_strategy.auto_create</code> 选项</h3></p><p>| 键 | 类型 | 默认值 | 描述 |
+|-----|------|---------|-------------|
+| <code>enabled</code> | bool | <code>false</code> | 启用在最终阶段完成时自动创建 |
+| <code>next_version</code> | string | <code>"patch"</code> | 版本递增: <code>"patch"</code>，<code>"minor"</code>，<code>"major"</code> |
+| <code>create_issue</code> | bool | <code>false</code> | 为下次发布创建新的审批问题 |
+| <code>comment</code> | string | - | 关于下次发布的评论 |</p><h3><code>semver</code> 选项</h3></p><p>| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| <code>prefix</code> | string | <code>"v"</code> | 标签前缀 |
+| <code>strategy</code> | string | <code>"input"</code> | 版本策略: <code>"input"</code>，<code>"auto"</code> |
+| <code>validate</code> | bool | <code>false</code> | 验证 semver 格式 |
+| <code>allow_prerelease</code> | bool | <code>false</code> | 允许预发布版本（例如，<code>v1.0.0-beta.1</code>） |
+| <code>auto</code> | object | - | 基于标签的自动递增设置 |</p><h3><code>semver.auto</code> 选项</h3></p><p>| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| <code>major_labels</code> | string[] | <code>[]</code> | 触发主版本递增的 PR 标签 |
+| <code>minor_labels</code> | string[] | <code>[]</code> | 触发次版本递增的 PR 标签 |
+| <code>patch_labels</code> | string[] | <code>[]</code> | 触发补丁版本递增的 PR 标签 |</p><hr></p><h2>功能详情</h2></p><h3>审批关键词</h3></p><p>用户可以通过在问题中评论来批准或拒绝请求：</p><p><strong>批准关键词：</strong> <code>approve</code>，<code>approved</code>，<code>lgtm</code>，<code>yes</code>，<code>/approve</code></p><p><strong>拒绝关键词：</strong> <code>deny</code>，<code>denied</code>，<code>reject</code>，<code>rejected</code>，<code>no</code>，<code>/deny</code></p><h3>团队支持</h3></p><p>要使用基于 GitHub 团队的审批者，您需要提升权限。标准的 <code>GITHUB_TOKEN</code> 无法列出团队成员。请使用 GitHub 应用令牌：</p><pre><code class="language-yaml">jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li></p><p>      </ul># Generate GitHub App token
+      <ul><li>uses: actions/create-github-app-token@v2</li>
+        </ul>id: app-token
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}</p><p>      # Use the app token for team membership checks
+      <ul><li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>with:
+          action: process-comment
+          issue_number: ${{ github.event.issue.number }}
+          token: ${{ steps.app-token.outputs.token }}</code></pre></p><p><strong>所需的 GitHub 应用权限：</strong></p><ul><li><code>Organization > Members: Read</code> - 用于列出团队成员</li></p><p></ul><h3>渐进式部署流水线</h3></p><p>通过单个审批问题跟踪多个环境的部署。每个阶段获得批准后，问题会更新以显示进度，并自动推进到下一个阶段。</p><p>#### 流水线配置</p><pre><code class="language-yaml"># .github/approvals.yml or external config
+version: 1</p><p>policies:
+  developers:
+    approvers: [dev1, dev2, dev3]
+    min_approvals: 1</p><p>  qa-team:
+    approvers: [qa1, qa2]
+    min_approvals: 1</p><p>  tech-leads:
+    approvers: [lead1, lead2]
+    min_approvals: 1</p><p>  production-approvers:
+    approvers: [sre1, sre2, security-lead]
+    require_all: true</p><p>workflows:
+  deploy:
+    description: "Deploy through all environments (dev → qa → stage → prod)"
+    require:
+      <ul><li>policy: developers  # Initial approval to start pipeline</li>
+    </ul>pipeline:
+      track_prs: true       # Include PRs in the issue body
+      track_commits: true   # Include commits in the issue body
+      stages:
+        <ul><li>name: dev</li>
+          </ul>environment: development
+          policy: developers
+          on_approved: "✅ <strong>DEV</strong> deployment approved! Proceeding to QA..."
+        <ul><li>name: qa</li>
+          </ul>environment: qa
+          policy: qa-team
+          on_approved: "✅ <strong>QA</strong> deployment approved! Proceeding to STAGING..."
+        <ul><li>name: stage</li>
+          </ul>environment: staging
+          policy: tech-leads
+          on_approved: "✅ <strong>STAGING</strong> deployment approved! Ready for PRODUCTION..."
+        <ul><li>name: prod</li>
+          </ul>environment: production
+          policy: production-approvers
+          on_approved: "🚀 <strong>PRODUCTION</strong> deployment complete!"
+          create_tag: true   # Create tag when PROD is approved
+          is_final: true     # Close issue after this stage
+    on_approved:
+      close_issue: true
+      comment: |
+        🎉 <strong>Deployment Complete!</strong></p><p>        Version <code>{{version}}</code> has been deployed to all environments.</code></pre></p><p>#### 流水线工作流程示例</p><pre><code class="language-yaml"># .github/workflows/request-pipeline.yml
+name: Request Pipeline Deployment</p><p>on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to deploy'
+        required: true
+        type: string</p><p>permissions:
+  contents: write
+  issues: write
+  pull-requests: read  # Required for PR tracking</p><p>jobs:
+  request:
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+        </ul>with:
+          fetch-depth: 0  # Needed for commit/PR comparison</p><ul><li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: approval
+        with:
+          action: request
+          workflow: deploy
+          version: ${{ inputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}</p><ul><li>name: Output Results</li>
+        </ul>run: |
+          echo "## Pipeline Deployment Started" >> $GITHUB_STEP_SUMMARY
+          echo "- <strong>Issue:</strong> #${{ steps.approval.outputs.issue_number }}" >> $GITHUB_STEP_SUMMARY
+          echo "- <strong>URL:</strong> ${{ steps.approval.outputs.issue_url }}" >> $GITHUB_STEP_SUMMARY</code></pre></p><p>#### 工作原理</p><ul><li><strong>问题创建</strong>：触发时，创建一个显示所有阶段的单个问题，包含可视化的 Mermaid 图表和进度表：</li></p><p></ul><pre><code class="language-markdown">## 🚀 部署流水线：v1.2.0</p><h3>流水线流程</h3></p><p>​``<code>mermaid
+flowchart LR
+    DEV(⏳ 开发)
+    QA(⬜ 测试)
+    STAGE(⬜ 预发布)
+    PROD(⬜ 生产)
+    DEV --> QA --> STAGE --> PROD</p><p>    classDef completed fill:#28a745,stroke:#1e7e34,color:#fff
+    classDef current fill:#ffc107,stroke:#d39e00,color:#000
+    classDef pending fill:#6c757d,stroke:#545b62,color:#fff
+    class DEV current
+    class QA,STAGE,PROD pending
+​</code>`<code></p><h3>Deployment Progress</h3></p><p>| Stage | Status | Approver | Time |
+|-------|--------|----------|------|
+| DEV | ⏳ Awaiting | - | - |
+| QA | ⬜ Pending | - | - |
+| STAGE | ⬜ Pending | - | - |
+| PROD | ⬜ Pending | - | - |</p><p><strong>Current Stage:</strong> DEV</code></pre></p><p>Mermaid 图表提供了带有颜色编码节点的一目了然视图：
+<ul><li>🟢 <strong>绿色</strong> - 已完成阶段</li>
+<li>🟡 <strong>黄色</strong> - 等待批准的当前阶段</li>
+<li>⚪ <strong>灰色</strong> - 待处理阶段</li>
+<li>🔵 <strong>青色</strong> - 自动批准阶段</li></p><p></ul>要禁用 Mermaid 图表，请在流水线配置中设置 </code>show_mermaid_diagram: false<code>。</p><ul><li><strong>阶段进展</strong>：评论 </code>approve<code> 以进入下一阶段。图表和表格会自动更新：</li></p><p></ul><pre><code class="language-markdown">| Stage | Status | Approver | Time |
+|-------|--------|----------|------|
+| DEV | ✅ Deployed | @developer1 | Dec 9 10:30 |
+| QA | ✅ Deployed | @qa-lead | Dec 9 14:15 |
+| STAGE | ⏳ Awaiting | - | - |
+| PROD | ⬜ Pending | - | - |</p><p><strong>Current Stage:</strong> STAGE</code></pre>
+<ul><li><strong>PR 和提交跟踪</strong>：发布管理员可以准确看到正在部署的内容：</li></p><p>
+</ul><pre><code class="language-markdown">### Pull Requests in this Release</p><p>| PR | Title | Author |
+|----|-------|--------|
+| <a href="https://..." target="_blank" rel="noopener noreferrer">#42</a> | Add user authentication | @alice |
+| <a href="https://..." target="_blank" rel="noopener noreferrer">#45</a> | Fix payment processing bug | @bob |</p><h3>Commits</h3></p><ul><li><a href="https://..." target="_blank" rel="noopener noreferrer"></code>abc1234<code></a> feat: add OAuth2 support</li>
+<li><a href="https://..." target="_blank" rel="noopener noreferrer"></code>def5678<code></a> fix: handle null payments</code></pre></li>
+<li><strong>完成</strong>：当最终阶段被批准时：</li>
+   <li>创建标签（如果 </code>create_tag: true<code>）</li>
+   <li>发布完成评论</li>
+   <li>自动关闭问题</li></p><p></ul>#### 流水线阶段选项</p><p>| 选项 | 说明 |
+|--------|-------------|
+| </code>name<code> | 阶段名称（在表格中显示） |
+| </code>environment<code> | GitHub 环境名称 |
+| </code>policy<code> | 本阶段的审批策略 |
+| </code>approvers<code> | 内联审批人（策略的替代方案） |
+| </code>on_approved<code> | 阶段批准时发布的消息 |
+| </code>create_tag<code> | 在此阶段创建 git 标签 |
+| </code>is_final<code> | 在此阶段后关闭问题 |
+| </code>auto_approve<code> | 自动批准此阶段，无需人工干预 |
+| </code>approval_mode<code> | 覆盖本阶段的工作流审批模式 |</p><p>#### 审批模式</p><p>选择审批人如何与审批请求交互：</p><p>| 模式 | 说明 |
+|------|-------------|
+| </code>comments<code> | （默认）审批人在问题中评论 </code>/approve<code> 或 </code>approve<code> |
+| </code>sub_issues<code> | 为每个阶段创建子问题 - 关闭子问题即表示批准 |
+| </code>hybrid<code> | 各阶段混合使用模式 - 在每个阶段使用 </code>approval_mode<code> |</p><p><strong>子问题审批示例：</strong></p><pre><code class="language-yaml">workflows:
+  deploy:
+    approval_mode: sub_issues
+    sub_issue_settings:
+      title_template: "⏳ Approve: {{stage}} for {{version}}"  # Changes to ✅ when approved
+      labels: [approval-stage]
+      protection:
+        only_assignee_can_close: true   # Prevents unauthorized approvals
+        prevent_parent_close: true       # Parent can't close until all approved
+    pipeline:
+      stages:
+        <ul><li>name: dev</li>
+          </ul>policy: developers
+        <ul><li>name: prod</li>
+          </ul>policy: production-approvers</code></pre></p><p>对于子问题，父问题显示一个审批子问题的表格：</p><pre><code class="language-markdown">### 📋 Approval Sub-Issues</p><p>| Stage | Sub-Issue | Status | Assignees |
+|-------|-----------|--------|----------|
+| DEV | #124 | ⏳ Awaiting | @alice, @bob |
+| PROD | #125 | ⏳ Awaiting | @sre1, @sre2 |</code></pre></p><p><strong>混合模式（每阶段覆盖）：</strong></p><pre><code class="language-yaml">workflows:
+  deploy:
+    approval_mode: comments  # Default for this workflow
+    pipeline:
+      stages:
+        <ul><li>name: dev</li>
+          </ul>policy: developers
+          # Uses comments (workflow default)
+        <ul><li>name: prod</li>
+          </ul>policy: production-approvers
+          approval_mode: sub_issues  # Override for production only</code></pre></p><p>#### 增强的评论用户体验</p><p>该操作包括增强的基于评论的审批用户体验：</p><ul><li><strong>表情符号反应</strong>：审批评论上的自动反应</li>
+  <li>👍 通过</li>
+  <li>👎 拒绝</li>
+  <li>👀 已查看（处理中）</li></p><p><li><strong>快速操作部分</strong>：问题正文包含命令参考表：</li></p><p></ul><pre><code class="language-markdown">### ⚡ Quick Actions</p><p>| Action | Command | Description |
+|--------|---------|-------------|
+| ✅ Approve | </code>/approve<code> | Approve the <strong>DEV</strong> stage |
+| ❌ Deny | </code>/deny [reason]<code> | Deny with optional reason |
+| 📊 Status | </code>/status<code> | Show current approval status |</code></pre></p><p><strong>通过 </code>comment_settings<code> 配置：</strong></p><pre><code class="language-yaml">workflows:
+  deploy:
+    comment_settings:
+      react_to_comments: true     # Add emoji reactions (default: true)
+      show_quick_actions: true    # Show Quick Actions section (default: true)</code></pre></p><p>#### 对低级环境自动批准</p><p>在应自动批准且无需人工干预的流水线阶段使用 </code>auto_approve: true<code>。这非常适用于诸如 </code>dev<code> 或 </code>integration<code> 等低级环境，既能加快流水线速度，又能保持对生产环境的审批门控。</p><p><strong>包含自动批准的示例：</strong></p><pre><code class="language-yaml">workflows:
+  deploy:
+    description: "Deploy through environments"
+    pipeline:
+      stages:
+        <ul><li>name: dev</li>
+          </ul>environment: development
+          auto_approve: true              # Automatically approved
+          on_approved: "🤖 DEV auto-deployed"
+        <ul><li>name: integration</li>
+          </ul>environment: integration
+          auto_approve: true              # Automatically approved
+          on_approved: "🤖 INTEGRATION auto-deployed"
+        <ul><li>name: staging</li>
+          </ul>environment: staging
+          policy: qa-team                 # Requires manual approval
+          on_approved: "✅ STAGING approved"
+        <ul><li>name: production</li>
+          </ul>environment: production
+          policy: production-approvers    # Requires manual approval
+          create_tag: true
+          is_final: true</code></pre></p><p><strong>工作原理：</strong></p><ul><li>当创建管道问题时，所有初始的 </code>auto_approve: true<code> 阶段会自动完成</li>
+<li>当某个阶段被手动批准后，紧接其后的所有连续 </code>auto_approve: true<code> 阶段也会自动完成</li>
+<li>自动批准的阶段在管道表中显示 🤖 指示标志</li>
+<li>批准者在阶段历史中记录为 </code>[auto]<code></li></p><p></ul><strong>使用场景：</strong></p><ul><li><strong>开发环境</strong>：立即部署，无需等待批准</li>
+<li><strong>集成测试</strong>：让 CI/CD 管道自动推进通过测试环境</li>
+<li><strong>金丝雀部署</strong>：自动批准金丝雀阶段，完整发布需批准</li></p><p></ul>#### 管道配置选项</p><p>| 选项 | 默认值 | 描述 |
+|--------|---------|-------------|
+| </code>track_prs<code> | </code>false<code> | 在问题正文中包含已合并的 PR |
+| </code>track_commits<code> | </code>false<code> | 包含自上一个标签以来的提交 |
+| </code>compare_from_tag<code> | - | 自定义比较的标签模式 |
+| </code>show_mermaid_diagram<code> | </code>true<code> | 显示管道阶段的 Mermaid 可视化流程图 |</p><p><strong>注意：</strong> PR 跟踪需要工作流中拥有 </code>pull-requests: read<code> 权限。</p><h3>发布候选策略</h3></p><p>在企业环境中，合并到主分支的 PR 并不总是立即成为发布候选。审批引擎支持三种策略来选择哪些 PR 属于发布：</p><p>#### 策略类型</p><p>| 策略 | 描述 | 使用场景 |
+|----------|-------------|----------|
+| </code>tag<code> | 两个 git 标签之间的 PR（默认） | 简单发布，基于主干的开发 |
+| </code>branch<code> | 合并到发布分支的 PR | GitFlow，发布分支 |
+| </code>label<code> | 带有特定发布标签的 PR | 灵活选择，批量发布 |
+| </code>milestone<code> | 指定到 GitHub 里程碑的 PR | 与路线图对齐的发布 |</p><p>#### 配置</p><pre><code class="language-yaml"># .github/approvals.yml
+workflows:
+  deploy:
+    description: "Production deployment pipeline"
+    pipeline:
+      track_prs: true
+      track_commits: true</p><p>      # Configure release selection strategy
+      release_strategy:
+        type: milestone  # or: tag, branch, label</p><p>        # Milestone strategy settings
+        milestone:
+          pattern: "v{{version}}"        # e.g., "v1.2.0"
+          close_after_release: true       # Close milestone on prod completion</p><p>        # Auto-create next release artifact on completion
+        auto_create:
+          enabled: true
+          next_version: patch             # or: minor, major
+          create_issue: true              # Create new approval issue</p><p>      stages:
+        <ul><li>name: dev</li>
+          </ul>policy: developers
+        <ul><li>name: prod</li>
+          </ul>policy: production-approvers
+          is_final: true</code></pre></p><p>#### 分支策略</p><p>使用发布分支进行 GitFlow 风格的开发：</p><pre><code class="language-yaml">release_strategy:
+  type: branch
+  branch:
+    pattern: "release/{{version}}"  # Creates release/v1.2.0
+    base_branch: main               # Compare against main
+    delete_after_release: true      # Cleanup after prod deploy</p><p>  auto_create:
+    enabled: true
+    next_version: minor</code></pre></p><p><strong>工作原理：</strong>
+<ul><li>创建发布分支：</code>release/v1.2.0<code></li>
+<li>合并到该分支的 PR 是发布候选版本</li>
+<li>请求该版本的审批</li>
+<li>审批问题显示发布分支中的所有 PR</li>
+<li>生产环境发布后，分支被删除（可选）并创建下一个分支</li></p><p></ul>#### 标签策略</p><p>使用标签进行灵活的 PR 选择：</p><pre><code class="language-yaml">release_strategy:
+  type: label
+  label:
+    pattern: "release:{{version}}"      # e.g., "release:v1.2.0"
+    pending_label: "pending-release"    # Applied to merged PRs awaiting release
+    remove_after_release: true          # Remove label after prod deploy</p><p>  auto_create:
+    enabled: true
+    next_version: patch</code></pre></p><p><strong>工作原理：</strong>
+<ul><li>合并到主分支的PR会被打上</code>pending-release<code>标签</li>
+<li>发布经理对选定的PR应用</code>release:v1.2.0<code>标签</li>
+<li>请求v1.2.0的审批</li>
+<li>审批问题仅显示带有该标签的PR</li>
+<li>生产发布后，标签被移除并创建下一个发布标签</li></p><p></ul>#### 里程碑策略</p><p>使用里程碑进行与路线图对齐的发布：</p><pre><code class="language-yaml">release_strategy:
+  type: milestone
+  milestone:
+    pattern: "Release {{version}}"       # e.g., "Release 1.2.0"
+    close_after_release: true            # Close milestone on completion</p><p>  auto_create:
+    enabled: true
+    next_version: minor
+    create_issue: true                   # Auto-create next approval issue</code></pre></p><p><strong>工作原理：</strong>
+<ul><li>创建里程碑：“版本 1.2.0”</li>
+<li>在开发过程中将 PR 分配到该里程碑</li>
+<li>请求 v1.2.0 的批准</li>
+<li>批准问题显示里程碑中的所有 PR</li>
+<li>生产完成后关闭里程碑并创建下一个里程碑</li></p><p></ul>#### 完成时自动创建</p><p>当最终阶段（生产）获得批准时，自动为下一个版本做准备：</p><pre><code class="language-yaml">auto_create:
+  enabled: true
+  next_version: patch      # Calculate next: patch, minor, or major
+  create_issue: true       # Create new approval issue immediately
+  comment: |               # Custom message (optional)
+    🚀 <strong>Next release prepared:</strong> {{version}}</code></pre></p><p>这将创建：
+<ul><li><strong>分支策略：</strong> 从主分支创建新的发布分支</li>
+<li><strong>标签策略：</strong> 新的发布标签</li>
+<li><strong>里程碑策略：</strong> 新的里程碑</li></p><p></ul>#### 清理选项</p><p>每种策略都有在最终阶段（生产）批准时运行的可选清理操作。<strong>所有清理选项默认为 </code>false<code></strong> - 清理为自愿启用：</p><p>| 策略 | 清理选项 | 描述 |
+|----------|----------------|-------------|
+| 分支 | </code>delete_after_release<code> | 删除发布分支 |
+| 标签 | </code>remove_after_release<code> | 从 PR 中移除发布标签 |
+| 里程碑 | </code>close_after_release<code> | 关闭里程碑 |</p><pre><code class="language-yaml">release_strategy:
+  type: branch
+  branch:
+    pattern: "release/{{version}}"
+    delete_after_release: false   # Keep branch for reference (default)</p><p>  type: milestone
+  milestone:
+    pattern: "v{{version}}"
+    close_after_release: true     # Close milestone when done</code></pre></p><p>#### 热修复部署</p><p>对于需要绕过正常发布流程的紧急热修复，创建一个单独的工作流程：</p><pre><code class="language-yaml"># .github/approvals.yml
+workflows:
+  # Standard releases - full pipeline with milestone tracking
+  deploy:
+    description: "Standard release pipeline (dev → qa → stage → prod)"
+    pipeline:
+      release_strategy:
+        type: milestone
+        milestone:
+          pattern: "v{{version}}"
+          close_after_release: true
+        auto_create:
+          enabled: true
+          next_version: minor
+      stages:
+        <ul><li>name: dev</li>
+          </ul>policy: developers
+        <ul><li>name: qa</li>
+          </ul>policy: qa-team
+        <ul><li>name: stage</li>
+          </ul>policy: tech-leads
+        <ul><li>name: prod</li>
+          </ul>policy: production-approvers
+          is_final: true</p><p>  # Hotfixes - skip stages, direct to prod
+  hotfix:
+    description: "Emergency hotfix - direct to production"
+    pipeline:
+      release_strategy:
+        type: tag              # Simple tag-based, no cleanup needed
+        # No auto_create - hotfixes are one-off
+      stages:
+        <ul><li>name: prod</li>
+          </ul>policy: production-approvers
+          create_tag: true
+          is_final: true
+    on_approved:
+      close_issue: true
+      comment: "🚨 Hotfix {{version}} deployed to production"</code></pre></p><p><strong>触发热修复与常规发布：</strong></p><pre><code class="language-bash"># Regular release - goes through all stages
+gh workflow run request-approval.yml -f workflow_name=deploy -f version=v1.3.0</p><h1>Hotfix - goes straight to prod</h1>
+gh workflow run request-approval.yml -f workflow_name=hotfix -f version=v1.2.1</code></pre></p><p><strong>热修复模式：</strong></p><p>| 场景 | 策略 | 清理 | 自动创建 |
+|----------|----------|---------|-------------|
+| 紧急修复 | </code>tag<code> | 无 | 禁用 |
+| 补丁发布 | </code>milestone<code> | </code>close_after_release: false<code> | 禁用 |
+| 多个热修复 | </code>branch<code> | </code>delete_after_release: false<code> | 禁用 |</p><p>#### 发布策略优势</p><p>| 策略 | 优点 | 缺点 |
+|----------|------|------|
+| <strong>标签</strong> | 简单，无需额外工作流程 | 包含所有合并的PR |
+| <strong>分支</strong> | 发布范围清晰，隔离性好 | 分支管理开销大 |
+| <strong>标签（Label）</strong> | 灵活选择，易于更改 | 需要手动标记 |
+| <strong>里程碑</strong> | 路线图可见，规划集成 | 需要严格管理里程碑 |</p><p><strong>建议：</strong></p><ul><li>对于持续部署的简单项目，使用 <strong>标签</strong>  </li>
+<li>对于需要发布隔离的受控环境，使用 <strong>分支</strong>  </li>
+<li>对于范围灵活的批量发布，使用 <strong>标签（Label）</strong>  </li>
+<li>对于有明确发布规划的路线图驱动开发，使用 <strong>里程碑</strong>  </li></p><p></ul><h3>Jira 集成</h3></p><p>自动从提交和分支名称中提取 Jira 任务。该操作支持两种模式：</p><p>#### 仅链接模式（无需认证）</p><p>只需提供 </code>jira_base_url<code>，即可提取任务关键字并显示为可点击链接：</p><pre><code class="language-yaml">- uses: jamengual/enterprise-approval-engine@v1
+  with:
+    action: request
+    workflow: production-deploy
+    version: v1.2.0
+    token: ${{ secrets.GITHUB_TOKEN }}
+    jira_base_url: https://yourcompany.atlassian.net  # That's it!</code></pre></p><p>这会从提交信息和分支名称中提取问题关键字（例如，</code>PROJ-123<code>），并将它们作为链接显示在审批问题中：</p><pre><code class="language-markdown">### Jira Issues
+<ul><li><a href="https://yourcompany.atlassian.net/browse/PROJ-123" target="_blank" rel="noopener noreferrer">PROJ-123</a></li>
+<li><a href="https://yourcompany.atlassian.net/browse/PROJ-456" target="_blank" rel="noopener noreferrer">PROJ-456</a></code></pre></li></p><p></ul>#### 全模式（含API访问）</p><p>添加凭据以获取问题详情并更新修复版本：</p><pre><code class="language-yaml">- uses: jamengual/enterprise-approval-engine@v1
+  with:
+    action: request
+    workflow: production-deploy
+    version: v1.2.0
+    token: ${{ secrets.GITHUB_TOKEN }}
+    # Jira configuration
+    jira_base_url: https://yourcompany.atlassian.net
+    jira_user_email: ${{ secrets.JIRA_EMAIL }}
+    jira_api_token: ${{ secrets.JIRA_API_TOKEN }}
+    jira_update_fix_version: 'true'</code></pre>
+这显示了丰富的问题信息：</p><pre><code class="language-markdown">### Jira Issues in this Release</p><p>| Key | Summary | Type | Status |
+|-----|---------|------|--------|
+| <a href="https://..." target="_blank" rel="noopener noreferrer">PROJ-123</a> | Fix login bug | Bug | Done |
+| <a href="https://..." target="_blank" rel="noopener noreferrer">PROJ-456</a> | Add dark mode | Feature | In Progress |</code></pre></p><p><strong>模式比较：</strong></p><p>| 模式 | 需要认证 | 功能 |
+|------|----------|------|
+| 仅链接 | 否 | 将密钥作为可点击链接发布 |
+| 完整 | 是 | 链接 + 摘要、状态、类型表情、修复版本更新 |</p><p><strong>Jira 输出：</strong></p><pre><code class="language-yaml">- name: Use Jira Outputs
+  run: |
+    echo "Issues: ${{ steps.approval.outputs.jira_issues }}"
+    # Output: PROJ-123,PROJ-456</p><p>    echo "Details: ${{ steps.approval.outputs.jira_issues_json }}"
+    # Output: [{"key":"PROJ-123","summary":"Fix login bug",...}]</code></pre></p><h3>部署跟踪</h3></p><p>在 GitHub 部署仪表板中创建 GitHub 部署以实现可见性。此功能独立于工作流 YAML 中的 </code>environment:<code> 键。</p><pre><code class="language-yaml">- uses: jamengual/enterprise-approval-engine@v1
+  id: approval
+  with:
+    action: request
+    workflow: production-deploy
+    version: v1.2.0
+    token: ${{ secrets.GITHUB_TOKEN }}
+    # Deployment tracking
+    create_deployment: 'true'
+    deployment_environment: production
+    deployment_environment_url: https://myapp.example.com</p><ul><li>name: Update Deployment Status</li>
+  </ul>if: steps.approval.outputs.status == 'approved'
+  run: |
+    # Use the deployment_id to update status after actual deployment
+    echo "Deployment ID: ${{ steps.approval.outputs.deployment_id }}"</code></pre></p><p><strong>部署出现的位置：</strong></p><ul><li>仓库的 <strong>Deployments</strong> 选项卡</li>
+<li>仓库页面上的环境状态徽章</li>
+<li>配置后可用的 GitHub for Jira 集成</li>
+<li>用于 CI/CD 工具的 GitHub API</li></p><p></ul><strong>注意：</strong> 这通过 GitHub Deployments API 创建部署，该 API 与 GitHub 原生的环境保护规则是分开的。您可以同时使用两者，也可以独立使用。</p><h3>外部配置仓库</h3></p><p>将审批配置存储在共享仓库中以实现集中策略管理：</p><pre><code class="language-yaml">- uses: jamengual/enterprise-approval-engine@v1
+  with:
+    action: request
+    workflow: production-deploy
+    token: ${{ secrets.GITHUB_TOKEN }}
+    config_repo: myorg/.github  # Shared config repo</code></pre></p><p><strong>配置解析顺序：</strong></p><ul><li>外部仓库中的 </code>{repo-name}_approvals.yml<code>（例如，</code>myapp_approvals.yml<code>）</li>
+<li>外部仓库中的 </code>approvals.yml<code>（共享默认）</li>
+<li>当前仓库中的 </code>.github/approvals.yml<code>（本地后备）</li></p><p></ul><strong>示例组织结构：</strong></p><pre><code class="language-text">myorg/.github/
+├── myapp_approvals.yml      # App-specific config
+├── backend_approvals.yml    # Backend repos config
+└── approvals.yml            # Default for all repos</code></pre></p><h3>阻塞审批</h3></p><p>对于需要等待审批后才能继续的工作流程：</p><pre><code class="language-yaml">name: Deploy with Blocking Approval</p><p>on:
+  workflow_dispatch:
+    inputs:
+      version:
+        required: true
+        type: string</p><p>jobs:
+  request-approval:
+    runs-on: ubuntu-latest
+    outputs:
+      issue_number: ${{ steps.request.outputs.issue_number }}
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+      <li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: request
+        with:
+          action: request
+          workflow: production-deploy
+          version: ${{ inputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}</p><p>  wait-for-approval:
+    needs: request-approval
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.check.outputs.status }}
+      tag: ${{ steps.check.outputs.tag }}
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+      <li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: check
+        with:
+          action: check
+          issue_number: ${{ needs.request-approval.outputs.issue_number }}
+          wait: 'true'           # Poll until approved/denied
+          timeout: '4h'          # Max wait time
+          token: ${{ secrets.GITHUB_TOKEN }}</p><p>  deploy:
+    needs: [request-approval, wait-for-approval]
+    if: needs.wait-for-approval.outputs.status == 'approved'
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>name: Deploy</li>
+        </ul>run: |
+          echo "Deploying ${{ needs.wait-for-approval.outputs.tag }}"</code></pre></p><p><strong>注意：</strong> 阻塞工作流会保持运行器处于活动状态，从而消耗 GitHub Actions 分钟。对于成本敏感的场景，请使用事件驱动的方法（分离的 </code>process-comment<code> 工作流）。</p><h3>关闭问题时删除标签</h3></p><p>可选地在审批问题被手动关闭时删除标签：</p><pre><code class="language-yaml">workflows:
+  dev-deploy:
+    on_closed:
+      delete_tag: true   # Delete tag when issue is closed
+      comment: "Cancelled. Tag {{tag}} deleted."</p><p>  production-deploy:
+    on_closed:
+      delete_tag: false  # NEVER delete production tags</code></pre></p><p><strong>处理关闭事件：</strong></p><pre><code class="language-yaml"># .github/workflows/handle-close.yml
+name: Handle Issue Close</p><p>on:
+  issues:
+    types: [closed]</p><p>jobs:
+  handle:
+    if: contains(github.event.issue.labels.*.name, 'approval-required')
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+      <li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: close
+        with:
+          action: close-issue
+          issue_number: ${{ github.event.issue.number }}
+          issue_action: ${{ github.event.action }}
+          token: ${{ secrets.GITHUB_TOKEN }}</p><ul><li>name: Report</li>
+        </ul>run: |
+          echo "Status: ${{ steps.close.outputs.status }}"
+          echo "Deleted tag: ${{ steps.close.outputs.tag_deleted }}"</code></pre></p><hr></p><h2>Complete Examples</h2></p><h3>Full-Featured Request Workflow</h3></p><pre><code class="language-yaml">name: Request Production Deployment</p><p>on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to deploy'
+        required: true
+        type: string
+      environment:
+        description: 'Target environment'
+        required: true
+        type: choice
+        options: [staging, production]</p><p>permissions:
+  contents: write
+  issues: write
+  deployments: write</p><p>jobs:
+  request:
+    runs-on: ubuntu-latest
+    outputs:
+      issue_number: ${{ steps.approval.outputs.issue_number }}
+      issue_url: ${{ steps.approval.outputs.issue_url }}
+      deployment_id: ${{ steps.approval.outputs.deployment_id }}
+      jira_issues: ${{ steps.approval.outputs.jira_issues }}
+    steps:
+      <ul><li>uses: actions/checkout@v4</li>
+        </ul>with:
+          fetch-depth: 0  # Needed for commit comparison</p><ul><li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: approval
+        with:
+          action: request
+          workflow: ${{ inputs.environment }}-deploy
+          version: ${{ inputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Jira integration
+          jira_base_url: https://mycompany.atlassian.net
+          jira_user_email: ${{ secrets.JIRA_EMAIL }}
+          jira_api_token: ${{ secrets.JIRA_API_TOKEN }}
+          # Deployment tracking
+          create_deployment: 'true'
+          deployment_environment: ${{ inputs.environment }}
+          deployment_environment_url: https://${{ inputs.environment }}.myapp.com</p><ul><li>name: Summary</li>
+        </ul>run: |
+          echo "## Approval Request Created" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- <strong>Issue:</strong> #${{ steps.approval.outputs.issue_number }}" >> $GITHUB_STEP_SUMMARY
+          echo "- <strong>URL:</strong> ${{ steps.approval.outputs.issue_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "- <strong>Jira Issues:</strong> ${{ steps.approval.outputs.jira_issues }}" >> $GITHUB_STEP_SUMMARY
+          echo "- <strong>Commits:</strong> ${{ steps.approval.outputs.commits_count }}" >> $GITHUB_STEP_SUMMARY</code></pre></p><h3>与团队支持共同处理评论</h3></p><pre><code class="language-yaml">name: Handle Approval Comments</p><p>on:
+  issue_comment:
+    types: [created]</p><p>permissions:
+  contents: write
+  issues: write</p><p>jobs:
+  process:
+    if: |
+      github.event.issue.pull_request == null &&
+      contains(github.event.issue.labels.*.name, 'approval-required')
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>uses: actions/checkout@v4</li></p><p>      </ul># Generate GitHub App token for team membership checks
+      <ul><li>uses: actions/create-github-app-token@v2</li>
+        </ul>id: app-token
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}</p><ul><li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: process
+        with:
+          action: process-comment
+          issue_number: ${{ github.event.issue.number }}
+          token: ${{ steps.app-token.outputs.token }}
+          # Jira integration to update Fix Version on approval
+          jira_base_url: https://mycompany.atlassian.net
+          jira_user_email: ${{ secrets.JIRA_EMAIL }}
+          jira_api_token: ${{ secrets.JIRA_API_TOKEN }}</p><ul><li>name: Trigger Deployment</li>
+        </ul>if: steps.process.outputs.status == 'approved'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'deploy.yml',
+              ref: 'main',
+              inputs: { version: '${{ steps.process.outputs.tag }}' }
+            });</code></pre></p><h3>多环境推广</h3></p><pre><code class="language-yaml"># .github/approvals.yml
+version: 1</p><p>policies:
+  dev-team:
+    approvers: [dev1, dev2, dev3]
+    min_approvals: 1</p><p>  qa-team:
+    approvers: [qa1, qa2]
+    min_approvals: 1</p><p>  prod-team:
+    approvers: [team:sre, tech-lead]
+    min_approvals: 2</p><p>workflows:
+  dev-deploy:
+    require:
+      <ul><li>policy: dev-team</li>
+    </ul>on_approved:
+      tagging:
+        enabled: true
+        auto_increment: patch
+        env_prefix: "dev-"
+      close_issue: true</p><p>  staging-deploy:
+    require:
+      <ul><li>policy: qa-team</li>
+    </ul>on_approved:
+      tagging:
+        enabled: true
+        auto_increment: minor
+        env_prefix: "staging-"
+      close_issue: true</p><p>  production-deploy:
+    require:
+      <ul><li>policy: prod-team</li>
+    </ul>on_approved:
+      create_tag: true
+      close_issue: true
+    on_closed:
+      delete_tag: false  # Never delete production tags</code></pre></p><h3>在后续作业中使用输出</h3></p><pre><code class="language-yaml">name: Deploy with Approval</p><p>on:
+  workflow_dispatch:
+    inputs:
+      version:
+        required: true</p><p>jobs:
+  approval:
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.check.outputs.status }}
+      tag: ${{ steps.check.outputs.tag }}
+      approvers: ${{ steps.check.outputs.approvers }}
+      jira_issues: ${{ steps.request.outputs.jira_issues }}
+    steps:
+      <ul><li>uses: actions/checkout@v4</li></p><p>      <li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: request
+        with:
+          action: request
+          workflow: production-deploy
+          version: ${{ inputs.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          jira_base_url: https://mycompany.atlassian.net</p><ul><li>uses: jamengual/enterprise-approval-engine@v1</li>
+        </ul>id: check
+        with:
+          action: check
+          issue_number: ${{ steps.request.outputs.issue_number }}
+          wait: 'true'
+          timeout: '2h'
+          token: ${{ secrets.GITHUB_TOKEN }}</p><p>  deploy:
+    needs: approval
+    if: needs.approval.outputs.status == 'approved'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      <ul><li>name: Deploy</li>
+        </ul>run: |
+          echo "Deploying ${{ needs.approval.outputs.tag }}"
+          echo "Approved by: ${{ needs.approval.outputs.approvers }}"
+          echo "Jira Issues: ${{ needs.approval.outputs.jira_issues }}"</p><p>  notify:
+    needs: [approval, deploy]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      <ul><li>name: Notify Slack</li>
+        </ul>run: |
+          if [ "${{ needs.approval.outputs.status }}" == "approved" ]; then
+            echo "Deployment of ${{ needs.approval.outputs.tag }} completed!"
+          else
+            echo "Deployment was ${{ needs.approval.outputs.status }}"
+          fi</code></pre></p><hr></p><h2>Schema Validation</h2></p><p>Validate your configuration using the JSON schema:</p><pre><code class="language-yaml"># .github/approvals.yml
+<h1>yaml-language-server: $schema=https://raw.githubusercontent.com/jamengual/enterprise-approval-engine/main/schema.json</h1></p><p>version: 1</p><p>policies:
+  # ... your config</code></pre></p><p>或者在持续集成中验证：</p><pre><code class="language-yaml">- name: Validate Config
+  run: |
+    npm install -g ajv-cli
+    ajv validate -s schema.json -d .github/approvals.yml</code></pre></p><hr></p><h2>GitHub 企业服务器</h2></p><p>该操作完全支持 GitHub 企业服务器。它使用 </code>GITHUB_SERVER_URL<code> 和 </code>GITHUB_API_URL` 环境变量自动检测 GHES 环境。</p><p>无需额外配置 - 操作将自动使用正确的 API 端点。</p><p><strong>速率限制：</strong></p><p>该操作包括针对速率限制错误的自动重试和指数退避。配置如下：</p><ul><li>初始延迟：1秒</li>
+<li>最大延迟：60秒</li>
+<li>最大重试次数：5次</li>
+<li>抖动：随机添加 0-500 毫秒以防止羊群效应</li></p><p></ul>---</p><h2>许可</h2></p><p>MIT 许可</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-22
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/jamengual/enterprise-approval-engine/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-22 
+    </div>
+    
+</body>
+</html>
