@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple-Columns - 노트에서 쉽게 크기 조절 및 사용자 지정이 가능한 열을 생성할 수 있는 Obsidian 플러그인입니다.</title>
+    <meta name="description" content="노트에서 쉽게 크기 조절 및 사용자 지정이 가능한 열을 생성할 수 있는 Obsidian 플러그인입니다.">
+    <meta name="keywords" content="Simple-Columns, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Simple-Columns",
+  "description": "노트에서 쉽게 크기 조절 및 사용자 지정이 가능한 열을 생성할 수 있는 Obsidian 플러그인입니다.",
+  "author": {
+    "@type": "Person",
+    "name": "Josie1902"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 76
+  },
+  "url": "https://OpenAiTx.github.io/projects/Josie1902/Simple-Columns/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/Josie1902/Simple-Columns/main/README.md",
+  "datePublished": "2025-12-24",
+  "dateModified": "2025-12-24"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Josie1902/Simple-Columns" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Simple-Columns
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 76 stars</span>
+                <span class="language">Korean</span>
+                <span>by Josie1902</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>👋 개요</h1>
+<img src="https://drive.google.com/uc?export=view&id=1Q4Vrx3FpE14U_6RtGkmfQg9UnsNJKx-j" alt="Simple Columns"></p><ul><li><a href="#-개요" target="_blank" rel="noopener noreferrer">👋 개요</a></li>
+  <li><a href="#-설명" target="_blank" rel="noopener noreferrer">📝 설명</a></li>
+  <li><a href="#️-사용-방법" target="_blank" rel="noopener noreferrer">⚙️ 사용 방법</a></li>
+    <li><a href="#예제-코드-블록으로-컬럼-만들기" target="_blank" rel="noopener noreferrer">예제: 코드 블록으로 컬럼 만들기</a></li>
+    <li><a href="#예제-yaml로-컬럼-너비-지정하기" target="_blank" rel="noopener noreferrer">예제: YAML로 컬럼 너비 지정하기</a></li>
+  <li><a href="#-기능" target="_blank" rel="noopener noreferrer">✨ 기능</a></li>
+  <li><a href="#-전역-설정" target="_blank" rel="noopener noreferrer">🔧 전역 설정</a></li>
+    <li><a href="#컨테이너-테두리" target="_blank" rel="noopener noreferrer">컨테이너 테두리</a></li>
+    <li><a href="#리사이저-설정" target="_blank" rel="noopener noreferrer">리사이저 설정</a></li>
+    <li><a href="#고급-설정" target="_blank" rel="noopener noreferrer">고급 설정</a></li>
+  <li><a href="#️-로컬-설정" target="_blank" rel="noopener noreferrer">⚡️ 로컬 설정</a></li>
+    <li><a href="#사용-가능한-로컬-설정" target="_blank" rel="noopener noreferrer">사용 가능한 로컬 설정:</a></li>
+  <li><a href="#-향후-작업" target="_blank" rel="noopener noreferrer">🚀 향후 작업</a></li></p><p>
+</ul><h2>📝 설명</h2>
+<strong>Simple Columns</strong> 플러그인은 Obsidian에서 노트 내 쉽게 크기 조절 및 사용자 지정 가능한 컬럼을 만들 수 있게 해줍니다. 작업을 정리하거나, 내용을 분할하거나, 아이디어를 시각화할 때 이 플러그인은 간단한 마크다운 문법으로 레이아웃을 빠르게 조정하고 구성할 수 있게 합니다.</p><h2>⚙️ 사용 방법 </h2>
+간단한 컬럼 레이아웃을 만들려면 다음 중 하나를 선택하세요:
+<ul><li>노트 내에서 우클릭 후 하위 메뉴에서 옵션을 선택합니다.</li></p><p></ul><img src="https://drive.google.com/uc?export=view&id=1Nu2tmvENJFtsnbDIqnk4XqT05WSJexN_" alt="하위 메뉴"></p><ul><li>명령 팔레트를 사용해 컬럼을 직접 삽입합니다. 예를 들어 "2개의 컬럼 추가"를 입력하면 노트에 2단 컬럼 레이아웃을 삽입합니다.</li></p><p></ul>컬럼을 만들면 플러그인은 각 컬럼에 고유 ID가 포함된 다음 마크다운을 생성합니다:</p><pre><code class="language-columns">id: b52707b0-ce15-6458-825d-32615b4b7h85
+===
+Column 1</p><p>===
+Column 2</code></pre>
+<h3>예제: 코드 블록으로 열 만들기</h3>
+코드 블록을 열 안에 배치하는 레이아웃을 만들려면, 다음 구문을 사용하세요 (4개의 백틱 ```<code> 으로 시작하고 끝냅니다):</p><p>
+</code><pre><code class="language-columns">
+id: b52707b0-ce15-6458-825d-32615b4b7h85
+===
+열 1</code></pre>javascript
+console.log("Hello world")
+<pre><code class="language-">===
+열 2</code></pre><code>
+</code><code><pre><code class="language-">
+<h3>예제: YAML을 통한 열 너비 지정</h3></p><p>YAML을 사용하여 특정 열에 대한 사용자 지정 너비를 설정할 수 있습니다. 비율이 지정된 열이 우선 적용되며, 비율이 정의되지 않은 열은 남은 공간을 균등하게 나눕니다.
+</code></pre>
+id: b52707b0-ce15-6458-825d-32615b4b7h85
+column-1-ratio: 60%
+===
+Column 1
+hello
+===
+Column 2
+</code>`<code>
+설명:
+<ul><li>column-1-ratio: 60% → 컬럼 1이 컨테이너 너비의 60%를 차지합니다.</li>
+<li>컬럼 2 (명시되지 않음)는 나머지 40%를 자동으로 채웁니다.</li>
+<li>여러 컬럼에 대해 비율을 정의할 수 있습니다 (column-2-ratio, column-3-ratio 등), 최대 4개 컬럼까지 가능합니다.</li></p><p></ul><h2>✨ 기능</h2>
+<ul><li><strong>고유 컬럼 ID</strong>: 각 컬럼은 고유한 ID로 생성되어, 컬럼을 독립적으로 스타일링하거나 참조할 수 있습니다.</li>
+<li><strong>쉽게 크기 조절 가능한 컬럼</strong>: 컬럼은 완전히 크기 조절이 가능하여 콘텐츠 레이아웃을 완벽하게 제어할 수 있습니다.</li>
+<li><strong>반응형 레이아웃</strong>: 컬럼은 화면 크기에 따라 자동으로 조정되어 깔끔하고 적응력 있는 레이아웃을 제공합니다.</li>
+<li><strong>높은 맞춤 설정 가능</strong>: 컬럼은 완전히 조절 가능하여 크기, 간격, 정렬을 쉽게 제어할 수 있습니다.</li></p><p></ul><h2>🔧 전역 설정</h2></p><p><strong>전역 설정</strong>은 Obsidian 볼트 내 모든 컬럼에 대해 기본 스타일과 동작을 정의할 수 있게 합니다. 이 설정은 플러그인 설정에서 접근하고 구성할 수 있습니다.</p><p><img src="https://drive.google.com/uc?export=view&id=1WPBg0Y3pffL5pw1dVRUC81TMMlaod-eK" alt="Global Settings"></p><h3>컨테이너 테두리</h3>
+더 나은 가시성을 위해 컬럼 컨테이너의 테두리 모양을 사용자화할 수 있습니다.</p><ul><li><strong>컨테이너 테두리 표시</strong>: 이 설정을 토글하여 각 컬럼 컨테이너 주위에 테두리를 표시합니다.</li>
+<li><strong>테두리 두께</strong>: 컬럼 컨테이너 테두리의 두께를 설정합니다.</li>
+<li><strong>테두리 색상</strong>: 테두리 색상을 선택합니다.</li>
+<li><strong>테두리 투명도</strong>: RGBA 색상 코드를 사용하여 테두리의 투명도를 조절합니다. 알파 값(마지막 숫자)이 투명도를 제어합니다.</li></p><p></ul><h3>리사이저 설정</h3>
+컬럼 리사이저의 모양과 동작도 사용자화할 수 있습니다.</p><ul><li><strong>리사이저 표시</strong>: 이 설정을 토글하여 컬럼 사이의 리사이저를 표시하거나 숨깁니다. 리사이저는 컬럼 구분선 위에 마우스를 올릴 때만 나타납니다.</li>
+<li><strong>리사이저 너비</strong>: 리사이저 요소의 너비를 설정합니다.</li>
+<li><strong>리사이저 색상</strong>: 리사이저 색상을 선택합니다.</li>
+<li><strong>리사이저 투명도</strong>: RGBA 색상 코드를 사용하여 리사이저의 투명도를 조절합니다.</li></p><p></ul><h3>고급 설정</h3>
+<ul><li><strong>스타일 초기화</strong>: 테두리 설정 및 리사이저 스타일을 포함한 모든 컬럼 스타일을 기본값으로 되돌립니다.</li>
+<li><strong>로컬 저장소 초기화</strong>: 모든 사용자 설정을 제거하고 플러그인을 초기 상태로 복원합니다. 문제가 발생하거나 새로 시작하고 싶을 때 이 옵션을 사용하세요.</li></p><p></ul><h2>⚡️ 로컬 설정</h2></p><p>
+<strong>로컬 설정</strong>을 통해 노트 내 개별 열에 대해 더 <strong>세밀한 사용자 지정</strong>을 적용할 수 있습니다.</p><p><img src="https://drive.google.com/uc?export=view&id=1q11NA49CeizEAozavC1YAiiSI7J7oe5U" alt="Local Settings"></p><h3>사용 가능한 로컬 설정:</h3>
+<ul><li><strong>모든 스타일 초기화</strong>: 열에 적용된 모든 사용자 지정 스타일을 기본 설정으로 되돌립니다.</li>
+<li><strong>테두리 표시</strong></li>
+<li><strong>테두리 색상 및 투명도 설정</strong></li>
+<li><strong>리사이저 표시</strong>: 열 리사이저의 표시를 전환합니다. 리사이저는 마우스 오버 시에만 나타납니다.</li>
+<li><strong>리사이저 색상 및 투명도 설정</strong></li>
+<li><strong>텍스트 색상 설정</strong></li>
+<li><strong>배경 색상 및 투명도 설정</strong></li>
+<li><strong>텍스트 정렬 설정</strong>: 열 내 텍스트 정렬을 지정합니다(예: </code>왼쪽<code>, </code>가운데<code>, </code>오른쪽`).</li></p><p></ul><h2>📦 설치</h2>
+이 플러그인은 이제 Obsidian 커뮤니티 플러그인에서 사용할 수 있습니다! 🎉</p><ul><li>Obsidian에서 설정 > 커뮤니티 플러그인으로 이동합니다.</li>
+<li>찾아보기 클릭 후 Simple Columns를 검색합니다.</li>
+<li>설치를 클릭하고 플러그인을 활성화합니다.</li></p><p></ul><h2>🚀 향후 작업</h2>
+<ul><li>개별 열에 배경 이미지 추가</li>
+<li>중첩 열 지원 활성화</li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-24
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Josie1902/Simple-Columns/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-24 
+    </div>
+    
+</body>
+</html>
