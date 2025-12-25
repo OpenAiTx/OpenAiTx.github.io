@@ -1,0 +1,332 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>janitor - IoTデバイスの稼働監視とアラート通知</title>
+    <meta name="description" content="IoTデバイスの稼働監視とアラート通知">
+    <meta name="keywords" content="janitor, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "janitor",
+  "description": "IoTデバイスの稼働監視とアラート通知",
+  "author": {
+    "@type": "Person",
+    "name": "a-bali"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 87
+  },
+  "url": "https://OpenAiTx.github.io/projects/a-bali/janitor/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/a-bali/janitor/master/README.md",
+  "datePublished": "2025-12-25",
+  "dateModified": "2025-12-25"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/a-bali/janitor" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    janitor
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 87 stars</span>
+                <span class="language">Japanese</span>
+                <span>by a-bali</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>janitor</h1>
+<h2>目的</h2>
+Janitorはスタンドアロンのツールで、IOTデバイスの稼働状況を監視し、デバイスが消失したりデータ送信を停止した場合に通知します。特に多数のセンサーを持ち、ハードウェアや接続が不安定な場合に有用で、問題発生時に対応を行い、デバイスの安定性を監視できます。</p><p>Janitorは追加機能の実装を目的としておらず、他のホームオートメーションソフトウェア（例：HASS）の代替ではありません。この機能に特化することで、ツールをシンプルかつ効率的に保つことが可能です。</p><p>Janitorは現在以下の監視方法をサポートしています：
+<ul><li><strong>MQTT:</strong> Janitorは事前定義されたMQTTトピックを購読し、受信メッセージを監視します。各チャネルの平均送信頻度が計算され、この間隔内に新しいメッセージが届かない場合に通知します（しきい値は平均頻度の倍数またはトピックごとの絶対値として設定可能）。この方法はMQTTを介して定期的にデータを送信するあらゆる種類のセンサー（例：温度）に特に有効です。</li>
+<li><strong>Ping:</strong> Janitorは事前定義されたホストに設定された頻度（ホストごとに設定可能）でpingを送り、応答がない場合に通知します（連続して応答が無いping回数のしきい値を設定可能）。この方法はセンサーやカメラなどあらゆるIOTデバイスに適しています。</li>
+<li><strong>HTTP:</strong> Janitorは事前定義されたアドレスにHTTP GETリクエストを送信し、応答の有無および任意で応答に事前定義された文字列が含まれているかをチェックします。設定されたしきい値を超える連続失敗時に通知します。頻度とタイムアウトもアドレスごとに設定可能です。この方法はウェブインターフェイスを持つあらゆるサービス（例：API、ホスティングサービス）に適しています。</li>
+<li><strong>Exec:</strong> Janitorは事前に設定されたコマンドを実行し、終了コードをチェックします。設定されたしきい値を超える連続失敗時に通知します。頻度とタイムアウトもコマンドごとに設定可能です。この方法でカスタム監視を実装できます。</li></p><p></ul>Janitorは現在以下の通知方法をサポートしています：
+<ul><li><strong>Telegram:</strong> Janitorは事前定義されたTelegramチャンネルにメッセージを送信します。</li>
+<li><strong>Gotify:</strong> JanitorはGotifyにプッシュメッセージを送信します。</li>
+<li><strong>MQTT:</strong> Janitorは事前設定されたMQTTサーバーのトピックにJSONペイロードを含むメッセージを公開します（サンプル設定を参照）。これはHASS等の自動化に適しています。</li>
+<li><strong>Exec:</strong> Janitorは事前設定されたコマンドを実行します。これにより任意のカスタム通知方法を作成可能です。</li></p><p></ul>さらに、Janitorには現在のステータスや履歴データを確認し、アイテムの削除、タイムアウト、間隔、しきい値の変更、設定ファイルのリロードを行えるウェブインターフェイスがあります（下のスクリーンショット参照）。</p><p>最後に、Janitorは以下のエンドポイントを持つシンプルなJSON APIを含みます：
+<ul><li><code>/api/data</code> は監視関連すべてのデータのスナップショットを提供します。</li>
+<li><code>/api/stats</code> は機能中/機能不全状態の監視対象数を提供します。</li>
+<li><code>/api/metrics</code> はPrometheusメトリクス形式でターゲット統計を提供します。</li></p><p></ul><h2>スクリーンショット</h2>
+<img src="https://raw.githubusercontent.com/a-bali/janitor/master/docs/screenshot.png" alt="Screenshot"></p><h2>ビルドとインストール</h2></p><p>JanitorはGoで書かれており、単一のスタンドアロンバイナリにコンパイルされます。LinuxおよびWindowsでのコンパイルと動作が可能です。</p><p>コンパイルにはGoバージョン1.16以上を使用し、以下のコマンドでリポジトリをクローンしバイナリをビルドしてください：</p><p>    $ git clone https://github.com/a-bali/janitor.git
+    $ cd janitor
+    $ go build</p><p>これにより<code>janitor</code>という名前のスタンドアロンバイナリが作成され、任意の場所に配置できます。リリース用の事前ビルドバイナリはGithubで入手可能です。</p><h2>設定と使用方法</h2></p><p>設定には、YAML形式のファイルが必要です。<a href="https://raw.githubusercontent.com/a-bali/janitor/master/config.yml" target="_blank" rel="noopener noreferrer">サンプル設定ファイル</a>を使用し、ファイル内のコメントに従って必要に応じて変更してください。ほとんどの変数はオプションであり、合理的なデフォルト値があります。詳細はコメントをご参照ください。環境変数は <code>$ENV_VAR</code> または <code>${ENV_VAR}</code> で参照でき、存在すればその値に置き換えられます（存在しない場合は空文字列になります）。</p><p>最小限で実用的な設定は以下のように短くできます（JanitorのWebインターフェースがデフォルトのポート8080で利用可能であることを想定）：</p><p>    monitor:
+      mqtt:
+        server: mymqtt.server
+        targets:
+        <ul><li>topic: "/sensors/#"</li>
+    </ul>alert:
+      gotify:
+        server: "http://mygotify.server:1234"
+        token: gotify_token</p><p>設定ファイルを作成したら、以下のようにしてJanitorを起動できます：</p><p>    $ janitor path/to/your/configfile.yml</p><p>Janitorは標準出力にログを出力します。ログはWebインターフェースでも閲覧可能で、監視対象の削除や設定ファイルのリロード（新しいターゲットを追加した場合や設定を変更した場合など）ができます。</p><p>Janitorは自身をデーモン化しません。継続的に稼働させたい場合は、systemdサービスを作成することを推奨します。</p><h2>Dockerでの実行</h2></p><p>最新バージョンのJanitorはDocker Hubの <a href="https://hub.docker.com/repository/docker/abali/janitor" target="_blank" rel="noopener noreferrer"><code>abali/janitor</code></a> で利用可能です。設定ファイルを <code>/janitor/config.yml</code> にマッピングして使用してください：</p><p>    $ docker run -v $(pwd)/config.yml:/janitor/config.yml -p 8080:8080 abali/janitor</p><p>または、提供されているDockerfileを使って自分でコンテナをビルドすることもできます：</p><p>    $ git clone https://github.com/a-bali/janitor.git
+    $ cd janitor
+    $ docker build . -t janitor
+    $ docker run -v $(pwd)/config.yml:/janitor/config.yml -p 8080:8080 janitor</p><h2>今後の計画と貢献について</h2></p><p>
+Janitorの目的は明確かつシンプルです：IOTデバイスの稼働状況と可用性を監視し、問題があった場合に警告を出すことです。将来の改善はこの目的に沿って行われるべきであり、新たな監視方法の追加か新たな警告方法の追加に限定されます。</p><p>Janitorはオープンソースソフトウェアであり、ソフトウェアを改善するプルリクエストをGithub経由で送ることが推奨されています。</p><h2>ライセンス</h2></p><p>JanitorはGPL 3.0のもとでライセンスされています。</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-25
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/a-bali/janitor/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-25 
+    </div>
+    
+</body>
+</html>

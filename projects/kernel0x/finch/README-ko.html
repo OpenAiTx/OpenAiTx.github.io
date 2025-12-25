@@ -1,0 +1,510 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>finch - &#128421; 네트워크 활동 로깅 및 다양한 유용한 기능을 지원하는 Android 앱용 디버그 메뉴 라이브러리입니다.</title>
+    <meta name="description" content="&#128421; 네트워크 활동 로깅 및 다양한 유용한 기능을 지원하는 Android 앱용 디버그 메뉴 라이브러리입니다.">
+    <meta name="keywords" content="finch, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "finch",
+  "description": "🖥 네트워크 활동 로깅 및 다양한 유용한 기능을 지원하는 Android 앱용 디버그 메뉴 라이브러리입니다.",
+  "author": {
+    "@type": "Person",
+    "name": "kernel0x"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 134
+  },
+  "url": "https://OpenAiTx.github.io/projects/kernel0x/finch/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/kernel0x/finch/master/README.md",
+  "datePublished": "2025-12-25",
+  "dateModified": "2025-12-25"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/kernel0x/finch" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    finch
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 134 stars</span>
+                <span class="language">Korean</span>
+                <span>by kernel0x</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>핀치  </h1>
+핀치는 안드로이드 앱 개발을 위한 맞춤형 디버그 메뉴를 제공합니다. 프로덕션 코드에 영향을 미치지 않습니다. 개발자는 간단한 단계로 자신만의 맞춤 디버깅 기능을 쉽게 추가할 수 있습니다.  </p><p><img src="https://raw.githubusercontent.com/kernel0x/finch/master/assets/finch.gif" width="282" height="518"/>  </p><h2>Gradle 의존성  </h2></p><p>루트 build.gradle의 repositories 끝에 추가하세요:</p><p><code><pre><code class="language-java">dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}</code></pre></code>
+UI 구현을 선택하고 종속성을 추가하세요:
+<ul><li><strong>ui-activity</strong> - 디버그 메뉴를 새로운 화면으로 표시합니다.</li>
+<li><strong>ui-bottom-sheet</strong> - 디버그 메뉴를 모달 바텀 시트로 표시합니다.</li>
+<li><strong>ui-dialog</strong> - 디버그 메뉴를 모달 대화상자로 표시합니다.</li>
+<li><strong>ui-drawer</strong> - 디버그 메뉴를 측면 네비게이션 드로어로 표시합니다.</li>
+<li><strong>ui-view</strong> - 디버그 메뉴를 뷰로 표시합니다.</li>
+<li><strong>noop</strong> - 릴리스 빌드용입니다.</li></p><p>
+</ul><code><pre><code class="language-java">dependencies {
+    debugImplementation 'com.github.kernel0x.finch:ui-drawer:2.3.6'
+    releaseImplementation 'com.github.kernel0x.finch:noop:2.3.6'
+    // optional only for OkHttp
+    debugImplementation 'com.github.kernel0x.finch:log-okhttp:2.3.6'
+    releaseImplementation 'com.github.kernel0x.finch:log-okhttp-noop:2.3.6'
+    // optional only for GRPC
+    debugImplementation 'com.github.kernel0x.finch:log-grpc:2.3.6'
+    releaseImplementation 'com.github.kernel0x.finch:log-grpc-noop:2.3.6'
+    // optional only for logs
+    debugImplementation 'com.github.kernel0x.finch:log:2.3.6'
+    releaseImplementation 'com.github.kernel0x.finch:log-noop:2.3.6'
+}</code></pre></code></p><h2>작동 방식</h2></p><p>Finch의 인스턴스를 초기화합니다 (가능하면 애플리케이션의 onCreate() 메서드에서).
+<code><pre><code class="language-java">Finch.initialize(this)</code></pre></code>
+구성 객체를 통해 다양한 사용자 지정을 설정할 수 있습니다.</p><p>다음으로, 디버그 메뉴에 표시할 구성 요소를 추가해야 합니다. 선택적으로, 로깅 및 네트워크 이벤트 가로채기(OkHttp 사용)를 추가로 구성할 수 있습니다.</p><h3>로깅</h3></p><p>디버그 메뉴에 로그 메시지를 추가하려면 Finch.log()를 간단히 호출하고 Configuration 객체에 FinchLogger를 추가하세요.</p><pre><code class="language-java">Finch.log("message")</code></pre>
+<pre><code class="language-java">Finch.initialize(
+    application = this,
+    configuration = Configuration(
+        logger = FinchLogger,
+        ...
+    ),
+)</code></pre></p><h3>OkHttp</h3></p><p>OkHttp 클라이언트를 빌드할 때 addInterceptor 메서드에 FinchOkHttpLogger.logger를 추가하고 Configuration 객체에 FinchOkHttpLogger를 추가합니다.</p><pre><code class="language-java">OkHttpClient.Builder()
+    .addInterceptor(FinchOkHttpLogger.logger as? Interceptor ?: Interceptor { it.proceed(it.request()) })
+    .build()</code></pre>
+<pre><code class="language-java">Finch.initialize(
+    application = this,
+    configuration = Configuration(
+        networkLoggers = listOf(FinchOkHttpLogger),
+        ...
+    ),
+)</code></pre></p><h3>Grpc</h3></p><p>ManagedChannel을 빌드할 때 메서드 인터셉트에 FinchGrpcLogger.logger를 추가하고 Configuration 객체에 FinchGrpcLogger를 추가합니다.</p><pre><code class="language-java">ManagedChannelBuilder.forAddress(networkConfig.hostname, networkConfig.port)
+    .intercept(FinchGrpcLogger.logger as? ClientInterceptor ?: object : ClientInterceptor {
+        override fun <ReqT : Any?, RespT : Any?> interceptCall(
+            method: MethodDescriptor<ReqT, RespT>?,
+            callOptions: CallOptions?,
+            next: Channel?
+        ): ClientCall<ReqT, RespT> {
+            return object : ForwardingClientCall.SimpleForwardingClientCall<ReqT, RespT>(
+                next?.newCall(
+                    method,
+                    callOptions
+                )
+            ) {}
+        }
+    })
+    .build()</code></pre>
+<pre><code class="language-java">Finch.initialize(
+    application = this,
+    configuration = Configuration(
+        networkLoggers = listOf(FinchGrpcLogger),
+        ...
+    ),
+)</code></pre></p><h3>예제 초기화</h3></p><p>대부분의 프로젝트에서 작동해야 하는 최소한의 예제입니다</p><pre><code class="language-java">Finch.initialize(
+    application = this,
+    configuration = Configuration(
+        logger = FinchLogger,
+        networkLoggers = listOf(FinchOkHttpLogger)
+    ),
+    components = arrayOf(
+        Header(
+            title = getString(R.string.app_name),
+            subtitle = BuildConfig.APPLICATION_ID,
+            text = "${BuildConfig.BUILD_TYPE} v${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})"
+        ),
+        Padding(),
+        Label("Tools", Label.Type.HEADER),
+        DesignOverlay(),
+        AnimationSpeed(),
+        ScreenCaptureToolbox(),
+        Divider(),
+        Label("Logs", Label.Type.HEADER),
+        LifecycleLogs(),
+        NetworkLogs(),
+        Logs(),
+        Divider(),
+        Label("Other", Label.Type.HEADER),
+        DeviceInfo(),
+        AppInfo(),
+        DeveloperOptions(),
+        ForceCrash()
+    )
+)</code></pre></p><h3>일반적인 사례</h3></p><p>#### 백엔드 환경
+<pre><code class="language-java">data class Environment(
+    val type: Type,
+    override val title: Text = Text.CharSequence(type.name)
+) : FinchListItem</p><p>enum class Type {
+    TEST,
+    PROD
+}</code></pre>
+<pre><code class="language-java">SingleSelectionList(
+    title = "Backend environment",
+    items = listOf(Environment(Type.TEST), Environment(Type.PROD)),
+    initiallySelectedItemId = Type.TEST.name,
+    isValuePersisted = true,
+    onSelectionChanged = {
+        when (it?.type) {
+            Type.TEST -> {
+                ...
+            }</p><p>            Type.PROD -> {
+                ...
+            }</p><p>            else -> {
+                // nothing
+            }
+        }
+    }
+),</code></pre></p><p>#### 기능 토글
+<pre><code class="language-java">fun Application.initializeDebugMenu(
+    featureManager: FeatureManager
+) {
+    val toggles = featureManager.getAll().map {
+        Switch(
+            text = it.description,
+            initialValue = it.isEnabled(),
+            isEnabled = true,
+            onValueChanged = { value ->
+                featureManager.save(it.key, value)
+                if (!it.canChangedInRuntime) {
+                    Toast.makeText(this, "Restart app to apply changes!", Toast.LENGTH_LONG).show()
+                }
+            }
+        )
+    }
+    Finch.initialize(
+        ...
+        components = arrayOf(
+            ...
+            Divider(),
+            Label("Feature Toggles", Label.Type.HEADER),
+            Switch(
+                text = "Show",
+                initialValue = false,
+                isEnabled = true,
+                id = "feature_toggles",
+                onValueChanged = {
+                    if (it) {
+                        Finch.add(
+                            components = toggles.toTypedArray(),
+                            position = Position.Below("feature_toggles")
+                        )
+                    } else {
+                        toggles.forEach { item ->
+                            Finch.remove(item.id)
+                        }
+                    }
+                }
+            ),
+            ...
+        )
+    )
+}</code></pre></p><p>#### 로그
+<pre><code class="language-java">class LogTree : Timber.Tree() {
+    override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
+        FinchLogger.log(message)
+    }
+}</code></pre>
+<pre><code class="language-java">fun Application.initializeDebugMenu() {
+    ...
+    Timber.plant(LogTree())
+    Finch.initialize(
+        application = this,
+        configuration = Configuration(
+            logger = FinchLogger,
+        ),
+        ...
+    )
+}</code></pre></p><h3>Components</h3>
+<a href="/common/src/main/java/com/kernel/finch/components/CheckBox.kt" target="_blank" rel="noopener noreferrer">CheckBox</a>
+<a href="/common/src/main/java/com/kernel/finch/components/Divider.kt" target="_blank" rel="noopener noreferrer">Divider</a>
+<a href="/common/src/main/java/com/kernel/finch/components/ItemList.kt" target="_blank" rel="noopener noreferrer">ItemList</a>
+<a href="/common/src/main/java/com/kernel/finch/components/KeyValueList.kt" target="_blank" rel="noopener noreferrer">KeyValueList</a>
+<a href="/common/src/main/java/com/kernel/finch/components/Label.kt" target="_blank" rel="noopener noreferrer">Label</a>
+<a href="/common/src/main/java/com/kernel/finch/components/LongText.kt" target="_blank" rel="noopener noreferrer">LongText</a>
+<a href="/common/src/main/java/com/kernel/finch/components/MultipleSelectionList.kt" target="_blank" rel="noopener noreferrer">MultipleSelectionList</a>
+<a href="/common/src/main/java/com/kernel/finch/components/Padding.kt" target="_blank" rel="noopener noreferrer">Padding</a>
+<a href="/common/src/main/java/com/kernel/finch/components/ProgressBar.kt" target="_blank" rel="noopener noreferrer">ProgressBar</a>
+<a href="/common/src/main/java/com/kernel/finch/components/SingleSelectionList.kt" target="_blank" rel="noopener noreferrer">SingleSelectionList</a>
+<a href="/common/src/main/java/com/kernel/finch/components/Slider.kt" target="_blank" rel="noopener noreferrer">Slider</a>
+<a href="/common/src/main/java/com/kernel/finch/components/Switch.kt" target="_blank" rel="noopener noreferrer">Switch</a>
+<a href="/common/src/main/java/com/kernel/finch/components/TextInput.kt" target="_blank" rel="noopener noreferrer">TextInput</a>
+<a href="/common/src/main/java/com/kernel/finch/components/special/AnimationSpeed.kt" target="_blank" rel="noopener noreferrer">AnimationSpeed</a>
+<a href="/common/src/main/java/com/kernel/finch/components/special/AppInfo.kt" target="_blank" rel="noopener noreferrer">AppInfo</a>
+<a href="/common/src/main/java/com/kernel/finch/components/special/DesignOverlay.kt" target="_blank" rel="noopener noreferrer">DesignOverlay</a>
+<a href="/common/src/main/java/com/kernel/finch/components/special/DeveloperOptions.kt" target="_blank" rel="noopener noreferrer">DeveloperOptions</a>
+<a href="/common/src/main/java/com/kernel/finch/components/special/DeviceInfo.kt" target="_blank" rel="noopener noreferrer">DeviceInfo</a>
+<a href="/common/src/main/java/com/kernel/finch/components/special/ForceCrash.kt" target="_blank" rel="noopener noreferrer">ForceCrash</a>
+<a href="/common/src/main/java/com/kernel/finch/components/special/Header.kt" target="_blank" rel="noopener noreferrer">Header</a>
+<a href="/common/src/main/java/com/kernel/finch/components/special/LifecycleLogs.kt" target="_blank" rel="noopener noreferrer">LifecycleLogs</a>
+<a href="/common/src/main/java/com/kernel/finch/components/special/Logs.kt" target="_blank" rel="noopener noreferrer">Logs</a>
+<a href="/common/src/main/java/com/kernel/finch/components/special/LoremIpsumGenerator.kt" target="_blank" rel="noopener noreferrer">LoremIpsumGenerator</a>
+<a href="/common/src/main/java/com/kernel/finch/components/special/NetworkLogs.kt" target="_blank" rel="noopener noreferrer">NetworkLogs</a></p><h3>Proguard</h3>
+<pre><code class="language-java">-keep,allowobfuscation,allowshrinking class com.google.gson.reflect.TypeToken
+-keep,allowobfuscation,allowshrinking class * extends com.google.gson.reflect.TypeToken</code></pre></p><h2>릴리스</h2></p><p>모든 릴리스 정보는 <a href="https://github.com/kernel0x/finch/releases" target="_blank" rel="noopener noreferrer">릴리스</a> 탭을 확인하세요.</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-25
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/kernel0x/finch/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-25 
+    </div>
+    
+</body>
+</html>
