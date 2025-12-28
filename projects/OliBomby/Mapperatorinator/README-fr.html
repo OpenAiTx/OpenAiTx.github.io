@@ -1,0 +1,434 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapperatorinator - Un cadre d&#39;IA pour g&#233;n&#233;rer et modifier des beatmaps osu! pour tous les modes de jeu &#224; partir d&#39;entr&#233;es spectrogrammes.</title>
+    <meta name="description" content="Un cadre d&#39;IA pour g&#233;n&#233;rer et modifier des beatmaps osu! pour tous les modes de jeu &#224; partir d&#39;entr&#233;es spectrogrammes.">
+    <meta name="keywords" content="Mapperatorinator, French, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Mapperatorinator",
+  "description": "Un cadre d'IA pour générer et modifier des beatmaps osu! pour tous les modes de jeu à partir d'entrées spectrogrammes.",
+  "author": {
+    "@type": "Person",
+    "name": "OliBomby"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 381
+  },
+  "url": "https://OpenAiTx.github.io/projects/OliBomby/Mapperatorinator/README-fr.html",
+  "sameAs": "https://raw.githubusercontent.com/OliBomby/Mapperatorinator/main/README.md",
+  "datePublished": "2025-12-28",
+  "dateModified": "2025-12-28"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/OliBomby/Mapperatorinator" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Mapperatorinator
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 381 stars</span>
+                <span class="language">French</span>
+                <span>by OliBomby</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Mapperatorinator</h1></p><p>Essayez le modèle génératif <a href="https://colab.research.google.com/github/OliBomby/Mapperatorinator/blob/main/colab/mapperatorinator_inference.ipynb" target="_blank" rel="noopener noreferrer">ici</a>, ou MaiMod <a href="https://colab.research.google.com/github/OliBomby/Mapperatorinator/blob/main/colab/mai_mod_inference.ipynb" target="_blank" rel="noopener noreferrer">ici</a>. Découvrez une démonstration vidéo <a href="https://youtu.be/FEr7t1L2EoA" target="_blank" rel="noopener noreferrer">ici</a>.</p><p>Mapperatorinator est un cadre multi-modèles qui utilise des entrées de spectrogrammes pour générer des beatmaps osu! entièrement fonctionnelles pour tous les modes de jeu et <a href="#maimod-the-ai-driven-modding-tool" target="_blank" rel="noopener noreferrer">aider à modder les beatmaps</a>.
+L’objectif de ce projet est de générer automatiquement des beatmaps osu! de qualité classable à partir de n’importe quelle chanson avec un haut degré de personnalisation.</p><p>Ce projet est construit sur <a href="https://github.com/gyataro/osuT5" target="_blank" rel="noopener noreferrer">osuT5</a> et <a href="https://github.com/OliBomby/osu-diffusion" target="_blank" rel="noopener noreferrer">osu-diffusion</a>. En développant cela, j’ai passé environ 2500 heures de calcul GPU à travers 142 sessions sur ma 4060 Ti et des instances 4090 louées sur vast.ai.</p><p>#### Utilisez cet outil de manière responsable. Mentionnez toujours l’utilisation de l’IA dans vos beatmaps.</p><h2>Installation</h2></p><p>Les instructions ci-dessous vous permettent de générer des beatmaps sur votre machine locale, alternativement vous pouvez l’exécuter dans le cloud avec le <a href="https://colab.research.google.com/github/OliBomby/Mapperatorinator/blob/main/colab/mapperatorinator_inference.ipynb" target="_blank" rel="noopener noreferrer">notebook colab</a>.</p><h3>1. Cloner le dépôt</h3></p><pre><code class="language-sh">git clone https://github.com/OliBomby/Mapperatorinator.git
+cd Mapperatorinator</code></pre></p><h3>2. (Optionnel) Créer un environnement virtuel</h3></p><p>Utilisez Python 3.10, les versions ultérieures pourraient ne pas être compatibles avec les dépendances.</p><pre><code class="language-sh">python -m venv .venv</p><h1>In cmd.exe</h1>
+.venv\Scripts\activate.bat
+<h1>In PowerShell</h1>
+.venv\Scripts\Activate.ps1
+<h1>In Linux or MacOS</h1>
+source .venv/bin/activate</code></pre></p><h3>3. Installer les dépendances</h3></p><ul><li>Python 3.10</li>
+<li><a href="https://git-scm.com/downloads" target="_blank" rel="noopener noreferrer">Git</a></li>
+<li><a href="http://www.ffmpeg.org/" target="_blank" rel="noopener noreferrer">ffmpeg</a></li>
+<li><a href="https://developer.nvidia.com/cuda-zone" target="_blank" rel="noopener noreferrer">CUDA</a> (Pour les GPU NVIDIA) ou <a href="https://rocmdocs.amd.com/en/latest/Installation_Guide/Installation-Guide.html" target="_blank" rel="noopener noreferrer">ROCm</a> (Pour les GPU AMD sous Linux)</li>
+<li><a href="https://pytorch.org/get-started/locally/" target="_blank" rel="noopener noreferrer">PyTorch</a> : Assurez-vous de suivre le guide de démarrage afin d’installer <code>torch</code> et <code>torchaudio</code> avec le support GPU. Sélectionnez la version correcte de la plateforme de calcul que vous avez installée à l’étape précédente.</li></p><p><li>ainsi que les dépendances Python restantes :</li></p><p></ul><pre><code class="language-sh">pip install -r requirements.txt</code></pre></p><h2>Interface Web (Recommandée)</h2></p><p>Pour une expérience plus conviviale, envisagez d'utiliser l'interface Web. Elle offre une interface graphique pour configurer les paramètres de génération, lancer le processus et surveiller la sortie.</p><h3>Lancer l'interface graphique</h3></p><p>Naviguez jusqu'au répertoire cloné <code>Mapperatorinator</code> dans votre terminal et exécutez :</p><pre><code class="language-sh">python web-ui.py</code></pre>
+Cela démarrera un serveur web local et ouvrira automatiquement l’interface utilisateur dans une nouvelle fenêtre.</p><h3>Utilisation de l’interface graphique</h3></p><ul><li><strong>Configurer :</strong> Définissez les chemins d’entrée/sortie à l’aide des champs de formulaire et des boutons « Parcourir ». Ajustez les paramètres de génération comme le mode de jeu, la difficulté, le style (année, ID du mappeur, descripteurs), le timing, les fonctionnalités spécifiques (hitsounds, super timing), et plus encore, en reflétant les options de la ligne de commande. (Remarque : si vous fournissez un <code>beatmap_path</code>, l’interface déterminera automatiquement le <code>audio_path</code> et le <code>output_path</code> à partir de celui-ci, vous pouvez donc laisser ces champs vides)</li>
+<li><strong>Démarrer :</strong> Cliquez sur le bouton « Démarrer l’inférence » pour lancer la génération de la beatmap.</li>
+<li><strong>Annuler :</strong> Vous pouvez arrêter le processus en cours en utilisant le bouton « Annuler l’inférence ».</li>
+<li><strong>Ouvrir la sortie :</strong> Une fois terminé, utilisez le bouton « Ouvrir le dossier de sortie » pour accéder rapidement aux fichiers générés.</li></p><p></ul>L’interface Web agit comme une interface pratique autour du script <code>inference.py</code>. Pour des options avancées ou un dépannage, référez-vous aux instructions en ligne de commande.</p><p><img src="https://github.com/user-attachments/assets/5312a45f-d51c-4b37-9389-da3258ddd0a1" alt="python_u3zyW0S3Vs"></p><h2>Inférence en ligne de commande</h2></p><p>Pour les utilisateurs qui préfèrent la ligne de commande ou ont besoin d’accéder à des configurations avancées, suivez les étapes ci-dessous. <strong>Remarque :</strong> Pour une interface graphique plus simple, veuillez consulter la section <a href="#web-ui-recommended" target="_blank" rel="noopener noreferrer">Interface Web (Recommandée)</a> ci-dessus.</p><p>Exécutez <code>inference.py</code> en passant quelques arguments pour générer des beatmaps. Pour cela, utilisez la <a href="https://hydra.cc/docs/advanced/override_grammar/basic/" target="_blank" rel="noopener noreferrer">syntaxe d’override Hydra</a>. Consultez <code>configs/inference_v29.yaml</code> pour tous les paramètres disponibles.</p><pre><code class="language-">python inference.py \
+  audio_path           [Path to input audio] \
+  output_path          [Path to output directory] \
+  beatmap_path         [Path to .osu file to autofill metadata, and output_path, or use as reference] \
+  
+  gamemode             [Game mode to generate 0=std, 1=taiko, 2=ctb, 3=mania] \
+  difficulty           [Difficulty star rating to generate] \
+  mapper_id            [Mapper user ID for style] \
+  year                 [Upload year to simulate] \
+  hitsounded           [Whether to add hitsounds] \
+  slider_multiplier    [Slider velocity multiplier] \
+  circle_size          [Circle size] \
+  keycount             [Key count for mania] \
+  hold_note_ratio      [Hold note ratio for mania 0-1] \
+  scroll_speed_ratio   [Scroll speed ratio for mania and ctb 0-1] \
+  descriptors          [List of beatmap user tags for style] \
+  negative_descriptors [List of beatmap user tags for classifier-free guidance] \
+  
+  add_to_beatmap       [Whether to add generated content to the reference beatmap instead of making a new beatmap] \
+  start_time           [Generation start time in milliseconds] \
+  end_time             [Generation end time in milliseconds] \
+  in_context           [List of additional context to provide to the model [NONE,TIMING,KIAI,MAP,GD,NO_HS]] \
+  output_type          [List of content types to generate] \
+  cfg_scale            [Scale of the classifier-free guidance] \
+  super_timing         [Whether to use slow accurate variable BPM timing generator] \
+  seed                 [Random seed for generation] \</code></pre>
+Exemple :</p><pre><code class="language-">python inference.py beatmap_path="'C:\Users\USER\AppData\Local\osu!\Songs\1 Kenji Ninuma - DISCO PRINCE\Kenji Ninuma - DISCOPRINCE (peppy) [Normal].osu'" gamemode=0 difficulty=5.5 year=2023 descriptors="['jump aim','clean']" in_context=[TIMING,KIAI]</code></pre></p><h2>CLI interactive</h2>
+Pour ceux qui préfèrent un flux de travail basé sur le terminal mais souhaitent une configuration guidée, le script CLI interactif est une excellente alternative à l'interface Web.</p><h3>Lancer la CLI</h3>
+Naviguez vers le répertoire cloné. Vous devrez peut-être d'abord rendre le script exécutable.</p><pre><code class="language-sh"># Make the script executable (only needs to be done once)
+chmod +x cli_inference.sh</code></pre></p><pre><code class="language-sh"># Run the script
+./cli_inference.sh</code></pre></p><h3>Utilisation de la CLI</h3>
+Le script vous guidera à travers une série d'invites pour configurer tous les paramètres de génération, tout comme l'interface Web.</p><p>Il utilise une interface codée par couleur pour plus de clarté.
+Il propose un menu avancé à sélection multiple pour choisir les descripteurs de style en utilisant les flèches et la barre d'espace.
+Après avoir répondu à toutes les questions, il affichera la commande finale pour votre examen.
+Vous pouvez alors confirmer pour l'exécuter directement ou annuler et copier la commande pour une utilisation manuelle.</p><h2>Conseils de génération</h2></p><ul><li>Vous pouvez modifier <code>configs/inference_v29.yaml</code> et y ajouter vos arguments au lieu de les taper dans le terminal à chaque fois.</li>
+<li>Tous les descripteurs disponibles se trouvent <a href="https://osu.ppy.sh/wiki/en/Beatmap/Beatmap_tags" target="_blank" rel="noopener noreferrer">ici</a>.</li>
+<li>Fournissez toujours un argument d'année entre 2007 et 2023. Si vous le laissez inconnu, le modèle pourrait générer un style incohérent.</li>
+<li>Fournissez toujours un argument de difficulté. Si vous le laissez inconnu, le modèle pourrait générer une difficulté incohérente.</li>
+<li>Augmentez le paramètre <code>cfg_scale</code> pour accroître l'efficacité des arguments <code>mapper_id</code> et <code>descriptors</code>.</li>
+<li>Vous pouvez utiliser l'argument <code>negative_descriptors</code> pour guider le modèle à éviter certains styles. Cela ne fonctionne que si <code>cfg_scale > 1</code>. Assurez-vous que le nombre de descripteurs négatifs est égal au nombre de descripteurs.</li>
+<li>Si le style de votre chanson et le style de beatmap souhaité ne correspondent pas bien, le modèle pourrait ne pas suivre vos instructions. Par exemple, il est difficile de générer une beatmap à SR élevé et SV élevé pour une chanson calme.</li>
+<li>Si vous avez déjà les timings et les temps de kiai pour une chanson, vous pouvez les fournir au modèle pour augmenter grandement la vitesse et la précision d'inférence : utilisez les arguments <code>beatmap_path</code> et <code>in_context=[TIMING,KIAI]</code>.</li>
+<li>Pour remapper uniquement une partie de votre beatmap, utilisez les arguments <code>beatmap_path</code>, <code>start_time</code>, <code>end_time</code> et <code>add_to_beatmap=true</code>.</li>
+<li>Pour générer une difficulté invitée pour une beatmap, utilisez les arguments <code>beatmap_path</code> et <code>in_context=[GD,TIMING,KIAI]</code>.</li>
+<li>Pour générer des hitsounds pour une beatmap, utilisez les arguments <code>beatmap_path</code> et <code>in_context=[NO_HS,TIMING,KIAI]</code>.</li>
+<li>Pour générer uniquement le timing pour une chanson, utilisez les arguments <code>super_timing=true</code> et <code>output_type=[TIMING]</code>.</li></p><p></ul><h2>MaiMod : l’outil de modding piloté par IA</h2></p><p>MaiMod est un outil de modding pour les beatmaps osu! qui utilise les prédictions de Mapperatorinator pour détecter des fautes et incohérences potentielles que d’autres outils automatiques comme <a href="https://github.com/Naxesss/MapsetVerifier" target="_blank" rel="noopener noreferrer">Mapset Verifier</a> ne peuvent pas détecter.
+Il peut détecter des problèmes tels que :
+<ul><li>Décalage incorrect ou motifs rythmiques erronés</li>
+<li>Points de timing inexactes</li>
+<li>Positions incohérentes des objets ou placements de nouveau combo</li>
+<li>Formes étranges de sliders</li>
+<li>Hitsounds ou volumes incohérents</li></p><p></ul>Vous pouvez essayer MaiMod <a href="https://colab.research.google.com/github/OliBomby/Mapperatorinator/blob/main/colab/mai_mod_inference.ipynb" target="_blank" rel="noopener noreferrer">ici</a>, ou l’exécuter localement :
+Pour exécuter MaiMod localement, vous devez installer Mapperatorinator. Ensuite, lancez le script <code>mai_mod.py</code>, en spécifiant le chemin de votre beatmap avec l’argument <code>beatmap_path</code>.
+<pre><code class="language-sh">python mai_mod.py beatmap_path="'C:\Users\USER\AppData\Local\osu!\Songs\1 Kenji Ninuma - DISCO PRINCE\Kenji Ninuma - DISCOPRINCE (peppy) [Normal].osu'"</code></pre>
+Cela affichera les suggestions de modding dans la console, que vous pourrez ensuite appliquer manuellement à votre beatmap.  
+Les suggestions sont ordonnées chronologiquement et regroupées par catégories.  
+La première valeur dans le cercle indique le « surprisal », qui est une mesure de la surprise que le modèle a trouvée pour le problème, afin que vous puissiez prioriser les problèmes les plus importants.  </p><p>Le modèle peut faire des erreurs, surtout sur les problèmes à faible surprisal, donc vérifiez toujours les suggestions avant de les appliquer à votre beatmap.  
+L’objectif principal est de vous aider à réduire l’espace de recherche des problèmes potentiels, afin que vous n’ayez pas à vérifier manuellement chaque objet de frappe dans votre beatmap.  </p><h3>Interface graphique MaiMod  </h3>
+Pour lancer l’interface web MaiMod, vous devrez installer Mapperatorinator.  
+Ensuite, exécutez le script <code>mai_mod_ui.py</code>. Cela démarrera un serveur web local et ouvrira automatiquement l’interface dans une nouvelle fenêtre :</p><pre><code class="language-sh">python mai_mod_ui.py</code></pre></p><p><img width="850" height="1019" alt="afbeelding" src="https://github.com/user-attachments/assets/67c03a43-a7bd-4265-a5b1-5e4d62aca1fa" /></p><h2>Vue d'ensemble</h2></p><h3>Tokenisation</h3></p><p>Mapperatorinator convertit les beatmaps osu! en une représentation intermédiaire d'événements pouvant être directement convertie vers et depuis des tokens.  
+Elle inclut les objets à frapper, les hitsounds, les vitesses des sliders, les nouveaux combos, les points de timing, les temps kiai, et les vitesses de défilement taiko/mania.</p><p>Voici un petit exemple du processus de tokenisation :</p><p><img src="https://github.com/user-attachments/assets/84efde76-4c27-48a1-b8ce-beceddd9e695" alt="mapperatorinator_parser"></p><p>Pour économiser sur la taille du vocabulaire, les événements temporels sont quantifiés à des intervalles de 10 ms et les coordonnées de position sont quantifiées sur une grille de 32 pixels.</p><h3>Architecture du modèle  </h3>
+Le modèle est essentiellement une couche autour du modèle <a href="https://huggingface.co/docs/transformers/en/model_doc/whisper#transformers.WhisperForConditionalGeneration" target="_blank" rel="noopener noreferrer">HF Transformers Whisper</a>, avec des embeddings d'entrée personnalisés et une fonction de perte spécifique.  
+La taille du modèle s'élève à 219 millions de paramètres.  
+Ce modèle s'est avéré plus rapide et plus précis que T5 pour cette tâche.</p><p>Le schéma général des entrées et sorties du modèle est le suivant :</p><p><img src="https://user-images.githubusercontent.com/28675590/201044116-1384ad72-c540-44db-a285-7319dd01caad.svg" alt="Picture2"></p><p>Le modèle utilise des trames de spectrogrammes Mel comme entrée de l'encodeur, avec une trame par position d'entrée. La sortie du décodeur à chaque étape est une distribution softmax sur un vocabulaire discret et prédéfini d'événements. Les sorties sont rares, les événements ne sont nécessaires que lorsqu'un objet à frapper apparaît, au lieu d'annoter chaque trame audio.</p><h3>Format d'entraînement multitâche</h3></p><p><img src="https://github.com/user-attachments/assets/62f490bc-a567-4671-a7ce-dbcc5f9cd6d9" alt="Multitask training format"></p><p>Avant le token SOS, il y a des tokens additionnels qui facilitent la génération conditionnelle. Ces tokens incluent le mode de jeu, la difficulté, l'ID du mappeur, l'année et d'autres métadonnées.  
+Pendant l'entraînement, ces tokens ne sont pas accompagnés d'étiquettes, ils ne sont donc jamais produits par le modèle.  
+Aussi pendant l'entraînement, il y a une chance aléatoire qu'un token de métadonnée soit remplacé par un token 'inconnu', ce qui permet en inférence d'utiliser ces tokens 'inconnus' pour réduire la quantité de métadonnées à fournir au modèle.</p><h3>Génération longue sans couture</h3></p><p>La longueur de contexte du modèle est de 8,192 secondes. Cela ne suffit évidemment pas pour générer une beatmap complète, donc nous devons diviser la chanson en plusieurs fenêtres et générer la beatmap en petites parties.  
+Pour s'assurer que la beatmap générée n'ait pas de jointures visibles entre les fenêtres, nous utilisons un recouvrement de 90 % et générons les fenêtres de manière séquentielle.  
+Chaque fenêtre de génération, sauf la première, commence avec le décodeur pré-rempli jusqu'à 50 % de la fenêtre de génération avec des tokens des fenêtres précédentes.
+Nous utilisons un processeur de logits pour nous assurer que le modèle ne peut pas générer de jetons temporels qui se trouvent dans les 50 % premiers de la fenêtre de génération.  
+De plus, les 40 % derniers de la fenêtre de génération sont réservés pour la fenêtre suivante. Tous les jetons temporels générés dans cette plage sont traités comme des jetons EOS.  
+Cela garantit que chaque jeton généré est conditionné par au moins 4 secondes de jetons précédents et 3,3 secondes d’audio futur à anticiper.  </p><p>Pour éviter la dérive des décalages lors de longues générations, des décalages aléatoires ont été ajoutés aux événements temporels dans le décodeur pendant l’entraînement.  
+Cela l’oblige à corriger les erreurs de synchronisation en écoutant plutôt les attaques dans l’audio, et produit un décalage constamment précis.  </p><h3>Coordonnées affinées avec diffusion  </h3></p><p>Les coordonnées de position générées par le décodeur sont quantifiées sur une grille de 32 pixels, donc par la suite nous utilisons la diffusion pour débruiter les coordonnées jusqu’aux positions finales.  
+Pour cela, nous avons entraîné une version modifiée de <a href="https://github.com/OliBomby/osu-diffusion" target="_blank" rel="noopener noreferrer">osu-diffusion</a> spécialisée uniquement sur les 10 % derniers du programme de bruit, et acceptant les jetons métadonnées plus avancés que Mapperatorinator utilise pour la génération conditionnelle.  </p><p>Puisque le modèle Mapperatorinator produit la SV des sliders, la longueur requise du slider est fixe quel que soit la forme du chemin des points de contrôle.  
+Par conséquent, nous essayons de guider le processus de diffusion pour créer des coordonnées qui correspondent aux longueurs de sliders requises.  
+Nous faisons cela en recalculant les positions finales du slider après chaque étape du processus de diffusion en fonction de la longueur requise et du chemin actuel des points de contrôle.  
+Cela signifie que le processus de diffusion n’a pas de contrôle direct sur les positions finales du slider, mais peut toujours les influencer en modifiant le chemin des points de contrôle.  </p><h3>Post-traitement  </h3></p><p>Mapperatorinator effectue un post-traitement supplémentaire pour améliorer la qualité du beatmap généré :  </p><ul><li>Affiner les coordonnées de position avec la diffusion.  </li>
+<li>Réajuster les événements temporels au tick le plus proche en utilisant les diviseurs de snap générés par le modèle.  </li>
+<li>Ajuster les chevauchements positionnels quasi parfaits.  </li>
+<li>Convertir les événements des colonnes mania en coordonnées X.  </li>
+<li>Générer les chemins des sliders pour les roulements de tambour taiko.  </li>
+<li>Corriger les grandes différences entre la longueur requise du slider et la longueur du chemin des points de contrôle.  </li></p><p></ul><h3>Générateur de super timing  </h3></p><p>Le générateur de super timing est un algorithme qui améliore la précision et l’exactitude du timing généré en inférant le timing de toute la chanson 20 fois et en faisant la moyenne des résultats.  
+Cela est utile pour les chansons avec un BPM variable, ou les chansons avec des changements de BPM. Le résultat est presque parfait, avec seulement parfois une section nécessitant un ajustement manuel.  </p><h2>Entraînement  </h2></p><p>L’instruction ci-dessous crée un environnement d’entraînement sur votre machine locale.  </p><h3>1. Cloner le dépôt  </h3></p><pre><code class="language-sh">git clone https://github.com/OliBomby/Mapperatorinator.git
+cd Mapperatorinator</code></pre></p><h3>2. Créer un jeu de données</h3></p><p>Créez votre propre jeu de données en utilisant l'<a href="https://github.com/mappingtools/Mapperator/blob/master/README.md#create-a-high-quality-dataset" target="_blank" rel="noopener noreferrer">application console Mapperator</a>. Elle nécessite un <a href="https://osu.ppy.sh/home/account/edit" target="_blank" rel="noopener noreferrer">jeton client OAuth osu!</a> pour vérifier les beatmaps et obtenir des métadonnées supplémentaires. Placez le jeu de données dans un répertoire <code>datasets</code> à côté du répertoire <code>Mapperatorinator</code>.</p><pre><code class="language-sh">Mapperator.ConsoleApp.exe dataset2 -t "/Mapperatorinator/datasets/beatmap_descriptors.csv" -i "path/to/osz/files" -o "/datasets/cool_dataset"</code></pre></p><h3>3. (Optionnel) Configuration de Weight & Biases pour la journalisation</h3>
+Créez un compte sur <a href="https://wandb.ai/site" target="_blank" rel="noopener noreferrer">Weight & Biases</a> et obtenez votre clé API depuis les paramètres de votre compte.
+Ensuite, définissez la variable d'environnement <code>WANDB_API_KEY</code>, afin que le processus d'entraînement sache qu'il doit enregistrer avec cette clé.</p><pre><code class="language-sh">export WANDB_API_KEY=<your_api_key></code></pre></p><h3>4. Créer un conteneur docker</h3>
+L'entraînement dans votre venv est également possible, mais nous recommandons d'utiliser Docker sur WSL pour de meilleures performances.
+<pre><code class="language-sh">docker compose up -d --force-recreate
+docker attach mapperatorinator_space
+cd Mapperatorinator</code></pre></p><h3>5. Configurer les paramètres et commencer l'entraînement</h3></p><p>Toutes les configurations se trouvent dans <code>./configs/train/default.yaml</code>.  
+Assurez-vous de définir correctement <code>train_dataset_path</code> et <code>test_dataset_path</code> vers votre jeu de données, ainsi que les indices de début et de fin des ensembles de cartes pour la séparation train/test.  
+Le chemin est local au conteneur Docker, donc si vous avez placé votre jeu de données nommé <code>cool_dataset</code> dans le répertoire <code>datasets</code>, alors ce sera <code>/workspace/datasets/cool_dataset</code>.  </p><p>Je recommande de créer un fichier de configuration personnalisé qui remplace la configuration par défaut, afin de conserver un enregistrement de votre configuration d'entraînement pour la reproductibilité.</p><pre><code class="language-yaml">data:
+  train_dataset_path: "/workspace/datasets/cool_dataset"
+  test_dataset_path: "/workspace/datasets/cool_dataset"
+  train_dataset_start: 0
+  train_dataset_end: 90
+  test_dataset_start: 90
+  test_dataset_end: 100</code></pre></p><p>Begin training by calling <code>python osuT5/train.py</code> or <code>torchrun --nproc_per_node=NUM_GPUS osuT5/train.py</code> for multi-GPU training.</p><pre><code class="language-sh">python osuT5/train.py -cn train_v29 train_dataset_path="/workspace/datasets/cool_dataset" test_dataset_path="/workspace/datasets/cool_dataset" train_dataset_end=90 test_dataset_start=90 test_dataset_end=100</code></pre></p><h3>6. Affinage LoRA</h3></p><p>Vous pouvez également affiner un modèle pré-entraîné avec <a href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener noreferrer">LoRA</a> pour l’adapter à un style ou un mode de jeu spécifique.
+Pour ce faire, adaptez <code>configs/train/lora.yaml</code> à vos besoins et lancez la configuration d’entraînement <code>lora</code> :</p><pre><code class="language-sh">python osuT5/train.py -cn lora train_dataset_path="/workspace/datasets/cool_dataset" test_dataset_path="/workspace/datasets/cool_dataset" train_dataset_end=90 test_dataset_start=90 test_dataset_end=100</code></pre></p><p>Paramètres LoRA importants à considérer :
+<ul><li><code>pretrained_path</code> : Chemin ou dépôt HF du modèle de base à affiner.</li>
+<li><code>r</code> : Rang des matrices LoRA. Des valeurs plus élevées augmentent la capacité du modèle mais aussi la mémoire utilisée.</li>
+<li><code>lora_alpha</code> : Facteur d'échelle pour les mises à jour LoRA.</li>
+<li><code>total_steps</code> : Nombre total d'étapes d'entraînement. Ajustez-le en fonction de la taille de votre jeu de données.</li>
+<li><code>enable_lora</code> : Indique s'il faut utiliser LoRA ou un affinage complet du modèle.</li></p><p></ul>Lors de l'inférence, vous pouvez spécifier les poids LoRA à utiliser avec l'argument <code>lora_path</code>.
+Cela peut être un chemin local ou un dépôt Hugging Face.</p><h2>Voir aussi</h2>
+<ul><li><a href="https://raw.githubusercontent.com/OliBomby/Mapperatorinator/main/./classifier/README.md" target="_blank" rel="noopener noreferrer">Mapper Classifier</a></li>
+<li><a href="https://raw.githubusercontent.com/OliBomby/Mapperatorinator/main/./rcomplexion/README.md" target="_blank" rel="noopener noreferrer">RComplexion</a></li></p><p></ul><h2>Crédits</h2></p><p>Remerciements particuliers à :
+<ul><li>Les auteurs de <a href="https://github.com/gyataro/osuT5" target="_blank" rel="noopener noreferrer">osuT5</a> pour leur code d'entraînement.</li>
+<li>L'équipe Hugging Face pour leurs <a href="https://huggingface.co/docs/transformers/index" target="_blank" rel="noopener noreferrer">outils</a>.</li>
+<li><a href="https://github.com/jaswon" target="_blank" rel="noopener noreferrer">Jason Won</a> et <a href="https://github.com/sedthh" target="_blank" rel="noopener noreferrer">Richard Nagyfi</a> pour l'échange d'idées.</li>
+<li><a href="https://github.com/minetoblend" target="_blank" rel="noopener noreferrer">Marvin</a> pour avoir fait don de crédits d'entraînement.</li>
+<li>La communauté osu! pour les beatmaps.</li></p><p></ul><h2>Travaux associés</h2></p><ul><li><a href="https://github.com/Syps/osu_beatmap_generator" target="_blank" rel="noopener noreferrer">osu! Beatmap Generator</a> par Syps (Nick Sypteras)</li>
+<li><a href="https://github.com/kotritrona/osumapper" target="_blank" rel="noopener noreferrer">osumapper</a> par kotritrona, jyvden, Yoyolick (Ryan Zmuda)</li>
+<li><a href="https://github.com/OliBomby/osu-diffusion" target="_blank" rel="noopener noreferrer">osu-diffusion</a> par OliBomby (Olivier Schipper), NiceAesth (Andrei Baciu)</li>
+<li><a href="https://github.com/gyataro/osuT5" target="_blank" rel="noopener noreferrer">osuT5</a> par gyataro (Xiwen Teoh)</li>
+<li><a href="https://github.com/sedthh/BeatLearning" target="_blank" rel="noopener noreferrer">Beat Learning</a> par sedthh (Richard Nagyfi)</li>
+<li><a href="https://github.com/jaswon/osu-dreamer" target="_blank" rel="noopener noreferrer">osu!dreamer</a> par jaswon (Jason Won)</li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-28
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/OliBomby/Mapperatorinator/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-28 
+    </div>
+    
+</body>
+</html>

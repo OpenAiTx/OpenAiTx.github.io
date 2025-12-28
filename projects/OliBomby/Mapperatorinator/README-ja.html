@@ -1,0 +1,436 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapperatorinator - スペクトログラム入力から全ゲームモードのosu!ビートマップを生成・改造するためのAIフレームワーク。</title>
+    <meta name="description" content="スペクトログラム入力から全ゲームモードのosu!ビートマップを生成・改造するためのAIフレームワーク。">
+    <meta name="keywords" content="Mapperatorinator, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Mapperatorinator",
+  "description": "スペクトログラム入力から全ゲームモードのosu!ビートマップを生成・改造するためのAIフレームワーク。",
+  "author": {
+    "@type": "Person",
+    "name": "OliBomby"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 381
+  },
+  "url": "https://OpenAiTx.github.io/projects/OliBomby/Mapperatorinator/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/OliBomby/Mapperatorinator/main/README.md",
+  "datePublished": "2025-12-28",
+  "dateModified": "2025-12-28"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/OliBomby/Mapperatorinator" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Mapperatorinator
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 381 stars</span>
+                <span class="language">Japanese</span>
+                <span>by OliBomby</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Mapperatorinator</h1></p><p>ジェネレーティブモデルを<a href="https://colab.research.google.com/github/OliBomby/Mapperatorinator/blob/main/colab/mapperatorinator_inference.ipynb" target="_blank" rel="noopener noreferrer">こちら</a>で、またはMaiModを<a href="https://colab.research.google.com/github/OliBomby/Mapperatorinator/blob/main/colab/mai_mod_inference.ipynb" target="_blank" rel="noopener noreferrer">こちら</a>で試せます。動画デモは<a href="https://youtu.be/FEr7t1L2EoA" target="_blank" rel="noopener noreferrer">こちら</a>をご覧ください。</p><p>Mapperatorinatorはスペクトログラム入力を使用して、全ゲームモード向けの完全な機能を備えたosu!ビートマップを生成し、<a href="#maimod-the-ai-driven-modding-tool" target="_blank" rel="noopener noreferrer">アシストモッディングビートマップ</a>を行うマルチモデルフレームワークです。  
+このプロジェクトの目標は、任意の楽曲から高いカスタマイズ性を持つランク可能な品質のosu!ビートマップを自動生成することです。</p><p>このプロジェクトは<a href="https://github.com/gyataro/osuT5" target="_blank" rel="noopener noreferrer">osuT5</a>と<a href="https://github.com/OliBomby/osu-diffusion" target="_blank" rel="noopener noreferrer">osu-diffusion</a>をベースにしています。開発には、私の4060 Tiとvast.aiでレンタルした4090インスタンスを用いて、142回の実行で約2500時間のGPU計算を費やしました。</p><p>#### このツールは責任を持って使用してください。ビートマップにAIの使用を必ず明示してください。</p><h2>インストール</h2></p><p>以下の手順でローカルマシンでビートマップを生成できます。代わりに<a href="https://colab.research.google.com/github/OliBomby/Mapperatorinator/blob/main/colab/mapperatorinator_inference.ipynb" target="_blank" rel="noopener noreferrer">Colabノートブック</a>でクラウド上で実行することも可能です。</p><h3>1. リポジトリをクローンする</h3></p><pre><code class="language-sh">git clone https://github.com/OliBomby/Mapperatorinator.git
+cd Mapperatorinator</code></pre></p><h3>2. （オプション）仮想環境の作成</h3></p><p>Python 3.10を使用してください。以降のバージョンは依存関係と互換性がない可能性があります。</p><pre><code class="language-sh">python -m venv .venv</p><h1>In cmd.exe</h1>
+.venv\Scripts\activate.bat
+<h1>In PowerShell</h1>
+.venv\Scripts\Activate.ps1
+<h1>In Linux or MacOS</h1>
+source .venv/bin/activate</code></pre></p><h3>3. 依存関係のインストール</h3></p><ul><li>Python 3.10</li>
+<li><a href="https://git-scm.com/downloads" target="_blank" rel="noopener noreferrer">Git</a></li>
+<li><a href="http://www.ffmpeg.org/" target="_blank" rel="noopener noreferrer">ffmpeg</a></li>
+<li><a href="https://developer.nvidia.com/cuda-zone" target="_blank" rel="noopener noreferrer">CUDA</a>（NVIDIA GPU用）または<a href="https://rocmdocs.amd.com/en/latest/Installation_Guide/Installation-Guide.html" target="_blank" rel="noopener noreferrer">ROCm</a>（Linux上のAMD GPU用）</li>
+<li><a href="https://pytorch.org/get-started/locally/" target="_blank" rel="noopener noreferrer">PyTorch</a>：GPUサポート付きで<code>torch</code>と<code>torchaudio</code>をインストールするために、Get Startedガイドに従ってください。前のステップでインストールしたCompute Platformのバージョンを正しく選択してください。</li></p><p><li>そして残りのPython依存関係：</li></p><p></ul><pre><code class="language-sh">pip install -r requirements.txt</code></pre></p><h2>Web GUI（推奨）</h2></p><p>よりユーザーフレンドリーな体験のために、Web UIの使用を検討してください。生成パラメータの設定、プロセスの開始、出力の監視を行うグラフィカルインターフェースを提供します。</p><h3>GUIの起動</h3></p><p>ターミナルでクローンした <code>Mapperatorinator</code> ディレクトリに移動し、以下を実行します：</p><pre><code class="language-sh">python web-ui.py</code></pre></p><p>これはローカルのウェブサーバーを起動し、新しいウィンドウでUIを自動的に開きます。</p><h3>GUIの使用方法</h3></p><ul><li><strong>設定:</strong> 入力/出力パスをフォームフィールドと「参照」ボタンで設定します。コマンドラインオプションに対応したゲームモード、難易度、スタイル（年、マッパーID、記述子）、タイミング、特定機能（ヒットサウンド、スーパータイミング）など生成パラメータを調整します。（注：<code>beatmap_path</code>を指定すると、UIは自動的に<code>audio_path</code>と<code>output_path</code>を推測するため、これらのフィールドは空欄で構いません）</li>
+<li><strong>開始:</strong> 「推論開始」ボタンをクリックしてビートマップ生成を開始します。</li>
+<li><strong>キャンセル:</strong> 「推論キャンセル」ボタンで進行中の処理を停止できます。</li>
+<li><strong>出力を開く:</strong> 完了後、「出力フォルダを開く」ボタンで生成ファイルにすばやくアクセスできます。</li></p><p></ul>Web UIは<code>inference.py</code>スクリプトの便利なラッパーとして機能します。高度なオプションやトラブルシューティングにはコマンドラインの説明を参照してください。</p><p><img src="https://github.com/user-attachments/assets/5312a45f-d51c-4b37-9389-da3258ddd0a1" alt="python_u3zyW0S3Vs"></p><h2>コマンドライン推論</h2></p><p>コマンドラインを好むユーザーや高度な設定が必要な場合は、以下の手順に従ってください。<strong>注：より簡単なグラフィカルインターフェースについては、上記の<a href="#web-ui-recommended" target="_blank" rel="noopener noreferrer">Web UI（推奨）</a>セクションを参照してください。</strong></p><p><code>inference.py</code>を実行し、引数を渡してビートマップを生成します。この際<a href="https://hydra.cc/docs/advanced/override_grammar/basic/" target="_blank" rel="noopener noreferrer">Hydraオーバーライド構文</a>を使用してください。利用可能なパラメータは<code>configs/inference_v29.yaml</code>をご覧ください。
+<pre><code class="language-">python inference.py \
+  audio_path           [Path to input audio] \
+  output_path          [Path to output directory] \
+  beatmap_path         [Path to .osu file to autofill metadata, and output_path, or use as reference] \
+  
+  gamemode             [Game mode to generate 0=std, 1=taiko, 2=ctb, 3=mania] \
+  difficulty           [Difficulty star rating to generate] \
+  mapper_id            [Mapper user ID for style] \
+  year                 [Upload year to simulate] \
+  hitsounded           [Whether to add hitsounds] \
+  slider_multiplier    [Slider velocity multiplier] \
+  circle_size          [Circle size] \
+  keycount             [Key count for mania] \
+  hold_note_ratio      [Hold note ratio for mania 0-1] \
+  scroll_speed_ratio   [Scroll speed ratio for mania and ctb 0-1] \
+  descriptors          [List of beatmap user tags for style] \
+  negative_descriptors [List of beatmap user tags for classifier-free guidance] \
+  
+  add_to_beatmap       [Whether to add generated content to the reference beatmap instead of making a new beatmap] \
+  start_time           [Generation start time in milliseconds] \
+  end_time             [Generation end time in milliseconds] \
+  in_context           [List of additional context to provide to the model [NONE,TIMING,KIAI,MAP,GD,NO_HS]] \
+  output_type          [List of content types to generate] \
+  cfg_scale            [Scale of the classifier-free guidance] \
+  super_timing         [Whether to use slow accurate variable BPM timing generator] \
+  seed                 [Random seed for generation] \</code></pre>
+例：</p><pre><code class="language-">python inference.py beatmap_path="'C:\Users\USER\AppData\Local\osu!\Songs\1 Kenji Ninuma - DISCO PRINCE\Kenji Ninuma - DISCOPRINCE (peppy) [Normal].osu'" gamemode=0 difficulty=5.5 year=2023 descriptors="['jump aim','clean']" in_context=[TIMING,KIAI]</code></pre></p><h2>インタラクティブCLI</h2>
+ターミナルベースのワークフローを好みつつ、ガイド付きのセットアップを望む方には、インタラクティブCLIスクリプトがWeb UIの優れた代替手段です。</p><h3>CLIを起動する</h3>
+クローンしたディレクトリに移動します。最初にスクリプトを実行可能にする必要があるかもしれません。</p><pre><code class="language-sh"># Make the script executable (only needs to be done once)
+chmod +x cli_inference.sh</code></pre></p><pre><code class="language-sh"># Run the script
+./cli_inference.sh</code></pre></p><h3>CLIの使用方法</h3>
+スクリプトは、Web UIと同様にすべての生成パラメータを設定するための一連のプロンプトを案内します。</p><p>わかりやすさのために色分けされたインターフェースを使用します。
+矢印キーとスペースバーを使ってスタイル記述子を選択する高度なマルチセレクトメニューを提供します。
+すべての質問に答えると、最終的なコマンドを表示して確認できます。
+その後、直接実行を確認するか、キャンセルして手動で使用するためにコマンドをコピーできます。</p><h2>生成のヒント</h2></p><ul><li><code>configs/inference_v29.yaml</code>を編集して、毎回ターミナルで入力する代わりに引数を追加できます。</li>
+<li>利用可能なすべての記述子は<a href="https://osu.ppy.sh/wiki/en/Beatmap/Beatmap_tags" target="_blank" rel="noopener noreferrer">こちら</a>で確認できます。</li>
+<li>2007年から2023年までの年引数を必ず指定してください。不明のままだとモデルが一貫しないスタイルで生成する可能性があります。</li>
+<li>難易度引数も必ず指定してください。不明のままだとモデルが一貫しない難易度で生成する可能性があります。</li>
+<li><code>cfg_scale</code>パラメータを上げると、<code>mapper_id</code>や<code>descriptors</code>引数の効果が高まります。</li>
+<li><code>negative_descriptors</code>引数を使うと、特定のスタイルからモデルを遠ざけることができます。これは<code>cfg_scale > 1</code>の場合のみ有効です。ネガティブ記述子の数は記述子の数と同じにしてください。</li>
+<li>曲のスタイルと希望するビートマップのスタイルが合わない場合、モデルが指示に従わないことがあります。例えば、落ち着いた曲で高SRかつ高SVのビートマップを生成するのは難しいです。</li>
+<li>曲のタイミングと気合い時間が既にできている場合、モデルの推論速度と精度を大幅に向上させるためにこれをモデルに渡せます：<code>beatmap_path</code>と<code>in_context=[TIMING,KIAI]</code>引数を使用してください。</li>
+<li>ビートマップの一部だけをリマップするには、<code>beatmap_path</code>、<code>start_time</code>、<code>end_time</code>、および<code>add_to_beatmap=true</code>引数を使用してください。</li>
+<li>ゲスト難易度を生成するには、<code>beatmap_path</code>と<code>in_context=[GD,TIMING,KIAI]</code>引数を使用してください。</li>
+<li>ヒットサウンドを生成するには、<code>beatmap_path</code>と<code>in_context=[NO_HS,TIMING,KIAI]</code>引数を使用してください。</li>
+<li>曲のタイミングのみを生成するには、<code>super_timing=true</code>と<code>output_type=[TIMING]</code>引数を使用してください。</li></p><p></ul><h2>MaiMod：AI駆動のモッディングツール</h2></p><p>MaiModは、Mapperatorinatorの予測を使用して、<a href="https://github.com/Naxesss/MapsetVerifier" target="_blank" rel="noopener noreferrer">Mapset Verifier</a>のような他の自動モッディングツールでは検出できない潜在的な欠陥や不整合を見つけるosu!ビートマップ用のモッディングツールです。
+検出可能な問題例：
+<ul><li>不適切なスナップやリズムパターン</li>
+<li>不正確なタイミングポイント</li>
+<li>不整合なヒットオブジェクトの位置や新しいコンボ配置</li>
+<li>奇妙なスライダー形状</li>
+<li>不整合なヒットサウンドや音量</li></p><p></ul>MaiModは<a href="https://colab.research.google.com/github/OliBomby/Mapperatorinator/blob/main/colab/mai_mod_inference.ipynb" target="_blank" rel="noopener noreferrer">こちら</a>で試すことができ、ローカルで実行することも可能です：
+ローカルでMaiModを実行するには、Mapperatorinatorをインストールしてください。その後、<code>mai_mod.py</code>スクリプトを実行し、<code>beatmap_path</code>引数でビートマップのパスを指定します。
+<pre><code class="language-sh">python mai_mod.py beatmap_path="'C:\Users\USER\AppData\Local\osu!\Songs\1 Kenji Ninuma - DISCO PRINCE\Kenji Ninuma - DISCOPRINCE (peppy) [Normal].osu'"</code></pre>
+これはモッディングの提案をコンソールに出力し、その後手動でビートマップに適用できるようにします。  
+提案は時系列で並べられ、カテゴリごとにグループ化されています。  
+円の最初の値は「サプライズ度」を示しており、これはモデルが問題をどれだけ予想外と判断したかの指標で、重要な問題を優先的に処理できます。  </p><p>モデルは特にサプライズ度が低い問題については誤りを犯すことがあるため、ビートマップに適用する前に必ず提案を再確認してください。  
+主な目的は、潜在的な問題の探索範囲を絞り込む手助けをすることで、ビートマップ内のすべてのヒットオブジェクトを手動で確認する必要を減らすことにあります。  </p><h3>MaiMod GUI  </h3>
+MaiMod Web UIを実行するには、Mapperatorinatorをインストールする必要があります。  
+次に、<code>mai_mod_ui.py</code>スクリプトを実行します。これによりローカルのウェブサーバーが起動し、新しいウィンドウでUIが自動的に開きます：</p><pre><code class="language-sh">python mai_mod_ui.py</code></pre>
+<img width="850" height="1019" alt="afbeelding" src="https://github.com/user-attachments/assets/67c03a43-a7bd-4265-a5b1-5e4d62aca1fa" /></p><h2>概要</h2></p><h3>トークン化</h3></p><p>Mapperatorinatorはosu!のビートマップを、中間のイベント表現に変換します。これにより、直接トークンに変換したり、トークンから復元したりできます。
+この表現にはヒットオブジェクト、ヒットサウンド、スライダー速度、新しいコンボ、タイミングポイント、キアイタイム、太鼓/マニアのスクロール速度が含まれます。</p><p>トークン化プロセスの簡単な例を示します：</p><p><img src="https://github.com/user-attachments/assets/84efde76-4c27-48a1-b8ce-beceddd9e695" alt="mapperatorinator_parser"></p><p>語彙サイズを節約するために、時間イベントは10ms間隔に量子化され、位置座標は32ピクセルのグリッドポイントに量子化されます。</p><h3>モデルアーキテクチャ</h3>
+このモデルは基本的に<a href="https://huggingface.co/docs/transformers/en/model_doc/whisper#transformers.WhisperForConditionalGeneration" target="_blank" rel="noopener noreferrer">HF Transformers Whisper</a>モデルのラッパーであり、カスタムの入力埋め込みと損失関数を備えています。
+モデルのサイズは2億1900万パラメータに相当します。
+このモデルはこのタスクにおいて、T5よりも高速かつ高精度であることが判明しました。</p><p>モデルの入出力の大まかな概要は次のとおりです：</p><p><img src="https://user-images.githubusercontent.com/28675590/201044116-1384ad72-c540-44db-a285-7319dd01caad.svg" alt="Picture2"></p><p>モデルはエンコーダの入力としてメルスペクトログラムのフレームを使用し、1フレームが1入力位置に対応します。デコーダの出力は各ステップで事前定義された離散的なイベント語彙に対するソフトマックス分布です。出力は疎で、ヒットオブジェクトが発生したときのみイベントが必要であり、全てのオーディオフレームに注釈を付ける必要はありません。</p><h3>マルチタスク学習フォーマット</h3></p><p><img src="https://github.com/user-attachments/assets/62f490bc-a567-4671-a7ce-dbcc5f9cd6d9" alt="Multitask training format"></p><p>SOSトークンの前には条件付き生成を促進する追加トークンがあります。これらのトークンにはゲームモード、難易度、マッパーID、年、その他のメタデータが含まれます。
+学習時にはこれらのトークンには対応するラベルがないため、モデルはこれらを出力しません。
+また、学習中にはランダムにメタデータトークンが「不明」トークンに置き換えられることがあり、推論時にはこの「不明」トークンを使ってモデルに与えるメタデータの量を減らせます。</p><h3>シームレスな長時間生成</h3></p><p>モデルのコンテキスト長は8.192秒です。これは完全なビートマップを生成するには明らかに不十分なので、曲を複数のウィンドウに分割し、小さな部分ごとにビートマップを生成します。
+生成されたビートマップがウィンドウ間で目立つ継ぎ目を持たないように、90%の重複を使い、ウィンドウを順次生成します。
+最初のウィンドウを除き、各生成ウィンドウは前のウィンドウからのトークンで生成ウィンドウの最大50%までデコーダが事前に埋められた状態で始まります。</p><p>生成ウィンドウの最初の50%にある時間トークンをモデルが生成できないようにするために、ロジットプロセッサを使用しています。  
+さらに、生成ウィンドウの最後の40%は次のウィンドウのために予約されています。その範囲内で生成された時間トークンはEOSトークンとして扱われます。  
+これにより、各生成トークンは少なくとも4秒の前のトークンと3.3秒の将来のオーディオを条件として生成されることが保証されます。  </p><p>長時間の生成中のオフセットのずれを防ぐために、トレーニング中のデコーダの時間イベントにランダムなオフセットが追加されています。  
+これにより、タイミングエラーをオーディオのオンセットを聞くことで修正するよう強制され、一貫して正確なオフセットが得られます。  </p><h3>拡散による座標の洗練  </h3></p><p>デコーダによって生成された位置座標は32ピクセルのグリッドポイントに量子化されるため、その後に拡散を用いて座標を最終位置にデノイズします。  
+これには、ノイズスケジュールの最後の10%のみに特化し、Mapperatorinatorが条件付き生成のために使用するより高度なメタデータトークンを受け入れる改良版の<a href="https://github.com/OliBomby/osu-diffusion" target="_blank" rel="noopener noreferrer">osu-diffusion</a>をトレーニングしました。  </p><p>MapperatorinatorモデルはスライダーのSVを出力するため、コントロールポイント経路の形状に関係なく必要なスライダーの長さは固定されます。  
+したがって、拡散プロセスをガイドして必要なスライダー長に合う座標を作成するようにしています。  
+これは拡散プロセスの各ステップ後に、必要な長さと現在のコントロールポイント経路に基づいてスライダーの終端位置を再計算することで実現しています。  
+つまり、拡散プロセスはスライダーの終端位置を直接制御できませんが、コントロールポイント経路を変更することで影響を与えることができます。  </p><h3>ポストプロセッシング  </h3></p><p>Mapperatorinatorは生成されたビートマップの品質を向上させるためにいくつかの追加のポストプロセッシングを行います：  </p><ul><li>拡散による位置座標の洗練。  </li>
+<li>モデルが生成したスナップ除数を使用して時間イベントを最も近いティックにリスナップ。  </li>
+<li>ほぼ完璧な位置の重なりをスナップ。  </li>
+<li>maniaのカラムイベントをX座標に変換。  </li>
+<li>太鼓の連打用スライダーパスの生成。  </li>
+<li>必要なスライダー長とコントロールポイント経路長の大きな不一致の修正。  </li></p><p></ul><h3>スーパータイミングジェネレーター  </h3></p><p>スーパータイミングジェネレーターは、曲全体のタイミングを20回推論し結果を平均化することで、生成されたタイミングの精度と正確さを向上させるアルゴリズムです。  
+これは可変BPMの曲やBPM変更のある曲に有効で、結果はほぼ完璧で、時折手動調整が必要なセクションがある程度です。  </p><h2>トレーニング  </h2></p><p>以下の手順はローカルマシン上にトレーニング環境を作成します。  </p><h3>1. リポジトリをクローンする  </h3></p><pre><code class="language-sh">git clone https://github.com/OliBomby/Mapperatorinator.git
+cd Mapperatorinator</code></pre></p><h3>2. データセットの作成</h3></p><p><a href="https://github.com/mappingtools/Mapperator/blob/master/README.md#create-a-high-quality-dataset" target="_blank" rel="noopener noreferrer">Mapperatorコンソールアプリ</a>を使って独自のデータセットを作成してください。ビートマップの検証と追加メタデータの取得には、<a href="https://osu.ppy.sh/home/account/edit" target="_blank" rel="noopener noreferrer">osu! OAuthクライアントトークン</a>が必要です。データセットは<code>Mapperatorinator</code>ディレクトリの隣にある<code>datasets</code>ディレクトリに配置してください。</p><pre><code class="language-sh">Mapperator.ConsoleApp.exe dataset2 -t "/Mapperatorinator/datasets/beatmap_descriptors.csv" -i "path/to/osz/files" -o "/datasets/cool_dataset"</code></pre></p><h3>3. （オプション）Weight & Biases のセットアップとログ記録</h3>
+<a href="https://wandb.ai/site" target="_blank" rel="noopener noreferrer">Weight & Biases</a> にアカウントを作成し、アカウント設定からAPIキーを取得します。
+次に、<code>WANDB_API_KEY</code> 環境変数を設定して、トレーニングプロセスがこのキーにログを記録するようにします。</p><pre><code class="language-sh">export WANDB_API_KEY=<your_api_key></code></pre></p><h3>4. Dockerコンテナの作成</h3>
+venv内でのトレーニングも可能ですが、パフォーマンス向上のためにWSL上のDocker使用を推奨します。
+<pre><code class="language-sh">docker compose up -d --force-recreate
+docker attach mapperatorinator_space
+cd Mapperatorinator</code></pre></p><h3>5. パラメータの設定とトレーニング開始</h3></p><p>すべての設定は <code>./configs/train/default.yaml</code> にあります。  
+<code>train_dataset_path</code> と <code>test_dataset_path</code> をデータセットに合わせて正しく設定し、トレイン/テスト分割の開始および終了のマップセットインデックスも設定してください。  
+パスはDockerコンテナ内のローカルパスなので、例えば <code>cool_dataset</code> というデータセットを <code>datasets</code> ディレクトリに置いた場合、パスは <code>/workspace/datasets/cool_dataset</code> となります。  </p><p>再現性のために、デフォルト設定を上書きするカスタム設定ファイルを作成することをお勧めします。</p><pre><code class="language-yaml">data:
+  train_dataset_path: "/workspace/datasets/cool_dataset"
+  test_dataset_path: "/workspace/datasets/cool_dataset"
+  train_dataset_start: 0
+  train_dataset_end: 90
+  test_dataset_start: 90
+  test_dataset_end: 100</code></pre></p><p>Begin training by calling <code>python osuT5/train.py</code> or <code>torchrun --nproc_per_node=NUM_GPUS osuT5/train.py</code> for multi-GPU training.</p><pre><code class="language-sh">python osuT5/train.py -cn train_v29 train_dataset_path="/workspace/datasets/cool_dataset" test_dataset_path="/workspace/datasets/cool_dataset" train_dataset_end=90 test_dataset_start=90 test_dataset_end=100</code></pre></p><h3>6. LoRAファインチューニング</h3></p><p>事前学習済みモデルを<a href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener noreferrer">LoRA</a>でファインチューニングし、特定のスタイルやゲームモードに適応させることもできます。  
+これを行うには、<code>configs/train/lora.yaml</code>をニーズに合わせて調整し、<code>lora</code>トレーニング設定を実行してください：  </p><pre><code class="language-sh">python osuT5/train.py -cn lora train_dataset_path="/workspace/datasets/cool_dataset" test_dataset_path="/workspace/datasets/cool_dataset" train_dataset_end=90 test_dataset_start=90 test_dataset_end=100</code></pre>
+重要なLoRAパラメータ:
+<ul><li><code>pretrained_path</code>: ファインチューニングするベースモデルのパスまたはHFリポジトリ。</li>
+<li><code>r</code>: LoRA行列のランク。値が大きいほどモデルの容量は増えるが、メモリ使用量も増加。</li>
+<li><code>lora_alpha</code>: LoRAアップデートのスケーリングファクター。</li>
+<li><code>total_steps</code>: トレーニングの総ステップ数。データセットのサイズに応じて調整。</li>
+<li><code>enable_lora</code>: LoRAを使用するか、フルモデルのファインチューニングを行うか。</li></p><p></ul>推論時には、<code>lora_path</code>引数で使用するLoRA重みを指定可能。
+これはローカルパスかHugging Faceリポジトリのいずれか。</p><h2>関連資料</h2>
+<ul><li><a href="https://raw.githubusercontent.com/OliBomby/Mapperatorinator/main/./classifier/README.md" target="_blank" rel="noopener noreferrer">Mapper Classifier</a></li>
+<li><a href="https://raw.githubusercontent.com/OliBomby/Mapperatorinator/main/./rcomplexion/README.md" target="_blank" rel="noopener noreferrer">RComplexion</a></li></p><p></ul><h2>クレジット</h2></p><p>特別な感謝:
+<ul><li><a href="https://github.com/gyataro/osuT5" target="_blank" rel="noopener noreferrer">osuT5</a> の作者のトレーニングコード。</li>
+<li>Hugging Faceチームの<a href="https://huggingface.co/docs/transformers/index" target="_blank" rel="noopener noreferrer">ツール</a>。</li>
+<li>アイデア交換に協力してくれた<a href="https://github.com/jaswon" target="_blank" rel="noopener noreferrer">Jason Won</a>と<a href="https://github.com/sedthh" target="_blank" rel="noopener noreferrer">Richard Nagyfi</a>。</li>
+<li>トレーニングクレジットを寄付してくれた<a href="https://github.com/minetoblend" target="_blank" rel="noopener noreferrer">Marvin</a>。</li>
+<li>ビートマップを提供してくれたosu!コミュニティ。</li></p><p></ul><h2>関連作品</h2></p><ul><li>Syps (Nick Sypteras)による<a href="https://github.com/Syps/osu_beatmap_generator" target="_blank" rel="noopener noreferrer">osu! Beatmap Generator</a></li>
+<li>kotritrona, jyvden, Yoyolick (Ryan Zmuda)による<a href="https://github.com/kotritrona/osumapper" target="_blank" rel="noopener noreferrer">osumapper</a></li>
+<li>OliBomby (Olivier Schipper), NiceAesth (Andrei Baciu)による<a href="https://github.com/OliBomby/osu-diffusion" target="_blank" rel="noopener noreferrer">osu-diffusion</a></li>
+<li>gyataro (Xiwen Teoh)による<a href="https://github.com/gyataro/osuT5" target="_blank" rel="noopener noreferrer">osuT5</a></li>
+<li>sedthh (Richard Nagyfi)による<a href="https://github.com/sedthh/BeatLearning" target="_blank" rel="noopener noreferrer">Beat Learning</a></li>
+<li>jaswon (Jason Won)による<a href="https://github.com/jaswon/osu-dreamer" target="_blank" rel="noopener noreferrer">osu!dreamer</a></li></p><p>
+
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-28
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/OliBomby/Mapperatorinator/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-28 
+    </div>
+    
+</body>
+</html>

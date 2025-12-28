@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index-tts-lora - Synth&#232;se vocale de haute qualit&#233; avec un ajustement fin LoRA sur index-tts, am&#233;liorant la prosodie et le naturel pour des voix mono et multi-locuteurs.</title>
-    <meta name="description" content="Synth&#232;se vocale de haute qualit&#233; avec un ajustement fin LoRA sur index-tts, am&#233;liorant la prosodie et le naturel pour des voix mono et multi-locuteurs.">
+    <title>index-tts-lora - Synth&#232;se vocale de haute qualit&#233; avec ajustement LoRA sur index-tts, am&#233;liorant la prosodie et le naturel pour des voix mono et multi-locuteurs.</title>
+    <meta name="description" content="Synth&#232;se vocale de haute qualit&#233; avec ajustement LoRA sur index-tts, am&#233;liorant la prosodie et le naturel pour des voix mono et multi-locuteurs.">
     <meta name="keywords" content="index-tts-lora, French, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "index-tts-lora",
-  "description": "Synthèse vocale de haute qualité avec un ajustement fin LoRA sur index-tts, améliorant la prosodie et le naturel pour des voix mono et multi-locuteurs.",
+  "description": "Synthèse vocale de haute qualité avec ajustement LoRA sur index-tts, améliorant la prosodie et le naturel pour des voix mono et multi-locuteurs.",
   "author": {
     "@type": "Person",
     "name": "asr-pub"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 272
+    "ratingCount": 276
   },
   "url": "https://OpenAiTx.github.io/projects/asr-pub/index-tts-lora/README-fr.html",
   "sameAs": "https://raw.githubusercontent.com/asr-pub/index-tts-lora/main/README.md",
-  "datePublished": "2025-12-16",
-  "dateModified": "2025-12-16"
+  "datePublished": "2025-12-28",
+  "dateModified": "2025-12-28"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 272 stars</span>
+                <span class="stars">⭐ 276 stars</span>
                 <span class="language">French</span>
                 <span>by asr-pub</span>
             </div>
@@ -311,8 +311,7 @@
         | <a href="https://openaitx.github.io/view.html?user=asr-pub&project=index-tts-lora&lang=as">অসমীয়া</
       </div>
     </div>
-  </details>
-</div></p><h1>index-tts-lora</h1></p><p><a href="https://github.com/asr-pub/index-tts-lora/blob/main/README_zh.md" target="_blank" rel="noopener noreferrer">Version chinoise</a> | <a href="https://github.com/asr-pub/index-tts-lora/blob/main/README.md" target="_blank" rel="noopener noreferrer">Version anglaise</a></p><p>Ce projet est basé sur <a href="https://github.com/index-tts/index-tts" target="_blank" rel="noopener noreferrer">index-tts</a> de Bilibili, fournissant des solutions de <strong>finetuning LoRA</strong> pour des configurations <strong>mono-locuteur et multi-locuteurs</strong>. Il vise à améliorer la <strong>prosodie et le naturel</strong> dans la synthèse audio de locuteurs de haute qualité.</p><h3>Entraînement & Inférence</h3></p><p>#### 1. Extraction du jeton audio et de la condition du locuteur</p><pre><code class="language-shell"># Extract tokens and speaker conditions
+  </details></p><p></div></p><h1>index-tts-lora</h1></p><p><a href="https://github.com/asr-pub/index-tts-lora/blob/main/README_zh.md" target="_blank" rel="noopener noreferrer">Version chinoise</a> | <a href="https://github.com/asr-pub/index-tts-lora/blob/main/README.md" target="_blank" rel="noopener noreferrer">Version anglaise</a></p><p>Ce projet est basé sur <a href="https://github.com/index-tts/index-tts" target="_blank" rel="noopener noreferrer">index-tts</a> de Bilibili, proposant des solutions de <strong>fine-tuning LoRA</strong> pour les configurations <strong>mono-locuteur et multi-locuteurs</strong>. Il vise à améliorer la <strong>prosodie et le naturel</strong> dans la synthèse audio de voix de haute qualité.</p><h3>Entraînement & Inférence</h3></p><p>#### 1. Extraction du jeton audio et de la condition du locuteur</p><pre><code class="language-shell"># Extract tokens and speaker conditions
 python tools/extract_codec.py --audio_list ${audio_list} --extract_condition</p><h1>audio_list format: audio_path + transcript, separated by \t</h1>
 /path/to/audio.wav 小朋友们，大家好，我是凯叔，今天我们讲一个龟兔赛跑的故事。</code></pre>
 Après extraction, les fichiers traités et <code>speaker_info.json</code> seront générés dans le répertoire <code>finetune_data/processed_data/</code>. Par exemple :</p><pre><code class="language-json">[
@@ -327,9 +326,9 @@ Après extraction, les fichiers traités et <code>speaker_info.json</code> seron
         "valid_jsonl": "/path/to/kaishu_30min/metadata_valid.jsonl",
         "medoid_condition": "/path/to/kaishu_30min/medoid_condition.npy"
     }
-]</code></pre></p><p>#### 2. Entraînement</p><pre><code class="language-shell">python train.py</code></pre></p><p>#### 3. Inférence</p><pre><code class="language-shell">python indextts/infer.py</code></pre></p><h3>Résultats du fine-tuning</h3></p><p>Cette expérience utilise des <strong>données audio chinoises</strong> de <em>Kai Shu Tells Stories</em>, avec une durée totale de <strong>\~30 minutes</strong> et <strong>270 extraits audio</strong>.  
-Le jeu de données est divisé en <strong>244 échantillons d'entraînement</strong> et <strong>26 échantillons de validation</strong>.  
-Remarque : Les transcriptions ont été générées automatiquement via des modèles ASR et de ponctuation, sans correction manuelle, donc certaines erreurs sont attendues.</p><p>Exemple d’échantillon d’entraînement, <code>他上了马车，来到了皇宫之中。</code> : <a href="https://github.com/user-attachments/files/22354621/kaishu_train_01.wav" target="_blank" rel="noopener noreferrer">kaishu_train_01.wav</a></p><p>
+]</code></pre></p><p>#### 2. Entraînement</p><pre><code class="language-shell">python train.py</code></pre></p><p>#### 3. Inférence</p><pre><code class="language-shell">python indextts/infer.py</code></pre></p><h3>Résultats de l’ajustement fin</h3></p><p>Cette expérience utilise des <strong>données audio chinoises</strong> provenant de <em>Kai Shu Tells Stories</em>, d’une durée totale de <strong>\~30 minutes</strong> et <strong>270 extraits audio</strong>.
+Le jeu de données est divisé en <strong>244 échantillons d’entraînement</strong> et <strong>26 échantillons de validation</strong>.
+Remarque : Les transcriptions ont été générées automatiquement via des modèles de reconnaissance vocale et de ponctuation, sans correction manuelle, donc des erreurs sont à prévoir.</p><p>Exemple d’échantillon d’entraînement, <code>他上了马车，来到了皇宫之中。</code> : <a href="https://github.com/user-attachments/files/22354621/kaishu_train_01.wav" target="_blank" rel="noopener noreferrer">kaishu_train_01.wav</a></p><p>
 #### 1. Exemples de synthèse vocale</p><p>
 | Texte                                                        | Audio                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -338,13 +337,12 @@ Remarque : Les transcriptions ont été générées automatiquement via des mod�
 | 那么Java里面中级还要学，M以及到外部前端的应用系统开发，要学到Java Script的数据库，要学做动态的网站。 | <a href="https://github.com/user-attachments/files/22354654/kaishu_cn_en_mix_1.wav" target="_blank" rel="noopener noreferrer">kaishu_cn_en_mix_1.wav</a> |
 | 这份 financial report 详细分析了公司在过去一个季度的 revenue performance 和 expenditure trends。 | <a href="https://github.com/user-attachments/files/22354656/kaishu_cn_en_mix_2.wav" target="_blank" rel="noopener noreferrer">kaishu_cn_en_mix_2.wav</a> |
 | 上山下山上一山，下一山，跑了三里三米三，登了一座大高山，山高海拔三百三。上了山，大声喊：我比山高三尺三。 | <a href="https://github.com/user-attachments/files/22354658/kaishu_raokouling.wav" target="_blank" rel="noopener noreferrer">kaishu_raokouling.wav</a> |
-| Un homme mince est allongé sur le bord de la rue avec sa chemise et une chaussure enlevées et des sacs à proximité. | <a href="https://github.com/user-attachments/files/22354659/kaishu_en_1.wav" target="_blank" rel="noopener noreferrer">kaishu_en_1.wav</a> |
-| Au fur et à mesure des recherches, l’effet protecteur du fluorure contre la carie dentaire a été démontré. | <a href="https://github.com/user-attachments/files/22354661/kaishu_en_2.wav" target="_blank" rel="noopener noreferrer">kaishu_en_2.wav</a> |</p><p>#### 2. Évaluation du modèle
-Pour les détails de l’ensemble d’évaluation, voir : <a href="https://mp.weixin.qq.com/s/5z_aRKQG3OIv7fnSdxegqQ" target="_blank" rel="noopener noreferrer">Benchmark 2025 des modèles TTS grand public : Quelle est la meilleure solution de synthèse vocale ?</a>  
+| A thin man lies against the side of the street with his shirt and a shoe off and bags nearby. | <a href="https://github.com/user-attachments/files/22354659/kaishu_en_1.wav" target="_blank" rel="noopener noreferrer">kaishu_en_1.wav</a> |
+| As research continued, the protective effect of fluoride against dental decay was demonstrated. | <a href="https://github.com/user-attachments/files/22354661/kaishu_en_2.wav" target="_blank" rel="noopener noreferrer">kaishu_en_2.wav</a> |</p><p>#### 2. Évaluation du modèle
 <img width="1182" height="261" alt="image" src="https://github.com/user-attachments/assets/fb86938d-95d9-4b10-9588-2de1e43b51d1" /></p><h3>Remerciements</h3></p><p><a href="https://github.com/index-tts/index-tts" target="_blank" rel="noopener noreferrer">index-tts</a></p><p><a href="https://github.com/yrom/finetune-index-tts" target="_blank" rel="noopener noreferrer">finetune-index-tts</a></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-16
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-28
 
 ---</p>
         </div>
@@ -356,7 +354,7 @@ Pour les détails de l’ensemble d’évaluation, voir : <a href="https://mp.we
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-12-16 
+        Last updated: 2025-12-28 
     </div>
     
 </body>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index-tts-lora - Высококачественный синтез речи с дообучением LoRA на index-tts, улучшая просодию и естественность для одиночных и многоголосых голосов.</title>
-    <meta name="description" content="Высококачественный синтез речи с дообучением LoRA на index-tts, улучшая просодию и естественность для одиночных и многоголосых голосов.">
+    <title>index-tts-lora - Высококачественный синтез речи с дообучением LoRA на index-tts, улучшающий просодию и естественность для одноголосых и многоголосых моделей.</title>
+    <meta name="description" content="Высококачественный синтез речи с дообучением LoRA на index-tts, улучшающий просодию и естественность для одноголосых и многоголосых моделей.">
     <meta name="keywords" content="index-tts-lora, Russian, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "index-tts-lora",
-  "description": "Высококачественный синтез речи с дообучением LoRA на index-tts, улучшая просодию и естественность для одиночных и многоголосых голосов.",
+  "description": "Высококачественный синтез речи с дообучением LoRA на index-tts, улучшающий просодию и естественность для одноголосых и многоголосых моделей.",
   "author": {
     "@type": "Person",
     "name": "asr-pub"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 272
+    "ratingCount": 276
   },
   "url": "https://OpenAiTx.github.io/projects/asr-pub/index-tts-lora/README-ru.html",
   "sameAs": "https://raw.githubusercontent.com/asr-pub/index-tts-lora/main/README.md",
-  "datePublished": "2025-12-16",
-  "dateModified": "2025-12-16"
+  "datePublished": "2025-12-28",
+  "dateModified": "2025-12-28"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 272 stars</span>
+                <span class="stars">⭐ 276 stars</span>
                 <span class="language">Russian</span>
                 <span>by asr-pub</span>
             </div>
@@ -311,8 +311,7 @@
         | <a href="https://openaitx.github.io/view.html?user=asr-pub&project=index-tts-lora&lang=as">অসমীয়া</
       </div>
     </div>
-  </details>
-</div></p><h1>index-tts-lora</h1></p><p><a href="https://github.com/asr-pub/index-tts-lora/blob/main/README_zh.md" target="_blank" rel="noopener noreferrer">中文版本</a> | <a href="https://github.com/asr-pub/index-tts-lora/blob/main/README.md" target="_blank" rel="noopener noreferrer">Английская версия</a></p><p>Этот проект основан на Bilibili <a href="https://github.com/index-tts/index-tts" target="_blank" rel="noopener noreferrer">index-tts</a> и предоставляет решения для <strong>тонкой настройки LoRA</strong> для <strong>одного и нескольких дикторов</strong>. Он направлен на улучшение <strong>просодии и естественности</strong> при синтезе высококачественного аудио голоса.</p><h3>Обучение и инференс</h3></p><p>#### 1. Извлечение аудиотокенов и условий диктора</p><pre><code class="language-shell"># Extract tokens and speaker conditions
+  </details></p><p></div></p><h1>index-tts-lora</h1></p><p><a href="https://github.com/asr-pub/index-tts-lora/blob/main/README_zh.md" target="_blank" rel="noopener noreferrer">中文版本</a> | <a href="https://github.com/asr-pub/index-tts-lora/blob/main/README.md" target="_blank" rel="noopener noreferrer">English Version</a></p><p>Этот проект основан на <a href="https://github.com/index-tts/index-tts" target="_blank" rel="noopener noreferrer">index-tts</a> от Bilibili и предоставляет решения для <strong>дообучения LoRA</strong> для <strong>одного и нескольких дикторов</strong>. Цель — улучшить <strong>просодию и естественность</strong> синтеза аудио высокого качества для дикторов.</p><h3>Обучение и инференс</h3></p><p>#### 1. Извлечение аудиотокенов и условий говорящего</p><pre><code class="language-shell"># Extract tokens and speaker conditions
 python tools/extract_codec.py --audio_list ${audio_list} --extract_condition</p><h1>audio_list format: audio_path + transcript, separated by \t</h1>
 /path/to/audio.wav 小朋友们，大家好，我是凯叔，今天我们讲一个龟兔赛跑的故事。</code></pre></p><p>После извлечения обработанные файлы и <code>speaker_info.json</code> будут сгенерированы в директории <code>finetune_data/processed_data/</code>. Например:</p><pre><code class="language-json">[
     {
@@ -326,24 +325,23 @@ python tools/extract_codec.py --audio_list ${audio_list} --extract_condition</p>
         "valid_jsonl": "/path/to/kaishu_30min/metadata_valid.jsonl",
         "medoid_condition": "/path/to/kaishu_30min/medoid_condition.npy"
     }
-]</code></pre></p><p>#### 2. Обучение</p><pre><code class="language-shell">python train.py</code></pre></p><p>#### 3. Инференция</p><pre><code class="language-shell">python indextts/infer.py</code></pre></p><h3>Результаты дообучения</h3></p><p>В этом эксперименте используется <strong>китайская аудиодата</strong> из <em>Кай Шу рассказывает истории</em>, с общей продолжительностью <strong>\~30 минут</strong> и <strong>270 аудиофрагментов</strong>.
-Датасет разделён на <strong>244 обучающих образца</strong> и <strong>26 валидационных образцов</strong>.
-Примечание: расшифровки были сгенерированы автоматически с помощью ASR и моделей пунктуации, без ручной корректировки, поэтому возможны ошибки.</p><p>Пример обучающего образца, <code>他上了马车，来到了皇宫之中。</code>：<a href="https://github.com/user-attachments/files/22354621/kaishu_train_01.wav" target="_blank" rel="noopener noreferrer">kaishu_train_01.wav</a></p><p>
+]</code></pre></p><p>#### 2. Обучение</p><pre><code class="language-shell">python train.py</code></pre></p><p>#### 3. Инференция</p><pre><code class="language-shell">python indextts/infer.py</code></pre></p><h3>Результаты дообучения</h3></p><p>В этом эксперименте используется <strong>китайский аудиодатасет</strong> из <em>Кай Шу рассказывает истории</em>, общей продолжительностью <strong>\~30 минут</strong> и <strong>270 аудиофрагментов</strong>.
+Датасет разделён на <strong>244 обучающих примера</strong> и <strong>26 валидационных примеров</strong>.
+Примечание: Транскрипции были сгенерированы автоматически с помощью моделей ASR и пунктуации, без ручной корректировки, поэтому возможны ошибки.</p><p>Пример обучающего примера, <code>他上了马车，来到了皇宫之中。</code>：<a href="https://github.com/user-attachments/files/22354621/kaishu_train_01.wav" target="_blank" rel="noopener noreferrer">kaishu_train_01.wav</a></p><p>
 #### 1. Примеры синтеза речи</p><p>
-| Текст                                                        | Аудио                                                        |
+| Текст                                                         | Аудио                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Часы в старом доме остановились на три часа ночи, в пыли проявилась цепочка незнакомых следов. Детектив присел и обнаружил в щели пола окровавленное кольцо. | <a href="https://github.com/user-attachments/files/22354649/kaishu_cn_1.wav" target="_blank" rel="noopener noreferrer">kaishu_cn_1.wav</a> |
-| Под лунным светом на тыкве вдруг появилась улыбка, плети изогнулись и распахнули садовую калитку. Девочка встала на цыпочки и услышала, как грибы напевают древнюю колыбельную. | <a href="https://github.com/user-attachments/files/22354652/kaishu_cn_2.wav" target="_blank" rel="noopener noreferrer">kaishu_cn_2.wav</a> |
-| Так в Java на среднем уровне ещё нужно учить, M и разработку внешних фронтенд-приложений, нужно изучить базу данных Java Script и научиться делать динамические сайты. | <a href="https://github.com/user-attachments/files/22354654/kaishu_cn_en_mix_1.wav" target="_blank" rel="noopener noreferrer">kaishu_cn_en_mix_1.wav</a> |
+| Часы в старом доме остановились на три часа ночи, в пыли проявились незнакомые следы. Детектив присел и обнаружил в щели пола окровавленное кольцо. | <a href="https://github.com/user-attachments/files/22354649/kaishu_cn_1.wav" target="_blank" rel="noopener noreferrer">kaishu_cn_1.wav</a> |
+| Под лунным светом у тыквы внезапно появляется улыбающееся лицо, плети двигаются и открывают садовую калитку. Девочка встает на цыпочки и слышит, как грибы напевают древнюю колыбельную. | <a href="https://github.com/user-attachments/files/22354652/kaishu_cn_2.wav" target="_blank" rel="noopener noreferrer">kaishu_cn_2.wav</a> |
+| Так вот, в Java средний уровень еще нужно изучать, а также приложения внешних фронтенд-систем, нужно учить базы данных Java Script, учиться делать динамические сайты. | <a href="https://github.com/user-attachments/files/22354654/kaishu_cn_en_mix_1.wav" target="_blank" rel="noopener noreferrer">kaishu_cn_en_mix_1.wav</a> |
 | Этот financial report подробно анализирует revenue performance и expenditure trends компании за прошлый квартал. | <a href="https://github.com/user-attachments/files/22354656/kaishu_cn_en_mix_2.wav" target="_blank" rel="noopener noreferrer">kaishu_cn_en_mix_2.wav</a> |
-| Вверх по горе, вниз по горе, одна гора, другая гора, пробежал три ли три ми три, взобрался на большую гору, высота горы триста три. Взобрался на гору и громко крикнул: я выше горы на три чи три. | <a href="https://github.com/user-attachments/files/22354658/kaishu_raokouling.wav" target="_blank" rel="noopener noreferrer">kaishu_raokouling.wav</a> |
+| Вверх по горе, вниз по горе, на одну гору, на другую гору, пробежал три ли три метра три, взобрался на большую высокую гору, высота горы триста три. На вершине горы громко крикнул: я выше горы на три чи три. | <a href="https://github.com/user-attachments/files/22354658/kaishu_raokouling.wav" target="_blank" rel="noopener noreferrer">kaishu_raokouling.wav</a> |
 | A thin man lies against the side of the street with his shirt and a shoe off and bags nearby. | <a href="https://github.com/user-attachments/files/22354659/kaishu_en_1.wav" target="_blank" rel="noopener noreferrer">kaishu_en_1.wav</a> |
 | As research continued, the protective effect of fluoride against dental decay was demonstrated. | <a href="https://github.com/user-attachments/files/22354661/kaishu_en_2.wav" target="_blank" rel="noopener noreferrer">kaishu_en_2.wav</a> |</p><p>#### 2. Оценка модели
-Подробнее о наборе для оценки см.: <a href="https://mp.weixin.qq.com/s/5z_aRKQG3OIv7fnSdxegqQ" target="_blank" rel="noopener noreferrer">2025 Benchmark of Mainstream TTS Models: Who Is the Best Voice Synthesis Solution?</a>
 <img width="1182" height="261" alt="image" src="https://github.com/user-attachments/assets/fb86938d-95d9-4b10-9588-2de1e43b51d1" /></p><h3>Благодарности</h3></p><p><a href="https://github.com/index-tts/index-tts" target="_blank" rel="noopener noreferrer">index-tts</a></p><p><a href="https://github.com/yrom/finetune-index-tts" target="_blank" rel="noopener noreferrer">finetune-index-tts</a></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-16
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-28
 
 ---</p>
         </div>
@@ -355,7 +353,7 @@ python tools/extract_codec.py --audio_list ${audio_list} --extract_condition</p>
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-12-16 
+        Last updated: 2025-12-28 
     </div>
     
 </body>

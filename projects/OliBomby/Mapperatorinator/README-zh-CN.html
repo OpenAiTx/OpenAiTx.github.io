@@ -1,0 +1,436 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapperatorinator - 一个基于频谱图输入，生成和修改所有游戏模式osu!谱面的AI框架。</title>
+    <meta name="description" content="一个基于频谱图输入，生成和修改所有游戏模式osu!谱面的AI框架。">
+    <meta name="keywords" content="Mapperatorinator, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Mapperatorinator",
+  "description": "一个基于频谱图输入，生成和修改所有游戏模式osu!谱面的AI框架。",
+  "author": {
+    "@type": "Person",
+    "name": "OliBomby"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 381
+  },
+  "url": "https://OpenAiTx.github.io/projects/OliBomby/Mapperatorinator/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/OliBomby/Mapperatorinator/main/README.md",
+  "datePublished": "2025-12-28",
+  "dateModified": "2025-12-28"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/OliBomby/Mapperatorinator" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Mapperatorinator
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 381 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by OliBomby</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Mapperatorinator</h1></p><p>尝试这个生成模型<a href="https://colab.research.google.com/github/OliBomby/Mapperatorinator/blob/main/colab/mapperatorinator_inference.ipynb" target="_blank" rel="noopener noreferrer">这里</a>，或者MaiMod<a href="https://colab.research.google.com/github/OliBomby/Mapperatorinator/blob/main/colab/mai_mod_inference.ipynb" target="_blank" rel="noopener noreferrer">这里</a>。观看视频展示<a href="https://youtu.be/FEr7t1L2EoA" target="_blank" rel="noopener noreferrer">这里</a>。</p><p>Mapperatorinator 是一个多模型框架，使用频谱图输入生成适用于所有游戏模式的全功能osu!谱面，并<a href="#maimod-the-ai-driven-modding-tool" target="_blank" rel="noopener noreferrer">辅助谱面制作</a>。
+该项目的目标是从任何歌曲自动生成可排名的高质量osu!谱面，并具有高度的自定义性。</p><p>该项目基于<a href="https://github.com/gyataro/osuT5" target="_blank" rel="noopener noreferrer">osuT5</a>和<a href="https://github.com/OliBomby/osu-diffusion" target="_blank" rel="noopener noreferrer">osu-diffusion</a>构建。在开发过程中，我在4060 Ti和租用vast.ai上的4090实例上共耗费约2500小时GPU计算，进行了142次运行。</p><p>#### 请负责任地使用此工具。在您的谱面中务必披露AI的使用。</p><h2>安装</h2></p><p>以下说明允许您在本地机器上生成谱面，或者您也可以使用<a href="https://colab.research.google.com/github/OliBomby/Mapperatorinator/blob/main/colab/mapperatorinator_inference.ipynb" target="_blank" rel="noopener noreferrer">Colab笔记本</a>在云端运行。</p><h3>1. 克隆仓库</h3></p><pre><code class="language-sh">git clone https://github.com/OliBomby/Mapperatorinator.git
+cd Mapperatorinator</code></pre></p><h3>2.（可选）创建虚拟环境</h3></p><p>使用 Python 3.10，较新版本可能与依赖项不兼容。</p><pre><code class="language-sh">python -m venv .venv</p><h1>In cmd.exe</h1>
+.venv\Scripts\activate.bat
+<h1>In PowerShell</h1>
+.venv\Scripts\Activate.ps1
+<h1>In Linux or MacOS</h1>
+source .venv/bin/activate</code></pre></p><h3>3. 安装依赖</h3></p><ul><li>Python 3.10</li>
+<li><a href="https://git-scm.com/downloads" target="_blank" rel="noopener noreferrer">Git</a></li>
+<li><a href="http://www.ffmpeg.org/" target="_blank" rel="noopener noreferrer">ffmpeg</a></li>
+<li><a href="https://developer.nvidia.com/cuda-zone" target="_blank" rel="noopener noreferrer">CUDA</a>（适用于NVIDIA GPU）或<a href="https://rocmdocs.amd.com/en/latest/Installation_Guide/Installation-Guide.html" target="_blank" rel="noopener noreferrer">ROCm</a>（适用于Linux上的AMD GPU）</li>
+<li><a href="https://pytorch.org/get-started/locally/" target="_blank" rel="noopener noreferrer">PyTorch</a>：确保按照入门指南安装支持GPU的 <code>torch</code> 和 <code>torchaudio</code>。选择之前安装的计算平台版本。</li></p><p><li>以及其余的Python依赖：</li></p><p></ul><pre><code class="language-sh">pip install -r requirements.txt</code></pre></p><h2>Web 图形界面（推荐）</h2></p><p>为了更友好的用户体验，建议使用 Web UI。它提供了一个图形界面，用于配置生成参数、启动进程和监控输出。</p><h3>启动图形界面</h3></p><p>在终端中导航到克隆的 <code>Mapperatorinator</code> 目录并运行：</p><pre><code class="language-sh">python web-ui.py</code></pre>
+这将启动一个本地网络服务器并自动在新窗口中打开用户界面。</p><h3>使用图形界面</h3></p><ul><li><strong>配置：</strong> 使用表单字段和“浏览”按钮设置输入/输出路径。调整生成参数，如游戏模式、难度、风格（年份、制图者ID、描述符）、时间设置、特定功能（击打音效、超级时间控制）等，功能与命令行选项相同。（注：如果提供了 <code>beatmap_path</code>，界面将自动根据它确定 <code>audio_path</code> 和 <code>output_path</code>，因此这些字段可以留空）</li>
+<li><strong>开始：</strong> 点击“开始推理”按钮开始谱面生成。</li>
+<li><strong>取消：</strong> 可以使用“取消推理”按钮停止正在进行的进程。</li>
+<li><strong>打开输出：</strong> 完成后，使用“打开输出文件夹”按钮快速访问生成的文件。</li></p><p></ul>网页界面是对 <code>inference.py</code> 脚本的便捷封装。有关高级选项或故障排除，请参考命令行说明。</p><p><img src="https://github.com/user-attachments/assets/5312a45f-d51c-4b37-9389-da3258ddd0a1" alt="python_u3zyW0S3Vs"></p><h2>命令行推理</h2></p><p>对于偏好命令行或需要访问高级配置的用户，请按以下步骤操作。<strong>注意：</strong> 若需更简洁的图形界面，请参阅上文的<a href="#web-ui-recommended" target="_blank" rel="noopener noreferrer">网页界面（推荐）</a>部分。</p><p>运行 <code>inference.py</code> 并传入参数以生成谱面。为此请使用<a href="https://hydra.cc/docs/advanced/override_grammar/basic/" target="_blank" rel="noopener noreferrer">Hydra覆盖语法</a>。所有可用参数请参见 <code>configs/inference_v29.yaml</code>。</p><pre><code class="language-">python inference.py \
+  audio_path           [Path to input audio] \
+  output_path          [Path to output directory] \
+  beatmap_path         [Path to .osu file to autofill metadata, and output_path, or use as reference] \
+  
+  gamemode             [Game mode to generate 0=std, 1=taiko, 2=ctb, 3=mania] \
+  difficulty           [Difficulty star rating to generate] \
+  mapper_id            [Mapper user ID for style] \
+  year                 [Upload year to simulate] \
+  hitsounded           [Whether to add hitsounds] \
+  slider_multiplier    [Slider velocity multiplier] \
+  circle_size          [Circle size] \
+  keycount             [Key count for mania] \
+  hold_note_ratio      [Hold note ratio for mania 0-1] \
+  scroll_speed_ratio   [Scroll speed ratio for mania and ctb 0-1] \
+  descriptors          [List of beatmap user tags for style] \
+  negative_descriptors [List of beatmap user tags for classifier-free guidance] \
+  
+  add_to_beatmap       [Whether to add generated content to the reference beatmap instead of making a new beatmap] \
+  start_time           [Generation start time in milliseconds] \
+  end_time             [Generation end time in milliseconds] \
+  in_context           [List of additional context to provide to the model [NONE,TIMING,KIAI,MAP,GD,NO_HS]] \
+  output_type          [List of content types to generate] \
+  cfg_scale            [Scale of the classifier-free guidance] \
+  super_timing         [Whether to use slow accurate variable BPM timing generator] \
+  seed                 [Random seed for generation] \</code></pre>
+示例：</p><pre><code class="language-">python inference.py beatmap_path="'C:\Users\USER\AppData\Local\osu!\Songs\1 Kenji Ninuma - DISCO PRINCE\Kenji Ninuma - DISCOPRINCE (peppy) [Normal].osu'" gamemode=0 difficulty=5.5 year=2023 descriptors="['jump aim','clean']" in_context=[TIMING,KIAI]</code></pre></p><h2>交互式命令行界面</h2>
+对于那些喜欢基于终端的工作流程但希望获得引导式设置的人来说，交互式命令行脚本是网页界面的绝佳替代方案。</p><h3>启动命令行界面</h3>
+导航到克隆的目录。您可能需要先使脚本可执行。</p><pre><code class="language-sh"># Make the script executable (only needs to be done once)
+chmod +x cli_inference.sh</code></pre></p><pre><code class="language-sh"># Run the script
+./cli_inference.sh</code></pre></p><h3>使用命令行界面</h3>
+该脚本将通过一系列提示引导您配置所有生成参数，就像网页界面一样。</p><p>它使用颜色编码界面以提高清晰度。
+它提供了高级多选菜单，您可以使用方向键和空格键选择风格描述词。
+在回答完所有问题后，它将显示最终命令以供您审查。
+然后您可以确认直接执行，或取消并复制命令以手动使用。</p><h2>生成技巧</h2></p><ul><li>您可以编辑 <code>configs/inference_v29.yaml</code> 并将参数添加到其中，而无需每次在终端中输入。</li>
+<li>所有可用的描述词可在<a href="https://osu.ppy.sh/wiki/en/Beatmap/Beatmap_tags" target="_blank" rel="noopener noreferrer">这里</a>找到。</li>
+<li>始终提供一个介于2007到2023之间的年份参数。如果留空未知，模型可能会生成风格不一致的内容。</li>
+<li>始终提供难度参数。如果留空未知，模型可能会生成难度不一致的内容。</li>
+<li>提高 <code>cfg_scale</code> 参数可以增强 <code>mapper_id</code> 和 <code>descriptors</code> 参数的效果。</li>
+<li>您可以使用 <code>negative_descriptors</code> 参数引导模型避开某些风格。此功能仅在 <code>cfg_scale > 1</code> 时有效。确保负面描述词数量与正面描述词数量相等。</li>
+<li>如果您的歌曲风格与期望的谱面风格不匹配，模型可能无法遵循您的指示。例如，很难为一首平静的歌曲生成高SR、高SV的谱面。</li>
+<li>如果您已经为歌曲完成了时序和Kiai时间，可以将其提供给模型以大幅提升推理速度和准确性：使用 <code>beatmap_path</code> 和 <code>in_context=[TIMING,KIAI]</code> 参数。</li>
+<li>若只想重新映射谱面的一部分，请使用 <code>beatmap_path</code>、<code>start_time</code>、<code>end_time</code> 和 <code>add_to_beatmap=true</code> 参数。</li>
+<li>若想生成谱面的嘉宾难度，请使用 <code>beatmap_path</code> 和 <code>in_context=[GD,TIMING,KIAI]</code> 参数。</li>
+<li>若想为谱面生成击打音效，请使用 <code>beatmap_path</code> 和 <code>in_context=[NO_HS,TIMING,KIAI]</code> 参数。</li>
+<li>若只想为歌曲生成时序，请使用 <code>super_timing=true</code> 和 <code>output_type=[TIMING]</code> 参数。</li></p><p></ul><h2>MaiMod：AI驱动的谱面修改工具</h2></p><p>MaiMod 是一个用于 osu! 谱面的修改工具，利用 Mapperatorinator 预测来发现其他自动修改工具（如 <a href="https://github.com/Naxesss/MapsetVerifier" target="_blank" rel="noopener noreferrer">Mapset Verifier</a>）无法检测的潜在错误和不一致。
+它可以检测的问题包括：
+<ul><li>不正确的对齐或节奏模式</li>
+<li>不准确的时序点</li>
+<li>不一致的打击物体位置或新组合点</li>
+<li>奇怪的滑条形状</li>
+<li>不一致的击打音效或音量</li></p><p></ul>您可以在<a href="https://colab.research.google.com/github/OliBomby/Mapperatorinator/blob/main/colab/mai_mod_inference.ipynb" target="_blank" rel="noopener noreferrer">这里</a>试用 MaiMod，或本地运行：
+要在本地运行 MaiMod，您需要先安装 Mapperatorinator。然后运行 <code>mai_mod.py</code> 脚本，使用 <code>beatmap_path</code> 参数指定您的谱面路径。
+<pre><code class="language-sh">python mai_mod.py beatmap_path="'C:\Users\USER\AppData\Local\osu!\Songs\1 Kenji Ninuma - DISCO PRINCE\Kenji Ninuma - DISCOPRINCE (peppy) [Normal].osu'"</code></pre>
+这将把修改建议打印到控制台，然后你可以手动将其应用到你的谱面中。  
+建议按时间顺序排列，并按类别分组。  
+圆圈中的第一个数值表示“惊讶度”，这是模型对该问题感到意外的程度的度量，因此你可以优先处理最重要的问题。  </p><p>模型可能会出错，特别是在低惊讶度的问题上，因此在将建议应用到谱面之前请务必仔细检查。  
+主要目的是帮助你缩小潜在问题的搜索范围，这样你就不必手动检查谱面中的每一个击打物件。  </p><h3>MaiMod GUI  </h3>
+要运行 MaiMod Web UI，你需要安装 Mapperatorinator。  
+然后，运行 <code>mai_mod_ui.py</code> 脚本。这将启动本地 Web 服务器并自动在新窗口中打开 UI：</p><pre><code class="language-sh">python mai_mod_ui.py</code></pre></p><p><img width="850" height="1019" alt="afbeelding" src="https://github.com/user-attachments/assets/67c03a43-a7bd-4265-a5b1-5e4d62aca1fa" /></p><h2>概述</h2></p><h3>分词</h3></p><p>Mapperatorinator 将 osu! 节奏地图转换为一种中间事件表示，可以直接转换为标记并从标记转换回来。
+它包括击打物体、击打音效、滑条速度、新组合、定时点、kiai 时间，以及太鼓/mania 滚动速度。</p><p>以下是分词过程的一个小示例：</p><p><img src="https://github.com/user-attachments/assets/84efde76-4c27-48a1-b8ce-beceddd9e695" alt="mapperatorinator_parser"></p><p>为节省词汇量，时间事件被量化到 10 毫秒间隔，位置坐标被量化到 32 像素网格点。</p><h3>模型架构</h3>
+该模型基本上是基于 <a href="https://huggingface.co/docs/transformers/en/model_doc/whisper#transformers.WhisperForConditionalGeneration" target="_blank" rel="noopener noreferrer">HF Transformers Whisper</a> 模型的封装，带有自定义输入嵌入和损失函数。
+模型大小为 2.19 亿参数。
+该模型被发现比 T5 在此任务上更快且更准确。</p><p>模型输入输出的高级概览如下：</p><p><img src="https://user-images.githubusercontent.com/28675590/201044116-1384ad72-c540-44db-a285-7319dd01caad.svg" alt="Picture2"></p><p>模型使用 Mel 频谱图帧作为编码器输入，每个输入位置对应一个帧。模型解码器在每一步输出对离散、预定义事件词汇的 softmax 分布。输出是稀疏的，事件只在击打物体发生时需要，而非对每一个音频帧进行标注。</p><h3>多任务训练格式</h3></p><p><img src="https://github.com/user-attachments/assets/62f490bc-a567-4671-a7ce-dbcc5f9cd6d9" alt="Multitask training format"></p><p>SOS 标记之前有额外的标记以便条件生成。这些标记包括游戏模式、难度、制图者 ID、年份及其他元数据。
+训练期间，这些标记没有对应的标签，因此模型不会输出它们。
+训练期间还存在随机概率将元数据标记替换为“未知”标记，因此推理时我们可以使用这些“未知”标记来减少需要提供给模型的元数据量。</p><h3>无缝长序列生成</h3></p><p>模型的上下文长度为 8.192 秒。显然，这不足以生成完整的节奏地图，因此我们必须将歌曲拆分为多个窗口，并分段生成节奏地图。
+为了确保生成的节奏地图在窗口之间没有明显的接缝，我们使用 90% 的重叠并顺序生成窗口。
+除第一个窗口外，每个生成窗口的解码器都会预填充上一窗口的标记，预填充长度达生成窗口的 50%。
+我们使用logit处理器确保模型无法生成位于生成窗口前50%的时间标记。  
+此外，生成窗口的最后40%保留给下一个窗口。任何在该范围内生成的时间标记都被视为EOS标记。  
+这确保每个生成的标记至少以之前4秒的标记和3.3秒的未来音频为条件进行生成。  </p><p>为了防止长时间生成期间的偏移漂移，训练期间在解码器的时间事件中添加了随机偏移。  
+这迫使模型通过监听音频中的起点来校正时间错误，进而实现持续准确的偏移。  </p><h3>使用扩散细化坐标  </h3></p><p>解码器生成的位置坐标被量化到32像素的网格点，因此之后我们使用扩散来去噪坐标以获得最终位置。  
+为此，我们训练了一个修改版的<a href="https://github.com/OliBomby/osu-diffusion" target="_blank" rel="noopener noreferrer">osu-diffusion</a>，该版本专门针对噪声调度的最后10%，并接受Mapperatorinator用于条件生成的更高级元数据标记。  </p><p>由于Mapperatorinator模型输出滑条的SV，滑条所需的长度固定，不受控制点路径形状影响。  
+因此，我们尝试引导扩散过程创建符合所需滑条长度的坐标。  
+我们通过在扩散过程的每一步后，根据所需长度和当前控制点路径重新计算滑条结束位置来实现这一点。  
+这意味着扩散过程无法直接控制滑条结束位置，但仍能通过改变控制点路径来影响它们。  </p><h3>后处理  </h3></p><p>Mapperatorinator进行一些额外的后处理以提升生成谱面的质量：  </p><ul><li>使用扩散细化位置坐标。  </li>
+<li>使用模型生成的拍点细分将时间事件重新对齐到最近的拍点。  </li>
+<li>对近乎完美重叠的位置进行对齐。  </li>
+<li>将mania列事件转换为X坐标。  </li>
+<li>为太鼓鼓点生成滑条路径。  </li>
+<li>修正所需滑条长度与控制点路径长度之间的大幅差异。  </li></p><p></ul><h3>超级定时生成器  </h3></p><p>超级定时生成器是一种算法，通过对整首歌曲进行20次定时推断并取平均结果，提升生成定时的精度和准确度。  
+这对具有变速BPM或BPM变化的歌曲特别有用。结果几乎完美，仅偶尔有部分需要手动调整。  </p><h2>训练  </h2></p><p>以下说明将在您的本地机器上创建训练环境。  </p><h3>1. 克隆仓库  </h3></p><pre><code class="language-sh">git clone https://github.com/OliBomby/Mapperatorinator.git
+cd Mapperatorinator</code></pre></p><h3>2. 创建数据集</h3></p><p>使用 <a href="https://github.com/mappingtools/Mapperator/blob/master/README.md#create-a-high-quality-dataset" target="_blank" rel="noopener noreferrer">Mapperator 控制台应用</a> 创建您自己的数据集。它需要一个 <a href="https://osu.ppy.sh/home/account/edit" target="_blank" rel="noopener noreferrer">osu! OAuth 客户端令牌</a> 来验证谱面并获取额外的元数据。将数据集放置在与 <code>Mapperatorinator</code> 目录相邻的 <code>datasets</code> 目录中。</p><pre><code class="language-sh">Mapperator.ConsoleApp.exe dataset2 -t "/Mapperatorinator/datasets/beatmap_descriptors.csv" -i "path/to/osz/files" -o "/datasets/cool_dataset"</code></pre></p><h3>3. （可选）设置 Weight & Biases 进行日志记录</h3>
+在 <a href="https://wandb.ai/site" target="_blank" rel="noopener noreferrer">Weight & Biases</a> 上创建一个账户，并从账户设置中获取您的 API 密钥。
+然后设置 <code>WANDB_API_KEY</code> 环境变量，以便训练过程知道使用该密钥进行日志记录。</p><pre><code class="language-sh">export WANDB_API_KEY=<your_api_key></code></pre></p><h3>4. 创建 Docker 容器</h3>
+您也可以在虚拟环境中进行训练，但我们建议在 WSL 上使用 Docker 以获得更好的性能。
+<pre><code class="language-sh">docker compose up -d --force-recreate
+docker attach mapperatorinator_space
+cd Mapperatorinator</code></pre></p><h3>5. 配置参数并开始训练</h3></p><p>所有配置均位于 <code>./configs/train/default.yaml</code>。  
+确保将 <code>train_dataset_path</code> 和 <code>test_dataset_path</code> 设置为您的数据集路径，以及训练/测试划分的起止地图集索引。  
+该路径是相对于 Docker 容器的本地路径，因此如果您将名为 <code>cool_dataset</code> 的数据集放在了 <code>datasets</code> 目录下，则路径应为 <code>/workspace/datasets/cool_dataset</code>。</p><p>建议制作一个自定义配置文件来覆盖默认配置，这样您就有了训练配置的记录，方便复现。</p><pre><code class="language-yaml">data:
+  train_dataset_path: "/workspace/datasets/cool_dataset"
+  test_dataset_path: "/workspace/datasets/cool_dataset"
+  train_dataset_start: 0
+  train_dataset_end: 90
+  test_dataset_start: 90
+  test_dataset_end: 100</code></pre></p><p>Begin training by calling <code>python osuT5/train.py</code> or <code>torchrun --nproc_per_node=NUM_GPUS osuT5/train.py</code> for multi-GPU training.</p><pre><code class="language-sh">python osuT5/train.py -cn train_v29 train_dataset_path="/workspace/datasets/cool_dataset" test_dataset_path="/workspace/datasets/cool_dataset" train_dataset_end=90 test_dataset_start=90 test_dataset_end=100</code></pre></p><h3>6. LoRA 微调</h3></p><p>您还可以使用 <a href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener noreferrer">LoRA</a> 对预训练模型进行微调，以使其适应特定风格或游戏模式。  
+为此，请根据您的需求调整 <code>configs/train/lora.yaml</code>，然后运行 <code>lora</code> 训练配置：  </p><pre><code class="language-sh">python osuT5/train.py -cn lora train_dataset_path="/workspace/datasets/cool_dataset" test_dataset_path="/workspace/datasets/cool_dataset" train_dataset_end=90 test_dataset_start=90 test_dataset_end=100</code></pre>
+重要的 LoRA 参数说明：
+<ul><li><code>pretrained_path</code>：用于微调的基础模型路径或 Hugging Face 仓库地址。</li>
+<li><code>r</code>：LoRA 矩阵的秩。数值越大模型容量越高，但内存占用也越多。</li>
+<li><code>lora_alpha</code>：LoRA 更新的缩放因子。</li>
+<li><code>total_steps</code>：训练总步数。根据数据集大小合理调整。</li>
+<li><code>enable_lora</code>：是否使用 LoRA 进行微调，还是使用完整模型微调。</li></p><p></ul>推理时，可以通过 <code>lora_path</code> 参数指定要使用的 LoRA 权重。
+这可以是本地路径，也可以是 Hugging Face 仓库。</p><h2>参见</h2>
+<ul><li><a href="https://raw.githubusercontent.com/OliBomby/Mapperatorinator/main/./classifier/README.md" target="_blank" rel="noopener noreferrer">Mapper 分类器</a></li>
+<li><a href="https://raw.githubusercontent.com/OliBomby/Mapperatorinator/main/./rcomplexion/README.md" target="_blank" rel="noopener noreferrer">RComplexion</a></li></p><p></ul><h2>致谢</h2></p><p>特别感谢：
+<ul><li><a href="https://github.com/gyataro/osuT5" target="_blank" rel="noopener noreferrer">osuT5</a> 作者提供的训练代码。</li>
+<li>Hugging Face 团队提供的<a href="https://huggingface.co/docs/transformers/index" target="_blank" rel="noopener noreferrer">工具</a>。</li>
+<li><a href="https://github.com/jaswon" target="_blank" rel="noopener noreferrer">Jason Won</a> 和 <a href="https://github.com/sedthh" target="_blank" rel="noopener noreferrer">Richard Nagyfi</a> 的思想交流。</li>
+<li><a href="https://github.com/minetoblend" target="_blank" rel="noopener noreferrer">Marvin</a> 捐赠的训练积分。</li>
+<li>osu! 社区提供的谱面。</li></p><p></ul><h2>相关工作</h2></p><ul><li>Syps (Nick Sypteras) 的 <a href="https://github.com/Syps/osu_beatmap_generator" target="_blank" rel="noopener noreferrer">osu! Beatmap Generator</a></li>
+<li>kotritrona、jyvden、Yoyolick (Ryan Zmuda) 的 <a href="https://github.com/kotritrona/osumapper" target="_blank" rel="noopener noreferrer">osumapper</a></li>
+<li>OliBomby (Olivier Schipper)、NiceAesth (Andrei Baciu) 的 <a href="https://github.com/OliBomby/osu-diffusion" target="_blank" rel="noopener noreferrer">osu-diffusion</a></li>
+<li>gyataro (Xiwen Teoh) 的 <a href="https://github.com/gyataro/osuT5" target="_blank" rel="noopener noreferrer">osuT5</a></li>
+<li>sedthh (Richard Nagyfi) 的 <a href="https://github.com/sedthh/BeatLearning" target="_blank" rel="noopener noreferrer">Beat Learning</a></li>
+<li>jaswon (Jason Won) 的 <a href="https://github.com/jaswon/osu-dreamer" target="_blank" rel="noopener noreferrer">osu!dreamer</a></li></p><p>
+
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-28
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/OliBomby/Mapperatorinator/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-28 
+    </div>
+    
+</body>
+</html>
