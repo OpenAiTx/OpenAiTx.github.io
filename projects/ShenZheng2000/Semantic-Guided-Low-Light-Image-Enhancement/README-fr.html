@@ -1,0 +1,443 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic-Guided-Low-Light-Image-Enhancement - Ceci est l&#39;impl&#233;mentation officielle en Pytorch de notre article &quot;Semantic-Guided Zero-Shot Learning for Low-Light Image/Video Enhancement.&quot;</title>
+    <meta name="description" content="Ceci est l&#39;impl&#233;mentation officielle en Pytorch de notre article &quot;Semantic-Guided Zero-Shot Learning for Low-Light Image/Video Enhancement.&quot;">
+    <meta name="keywords" content="Semantic-Guided-Low-Light-Image-Enhancement, French, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Semantic-Guided-Low-Light-Image-Enhancement",
+  "description": "Ceci est l'implémentation officielle en Pytorch de notre article \"Semantic-Guided Zero-Shot Learning for Low-Light Image/Video Enhancement.\"",
+  "author": {
+    "@type": "Person",
+    "name": "ShenZheng2000"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 126
+  },
+  "url": "https://OpenAiTx.github.io/projects/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement/README-fr.html",
+  "sameAs": "https://raw.githubusercontent.com/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement/main/README.md",
+  "datePublished": "2025-12-29",
+  "dateModified": "2025-12-29"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Semantic-Guided-Low-Light-Image-Enhancement
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 126 stars</span>
+                <span class="language">French</span>
+                <span>by ShenZheng2000</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Semantic-Guided-Low-Light-Image-Enhancement</h1>
+Ceci est l'implémentation officielle en Pytorch de notre article "<strong>Apprentissage Zero-Shot Guidé par la Sémantique pour l'Amélioration d'Images/Vidéos en Basse Lumière</strong>" </p><h1>Mises à jour</h1>
+<ul><li>2021.11.27 : La figure de l'architecture du modèle a été téléchargée.</li>
+<li>2021.11.10 : Ce travail est accepté et sera présenté à <a href="https://wacv2022.thecvf.com/home" target="_blank" rel="noopener noreferrer">WACV 2022</a>.</li>
+<li>2021.10.8 : Une méthode simple pour calculer les scores mPA et mIOU est disponible dans ce <a href="https://github.com/ShenZheng2000/DarkCityScape_mIOU_mPA" target="_blank" rel="noopener noreferrer">dépôt</a></li>
+<li>2021.10.6 : Une vidéo échantillon améliorée en basse lumière au format GIF a été publiée. </li>
+<li>2021.10.5 : Une vidéo échantillon en basse lumière et son résultat amélioré sont disponibles ici : <a href="https://www.youtube.com/watch?v=4Avy_xsczdU" target="_blank" rel="noopener noreferrer">[Basse lumière</a>]  <a href="https://www.youtube.com/watch?v=rN6Tf1E-kE8" target="_blank" rel="noopener noreferrer">[Améliorée</a>]</li>
+<li>2021.10.5 : Mon nouveau <a href="https://github.com/ShenZheng2000/Awesome-Low-Light-Enhancement-with-Deep-Learning" target="_blank" rel="noopener noreferrer">dépôt</a> contient une collection de méthodes d'amélioration en basse lumière. J'espère que vous le trouverez utile. </li>
+<li>2021.10.4 : Le lien arxiv est disponible à http://arxiv.org/abs/2110.00970</li></p><p>
+</ul><h1>Résumé</h1>
+Low-light images challenge both human perceptions and computer vision algorithms. It is crucial to make algorithms robust to enlighten low-light images for computational photography and computer vision applications such as real-time detection and segmentation tasks. This paper proposes a semantic-guided zero-shot low-light enhancement network which is trained in the absence of paired images, unpaired datasets, and segmentation annotation. Firstly, we design an efficient <strong>enhancement factor extraction</strong> network using depthwise separable convolution. Secondly, we propose a <strong>recurrent image enhancement</strong> network for progressively enhancing the low-light image. Finally, we introduce an <strong>unsupervised semantic segmentation</strong> network for preserving the semantic information. Extensive experiments on various benchmark datasets and a low-light video demonstrate that our model outperforms the previous state-of-the-art qualitatively and quantitatively. We further discuss the benefits of the proposed method for low-light detection and segmentation.</p><h1>Architecture du Modèle</h1>
+Cliquez sur le lien suivant pour voir l'architecture du modèle au format pdf.</p><p><img src="https://raw.githubusercontent.com/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement/main/Samples/main_architecture.pdf" alt="Architecture du Modèle"></p><h1>Résultats d'Exemple</h1>
+<h2>1. Images Vidéo en Faible Luminosité</h2>
+De gauche à droite, et de haut en bas : Sombre, Retinex [1], KinD [2], EnlightenGAN [3], Zero-DCE [4], Notre méthode.</p><p><p float="left">
+<p align="middle">
+  <img src="https://raw.githubusercontent.com/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement/main/Samples/F1.png" width="250" />
+  <img src="https://raw.githubusercontent.com/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement/main/Samples/retinex_net.png" width="250" /> 
+  <img src="https://raw.githubusercontent.com/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement/main/Samples/kind.png" width="250" />
+  <img src="https://raw.githubusercontent.com/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement/main/Samples/enlighten_gan.png" width="250" />
+  <img src="https://raw.githubusercontent.com/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement/main/Samples/zero_dce.png" width="250" /> 
+  <img src="https://raw.githubusercontent.com/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement/main/Samples/F1Crop.png" width="250" />
+</p></p><h2>2. Images en Faible Luminosité (Monde Réel)</h2>
+De gauche à droite, et de haut en bas : Sombre, PIE [5], LIME [6], Retinex [1], MBLLEN [7], KinD [2], Zero-DCE [4], Notre méthode</p><p><p float="left">
+<p align="middle">
+  <img src="https://raw.githubusercontent.com/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement/main/Samples/Dark7.jpg" width="200" />
+  <img src="https://raw.githubusercontent.com/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement/main/Samples/PIE7.jpg" width="200" /> 
+  <img src="https://raw.githubusercontent.com/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement/main/Samples/LIME7.jpg" width="200" />
+  <img src="https://raw.githubusercontent.com/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement/main/Samples/Retinex7.jpg" width="200" />
+  <img src="https://raw.githubusercontent.com/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement/main/Samples/mbllen7.jpg" width="200" /> 
+  <img src="https://raw.githubusercontent.com/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement/main/Samples/KinD7.jpg" width="200" />
+  <img src="https://raw.githubusercontent.com/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement/main/Samples/ZeroDCE7.jpg" width="200" /> 
+  <img src="https://raw.githubusercontent.com/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement/main/Samples/Ours7.jpg" width="200" />
+</p></p><h1>Démarrer</h1></p><h2>1. Prérequis</h2>
+<ul><li>CUDA 10.0</li>
+<li>Python 3.6+</li>
+<li>Pytorch 1.0+</li>
+<li>torchvision 0.4+</li>
+<li>opencv-python</li>
+<li>numpy</li>
+<li>pillow</li>
+<li>scikit-image</li></p><p></ul><h2>2. Préparer les jeux de données</h2>
+<h3>Jeu de données de test</h3>
+<ul><li>Téléchargez les images officielles de test depuis <a href="https://pan.baidu.com/s/1pbz0YlOmLqxnazeKrRRUQg" target="_blank" rel="noopener noreferrer">BaiduYun</a> avec le mot de passe <code>8itq</code>. </li>
+<li>Déplacez le fichier décompressé dans <code>data/test_data/</code>. </li>
+<li>Vous pouvez également placer des jeux de données personnalisés ou vos propres images en basse lumière dans ce dossier pour les tests. Exemple : <code>data/test_data/yourDataset/</code></li></p><p></ul><h3>Jeu de données d'entraînement</h3>
+<ul><li>Téléchargez les images officielles d'entraînement depuis <a href="https://drive.google.com/file/d/1GAB3uGsmAyLgtDBDONbil08vVu5wJcG3/view" target="_blank" rel="noopener noreferrer">GoogleDrive</a>. </li>
+<li>Déplacez le fichier décompressé dans <code>data/train_data/</code>. </li></p><p></ul>NOTE : Si vous n'avez pas de compte BaiduYun, vous pouvez télécharger à la fois le jeu de données d'entraînement et celui de test via <a href="https://drive.google.com/drive/folders/1RIQsP5ap5QU7LstHPknOffQZeqht_FCh" target="_blank" rel="noopener noreferrer">Google Drive</a></p><p>Après préparation, les dossiers de données devraient ressembler à ceci :
+<pre><code class="language-">data/
+├── test_data/
+│   ├── lowCUT/
+│   ├── BDD/
+│   ├── Cityscapes/
+│   ├── DICM/
+│   ├── LIME/
+│   ├── LOL/
+│   ├── MEF/
+│   ├── NPE/
+│   └── VV/
+└── train_data/
+    └── ...</code></pre></p><h2>3. Entraînement à partir de zéro</h2>
+Pour entraîner le modèle :
+<pre><code class="language-">python train.py \
+  --lowlight_images_path path/to/train_images \
+  --snapshots_folder path/to/save_weights</code></pre></p><p>Exemple (entraîner à partir de zéro) :
+<pre><code class="language-">python train.py \
+  --lowlight_images_path data/train_data \
+  --snapshots_folder weight/</code></pre></p><h2>4. Reprendre l'entraînement</h2></p><p>Pour reprendre l'entraînement à partir d'un point de contrôle :
+<pre><code class="language-">python train.py \
+  --lowlight_images_path path/to/train_images \
+  --snapshots_folder path/to/save_weights \
+  --load_pretrain True \
+  --pretrain_dir path/to/checkpoint.pth</code></pre>
+Exemple (reprendre depuis Epoch99.pth) :</p><pre><code class="language-">python train.py \
+  --lowlight_images_path data/train_data \
+  --snapshots_folder weight/ \
+  --load_pretrain True \
+  --pretrain_dir weight/Epoch99.pth</code></pre>
+ 
+<h2>5. Tests</h2>
+<strong>REMARQUE : Veuillez supprimer tous les fichiers readme.txt dans le dossier <code>data</code> pour éviter les erreurs d'inférence du modèle.</strong></p><p>Pour tester le modèle :</p><pre><code class="language-">python test.py \
+  --input_dir path/to/your_input_images \
+  --weight_dir path/to/pretrained_model.pth \
+  --test_dir path/to/output_folder </code></pre>
+Exemple :</p><pre><code class="language-">python test.py \
+  --input_dir data/test_data/lowCUT \
+  --weight_dir weight/Epoch99.pth \
+  --test_dir test_output</code></pre></p><h2>6. Tests sur les vidéos</h2>
+Pour tester le modèle sur des vidéos (format MP4), exécutez dans le terminal :
+<pre><code class="language-">bash test_video.sh</code></pre></p><p>Il y a cinq hyperparamètres dans <code>demo/make_video.py</code> pour le test vidéo. Voir l'explication suivante.  
+<ul><li><code>video_path</code> : chemin de la vidéo en faible luminosité  </li>
+<li><code>image_lowlight_folder</code> : chemin des images en faible luminosité  </li>
+<li><code>image_folder</code> : chemin des images améliorées  </li>
+<li><code>save_path</code> : chemin de la vidéo améliorée  </li>
+<li><code>choice</code> : conversion vidéo vers image, ou image vers vidéo  </li></p><p>
+</ul><h1>Hyperparamètres  </h1>
+| Nom                  | Type  | Défaut             |  
+|----------------------|-------|--------------------|  
+| lowlight_images_path  | str   | data/train_data/   |          
+| lr                   | float | 1e-3               |          
+| weight_decay         | float | 1e-3               |            
+| grad_clip_norm       | float | 0.1                |            
+| num_epochs           | int   | 100                |          
+| train_batch_size     | int   | 6                  |          
+| val_batch_size       | int   | 8                  |           
+| num_workers          | int   | 4                  |         
+| display_iter         | int   | 10                 |         
+| snapshot_iter        | int   | 10                 |        
+| scale_factor         | int   | 1                  |         
+| snapshots_folder     | str   | weight/            |         
+| load_pretrain        | bool  | False              |       
+| pretrain_dir         | str   | weight/Epoch99.pth |         
+| num_of_SegClass      | int   | 21                 |        
+| conv_type            | str   | dsc                |        
+| patch_size           | int   | 4                  |        
+| exp_level            | float | 0.6                |        </p><h1>Liste TODO  </h1>
+<ul><li>[x] Lister les hyperparamètres (importants)  </li>
+<li>[x] Résoudre le problème de taille d'entrée du modèle  </li>
+<li>[x] Télécharger les poids pré-entraînés  </li>
+<li>[x] Réécrire argparse d'entraînement et test dans un option.py  </li>
+<li>[x] Réécrire l'entraînement sous forme de classe  </li>
+<li>[x] Réécrire le test sous forme de classe  </li>
+<li>[x] Télécharger le jeu de données de test</li>
+<li>[x] Télécharger le lien Arxiv</li>
+<li>[x] Tester sur vidéo</li>
+<li>[x] Télécharger le BibTeX</li>
+<li>[x] Modifier le fichier Readme</li>
+<li>[x] Télécharger l’architecture du modèle</li>
+<li>[ ] Fournir une démo en ligne</li>
+</ul><h1>Autres</h1>
+Veuillez contacter zhengsh@kean.edu si vous avez des questions. Ce dépôt est largement basé sur <a href="https://github.com/Li-Chongyi/Zero-DCE" target="_blank" rel="noopener noreferrer">Zero-DCE</a>. Merci de partager le code !</p><h1>Citations</h1>
+Veuillez citer l’article suivant si vous trouvez ce dépôt utile.
+<pre><code class="language-">@inproceedings{zheng2022semantic,
+  title={Semantic-guided zero-shot learning for low-light image/video enhancement},
+  author={Zheng, Shen and Gupta, Gaurav},
+  booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision},
+  pages={581--590},
+  year={2022}
+}</code></pre></p><h1>Références</h1>
+[1] Wei, Chen, et al. « Deep retinex decomposition for low-light enhancement. » arXiv preprint arXiv:1808.04560 (2018).</p><p>[2] Zhang, Yonghua, Jiawan Zhang, et Xiaojie Guo. « Kindling the darkness: A practical low-light image enhancer. » Proceedings of the 27th ACM international conference on multimedia. 2019.</p><p>[3] Jiang, Yifan, et al. « Enlightengan: Deep light enhancement without paired supervision. » IEEE Transactions on Image Processing 30 (2021): 2340-2349.</p><p>[4] Guo, Chunle, et al. « Zero-reference deep curve estimation for low-light image enhancement. » Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2020.</p><p>[5] Fu, Xueyang, et al. « A probabilistic method for image enhancement with simultaneous illumination and reflectance estimation. » IEEE Transactions on Image Processing 24.12 (2015): 4965-4977.</p><p>[6] Guo, Xiaojie, Yu Li, et Haibin Ling. « LIME: Low-light image enhancement via illumination map estimation. » IEEE Transactions on image processing 26.2 (2016): 982-993.</p><p>[7] Lv, Feifan, et al. « MBLLEN: Low-Light Image/Video Enhancement Using CNNs. » BMVC. 2018.</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-29
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/ShenZheng2000/Semantic-Guided-Low-Light-Image-Enhancement/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2025-12-29 
+    </div>
+    
+</body>
+</html>
