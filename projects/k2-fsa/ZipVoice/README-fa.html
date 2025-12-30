@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZipVoice - تبدیل متن به گفتار سریع و با کیفیت بالا بدون نیاز به داده‌های آموزشی با استفاده از Flow Matching</title>
-    <meta name="description" content="تبدیل متن به گفتار سریع و با کیفیت بالا بدون نیاز به داده‌های آموزشی با استفاده از Flow Matching">
+    <title>ZipVoice - تبدیل متن به گفتار سریع و با کیفیت بالا به روش Zero-Shot با استفاده از Flow Matching</title>
+    <meta name="description" content="تبدیل متن به گفتار سریع و با کیفیت بالا به روش Zero-Shot با استفاده از Flow Matching">
     <meta name="keywords" content="ZipVoice, Persian, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "ZipVoice",
-  "description": "تبدیل متن به گفتار سریع و با کیفیت بالا بدون نیاز به داده‌های آموزشی با استفاده از Flow Matching",
+  "description": "تبدیل متن به گفتار سریع و با کیفیت بالا به روش Zero-Shot با استفاده از Flow Matching",
   "author": {
     "@type": "Person",
     "name": "k2-fsa"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 661
+    "ratingCount": 748
   },
   "url": "https://OpenAiTx.github.io/projects/k2-fsa/ZipVoice/README-fa.html",
   "sameAs": "https://raw.githubusercontent.com/k2-fsa/ZipVoice/master/README.md",
-  "datePublished": "2025-10-06",
-  "dateModified": "2025-10-06"
+  "datePublished": "2025-12-30",
+  "dateModified": "2025-12-30"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 661 stars</span>
+                <span class="stars">⭐ 748 stars</span>
                 <span class="language">Persian</span>
                 <span>by k2-fsa</span>
             </div>
@@ -372,13 +372,13 @@ source zipvoice/bin/activate</code></pre>
 <li><code>prompt_wav</code> مسیر فایل صوتی مکالمه‌ی ورودی است.</li>
 <li><code>text</code> متنی است که قرار است سنتز شود، مثلاً "[S1] من خوبم. [S2] اسم شما چیه؟ [S1] من اریک هستم. [S2] سلام اریک."</li></p><p></ul>(2) <strong>فرمت مکالمه‌ی جداشده</strong> که فایل‌های صوتی و رونویسی دو گوینده به صورت جداگانه وجود دارند:</p><pre><code class="language-">{wav_name}\t{spk1_prompt_transcription}\t{spk2_prompt_transcription}\t{spk1_prompt_wav}\t{spk2_prompt_wav}\t{text}</code></pre>
 <ul><li><code>wav_name</code> نام فایل خروجی wav است.</li>
-<li><code>spk1_prompt_transcription</code> رونوشت فایل wav نمونه گوینده اول است، مثلاً "سلام"</li>
-<li><code>spk2_prompt_transcription</code> رونوشت فایل wav نمونه گوینده دوم است، مثلاً "حالت چطور است؟"</li>
+<li><code>spk1_prompt_transcription</code> رونویسی فایل wav نمونه گوینده اول است، مثلا "سلام"</li>
+<li><code>spk2_prompt_transcription</code> رونویسی فایل wav نمونه گوینده دوم است، مثلا "حالت چطوره؟"</li>
 <li><code>spk1_prompt_wav</code> مسیر فایل wav نمونه گوینده اول است.</li>
 <li><code>spk2_prompt_wav</code> مسیر فایل wav نمونه گوینده دوم است.</li>
-<li><code>text</code> متنی است که باید سنتز شود، مثلاً "[S1] خوبم. [S2] اسمت چیست؟ [S1] من اریک هستم. [S2] سلام اریک."</li></p><p></ul><h3>۳ راهنمای استفاده بهتر:</h3></p><p>#### ۳.۱ طول نمونه</p><p>پیشنهاد می‌کنیم فایل wav نمونه کوتاه باشد (مثلاً کمتر از ۳ ثانیه برای تولید گفتار تک‌گوینده، کمتر از ۱۰ ثانیه برای تولید گفتار دیالوگ) تا سرعت استنتاج بیشتر شود. نمونه بسیار طولانی باعث کندی استنتاج و افت کیفیت گفتار خواهد شد.</p><p>#### ۳.۲ بهینه‌سازی سرعت</p><p>اگر سرعت استنتاج رضایت‌بخش نیست، می‌توانید به روش‌های زیر آن را افزایش دهید:</p><ul><li><strong>مدل تقطیر شده و کاهش مراحل</strong>: برای مدل تولید گفتار تک‌گوینده، به طور پیش‌فرض از مدل <code>zipvoice</code> برای کیفیت بهتر گفتار استفاده می‌کنیم. اگر سرعت بیشتر اولویت دارد، می‌توانید به <code>zipvoice_distill</code> سوییچ کنید و مقدار <code>--num-steps</code> را تا حداقل <code>4</code> کاهش دهید (پیش‌فرض 8).</li></p><p><li><strong>افزایش سرعت CPU با چندریسمانی</strong>: هنگام اجرای روی CPU، می‌توانید پارامتر <code>--num-thread</code> (مثلاً <code>--num-thread 4</code>) را برای افزایش تعداد ریسمان‌ها و سرعت بیشتر وارد کنید. به طور پیش‌فرض ۱ ریسمان استفاده می‌شود.</li></p><p><li><strong>افزایش سرعت CPU با ONNX</strong>: هنگام اجرا روی CPU، می‌توانید از مدل‌های ONNX با <code>zipvoice.bin.infer_zipvoice_onnx</code> برای سرعت بیشتر استفاده کنید (هنوز برای مدل‌های تولید دیالوگ از ONNX پشتیبانی نشده). برای سرعت بیشتر، می‌توانید مقدار <code>--onnx-int8 True</code> را جهت استفاده از مدل ONNX با INT8 تنظیم کنید. توجه داشته باشید که مدل کوانتیزه شده باعث افت کیفیت گفتار خواهد شد. <strong>از ONNX روی GPU استفاده نکنید</strong>، زیرا روی GPU کندتر از PyTorch است.</li></p><p></ul>#### ۳.۳ کنترل حافظه</p><p>متن داده شده بر اساس علائم نگارشی (برای تولید گفتار تک‌گوینده) یا نماد تغییر گوینده (برای تولید گفتار دیالوگ) به بخش‌هایی تقسیم می‌شود. سپس متن‌های بخش‌بندی شده به صورت دسته‌ای پردازش می‌شوند. بنابراین مدل می‌تواند متن بسیار طولانی را با مصرف حافظه تقریباً ثابت پردازش کند. با تنظیم پارامتر <code>--max-duration</code> می‌توانید مصرف حافظه را کنترل کنید.</p><p>#### ۳.۴ ارزیابی "خام"</p><p>به طور پیش‌فرض، ورودی‌ها (فایل wav نمونه، رونوشت نمونه، و متن) را برای استنتاج بهینه و عملکرد بهتر پیش‌پردازش می‌کنیم. اگر می‌خواهید عملکرد "خام" مدل را با ورودی‌های دقیق ارائه‌شده ارزیابی کنید (مثلاً برای بازتولید نتایج مقاله ما)، می‌توانید پارامتر <code>--raw-evaluation True</code> را وارد کنید.</p><p>#### ۳.۵ متن کوتاه</p><p>هنگام تولید گفتار برای متن‌های بسیار کوتاه (مثلاً یک یا دو واژه)، گفتار تولیدشده گاهی برخی تلفظ‌ها را حذف می‌کند. برای رفع این مشکل، می‌توانید پارامتر <code>--speed 0.3</code> (که مقدار قابل تنظیم است) را وارد کنید تا مدت زمان گفتار تولیدی افزایش یابد.</p><p>#### ۳.۶ اصلاح تلفظ اشتباه حروف چندآوایی چینی</p><p>ما از <a href="https://github.com/mozillazg/python-pinyin" target="_blank" rel="noopener noreferrer">pypinyin</a> برای تبدیل کاراکترهای چینی به پین‌یین استفاده می‌کنیم. با این حال، گاهی اوقات <strong>حروف چندآوایی</strong> (多音字) را اشتباه تلفظ می‌کند.</p><p>
-برای اصلاح دستی این تلفظ‌های اشتباه، <strong>پین‌یین اصلاح‌شده</strong> را در داخل علامت زاویه‌دار <code>< ></code> قرار دهید و <strong>علامت نوا</strong> را اضافه کنید.</p><p><strong>مثال:</strong></p><ul><li>متن اصلی: <code>这把剑长三十公分</code></li>
-<li>اصلاح پین‌یین <code>长</code>:  <code>这把剑<chang2>三十公分</code></li></p><p></ul>> <strong>توجه:</strong> اگر می‌خواهید چندین پین‌یین را به صورت دستی تعیین کنید، هر پین‌یین را داخل <code><></code> قرار دهید، مانند: <code>这把<jian4><chang2><san1>十公分</code></p><p>#### 3.7 حذف سکوت‌های طولانی از گفتار تولید شده</p><p>مدل به طور خودکار موقعیت‌ها و طول سکوت‌ها را در گفتار تولیدشده تعیین می‌کند. گاهی اوقات سکوت طولانی در وسط گفتار ایجاد می‌شود. اگر نمی‌خواهید این اتفاق بیفتد، می‌توانید <code>--remove-long-sil</code> را استفاده کنید تا سکوت‌های طولانی وسط گفتار حذف شوند (سکوت‌های ابتدا و انتها به طور پیش‌فرض حذف می‌شوند).</p><p>#### 3.8 دانلود مدل</p><p>اگر هنگام دانلود مدل‌های از پیش آموزش‌دیده با HuggingFace مشکل اتصال داشتید، سعی کنید نقطه انتهایی را به سایت آینه تغییر دهید: <code>export HF_ENDPOINT=https://hf-mirror.com</code>.</p><h2>آموزش مدل شخصی خودتان</h2></p><p>برای نمونه‌های آموزش، تنظیم و ارزیابی، به دایرکتوری <a href="egs" target="_blank" rel="noopener noreferrer">egs</a> مراجعه کنید.</p><h2>استقرار C++</h2></p><p>راه‌حل استقرار C++ روی CPU را در <a href="https://github.com/k2-fsa/sherpa-onnx/pull/2487#issuecomment-3227884498" target="_blank" rel="noopener noreferrer">sherpa-onnx</a> بررسی کنید.</p><h2>بحث و ارتباط</h2></p><p>می‌توانید مستقیماً در <a href="https://github.com/k2-fsa/ZipVoice/issues" target="_blank" rel="noopener noreferrer">Github Issues</a> بحث کنید.</p><p>همچنین می‌توانید کد QR را برای پیوستن به گروه وی‌چت ما یا دنبال کردن حساب رسمی وی‌چت اسکن کنید.</p><p>| گروه وی‌چت | حساب رسمی وی‌چت |
+<li><code>text</code> متنی است که باید سنتز شود، مثلا "[S1] من خوبم. [S2] اسم شما چیست؟ [S1] من اریک هستم. [S2] سلام اریک."</li></p><p></ul><h3>3 راهنمایی برای استفاده بهتر:</h3></p><p>#### 3.1 طول نمونه</p><p>ما یک فایل نمونه wav کوتاه (مثلاً کمتر از ۳ ثانیه برای تولید گفتار تک‌گوینده، کمتر از ۱۰ ثانیه برای تولید گفتار محاوره‌ای) را برای افزایش سرعت استنتاج توصیه می‌کنیم. یک نمونه بسیار طولانی باعث کاهش سرعت استنتاج و افت کیفیت گفتار می‌شود.</p><p>#### 3.2 بهینه‌سازی سرعت</p><p>اگر سرعت استنتاج مطلوب نیست، می‌توانید با روش‌های زیر آن را افزایش دهید:</p><ul><li><strong>مدل تقطیرشده و مراحل کمتر</strong>: برای مدل تولید گفتار تک‌گوینده، به طور پیش‌فرض از مدل <code>zipvoice</code> برای کیفیت گفتار بهتر استفاده می‌کنیم. اگر سرعت بالاتر اولویت دارد، می‌توانید به <code>zipvoice_distill</code> سوئیچ کنید و مقدار <code>--num-steps</code> را تا حداقل <code>4</code> (پیش‌فرض ۸) کاهش دهید.</li></p><p><li><strong>افزایش سرعت CPU با چندریسمانی</strong>: هنگام اجرا روی CPU، می‌توانید با پارامتر <code>--num-thread</code> (مثلاً <code>--num-thread 4</code>) تعداد ریسه‌ها را برای سرعت بیشتر افزایش دهید. به طور پیش‌فرض از ۱ ریسه استفاده می‌کنیم.</li></p><p><li><strong>افزایش سرعت CPU با ONNX</strong>: هنگام اجرا روی CPU، می‌توانید از مدل‌های ONNX با <code>zipvoice.bin.infer_zipvoice_onnx</code> برای سرعت بیشتر استفاده کنید (هنوز مدل‌های تولید گفتار محاوره‌ای از ONNX پشتیبانی نمی‌کنند). برای سرعت بالاتر، می‌توانید مقدار <code>--onnx-int8 True</code> را برای استفاده از مدل ONNX با کمیت INT8 تنظیم کنید. توجه داشته باشید که مدل کمیت شده باعث کاهش کیفیت گفتار می‌شود. <strong>از ONNX روی GPU استفاده نکنید</strong>، چون نسبت به PyTorch روی GPU کندتر است.</li></p><p><li><strong>شتاب GPU با NVIDIA TensorRT</strong>: برای افزایش قابل توجه عملکرد روی کارت‌های NVIDIA، ابتدا مدل را با zipvoice.bin.tensorrt_export به موتور TensorRT تبدیل کنید. سپس استنتاج را روی مجموعه داده خود (مثلاً مجموعه داده Hugging Face) با zipvoice.bin.infer_zipvoice انجام دهید. این کار می‌تواند تقریباً دو برابر عملکرد نسبت به پیاده‌سازی استاندارد PyTorch روی GPU داشته باشد.</li></p><p></ul>#### 3.3 کنترل حافظه</p><p>متن داده شده بر اساس علائم نگارشی (برای تولید گفتار تک‌گوینده) یا نماد تغییر گوینده (برای تولید گفتار محاوره‌ای) به بخش‌هایی تقسیم می‌شود. سپس، متن‌های بخش‌بندی شده به صورت دسته‌ای پردازش می‌شوند. بنابراین، مدل می‌تواند متن‌های بسیار طولانی را با تقریباً حافظه ثابت پردازش کند. شما می‌توانید با تنظیم پارامتر <code>--max-duration</code> میزان مصرف حافظه را کنترل کنید.</p><p>#### 3.4 ارزیابی "خام"</p><p>به طور پیش‌فرض، ورودی‌ها (فایل نمونه wav، رونویسی نمونه، و متن) را برای استنتاج بهینه و عملکرد بهتر پیش‌پردازش می‌کنیم. اگر می‌خواهید عملکرد "خام" مدل را با ورودی‌های دقیقاً داده شده ارزیابی کنید (مثلاً برای بازتولید نتایج مقاله ما)، می‌توانید مقدار <code>--raw-evaluation True</code> را وارد کنید.</p><p>#### 3.5 متن کوتاه</p><p>هنگام تولید گفتار برای متن‌های بسیار کوتاه (مثلاً یک یا دو کلمه)، ممکن است گفتار تولیدشده برخی تلفظ‌ها را حذف کند. برای رفع این مشکل، می‌توانید مقدار <code>--speed 0.3</code> (که عدد ۰.۳ قابل تنظیم است) را وارد کنید تا مدت زمان گفتار تولیدشده افزایش یابد.</p><p>#### 3.6 اصلاح تلفظ اشتباه نویسه‌های چندآوایی چینی</p><p>
+ما از <a href="https://github.com/mozillazg/python-pinyin" target="_blank" rel="noopener noreferrer">pypinyin</a> برای تبدیل حروف چینی به پین‌یین استفاده می‌کنیم. با این حال، گاهی اوقات ممکن است <strong>حروف چندآوایی</strong> (多音字) را اشتباه تلفظ کند.</p><p>برای اصلاح دستی این تلفظ‌های اشتباه، پین‌یین <strong>اصلاح‌شده</strong> را درون علامت زاویه‌ای <code>< ></code> قرار دهید و <strong>علامت نغمه</strong> را نیز درج کنید.</p><p><strong>مثال:</strong></p><ul><li>متن اصلی: <code>这把剑长三十公分</code></li>
+<li>اصلاح پین‌یین واژه <code>长</code>:  <code>这把剑<chang2>三十公分</code></li></p><p></ul>> <strong>توجه:</strong> اگر می‌خواهید چند پین‌یین را به صورت دستی تعیین کنید، هر پین‌یین را داخل <code>< ></code> قرار دهید، مانند: <code>这把<jian4><chang2><san1>十公分</code></p><p>#### ۳.۷ حذف سکوت‌های طولانی از گفتار تولیدشده</p><p>مدل به طور خودکار موقعیت و طول سکوت‌ها در گفتار تولیدشده را تشخیص می‌دهد. گاهی اوقات سکوت طولانی در وسط گفتار ایجاد می‌شود. اگر این مورد را نمی‌خواهید، می‌توانید با پارامتر <code>--remove-long-sil</code> سکوت‌های طولانی در وسط گفتار تولیدشده را حذف کنید (سکوت‌های لبه‌ای به طور پیش‌فرض حذف خواهند شد).</p><p>#### ۳.۸ دانلود مدل</p><p>اگر هنگام دانلود مدل‌های از پیش آموزش‌دیده از HuggingFace با مشکل اتصال مواجه شدید، می‌توانید نقطه انتهایی را به سایت میرور تغییر دهید: <code>export HF_ENDPOINT=https://hf-mirror.com</code>.</p><h2>آموزش مدل اختصاصی</h2></p><p>برای مثال‌های آموزش، تنظیم دقیق و ارزیابی به دایرکتوری <a href="egs" target="_blank" rel="noopener noreferrer">egs</a> مراجعه کنید.</p><h2>استقرار در محیط تولید</h2></p><h3>اجرای GPU با NVIDIA Triton</h3></p><p>برای استقرار آماده تولید با کارایی و مقیاس‌پذیری بالا، به <a href="runtime/nvidia_triton/" target="_blank" rel="noopener noreferrer">ادغام سرور استنتاج Triton</a> مراجعه کنید که موتورهای بهینه‌شده TensorRT، مدیریت درخواست‌های همزمان و هر دو API گراف/HTTP برای استفاده سازمانی را ارائه می‌دهد.</p><h3>استقرار روی CPU</h3></p><p>برای راه‌حل استقرار C++ روی CPU به <a href="https://github.com/k2-fsa/sherpa-onnx/pull/2487#issuecomment-3227884498" target="_blank" rel="noopener noreferrer">sherpa-onnx</a> مراجعه کنید.</p><h2>بحث و ارتباط</h2></p><p>می‌توانید به طور مستقیم در <a href="https://github.com/k2-fsa/ZipVoice/issues" target="_blank" rel="noopener noreferrer">Github Issues</a> بحث کنید.</p><p>همچنین می‌توانید کد QR را اسکن کنید تا به گروه وی‌چت ما بپیوندید یا حساب رسمی وی‌چت ما را دنبال کنید.</p><p>| گروه وی‌چت | حساب رسمی وی‌چت |
 | ------------ | ----------------------- |
 |<img src="https://k2-fsa.org/zh-CN/assets/pic/wechat_group.jpg" alt="wechat"> |<img src="https://k2-fsa.org/zh-CN/assets/pic/wechat_account.jpg" alt="wechat"> |</p><h2>ارجاع</h2></p><pre><code class="language-bibtex">@article{zhu2025zipvoice,
       title={ZipVoice: Fast and High-Quality Zero-Shot Text-to-Speech with Flow Matching},
@@ -393,7 +393,7 @@ source zipvoice/bin/activate</code></pre>
 }</code></pre></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-10-06
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-30
 
 ---</p>
         </div>
@@ -405,7 +405,7 @@ source zipvoice/bin/activate</code></pre>
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-10-06 
+        Last updated: 2025-12-30 
     </div>
     
 </body>

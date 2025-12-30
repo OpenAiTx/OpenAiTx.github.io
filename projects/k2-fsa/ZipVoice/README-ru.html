@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZipVoice - Быстрый и высококачественный Zero-Shot текст-в-голос с Flow Matching</title>
-    <meta name="description" content="Быстрый и высококачественный Zero-Shot текст-в-голос с Flow Matching">
+    <title>ZipVoice - Быстрый и высококачественный Zero-Shot синтез речи по тексту с использованием Flow Matching</title>
+    <meta name="description" content="Быстрый и высококачественный Zero-Shot синтез речи по тексту с использованием Flow Matching">
     <meta name="keywords" content="ZipVoice, Russian, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "ZipVoice",
-  "description": "Быстрый и высококачественный Zero-Shot текст-в-голос с Flow Matching",
+  "description": "Быстрый и высококачественный Zero-Shot синтез речи по тексту с использованием Flow Matching",
   "author": {
     "@type": "Person",
     "name": "k2-fsa"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 661
+    "ratingCount": 748
   },
   "url": "https://OpenAiTx.github.io/projects/k2-fsa/ZipVoice/README-ru.html",
   "sameAs": "https://raw.githubusercontent.com/k2-fsa/ZipVoice/master/README.md",
-  "datePublished": "2025-10-06",
-  "dateModified": "2025-10-06"
+  "datePublished": "2025-12-30",
+  "dateModified": "2025-12-30"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 661 stars</span>
+                <span class="stars">⭐ 748 stars</span>
                 <span class="language">Russian</span>
                 <span>by k2-fsa</span>
             </div>
@@ -370,16 +370,14 @@ source zipvoice/bin/activate</code></pre>
     </ul>которые генерируют соответственно моно- и стерео-диалоги.</p><p>#### 2.2 Форматы входных данных</p><p>Каждая строка файла <code>test.tsv</code> соответствует одному из следующих форматов:</p><p>(1) <strong>Формат объединённого запроса</strong>, где аудиозаписи и транскрипции двух реплик объединены в один wav-файл запроса:</p><pre><code class="language-">{wav_name}\t{prompt_transcription}\t{prompt_wav}\t{text}</code></pre></p><ul><li><code>wav_name</code> — это имя выходного wav-файла.</li>
 <li><code>prompt_transcription</code> — это транскрипция звукового файла с разговорным запросом, например, "[S1] Привет. [S2] Как дела?"</li>
 <li><code>prompt_wav</code> — это путь к звуковому файлу запроса.</li>
-<li><code>text</code> — это текст для синтеза, например: "[S1] У меня всё хорошо. [S2] Как тебя зовут? [S1] Я Эрик. [S2] Привет, Эрик."</li></p><p></ul>(2) <strong>Формат разделённого запроса</strong>, где аудиофайлы и транскрипции двух говорящих существуют в отдельных файлах:</p><pre><code class="language-">{wav_name}\t{spk1_prompt_transcription}\t{spk2_prompt_transcription}\t{spk1_prompt_wav}\t{spk2_prompt_wav}\t{text}</code></pre>
-<ul><li><code>wav_name</code> — имя выходного wav-файла.</li>
-<li><code>spk1_prompt_transcription</code> — транскрипция подсказки первого говорящего, например, "Hello".</li>
-<li><code>spk2_prompt_transcription</code> — транскрипция подсказки второго говорящего, например, "How are you?"</li>
-<li><code>spk1_prompt_wav</code> — путь к wav-файлу подсказки первого говорящего.</li>
-<li><code>spk2_prompt_wav</code> — путь к wav-файлу подсказки второго говорящего.</li>
-<li><code>text</code> — текст для синтеза, например, "[S1] I'm fine. [S2] What's your name? [S1] I'm Eric. [S2] Hi Eric."</li></p><p></ul><h3>3 Руководство по лучшему использованию:</h3></p><p>#### 3.1 Длина подсказки</p><p>Рекомендуем использовать короткий wav-файл подсказки (например, менее 3 секунд для генерации речи одного говорящего, менее 10 секунд для генерации диалога), чтобы ускорить процесс вывода. Очень длинная подсказка замедлит вывод и ухудшит качество речи.</p><p>#### 3.2 Оптимизация скорости</p><p>Если скорость вывода неудовлетворительная, вы можете ускорить процесс следующим образом:</p><ul><li><strong>Дистиллированная модель и меньше шагов</strong>: Для модели генерации речи одного говорящего по умолчанию используется модель <code>zipvoice</code> для лучшего качества речи. Если приоритет — скорость, можно переключиться на <code>zipvoice_distill</code> и уменьшить <code>--num-steps</code> до значения <code>4</code> (по умолчанию 8).</li></p><p><li><strong>Ускорение на CPU с многопоточностью</strong>: При запуске на CPU вы можете указать параметр <code>--num-thread</code> (например, <code>--num-thread 4</code>), чтобы увеличить количество потоков и ускорить процесс. По умолчанию используется 1 поток.</li></p><p><li><strong>Ускорение на CPU с ONNX</strong>: При запуске на CPU можно использовать ONNX-модели с помощью <code>zipvoice.bin.infer_zipvoice_onnx</code> для ускорения (ONNX пока не поддерживается для моделей генерации диалогов). Для ещё большей скорости можно установить <code>--onnx-int8 True</code> и использовать квантованную ONNX-модель с INT8. Обратите внимание, что качество речи при этом может ухудшиться. <strong>Не используйте ONNX на GPU</strong>, так как на GPU он работает медленнее, чем PyTorch.</li></p><p></ul>#### 3.3 Контроль памяти</p><p>Введённый текст будет разбит на части по знакам препинания (для генерации речи одного говорящего) или по символу смены говорящего (для генерации диалога). Затем части текста будут обработаны пакетами. Таким образом, модель может обрабатывать текст любой длины при почти постоянном использовании памяти. Вы можете управлять использованием памяти с помощью параметра <code>--max-duration</code>.</p><p>#### 3.4 "Сырой" режим оценки</p><p>По умолчанию мы предварительно обрабатываем входные данные (wav-файл подсказки, транскрипцию подсказки и текст) для эффективного вывода и лучшей производительности. Если вы хотите оценить "сырое" качество модели на точных предоставленных входных данных (например, для воспроизведения результатов из нашей статьи), передайте параметр <code>--raw-evaluation True</code>.</p><p>#### 3.5 Короткий текст</p><p>При генерации речи для очень коротких текстов (например, одно-два слова), сгенерированная речь может иногда пропускать некоторые произношения. Чтобы решить эту проблему, передайте параметр <code>--speed 0.3</code> (0.3 — настраиваемое значение), чтобы увеличить длительность сгенерированной речи.</p><p>#### 3.6 Исправление неправильного произношения китайских многозначных иероглифов</p><p>Мы используем <a href="https://github.com/mozillazg/python-pinyin" target="_blank" rel="noopener noreferrer">pypinyin</a> для преобразования китайских иероглифов в пиньинь. Однако иногда он может неправильно произносить <strong>многозначные иероглифы</strong> (多音字).</p><p>
-Чтобы вручную исправить эти ошибки произношения, заключайте <strong>исправленный пиньинь</strong> в угловые скобки <code>< ></code> и добавляйте <strong>обозначение тона</strong>.</p><p><strong>Пример:</strong></p><ul><li>Оригинальный текст: <code>这把剑长三十公分</code></li>
-<li>Исправьте пиньинь для <code>长</code>:  <code>这把剑<chang2>三十公分</code></li></p><p></ul>> <strong>Примечание:</strong> Если вы хотите вручную назначить несколько вариантов пиньиня, заключайте каждый пиньинь в <code><></code>, например: <code>这把<jian4><chang2><san1>十公分</code></p><p>#### 3.7 Удаление длинных пауз из сгенерированной речи</p><p>Модель автоматически определяет позиции и длительность пауз в сгенерированной речи. Иногда в середине речи появляются длинные паузы. Если вы хотите их убрать, передайте флаг <code>--remove-long-sil</code> для удаления длинных пауз в середине сгенерированной речи (краевые паузы удаляются по умолчанию).</p><p>#### 3.8 Загрузка модели</p><p>Если у вас возникают проблемы с подключением к HuggingFace при загрузке предобученных моделей, попробуйте переключить endpoint на зеркальный сайт: <code>export HF_ENDPOINT=https://hf-mirror.com</code>.</p><h2>Обучение собственной модели</h2></p><p>Смотрите директорию <a href="egs" target="_blank" rel="noopener noreferrer">egs</a> для примеров обучения, дообучения и оценки.</p><h2>Развертывание на C++</h2></p><p>Посмотрите <a href="https://github.com/k2-fsa/sherpa-onnx/pull/2487#issuecomment-3227884498" target="_blank" rel="noopener noreferrer">sherpa-onnx</a> для решения по развертыванию на C++ на CPU.</p><h2>Обсуждение и коммуникация</h2></p><p>Вы можете напрямую обсуждать на <a href="https://github.com/k2-fsa/ZipVoice/issues" target="_blank" rel="noopener noreferrer">Github Issues</a>.</p><p>Вы также можете отсканировать QR-код для вступления в нашу группу в WeChat или подписаться на официальный аккаунт WeChat.</p><p>| Группа Wechat | Официальный аккаунт Wechat |
-| ------------- | -------------------------- |
+<li><code>text</code> — это текст для синтеза, например: "[S1] У меня всё хорошо. [S2] Как тебя зовут? [S1] Я Эрик. [S2] Привет, Эрик."</li></p><p></ul>(2) <strong>Формат разделённого запроса</strong>, где аудиофайлы и транскрипции двух говорящих существуют в отдельных файлах:</p><pre><code class="language-">{wav_name}\t{spk1_prompt_transcription}\t{spk2_prompt_transcription}\t{spk1_prompt_wav}\t{spk2_prompt_wav}\t{text}</code></pre></p><ul><li><code>wav_name</code> — имя выходного wav-файла.</li>
+<li><code>spk1_prompt_transcription</code> — транскрипция примера речи первого говорящего, например, "Привет".</li>
+<li><code>spk2_prompt_transcription</code> — транскрипция примера речи второго говорящего, например, "Как дела?"</li>
+<li><code>spk1_prompt_wav</code> — путь к wav-файлу примера речи первого говорящего.</li>
+<li><code>spk2_prompt_wav</code> — путь к wav-файлу примера речи второго говорящего.</li>
+<li><code>text</code> — текст для синтеза, например: "[S1] У меня всё хорошо. [S2] Как тебя зовут? [S1] Я Эрик. [S2] Привет, Эрик."</li></p><p></ul><h3>3 Рекомендации по использованию:</h3></p><p>#### 3.1 Длина примера</p><p>Рекомендуется использовать короткий wav-файл примера (например, менее 3 секунд для генерации речи одного говорящего, менее 10 секунд для генерации диалога) для ускорения вывода. Слишком длинный пример замедлит вывод и ухудшит качество речи.</p><p>#### 3.2 Оптимизация скорости</p><p>Если скорость вывода неудовлетворительная, ускорить её можно следующим образом:</p><ul><li><strong>Distill-модель и меньше шагов</strong>: Для модели генерации речи одного говорящего мы по умолчанию используем модель <code>zipvoice</code> для лучшего качества речи. Если приоритет — скорость, переключитесь на <code>zipvoice_distill</code> и уменьшите параметр <code>--num-steps</code> до значения не менее <code>4</code> (по умолчанию 8).</li></p><p><li><strong>Ускорение на CPU с помощью многопоточности</strong>: При запуске на CPU можно добавить параметр <code>--num-thread</code> (например, <code>--num-thread 4</code>), чтобы увеличить количество потоков для ускорения. По умолчанию используется 1 поток.</li></p><p><li><strong>Ускорение на CPU с помощью ONNX</strong>: При запуске на CPU используйте ONNX-модели с <code>zipvoice.bin.infer_zipvoice_onnx</code> для ускорения (ONNX для моделей генерации диалогов пока не поддерживается). Для ещё большего ускорения укажите <code>--onnx-int8 True</code> для использования INT8-квантованной ONNX-модели. Обратите внимание, что качество речи при квантовании может немного снизиться. <strong>Не используйте ONNX на GPU</strong>, так как это медленнее, чем PyTorch на GPU.</li></p><p><li><strong>Ускорение на GPU с NVIDIA TensorRT</strong>: Для значительного прироста производительности на NVIDIA GPU сначала экспортируйте модель в движок TensorRT с помощью zipvoice.bin.tensorrt_export. Затем запускайте вывод на вашем датасете (например, Hugging Face) с помощью zipvoice.bin.infer_zipvoice. Это даст примерно 2-кратный прирост производительности по сравнению со стандартной реализацией PyTorch на GPU.</li></p><p></ul>#### 3.3 Контроль памяти</p><p>Введённый текст будет разбит на части по знакам препинания (для генерации речи одного говорящего) или символам смены говорящего (для генерации диалога). Затем части текста будут обработаны пакетно. Таким образом, модель может обрабатывать текст любой длины при почти постоянном потреблении памяти. Управлять расходом памяти можно с помощью параметра <code>--max-duration</code>.</p><p>#### 3.4 "Raw"-оценка</p><p>По умолчанию мы предварительно обрабатываем входные данные (пример wav, транскрипция примера и текст) для ускорения вывода и повышения качества. Если вы хотите оценить "сырое" качество модели по точным входным данным (например, для воспроизведения результатов из нашей статьи), укажите <code>--raw-evaluation True</code>.</p><p>#### 3.5 Короткий текст</p><p>При генерации речи для очень коротких текстов (например, одно-два слова) сгенерированная речь иногда может пропускать отдельные звуки. Для решения этой проблемы укажите <code>--speed 0.3</code> (где 0.3 — настраиваемое значение), чтобы увеличить длительность сгенерированной речи.</p><p>#### 3.6 Коррекция ошибочного произношения китайских полифонических иероглифов</p><p>Мы используем <a href="https://github.com/mozillazg/python-pinyin" target="_blank" rel="noopener noreferrer">pypinyin</a> для преобразования китайских иероглифов в пиньинь. Однако иногда он может неправильно произносить <strong>многозначные иероглифы</strong> (多音字).</p><p>Чтобы вручную исправить такие ошибки, заключайте <strong>исправленный пиньинь</strong> в угловые скобки <code>< ></code> и указывайте <strong>тон</strong>.</p><p><strong>Пример:</strong></p><ul><li>Оригинальный текст: <code>这把剑长三十公分</code></li>
+<li>Исправьте пиньинь у <code>长</code>:  <code>这把剑<chang2>三十公分</code></li></p><p></ul>> <strong>Примечание:</strong> Если вы хотите вручную указать несколько пиньиней, заключайте каждый пиньинь в <code><></code>, например, <code>这把<jian4><chang2><san1>十公分</code></p><p>#### 3.7 Удаление длинных пауз из сгенерированной речи</p><p>Модель автоматически определяет позиции и длительность пауз в сгенерированной речи. Иногда в середине речи встречаются длительные паузы. Если вы не хотите этого, вы можете передать <code>--remove-long-sil</code>, чтобы удалить длинные паузы в середине сгенерированной речи (краевые паузы удаляются по умолчанию).</p><p>#### 3.8 Загрузка модели</p><p>Если у вас возникли трудности с подключением к HuggingFace при загрузке предобученных моделей, попробуйте переключить endpoint на зеркальный сайт: <code>export HF_ENDPOINT=https://hf-mirror.com</code>.</p><h2>Обучение собственной модели</h2></p><p>Смотрите каталог <a href="egs" target="_blank" rel="noopener noreferrer">egs</a> для примеров обучения, дообучения и оценки.</p><h2>Промышленное развертывание</h2></p><h3>NVIDIA Triton GPU Runtime</h3></p><p>Для промышленного развертывания с высокой производительностью и масштабируемостью ознакомьтесь с <a href="runtime/nvidia_triton/" target="_blank" rel="noopener noreferrer">интеграцией Triton Inference Server</a>, которая предоставляет оптимизированные движки TensorRT, обработку параллельных запросов и API gRPC/HTTP для корпоративного использования.</p><h3>Развертывание на CPU</h3></p><p>Посмотрите <a href="https://github.com/k2-fsa/sherpa-onnx/pull/2487#issuecomment-3227884498" target="_blank" rel="noopener noreferrer">sherpa-onnx</a> для решения по развертыванию на CPU на C++.</p><h2>Обсуждение и коммуникация</h2></p><p>Вы можете напрямую обсуждать на <a href="https://github.com/k2-fsa/ZipVoice/issues" target="_blank" rel="noopener noreferrer">Github Issues</a>.</p><p>Также вы можете отсканировать QR-код, чтобы присоединиться к нашей группе в WeChat или подписаться на наш официальный аккаунт WeChat.</p><p>| Wechat Group | Wechat Official Account |
+| ------------ | ----------------------- |
 |<img src="https://k2-fsa.org/zh-CN/assets/pic/wechat_group.jpg" alt="wechat"> |<img src="https://k2-fsa.org/zh-CN/assets/pic/wechat_account.jpg" alt="wechat"> |</p><h2>Цитирование</h2></p><pre><code class="language-bibtex">@article{zhu2025zipvoice,
       title={ZipVoice: Fast and High-Quality Zero-Shot Text-to-Speech with Flow Matching},
       author={Zhu, Han and Kang, Wei and Yao, Zengwei and Guo, Liyong and Kuang, Fangjun and Li, Zhaoqing and Zhuang, Weiji and Lin, Long and Povey, Daniel},
@@ -393,7 +391,7 @@ source zipvoice/bin/activate</code></pre>
 }</code></pre></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-10-06
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-30
 
 ---</p>
         </div>
@@ -405,7 +403,7 @@ source zipvoice/bin/activate</code></pre>
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-10-06 
+        Last updated: 2025-12-30 
     </div>
     
 </body>

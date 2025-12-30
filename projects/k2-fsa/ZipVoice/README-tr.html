@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZipVoice - Akış Eşleştirme ile Hızlı ve Y&#252;ksek Kaliteli Sıfır-&#214;rnekli Metinden Sese D&#246;n&#252;ş&#252;m</title>
-    <meta name="description" content="Akış Eşleştirme ile Hızlı ve Y&#252;ksek Kaliteli Sıfır-&#214;rnekli Metinden Sese D&#246;n&#252;ş&#252;m">
+    <title>ZipVoice - Flow Matching ile Hızlı ve Y&#252;ksek Kaliteli Sıfır-Atış Metinden Konuşmaya</title>
+    <meta name="description" content="Flow Matching ile Hızlı ve Y&#252;ksek Kaliteli Sıfır-Atış Metinden Konuşmaya">
     <meta name="keywords" content="ZipVoice, Turkish, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "ZipVoice",
-  "description": "Akış Eşleştirme ile Hızlı ve Yüksek Kaliteli Sıfır-Örnekli Metinden Sese Dönüşüm",
+  "description": "Flow Matching ile Hızlı ve Yüksek Kaliteli Sıfır-Atış Metinden Konuşmaya",
   "author": {
     "@type": "Person",
     "name": "k2-fsa"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 661
+    "ratingCount": 748
   },
   "url": "https://OpenAiTx.github.io/projects/k2-fsa/ZipVoice/README-tr.html",
   "sameAs": "https://raw.githubusercontent.com/k2-fsa/ZipVoice/master/README.md",
-  "datePublished": "2025-10-06",
-  "dateModified": "2025-10-06"
+  "datePublished": "2025-12-30",
+  "dateModified": "2025-12-30"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 661 stars</span>
+                <span class="stars">⭐ 748 stars</span>
                 <span class="language">Turkish</span>
                 <span>by k2-fsa</span>
             </div>
@@ -371,15 +371,15 @@ Lütfen ayrıntılar için https://k2-fsa.org/get-started/k2/ adresine bakınız
 <li><code>prompt_transcription</code>, konuşma istemi wav dosyasının transkripsiyonudur, örneğin, "[S1] Merhaba. [S2] Nasılsın?"</li>
 <li><code>prompt_wav</code>, istem wav dosyasının yoludur.</li>
 <li><code>text</code>, sentezlenecek metindir, örneğin, "[S1] İyiyim. [S2] Adın ne? [S1] Ben Eric. [S2] Merhaba Eric."</li></p><p></ul>(2) <strong>Bölünmüş istem formatı</strong>: iki konuşmacının sesleri ve transkripsiyonları ayrı dosyalarda bulunur:</p><pre><code class="language-">{wav_name}\t{spk1_prompt_transcription}\t{spk2_prompt_transcription}\t{spk1_prompt_wav}\t{spk2_prompt_wav}\t{text}</code></pre>
-<ul><li><code>wav_name</code> çıktı wav dosyasının adıdır.</li>
-<li><code>spk1_prompt_transcription</code> birinci konuşmacının prompt wav dosyasının transkripsiyonudur, örneğin, "Merhaba"</li>
-<li><code>spk2_prompt_transcription</code> ikinci konuşmacının prompt wav dosyasının transkripsiyonudur, örneğin, "Nasılsın?"</li>
-<li><code>spk1_prompt_wav</code> birinci konuşmacının prompt wav dosyasının yoludur.</li>
-<li><code>spk2_prompt_wav</code> ikinci konuşmacının prompt wav dosyasının yoludur.</li>
-<li><code>text</code> sentezlenecek metindir, örneğin, "[S1] İyiyim. [S2] Adın ne? [S1] Ben Eric. [S2] Merhaba Eric."</li></p><p></ul><h3>3 Daha iyi kullanım için rehberlik:</h3></p><p>#### 3.1 Prompt uzunluğu</p><p>Daha hızlı çıkarım hızı için kısa bir prompt wav dosyası öneriyoruz (örneğin, tek konuşmacılı konuşma üretimi için 3 saniyeden az, diyalog konuşma üretimi için 10 saniyeden az). Çok uzun bir prompt çıkarımı yavaşlatır ve konuşma kalitesini bozar.</p><p>#### 3.2 Hız optimizasyonu</p><p>Eğer çıkarım hızı yeterli değilse, aşağıdaki şekilde hızlandırabilirsiniz:</p><ul><li><strong>Distill model ve daha az adım</strong>: Tek konuşmacılı konuşma üretim modeli için, daha iyi konuşma kalitesi için varsayılan olarak <code>zipvoice</code> modelini kullanıyoruz. Daha hızlı bir hız önceliğiniz ise, <code>zipvoice_distill</code> modeline geçebilir ve <code>--num-steps</code> değerini <code>4</code>'e kadar düşürebilirsiniz (varsayılan olarak 8).</li></p><p><li><strong>CPU ile çoklu iş parçacığı hızlandırması</strong>: CPU üzerinde çalışırken, daha hızlı bir hız için <code>--num-thread</code> parametresini (örneğin, <code>--num-thread 4</code>) geçebilirsiniz. Varsayılan olarak 1 iş parçacığı kullanıyoruz.</li></p><p><li><strong>ONNX ile CPU hızlandırması</strong>: CPU üzerinde çalışırken, daha hızlı bir hız için <code>zipvoice.bin.infer_zipvoice_onnx</code> ile ONNX modellerini kullanabilirsiniz (henüz diyalog üretim modelleri için ONNX desteklenmiyor). Daha da hızlı bir hız için, INT8-kuantize edilmiş bir ONNX modeli kullanmak için <code>--onnx-int8 True</code> ayarlayabilirsiniz. Kuantize model konuşma kalitesinde belli bir bozulmaya yol açacaktır. <strong>GPU'da ONNX kullanmayın</strong>, çünkü GPU'da PyTorch'tan daha yavaştır.</li></p><p></ul>#### 3.3 Bellek kontrolü</p><p>Verilen metin, noktalama işaretlerine (tek konuşmacılı konuşma üretimi için) veya konuşmacı dönüşü sembolüne (diyalog konuşma üretimi için) göre parçalara ayrılır. Sonra, parçalanmış metinler toplu olarak işlenir. Bu nedenle, model neredeyse sabit bellek kullanımıyla sınırsız uzunlukta metni işleyebilir. Bellek kullanımını <code>--max-duration</code> parametresini ayarlayarak kontrol edebilirsiniz.</p><p>#### 3.4 "Ham" değerlendirme</p><p>Varsayılan olarak, girdileri (prompt wav, prompt transkripsiyonu ve metin) verimli çıkarım ve daha iyi performans için ön işliyoruz. Modelin "ham" performansını tam olarak sağlanan girdilerle değerlendirmek isterseniz (örneğin, makalemizdeki sonuçları yeniden üretmek için), <code>--raw-evaluation True</code> parametresini geçebilirsiniz.</p><p>#### 3.5 Kısa metin</p><p>Çok kısa metinler için konuşma üretirken (örneğin, bir veya iki kelime), üretilen konuşma bazen bazı telaffuzları atlayabilir. Bu sorunu çözmek için, üretilen konuşmanın süresini uzatmak için <code>--speed 0.3</code> (burada 0.3 ayarlanabilir bir değerdir) parametresini kullanabilirsiniz.</p><p>#### 3.6 Yanlış telaffuz edilen Çince çok sesli karakterleri düzeltme</p><p>Çince karakterleri pinyin'e dönüştürmek için <a href="https://github.com/mozillazg/python-pinyin" target="_blank" rel="noopener noreferrer">pypinyin</a> kullanıyoruz. Ancak, bazen <strong>çok sesli karakterleri</strong> (多音字) yanlış telaffuz edebilir.</p><p>
-Bu yanlış telaffuzları manuel olarak düzeltmek için, <strong>düzeltilmiş pinyin</strong>'i açı köşeli parantezler <code>< ></code> içine alın ve <strong>ton işaretini</strong> ekleyin.</p><p><strong>Örnek:</strong></p><ul><li>Orijinal metin: <code>这把剑长三十公分</code></li>
-<li><code>长</code> kelimesinin pinyinini düzeltin:  <code>这把剑<chang2>三十公分</code></li></p><p></ul>> <strong>Not:</strong> Birden fazla pinyin manuel olarak atamak isterseniz, her pinyini <code><></code> ile ayırın, örn. <code>这把<jian4><chang2><san1>十公分</code></p><p>#### 3.7 Oluşturulan sesten uzun sessizlikleri kaldırma</p><p>Model, oluşturulan seste sessizliklerin konumunu ve süresini otomatik olarak belirleyecektir. Bazen konuşmanın ortasında uzun bir sessizlik olur. Bunu istemiyorsanız, oluşturulan sesin ortasındaki uzun sessizlikleri kaldırmak için <code>--remove-long-sil</code> parametresini kullanabilirsiniz (kenar sessizlikler varsayılan olarak kaldırılır).</p><p>#### 3.8 Model indirme</p><p>Önceden eğitilmiş modelleri indirirken HuggingFace ile bağlantı kurmakta sorun yaşarsanız, uç noktayı aynalı siteye değiştirmeyi deneyin: <code>export HF_ENDPOINT=https://hf-mirror.com</code>.</p><h2>Kendi Modelinizi Eğitin</h2></p><p>Eğitim, ince ayar ve değerlendirme örnekleri için <a href="egs" target="_blank" rel="noopener noreferrer">egs</a> dizinine bakın.</p><h2>C++ Dağıtımı</h2></p><p>CPU üzerinde C++ dağıtım çözümü için <a href="https://github.com/k2-fsa/sherpa-onnx/pull/2487#issuecomment-3227884498" target="_blank" rel="noopener noreferrer">sherpa-onnx</a> adresine göz atın.</p><h2>Tartışma & İletişim</h2></p><p>Doğrudan <a href="https://github.com/k2-fsa/ZipVoice/issues" target="_blank" rel="noopener noreferrer">Github Issues</a> üzerinden tartışabilirsiniz.</p><p>Ayrıca QR kodu tarayarak wechat grubumuza katılabilir veya resmi wechat hesabımızı takip edebilirsiniz.</p><p>| Wechat Grubu | Wechat Resmi Hesabı |
-| ------------ | ------------------- |
+<ul><li><code>wav_name</code>, çıktı wav dosyasının adıdır.</li>
+<li><code>spk1_prompt_transcription</code>, birinci konuşmacının istem wav dosyasının transkripsiyonudur, örn. "Merhaba"</li>
+<li><code>spk2_prompt_transcription</code>, ikinci konuşmacının istem wav dosyasının transkripsiyonudur, örn. "Nasılsın?"</li>
+<li><code>spk1_prompt_wav</code>, birinci konuşmacının istem wav dosyasının yoludur.</li>
+<li><code>spk2_prompt_wav</code>, ikinci konuşmacının istem wav dosyasının yoludur.</li>
+<li><code>text</code>, sentezlenecek metindir, örn. "[S1] İyiyim. [S2] Adın ne? [S1] Ben Eric. [S2] Merhaba Eric."</li></p><p></ul><h3>3 Daha iyi kullanım için rehberlik:</h3></p><p>#### 3.1 İstem uzunluğu</p><p>Daha hızlı çıkarım hızı için kısa bir istem wav dosyası öneriyoruz (örn., tek konuşmacılı konuşma üretimi için 3 saniyeden az, diyalog konuşma üretimi için 10 saniyeden az). Çok uzun bir istem, çıkarımı yavaşlatır ve konuşma kalitesini düşürür.</p><p>#### 3.2 Hız optimizasyonu</p><p>Çıkarım hızı tatmin edici değilse, aşağıdaki şekilde hızlandırabilirsiniz:</p><ul><li><strong>Distil model ve daha az adım</strong>: Tek konuşmacılı konuşma üretim modeli için, daha iyi konuşma kalitesi için varsayılan olarak <code>zipvoice</code> modelini kullanıyoruz. Eğer hız önceliğinizse, <code>zipvoice_distill</code> modeline geçebilir ve <code>--num-steps</code> değerini varsayılan 8’den 4’e kadar düşürebilirsiniz.</li></p><p><li><strong>CPU’da çoklu iş parçacığı ile hızlandırma</strong>: CPU’da çalıştırırken, daha hızlı bir hız için <code>--num-thread</code> parametresiyle (örn., <code>--num-thread 4</code>) iş parçacığı sayısını artırabilirsiniz. Varsayılan olarak 1 iş parçacığı kullanıyoruz.</li></p><p><li><strong>CPU’da ONNX ile hızlandırma</strong>: CPU’da çalışırken, daha hızlı bir hız için ONNX modellerini <code>zipvoice.bin.infer_zipvoice_onnx</code> ile kullanabilirsiniz (henüz diyalog üretim modelleri için ONNX desteklenmiyor). Daha da hızlı bir hız için <code>--onnx-int8 True</code> ayarlayarak INT8-kuantize ONNX modeli kullanabilirsiniz. Kuantize modelin konuşma kalitesinde belli bir düşüşe neden olacağını unutmayın. <strong>ONNX’i GPU’da kullanmayın</strong>, çünkü GPU’da PyTorch’tan daha yavaştır.</li></p><p><li><strong>NVIDIA TensorRT ile GPU Hızlandırma</strong>: NVIDIA GPU’larda önemli bir performans artışı için, önce modeli zipvoice.bin.tensorrt_export kullanarak bir TensorRT motoruna aktarın. Ardından, veri kümeniz üzerinde (örn., bir Hugging Face veri kümesi) zipvoice.bin.infer_zipvoice ile çıkarım çalıştırın. Bu, GPU’da standart PyTorch uygulamasına göre yaklaşık 2 kat daha fazla verim sağlayabilir.</li></p><p></ul>#### 3.3 Bellek kontrolü</p><p>Verilen metin, noktalama işaretlerine (tek konuşmacılı konuşma üretimi için) veya konuşmacı değişim sembolüne (diyalog konuşma üretimi için) göre parçalara ayrılacaktır. Sonra, parçalara ayrılan metinler toplu halde işlenecektir. Bu nedenle, model neredeyse sabit bellek kullanımıyla rastgele uzunluktaki metni işleyebilir. Bellek kullanımını <code>--max-duration</code> parametresiyle ayarlayabilirsiniz.</p><p>#### 3.4 "Ham" değerlendirme</p><p>Varsayılan olarak, verimli çıkarım ve daha iyi performans için girdileri (istem wav, istem transkripsiyonu ve metin) ön işleme tabi tutuyoruz. Modelin tam olarak verilen girdilerle ("ham" performansını) değerlendirmek isterseniz (örn., makalemizdeki sonuçları çoğaltmak için), <code>--raw-evaluation True</code> parametresini geçebilirsiniz.</p><p>#### 3.5 Kısa metin</p><p>Çok kısa metinler için konuşma üretirken (örn., bir ya da iki kelime), üretilen konuşma bazen bazı telaffuzları atlayabilir. Bu sorunu çözmek için, <code>--speed 0.3</code> (0.3 ayarlanabilir bir değerdir) parametresiyle üretilen konuşmanın süresini uzatabilirsiniz.</p><p>#### 3.6 Yanlış telaffuz edilen Çince polifon karakterlerin düzeltilmesi</p><p>
+Çince karakterleri pinyin’e dönüştürmek için <a href="https://github.com/mozillazg/python-pinyin" target="_blank" rel="noopener noreferrer">pypinyin</a> kullanıyoruz. Ancak bazen <strong>çok sesli karakterleri</strong> (多音字) yanlış telaffuz edebilir.</p><p>Bu yanlış telaffuzları elle düzeltmek için, <strong>düzeltilmiş pinyin’i</strong> köşeli parantezler <code>< ></code> içine alın ve <strong>ton işaretini</strong> ekleyin.</p><p><strong>Örnek:</strong></p><ul><li>Orijinal metin: <code>这把剑长三十公分</code></li>
+<li><code>长</code> karakterinin pinyin’ini düzeltin:  <code>这把剑<chang2>三十公分</code></li></p><p></ul>> <strong>Not:</strong> Birden fazla pinyin’i elle atamak isterseniz, her pinyin’i <code><></code> ile çevreleyin, örn: <code>这把<jian4><chang2><san1>十公分</code></p><p>#### 3.7 Oluşturulan konuşmadan uzun sessizlikleri kaldırma</p><p>Model, oluşturulan konuşmadaki sessizliklerin yerini ve uzunluğunu otomatik olarak belirler. Bazen konuşmanın ortasında uzun bir sessizlik olabilir. Bunu istemiyorsanız, oluşturulan konuşmanın ortasındaki uzun sessizlikleri kaldırmak için <code>--remove-long-sil</code> komutunu kullanabilirsiniz (kenar sessizlikleri varsayılan olarak kaldırılır).</p><p>#### 3.8 Model indirme</p><p>Önceden eğitilmiş modelleri indirirken HuggingFace’e bağlanmada sorun yaşarsanız, uç noktayı yansı (mirror) siteye geçirmeyi deneyin: <code>export HF_ENDPOINT=https://hf-mirror.com</code>.</p><h2>Kendi Modelinizi Eğitin</h2></p><p>Eğitim, ince ayar ve değerlendirme örnekleri için <a href="egs" target="_blank" rel="noopener noreferrer">egs</a> dizinine bakın.</p><h2>Üretim Ortamında Kullanım</h2></p><h3>NVIDIA Triton GPU Çalışma Zamanı</h3></p><p>Yüksek performans ve ölçeklenebilir üretim dağıtımı için, optimize edilmiş TensorRT motorları, eşzamanlı istek işleme ve kurumsal kullanım için gRPC/HTTP API’leri sağlayan <a href="runtime/nvidia_triton/" target="_blank" rel="noopener noreferrer">Triton Inference Server entegrasyonuna</a> göz atın.</p><h3>CPU Dağıtımı</h3></p><p>CPU üzerinde C++ ile dağıtım çözümü için <a href="https://github.com/k2-fsa/sherpa-onnx/pull/2487#issuecomment-3227884498" target="_blank" rel="noopener noreferrer">sherpa-onnx</a> inceleyin.</p><h2>Tartışma ve İletişim</h2></p><p>Doğrudan <a href="https://github.com/k2-fsa/ZipVoice/issues" target="_blank" rel="noopener noreferrer">Github Issues</a> üzerinden tartışabilirsiniz.</p><p>Ayrıca QR kodunu tarayarak WeChat grubumuza katılabilir veya WeChat resmi hesabımızı takip edebilirsiniz.</p><p>| Wechat Grubu | Wechat Resmi Hesabı |
+| ------------ | ----------------------- |
 |<img src="https://k2-fsa.org/zh-CN/assets/pic/wechat_group.jpg" alt="wechat"> |<img src="https://k2-fsa.org/zh-CN/assets/pic/wechat_account.jpg" alt="wechat"> |</p><h2>Atıf</h2></p><pre><code class="language-bibtex">@article{zhu2025zipvoice,
       title={ZipVoice: Fast and High-Quality Zero-Shot Text-to-Speech with Flow Matching},
       author={Zhu, Han and Kang, Wei and Yao, Zengwei and Guo, Liyong and Kuang, Fangjun and Li, Zhaoqing and Zhuang, Weiji and Lin, Long and Povey, Daniel},
@@ -393,7 +393,7 @@ Bu yanlış telaffuzları manuel olarak düzeltmek için, <strong>düzeltilmiş 
 }</code></pre></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-10-06
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-30
 
 ---</p>
         </div>
@@ -405,7 +405,7 @@ Bu yanlış telaffuzları manuel olarak düzeltmek için, <strong>düzeltilmiş 
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-10-06 
+        Last updated: 2025-12-30 
     </div>
     
 </body>

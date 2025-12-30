@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZipVoice - Szybkie i wysokiej jakości syntezowanie mowy z tekstu bez uczenia (Zero-Shot) z wykorzystaniem Flow Matching</title>
-    <meta name="description" content="Szybkie i wysokiej jakości syntezowanie mowy z tekstu bez uczenia (Zero-Shot) z wykorzystaniem Flow Matching">
+    <title>ZipVoice - Szybkie i wysokiej jakości syntezowanie mowy z tekstu bez uczenia (zero-shot) z wykorzystaniem Flow Matching</title>
+    <meta name="description" content="Szybkie i wysokiej jakości syntezowanie mowy z tekstu bez uczenia (zero-shot) z wykorzystaniem Flow Matching">
     <meta name="keywords" content="ZipVoice, Polish, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "ZipVoice",
-  "description": "Szybkie i wysokiej jakości syntezowanie mowy z tekstu bez uczenia (Zero-Shot) z wykorzystaniem Flow Matching",
+  "description": "Szybkie i wysokiej jakości syntezowanie mowy z tekstu bez uczenia (zero-shot) z wykorzystaniem Flow Matching",
   "author": {
     "@type": "Person",
     "name": "k2-fsa"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 661
+    "ratingCount": 748
   },
   "url": "https://OpenAiTx.github.io/projects/k2-fsa/ZipVoice/README-pl.html",
   "sameAs": "https://raw.githubusercontent.com/k2-fsa/ZipVoice/master/README.md",
-  "datePublished": "2025-10-06",
-  "dateModified": "2025-10-06"
+  "datePublished": "2025-12-30",
+  "dateModified": "2025-12-30"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 661 stars</span>
+                <span class="stars">⭐ 748 stars</span>
                 <span class="language">Polish</span>
                 <span>by k2-fsa</span>
             </div>
@@ -372,13 +372,13 @@ Użytkownicy z Chin kontynentalnych mogą zapoznać się ze stroną https://k2-f
 <li><code>prompt_wav</code> to ścieżka do pliku wav z promptem.</li>
 <li><code>text</code> to tekst do syntezy, np. "[S1] Wszystko w porządku. [S2] Jak masz na imię? [S1] Jestem Eric. [S2] Cześć Eric."</li></p><p></ul>(2) <strong>Format podzielonego promptu</strong>, gdzie nagrania i transkrypcje dwóch rozmówców znajdują się w osobnych plikach:</p><pre><code class="language-">{wav_name}\t{spk1_prompt_transcription}\t{spk2_prompt_transcription}\t{spk1_prompt_wav}\t{spk2_prompt_wav}\t{text}</code></pre>
 <ul><li><code>wav_name</code> to nazwa wyjściowego pliku wav.</li>
-<li><code>spk1_prompt_transcription</code> to transkrypcja pliku wav z podpowiedzią pierwszego mówcy, np. "Hello"</li>
-<li><code>spk2_prompt_transcription</code> to transkrypcja pliku wav z podpowiedzią drugiego mówcy, np. "How are you?"</li>
-<li><code>spk1_prompt_wav</code> to ścieżka do pliku wav z podpowiedzią pierwszego mówcy.</li>
-<li><code>spk2_prompt_wav</code> to ścieżka do pliku wav z podpowiedzią drugiego mówcy.</li>
-<li><code>text</code> to tekst do syntezy, np. "[S1] I'm fine. [S2] What's your name? [S1] I'm Eric. [S2] Hi Eric."</li></p><p></ul><h3>3 Wskazówki dla lepszego użytkowania:</h3></p><p>#### 3.1 Długość podpowiedzi</p><p>Zalecamy krótkie pliki wav z podpowiedzią (np. krótsze niż 3 sekundy dla generowania mowy jednego mówcy, krótsze niż 10 sekund dla generowania mowy w dialogu) dla szybszego działania. Bardzo długi plik z podpowiedzią spowolni działanie i pogorszy jakość mowy.</p><p>#### 3.2 Optymalizacja szybkości</p><p>Jeśli szybkość działania jest niezadowalająca, można ją zwiększyć następująco:</p><ul><li><strong>Model destylowany i mniej kroków</strong>: Dla modelu generowania mowy jednego mówcy domyślnie używamy modelu <code>zipvoice</code> dla lepszej jakości mowy. Jeśli priorytetem jest szybkość, można przełączyć na <code>zipvoice_distill</code> i zmniejszyć <code>--num-steps</code> nawet do <code>4</code> (domyślnie 8).</li></p><p><li><strong>Przyspieszenie CPU wielowątkowością</strong>: Przy uruchamianiu na CPU można podać parametr <code>--num-thread</code> (np. <code>--num-thread 4</code>) aby zwiększyć liczbę wątków dla szybszej pracy. Domyślnie używamy 1 wątku.</li></p><p><li><strong>Przyspieszenie CPU z ONNX</strong>: Przy uruchamianiu na CPU można użyć modeli ONNX z <code>zipvoice.bin.infer_zipvoice_onnx</code> dla szybszego działania (nieobsługiwane jeszcze dla modeli generowania dialogów). Aby uzyskać jeszcze większą szybkość, można ustawić <code>--onnx-int8 True</code> aby użyć modelu ONNX z kwantyzacją INT8. Należy pamiętać, że model kwantyzowany będzie miał pewien spadek jakości mowy. <strong>Nie używaj ONNX na GPU</strong>, ponieważ jest wolniejszy niż PyTorch na GPU.</li></p><p></ul>#### 3.3 Kontrola pamięci</p><p>Podany tekst zostanie podzielony na fragmenty na podstawie znaków interpunkcyjnych (dla generowania mowy jednego mówcy) lub symbolu zmiany mówcy (dla generowania mowy w dialogu). Następnie podzielone teksty będą przetwarzane w partiach. Dzięki temu model może przetwarzać dowolnie długi tekst przy niemal stałym zużyciu pamięci. Możesz kontrolować zużycie pamięci, regulując parametr <code>--max-duration</code>.</p><p>#### 3.4 Ocena "Raw"</p><p>Domyślnie wstępnie przetwarzamy wejścia (plik wav z podpowiedzią, transkrypcję podpowiedzi oraz tekst) dla efektywnego działania i lepszych wyników. Jeśli chcesz ocenić "surowe" działanie modelu na dokładnie podanych wejściach (np. aby odtworzyć wyniki z naszego artykułu), możesz podać <code>--raw-evaluation True</code>.</p><p>#### 3.5 Krótki tekst</p><p>Podczas generowania mowy dla bardzo krótkich tekstów (np. jedno lub dwa słowa), wygenerowana mowa może czasem pomijać pewne wymowy. Aby rozwiązać ten problem, można podać <code>--speed 0.3</code> (gdzie 0.3 to wartość do regulacji), aby wydłużyć czas trwania wygenerowanej mowy.</p><p>#### 3.6 Poprawianie błędnie wymawianych chińskich znaków wieloznacznych</p><p>Używamy <a href="https://github.com/mozillazg/python-pinyin" target="_blank" rel="noopener noreferrer">pypinyin</a> do konwersji chińskich znaków na pinyin. Jednak czasami może błędnie wymawiać <strong>znaki wieloznaczne</strong> (多音字).</p><p>
-Aby ręcznie poprawić te błędne wymowy, umieść <strong>poprawiony pinyin</strong> w nawiasach kątowych <code>< ></code> i dodaj <strong>oznaczenie tonu</strong>.</p><p><strong>Przykład:</strong></p><ul><li>Oryginalny tekst: <code>这把剑长三十公分</code></li>
-<li>Popraw pinyin <code>长</code>:  <code>这把剑<chang2>三十公分</code></li></p><p></ul>> <strong>Uwaga:</strong> Jeśli chcesz ręcznie przypisać wiele pinyinów, umieść każdy pinyin w <code><></code>, np. <code>这把<jian4><chang2><san1>十公分</code></p><p>#### 3.7 Usuwanie długich pauz z wygenerowanej mowy</p><p>Model automatycznie określa pozycje i długości pauz w wygenerowanej mowie. Czasami pojawia się długa pauza w środku wypowiedzi. Jeśli nie chcesz tego, możesz przekazać <code>--remove-long-sil</code>, aby usunąć długie pauzy ze środka wygenerowanej mowy (pauzy na początku i końcu są usuwane domyślnie).</p><p>#### 3.8 Pobieranie modelu</p><p>Jeśli masz problem z połączeniem z HuggingFace podczas pobierania wstępnie wytrenowanych modeli, spróbuj przełączyć punkt końcowy na mirror: <code>export HF_ENDPOINT=https://hf-mirror.com</code>.</p><h2>Trenuj własny model</h2></p><p>Zobacz katalog <a href="egs" target="_blank" rel="noopener noreferrer">egs</a> dla przykładów trenowania, dostrajania i ewaluacji.</p><h2>Wdrażanie C++ </h2></p><p>Sprawdź <a href="https://github.com/k2-fsa/sherpa-onnx/pull/2487#issuecomment-3227884498" target="_blank" rel="noopener noreferrer">sherpa-onnx</a> jako rozwiązanie wdrożeniowe w C++ na CPU.</p><h2>Dyskusja i komunikacja</h2></p><p>Możesz bezpośrednio dyskutować na <a href="https://github.com/k2-fsa/ZipVoice/issues" target="_blank" rel="noopener noreferrer">Github Issues</a>.</p><p>Możesz także zeskanować kod QR, aby dołączyć do naszej grupy na WeChat lub śledzić nasz oficjalny profil WeChat.</p><p>| Grupa WeChat | Oficjalny profil WeChat |
+<li><code>spk1_prompt_transcription</code> to transkrypcja promptu pierwszego mówcy, np. "Hello"</li>
+<li><code>spk2_prompt_transcription</code> to transkrypcja promptu drugiego mówcy, np. "How are you?"</li>
+<li><code>spk1_prompt_wav</code> to ścieżka do pliku wav promptu pierwszego mówcy.</li>
+<li><code>spk2_prompt_wav</code> to ścieżka do pliku wav promptu drugiego mówcy.</li>
+<li><code>text</code> to tekst do syntezy, np. "[S1] I'm fine. [S2] What's your name? [S1] I'm Eric. [S2] Hi Eric."</li></p><p></ul><h3>3 Wskazówki dla lepszego użytkowania:</h3></p><p>#### 3.1 Długość promptu</p><p>Zalecamy krótki plik promptu wav (np. krótszy niż 3 sekundy dla syntezy pojedynczego mówcy, krótszy niż 10 sekund dla syntezy dialogowej) dla szybszego działania. Bardzo długi prompt spowolni inferencję i pogorszy jakość mowy.</p><p>#### 3.2 Optymalizacja szybkości</p><p>Jeśli prędkość inferencji jest niezadowalająca, możesz ją zwiększyć w następujący sposób:</p><ul><li><strong>Model destylowany i mniej kroków</strong>: Dla modelu syntezy mowy pojedynczego mówcy domyślnie używamy modelu <code>zipvoice</code> dla lepszej jakości mowy. Jeśli priorytetem jest szybkość, można przełączyć się na <code>zipvoice_distill</code> i zmniejszyć <code>--num-steps</code> nawet do <code>4</code> (domyślnie 8).</li></p><p><li><strong>Przyspieszenie CPU przez wielowątkowość</strong>: Podczas pracy na CPU można użyć parametru <code>--num-thread</code> (np. <code>--num-thread 4</code>), aby zwiększyć liczbę wątków dla szybszego działania. Domyślnie używamy 1 wątku.</li></p><p><li><strong>Przyspieszenie CPU przez ONNX</strong>: Na CPU można użyć modeli ONNX z <code>zipvoice.bin.infer_zipvoice_onnx</code> dla szybszego działania (modele ONNX dla generowania dialogów nie są jeszcze obsługiwane). Dla jeszcze większej szybkości można ustawić <code>--onnx-int8 True</code>, aby użyć modelu ONNX skwantowanego do INT8. Należy pamiętać, że model skwantowany obniży jakość mowy. <strong>Nie używaj ONNX na GPU</strong>, ponieważ jest wolniejszy niż PyTorch na GPU.</li></p><p><li><strong>Przyspieszenie GPU przez NVIDIA TensorRT</strong>: W celu znacznego zwiększenia wydajności na kartach NVIDIA GPU najpierw wyeksportuj model do silnika TensorRT za pomocą zipvoice.bin.tensorrt_export. Następnie wykonaj inferencję na swoim zbiorze danych (np. Hugging Face) z użyciem zipvoice.bin.infer_zipvoice. To pozwala uzyskać około 2x większą przepustowość niż standardowa implementacja PyTorch na GPU.</li></p><p></ul>#### 3.3 Kontrola pamięci</p><p>Podany tekst zostanie podzielony na fragmenty na podstawie interpunkcji (dla syntezy pojedynczego mówcy) lub symbolu zmiany mówcy (dla syntezy dialogowej). Następnie fragmenty tekstu będą przetwarzane w partiach. Dzięki temu model może przetwarzać dowolnie długie teksty przy niemal stałym zużyciu pamięci. Możesz kontrolować użycie pamięci przez regulację parametru <code>--max-duration</code>.</p><p>#### 3.4 Ocena "Raw"</p><p>Domyślnie przetwarzamy wejścia (prompt wav, transkrypcję promptu i tekst) dla wydajnej inferencji i lepszych wyników. Jeśli chcesz ocenić "surowe" działanie modelu na dokładnie podanych danych (np. by odtworzyć wyniki z naszej publikacji), możesz podać <code>--raw-evaluation True</code>.</p><p>#### 3.5 Krótki tekst</p><p>Podczas generowania mowy dla bardzo krótkich tekstów (np. jedno lub dwa słowa), wygenerowana mowa może czasem pomijać pewne wymowy. Aby rozwiązać ten problem, można podać <code>--speed 0.3</code> (gdzie 0.3 to wartość do dostrojenia), by wydłużyć czas trwania wygenerowanej mowy.</p><p>#### 3.6 Korekta błędnej wymowy chińskich znaków polifonicznych</p><p>
+Używamy <a href="https://github.com/mozillazg/python-pinyin" target="_blank" rel="noopener noreferrer">pypinyin</a> do konwersji znaków chińskich na pinyin. Jednak czasami może błędnie wymawiać <strong>znaki wielogłosowe</strong> (多音字).</p><p>Aby ręcznie poprawić te błędne wymowy, umieść <strong>poprawiony pinyin</strong> w nawiasach ostrych <code>< ></code> i dodaj <strong>znak tonu</strong>.</p><p><strong>Przykład:</strong></p><ul><li>Oryginalny tekst: <code>这把剑长三十公分</code></li>
+<li>Popraw pinyin dla <code>长</code>:  <code>这把剑<chang2>三十公分</code></li></p><p></ul>> <strong>Uwaga:</strong> Jeśli chcesz ręcznie przypisać kilka pinyinów, umieść każdy pinyin w <code><></code>, np. <code>这把<jian4><chang2><san1>十公分</code></p><p>#### 3.7 Usuwanie długich pauz z wygenerowanej mowy</p><p>Model automatycznie określa pozycje i długości pauz w wygenerowanej mowie. Czasami pojawia się długa pauza w środku wypowiedzi. Jeśli tego nie chcesz, możesz użyć <code>--remove-long-sil</code>, aby usunąć długie pauzy w środku wygenerowanej mowy (pauzy na początku i końcu są usuwane domyślnie).</p><p>#### 3.8 Pobieranie modelu</p><p>Jeśli masz problemy z połączeniem z HuggingFace podczas pobierania wstępnie wytrenowanych modeli, spróbuj zmienić endpoint na mirror: <code>export HF_ENDPOINT=https://hf-mirror.com</code>.</p><h2>Trenuj własny model</h2></p><p>Zobacz katalog <a href="egs" target="_blank" rel="noopener noreferrer">egs</a> po przykłady treningu, fine-tuningu i ewaluacji.</p><h2>Wdrożenie produkcyjne</h2></p><h3>NVIDIA Triton GPU Runtime</h3></p><p>Aby wdrożyć produkcyjnie z wysoką wydajnością i skalowalnością, zobacz <a href="runtime/nvidia_triton/" target="_blank" rel="noopener noreferrer">integrację z Triton Inference Server</a>, która zapewnia zoptymalizowane silniki TensorRT, obsługę współbieżnych żądań oraz oba API gRPC/HTTP dla zastosowań firmowych.</p><h3>Wdrożenie na CPU</h3></p><p>Sprawdź <a href="https://github.com/k2-fsa/sherpa-onnx/pull/2487#issuecomment-3227884498" target="_blank" rel="noopener noreferrer">sherpa-onnx</a> jako rozwiązanie do wdrożenia w C++ na CPU.</p><h2>Dyskusja i komunikacja</h2></p><p>Możesz dyskutować bezpośrednio na <a href="https://github.com/k2-fsa/ZipVoice/issues" target="_blank" rel="noopener noreferrer">Github Issues</a>.</p><p>Możesz także zeskanować kod QR, aby dołączyć do naszej grupy na Wechat lub obserwować nasze oficjalne konto Wechat.</p><p>| Grupa Wechat | Oficjalne konto Wechat |
 | ------------ | ----------------------- |
 |<img src="https://k2-fsa.org/zh-CN/assets/pic/wechat_group.jpg" alt="wechat"> |<img src="https://k2-fsa.org/zh-CN/assets/pic/wechat_account.jpg" alt="wechat"> |</p><h2>Cytowanie</h2></p><pre><code class="language-bibtex">@article{zhu2025zipvoice,
       title={ZipVoice: Fast and High-Quality Zero-Shot Text-to-Speech with Flow Matching},
@@ -393,7 +393,7 @@ Aby ręcznie poprawić te błędne wymowy, umieść <strong>poprawiony pinyin</s
 }</code></pre></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-10-06
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-30
 
 ---</p>
         </div>
@@ -405,7 +405,7 @@ Aby ręcznie poprawić te błędne wymowy, umieść <strong>poprawiony pinyin</s
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-10-06 
+        Last updated: 2025-12-30 
     </div>
     
 </body>

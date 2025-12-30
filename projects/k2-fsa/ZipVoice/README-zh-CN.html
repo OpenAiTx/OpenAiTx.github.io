@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZipVoice - 快速高质量零样本文本转语音，采用流匹配技术</title>
-    <meta name="description" content="快速高质量零样本文本转语音，采用流匹配技术">
+    <title>ZipVoice - 基于流匹配的快速高质量零样本文本转语音</title>
+    <meta name="description" content="基于流匹配的快速高质量零样本文本转语音">
     <meta name="keywords" content="ZipVoice, Simplified Chinese, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "ZipVoice",
-  "description": "快速高质量零样本文本转语音，采用流匹配技术",
+  "description": "基于流匹配的快速高质量零样本文本转语音",
   "author": {
     "@type": "Person",
     "name": "k2-fsa"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 661
+    "ratingCount": 748
   },
   "url": "https://OpenAiTx.github.io/projects/k2-fsa/ZipVoice/README-zh-CN.html",
   "sameAs": "https://raw.githubusercontent.com/k2-fsa/ZipVoice/master/README.md",
-  "datePublished": "2025-10-06",
-  "dateModified": "2025-10-06"
+  "datePublished": "2025-12-30",
+  "dateModified": "2025-12-30"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 661 stars</span>
+                <span class="stars">⭐ 748 stars</span>
                 <span class="language">Simplified Chinese</span>
                 <span>by k2-fsa</span>
             </div>
@@ -372,16 +372,14 @@ source zipvoice/bin/activate</code></pre>
 <li><code>prompt_wav</code> 是提示 wav 的路径。</li>
 <li><code>text</code> 是要合成的文本，例如，“[S1] 我很好。[S2] 你叫什么名字？[S1] 我叫 Eric。[S2] 嗨，Eric。”</li></p><p></ul>(2) <strong>分割提示格式</strong>，即两位说话人的音频和转录分别存在于不同文件中：</p><pre><code class="language-">{wav_name}\t{spk1_prompt_transcription}\t{spk2_prompt_transcription}\t{spk1_prompt_wav}\t{spk2_prompt_wav}\t{text}</code></pre>
 <ul><li><code>wav_name</code> 是输出 wav 文件的名称。</li>
-<li><code>spk1_prompt_transcription</code> 是第一位说话者提示音频的转录内容，例如，“Hello”。</li>
-<li><code>spk2_prompt_transcription</code> 是第二位说话者提示音频的转录内容，例如，“How are you?”。</li>
-<li><code>spk1_prompt_wav</code> 是第一位说话者提示音频文件的路径。</li>
-<li><code>spk2_prompt_wav</code> 是第二位说话者提示音频文件的路径。</li>
-<li><code>text</code> 是需要合成的文本，例如，“[S1] I'm fine. [S2] What's your name? [S1] I'm Eric. [S2] Hi Eric.”</li></p><p></ul><h3>3 更好使用的指导：</h3></p><p>#### 3.1 提示音频长度</p><p>我们推荐使用较短的提示音频文件（如单说话人语音生成时小于 3 秒，对话语音生成时小于 10 秒），以加快推理速度。提示过长会降低推理速度并影响语音质量。</p><p>#### 3.2 速度优化</p><p>如果推理速度不理想，可以按如下方式提升：</p><ul><li><strong>模型蒸馏与减少步数</strong>：单说话人语音生成模型默认使用 <code>zipvoice</code> 模型以获得更好的语音质量。如果优先考虑速度，可以切换到 <code>zipvoice_distill</code> 并将 <code>--num-steps</code> 降低至最低 <code>4</code>（默认 8）。</li>
-  
-<li><strong>CPU 多线程加速</strong>：在 CPU 上运行时，可以通过 <code>--num-thread</code> 参数（如 <code>--num-thread 4</code>）增加线程数提升速度。默认使用 1 个线程。</li></p><p><li><strong>CPU 使用 ONNX 加速</strong>：在 CPU 上运行时，可以用 ONNX 模型通过 <code>zipvoice.bin.infer_zipvoice_onnx</code> 加快速度（暂未支持对话生成模型的 ONNX）。如需更快速度，还可设置 <code>--onnx-int8 True</code> 使用 INT8 量化 ONNX 模型。注意，量化模型会有一定语音质量下降。<strong>不要在 GPU 上使用 ONNX</strong>，因其在 GPU 上比 PyTorch 慢。</li></p><p></ul>#### 3.3 内存控制</p><p>输入文本会根据标点（单说话人语音生成）或说话人切换符号（对话语音生成）拆分为多个片段。然后分批处理这些文本块。因此，模型能以几乎恒定的内存处理任意长度文本。可通过调整 <code>--max-duration</code> 参数控制内存使用。</p><p>#### 3.4 “原始”评估</p><p>默认情况下，我们会对输入（提示音频、提示转录与文本）进行预处理，以提升推理效率和表现。如果希望用精确的原始输入评估模型（如复现论文结果），可传递 <code>--raw-evaluation True</code>。</p><p>#### 3.5 短文本</p><p>对于极短文本（如一两个词）生成语音时，生成语音可能偶尔会遗漏某些发音。为解决此问题，可传递 <code>--speed 0.3</code>（0.3 为可调值）以延长生成语音的持续时间。</p><p>#### 3.6 修正中文多音字发音错误</p><p>我们使用 <a href="https://github.com/mozillazg/python-pinyin" target="_blank" rel="noopener noreferrer">pypinyin</a> 将中文字符转换为拼音。但偶尔会错误发音 <strong>多音字</strong>。</p><p>
-要手动纠正这些发音错误，请将<strong>纠正后的拼音</strong>用尖括号 <code>< ></code> 括起来，并包含<strong>声调标记</strong>。</p><p><strong>示例：</strong></p><ul><li>原文：<code>这把剑长三十公分</code></li>
-<li>纠正<code>长</code>的拼音：<code>这把剑<chang2>三十公分</code></li></p><p></ul>> <strong>注意：</strong> 如果需要手动指定多个拼音，请用<code><></code>分别括起来，例如：<code>这把<jian4><chang2><san1>十公分</code></p><p>#### 3.7 从生成的语音中移除长静音</p><p>模型会自动检测生成语音中的静音位置和时长。语音中间有时会出现较长的静音。如果你不需要，可以传递<code>--remove-long-sil</code>参数来移除语音中间的长静音（边缘静音默认会被移除）。</p><p>#### 3.8 模型下载</p><p>如果在下载预训练模型时连接 HuggingFace 有困难，请尝试切换端点到镜像站点：<code>export HF_ENDPOINT=https://hf-mirror.com</code>。</p><h2>训练你自己的模型</h2></p><p>请参阅 <a href="egs" target="_blank" rel="noopener noreferrer">egs</a> 目录，获取训练、微调和评估的示例。</p><h2>C++ 部署</h2></p><p>请查看 <a href="https://github.com/k2-fsa/sherpa-onnx/pull/2487#issuecomment-3227884498" target="_blank" rel="noopener noreferrer">sherpa-onnx</a>，了解在 CPU 上进行 C++ 部署的解决方案。</p><h2>讨论与交流</h2></p><p>你可以在 <a href="https://github.com/k2-fsa/ZipVoice/issues" target="_blank" rel="noopener noreferrer">Github Issues</a> 上直接讨论。</p><p>你也可以扫码加入微信群或关注我们的微信公众号。</p><p>| 微信群 | 微信公众号 |
-| ------ | ---------- |
+<li><code>spk1_prompt_transcription</code> 是第一个说话人提示音频的转录文本，例如，“Hello”</li>
+<li><code>spk2_prompt_transcription</code> 是第二个说话人提示音频的转录文本，例如，“How are you?”</li>
+<li><code>spk1_prompt_wav</code> 是第一个说话人提示音频文件的路径。</li>
+<li><code>spk2_prompt_wav</code> 是第二个说话人提示音频文件的路径。</li>
+<li><code>text</code> 是需要合成的文本，例如：“[S1] I'm fine. [S2] What's your name? [S1] I'm Eric. [S2] Hi Eric.”</li></p><p></ul><h3>3 更好使用的指导：</h3></p><p>#### 3.1 提示音频长度</p><p>我们推荐使用较短的提示音频文件（如单说话人语音生成小于3秒，对话语音生成小于10秒），以获得更快的推理速度。提示音频过长会导致推理速度变慢，并影响语音质量。</p><p>#### 3.2 速度优化</p><p>如果推理速度不理想，可以按如下方式加速：</p><ul><li><strong>蒸馏模型及减少步数</strong>：对于单说话人语音生成模型，我们默认使用 <code>zipvoice</code> 模型以获得更好的语音质量。如果更快的速度是优先考虑，可以切换到 <code>zipvoice_distill</code>，并将 <code>--num-steps</code> 降低到最低 <code>4</code>（默认是8）。</li></p><p><li><strong>多线程提升CPU速度</strong>：在CPU上运行时，可以传递 <code>--num-thread</code> 参数（如 <code>--num-thread 4</code>）来增加线程数以提升速度。默认使用1个线程。</li></p><p><li><strong>使用ONNX加速CPU</strong>：在CPU上运行时，可以使用带有 <code>zipvoice.bin.infer_zipvoice_onnx</code> 的ONNX模型以获得更快速度（目前对话生成模型尚未支持ONNX）。如需更高速度，还可设置 <code>--onnx-int8 True</code> 使用INT8量化的ONNX模型。需注意，量化模型会导致语音质量有一定下降。<strong>不要在GPU上使用ONNX</strong>，因为在GPU上ONNX比PyTorch更慢。</li></p><p><li><strong>NVIDIA TensorRT GPU加速</strong>：在NVIDIA GPU上大幅提升性能，首先用 zipvoice.bin.tensorrt_export 导出模型为TensorRT引擎。然后用 zipvoice.bin.infer_zipvoice 在你的数据集（如 Hugging Face 数据集）上进行推理。相比标准PyTorch实现，在GPU上吞吐量可提升约2倍。</li></p><p></ul>#### 3.3 内存控制</p><p>输入文本会根据标点（单说话人语音生成）或说话人轮换符号（对话语音生成）被切分成块，然后分批处理。因此，模型可以用几乎恒定的内存处理任意长度文本。可通过调整 <code>--max-duration</code> 参数控制内存使用。</p><p>#### 3.4 “原始”评测</p><p>默认情况下，我们会对输入（提示音频、提示转录文本和正文）进行预处理，以实现高效推理和更好表现。如果你想用完全原始输入评测模型性能（如复现论文结果），可传递 <code>--raw-evaluation True</code>。</p><p>#### 3.5 短文本</p><p>为非常短的文本（如一两个单词）生成语音时，生成的语音有时会漏掉部分发音。为解决该问题，可以传递 <code>--speed 0.3</code>（0.3为可调整值）以延长生成语音的时长。</p><p>#### 3.6 修正中文多音字发音错误</p><p>
+我们使用 <a href="https://github.com/mozillazg/python-pinyin" target="_blank" rel="noopener noreferrer">pypinyin</a> 将汉字转换为拼音。然而，它有时会错误地标注<strong>多音字</strong>的读音。</p><p>为手动纠正这些错误读音，请将<strong>正确的拼音</strong>用尖括号 <code>< ></code> 包裹，并包含<strong>声调标记</strong>。</p><p><strong>示例：</strong></p><ul><li>原文：<code>这把剑长三十公分</code></li>
+<li>修正 <code>长</code> 的拼音：<code>这把剑<chang2>三十公分</code></li></p><p></ul>> <strong>注意：</strong>如果你想手动指定多个拼音，请将每个拼音都用 <code><></code> 包裹，例如：<code>这把<jian4><chang2><san1>十公分</code></p><p>#### 3.7 移除生成语音中的长静音</p><p>模型会自动判断生成语音中的静音位置和长度。它有时会在语音中间出现长静音。如果你不希望这样，可以传递 <code>--remove-long-sil</code> 参数，去除生成语音中间的长静音（边缘静音会默认移除）。</p><p>#### 3.8 模型下载</p><p>如果你在下载预训练模型时连接 HuggingFace 有问题，可以尝试切换端点为镜像站点：<code>export HF_ENDPOINT=https://hf-mirror.com</code>。</p><h2>训练你自己的模型</h2></p><p>请参见 <a href="egs" target="_blank" rel="noopener noreferrer">egs</a> 目录，了解训练、微调和评估示例。</p><h2>生产部署</h2></p><h3>NVIDIA Triton GPU 运行时</h3></p><p>如需高性能和可扩展性的生产级部署，请参考 <a href="runtime/nvidia_triton/" target="_blank" rel="noopener noreferrer">Triton 推理服务器集成</a>，它提供了优化的 TensorRT 引擎、并发请求处理，以及企业级的 gRPC/HTTP API。</p><h3>CPU 部署</h3></p><p>请参考 <a href="https://github.com/k2-fsa/sherpa-onnx/pull/2487#issuecomment-3227884498" target="_blank" rel="noopener noreferrer">sherpa-onnx</a>，获取 C++ CPU 部署解决方案。</p><h2>讨论与交流</h2></p><p>你可以直接在 <a href="https://github.com/k2-fsa/ZipVoice/issues" target="_blank" rel="noopener noreferrer">Github Issues</a> 上讨论。</p><p>你也可以扫码加入微信群或关注我们的微信公众号。</p><p>| 微信群 | 微信公众号 |
+| ------------ | ----------------------- |
 |<img src="https://k2-fsa.org/zh-CN/assets/pic/wechat_group.jpg" alt="wechat"> |<img src="https://k2-fsa.org/zh-CN/assets/pic/wechat_account.jpg" alt="wechat"> |</p><h2>引用</h2></p><pre><code class="language-bibtex">@article{zhu2025zipvoice,
       title={ZipVoice: Fast and High-Quality Zero-Shot Text-to-Speech with Flow Matching},
       author={Zhu, Han and Kang, Wei and Yao, Zengwei and Guo, Liyong and Kuang, Fangjun and Li, Zhaoqing and Zhuang, Weiji and Lin, Long and Povey, Daniel},
@@ -395,7 +393,7 @@ source zipvoice/bin/activate</code></pre>
 }</code></pre></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-10-06
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-30
 
 ---</p>
         </div>
@@ -407,7 +405,7 @@ source zipvoice/bin/activate</code></pre>
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-10-06 
+        Last updated: 2025-12-30 
     </div>
     
 </body>
