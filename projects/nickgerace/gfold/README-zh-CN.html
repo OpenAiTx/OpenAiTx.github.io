@@ -1,0 +1,346 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gfold - 用Rust编写的命令行工具，帮助管理你的Git仓库。</title>
+    <meta name="description" content="用Rust编写的命令行工具，帮助管理你的Git仓库。">
+    <meta name="keywords" content="gfold, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "gfold",
+  "description": "用Rust编写的命令行工具，帮助管理你的Git仓库。",
+  "author": {
+    "@type": "Person",
+    "name": "nickgerace"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 378
+  },
+  "url": "https://OpenAiTx.github.io/projects/nickgerace/gfold/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/nickgerace/gfold/main/README.md",
+  "datePublished": "2026-01-04",
+  "dateModified": "2026-01-04"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/nickgerace/gfold" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    gfold
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 378 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by nickgerace</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>gfold</h1></p><p><a href="https://github.com/nickgerace/gfold/releases/latest" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/v/tag/nickgerace/gfold?sort=semver&logo=git&logoColor=white&label=version&style=for-the-badge&color=blue" alt="latest release tag"></a>
+<a href="https://crates.io/crates/gfold" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/v/gfold?style=for-the-badge&logo=rust&color=orange" alt="crates.io version"></a>
+<a href="https://github.com/nickgerace/gfold/actions" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/actions/workflow/status/nickgerace/gfold/ci.yml?branch=main&style=for-the-badge&logo=github&logoColor=white" alt="build status"></a>
+<a href="https://calver.org" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/calver-YYYY.MM.MICRO-cyan.svg?style=for-the-badge" alt="calver"></a></p><p><code>gfold</code> 是一个帮助你跟踪多个 Git 仓库的命令行工具。</p><p><a href="https://raw.githubusercontent.com/nickgerace/gfold/main/assets/demo.gif" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/nickgerace/gfold/main/assets/demo.gif" alt="A GIF showcasing gfold in action"></a></p><p>如果你希望默认使用经典显示模式，避免每次都设置标志，可以在配置文件中设置（见 <strong>用法</strong> 部分）。</p><h2>公告（2025 年 2 月）</h2></p><p>所有版本现在遵循 <a href="https://calver.org/" target="_blank" rel="noopener noreferrer">CalVer</a> 版本控制方案，从 <code>2025.2.1</code> 开始。
+此更改与之前从首个版本到 <code>4.6.0</code> 版本采用的 <a href="https://semver.org/spec/v2.0.0.html" target="_blank" rel="noopener noreferrer">语义化版本控制</a> 方案兼容，既向前也向后兼容。</p><p><em>针对版本控制方案的更改，终端用户无需执行任何操作。</em></p><p>此公告最终会从此 <a href="https://raw.githubusercontent.com/nickgerace/gfold/main/./README.md" target="_blank" rel="noopener noreferrer">README</a> 中移除，并最终移入 <a href="https://raw.githubusercontent.com/nickgerace/gfold/main/./CHANGELOG.md" target="_blank" rel="noopener noreferrer">CHANGELOG</a>。</p><h2>描述</h2></p><p>该应用在一个或多个目录中显示多个 Git 仓库的相关信息。
+它仅从文件系统读取数据，绝不会写入数据。
+尽管此工具的范围和用途看似有限，但这是有意为之。</p><p>默认情况下，<code>gfold</code> 从当前工作目录开始遍历，查看每个 Git 仓库。
+如果你想指定其他目录，可以将其路径（相对或绝对）作为第一个参数传入，或在配置文件中更改默认路径。</p><p>遍历完成后，<code>gfold</code> 利用 <a href="https://github.com/rayon-rs/rayon" target="_blank" rel="noopener noreferrer">rayon</a> 并发执行对所有检测到的 Git 仓库的只读分析。
+分析通过调用 <a href="https://github.com/rust-lang/git2-rs" target="_blank" rel="noopener noreferrer">git2-rs</a> 库完成。</p><h2>用法</h2></p><p>提供 <code>-h/--help</code> 标志以查看使用此应用程序的所有选项。</p><pre><code class="language-shell"># Operate in the current working directory or in the location provided by a config file, if one exists.
+gfold</p><h1>Operate in the parent directory.</h1>
+gfold ..</p><h1>Operate in the home directory (first method).</h1>
+gfold $HOME</p><h1>Operate in the home directory (second method).</h1>
+gfold ~/</p><h1>Operate with an absolute path.</h1>
+gfold /this/is/an/absolute/path</p><h1>Operate with a relative path.</h1>
+gfold ../../this/is/a/relative/path</p><h1>Operate with three paths.</h1>
+gfold ~/src ~/projects ~/code</code></pre></p><h3>配置文件</h3></p><p>如果您发现自己经常提供相同的参数，可以创建并使用配置文件。  
+<code>gfold</code> 默认不带配置文件，配置文件完全是可选的。</p><p>它是如何工作的？  
+执行时，<code>gfold</code> 会按以下路径（顺序）查找配置文件：</p><ul><li><code>$XDG_CONFIG_HOME/gfold.toml</code>  </li>
+<li><code>$XDG_CONFIG_HOME/gfold/config.toml</code>  </li>
+<li><code>$HOME/.config/gfold.toml</code>  </li></p><p></ul><code>$XDG_CONFIG_HOME</code> 指的是字面上的 <code>XDG_CONFIG_HOME</code> 环境变量，但如果未设置，则默认为适合操作系统的特定路径（详见 <a href="https://github.com/uncenter/user_dirs" target="_blank" rel="noopener noreferrer"><code>user_dirs</code></a>）。</p><p>如果找到配置文件，<code>gfold</code> 会读取并使用其中指定的选项。</p><p>要创建配置文件，可以使用 <code>--dry-run</code> 标志打印有效的 TOML。  
+下面是在 macOS、Linux 及类似平台上创建配置文件的示例工作流程：</p><pre><code class="language-shell">gfold -d classic -c never ~/ --dry-run > $HOME/.config/gfold.toml</code></pre>
+以下是生成的配置文件内容：</p><pre><code class="language-toml">paths = ['/home/neloth']
+display_mode = 'Classic'
+color_mode = 'Never'</code></pre></p><p>假设你创建了一个配置文件，但想用完全不同的设置执行 <code>gfold</code>，并且你想确保
+不会意外继承配置文件中的选项。
+在这种情况下，你可以使用 <code>-i</code> 标志来忽略你的配置文件。</p><pre><code class="language-shell">gfold -i</code></pre>
+您可以使用相同的标志将配置文件恢复为默认设置。</p><pre><code class="language-shell">gfold -i > $HOME/.config/gfold.toml</code></pre>
+此外，您可以忽略现有的配置文件，配置特定选项，并对未指定的选项使用默认值，一次性完成。  
+以下是一个示例，我们想使用经典显示模式，并将所有其他设置覆盖为其默认值：  </p><pre><code class="language-shell">gfold -i -d classic > $HOME/.config/gfold.toml</code></pre>
+你可以备份配置文件并使用 <code>git</code> 跟踪其历史。  
+在 macOS、Linux 以及大多数系统上，你可以将该文件链接回一个 <code>git</code> 仓库。</p><pre><code class="language-shell">ln -s <path-to-repository>/gfold.toml $HOME/.config/gfold.toml</code></pre>
+现在，您可以更新存储库中的配置文件，并将链接作为环境设置工作流程的一部分。</p><h2>安装</h2></p><p><a href="https://repology.org/project/gfold/versions" target="_blank" rel="noopener noreferrer"><img src="https://repology.org/badge/vertical-allrepos/gfold.svg" alt="打包状态"></a></p><h3>Homebrew（macOS 和 Linux）</h3></p><p>您可以使用 <a href="https://brew.sh" target="_blank" rel="noopener noreferrer">Homebrew</a> 通过 <a href="https://formulae.brew.sh/formula/gfold" target="_blank" rel="noopener noreferrer">核心配方</a> 安装 <code>gfold</code>。</p><p>但是，如果通过 <code>brew</code> 安装了 <a href="https://formulae.brew.sh/formula/coreutils" target="_blank" rel="noopener noreferrer">coreutils</a>，在 macOS 上可能会遇到命名冲突。
+有关解决方法和更多信息，请参见<a href="#troubleshooting-and-known-issues" target="_blank" rel="noopener noreferrer">故障排除</a>部分。</p><pre><code class="language-shell">brew install gfold</code></pre></p><h3>Arch Linux</h3></p><p>您可以使用 <a href="https://wiki.archlinux.org/title/Pacman" target="_blank" rel="noopener noreferrer">pacman</a> 从 <a href="https://archlinux.org/packages/extra/x86_64/gfold/" target="_blank" rel="noopener noreferrer">extra 仓库</a> 安装 <code>gfold</code>。</p><pre><code class="language-shell">pacman -S gfold</code></pre></p><h3>Nix 与 NixOS</h3></p><p>您可以从 <a href="https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/version-management/gfold/default.nix" target="_blank" rel="noopener noreferrer">nixpkgs</a> 安装 <code>gfold</code>：</p><pre><code class="language-shell">nix-env --install gfold</code></pre></p><p>如果您正在使用 <a href="https://nixos.wiki/wiki/Flakes" target="_blank" rel="noopener noreferrer">flakes</a>，可以直接使用 <code>nix</code> 命令进行安装。</p><pre><code class="language-shell">nix profile install "nixpkgs#gfold"</code></pre></p><h3>Cargo</h3></p><p>你可以使用 <a href="https://crates.io" target="_blank" rel="noopener noreferrer">cargo</a> 在几乎任何平台上安装该 <a href="https://crates.io/crates/gfold" target="_blank" rel="noopener noreferrer">crate</a>。</p><pre><code class="language-shell">cargo install gfold</code></pre></p><p>如果您希望 Cargo 使用 <code>Cargo.lock</code>，请使用 <code>--locked</code> 标志。</p><pre><code class="language-shell">cargo install --locked gfold</code></pre>
+保持该 crate 最新非常简单，只需使用 <a href="https://crates.io/crates/cargo-update" target="_blank" rel="noopener noreferrer">cargo-update</a>。</p><pre><code class="language-shell">cargo install cargo-update
+cargo install-update -a</code></pre></p><h3>下载二进制文件</h3></p><p>如果您不想使用上述安装方法之一，也不想克隆仓库，可以从<a href="https://github.com/nickgerace/gfold/releases" target="_blank" rel="noopener noreferrer">发布页面</a>下载二进制文件。  
+有关如何操作的示例，请参考<a href="https://raw.githubusercontent.com/nickgerace/gfold/main/./docs/MANUAL_INSTALL.md" target="_blank" rel="noopener noreferrer">手动安装</a>指南。</p><h3>从源码构建</h3></p><p>如果您想了解如何从源码构建的示例，请参考<a href="https://raw.githubusercontent.com/nickgerace/gfold/main/./docs/MANUAL_INSTALL.md" target="_blank" rel="noopener noreferrer">手动安装</a>指南。</p><h3>已弃用：Homebrew Tap（仅限 macOS）</h3></p><p>位于 nickgerace/homebrew-nickgerace 的<a href="https://github.com/nickgerace/homebrew-nickgerace/blob/main/Formula/gfold.rb" target="_blank" rel="noopener noreferrer">tap</a>已被弃用。  
+请改用上述的核心 Homebrew 软件包。</p><h3>未列出首选安装方法？</h3></p><p>请<a href="https://github.com/nickgerace/gfold/issues/new" target="_blank" rel="noopener noreferrer">提交问题</a>！</p><h2>兼容性</h2></p><p><code>gfold</code> 旨在运行于 _任何_ Rust 🦀 第一梯队目标。  
+如果您的平台不受支持，请<a href="https://github.com/nickgerace/gfold/issues" target="_blank" rel="noopener noreferrer">提交问题</a>。</p><h2>故障排除及已知问题</h2></p><p>如果您遇到意外行为或错误并希望查看更多细节，请以更高详细级别运行。</p><pre><code class="language-shell">gfold -vvv</code></pre></p><p>如果问题仍然存在，请<a href="https://github.com/nickgerace/gfold/issues" target="_blank" rel="noopener noreferrer">提交问题</a>。
+请附上执行时的相关日志，_敏感信息已脱敏_，以帮助解决您的问题。</p><h3>macOS 上的 Coreutils 冲突</h3></p><p>如果通过 <code>brew</code> 在 macOS 上安装了来自 <a href="https://www.gnu.org/software/coreutils/" target="_blank" rel="noopener noreferrer">GNU Coreutils</a> 的 <code>fold</code>，它将被命名为 <code>gfold</code>。
+您可以通过 shell 别名、shell 函数和/或更改 <code>PATH</code> 来避免此冲突。
+以下是去掉 <code>gfold</code> 中的字母 <code>o</code> 的示例：</p><pre><code class="language-shell">alias gfld=$HOME/.cargo/bin/gfold</code></pre></p><h2>社区</h2></p><p>有关更多信息以及对用户和广大“社区”的感谢，请参阅 <strong><a href="https://raw.githubusercontent.com/nickgerace/gfold/main/./docs/COMMUNITY_THANKS.md" target="_blank" rel="noopener noreferrer">社区感谢</a></strong> 文件。</p><ul><li><a href="https://repology.org/project/gfold/versions" target="_blank" rel="noopener noreferrer">NixOS、Arch Linux 等的软件包</a></li>
+<li><a href="https://www.wezm.net/v2/posts/2020/100-rust-binaries/page2/" target="_blank" rel="noopener noreferrer">“一百个 Rust 二进制文件”</a>，一篇介绍 <code>gfold</code> 的文章</li>
+<li><a href="https://github.com/AckslD/nvim-gfold.lua" target="_blank" rel="noopener noreferrer">nvim-gfold.lua</a>，一个 <code>gfold</code> 的 <code>neovim</code> 插件 _(<a href="https://www.reddit.com/r/neovim/comments/t209wy/introducing_nvimgfoldlua/" target="_blank" rel="noopener noreferrer">Reddit 发布公告</a>)_</li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-04
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/nickgerace/gfold/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-01-04 
+    </div>
+    
+</body>
+</html>
