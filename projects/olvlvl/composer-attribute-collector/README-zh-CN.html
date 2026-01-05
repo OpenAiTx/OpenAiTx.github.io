@@ -1,0 +1,420 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>composer-attribute-collector - 一种方便且几乎零成本的方式来获取 PHP 8 属性的目标</title>
+    <meta name="description" content="一种方便且几乎零成本的方式来获取 PHP 8 属性的目标">
+    <meta name="keywords" content="composer-attribute-collector, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "composer-attribute-collector",
+  "description": "一种方便且几乎零成本的方式来获取 PHP 8 属性的目标",
+  "author": {
+    "@type": "Person",
+    "name": "olvlvl"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 175
+  },
+  "url": "https://OpenAiTx.github.io/projects/olvlvl/composer-attribute-collector/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/olvlvl/composer-attribute-collector/main/README.md",
+  "datePublished": "2026-01-05",
+  "dateModified": "2026-01-05"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/olvlvl/composer-attribute-collector" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    composer-attribute-collector
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 175 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by olvlvl</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>composer-attribute-collector</h1></p><p><a href="https://packagist.org/packages/olvlvl/composer-attribute-collector" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/packagist/v/olvlvl/composer-attribute-collector.svg" alt="Release"></a>
+<a href="https://coveralls.io/r/olvlvl/composer-attribute-collector?branch=main" target="_blank" rel="noopener noreferrer"><img src="https://coveralls.io/repos/github/olvlvl/composer-attribute-collector/badge.svg?branch=main" alt="Code Coverage"></a>
+<a href="https://packagist.org/packages/olvlvl/composer-attribute-collector" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/packagist/dt/olvlvl/composer-attribute-collector.svg" alt="Downloads"></a></p><p><strong>composer-attribute-collector</strong> 是一个 [Composer][] 插件，旨在有效地 _发现_ PHP 8
+属性目标，并且之后以近乎零成本的方式检索它们，无需运行时反射。在
+自动加载器导出后，它会收集属性并生成一个静态文件以实现快速访问。这样提供了一种
+方便的方式来 _发现_ 基于属性的类、方法或属性——非常适合代码库
+分析。（对于已知目标，传统反射仍然是一个选项。）</p><p>#### 功能</p><ul><li>零配置</li>
+<li>生成的文件中无反射</li>
+<li>可能提升性能</li>
+<li>无依赖（当然除了 Composer）</li>
+<li>一个接口即可获取属性目标：类、方法和属性</li>
+<li>可以缓存发现结果以加快连续运行速度。</li></p><p></ul>> [!注意]
+<blockquote>当前，插件支持类、方法、属性和参数目标。</blockquote>
+<blockquote>如果你有兴趣扩展支持，欢迎 <a href="https://raw.githubusercontent.com/olvlvl/composer-attribute-collector/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">贡献</a>。</blockquote></p><blockquote>[!警告]</blockquote>
+<blockquote>目前忽略函数上的属性。</blockquote></p><p>#### 使用方法</p><p>下面的示例演示了如何检索目标及其属性：</p><pre><code class="language-php"><?php</p><p>use olvlvl\ComposerAttributeCollector\Attributes;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
+use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\Mapping\Column;</p><p>require_once 'vendor/autoload.php';
+require_once 'vendor/attributes.php'; // <-- the file created by the plugin</p><p>// Find the target classes of the AsMessageHandler attribute.
+foreach (Attributes::findTargetClasses(AsMessageHandler::class) as $target) {
+    // $target->attribute is an instance of the specified attribute
+    // with the actual data.
+    var_dump($target->attribute, $target->name);
+}</p><p>// Find the target methods of the Route attribute.
+foreach (Attributes::findTargetMethods(Route::class) as $target) {
+    var_dump($target->attribute, $target->class, $target->name);
+}</p><p>// Find the target properties of the Column attribute.
+foreach (Attributes::findTargetProperties(Column::class) as $target) {
+    var_dump($target->attribute, $target->class, $target->name);
+}</p><p>// Find the target method parameters of the UserInput attribute.
+foreach (Attributes::findTargetParameters(UserInput::class) as $target) {
+    var_dump($target->attribute, $target->class, $target->method, $target->name);
+}</p><p>// Filter target methods using a predicate.
+// You can also filter target classes and properties.
+$predicate = fn($attribute) => is_a($attribute, Route::class, true);
+<h1>or</h1>
+$predicate = Attributes::predicateForAttributeInstanceOf(Route::class);</p><p>foreach (Attributes::filterTargetMethods($predicate) as $target) {
+    var_dump($target->attribute, $target->class, $target->name);
+}</p><p>// Find class, method, and property attributes for the ArticleController class.
+$attributes = Attributes::forClass(ArticleController::class);</p><p>var_dump($attributes->classAttributes);
+var_dump($attributes->methodsAttributes);
+var_dump($attributes->propertyAttributes);</code></pre>
+<h2>入门指南</h2></p><p>以下是一些帮助您快速入门的步骤。</p><h3>1\. 配置插件（可选）</h3></p><p>收集器会自动扫描根目录 <code>composer.json</code> 中的 <code>autoload</code> 路径，  
+实现零配置体验。您可以通过  
+<code>extra.composer-attribute-collector.include</code> 覆盖它们。</p><pre><code class="language-json">{
+  "extra": {
+    "composer-attribute-collector": {
+      "include": [
+        "src"
+      ]
+    }
+  }
+}</code></pre></p><p>查看<a href="#configuration" target="_blank" rel="noopener noreferrer">配置选项</a>了解更多详情。</p><h3>2\. 安装插件</h3></p><p>使用[Composer][]安装插件。
+系统会询问您是否信任该插件并希望激活它，选择<code>y</code>继续。</p><pre><code class="language-shell">composer require olvlvl/composer-attribute-collector</code></pre></p><p>您应该看到类似于以下的日志信息：</p><pre><code class="language-">Generating autoload files
+Generating attributes file
+Generated attributes file in 9.137 ms
+Generated autoload files</code></pre></p><blockquote>[!提示]</blockquote>
+<blockquote>请参阅<a href="#frequently-asked-questions" target="_blank" rel="noopener noreferrer">常见问题解答</a>部分</blockquote>
+<blockquote>以在开发过程中自动刷新“attributes”文件。</blockquote></p><h3>3\. 自动加载“attributes”文件</h3></p><p>您可以使用 <code>require_once 'vendor/attributes.php';</code> 引入“attributes”文件，但您可能
+更愿意使用 Composer 的自动加载功能：</p><pre><code class="language-json">{
+  "autoload": {
+    "files": [
+      "vendor/attributes.php"
+    ]
+  }
+}</code></pre>
+<h2>配置</h2></p><p>以下是几种配置插件的方法。</p><h3>包含路径或文件（[仅限根目录][]）</h3></p><p>收集器会自动扫描根目录 <code>composer.json</code> 的 <code>autoload</code> 路径，但你可以通过 <code>include</code> 属性覆盖它们。</p><p>指定的路径是相对于 <code>composer.json</code> 文件的，<code>{vendor}</code> 占位符会被替换为供应商文件夹的路径。</p><pre><code class="language-json">{
+  "extra": {
+    "composer-attribute-collector": {
+      "include": [
+        "path-or-file/to/include"
+      ]
+    }
+  }
+}</code></pre></p><h3>排除路径或文件（仅限根目录）[root-only][]</h3></p><p>使用 <code>exclude</code> 属性来排除扫描路径或文件。当文件引发问题或有副作用时，这非常有用。</p><p>指定的路径是相对于 <code>composer.json</code> 文件的，且 <code>{vendor}</code> 占位符会被替换为 vendor 文件夹的路径。</p><pre><code class="language-json">{
+  "extra": {
+    "composer-attribute-collector": {
+      "exclude": [
+        "path-or-file/to/exclude"
+      ]
+    }
+  }
+}</code></pre></p><h3>在运行之间缓存发现结果</h3></p><p>该插件能够维护一个缓存以在运行之间重用发现结果。要启用缓存，
+请将环境变量 <code>COMPOSER_ATTRIBUTE_COLLECTOR_USE_CACHE</code> 设置为 <code>1</code>、<code>yes</code> 或 <code>true</code>。
+缓存项会保存在 <code>.composer-attribute-collector</code> 目录中，您可能需要将其添加到
+您的 <code>.gitignore</code> 文件中。</p><pre><code class="language-shell">COMPOSER_ATTRIBUTE_COLLECTOR_USE_CACHE=1 composer dump-autoload</code></pre>
+<h2>使用案例</h2></p><p>使用案例可用于在实际条件下测试插件：</p><ul><li><a href="cases/incompatible-signature" target="_blank" rel="noopener noreferrer">不兼容的签名</a> 插件能够收集属性，  </li>
+  </ul>尽管 Composer 和应用程序使用的 PSR Logger 版本不兼容。</p><ul><li><a href="cases/symfony" target="_blank" rel="noopener noreferrer">Symfony</a> 一个使用 <code>symfony new</code> 创建的 Symfony 应用。</li></p><p><li><a href="cases/laravel" target="_blank" rel="noopener noreferrer">Laravel</a> 一个使用 <code>laravel new</code> 创建的 Laravel 应用。</li></p><p></ul><h2>常见问题解答</h2></p><p><strong>我需要生成优化的自动加载器吗？</strong></p><p>不需要生成优化的自动加载器才能使其工作。该插件使用类似于 Composer 的代码  
+来查找类。任何能与 Composer 一起工作的东西都应该能与该插件一起工作。</p><p><strong>我可以在开发过程中使用该插件吗？</strong></p><p>可以，你可以在开发过程中使用该插件，但请注意，“attributes” 文件仅在  
+自动加载器导出后生成。如果你修改了属性，则需要运行  
+<code>composer dump-autoload</code> 来刷新“attributes”文件。</p><p>作为一种解决方法，你可以对包含带属性类的目录设置监视器，  
+在你进行更改时运行 <code>XDEBUG_MODE=off composer dump-autoload</code>。  
+[PhpStorm 提供文件监视器][phpstorm-watchers]。你也可以使用 [spatie/file-system-watcher][]，  
+它只需要 PHP。如果插件运行速度太慢，可以尝试使用  
+<code>COMPOSER_ATTRIBUTE_COLLECTOR_USE_CACHE=yes</code> 运行命令，  
+这将启用缓存并加快后续运行速度。</p><p><strong>如何包含继承其属性的类？</strong></p><p>为了加快收集过程，插件首先将 PHP 文件作为纯文本查找属性使用的提示。  
+如果类从 trait、属性或方法继承其属性，但自身不使用属性，则会被忽略。  
+请使用属性</p><p>
+<code>[#\olvlvl\ComposerAttributeCollector\InheritsAttributes]</code> 强制收集。</p><pre><code class="language-php">trait UrlTrait
+{
+    #[UrlGetter]
+    public function get_url(): string
+    {
+        return '/url';
+    }
+}</p><p>#[InheritsAttributes]
+class InheritedAttributeSample
+{
+    use UrlTrait;
+}</code></pre></p><p>----------</p><h2>持续集成</h2></p><p>该项目通过 <a href="https://github.com/olvlvl/composer-attribute-collector/actions" target="_blank" rel="noopener noreferrer">GitHub actions</a> 持续进行测试。</p><p><a href="https://github.com/olvlvl/composer-attribute-collector/actions/workflows/cases.yml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/olvlvl/composer-attribute-collector/actions/workflows/cases.yml/badge.svg?branch=main" alt="Cases"></a>
+<a href="https://github.com/olvlvl/composer-attribute-collector/actions/workflows/test.yml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/olvlvl/composer-attribute-collector/actions/workflows/test.yml/badge.svg?branch=main" alt="Tests"></a>
+<a href="https://github.com/olvlvl/composer-attribute-collector/actions/workflows/static-analysis.yml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/olvlvl/composer-attribute-collector/actions/workflows/static-analysis.yml/badge.svg?branch=main" alt="Static Analysis"></a>
+<a href="https://github.com/olvlvl/composer-attribute-collector/actions/workflows/code-style.yml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/olvlvl/composer-attribute-collector/actions/workflows/code-style.yml/badge.svg?branch=main" alt="Code Style"></a></p><h2>行为准则</h2></p><p>本项目遵循 <a href="https://raw.githubusercontent.com/olvlvl/composer-attribute-collector/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener noreferrer">贡献者行为准则</a>。参与
+本项目及其社区时，您应遵守此准则。</p><h2>贡献</h2></p><p>详情请参见 <a href="https://raw.githubusercontent.com/olvlvl/composer-attribute-collector/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">CONTRIBUTING</a>。</p><p>[Composer]:  https://getcomposer.org/
+[root-only]: https://getcomposer.org/doc/04-schema.md#root-package
+[spatie/file-system-watcher]: https://github.com/spatie/file-system-watcher
+[phpstorm-watchers]: https://www.jetbrains.com/help/phpstorm/using-file-watchers.html</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-05
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/olvlvl/composer-attribute-collector/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-01-05 
+    </div>
+    
+</body>
+</html>
