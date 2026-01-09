@@ -1,0 +1,423 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>twitch-dlp - Download any Twitch VODs from the beginning during live broadcast</title>
+    <meta name="description" content="Download any Twitch VODs from the beginning during live broadcast">
+    <meta name="keywords" content="twitch-dlp, English, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "twitch-dlp",
+  "description": "Download any Twitch VODs from the beginning during live broadcast",
+  "author": {
+    "@type": "Person",
+    "name": "DmitryScaletta"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 111
+  },
+  "url": "https://OpenAiTx.github.io/projects/DmitryScaletta/twitch-dlp/README-en.html",
+  "sameAs": "https://raw.githubusercontent.com/DmitryScaletta/twitch-dlp/master/README.md",
+  "datePublished": "2026-01-09",
+  "dateModified": "2026-01-09"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/DmitryScaletta/twitch-dlp" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    twitch-dlp
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 111 stars</span>
+                <span class="language">English</span>
+                <span>by DmitryScaletta</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>twitch-dlp</h1></p><p>Download any twitch VODs from start during live broadcast</p><h2>Features</h2></p><ul><li>Download live VODs from start (<code>--live-from-start</code>)</li>
+<li>Download ongoing hidden VODs (or if they were hidden during the broadcast)</li>
+<li>Download finished hidden VODs</li>
+  <li>Just use <a href="https://twitchtracker.com" target="_blank" rel="noopener noreferrer">twitchtracker.com</a>, <a href="https://streamscharts.com" target="_blank" rel="noopener noreferrer">streamscharts.com</a> or <a href="https://sullygnome.com" target="_blank" rel="noopener noreferrer">sullygnome.com</a> links (<a href="https://github.com/DmitryScaletta/twitch-dlp/blob/master/DOWNLOAD_PRIVATE_VIDEOS.md" target="_blank" rel="noopener noreferrer">details</a>)</li>
+<li>Download specific part of the video (<code>--download-sections</code>)</li>
+<li>Download clips (including portrait versions)</li>
+<li>Automatically unmute muted sections if possible</li>
+<li>Continue downloading partially downloaded video (in case of network/power outage)</li>
+<li>Watch channel status. If it becomes live, start downloading (<code>--retry-streams DELAY</code>)</li>
+<li>Similar to <code>yt-dlp</code> (<code>youtube-dl</code>) syntax</li></p><p></ul><h2>Usage</h2></p><p>Install the latest <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">Node.js</a> version (v22 or newer).</p><pre><code class="language-bash"># npm (comes with Node.js)
+npx twitch-dlp LINK</p><h1>pnpm</h1>
+pnpm dlx twitch-dlp LINK</p><h1>yarn v2+</h1>
+yarn dlx twitch-dlp LINK</p><h1>bun</h1>
+bunx twitch-dlp LINK</code></pre>
+<h3>Examples</h3></p><pre><code class="language-bash"># Download a VOD from start using channel link, continue until stream ends
+npx twitch-dlp https://www.twitch.tv/xqc --live-from-start</p><h1>Download a VOD</h1>
+npx twitch-dlp https://www.twitch.tv/videos/2022789761</p><h1>Download live stream from the current time using streamlink</h1>
+npx twitch-dlp https://www.twitch.tv/xqc</p><h1>Download a hidden VOD</h1>
+<h1>Just use twitchtracker.com, streamscharts.com or sullygnome.com links</h1>
+npx twitch-dlp https://twitchtracker.com/xqc/streams/51582913581
+npx twitch-dlp https://streamscharts.com/channels/lirik/streams/51579711693
+npx twitch-dlp https://sullygnome.com/channel/summit1g/stream/315782796250
+<h1>If it doesn't work for you, follow this instructions:</h1>
+<h1>https://github.com/DmitryScaletta/twitch-dlp/blob/master/DOWNLOAD_PRIVATE_VIDEOS.md</h1></p><h1>Check every 60 seconds is channel live</h1>
+<h1>If it's live, start to download it using streamlink</h1>
+npx twitch-dlp https://www.twitch.tv/xqc --retry-streams 60</p><h1>Check every 60 seconds is channel live</h1>
+<h1>If it's live, start to download it's VOD from start</h1>
+npx twitch-dlp https://www.twitch.tv/xqc --retry-streams 60 --live-from-start</p><h1>Download 10 minutes in the middle of the VOD</h1>
+npx twitch-dlp https://www.twitch.tv/videos/2022789761 --download-sections "*15:00-25:00"</p><h1>Display available formats</h1>
+npx twitch-dlp https://www.twitch.tv/videos/2022789761 -F</p><h1>Download specified format</h1>
+npx twitch-dlp https://www.twitch.tv/videos/2022789761 -f 480p30</p><h1>Change output template</h1>
+npx twitch-dlp https://www.twitch.tv/videos/2022789761 -o "%(title)s [%(id)s].%(ext)s"</p><h1>Limit download rate</h1>
+npx twitch-dlp https://www.twitch.tv/videos/2022789761 -r 720k</p><h1>Merge already downloaded fragments (if something went wrong)</h1>
+<h1>Filename must match the fragment names but without ".part-FragN"</h1>
+<h1>Use <code>--download-sections</code> if you want to merge only specific part of the video</h1>
+npx twitch-dlp "./Chillin [v2222470239].mp4" --merge-fragments</p><h1>Merge already downloaded fragments and try to unmute muted fragments</h1>
+npx twitch-dlp "./Chillin [v2222470239].mp4" --merge-fragments --unmute quality</code></pre></p><h2>Options</h2></p><pre><code class="language-text">-h, --help                  Print this help text and exit
+--version                   Print program version and exit
+-f, --format FORMAT         Select format to download
+                            Available formats:
+                            <ul><li>best: best quality (default)</li>
+                            <li>FORMAT: select format by format_id</li>
+</ul>-F, --list-formats          Print available formats and exit
+-o, --output OUTPUT         Output filename template
+                            Available template variables:
+                            <ul><li>%(title)s</li>
+                            <li>%(id)s</li>
+                            <li>%(ext)s</li>
+                            <li>%(description)s</li>
+                            <li>%(duration)s</li>
+                            <li>%(uploader)s</li>
+                            <li>%(uploader_id)s</li>
+                            <li>%(upload_date)s</li>
+                            <li>%(release_date)s</li>
+                            <li>%(view_count)s</li>
+</ul>--live-from-start           Download live streams from the start
+--retry-streams DELAY       Retry fetching the list of available streams until
+                            streams are found while waiting DELAY second(s)
+                            between each attempt
+-r, --limit-rate RATE       Limit download rate to RATE
+--keep-fragments            Keep fragments after downloading
+--download-sections TEXT    Download specific part of the video.
+                            Syntax: "*start_time-end_time".
+                            Examples: "<em>0-12:34", "</em>3:14:15-inf".
+                            A "*" prefix is for yt-dlp compatibility.
+                            Negative timestamps and multiple sections are not 
+                            supported. Cutting is done by the closest fragments 
+                            (not by keyframes), so the accuracy is not very high
+--unmute POLICY             Try to unmute muted fragments. Keep in mind that
+                            160p and 360p have slightly worse audio quality.
+                            Available values:
+                            <ul><li>quality (default for 480p and higher) - check all</li>
+                              </ul>formats, unmute only if best audio quality is
+                              available
+                            <ul><li>any - check all formats, unmute if any audio</li>
+                              </ul>quality is available
+                            <ul><li>same_format (default for 360p and lower) - only</li>
+                              </ul>check downloading format, unmute if available
+                            <ul><li>off - don't try to unmute fragments</li>
+</ul>--downloader NAME           Name of the external downloader to use.
+                            Currently supports: aria2c, curl, fetch (default)
+--proxy URL                 Use the specified HTTP/HTTPS/SOCKS proxy. To
+                            enable SOCKS proxy, specify a proper scheme,
+                            e.g. socks5://user:pass@127.0.0.1:1080/.
+                            Pass in an empty string (--proxy "") for
+                            direct connection. Currently only works with fetch
+--merge-method METHOD       How fragments should be merged. Merging happens
+                            only after all fragments are downloaded.
+                            Available values:
+                            <ul><li>ffconcat (default) - using ffmpeg's concat </li>
+                              </ul>demuxer, no fixup needed
+                            <ul><li>append - merge all fragments into one file and</li>
+                              </ul>fixup using ffmpeg (like yt-dlp does)
+--merge-fragments           Merge already downloaded fragments. A FILENAME
+                            should be passed instead of a video link. The 
+                            FILENAME must match the fragment names but without
+                            ".part-FragN". Example: "npx twitch-dlp FILENAME
+                            --merge-fragments".
+                            Can be used with:
+                            <ul><li>--download-sections - merge only specific part</li>
+                              </ul>of the video
+                            <ul><li>--unmute - try to unmute downloaded fragments</li>
+                              </ul>according to passed unmute policy (off by
+                              default)
+                            <ul><li>--merge-method - change merge method</li></p><p></ul>It's also possible to pass streamlink twitch plugin args:
+--twitch-disable-ads, --twitch-low-latency, --twitch-api-header,
+--twitch-access-token-param, --twitch-force-client-integrity,
+--twitch-purge-client-integrity
+See https://streamlink.github.io/cli.html#twitch</code></pre></p><h2>Formats example</h2></p><p>For VODs</p><pre><code class="language-bash">┌─────────┬──────────────┬──────────────┬──────┬───────────────┬────────┐
+│ (index) │ format_id    │ resolution   │ fps  │ total_bitrate │ source │
+├─────────┼──────────────┼──────────────┼──────┼───────────────┼────────┤
+│ 0       │ 'Audio_Only' │ 'audio only' │ null │ '212k'        │ null   │
+│ 1       │ '160p'       │ '284x160'    │ 30   │ '225k'        │ null   │
+│ 2       │ '360p'       │ '640x360'    │ 30   │ '615k'        │ null   │
+│ 3       │ '480p'       │ '852x480'    │ 30   │ '1172k'       │ null   │
+│ 4       │ '720p60'     │ '1280x720'   │ 60   │ '3027k'       │ null   │
+│ 5       │ '1080p60'    │ '1920x1080'  │ 60   │ '5967k'       │ true   │
+└─────────┴──────────────┴──────────────┴──────┴───────────────┴────────┘</code></pre>
+For live streams (streamlink)</p><pre><code class="language-bash">Available streams: audio_only, 160p (worst), 360p, 480p, 720p, 720p60, 1080p60 (best)</code></pre></p><pre><code class="language-bash">Available streams: audio_only, 160p (worst), 360p, 480p, 720p, 720p60_alt, 720p60 (best)</code></pre></p><h2>Dependencies</h2></p><ul><li><strong>ffmpeg</strong></li>
+<li><strong>streamlink</strong> (if downloading by channel link without <code>--live-from-start</code>)</li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-09
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/DmitryScaletta/twitch-dlp/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-01-09 
+    </div>
+    
+</body>
+</html>
