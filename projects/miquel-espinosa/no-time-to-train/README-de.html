@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>no-time-to-train - Offizieller Code f&#252;r „Keine Zeit zum Trainieren! Trainingsfreie referenzbasierte Instanzsegmentierung“</title>
-    <meta name="description" content="Offizieller Code f&#252;r „Keine Zeit zum Trainieren! Trainingsfreie referenzbasierte Instanzsegmentierung“">
+    <title>no-time-to-train - Offizieller Code f&#252;r &quot;No time to train! Training-Free Reference-Based Instance Segmentation&quot;</title>
+    <meta name="description" content="Offizieller Code f&#252;r &quot;No time to train! Training-Free Reference-Based Instance Segmentation&quot;">
     <meta name="keywords" content="no-time-to-train, German, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "no-time-to-train",
-  "description": "Offizieller Code für „Keine Zeit zum Trainieren! Trainingsfreie referenzbasierte Instanzsegmentierung“",
+  "description": "Offizieller Code für \"No time to train! Training-Free Reference-Based Instance Segmentation\"",
   "author": {
     "@type": "Person",
     "name": "miquel-espinosa"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 228
+    "ratingCount": 271
   },
   "url": "https://OpenAiTx.github.io/projects/miquel-espinosa/no-time-to-train/README-de.html",
   "sameAs": "https://raw.githubusercontent.com/miquel-espinosa/no-time-to-train/main/README.md",
-  "datePublished": "2025-09-16",
-  "dateModified": "2025-09-16"
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-01-15"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 228 stars</span>
+                <span class="stars">⭐ 271 stars</span>
                 <span class="language">German</span>
                 <span>by miquel-espinosa</span>
             </div>
@@ -465,8 +465,20 @@ Führen Sie Schritt 1 aus:</p><pre><code class="language-bash">python run_lighte
     --model.init_args.model_cfg.dataset_name $DATASET_NAME \
     --model.init_args.model_cfg.memory_bank_cfg.length $SHOT \
     --model.init_args.model_cfg.memory_bank_cfg.category_num $CATEGORY_NUM \
+    --trainer.devices 1</code></pre></p><p>#### 2.1 Visualisierung der nachverarbeiteten Speicherbank</p><pre><code class="language-bash">python run_lightening.py test --config $YAML_PATH \
+    --model.test_mode vis_memory \
+    --ckpt_path $PATH_TO_SAVE_CKPTS/$DATASET_NAME\_$SHOT\_refs_memory_postprocessed.pth \
+    --model.init_args.dataset_cfgs.fill_memory.root $DATASET_PATH/images \
+    --model.init_args.dataset_cfgs.fill_memory.json_file $DATASET_PATH/annotations/custom_references_with_segm.json \
+    --model.init_args.dataset_cfgs.fill_memory.memory_pkl $DATASET_PATH/annotations/custom_references_with_segm.pkl \
+    --model.init_args.dataset_cfgs.fill_memory.memory_length $SHOT \
+    --model.init_args.dataset_cfgs.fill_memory.cat_names $CAT_NAMES \
+    --model.init_args.model_cfg.dataset_name $DATASET_NAME \
+    --model.init_args.model_cfg.memory_bank_cfg.length $SHOT \
+    --model.init_args.model_cfg.memory_bank_cfg.category_num $CATEGORY_NUM \
     --trainer.devices 1</code></pre>
-<h3>3. Inferenz auf Zielbildern</h3></p><p>Wenn <code>ONLINE_VIS</code> auf True gesetzt ist, werden die Vorhersageergebnisse in <code>results_analysis/my_custom_dataset/</code> gespeichert und angezeigt, sobald sie berechnet werden. BEACHTEN SIE, dass die Ausführung mit Online-Visualisierung deutlich langsamer ist.</p><p>Sie können den Score-Schwellenwert <code>VIS_THR</code> beliebig ändern, um mehr oder weniger segmentierte Instanzen anzuzeigen.</p><pre><code class="language-bash">ONLINE_VIS=True
+PCA- und K-means-Visualisierungen für die Memory-Bank-Bilder sind in <code>results_analysis/memory_vis/my_custom_dataset</code> gespeichert.</p><h3>3. Inferenz auf Zielbildern</h3></p><p>Wenn <code>ONLINE_VIS</code> auf True gesetzt ist, werden die Vorhersageergebnisse in <code>results_analysis/my_custom_dataset/</code> gespeichert und während der Berechnung angezeigt. BEACHTEN SIE, dass der Lauf mit Online-Visualisierung deutlich langsamer ist.</p><p>Sie können gerne den Score-Schwellenwert <code>VIS_THR</code> ändern, um mehr oder weniger segmentierte Instanzen zu sehen.
+<pre><code class="language-bash">ONLINE_VIS=True
 VIS_THR=0.4
 python run_lightening.py test --config $YAML_PATH \
     --model.test_mode test \
@@ -497,7 +509,7 @@ Visuelle Ergebnisse werden in <code>results_analysis/my_custom_dataset/</code> g
 }</code></pre></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-06
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-15
 
 ---</p>
         </div>
@@ -509,7 +521,7 @@ Visuelle Ergebnisse werden in <code>results_analysis/my_custom_dataset/</code> g
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-09-16 
+        Last updated: 2026-01-15 
     </div>
     
 </body>

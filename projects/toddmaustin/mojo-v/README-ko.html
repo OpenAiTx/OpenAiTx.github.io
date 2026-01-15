@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mojo-v - Mojo-V: 프라이버시 지향 프로그래밍을 위한 RISC-V 명령어 집합 확장입니다. Mojo-V는 데이터 소유자 외에는 어떤 소프트웨어나 사람도 볼 수 없는 데이터를 기반으로 연산하는 소프트웨어를 작성할 수 있게 합니다. Mojo-V는 RISC-V CPU에 간단한 확장을 통해 이 새로운 형태의 비밀 계산을 구현합니다.</title>
+    <meta name="description" content="Mojo-V: 프라이버시 지향 프로그래밍을 위한 RISC-V 명령어 집합 확장입니다. Mojo-V는 데이터 소유자 외에는 어떤 소프트웨어나 사람도 볼 수 없는 데이터를 기반으로 연산하는 소프트웨어를 작성할 수 있게 합니다. Mojo-V는 RISC-V CPU에 간단한 확장을 통해 이 새로운 형태의 비밀 계산을 구현합니다.">
+    <meta name="keywords" content="mojo-v, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "mojo-v",
+  "description": "Mojo-V: 프라이버시 지향 프로그래밍을 위한 RISC-V 명령어 집합 확장입니다. Mojo-V는 데이터 소유자 외에는 어떤 소프트웨어나 사람도 볼 수 없는 데이터를 기반으로 연산하는 소프트웨어를 작성할 수 있게 합니다. Mojo-V는 RISC-V CPU에 간단한 확장을 통해 이 새로운 형태의 비밀 계산을 구현합니다.",
+  "author": {
+    "@type": "Person",
+    "name": "toddmaustin"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 126
+  },
+  "url": "https://OpenAiTx.github.io/projects/toddmaustin/mojo-v/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/toddmaustin/mojo-v/main/README.md",
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-01-15"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/toddmaustin/mojo-v" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    mojo-v
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 126 stars</span>
+                <span class="language">Korean</span>
+                <span>by toddmaustin</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><p align="center">
+  <img src="https://raw.githubusercontent.com/toddmaustin/mojo-v/main/./docs/MojoV-logo1.png" alt="Mojo-V 로고" width="550"/>
+</p></p><h1>Mojo-V: RISC-V를 위한 비밀 연산</h1></p><p><strong>Mojo-V</strong> (발음: <em>“모조-파이브”</em>)는 RISC-V에 프라이버시 지향 프로그래밍 기능을 도입하는 새로운 RISC-V 확장입니다. Mojo-V는 비밀 연산을 구현하여, 취약한 소프트웨어나 프로그래머의 신뢰에 의존하지 않고 안전하고 효율적이며 데이터에 무관한 실행을 가능하게 합니다. 민감한 데이터를 전용 비밀 레지스터에 격리하고 제3자 키로 메모리를 암호화함으로써, Mojo-V는 정보 누출을 방지하고 직접적인 노출이 없는 블라인드(Blind) 연산과 부채널 누출이 없는 사일런트(Silent) 연산을 강제합니다. 설계는 모드 비트 하나와 네 개의 새로운 명령어만을 추가하여 기존 RISC-V ISA에 원활하게 통합되며, 완전히 디코드 단계에서 강제됩니다. 초기 결과는 거의 네이티브 실행 속도를 보여주며, 완전 동형 암호(FHE) 대비 5~7자리 이상의 성능 향상을 제공하며, CPU, GPU 및 특수 가속기 통합을 위한 명확한 로드맵을 제시합니다.</p><p>더 알아보기...
+<ul><li>Mojo-V를 설명하는 소개 영상: https://www.youtube.com/watch?v=HUT46TcNyyM</li>
+<li>Mojo-V 프로젝트 개요를 담은 슬라이드: https://drive.google.com/file/d/1VVzZqYHvQgnKMgXZjg7I_cX2GzF7awSN</li></p><p></ul>현재 Mojo-V ISA 확장 사양 (버전 0.92):
+<ul><li>[PDF 형식.] (https://drive.google.com/file/d/1pargKATFoQdy94i6bI3P_9mfNA_GsYSw)</li></p><p></ul>Mojo-V 개발자 연락처:
+<ul><li>이메일: <a href="https://raw.githubusercontent.com/toddmaustin/mojo-v/main/mailto:mojov-devs@umich.edu" target="_blank" rel="noopener noreferrer">mojov-devs@umich.edu</a></li></p><p></ul><h1>🧩 Mojo-V 참조 플랫폼 — 버전 0.92</h1></p><h2>🚧 프로젝트 현황</h2></p><p>Mojo-V 참조 플랫폼 버전 0.92는 고정 대칭 키 암호를 사용한 비밀 정수 및 부동소수점 연산을 구현합니다. Mojo-V는 빠름, 강력함, 증명 전달(proof-carrying)의 세 가지 암호화 모드를 지원합니다. 이번 버전에서는 64비트 비밀 연산이 완전히 비밀화되었으며, 이 초기 참조 플랫폼은 소프트웨어 개발 및 레드팀 테스트에 사용할 수 있습니다. 앞으로의 버전에서는 PKI 지원, LLVM 컴파일러 지원, 32비트 RISC-V 지원, VIP-Bench 벤치마크 지원 등 추가 기능이 제공될 예정입니다.</p><p><strong>사양 버전:</strong> 0.92  (2025년 11월)  
+<strong>연락처:</strong> <a href="https://raw.githubusercontent.com/toddmaustin/mojo-v/main/mailto:mojov-devs@umich.edu" target="_blank" rel="noopener noreferrer">mojov-devs@umich.edu</a></p><h2>현재 구성 요소</h2></p><ul><li><strong>Mojo-V ISA 사양 v0.92</strong></li>
+   <li><code>doc/</code>에 배포됨</li>
+<li><strong>Spike (명령어 집합 시뮬레이터) 구현</strong></li>
+   <li>Mojo-V가 <code>riscv-isa-sim</code>에 통합되어 거의 완성 단계</li>
+   <li>미지원 항목: 공개키 인프라(PKI) 지원 (현재 Simon-128 암호를 사용하는 고정 키 사용)</li>
+   <li>Mojo-V 확장 활성화 상태로 Spike 실행 시 <code>spike</code> 명령어에 <code>--isa=rv64gc_zicond_zkmojov_zicntr</code> 플래그 추가</li>
+<li><strong>Mojo-V Bringup-Bench 벤치마크</strong></li>
+   <li>수작업으로 코딩된 예제들(예: 버블 정렬)로 Mojo-V 비밀 연산 동작 시연</li>
+   <li>RV64GC+Mojo-V용 보안 테스트 전체 배터리</li></p><p></ul>참고로 Bringup-bench 벤치마크의 나머지 부분은 아직 Mojo-V로 이식되지 않았습니다.
+<h2>⚙️ Mojo-V 참조 플랫폼 빌드 및 실행</h2></p><h3>A. RISC-V LLVM 컴파일러 설치</h3>
+<code>RV64GC</code> 바이너리를 생성할 수 있는 LLVM 기반 RISC-V 크로스 컴파일러가 필요합니다.</p><p>시작하기 좋은 곳: https://clang.llvm.org/get_started.html</p><h3>B. Mojo-V 저장소 복제</h3></p><pre><code class="language-bash">git clone https://github.com/toddmaustin/mojo-v.git
+cd mojo-v</code></pre>
+<h3>C. Mojo-V 지원을 포함한 RISC-V Spike 시뮬레이터 빌드하기</h3></p><pre><code class="language-bash">sudo apt-get install device-tree-compiler libboost-regex-dev libboost-system-dev
+cd riscv-isa-sim
+mkdir build
+cd build
+../configure --prefix=$RISCV
+make</code></pre></p><h3>D. Mojo-V 브링업 벤치마크 테스트 빌드 및 실행</h3></p><ul><li><strong>Spike 디바이스 드라이버 빌드</strong></li></p><p>   </ul>``<code>bash
+   cd bringup-bench/target
+   make
+   </code>`<code>
+<ul><li><strong>컴파일러 구성하기</strong></li></p><p>   </ul></code>../Makefile<code>을 편집하여 </code>mojov<code> 대상의 </code>TARGET_CC<code>를 LVM Clang 기반 RISC-V 컴파일러 위치로 설정합니다.</p><ul><li><strong>빌드 및 테스트</strong></li></p><p>
+   </ul></code>`<code>bash
+   cd ..                # go to the top-level bringup-bench directory
+   make mojov-tests     # run all Mojo-V tests
+   </code>`<code>
+대안으로, 해당 디렉터리로 이동하여 다음 명령어를 실행하여 개별 벤치마크를 수행할 수 있습니다.</p><p>
+   </code>`<code>bash
+   cd ../mojov-test
+   make TARGET=mojov clean build test
+   </code>`<code>
+<h2>🧪 Mojo-V Bringup-Bench 벤치마크 개요</h2></p><p>| 프로그램 | 설명 |
+|:---------|:-------------|
+| </code>mojov-test<code> | 슬라이드에서 소개된 예제 |
+| </code>mojov-test1<code> | 시크릿 레지스터 및 암호화 메모리 의미론 테스트 |
+| </code>mojov-test2<code> | Mojo-V 빠른 암호화(int,fast)를 사용한 수작업 데이터 불투명 정수 버블 정렬 벤치마크 |
+| </code>mojov-test3<code> | Mojo-V 빠른 암호화(fp,fast)를 사용한 수작업 데이터 불투명 부동 소수점 버블 정렬 벤치마크 |
+| </code>mojov-test4<code> | Mojo-V 강력한 암호화(int,strong)를 사용한 수작업 데이터 불투명 정수 버블 정렬 벤치마크 |
+| </code>mojov-test5<code> | Mojo-V 강력한 암호화(fp,strong)를 사용한 수작업 데이터 불투명 부동 소수점 버블 정렬 벤치마크 |
+| </code>mojov-pctests<code> | Mojo-V의 증명 운반 암호화 형식(proofcarrying)에 대한 긍정 및 부정 테스트를 포함하는 RV64GC+Mojo-V용 수작업 무결성 검사 테스트 스위트 |
+| </code>mojov-sectests` | 130개의 긍정 테스트와 245개의 부정 테스트 총 375개(int,fp,fast,strong)를 포함하는 RV64GC+Mojo-V용 수작업 보안 테스트 스위트 |</p><p>모든 테스트 벤치마크는 Mojo-V ISA 규칙과 보안 의미론을 보여주는 수작업 어셈블리 프로그램입니다. 다른 Bringup-Bench 벤치마크들은 아직 Mojo-V로 포팅되지 않았습니다.</p><hr>
+<h2>코드 라이선스</h2>
+이 저장소의 모든 Mojo-V 관련 코드는 수정된 도구(예: Spike, LLVM, Bringup-Bench)의 라이선스 하에 공개됩니다. 라이선스 세부사항은 각 도구의 해당 디렉터리를 참조하십시오.</p><hr></p><h2>💬 질문 및 피드백</h2>
+기여, 버그 리포트 및 제안을 환영합니다!</p><p>📧 <strong>이메일:</strong> <a href="https://raw.githubusercontent.com/toddmaustin/mojo-v/main/mailto:mojov-devs@umich.edu" target="_blank" rel="noopener noreferrer">mojov-devs@umich.edu</a>  
+🌐 <strong>프로젝트 홈:</strong> <a href="https://github.com/toddmaustin/mojo-v" target="_blank" rel="noopener noreferrer">https://github.com/toddmaustin/mojo-v</a></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-15
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/toddmaustin/mojo-v/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-01-15 
+    </div>
+    
+</body>
+</html>

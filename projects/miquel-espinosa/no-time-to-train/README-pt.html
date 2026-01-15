@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 228
+    "ratingCount": 271
   },
   "url": "https://OpenAiTx.github.io/projects/miquel-espinosa/no-time-to-train/README-pt.html",
   "sameAs": "https://raw.githubusercontent.com/miquel-espinosa/no-time-to-train/main/README.md",
-  "datePublished": "2025-09-16",
-  "dateModified": "2025-09-16"
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-01-15"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 228 stars</span>
+                <span class="stars">⭐ 271 stars</span>
                 <span class="language">Portuguese</span>
                 <span>by miquel-espinosa</span>
             </div>
@@ -465,8 +465,20 @@ Execute a etapa 1:</p><pre><code class="language-bash">python run_lightening.py 
     --model.init_args.model_cfg.dataset_name $DATASET_NAME \
     --model.init_args.model_cfg.memory_bank_cfg.length $SHOT \
     --model.init_args.model_cfg.memory_bank_cfg.category_num $CATEGORY_NUM \
+    --trainer.devices 1</code></pre></p><p>#### 2.1 Visualizar banco de memória pós-processado</p><pre><code class="language-bash">python run_lightening.py test --config $YAML_PATH \
+    --model.test_mode vis_memory \
+    --ckpt_path $PATH_TO_SAVE_CKPTS/$DATASET_NAME\_$SHOT\_refs_memory_postprocessed.pth \
+    --model.init_args.dataset_cfgs.fill_memory.root $DATASET_PATH/images \
+    --model.init_args.dataset_cfgs.fill_memory.json_file $DATASET_PATH/annotations/custom_references_with_segm.json \
+    --model.init_args.dataset_cfgs.fill_memory.memory_pkl $DATASET_PATH/annotations/custom_references_with_segm.pkl \
+    --model.init_args.dataset_cfgs.fill_memory.memory_length $SHOT \
+    --model.init_args.dataset_cfgs.fill_memory.cat_names $CAT_NAMES \
+    --model.init_args.model_cfg.dataset_name $DATASET_NAME \
+    --model.init_args.model_cfg.memory_bank_cfg.length $SHOT \
+    --model.init_args.model_cfg.memory_bank_cfg.category_num $CATEGORY_NUM \
     --trainer.devices 1</code></pre>
-<h3>3. Inferência em imagens alvo</h3></p><p>Se <code>ONLINE_VIS</code> estiver definido como True, os resultados das previsões serão salvos em <code>results_analysis/my_custom_dataset/</code> e exibidos à medida que forem computados. OBSERVE que executar com visualização online é muito mais lento.</p><p>Sinta-se à vontade para alterar o limiar de pontuação <code>VIS_THR</code> para ver mais ou menos instâncias segmentadas.</p><pre><code class="language-bash">ONLINE_VIS=True
+As visualizações de PCA e K-means para as imagens do banco de memória são armazenadas em <code>results_analysis/memory_vis/my_custom_dataset</code>.</p><h3>3. Inferência em imagens alvo</h3></p><p>Se <code>ONLINE_VIS</code> estiver definido como True, os resultados das previsões serão salvos em <code>results_analysis/my_custom_dataset/</code> e exibidos à medida que forem computados. NOTE que rodar com visualização online é muito mais lento.</p><p>Sinta-se à vontade para alterar o limiar de pontuação <code>VIS_THR</code> para ver mais ou menos instâncias segmentadas.
+<pre><code class="language-bash">ONLINE_VIS=True
 VIS_THR=0.4
 python run_lightening.py test --config $YAML_PATH \
     --model.test_mode test \
@@ -497,7 +509,7 @@ Os resultados visuais são salvos em <code>results_analysis/my_custom_dataset/</
 }</code></pre></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-06
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-15
 
 ---</p>
         </div>
@@ -509,7 +521,7 @@ Os resultados visuais são salvos em <code>results_analysis/my_custom_dataset/</
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-09-16 
+        Last updated: 2026-01-15 
     </div>
     
 </body>

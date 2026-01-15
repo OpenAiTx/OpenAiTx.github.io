@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 228
+    "ratingCount": 271
   },
   "url": "https://OpenAiTx.github.io/projects/miquel-espinosa/no-time-to-train/README-ja.html",
   "sameAs": "https://raw.githubusercontent.com/miquel-espinosa/no-time-to-train/main/README.md",
-  "datePublished": "2025-09-16",
-  "dateModified": "2025-09-16"
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-01-15"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 228 stars</span>
+                <span class="stars">⭐ 271 stars</span>
                 <span class="language">Japanese</span>
                 <span>by miquel-espinosa</span>
             </div>
@@ -464,8 +464,20 @@ mkdir -p $PATH_TO_SAVE_CKPTS</code></pre>
     --model.init_args.model_cfg.dataset_name $DATASET_NAME \
     --model.init_args.model_cfg.memory_bank_cfg.length $SHOT \
     --model.init_args.model_cfg.memory_bank_cfg.category_num $CATEGORY_NUM \
+    --trainer.devices 1</code></pre></p><p>#### 2.1 後処理されたメモリバンクの可視化</p><pre><code class="language-bash">python run_lightening.py test --config $YAML_PATH \
+    --model.test_mode vis_memory \
+    --ckpt_path $PATH_TO_SAVE_CKPTS/$DATASET_NAME\_$SHOT\_refs_memory_postprocessed.pth \
+    --model.init_args.dataset_cfgs.fill_memory.root $DATASET_PATH/images \
+    --model.init_args.dataset_cfgs.fill_memory.json_file $DATASET_PATH/annotations/custom_references_with_segm.json \
+    --model.init_args.dataset_cfgs.fill_memory.memory_pkl $DATASET_PATH/annotations/custom_references_with_segm.pkl \
+    --model.init_args.dataset_cfgs.fill_memory.memory_length $SHOT \
+    --model.init_args.dataset_cfgs.fill_memory.cat_names $CAT_NAMES \
+    --model.init_args.model_cfg.dataset_name $DATASET_NAME \
+    --model.init_args.model_cfg.memory_bank_cfg.length $SHOT \
+    --model.init_args.model_cfg.memory_bank_cfg.category_num $CATEGORY_NUM \
     --trainer.devices 1</code></pre>
-<h3>3. ターゲット画像での推論</h3></p><p><code>ONLINE_VIS</code> を True に設定すると、予測結果は <code>results_analysis/my_custom_dataset/</code> に保存され、計算されると同時に表示されます。オンライン可視化を有効にすると処理速度が大幅に遅くなるので注意してください。</p><p>スコア閾値 <code>VIS_THR</code> を変更して、より多くまたは少ないセグメント化インスタンスを表示することができます。</p><pre><code class="language-bash">ONLINE_VIS=True
+メモリバンク画像のPCAおよびK-means可視化結果は <code>results_analysis/memory_vis/my_custom_dataset</code> に保存されます。</p><h3>3. ターゲット画像での推論</h3></p><p><code>ONLINE_VIS</code> がTrueに設定されている場合、予測結果は <code>results_analysis/my_custom_dataset/</code> に保存され、計算されると同時に表示されます。オンライン可視化を有効にすると、処理速度が大幅に遅くなることに注意してください。</p><p>セグメント化されたインスタンスの表示数を増減させたい場合は、スコア閾値 <code>VIS_THR</code> を自由に変更してください。
+<pre><code class="language-bash">ONLINE_VIS=True
 VIS_THR=0.4
 python run_lightening.py test --config $YAML_PATH \
     --model.test_mode test \
@@ -496,7 +508,7 @@ python run_lightening.py test --config $YAML_PATH \
 }</code></pre></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-06
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-15
 
 ---</p>
         </div>
@@ -508,7 +520,7 @@ python run_lightening.py test --config $YAML_PATH \
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-09-16 
+        Last updated: 2026-01-15 
     </div>
     
 </body>

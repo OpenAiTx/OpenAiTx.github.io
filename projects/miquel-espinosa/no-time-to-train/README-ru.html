@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>no-time-to-train - Официальный код для &quot;Нет времени на обучение! Сегментация объектов по образцу без обучения&quot;</title>
-    <meta name="description" content="Официальный код для &quot;Нет времени на обучение! Сегментация объектов по образцу без обучения&quot;">
+    <title>no-time-to-train - Официальный код для &quot;No time to train! Training-Free Reference-Based Instance Segmentation&quot;</title>
+    <meta name="description" content="Официальный код для &quot;No time to train! Training-Free Reference-Based Instance Segmentation&quot;">
     <meta name="keywords" content="no-time-to-train, Russian, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "no-time-to-train",
-  "description": "Официальный код для \"Нет времени на обучение! Сегментация объектов по образцу без обучения\"",
+  "description": "Официальный код для \"No time to train! Training-Free Reference-Based Instance Segmentation\"",
   "author": {
     "@type": "Person",
     "name": "miquel-espinosa"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 228
+    "ratingCount": 271
   },
   "url": "https://OpenAiTx.github.io/projects/miquel-espinosa/no-time-to-train/README-ru.html",
   "sameAs": "https://raw.githubusercontent.com/miquel-espinosa/no-time-to-train/main/README.md",
-  "datePublished": "2025-09-16",
-  "dateModified": "2025-09-16"
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-01-15"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 228 stars</span>
+                <span class="stars">⭐ 271 stars</span>
                 <span class="language">Russian</span>
                 <span>by miquel-espinosa</span>
             </div>
@@ -465,8 +465,20 @@ mkdir -p $PATH_TO_SAVE_CKPTS</code></pre>
     --model.init_args.model_cfg.dataset_name $DATASET_NAME \
     --model.init_args.model_cfg.memory_bank_cfg.length $SHOT \
     --model.init_args.model_cfg.memory_bank_cfg.category_num $CATEGORY_NUM \
+    --trainer.devices 1</code></pre></p><p>#### 2.1 Визуализация постобработанного банка памяти</p><pre><code class="language-bash">python run_lightening.py test --config $YAML_PATH \
+    --model.test_mode vis_memory \
+    --ckpt_path $PATH_TO_SAVE_CKPTS/$DATASET_NAME\_$SHOT\_refs_memory_postprocessed.pth \
+    --model.init_args.dataset_cfgs.fill_memory.root $DATASET_PATH/images \
+    --model.init_args.dataset_cfgs.fill_memory.json_file $DATASET_PATH/annotations/custom_references_with_segm.json \
+    --model.init_args.dataset_cfgs.fill_memory.memory_pkl $DATASET_PATH/annotations/custom_references_with_segm.pkl \
+    --model.init_args.dataset_cfgs.fill_memory.memory_length $SHOT \
+    --model.init_args.dataset_cfgs.fill_memory.cat_names $CAT_NAMES \
+    --model.init_args.model_cfg.dataset_name $DATASET_NAME \
+    --model.init_args.model_cfg.memory_bank_cfg.length $SHOT \
+    --model.init_args.model_cfg.memory_bank_cfg.category_num $CATEGORY_NUM \
     --trainer.devices 1</code></pre>
-<h3>3. Инференс на целевых изображениях</h3></p><p>Если <code>ONLINE_VIS</code> установлен в True, результаты предсказания будут сохраняться в <code>results_analysis/my_custom_dataset/</code> и отображаться по мере вычисления. ОБРАТИТЕ ВНИМАНИЕ, что запуск с онлайн-визуализацией значительно медленнее.</p><p>Не стесняйтесь изменять порог оценки <code>VIS_THR</code>, чтобы видеть больше или меньше сегментированных экземпляров.</p><pre><code class="language-bash">ONLINE_VIS=True
+Визуализации PCA и K-means для изображений из банка памяти сохраняются в <code>results_analysis/memory_vis/my_custom_dataset</code>.</p><h3>3. Инференс на целевых изображениях</h3></p><p>Если <code>ONLINE_VIS</code> установлен в True, результаты предсказания будут сохранены в <code>results_analysis/my_custom_dataset/</code> и отображаться по мере вычисления. ОБРАТИТЕ ВНИМАНИЕ, что запуск с онлайн-визуализацией значительно медленнее.</p><p>Вы можете свободно изменять порог оценки <code>VIS_THR</code>, чтобы видеть больше или меньше сегментированных экземпляров.
+<pre><code class="language-bash">ONLINE_VIS=True
 VIS_THR=0.4
 python run_lightening.py test --config $YAML_PATH \
     --model.test_mode test \
@@ -497,7 +509,7 @@ python run_lightening.py test --config $YAML_PATH \
 }</code></pre></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-06
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-15
 
 ---</p>
         </div>
@@ -509,7 +521,7 @@ python run_lightening.py test --config $YAML_PATH \
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-09-16 
+        Last updated: 2026-01-15 
     </div>
     
 </body>

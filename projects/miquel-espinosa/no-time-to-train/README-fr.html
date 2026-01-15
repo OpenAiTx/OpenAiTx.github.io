@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>no-time-to-train - Code officiel pour &quot;Pas le temps de s&#39;entra&#238;ner ! Segmentation d&#39;instances bas&#233;e sur des r&#233;f&#233;rences sans entra&#238;nement&quot;</title>
-    <meta name="description" content="Code officiel pour &quot;Pas le temps de s&#39;entra&#238;ner ! Segmentation d&#39;instances bas&#233;e sur des r&#233;f&#233;rences sans entra&#238;nement&quot;">
+    <title>no-time-to-train - Code officiel pour &quot;No time to train! Training-Free Reference-Based Instance Segmentation&quot;</title>
+    <meta name="description" content="Code officiel pour &quot;No time to train! Training-Free Reference-Based Instance Segmentation&quot;">
     <meta name="keywords" content="no-time-to-train, French, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "no-time-to-train",
-  "description": "Code officiel pour \"Pas le temps de s'entraîner ! Segmentation d'instances basée sur des références sans entraînement\"",
+  "description": "Code officiel pour \"No time to train! Training-Free Reference-Based Instance Segmentation\"",
   "author": {
     "@type": "Person",
     "name": "miquel-espinosa"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 228
+    "ratingCount": 271
   },
   "url": "https://OpenAiTx.github.io/projects/miquel-espinosa/no-time-to-train/README-fr.html",
   "sameAs": "https://raw.githubusercontent.com/miquel-espinosa/no-time-to-train/main/README.md",
-  "datePublished": "2025-09-16",
-  "dateModified": "2025-09-16"
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-01-15"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 228 stars</span>
+                <span class="stars">⭐ 271 stars</span>
                 <span class="language">French</span>
                 <span>by miquel-espinosa</span>
             </div>
@@ -465,8 +465,20 @@ Exécutez l’étape 1 :</p><pre><code class="language-bash">python run_lighteni
     --model.init_args.model_cfg.dataset_name $DATASET_NAME \
     --model.init_args.model_cfg.memory_bank_cfg.length $SHOT \
     --model.init_args.model_cfg.memory_bank_cfg.category_num $CATEGORY_NUM \
+    --trainer.devices 1</code></pre></p><p>#### 2.1 Visualiser la banque de mémoire post-traitée</p><pre><code class="language-bash">python run_lightening.py test --config $YAML_PATH \
+    --model.test_mode vis_memory \
+    --ckpt_path $PATH_TO_SAVE_CKPTS/$DATASET_NAME\_$SHOT\_refs_memory_postprocessed.pth \
+    --model.init_args.dataset_cfgs.fill_memory.root $DATASET_PATH/images \
+    --model.init_args.dataset_cfgs.fill_memory.json_file $DATASET_PATH/annotations/custom_references_with_segm.json \
+    --model.init_args.dataset_cfgs.fill_memory.memory_pkl $DATASET_PATH/annotations/custom_references_with_segm.pkl \
+    --model.init_args.dataset_cfgs.fill_memory.memory_length $SHOT \
+    --model.init_args.dataset_cfgs.fill_memory.cat_names $CAT_NAMES \
+    --model.init_args.model_cfg.dataset_name $DATASET_NAME \
+    --model.init_args.model_cfg.memory_bank_cfg.length $SHOT \
+    --model.init_args.model_cfg.memory_bank_cfg.category_num $CATEGORY_NUM \
     --trainer.devices 1</code></pre>
-<h3>3. Inférence sur les images cibles</h3></p><p>Si <code>ONLINE_VIS</code> est réglé sur True, les résultats de prédiction seront sauvegardés dans <code>results_analysis/my_custom_dataset/</code> et affichés au fur et à mesure de leur calcul. NOTEZ que l'exécution avec la visualisation en ligne est beaucoup plus lente.</p><p>N'hésitez pas à modifier le seuil de score <code>VIS_THR</code> pour voir plus ou moins d'instances segmentées.</p><pre><code class="language-bash">ONLINE_VIS=True
+Les visualisations PCA et K-means pour les images de la mémoire tampon sont stockées dans <code>results_analysis/memory_vis/my_custom_dataset</code>.</p><h3>3. Inférence sur les images cibles</h3></p><p>Si <code>ONLINE_VIS</code> est défini sur True, les résultats de la prédiction seront sauvegardés dans <code>results_analysis/my_custom_dataset/</code> et affichés au fur et à mesure de leur calcul. NOTEZ que l’exécution avec visualisation en ligne est beaucoup plus lente.</p><p>N'hésitez pas à modifier le seuil de score <code>VIS_THR</code> pour afficher plus ou moins d’instances segmentées.
+<pre><code class="language-bash">ONLINE_VIS=True
 VIS_THR=0.4
 python run_lightening.py test --config $YAML_PATH \
     --model.test_mode test \
@@ -497,7 +509,7 @@ Les résultats visuels sont enregistrés dans <code>results_analysis/my_custom_d
 }</code></pre></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-06
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-15
 
 ---</p>
         </div>
@@ -509,7 +521,7 @@ Les résultats visuels sont enregistrés dans <code>results_analysis/my_custom_d
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-09-16 
+        Last updated: 2026-01-15 
     </div>
     
 </body>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>no-time-to-train - M&#227; ch&#237;nh thức cho &quot;Kh&#244;ng cần thời gian huấn luyện! Ph&#226;n đoạn đối tượng dựa tr&#234;n tham chiếu m&#224; kh&#244;ng cần huấn luyện&quot;</title>
-    <meta name="description" content="M&#227; ch&#237;nh thức cho &quot;Kh&#244;ng cần thời gian huấn luyện! Ph&#226;n đoạn đối tượng dựa tr&#234;n tham chiếu m&#224; kh&#244;ng cần huấn luyện&quot;">
+    <title>no-time-to-train - M&#227; nguồn ch&#237;nh thức cho &quot;No time to train! Training-Free Reference-Based Instance Segmentation&quot;</title>
+    <meta name="description" content="M&#227; nguồn ch&#237;nh thức cho &quot;No time to train! Training-Free Reference-Based Instance Segmentation&quot;">
     <meta name="keywords" content="no-time-to-train, Vietnamese, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "no-time-to-train",
-  "description": "Mã chính thức cho \"Không cần thời gian huấn luyện! Phân đoạn đối tượng dựa trên tham chiếu mà không cần huấn luyện\"",
+  "description": "Mã nguồn chính thức cho \"No time to train! Training-Free Reference-Based Instance Segmentation\"",
   "author": {
     "@type": "Person",
     "name": "miquel-espinosa"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 228
+    "ratingCount": 271
   },
   "url": "https://OpenAiTx.github.io/projects/miquel-espinosa/no-time-to-train/README-vi.html",
   "sameAs": "https://raw.githubusercontent.com/miquel-espinosa/no-time-to-train/main/README.md",
-  "datePublished": "2025-09-16",
-  "dateModified": "2025-09-16"
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-01-15"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 228 stars</span>
+                <span class="stars">⭐ 271 stars</span>
                 <span class="language">Vietnamese</span>
                 <span>by miquel-espinosa</span>
             </div>
@@ -465,8 +465,20 @@ Chạy bước 1:</p><pre><code class="language-bash">python run_lightening.py t
     --model.init_args.model_cfg.dataset_name $DATASET_NAME \
     --model.init_args.model_cfg.memory_bank_cfg.length $SHOT \
     --model.init_args.model_cfg.memory_bank_cfg.category_num $CATEGORY_NUM \
+    --trainer.devices 1</code></pre></p><p>#### 2.1 Trực quan hóa bộ nhớ đã xử lý hậu kỳ</p><pre><code class="language-bash">python run_lightening.py test --config $YAML_PATH \
+    --model.test_mode vis_memory \
+    --ckpt_path $PATH_TO_SAVE_CKPTS/$DATASET_NAME\_$SHOT\_refs_memory_postprocessed.pth \
+    --model.init_args.dataset_cfgs.fill_memory.root $DATASET_PATH/images \
+    --model.init_args.dataset_cfgs.fill_memory.json_file $DATASET_PATH/annotations/custom_references_with_segm.json \
+    --model.init_args.dataset_cfgs.fill_memory.memory_pkl $DATASET_PATH/annotations/custom_references_with_segm.pkl \
+    --model.init_args.dataset_cfgs.fill_memory.memory_length $SHOT \
+    --model.init_args.dataset_cfgs.fill_memory.cat_names $CAT_NAMES \
+    --model.init_args.model_cfg.dataset_name $DATASET_NAME \
+    --model.init_args.model_cfg.memory_bank_cfg.length $SHOT \
+    --model.init_args.model_cfg.memory_bank_cfg.category_num $CATEGORY_NUM \
     --trainer.devices 1</code></pre>
-<h3>3. Suy luận trên các ảnh mục tiêu</h3></p><p>Nếu <code>ONLINE_VIS</code> được đặt thành True, kết quả dự đoán sẽ được lưu trong <code>results_analysis/my_custom_dataset/</code> và hiển thị ngay khi được tính toán. LƯU Ý rằng chạy với chế độ trực quan hóa trực tuyến sẽ chậm hơn nhiều.</p><p>Bạn có thể thay đổi ngưỡng điểm số <code>VIS_THR</code> để xem nhiều hoặc ít đối tượng được phân đoạn hơn.</p><pre><code class="language-bash">ONLINE_VIS=True
+Các hình ảnh trực quan hóa PCA và K-means cho bộ nhớ ảnh được lưu tại <code>results_analysis/memory_vis/my_custom_dataset</code>.</p><h3>3. Suy luận trên các ảnh mục tiêu</h3></p><p>Nếu <code>ONLINE_VIS</code> được đặt thành True, kết quả dự đoán sẽ được lưu tại <code>results_analysis/my_custom_dataset/</code> và hiển thị ngay khi được tính toán. LƯU Ý rằng việc chạy với trực quan hóa trực tuyến sẽ chậm hơn nhiều.</p><p>Bạn có thể thay đổi ngưỡng điểm số <code>VIS_THR</code> để xem nhiều hoặc ít các đối tượng đã được phân đoạn hơn.
+<pre><code class="language-bash">ONLINE_VIS=True
 VIS_THR=0.4
 python run_lightening.py test --config $YAML_PATH \
     --model.test_mode test \
@@ -497,7 +509,7 @@ Kết quả trực quan được lưu trong <code>results_analysis/my_custom_dat
 }</code></pre></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-09-06
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-15
 
 ---</p>
         </div>
@@ -509,7 +521,7 @@ Kết quả trực quan được lưu trong <code>results_analysis/my_custom_dat
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-09-16 
+        Last updated: 2026-01-15 
     </div>
     
 </body>
