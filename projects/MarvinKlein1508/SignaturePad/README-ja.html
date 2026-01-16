@@ -1,0 +1,327 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignaturePad - A simple to use blazor component to draw custom signatures.</title>
+    <meta name="description" content="A simple to use blazor component to draw custom signatures.">
+    <meta name="keywords" content="SignaturePad, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "SignaturePad",
+  "description": "A simple to use blazor component to draw custom signatures.",
+  "author": {
+    "@type": "Person",
+    "name": "MarvinKlein1508"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 102
+  },
+  "url": "https://OpenAiTx.github.io/projects/MarvinKlein1508/SignaturePad/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/MarvinKlein1508/SignaturePad/master/README.md",
+  "datePublished": "2026-01-16",
+  "dateModified": "2026-01-16"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/MarvinKlein1508/SignaturePad" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    SignaturePad
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 102 stars</span>
+                <span class="language">Japanese</span>
+                <span>by MarvinKlein1508</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>SignaturePad</h1>
+署名を描くための使いやすいBlazorコンポーネントです。マウスとタッチ入力の両方に対応しており、Blazor ServerおよびBlazor WebAssemblyで動作します。</p><p>こちらのGitHubでライブの<a href="https://marvinklein1508.github.io/SignaturePad/" target="_blank" rel="noopener noreferrer">デモ</a>をご覧いただけます。</p><p><img src="https://raw.githubusercontent.com/MarvinKlein1508/SignaturePad/master/images/demo.png" alt="SignaturePad Demo"></p><h2>インストール</h2></p><p>以下のコマンドを使用してNugetからインストールできます：</p><p><code>Install-Package Blazor.SignaturePad</code></p><p>またはVisual Studioのパッケージマネージャーからも可能です。</p><h2>基本的な使い方</h2>
+ルートの<code>_Imports.razor</code>に次のusingステートメントを追加して開始します。
+<pre><code class="language-razor">@using SigPad</code></pre>
+次に、クラスにプロパティを定義する必要があります。例えば：</p><pre><code class="language-csharp">public class MyInput
+{
+    public byte[] Signature { get; set; } = Array.Empty<byte>();
+}</code></pre>
+それを好きな場所で使用できます。</p><pre><code class="language-razor"><SignaturePad @bind-Value="Input.Signature" style="width: 100%" /></code></pre></p><p>コントロールは画像データをbase64の<code>byte[]</code>として提供します</p><p>画像を取得するには、<code>byte[]</code>を文字列に変換する必要があります。例えば:</p><pre><code class="language-csharp">public class MyInput
+{
+    public byte[] Signature { get; set; } = Array.Empty<byte>();
+    public string SignatureAsBase64 => System.Text.Encoding.UTF8.GetString(Signature);
+}</code></pre></p><h2>オプションの提供</h2>
+<code>SignaturePadOptions</code> インスタンスをコンポーネントに渡すことで、SignaturePad を設定できます。 </p><pre><code class="language-razor"><SignaturePad @bind-Value="Input.Signature" Options="_options" style="width: 100%" /></p><p>@code {
+    public MyInput Input { get; set; } = new();</p><p>    private SignaturePadOptions _options = new SignaturePadOptions
+    {
+        LineCap = LineCap.Round,
+        LineJoin = LineJoin.Round,
+        LineWidth = 20
+    };
+}</code></pre></p><h2>既存のbase64文字列の使用</h2>
+デフォルトでは、SignaturePadは署名の前に<code>data:image/png;base64, </code>を付加します。既存のbase64文字列を読み込む場合は、この接頭辞を次のように適用する必要があります：</p><pre><code class="language-cs">Input.Signature = Encoding.UTF8.GetBytes("data:image/png;base64, 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");</code></pre></p><h2>カスタムスタイリング</h2>
+SignaturePadの見た目は、CSSクラスを上書きするか、独自のクラスを指定することでカスタマイズできます。</p><p>SignaturePad自体には<code>Class</code>パラメータを使用し、SignaturePadをクリアするボタンには<code>ClearButtonClass</code>パラメータを使用できます。</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-16
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/MarvinKlein1508/SignaturePad/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-01-16 
+    </div>
+    
+</body>
+</html>
