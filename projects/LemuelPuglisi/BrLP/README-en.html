@@ -1,0 +1,389 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrLP - [MICCAI, 2024] (Oral, RU @ MedIA Best Paper Award) Official implementation of the Brain Latent Progression (BrLP) method from &quot;Enhancing Spatiotemporal Disease Progression Models via Latent Diffusion and Prior Knowledge&quot;</title>
+    <meta name="description" content="[MICCAI, 2024] (Oral, RU @ MedIA Best Paper Award) Official implementation of the Brain Latent Progression (BrLP) method from &quot;Enhancing Spatiotemporal Disease Progression Models via Latent Diffusion and Prior Knowledge&quot;">
+    <meta name="keywords" content="BrLP, English, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "BrLP",
+  "description": "[MICCAI, 2024] (Oral, RU @ MedIA Best Paper Award) Official implementation of the Brain Latent Progression (BrLP) method from \"Enhancing Spatiotemporal Disease Progression Models via Latent Diffusion and Prior Knowledge\"",
+  "author": {
+    "@type": "Person",
+    "name": "LemuelPuglisi"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 115
+  },
+  "url": "https://OpenAiTx.github.io/projects/LemuelPuglisi/BrLP/README-en.html",
+  "sameAs": "https://raw.githubusercontent.com/LemuelPuglisi/BrLP/main/README.md",
+  "datePublished": "2026-01-20",
+  "dateModified": "2026-01-20"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/LemuelPuglisi/BrLP" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    BrLP
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 115 stars</span>
+                <span class="language">English</span>
+                <span>by LemuelPuglisi</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><img src="https://raw.githubusercontent.com/LemuelPuglisi/BrLP/main/assets/readme-brlp-v2.png" alt="brlp"></p><p><p align="center">
+  <a href='https://www.sciencedirect.com/science/article/pii/S1361841525002816'>
+    <img src='https://img.shields.io/badge/Journal-PDF-green?style=for-the-badge&logo=adobeacrobatreader&logoWidth=20&logoColor=white&color=94DD15' alt='Paper PDF'>
+  </a>
+  <a href='https://papers.miccai.org/miccai-2024/paper/0511_paper.pdf'>
+    <img src='https://img.shields.io/badge/MICCAI-PDF-green?style=for-the-badge&logo=adobeacrobatreader&logoWidth=20&logoColor=white&color=94DD15' alt='Paper PDF'>
+  </a>
+  <a href='https://youtu.be/6YKz2MNM4jg?si=nkG21K4lIgLrH-pK'>
+    <img src='https://img.shields.io/badge/Video-YouTube-red?style=for-the-badge&logo=youtube&logoColor=white&color=FF3737' alt='Video'>
+  </a>
+</p></p><p><h4 align="center">Enhancing Spatiotemporal Disease Progression Models via Latent Diffusion and Prior Knowledge</h4></p><p><h4 align="center"><a href="https://lemuelpuglisi.github.io/">Lemuel Puglisi</a>, <a href="https://profiles.ucl.ac.uk/3589">Daniel C. Alexander</a>, <a href="https://daniravi.wixsite.com/researchblog">Daniele Ravì</a></h4></p><p>https://github.com/user-attachments/assets/28ad3693-5e3e-4f6e-9bbc-485424fbbee2</p><p><p align="center">
+  <a href="#installation">Installation</a> •
+  <a href="#training">Training</a> •
+  <a href="#inference">CLI Application</a> •
+  <a href="#citing">Cite</a>
+</p></p><p>
+<strong>NEWS</strong>
+<ul><li>🎉 BrLP has been awarded the runner-up position for the Media Best Paper Award at MICCAI 2025!</li>
+</ul><em> 🎉 Our <a href="https://arxiv.org/pdf/2502.08560" target="_blank" rel="noopener noreferrer">extension paper</a> has been accepted for publication in Medical Image Analysis (</em>IF=11.8*)
+<ul><li>🎉 A <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/13406/1340621/A-technical-assessment-of-latent-diffusion-for-Alzheimers-disease-progression/10.1117/12.3047135.short" target="_blank" rel="noopener noreferrer">new paper</a> from Vanderbilt University has replicated our results on the <a href="https://www.blsa.nih.gov/" target="_blank" rel="noopener noreferrer">BLSA</a> dataset!</li>
+<li>🆕 The <a href="https://lemuelpuglisi.github.io/blog/2024/brlp/" target="_blank" rel="noopener noreferrer">short guide on using the BrLP CLI</a> is out!</li>
+<li>🎉 BrLP has been nominated and shortlisted for the MICCAI Best Paper Award! (top <1%)</li>
+<li>🎉 BrLP has been early-accepted and selected for <strong>oral presentation</strong> at <a href="https://conferences.miccai.org/2024/en/" target="_blank" rel="noopener noreferrer">MICCAI 2024</a> (top 4%)!</li></p><p></ul><h2>Table of Contents</h2>
+<ul><li><a href="#installation" target="_blank" rel="noopener noreferrer">Installation</a></li>
+<li><a href="https://raw.githubusercontent.com/LemuelPuglisi/BrLP/main/./REPR-DATA.md" target="_blank" rel="noopener noreferrer">Data preparation</a></li>
+<li><a href="#training" target="_blank" rel="noopener noreferrer">Training</a></li>
+<li><a href="#pretrained-models" target="_blank" rel="noopener noreferrer">Pretrained models</a></li>
+<li><a href="#acknowledgements" target="_blank" rel="noopener noreferrer">Acknowledgements</a></li>
+<li><a href="#citing" target="_blank" rel="noopener noreferrer">Citing our work</a></li></p><p></ul><h2>Installation</h2></p><p>Download the repository, <code>cd</code> into the project folder and install the <code>brlp</code> package:</p><pre><code class="language-console">pip install -e .</code></pre>
+We recommend using a separate environment (see <a href="https://www.anaconda.com/" target="_blank" rel="noopener noreferrer">Anaconda</a>). The code has been tested using python 3.9, however we expect it to work also with newer versions.</p><h2>Data preparation</h2></p><p>Check out our document on <a href="https://raw.githubusercontent.com/LemuelPuglisi/BrLP/main/./REPR-DATA.md" target="_blank" rel="noopener noreferrer"><em>Data preparation and study reproducibility</em></a>. This file will guide you in organizing your data and creating the required CSV files to run the training pipelines.</p><h2>Training</h2>
+<img src="https://raw.githubusercontent.com/LemuelPuglisi/BrLP/main/assets/pipeline.png" alt=""></p><p>
+Training BrLP has 3 main phases that will be discribed in the subsequent sections. Every training (except for the auxiliary model) can be monitored using <code>tensorboard</code> as follows:</p><pre><code class="language-console">tensorboard --logdir runs</code></pre></p><h3>Train the autoencoder</h3></p><p>Follow the commands below to train the autoencoder.</p><pre><code class="language-console"># Create an output and a cache directory
+mkdir ae_output ae_cache</p><h1>Run the training script</h1>
+python scripts/training/train_autoencoder.py \
+  --dataset_csv /path/to/A.csv \
+  --cache_dir   ./ae_cache \
+  --output_dir  ./ae_output</code></pre></p><p>Then extract the latents from your MRI data:</p><pre><code class="language-console">python scripts/prepare/extract_latents.py \
+  --dataset_csv /path/to/A.csv \
+  --aekl_ckpt   ae_output/autoencoder-ep-XXX.pth</code></pre></p><p>Replace <code>XXX</code> to select the autoencoder checkpoints of your choice.</p><h3>Train the UNet</h3></p><p>Follow the commands below to train the diffusion UNet. Replace <code>XXX</code> to select the autoencoder checkpoints of your choice.</p><pre><code class="language-console"># Create an output and a cache directory:
+mkdir unet_output unet_cache</p><h1>Run the training script</h1>
+python scripts/training/train_diffusion_unet.py \
+  --dataset_csv /path/to/A.csv \
+  --cache_dir   unet_cache \
+  --output_dir  unet_output \
+  --aekl_ckpt   ae_output/autoencoder-ep-XXX.pth</code></pre></p><h3>Train the ControlNet</h3></p><p>Follow the commands below to train the ControlNet. Replace <code>XXX</code> to select the autoencoder and UNet checkpoints of your choice.</p><pre><code class="language-console"># Create an output and a cache directory:
+mkdir cnet_output cnet_cache</p><h1>Run the training script</h1>
+python scripts/training/train_controlnet.py \
+  --dataset_csv /path/to/B.csv \
+  --cache_dir   unet_cache \
+  --output_dir  unet_output \
+  --aekl_ckpt   ae_output/autoencoder-ep-XXX.pth \
+  --diff_ckpt   unet_output/unet-ep-XXX.pth</code></pre></p><h3>Auxiliary models</h3></p><p>Follow the commands below to train the DCM auxiliary model.</p><pre><code class="language-console"># Create an output directory
+mkdir aux_output</p><h1>Run the training script</h1>
+python scripts/training/train_aux.py \
+  --dataset_csv /path/to/A.csv \
+  --output_path aux_output</code></pre></p><p>We emphasize that any disease progression model capable of predicting volumetric changes over time is also viable as an auxiliary model for BrLP.</p><h2>Inference</h2></p><p>Our package comes with a <code>brlp</code> command to use BrLP for inference. Check:
+<pre><code class="language-console">brlp --help</code></pre>
+The <code>--input</code> parameter requires a CSV file where you list all available data for your subjects. For an example, check to <code>examples/input.example.csv</code>. If you haven't segmented your input scans, <code>brlp</code> can perform this task for you using <a href="https://surfer.nmr.mgh.harvard.edu/fswiki/SynthSeg" target="_blank" rel="noopener noreferrer">SynthSeg</a>, but it requires that FreeSurfer >= 7.4 be installed. The <code>--confs</code> parameter specifies the paths to the models and other inference parameters, such as LAS $m$. For an example, check <code>examples/confs.example.yaml</code>. </p><p>Running the program looks like this:</p><p><img src="https://raw.githubusercontent.com/LemuelPuglisi/BrLP/main/assets/inference.gif" alt="inference-preview"></p><h2>Pretrained models</h2></p><p>Download the pre-trained models for BrLP:</p><p>| Model                  | Weights URL                                                  |
+| ---------------------- | ------------------------------------------------------------ |
+| Autoencoder            | <a href="https://studentiunict-my.sharepoint.com/:u:/g/personal/pgllml99h18c351e_studium_unict_it/EUxUFIQtkQ1EvBqojYA5BAYByIyHbttca5Mx1cU4bC6q3A?e=sCXSUA" target="_blank" rel="noopener noreferrer">link</a> |
+| Diffusion Model UNet   | <a href="https://studentiunict-my.sharepoint.com/:u:/g/personal/pgllml99h18c351e_studium_unict_it/EQT7KJTtfmRAguf8_utWeJIBUJPsRRgPZlt94s2vNbwVFw?e=IjHnx7" target="_blank" rel="noopener noreferrer">link</a> |
+| ControlNet             | <a href="https://studentiunict-my.sharepoint.com/:u:/g/personal/pgllml99h18c351e_studium_unict_it/EYtVvH47dFJJnH8gtwSMA-MB8c3pm4_Z9g5F_IG1OKxW9Q?e=CzvGT4" target="_blank" rel="noopener noreferrer">link</a> |
+| Auxiliary Models (DCM) | <a href="https://studentiunict-my.sharepoint.com/:u:/g/personal/pgllml99h18c351e_studium_unict_it/EXJDQqLNCwBFkt2J6zg1kpwBS_1hAZoBfGy5AfcGOBZvHQ?e=Z05kOG" target="_blank" rel="noopener noreferrer">link</a> |</p><h2>Acknowledgements</h2></p><p>We thank the maintainers of open-source libraries for their contributions to accelerating the research process, with a special mention of <a href="https://monai.io/" target="_blank" rel="noopener noreferrer">MONAI</a> and its <a href="https://github.com/Project-MONAI/GenerativeModels/tree/main" target="_blank" rel="noopener noreferrer">GenerativeModels</a> extension.</p><h2>Citing</h2></p><p>Medical Image Analysis:</p><pre><code class="language-bib">@article{puglisi2025brain,
+  title={Brain latent progression: Individual-based spatiotemporal disease progression on 3D brain MRIs via latent diffusion},
+  author={Puglisi, Lemuel and Alexander, Daniel C and Rav{\<code>\i}, Daniele},
+  journal={Medical Image Analysis},
+  year={2025}
+}</code></pre></p><p>MICCAI 2024 proceedings:</p><pre><code class="language-bib">@inproceedings{puglisi2024enhancing,
+  title={Enhancing spatiotemporal disease progression models via latent diffusion and prior knowledge},
+  author={Puglisi, Lemuel and Alexander, Daniel C and Rav{\</code>\i}, Daniele},
+  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
+  pages={173--183},
+  year={2024},
+  organization={Springer}
+}</code></pre>
+  
+SPIE Medical Imaging 2025 proceedings:  </p><pre><code class="language-bib">@inproceedings{mcmaster2025technical,
+  title={A technical assessment of latent diffusion for Alzheimer's disease progression},
+  author={McMaster, Elyssa and Puglisi, Lemuel and Gao, Chenyu and Krishnan, Aravind R and Saunders, Adam M and Ravi, Daniele and Beason-Held, Lori L and Resnick, Susan M and Zuo, Lianrui and Moyer, Daniel and others},
+  booktitle={Medical Imaging 2025: Image Processing},
+  volume={13406},
+  pages={505--513},
+  year={2025},
+  organization={SPIE}
+}</code></pre></p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-20
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/LemuelPuglisi/BrLP/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-01-20 
+    </div>
+    
+</body>
+</html>

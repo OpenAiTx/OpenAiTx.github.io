@@ -1,0 +1,386 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kotbase - Couchbase Lite向けのKotlinマルチプラットフォームライブラリ—軽量で組み込み可能、同期対応のNoSQLデータベース</title>
+    <meta name="description" content="Couchbase Lite向けのKotlinマルチプラットフォームライブラリ—軽量で組み込み可能、同期対応のNoSQLデータベース">
+    <meta name="keywords" content="kotbase, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "kotbase",
+  "description": "Couchbase Lite向けのKotlinマルチプラットフォームライブラリ—軽量で組み込み可能、同期対応のNoSQLデータベース",
+  "author": {
+    "@type": "Person",
+    "name": "jeffdgr8"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 113
+  },
+  "url": "https://OpenAiTx.github.io/projects/jeffdgr8/kotbase/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/jeffdgr8/kotbase/main/README.md",
+  "datePublished": "2026-01-20",
+  "dateModified": "2026-01-20"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/jeffdgr8/kotbase" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    kotbase
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 113 stars</span>
+                <span class="language">Japanese</span>
+                <span>by jeffdgr8</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><a href="
+https://central.sonatype.com/namespace/dev.kotbase" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/maven-central/v/dev.kotbase/couchbase-lite" alt="Maven Central"></a>
+<a href="http://kotlinlang.org" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/kotlin-2.2.20-blue.svg?logo=kotlin" alt="Kotlin"></a>
+<a href="LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/license/jeffdgr8/kotbase" alt="GitHub License"></a>
+<a href="
+https://www.couchbase.com/developers/community/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/couchbase-community-ea2328?logo=couchbase&logoColor=ea2328" alt="Couchbase Community"></a>
+<a href="
+https://kotlinlang.slack.com/messages/couchbase/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/chat-%23couchbase-4a154b.svg?logo=slack" alt="Slack Channel"></a></p><h1>Kotbase</h1></p><p><strong>Kot</strong>lin マルチプラットフォームライブラリ for Couch<strong>base</strong> Lite</p><h2>はじめに</h2></p><p>Kotbase は <a href="https://www.jetbrains.com/kotlin-multiplatform/" target="_blank" rel="noopener noreferrer">Kotlin Multiplatform</a> と埋め込み型 NoSQL JSON ドキュメントデータベースの <a href="
+https://www.couchbase.com/products/lite/" target="_blank" rel="noopener noreferrer">Couchbase Lite</a> を組み合わせたものです。Couchbase Lite はスタンドアロンのクライアントデータベースとして使用でき、また <a href="https://www.couchbase.com/products/server/" target="_blank" rel="noopener noreferrer">Couchbase Server</a> と <a href="https://www.couchbase.com/products/sync-gateway/" target="_blank" rel="noopener noreferrer">Sync
+Gateway</a> または <a href="
+https://www.couchbase.com/products/capella/app-services/" target="_blank" rel="noopener noreferrer">Capella App Services</a> と組み合わせてクラウドからエッジへのデータ同期を行うことができます。主な特徴は以下の通りです:</p><ul><li><a href="https://www.couchbase.com/products/n1ql/" target="_blank" rel="noopener noreferrer">SQL++</a>、キー/バリュー、全文検索、およびベクター検索クエリ</li>
+<li>オブザーバブルクエリ、ドキュメント、データベース、レプリケーター</li>
+<li>バイナリドキュメント添付ファイル（blob）</li>
+<li>ピアツーピアおよびクラウドからエッジへのデータ同期</li></p><p></ul>Kotbase は Android と JVM 向けに完全な Enterprise および Community Edition API サポートを提供します（<a href="
+https://github.com/couchbase/couchbase-lite-java-ce-root" target="_blank" rel="noopener noreferrer">Java SDK 経由</a>）、ネイティブ iOS と macOS 向けに（<a href="
+https://github.com/couchbase/couchbase-lite-ios" target="_blank" rel="noopener noreferrer">Objective-C SDK 経由</a>）、そしてネイティブ Linux と Windows 向けに実験的サポートを提供します（<a href="
+https://github.com/couchbase/couchbase-lite-C" target="_blank" rel="noopener noreferrer">C SDK 経由</a>）。</p><h2>インストール</h2></p><p>共有モジュールの <strong>build.gradle.kts</strong> にある <strong>commonMain</strong> ソースセットの依存関係に Community または Enterprise Edition の依存関係を追加してください:</p><pre><code class="language-kotlin">kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            // Community Edition
+            implementation("dev.kotbase:couchbase-lite:3.2.4-1.2.0")
+            // or Enterprise Edition
+            implementation("dev.kotbase:couchbase-lite-ee:3.2.4-1.2.0")
+        }
+    }
+}</code></pre></p><blockquote><strong>注意</strong></blockquote>
+<blockquote>Couchbase Lite Community Editionは無料でオープンソースです。Enterprise Editionは開発および</blockquote>
+<blockquote>テストには無料ですが、本番環境での使用には<a href="https://www.couchbase.com/pricing/#couchbase-mobile" target="_blank" rel="noopener noreferrer">Couchbaseからのライセンス</a>が必要です。</blockquote>
+<blockquote><a href="https://www.couchbase.com/products/editions/mobile/" target="_blank" rel="noopener noreferrer">Community版とEnterprise版の違いはこちら。</a></blockquote>
+<blockquote></blockquote>
+<blockquote>KotbaseはMaven Centralに公開されています。Couchbase Lite Enterprise Editionの依存関係には</blockquote>
+<blockquote>さらにCouchbase Mavenリポジトリが必要です。</blockquote></p><pre><code class="language-kotlin">repositories {
+    mavenCentral()
+    maven("https://mobile.maven.couchbase.com/maven2/dev/")
+}</code></pre>
+<h3>ネイティブプラットフォーム</h3></p><p>ネイティブプラットフォームのターゲットは、Couchbase Lite依存のネイティブバイナリにもリンクする必要があります。詳細は<a href="https://kotbase.dev/current/platforms/" target="_blank" rel="noopener noreferrer">対応プラットフォーム</a>を参照してください。</p><h3>Linux</h3></p><p>Linux上で動作するJVMまたはネイティブLinuxをターゲットにする場合、特定バージョンのlibicu依存関係が必要です。（<code>libLiteCore.so: libicuuc.so.71: cannot open shared object file: No such file or directory</code>のようなエラーが表示され、期待されるバージョンが示されます。）必要なバージョンがディストリビューションのパッケージマネージャーで利用できない場合は、<a href="https://github.com/unicode-org/icu/releases" target="_blank" rel="noopener noreferrer">GitHub</a>からダウンロードできます。</p><h2>ドキュメント</h2></p><p>Kotbaseのドキュメントは<a href="https://kotbase.dev/" target="_blank" rel="noopener noreferrer">kotbase.dev</a>で入手でき、<a href="https://kotbase.dev/current/getting-started/" target="_blank" rel="noopener noreferrer">入門例</a>、<a href="https://kotbase.dev/current/databases/" target="_blank" rel="noopener noreferrer">使用ガイド</a>、および<a href="https://kotbase.dev/api/" target="_blank" rel="noopener noreferrer">APIリファレンス</a>が含まれています。</p><h2>Java SDKとの違い</h2></p><p>KotbaseのAPIはCouchbase Liteの<a href="https://raw.githubusercontent.com/jeffdgr8/kotbase/main/
+https://docs.couchbase.com/couchbase-lite/current/java/quickstart.html" target="_blank" rel="noopener noreferrer">Java</a>および<a href="https://raw.githubusercontent.com/jeffdgr8/kotbase/main/
+https://docs.couchbase.com/couchbase-lite/current/android/quickstart.html" target="_blank" rel="noopener noreferrer">Android KTX</a> SDKに整合しています。既存のKotlinコードの移行は、インポートパッケージを<code>com.couchbase.lite</code>から<code>kotbase</code>に変更するだけで済む場合がありますが、一部例外があります：</p><ul><li>Javaのコールバック関数型インターフェースはKotlinの関数型として実装されています。</li>
+<li><code>File</code>、<code>URL</code>、<code>URI</code>のAPIは文字列として表現されます。</li>
+<li><code>Date</code>のAPIはKotlinの<code>Instant</code>を使用します。</li>
+<li><code>InputStream</code>のAPIは<a href="https://kotlinlang.org/api/kotlinx-io/kotlinx-io-core/kotlinx.io/-source/" target="_blank" rel="noopener noreferrer">kotlinx-ioの<code>Source</code></a>を使用します。</li>
+<li><code>Executor</code>のAPIはKotlinの<code>CoroutineContext</code>を使用します。</li>
+<li>証明書APIは生の<code>ByteArray</code>またはプラットフォーム固有のコードで利用可能です。</li>
+<li><code>CouchbaseLite.init()</code>を明示的に呼び出す必要はありません。JVMおよびAndroidプラットフォームコードではカスタムパラメータで初期化関数を呼び出すことも可能です。</li>
+<li>一般的なエラー条件に対してKotlin例外を検出しスローするよう努めていますが、Appleプラットフォームでは<code>NSError</code>が漏れる可能性があります。<a href="https://github.com/jeffdgr8/kotbase/issues/new" target="_blank" rel="noopener noreferrer">発生した場合は報告</a>してください。</li>
+<li>一部の非推奨APIは省略されています。</li>
+<li>Java SDKにはない、Javaが演算子オーバーロードをサポートしていないために存在しない<a href="</li></p><p>
+  </ul>https://kotbase.dev/current/kotlin-extensions/#fragment-subscripts" target="_blank" rel="noopener noreferrer"><code>Fragment</code>のサブスクリプトAPI</a> は、<a href="https://raw.githubusercontent.com/jeffdgr8/kotbase/main/
+  https://docs.couchbase.com/mobile/3.1.10/couchbase-lite-swift/Classes/Fragment.html" target="_blank" rel="noopener noreferrer">Swift</a>、<a href="https://raw.githubusercontent.com/jeffdgr8/kotbase/main/
+  https://docs.couchbase.com/mobile/3.1.10/couchbase-lite-objc/Protocols/CBLFragment.html" target="_blank" rel="noopener noreferrer">Objective-C</a>、および <a href="https://raw.githubusercontent.com/jeffdgr8/kotbase/main/
+  https://docs.couchbase.com/mobile/3.1.10/couchbase-lite-net/api/Couchbase.Lite.IFragment.html" target="_blank" rel="noopener noreferrer">.NET</a> と同様に Kotbase で利用可能です。
+<ul><li>Android KTX SDK の設定ファクトリー API は、Kotlin の名前付き引数を直接サポートするコンストラクターの使用を推奨して非推奨となりました。</li></p><p></ul><h2>拡張ライブラリ</h2></p><p>Kotbase は Couchbase Lite の公式 API の上に便利な拡張を追加のライブラリアーティファクトとして含んでいます。</p><h3>Kotbase KTX</h3></p><p><a href="https://raw.githubusercontent.com/jeffdgr8/kotbase/main/couchbase-lite-ktx/README.md" target="_blank" rel="noopener noreferrer">KTX 拡張</a> には、優れた <a href="https://github.com/MOLO17/couchbase-lite-kotlin" target="_blank" rel="noopener noreferrer">MOLO17 による Kotlin 拡張</a> と、クエリの作成、クエリ結果のマッピング、ドキュメントの作成、変更の <code>Flow</code> の監視などの便利な関数が含まれています。</p><p>#### インストール方法</p><pre><code class="language-kotlin">// Community Edition
+implementation("dev.kotbase:couchbase-lite-ktx:3.2.4-1.2.0")
+// or Enterprise Edition
+implementation("dev.kotbase:couchbase-lite-ee-ktx:3.2.4-1.2.0")</code></pre></p><h3>Kotbase Kermit</h3></p><p><a href="https://raw.githubusercontent.com/jeffdgr8/kotbase/main/couchbase-lite-kermit/README.md" target="_blank" rel="noopener noreferrer">Kotbase Kermit</a> は、<a href="https://kermit.touchlab.co/" target="_blank" rel="noopener noreferrer">Kermit</a> にログを出力する Couchbase Lite のカスタムロガーです。Kermit はログをコンソールを含む任意の数のログ出力先に送ることができます。</p><p>#### インストール</p><pre><code class="language-kotlin">// Community Edition
+implementation("dev.kotbase:couchbase-lite-kermit:3.2.4-1.2.0")
+// or Enterprise Edition
+implementation("dev.kotbase:couchbase-lite-ee-kermit:3.2.4-1.2.0")</code></pre></p><h3>Kotbase ページング</h3></p><p><a href="https://raw.githubusercontent.com/jeffdgr8/kotbase/main/couchbase-lite-paging/README.md" target="_blank" rel="noopener noreferrer">ページング拡張機能</a>はGoogleの<a href="https://developer.android.com/topic/libraries/architecture/paging/v3-overview" target="_blank" rel="noopener noreferrer">AndroidX Paging</a>を基に構築されています。Kotbase Pagingはユーザー提供のデータベースクエリに基づいてlimit/offsetページングクエリを実行する<a href="https://developer.android.com/reference/kotlin/androidx/paging/PagingSource" target="_blank" rel="noopener noreferrer"><code>PagingSource</code></a>を提供します。</p><p>#### インストール</p><pre><code class="language-kotlin">// Community Edition
+implementation("dev.kotbase:couchbase-lite-paging:3.2.4-1.2.0")
+// or Enterprise Edition
+implementation("dev.kotbase:couchbase-lite-ee-paging:3.2.4-1.2.0")</code></pre>
+<h2>ロードマップ</h2></p><ul><li>[x] ドキュメントサイト (<a href="https://kotbase.dev/" target="_blank" rel="noopener noreferrer">kotbase.dev</a>)</li>
+<li>[x] <code>NSInputStream</code> との相互運用 ~~(Okio <a href="https://github.com/square/okio/pull/1123" target="_blank" rel="noopener noreferrer">#1123</a>)~~ (kotlinx-io <a href="</li>
+  </ul>https://github.com/Kotlin/kotlinx-io/pull/174" target="_blank" rel="noopener noreferrer">#174</a>)
+<ul><li>[x] Linux ARM64 サポート</li>
+<li>[x] 公開リリース</li>
+<li>[ ] サンプルアプリ</li>
+    <li>[x] <a href="examples/getting-started" target="_blank" rel="noopener noreferrer">はじめに</a></li>
+    <li>[x] <a href="examples/getting-started-compose" target="_blank" rel="noopener noreferrer">はじめに Compose Multiplatform</a></li>
+    <li>[x] <a href="examples/kotbase-notes" target="_blank" rel="noopener noreferrer">Kotbase Notes</a></li>
+    <li>[ ] Kotbase Notes 用 SwiftUI</li>
+<li>[x] Couchbase Lite <a href="https://docs.couchbase.com/couchbase-lite/3.1/cbl-whatsnew.html" target="_blank" rel="noopener noreferrer">3.1 API</a> - スコープとコレクション</li>
+<li>[x] バージョンドキュメント</li>
+<li>[x] Couchbase Lite <a href="https://docs.couchbase.com/couchbase-lite/3.2/cbl-whatsnew.html" target="_blank" rel="noopener noreferrer">3.2 API</a> - <a href="</li>
+  </ul>https://www.couchbase.com/products/vector-search/" target="_blank" rel="noopener noreferrer">ベクター検索</a>
+<ul><li>[ ] Couchbase Lite <a href="https://docs.couchbase.com/couchbase-lite/3.3/cbl-whatsnew.html" target="_blank" rel="noopener noreferrer">3.3 API</a> - マルチピアレプリケータ</li>
+<li>[ ] Couchbase Lite <a href="https://docs.couchbase.com/couchbase-lite/4.0/cbl-whatsnew.html" target="_blank" rel="noopener noreferrer">4.0 API</a> - バージョンベクター</li>
+<li>[ ] Linux & MinGW プラットフォームでの URLEndpointListener</li>
+<li>[ ] Swift エクスポート](https://youtrack.jetbrains.com/issue/KT-64572)、<code>@ObjCName</code>、および/または <code>@ShouldRefineInSwift</code> を使用して Couchbase Lite と Swift API の整合性を向上</li>
+<li>[ ] 非同期コルーチン API</li></p><p></ul><h2>開発</h2></p><ul><li>Linux でプロジェクトをビルドする際は、libicu 依存関係を必ずインストールしてください。</li>
+<li>Windows で git リポジトリをチェックアウトする際は、<a href="</li>
+  </ul>https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development" target="_blank" rel="noopener noreferrer">開発者モード</a> を有効にし、
+  git でシンボリックリンクを <code>git config --global core.symlinks true</code> で有効にしてください。</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-20
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/jeffdgr8/kotbase/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-01-20 
+    </div>
+    
+</body>
+</html>
