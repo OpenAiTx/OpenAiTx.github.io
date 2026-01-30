@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>oci2git - Melihat isi image Docker semudah menggunakan Git</title>
-    <meta name="description" content="Melihat isi image Docker semudah menggunakan Git">
+    <title>oci2git - Melakukan introspeksi gambar Docker semudah menggunakan Git</title>
+    <meta name="description" content="Melakukan introspeksi gambar Docker semudah menggunakan Git">
     <meta name="keywords" content="oci2git, Indonesian, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "oci2git",
-  "description": "Melihat isi image Docker semudah menggunakan Git",
+  "description": "Melakukan introspeksi gambar Docker semudah menggunakan Git",
   "author": {
     "@type": "Person",
     "name": "Virviil"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 374
+    "ratingCount": 384
   },
   "url": "https://OpenAiTx.github.io/projects/Virviil/oci2git/README-id.html",
   "sameAs": "https://raw.githubusercontent.com/Virviil/oci2git/main/README.md",
-  "datePublished": "2025-12-12",
-  "dateModified": "2025-12-12"
+  "datePublished": "2026-01-30",
+  "dateModified": "2026-01-30"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 374 stars</span>
+                <span class="stars">⭐ 384 stars</span>
                 <span class="language">Indonesian</span>
                 <span>by Virviil</span>
             </div>
@@ -337,21 +337,39 @@ Dengan menggunakan <code>git checkout</code> untuk berpindah ke commit tertentu,
 <img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/checkout.png" alt="Checkout ke commit sebelumnya"></p><h3>Analisis Multi-Image</h3></p><p>Saat bekerja dengan beberapa image kontainer yang memiliki asal usul yang sama, OCI2Git secara cerdas membuat branch hanya ketika image benar-benar bercabang. Ini memungkinkan Anda untuk menganalisis beberapa image yang terkait dalam satu repository sambil tetap menjaga riwayat umum mereka.</p><pre><code class="language-bash"># Convert first image to create the base repository
 oci2git postgres:16.9-alpine3.21 -o alp</p><h1>Convert second image to the same output folder</h1>
 oci2git nginx:1.28.0-alpine-slim -o alp</code></pre>
-OCI2Git secara otomatis mendeteksi layer bersama antar image dan membuat struktur percabangan yang mencerminkan basis bersama mereka. Riwayat Git akan menunjukkan:
-<ul><li>Batang utama yang berisi semua layer bersama</li>
-<li>Cabang terpisah yang menyimpang hanya ketika image benar-benar berbeda</li>
-<li>Visualisasi yang jelas tentang di mana image memiliki nenek moyang bersama vs. di mana mereka menjadi unik</li>
-<li>Penanganan duplikat yang cerdas: jika image yang sama persis diproses dua kali, algoritma mendeteksinya sebelum komit metadata akhir dan melewati pembuatan cabang duplikat</li></p><p></ul>Pendekatan ini sangat berharga untuk:
-<ul><li><strong>Analisis Keluarga Image</strong>: Memahami bagaimana berbagai varian dari suatu image (versi berbeda, arsitektur, atau konfigurasi) saling berhubungan</li>
-<li><strong>Dampak Image Dasar</strong>: Melihat secara tepat bagaimana perubahan pada image dasar memengaruhi banyak image turunan</li>
-<li><strong>Peluang Optimasi</strong>: Mengidentifikasi komponen bersama yang dapat dimanfaatkan lebih baik di seluruh varian image</li></p><p></ul><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/multiimage.png" alt="Struktur repositori multi-image yang menunjukkan basis bersama dan cabang yang menyimpang"></p><h3>Kasus Penggunaan Tambahan</h3></p><ul><li><strong>Audit Keamanan</strong>: Identifikasi secara tepat kapan paket atau konfigurasi yang rentan diperkenalkan dan telusuri kembali ke instruksi build tertentu.</li>
-<li><strong>Optimasi Image</strong>: Analisis struktur layer untuk menemukan operasi yang redundan atau file besar yang dapat dikonsolidasikan, membantu mengurangi ukuran image.</li>
-<li><strong>Manajemen Dependensi</strong>: Pantau kapan dependensi ditambahkan, ditingkatkan, atau dihapus sepanjang riwayat image.</li>
-<li><strong>Peningkatan Proses Build</strong>: Periksa komposisi layer untuk mengoptimalkan instruksi Dockerfile demi caching yang lebih baik dan ukuran image yang lebih kecil.</li>
-<li><strong>Perbandingan Antar Image</strong>: Konversi beberapa image terkait ke repositori Git dan gunakan alat perbandingan Git untuk menganalisis perbedaan dan kesamaan mereka.</li></p><p></ul><h2>Instalasi</h2></p><h3>Dari Sumber</h3></p><pre><code class="language-bash"># Clone the repository
+OCI2Git secara otomatis mendeteksi lapisan yang dibagikan antar image dan membuat struktur percabangan yang mencerminkan basis bersama mereka. Riwayat Git akan menampilkan:
+<ul><li>Sebuah batang utama yang berisi semua lapisan bersama</li>
+<li>Cabang-cabang terpisah yang hanya bercabang ketika image benar-benar berbeda</li>
+<li>Visualisasi yang jelas tentang di mana image memiliki leluhur yang sama vs. di mana mereka menjadi unik</li>
+<li>Penanganan duplikat cerdas: jika image yang sama persis diproses dua kali, algoritma akan mendeteksi ini sebelum komit metadata akhir dan melewati pembuatan cabang duplikat</li></p><p></ul>Pendekatan ini sangat berharga untuk:
+<ul><li><strong>Analisis Keluarga Image</strong>: Memahami bagaimana varian berbeda dari sebuah image (versi berbeda, arsitektur, atau konfigurasi) saling berhubungan</li>
+<li><strong>Dampak Image Dasar</strong>: Melihat secara pasti bagaimana perubahan pada image dasar mempengaruhi banyak image turunan</li>
+<li><strong>Peluang Optimasi</strong>: Mengidentifikasi komponen bersama yang bisa lebih dimanfaatkan di antara varian image</li></p><p></ul><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/multiimage.png" alt="Struktur repositori multi-image yang menunjukkan basis bersama dan percabangan"></p><h3>Kasus Penggunaan Tambahan</h3></p><ul><li><strong>Audit Keamanan</strong>: Mengidentifikasi dengan tepat kapan paket atau konfigurasi rentan diperkenalkan dan menelusurinya hingga instruksi build tertentu.</li>
+<li><strong>Optimasi Image</strong>: Menganalisis struktur layer untuk menemukan operasi redundan atau file besar yang bisa dikonsolidasikan, membantu mengurangi ukuran image.</li>
+<li><strong>Manajemen Dependensi</strong>: Memantau kapan dependensi ditambahkan, diperbarui, atau dihapus sepanjang riwayat image.</li>
+<li><strong>Perbaikan Proses Build</strong>: Memeriksa komposisi layer untuk mengoptimalkan instruksi Dockerfile demi caching lebih baik dan ukuran image yang lebih kecil.</li>
+<li><strong>Perbandingan Lintas-Image</strong>: Konversi beberapa image terkait ke repositori Git dan gunakan alat perbandingan Git untuk menganalisis perbedaan dan kesamaan mereka.</li></p><p></ul><h2>Instalasi</h2></p><h3>Pengelola Paket</h3></p><p>#### macOS / Linux (Homebrew)</p><pre><code class="language-bash">brew tap virviil/oci2git
+brew install oci2git</code></pre></p><p>#### Debian / Ubuntu</p><p>Unduh dan instal paket .deb dari <a href="https://github.com/virviil/oci2git/releases/latest" target="_blank" rel="noopener noreferrer">rilis terbaru</a>:</p><pre><code class="language-bash"># For amd64 (x86_64)
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git_VERSION_amd64.deb
+sudo dpkg -i oci2git_VERSION_amd64.deb</p><h1>For arm64</h1>
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git_VERSION_arm64.deb
+sudo dpkg -i oci2git_VERSION_arm64.deb</code></pre></p><p>#### Arch Linux (AUR)</p><pre><code class="language-bash"># Using yay
+yay -S oci2git-bin</p><h1>Using paru</h1>
+paru -S oci2git-bin</p><h1>Manual installation</h1>
+git clone https://aur.archlinux.org/oci2git-bin.git
+cd oci2git-bin
+makepkg -si</code></pre></p><h3>Binary yang Sudah Dibangun</h3></p><p>Unduh binary yang sesuai untuk platform Anda dari <a href="https://github.com/virviil/oci2git/releases/latest" target="_blank" rel="noopener noreferrer">rilis terbaru</a>:</p><pre><code class="language-bash"># Linux x86_64
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git-linux-x86_64.tar.gz
+tar xzf oci2git-linux-x86_64.tar.gz
+sudo mv oci2git-linux-x86_64 /usr/local/bin/oci2git
+chmod +x /usr/local/bin/oci2git</p><h1>macOS (Apple Silicon)</h1>
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git-darwin-aarch64.tar.gz
+tar xzf oci2git-darwin-aarch64.tar.gz
+sudo mv oci2git-darwin-aarch64 /usr/local/bin/oci2git
+chmod +x /usr/local/bin/oci2git</code></pre></p><h3>Dari Crates.io</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h3>Dari Sumber</h3></p><pre><code class="language-bash"># Clone the repository
 git clone https://github.com/virviil/oci2git.git
 cd oci2git</p><h1>Install locally</h1>
-cargo install --path .</code></pre></p><h3>Dari Crates.io</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h2>Penggunaan</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>Argumen:
+cargo install --path .</code></pre></p><h2>Penggunaan</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>Argumen:
   <code><IMAGE></code>  Nama image yang akan dikonversi (misal, 'ubuntu:latest') atau path ke tarball saat menggunakan engine tar</p><p>Opsi:
   <code>-o, --output <o></code>  Direktori output untuk repositori Git [default: ./container_repo]
   <code>-e, --engine <ENGINE></code>  Engine container yang digunakan (docker, nerdctl, tar) [default: docker]
@@ -376,7 +394,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Ini akan me
 <li>Git</li></p><p></ul><h2>Lisensi</h2></p><p>MIT</p><p>[dokumentasi]: https://docs.rs/oci2git/</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-12
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-30
 
 ---</p>
         </div>
@@ -388,7 +406,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Ini akan me
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-12-12 
+        Last updated: 2026-01-30 
     </div>
     
 </body>

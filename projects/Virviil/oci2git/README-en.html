@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 374
+    "ratingCount": 384
   },
   "url": "https://OpenAiTx.github.io/projects/Virviil/oci2git/README-en.html",
   "sameAs": "https://raw.githubusercontent.com/Virviil/oci2git/main/README.md",
-  "datePublished": "2025-12-12",
-  "dateModified": "2025-12-12"
+  "datePublished": "2026-01-30",
+  "dateModified": "2026-01-30"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 374 stars</span>
+                <span class="stars">⭐ 384 stars</span>
                 <span class="language">English</span>
                 <span>by Virviil</span>
             </div>
@@ -337,8 +337,7 @@ Sometimes the most insightful comparisons come from examining changes across mul
 By using <code>git checkout</code> to move to any specific commit, you can examine the container filesystem exactly as it existed at that layer. This allows developers to inspect the precise state of files and directories at any point in the image's creation process, providing invaluable context when debugging or examining container behavior.
 <img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/checkout.png" alt="Checkout to previous commit"></p><h3>Multi-Image Analysis</h3></p><p>When working with multiple container images that share common ancestry, OCI2Git intelligently creates branches only when the images actually diverge. This allows you to analyze multiple related images in a single repository while preserving their common history.</p><pre><code class="language-bash"># Convert first image to create the base repository
 oci2git postgres:16.9-alpine3.21 -o alp</p><h1>Convert second image to the same output folder</h1>
-oci2git nginx:1.28.0-alpine-slim -o alp</code></pre>
-OCI2Git automatically detects shared layers between images and creates a branching structure that reflects their common base. The Git history will show:
+oci2git nginx:1.28.0-alpine-slim -o alp</code></pre></p><p>OCI2Git automatically detects shared layers between images and creates a branching structure that reflects their common base. The Git history will show:
 <ul><li>A common trunk containing all shared layers</li>
 <li>Separate branches that diverge only when the images actually differ</li>
 <li>Clear visualization of where images share common ancestry vs. where they become unique</li>
@@ -349,10 +348,28 @@ OCI2Git automatically detects shared layers between images and creates a branchi
 <li><strong>Image Optimization</strong>: Analyze layer structures to find redundant operations or large files that could be consolidated, helping to reduce image size.</li>
 <li><strong>Dependency Management</strong>: Monitor when dependencies were added, upgraded, or removed across the image history.</li>
 <li><strong>Build Process Improvement</strong>: Examine layer composition to optimize Dockerfile instructions for better caching and smaller image size.</li>
-<li><strong>Cross-Image Comparison</strong>: Convert multiple related images to Git repositories and use Git's comparison tools to analyze their differences and commonalities.</li></p><p></ul><h2>Installation</h2></p><h3>From Source</h3></p><pre><code class="language-bash"># Clone the repository
+<li><strong>Cross-Image Comparison</strong>: Convert multiple related images to Git repositories and use Git's comparison tools to analyze their differences and commonalities.</li></p><p></ul><h2>Installation</h2></p><h3>Package Managers</h3></p><p>#### macOS / Linux (Homebrew)</p><pre><code class="language-bash">brew tap virviil/oci2git
+brew install oci2git</code></pre></p><p>#### Debian / Ubuntu</p><p>Download and install the .deb package from the <a href="https://github.com/virviil/oci2git/releases/latest" target="_blank" rel="noopener noreferrer">latest release</a>:</p><pre><code class="language-bash"># For amd64 (x86_64)
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git_VERSION_amd64.deb
+sudo dpkg -i oci2git_VERSION_amd64.deb</p><h1>For arm64</h1>
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git_VERSION_arm64.deb
+sudo dpkg -i oci2git_VERSION_arm64.deb</code></pre></p><p>#### Arch Linux (AUR)</p><pre><code class="language-bash"># Using yay
+yay -S oci2git-bin</p><h1>Using paru</h1>
+paru -S oci2git-bin</p><h1>Manual installation</h1>
+git clone https://aur.archlinux.org/oci2git-bin.git
+cd oci2git-bin
+makepkg -si</code></pre></p><h3>Pre-built Binaries</h3></p><p>Download the appropriate binary for your platform from the <a href="https://github.com/virviil/oci2git/releases/latest" target="_blank" rel="noopener noreferrer">latest release</a>:</p><pre><code class="language-bash"># Linux x86_64
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git-linux-x86_64.tar.gz
+tar xzf oci2git-linux-x86_64.tar.gz
+sudo mv oci2git-linux-x86_64 /usr/local/bin/oci2git
+chmod +x /usr/local/bin/oci2git</p><h1>macOS (Apple Silicon)</h1>
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git-darwin-aarch64.tar.gz
+tar xzf oci2git-darwin-aarch64.tar.gz
+sudo mv oci2git-darwin-aarch64 /usr/local/bin/oci2git
+chmod +x /usr/local/bin/oci2git</code></pre></p><h3>From Crates.io</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h3>From Source</h3></p><pre><code class="language-bash"># Clone the repository
 git clone https://github.com/virviil/oci2git.git
 cd oci2git</p><h1>Install locally</h1>
-cargo install --path .</code></pre></p><h3>From Crates.io</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h2>Usage</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>Arguments:
+cargo install --path .</code></pre></p><h2>Usage</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>Arguments:
   <code><IMAGE></code>  Image name to convert (e.g., 'ubuntu:latest') or path to tarball when using the tar engine</p><p>Options:
   <code>-o, --output <o></code>  Output directory for Git repository [default: ./container_repo]
   <code>-e, --engine <ENGINE></code>  Container engine to use (docker, nerdctl, tar) [default: docker]
@@ -377,7 +394,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>This will c
 
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-12
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-30
 
 ---</p>
         </div>
@@ -389,7 +406,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>This will c
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-12-12 
+        Last updated: 2026-01-30 
     </div>
     
 </body>

@@ -1,0 +1,389 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScriptableObjectVariant - 为 ScriptableObject 添加 &quot;SOVariant&quot; 属性，并覆盖或不覆盖某些字段（类似于预制件变体，但适用于脚本对象）。</title>
+    <meta name="description" content="为 ScriptableObject 添加 &quot;SOVariant&quot; 属性，并覆盖或不覆盖某些字段（类似于预制件变体，但适用于脚本对象）。">
+    <meta name="keywords" content="ScriptableObjectVariant, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ScriptableObjectVariant",
+  "description": "为 ScriptableObject 添加 \"SOVariant\" 属性，并覆盖或不覆盖某些字段（类似于预制件变体，但适用于脚本对象）。",
+  "author": {
+    "@type": "Person",
+    "name": "GieziJo"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 65
+  },
+  "url": "https://OpenAiTx.github.io/projects/GieziJo/ScriptableObjectVariant/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/GieziJo/ScriptableObjectVariant/master/README.md",
+  "datePublished": "2026-01-30",
+  "dateModified": "2026-01-30"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/GieziJo/ScriptableObjectVariant" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    ScriptableObjectVariant
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 65 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by GieziJo</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><a href="https://github.com/GieziJo/ScriptableObjectVariant/releases/latest" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/release/GieziJo/ScriptableObjectVariant.svg" alt="Releases"></a>
+<a href="https://openupm.com/packages/ch.giezi.tools.scriptableobjectvariant/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/v/ch.giezi.tools.scriptableobjectvariant?label=openupm&registry_uri=https://package.openupm.com" alt="openupm"></a>
+<a href="https://github.com/GieziJo/ScriptableObjectVariant/blob/master/LICENSE.txt" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="License: MIT"></a></p><h1>Unity的可脚本化对象变体（Scriptable Object数据覆盖器）</h1></p><blockquote>[!CAUTION]</blockquote>
+<blockquote>如果您正在从<code>2.0.0</code>之前的版本升级，请阅读<a href="#upgrading-to-200-from-previous-versions" target="_blank" rel="noopener noreferrer">升级部分</a></blockquote></p><h2>目录</h2>
+<ul><li><a href="#description" target="_blank" rel="noopener noreferrer">描述</a></li>
+<li><a href="#usage" target="_blank" rel="noopener noreferrer">使用方法</a></li>
+<li><a href="#implementation" target="_blank" rel="noopener noreferrer">实现</a></li>
+<li><a href="#installation" target="_blank" rel="noopener noreferrer">安装</a></li>
+<li><a href="#upgrading-to-200-from-previous-versions" target="_blank" rel="noopener noreferrer">从之前版本升级到2.0.0</a></li>
+<li><a href="#known-issues-and-tweaks-to-be-made" target="_blank" rel="noopener noreferrer">已知问题及需调整项</a></li></p><p></ul><h2>描述</h2>
+为任何带有<code>[SOVariant]</code>属性标记的可脚本化对象添加一个字段，允许您选择一个原始SO（父对象）并在子对象中覆盖选定的字段。</p><p>当原始对象的值发生更改时，值会自动传播到子对象。</p><p><img src="https://raw.githubusercontent.com/GieziJo/ScriptableObjectVariant/assets/ScriptableObjectOverrideDemo.gif" width="100%"></p><h2>使用方法</h2>
+在任何您希望能够创建变体的ScriptableObject类的类头前添加标签<code>[SOVariant]</code>，使其可被覆盖。</p><p>示例：
+<pre><code class="language-csharp">using Giezi.Tools;</p><p>[SOVariant]
+[CreateAssetMenu(fileName = "TestScriptable", menuName = "Create new TestScriptable")]
+public class TestScriptable : ScriptableObject
+{
+    [SerializeField] private float myFloat = 3L;
+    [SerializeField] private GameObject myGameObject;
+    [SerializeField] private int myInt;
+    [SerializeField] private TestScriptable myTestScriptable;
+}</code></pre></p><h3>从上下文菜单创建脚本化对象变体</h3></p><p><img src="https://raw.githubusercontent.com/GieziJo/ScriptableObjectVariant/assets/ContextMenuExample.png" alt="Context Menu"></p><p>在 Unity 中，你可以右键点击任何标记为 <code>SOVariant</code> 的脚本化对象来创建该对象的变体（<code>Create > Create SO Variant</code>）。
+新对象将以所选对象作为父对象。</p><h3>编辑器脚本中的高级用法</h3>
+已经实现了一个辅助脚本（<code>SOVariantHelper.cs</code>），允许你在其他编辑器脚本中更改父对象、覆盖状态和值。</p><p>设置新的父对象：
+<pre><code class="language-csharp">ScriptableObject target = AssetDatabase.LoadAssetAtPath<ScriptableObject>("Assets/Tests/child.asset");
+ScriptableObject parent = AssetDatabase.LoadAssetAtPath<ScriptableObject>("Assets/Tests/parent.asset");
+        
+SOVariantHelper<ScriptableObject>.SetParent(target, parent);</code></pre>
+设置字段可覆盖：</p><pre><code class="language-csharp">ScriptableObject target = AssetDatabase.LoadAssetAtPath<ScriptableObject>("Assets/Tests/child.asset");
+        
+SOVariantHelper<ScriptableObject>.ChangeFieldOverrideState(target, "MyFloat", true);</code></pre>
+设置字段的新值（自动传播到子项）：</p><pre><code class="language-csharp">ScriptableObject target = AssetDatabase.LoadAssetAtPath<ScriptableObject>("Assets/Tests/child.asset");
+        
+SOVariantHelper<ScriptableObject>.ChangeFieldValue(target, "MyFloat", 45f);</code></pre>
+设置一个字段以被覆盖并设置新值（自动传播到子项）：</p><pre><code class="language-csharp">ScriptableObject target = AssetDatabase.LoadAssetAtPath<ScriptableObject>("Assets/Tests/child.asset");
+        
+SOVariantHelper<ScriptableObject>.SetFieldOverrideAndSetValue(target, "MyFloat", 45f);</code></pre>
+设置父级并设置新的覆盖值（自动传播到子级）：</p><pre><code class="language-csharp">ScriptableObject target = AssetDatabase.LoadAssetAtPath<ScriptableObject>("Assets/Tests/child.asset");
+ScriptableObject parent = AssetDatabase.LoadAssetAtPath<ScriptableObject>("Assets/Tests/parent.asset");
+    
+SOVariantHelper<ScriptableObject>.SetParentOverrideValue(target, parent, "MyFloat", 45f);</code></pre>
+设置父级并设置新的覆盖值（自动传播到子级）：</p><pre><code class="language-csharp">ScriptableObject target = AssetDatabase.LoadAssetAtPath<ScriptableObject>("Assets/Tests/child.asset");
+ScriptableObject parent = AssetDatabase.LoadAssetAtPath<ScriptableObject>("Assets/Tests/parent.asset");
+    
+SOVariantHelper<ScriptableObject>.SetParentOverrideValues(target, parent, new Dictionary<string, object>(){{"MyFloat", 45f},{"MyInt", 12}});</code></pre>
+<h2>实现</h2>
+可视化界面在 <a href="odininspector.com/" target="_blank" rel="noopener noreferrer">Odin</a> 的 <a href="https://odininspector.com/tutorials/using-property-resolvers-and-attribute-processors/custom-property-processors" target="_blank" rel="noopener noreferrer"><code>OdinPropertyProcessor</code></a> 中实现。</p><p>带有父类和被重写字段的数据保存在位于 <code>Assets/Plugins/SOVariant/Editor/SOVariantDataLibrary.asset</code> 的库对象中。</p><p><p style="color: grey";>2.0.0 之前：
+<strike>带有父类和被重写字段的数据序列化保存在资源的元数据中，通过 Unity 的 <code>AssetImporter.GetAtPath(AssetDatabase.GetAssetPath(targetObject)).userData</code> 设置。</strike></p></p><h2>安装</h2>
+<blockquote>[!WARNING]</blockquote>
+<blockquote>需要先安装版本为 <code>3.2.1.0</code> 的 <a href="odininspector.com/" target="_blank" rel="noopener noreferrer">Odin</a> ，然后才能添加此包。</blockquote></p><blockquote>[!WARNING]</blockquote>
+<blockquote>该包维护针对 Unity 版本 2022.3.16f1 LTS。</blockquote></p><h3>使用 Unity 的包管理器</h3>
+添加以下行</p><pre><code class="language-">"ch.giezi.tools.scriptableobjectvariant": "https://github.com/GieziJo/ScriptableObjectVariant.git#master"</code></pre>
+在文件 <code>Packages/manifest.json</code> 的 <code>dependencies</code> 下，或者在 <code>Package Manager</code> 中通过 <code>+ -> "Add package from git URL..."</code> 添加链接 <a href="https://github.com/GieziJo/ScriptableObjectVariant.git#master" target="_blank" rel="noopener noreferrer"><code>https://github.com/GieziJo/ScriptableObjectVariant.git#master</code></a>。</p><h3>使用 OpenUPM</h3>
+该包可在 <a href="https://openupm.com/packages/ch.giezi.tools.scriptableobjectvariant/" target="_blank" rel="noopener noreferrer">OpenUPM</a> 获取。
+OpenUPM 包可以通过多种方式安装：
+<ul><li>通过 <a href="https://github.com/openupm/openupm-cli" target="_blank" rel="noopener noreferrer">OpenUPM CLI</a>：<code>openupm add ch.giezi.tools.scriptableobjectvariant</code></li>
+<li>通过下载 <a href="https://package-installer.glitch.me/v1/installer/OpenUPM/ch.giezi.tools.scriptableobjectvariant?registry=https%3A%2F%2Fpackage.openupm.com" target="_blank" rel="noopener noreferrer"><code>.unitypackage</code></a>，并通过 <code>Assets > Import Package > Custom Package...</code> 添加到项目中。</li></p><p></ul>该包会作为一个作用域注册表添加，您可以在 <code>Project Settings > Package Manager > OpenUPM</code> 下查看。</p><h3>备选方案</h3>
+下载并复制所有文件到您的项目中。</p><h2>从旧版本升级到 2.0.0</h2></p><p>在包的 <code>2.0.0</code> 版本中，数据从每个对象的元数据中移出，改用 Scriptable Object 库。
+由于 Unity 的导入器过于不稳定，读写元数据中的数据变得过于复杂，且经常导致错误和失败。</p><p>如果您使用的是 <code>2.0.0</code> 之前的版本，已经编写了一个工具用于迁移到新版本。
+运行 <code>Tools/GieziTools/SOVariant/Upgrade user data to new version</code>。
+此操作会读取所有元数据中的数据并构建库。
+如有必要，您可以运行 <code>Tools/GieziTools/SOVariant/Fix SOVs</code>。
+此操作会遍历每个对象并重建父子关系，同时将父对象的值传递给子对象。
+由于前一版本工具相当不稳定，强烈建议执行此步骤。
+此外，您应检查数据以确保每个对象具有正确的值。</p><p>此新版本应修复许多在较新 Unity 版本中以及包本身不稳定时出现的问题。</p><h2>已知问题及待调整项</h2>
+<details>
+<summary>已知问题列表</summary></p><h3><a href="https://github.com/GieziJo/ScriptableObjectVariant/issues/2" target="_blank" rel="noopener noreferrer">效率</a></h3>
+特性 <code>[SOVariant]</code> 仅作为标记存在，随后在 <code>SOVariantAttributeProcessor:OdinPropertyProcessor -> ProcessMemberProperties</code> 中被查找，首行代码为：
+<pre><code class="language-csharp">if(!Property.Attributes.Select(attribute => attribute.GetType()).Contains(typeof(SOVariantAttribute)))
+    return;</code></pre>
+问题在于，<code>SOVariantAttributeProcessor</code> 因此被设置为对每个 <code>ScriptableObject</code> 调用：
+<pre><code class="language-csharp">public class SOVariantAttributeProcessor<T> : OdinPropertyProcessor<T> where T : ScriptableObject</code></pre>
+可能有一种方法可以直接从属性调用 <code>SOVariantAttributeProcessor</code>，但我还没有找到方法。</p><h3><a href="https://github.com/GieziJo/ScriptableObjectVariant/issues/3" target="_blank" rel="noopener noreferrer">选择父对象</a></h3>
+所选的父对象应与被覆盖的项完全相同的类（否则字段可能会缺失），且不应是子对象本身。
+该检查当前在设置父对象时执行，如下所示：
+ ``<code>csharp
+if (parent.GetType() != target.GetType())
+{
+    Debug.Log("Only equal types can be selected as parent");
+    return;
+}</p><p>if (AssetDatabase.GetAssetPath(parent) == AssetDatabase.GetAssetPath(target))
+{
+    Debug.Log("You can't select the same object as parent");
+    return;
+}
+ </code>`<code>
+在对象中选择时直接过滤可能的候选项会好得多，但添加带有过滤器的 </code>AssetSelector<code> 属性或构建自定义的 </code>ValueDropdown` 都不起作用，不确定原因。</p><p></details></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-30
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/GieziJo/ScriptableObjectVariant/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-01-30 
+    </div>
+    
+</body>
+</html>

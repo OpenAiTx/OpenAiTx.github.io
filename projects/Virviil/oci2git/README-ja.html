@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>oci2git - Gitのように簡単にDockerイメージをインスペクト</title>
-    <meta name="description" content="Gitのように簡単にDockerイメージをインスペクト">
+    <title>oci2git - Gitのように簡単にDockerイメージを内省</title>
+    <meta name="description" content="Gitのように簡単にDockerイメージを内省">
     <meta name="keywords" content="oci2git, Japanese, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "oci2git",
-  "description": "Gitのように簡単にDockerイメージをインスペクト",
+  "description": "Gitのように簡単にDockerイメージを内省",
   "author": {
     "@type": "Person",
     "name": "Virviil"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 374
+    "ratingCount": 384
   },
   "url": "https://OpenAiTx.github.io/projects/Virviil/oci2git/README-ja.html",
   "sameAs": "https://raw.githubusercontent.com/Virviil/oci2git/main/README.md",
-  "datePublished": "2025-12-12",
-  "dateModified": "2025-12-12"
+  "datePublished": "2026-01-30",
+  "dateModified": "2026-01-30"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 374 stars</span>
+                <span class="stars">⭐ 384 stars</span>
                 <span class="language">Japanese</span>
                 <span>by Virviil</span>
             </div>
@@ -338,21 +338,39 @@ git log --follow --oneline -- /rootfs/my/file/path</code></pre>
 <img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/checkout.png" alt="Checkout to previous commit"></p><h3>マルチイメージ分析</h3></p><p>共通の起源を持つ複数のコンテナイメージを扱う場合、OCI2Gitは実際にイメージが分岐したときのみブランチを賢く作成します。これにより、共通の履歴を保持しつつ、単一のリポジトリ内で複数の関連イメージを分析できます。</p><pre><code class="language-bash"># Convert first image to create the base repository
 oci2git postgres:16.9-alpine3.21 -o alp</p><h1>Convert second image to the same output folder</h1>
 oci2git nginx:1.28.0-alpine-slim -o alp</code></pre>
-OCI2Gitは、イメージ間の共有レイヤーを自動的に検出し、それらの共通のベースを反映したブランチ構造を作成します。Gitの履歴には以下が表示されます：
+OCI2Gitは、イメージ間で共有されているレイヤーを自動的に検出し、それらの共通ベースを反映した分岐構造を作成します。Gitの履歴には以下が表示されます：
 <ul><li>すべての共有レイヤーを含む共通の幹</li>
-<li>イメージが実際に異なる場合にのみ分岐する個別のブランチ</li>
-<li>イメージが共通の祖先を共有する部分と、独自の部分が明確に視覚化される</li>
-<li>賢い重複処理：まったく同じイメージが二度処理された場合、最終的なメタデータコミットの前にこれを検出し、重複したブランチの作成をスキップ</li></p><p></ul>このアプローチは特に次の点で有用です：
-<ul><li><strong>イメージファミリー分析</strong>：異なるバージョン、アーキテクチャ、または構成など、イメージの異なるバリアントが互いにどのように関連しているかを理解する</li>
-<li><strong>ベースイメージの影響</strong>：ベースイメージの変更が複数の派生イメージにどのように影響するかを正確に把握する</li>
-<li><strong>最適化の機会</strong>：イメージバリアント間でより良く活用できる共有コンポーネントを特定する</li></p><p></ul><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/multiimage.png" alt="共有ベースと分岐するブランチを示すマルチイメージリポジトリ構造"></p><h3>追加のユースケース</h3></p><ul><li><strong>セキュリティ監査</strong>：脆弱なパッケージや設定が正確にいつ導入されたかを特定し、特定のビルド指示に遡ることができる。</li>
-<li><strong>イメージ最適化</strong>：レイヤー構造を分析して冗長な操作や統合可能な大きなファイルを見つけ、イメージサイズの削減に役立てる。</li>
-<li><strong>依存関係管理</strong>：依存関係がイメージ履歴のどの時点で追加、アップグレード、または削除されたかを監視する。</li>
-<li><strong>ビルドプロセスの改善</strong>：レイヤー構成を検証してDockerfileの指示を最適化し、キャッシュ効率とイメージサイズの縮小を図る。</li>
-<li><strong>クロスイメージ比較</strong>：複数の関連イメージをGitリポジトリに変換し、Gitの比較ツールを使って差異と共通点を分析する。</li></p><p></ul><h2>インストール</h2></p><h3>ソースからのインストール</h3></p><pre><code class="language-bash"># Clone the repository
+<li>実際にイメージが異なる場合のみ分岐する個別のブランチ</li>
+<li>イメージがどこで共通の祖先を持ち、どこでユニークになるかの明確な可視化</li>
+<li>スマートな重複処理：全く同じイメージが2回処理された場合、アルゴリズムは最終的なメタデータコミット前にこれを検出し、重複ブランチの作成をスキップします</li></p><p></ul>このアプローチは特に以下の場合に有用です：
+<ul><li><strong>イメージファミリー分析</strong>：イメージの異なるバリアント（バージョン、アーキテクチャ、設定）がどのように相互に関連しているかの理解</li>
+<li><strong>ベースイメージの影響</strong>：ベースイメージの変更が複数の派生イメージにどのように影響するかを正確に把握</li>
+<li><strong>最適化の機会</strong>：イメージバリアント間でより有効活用できる共有コンポーネントの特定</li></p><p></ul><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/multiimage.png" alt="共有ベースと分岐するブランチを示すマルチイメージリポジトリ構造"></p><h3>追加ユースケース</h3></p><ul><li><strong>セキュリティ監査</strong>：脆弱なパッケージや設定がいつ導入されたかを正確に特定し、それを特定のビルド命令まで遡ることができます。</li>
+<li><strong>イメージ最適化</strong>：レイヤー構造を分析し、冗長な操作や統合可能な大きなファイルを特定してイメージサイズの削減に役立てます。</li>
+<li><strong>依存関係管理</strong>：イメージ履歴全体で依存関係が追加、アップグレード、削除されたタイミングを監視します。</li>
+<li><strong>ビルドプロセス改善</strong>：レイヤー構成を検証し、より良いキャッシュや小さいイメージサイズのためにDockerfile命令を最適化します。</li>
+<li><strong>クロスイメージ比較</strong>：複数の関連イメージをGitリポジトリに変換し、Gitの比較ツールを使って相違点や共通点を分析します。</li></p><p></ul><h2>インストール</h2></p><h3>パッケージマネージャー</h3></p><p>#### macOS / Linux（Homebrew）</p><pre><code class="language-bash">brew tap virviil/oci2git
+brew install oci2git</code></pre></p><p>#### Debian / Ubuntu</p><p><a href="https://github.com/virviil/oci2git/releases/latest" target="_blank" rel="noopener noreferrer">最新リリース</a>から.debパッケージをダウンロードしてインストールします。</p><pre><code class="language-bash"># For amd64 (x86_64)
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git_VERSION_amd64.deb
+sudo dpkg -i oci2git_VERSION_amd64.deb</p><h1>For arm64</h1>
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git_VERSION_arm64.deb
+sudo dpkg -i oci2git_VERSION_arm64.deb</code></pre></p><p>#### Arch Linux（AUR）</p><pre><code class="language-bash"># Using yay
+yay -S oci2git-bin</p><h1>Using paru</h1>
+paru -S oci2git-bin</p><h1>Manual installation</h1>
+git clone https://aur.archlinux.org/oci2git-bin.git
+cd oci2git-bin
+makepkg -si</code></pre></p><h3>事前構築済みバイナリ</h3></p><p>ご利用のプラットフォームに適したバイナリを<a href="https://github.com/virviil/oci2git/releases/latest" target="_blank" rel="noopener noreferrer">最新リリース</a>からダウンロードしてください:</p><pre><code class="language-bash"># Linux x86_64
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git-linux-x86_64.tar.gz
+tar xzf oci2git-linux-x86_64.tar.gz
+sudo mv oci2git-linux-x86_64 /usr/local/bin/oci2git
+chmod +x /usr/local/bin/oci2git</p><h1>macOS (Apple Silicon)</h1>
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git-darwin-aarch64.tar.gz
+tar xzf oci2git-darwin-aarch64.tar.gz
+sudo mv oci2git-darwin-aarch64 /usr/local/bin/oci2git
+chmod +x /usr/local/bin/oci2git</code></pre></p><h3>Crates.ioからの入手方法</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h3>ソースから</h3></p><pre><code class="language-bash"># Clone the repository
 git clone https://github.com/virviil/oci2git.git
 cd oci2git</p><h1>Install locally</h1>
-cargo install --path .</code></pre></p><h3>Crates.ioからの入手方法</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h2>使用方法</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>引数:
+cargo install --path .</code></pre></p><h2>使用方法</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>引数:
   <code><IMAGE></code>  変換するイメージ名（例: 'ubuntu:latest'）またはtarエンジン使用時のtarボールのパス</p><p>オプション:
   <code>-o, --output <o></code>  Gitリポジトリの出力ディレクトリ [デフォルト: ./container_repo]
   <code>-e, --engine <ENGINE></code>  使用するコンテナエンジン（docker、nerdctl、tar） [デフォルト: docker]
@@ -376,7 +394,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>これに�
 <li>Git</li></p><p></ul><h2>ライセンス</h2></p><p>MIT</p><p>[documentation]: https://docs.rs/oci2git/</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-12
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-30
 
 ---</p>
         </div>
@@ -388,7 +406,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>これに�
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-12-12 
+        Last updated: 2026-01-30 
     </div>
     
 </body>

@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 374
+    "ratingCount": 384
   },
   "url": "https://OpenAiTx.github.io/projects/Virviil/oci2git/README-zh-TW.html",
   "sameAs": "https://raw.githubusercontent.com/Virviil/oci2git/main/README.md",
-  "datePublished": "2025-12-12",
-  "dateModified": "2025-12-12"
+  "datePublished": "2026-01-30",
+  "dateModified": "2026-01-30"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 374 stars</span>
+                <span class="stars">⭐ 384 stars</span>
                 <span class="language">Traditional Chinese</span>
                 <span>by Virviil</span>
             </div>
@@ -338,21 +338,39 @@ git log --follow --oneline -- /rootfs/my/file/path</code></pre>
 <img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/checkout.png" alt="切換至先前提交"></p><h3>多影像分析</h3></p><p>當處理多個具有共同祖先的容器影像時，OCI2Git 僅在影像實際分歧時才會智能地建立分支。這讓您能夠在單一儲存庫中分析多個相關影像，同時保留它們的共同歷史。</p><pre><code class="language-bash"># Convert first image to create the base repository
 oci2git postgres:16.9-alpine3.21 -o alp</p><h1>Convert second image to the same output folder</h1>
 oci2git nginx:1.28.0-alpine-slim -o alp</code></pre>
-OCI2Git 會自動偵測映像檔之間的共享層，並建立反映其共同基礎的分支結構。Git 歷史記錄將顯示：
-<ul><li>包含所有共享層的共同主幹</li>
-<li>只有在映像檔實際不同時才分岔的獨立分支</li>
-<li>清楚可視化映像檔共用祖先及何處開始獨特化</li>
-<li>智慧重複處理：若完全相同的映像檔被處理兩次，演算法會在最終中繼資料提交前偵測並跳過建立重複分支</li></p><p></ul>此方法特別適用於：
-<ul><li><strong>映像家族分析</strong>：了解映像檔的不同變體（不同版本、架構或設定）彼此之間的關係</li>
-<li><strong>基礎映像影響</strong>：精確檢視基礎映像的變更如何影響多個衍生映像檔</li>
-<li><strong>最佳化機會</strong>：識別可在各映像變體間更好利用的共享元件</li></p><p></ul><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/multiimage.png" alt="多映像庫結構顯示共享基礎與分岔分支"></p><h3>其他使用情境</h3></p><ul><li><strong>安全稽核</strong>：精確找出易受攻擊套件或設定被引入的時點，並追溯至特定建置指令。</li>
-<li><strong>映像最佳化</strong>：分析層結構以尋找多餘操作或大型檔案，進而合併以協助減少映像檔大小。</li>
-<li><strong>相依性管理</strong>：監控相依性在映像檔歷史中的新增、升級或移除時點。</li>
-<li><strong>建置流程優化</strong>：檢查層組成以最佳化 Dockerfile 指令，提升快取效率並減少映像檔大小。</li>
-<li><strong>跨映像比較</strong>：將多個相關映像檔轉換為 Git 儲存庫，並利用 Git 的比較工具分析其差異與共通性。</li></p><p></ul><h2>安裝</h2></p><h3>原始碼安裝</h3></p><pre><code class="language-bash"># Clone the repository
+OCI2Git 會自動偵測映像檔之間的共用層，並建立反映其共同基礎的分支結構。Git 歷史將顯示：
+<ul><li>一個包含所有共用層的共同主幹</li>
+<li>當映像檔實際不同時才會分歧的獨立分支</li>
+<li>清楚可視化映像檔共享共同祖先與開始獨特之處</li>
+<li>智慧重複處理：如果完全相同的映像檔被處理兩次，演算法會在最終中繼資料提交前偵測到，並跳過建立重複分支</li></p><p></ul>此方法特別適合於：
+<ul><li><strong>映像家族分析</strong>：理解映像不同變體（不同版本、架構或組態）彼此之間的關聯</li>
+<li><strong>基礎映像影響</strong>：精確查看基礎映像的變更如何影響多個衍生映像</li>
+<li><strong>最佳化機會</strong>：辨識可在映像變體間更好利用的共用元件</li></p><p></ul><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/multiimage.png" alt="多映像存儲庫結構，顯示共用基礎與分歧分支"></p><h3>其他使用案例</h3></p><ul><li><strong>安全稽核</strong>：精確識別易受攻擊的套件或設定何時被引入，並追溯至特定建置指令。</li>
+<li><strong>映像最佳化</strong>：分析層結構，找出可合併的重複操作或大型檔案，協助減少映像大小。</li>
+<li><strong>相依管理</strong>：監控相依項在映像歷史中何時被新增、升級或移除。</li>
+<li><strong>建置流程改進</strong>：檢視層組成以最佳化 Dockerfile 指令，提升快取效率並縮小映像大小。</li>
+<li><strong>跨映像比較</strong>：將多個相關映像轉換為 Git 儲存庫，並利用 Git 的比較工具分析其差異與共通性。</li></p><p></ul><h2>安裝</h2></p><h3>套件管理員</h3></p><p>#### macOS / Linux（Homebrew）</p><pre><code class="language-bash">brew tap virviil/oci2git
+brew install oci2git</code></pre></p><p>#### Debian / Ubuntu</p><p>從<a href="https://github.com/virviil/oci2git/releases/latest" target="_blank" rel="noopener noreferrer">最新發佈版</a>下載並安裝 .deb 套件：</p><pre><code class="language-bash"># For amd64 (x86_64)
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git_VERSION_amd64.deb
+sudo dpkg -i oci2git_VERSION_amd64.deb</p><h1>For arm64</h1>
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git_VERSION_arm64.deb
+sudo dpkg -i oci2git_VERSION_arm64.deb</code></pre></p><p>#### Arch Linux（AUR）</p><pre><code class="language-bash"># Using yay
+yay -S oci2git-bin</p><h1>Using paru</h1>
+paru -S oci2git-bin</p><h1>Manual installation</h1>
+git clone https://aur.archlinux.org/oci2git-bin.git
+cd oci2git-bin
+makepkg -si</code></pre></p><h3>預先建置的二進位檔</h3></p><p>從<a href="https://github.com/virviil/oci2git/releases/latest" target="_blank" rel="noopener noreferrer">最新版本發佈頁面</a>下載適合您平台的二進位檔：</p><pre><code class="language-bash"># Linux x86_64
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git-linux-x86_64.tar.gz
+tar xzf oci2git-linux-x86_64.tar.gz
+sudo mv oci2git-linux-x86_64 /usr/local/bin/oci2git
+chmod +x /usr/local/bin/oci2git</p><h1>macOS (Apple Silicon)</h1>
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git-darwin-aarch64.tar.gz
+tar xzf oci2git-darwin-aarch64.tar.gz
+sudo mv oci2git-darwin-aarch64 /usr/local/bin/oci2git
+chmod +x /usr/local/bin/oci2git</code></pre></p><h3>從 Crates.io</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h3>從來源</h3></p><pre><code class="language-bash"># Clone the repository
 git clone https://github.com/virviil/oci2git.git
 cd oci2git</p><h1>Install locally</h1>
-cargo install --path .</code></pre></p><h3>從 Crates.io</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h2>使用方法</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>參數：
+cargo install --path .</code></pre></p><h2>使用方法</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>參數：
   <code><IMAGE></code>  要轉換的映像名稱（例如：'ubuntu:latest'）或使用 tar 引擎時的 tarball 路徑</p><p>選項：
   <code>-o, --output <o></code>  Git 儲存庫的輸出目錄 [預設值：./container_repo]
   <code>-e, --engine <ENGINE></code>  要使用的容器引擎（docker、nerdctl、tar）[預設值：docker]
@@ -377,7 +395,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>這將在 <
 <li>Git</li></p><p></ul><h2>授權條款</h2></p><p>MIT</p><p>[文件]: https://docs.rs/oci2git/</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-12
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-30
 
 ---</p>
         </div>
@@ -389,7 +407,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>這將在 <
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-12-12 
+        Last updated: 2026-01-30 
     </div>
     
 </body>

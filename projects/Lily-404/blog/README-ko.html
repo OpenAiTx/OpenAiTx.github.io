@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>blog - Read blog documentation in Korean. This project has 159 stars on GitHub.</title>
-    <meta name="description" content="Read blog documentation in Korean. This project has 159 stars on GitHub.">
+    <title>blog - Read blog documentation in Korean. This project has 158 stars on GitHub.</title>
+    <meta name="description" content="Read blog documentation in Korean. This project has 158 stars on GitHub.">
     <meta name="keywords" content="blog, Korean, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "blog",
-  "description": "Read blog documentation in Korean. This project has 159 stars on GitHub.",
+  "description": "Read blog documentation in Korean. This project has 158 stars on GitHub.",
   "author": {
     "@type": "Person",
     "name": "Lily-404"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 159
+    "ratingCount": 158
   },
   "url": "https://OpenAiTx.github.io/projects/Lily-404/blog/README-ko.html",
   "sameAs": "https://raw.githubusercontent.com/Lily-404/blog/main/README.md",
-  "datePublished": "2025-12-11",
-  "dateModified": "2025-12-11"
+  "datePublished": "2026-01-30",
+  "dateModified": "2026-01-30"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 159 stars</span>
+                <span class="stars">⭐ 158 stars</span>
                 <span class="language">Korean</span>
                 <span>by Lily-404</span>
             </div>
@@ -320,7 +320,8 @@
 <li>🌓 다크/라이트 테마 전환</li>
 <li>📱 반응형 디자인</li>
 <li>⚡ 빠른 로딩</li>
-<li>📅 게시글 타임라인 표시</li></p><p></ul><h2>프로젝트 구조</h2></p><pre><code class="language-">.
+<li>📅 게시글 타임라인 표시</li>
+<li>🔐 온라인 관리 백오피스(GitHub API로 직접 게시글 생성)</li></p><p></ul><h2>프로젝트 구조</h2></p><pre><code class="language-">.
 ├── app/
 │   ├── lib/           # 工具函数和数据处理
 │   ├── posts/         # 博客文章
@@ -335,20 +336,55 @@
 </ul><pre><code class="language-bash">git clone https://github.com/Lily-404/blog.git
 cd jimmy-blog</code></pre></p><ul><li>의존성 설치</li></p><p></ul><pre><code class="language-bash">npm install</code></pre>
 <ul><li>개발 서버 실행</li></p><p>
-</ul><pre><code class="language-bash">npm run dev</code></pre></p><ul><li>프로덕션 빌드 생성</li></p><p></ul><pre><code class="language-bash">npm run build</code></pre></p><h2>새 글 추가</h2></p><ul><li><code>content/posts</code> 디렉토리에 새로운 Markdown 파일 생성</li>
+</ul><pre><code class="language-bash">npm run dev</code></pre></p><ul><li>프로덕션 빌드 생성</li></p><p></ul><pre><code class="language-bash">npm run build</code></pre></p><h2>새 글 추가</h2></p><h3>방법 1: 온라인 관리 백엔드 (추천)</h3></p><ul><li><code>/admin</code> 페이지에 접속</li>
+<li>관리자 비밀번호로 로그인</li>
+<li>글 정보를 입력하고 제출</li>
+<li>글이 GitHub API를 통해 자동 생성되며, Vercel이 자동으로 재배포함</li></p><p></ul><h3>방법 2: 파일을 직접 추가</h3></p><ul><li><code>content/posts</code> 디렉터리에 새 Markdown 파일 생성</li>
 <li>파일 이름 형식: xxx.md<code></li>
 <li>파일 상단에 메타데이터 추가:</li></p><p></ul><pre><code class="language-markdown">---
 title: 文章标题
 date: YYYY-MM-DD
 tags: ["标签1","标签2","标签3"]
 ---</code></pre></p><h2>에세이 추가</h2></p><ul><li></code>content/notes<code> 디렉토리에 새로운 Markdown 파일 생성</li>
-<li>파일 이름 형식: </code>YYYY-MM-DD-title.md`</li>
+<li>파일 이름 형식: </code>YYYY-MM-DD-title.md<code></li>
 <li>파일 상단에 메타데이터 추가:</li></p><p></ul><pre><code class="language-markdown">---
 date: YYYY-MM-DD
----</code></pre></p><h2>部署</h2></p><p>项目已配置 Vercel 部署，支持自动部署。只需将代码推送到 GitHub 仓库，Vercel 会自动构建和部署。</p><h2>贡献</h2></p><p>欢迎提交 Issue 和 Pull Request！</p><h2>许可证</h2></p><p>MIT License</p><p>
+---</code></pre></p><h2>관리 백엔드 구성</h2></p><p>관리 백엔드는 GitHub OAuth를 사용하여 인증하며, 저장소 소유자 또는 협업자만 접근할 수 있습니다.</p><h3>1. GitHub OAuth 앱 생성</h3></p><ul><li><a href="https://github.com/settings/developers" target="_blank" rel="noopener noreferrer">GitHub 설정 > 개발자 설정 > OAuth Apps</a>로 이동</li>
+<li>"New OAuth App" 클릭</li>
+<li>정보 입력:</li>
+   <li><strong>Application name</strong>: </code>Jimmy Blog Admin<code>(또는 임의의 이름)</li>
+   <li><strong>Homepage URL</strong>: </code>https://당신의도메인.com<code>(프로덕션) 또는 </code>http://localhost:3000<code>(로컬 개발)</li>
+   <li><strong>Authorization callback URL</strong>: </li>
+     <li>프로덕션: </code>https://당신의도메인.com/api/auth/github/callback<code></li>
+     <li>로컬 개발: </code>http://localhost:3000/api/auth/github/callback<code></li>
+<li>"Register application" 클릭</li>
+<li><strong>Client ID</strong> 기록</li>
+<li>"Generate a new client secret" 클릭 후 <strong>Client secret</strong> 기록</li></p><p></ul><h3>2. 환경 변수 설정</h3></p><p>Vercel 프로젝트 설정에서 아래 환경 변수를 추가하세요:</p><ul><li></code>GITHUB_CLIENT_ID<code>: GitHub OAuth App Client ID</li>
+<li></code>GITHUB_CLIENT_SECRET<code>: GitHub OAuth App Client Secret</li>
+<li></code>GITHUB_OWNER<code>: GitHub 사용자명(기본값: </code>Lily-404<code>, 사용자 권한 검증용)</li>
+<li></code>GITHUB_REPO<code>: 저장소 이름(기본값: </code>blog<code>)</li>
+<li></code>GITHUB_REDIRECT_URI<code>: OAuth 콜백 URL(선택 사항, 기본값 자동 생성)</li>
+<li></code>NEXT_PUBLIC_BASE_URL<code>: 사이트 URL(콜백 URL 생성에 사용, 프로덕션 필수 설정)</li>
+  <li>프로덕션: </code>https://www.jimmy-blog.top<code></li>
+  <li>로컬 개발: </code>http://localhost:3000<code></li></p><p></ul><h3>3. 로컬 개발 환경 설정</h3></p><p>프로젝트 루트 디렉터리에 </code>.env.local<code> 파일 생성:</p><pre><code class="language-env">GITHUB_CLIENT_ID=你的Client_ID
+GITHUB_CLIENT_SECRET=你的Client_Secret
+GITHUB_OWNER=Lily-404
+GITHUB_REPO=blog
+NEXT_PUBLIC_BASE_URL=http://localhost:3000</code></pre></p><h3>4. 운영 환경 설정 (Vercel)</h3></p><p>Vercel 프로젝트 설정에서 다음을 반드시 설정하세요:</p><pre><code class="language-env">NEXT_PUBLIC_BASE_URL=https://www.jimmy-blog.top</code></pre>
+⚠️ <strong>주의</strong>: 
+<ul><li></code>.env.local<code> 파일은 </code>.gitignore<code>에 추가되어 Git에 커밋되지 않습니다.</li>
+<li>로컬 개발 시, OAuth App의 콜백 URL을 </code>http://localhost:3000/api/auth/github/callback<code>으로 설정해야 합니다.</li>
+<li><strong>프로덕션 환경에서는 반드시 </code>NEXT_PUBLIC_BASE_URL<code>을 </code>https://www.jimmy-blog.top<code>으로 설정해야 합니다.</strong></li>
+<li>프로덕션 환경의 OAuth App 콜백 URL은 다음과 같이 설정해야 합니다: </code>https://www.jimmy-blog.top/api/auth/github/callback`</li></p><p></ul><h2>배포</h2></p><p>본 프로젝트는 Vercel 배포가 구성되어 있으며, 자동 배포를 지원합니다. 코드를 GitHub 저장소에 푸시하면 Vercel이 자동으로 빌드 및 배포를 진행합니다.</p><h3>관리 백오피스 사용의 장점</h3></p><ul><li>✅ 로컬 개발 환경 불필요</li>
+<li>✅ 언제 어디서나 글 추가 가능</li>
+<li>✅ Vercel 재배포 자동 트리거</li>
+<li>✅ 완전 무료 (GitHub OAuth와 Vercel은 모두 무료 요금제 내 사용)</li>
+<li>✅ 안전 (GitHub OAuth 인증, 저장소 소유자/협력자만 접근 가능)</li>
+<li>✅ 비밀번호 관리 불필요, GitHub 계정으로 로그인</li></p><p></ul><h2>기여</h2></p><p>Issue 및 Pull Request 제출을 환영합니다!</p><h2>라이선스</h2></p><p>MIT License</p><p>
+
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-11
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-30
 
 ---</p>
         </div>
@@ -360,7 +396,7 @@ date: YYYY-MM-DD
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-12-11 
+        Last updated: 2026-01-30 
     </div>
     
 </body>

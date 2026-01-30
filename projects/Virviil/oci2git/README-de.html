@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>oci2git - Introspecting Docker images as easy as using Git</title>
-    <meta name="description" content="Introspecting Docker images as easy as using Git">
+    <title>oci2git - Docker-Images so einfach inspizieren wie mit Git</title>
+    <meta name="description" content="Docker-Images so einfach inspizieren wie mit Git">
     <meta name="keywords" content="oci2git, German, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "oci2git",
-  "description": "Introspecting Docker images as easy as using Git",
+  "description": "Docker-Images so einfach inspizieren wie mit Git",
   "author": {
     "@type": "Person",
     "name": "Virviil"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 374
+    "ratingCount": 384
   },
   "url": "https://OpenAiTx.github.io/projects/Virviil/oci2git/README-de.html",
   "sameAs": "https://raw.githubusercontent.com/Virviil/oci2git/main/README.md",
-  "datePublished": "2025-12-12",
-  "dateModified": "2025-12-12"
+  "datePublished": "2026-01-30",
+  "dateModified": "2026-01-30"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 374 stars</span>
+                <span class="stars">⭐ 384 stars</span>
                 <span class="language">German</span>
                 <span>by Virviil</span>
             </div>
@@ -336,21 +336,39 @@ Manchmal sind die aufschlussreichsten Vergleiche diejenigen, die Veränderungen 
 Durch die Verwendung von <code>git checkout</code>, um zu einem bestimmten Commit zu wechseln, können Sie das Container-Dateisystem genau so untersuchen, wie es in dieser Ebene existierte. Dies ermöglicht Entwicklern, den exakten Zustand von Dateien und Verzeichnissen zu jedem Zeitpunkt im Erstellungsprozess des Images zu inspizieren und liefert wertvolle Kontextinformationen beim Debuggen oder Untersuchen des Containerverhaltens.
 <img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/checkout.png" alt="Checkout zu vorherigem Commit"></p><h3>Analyse mehrerer Images</h3></p><p>Wenn mit mehreren Container-Images gearbeitet wird, die eine gemeinsame Abstammung haben, erstellt OCI2Git intelligent nur dann Branches, wenn die Images tatsächlich auseinanderlaufen. So können Sie mehrere verwandte Images in einem einzigen Repository analysieren und dabei deren gemeinsame Historie bewahren.</p><pre><code class="language-bash"># Convert first image to create the base repository
 oci2git postgres:16.9-alpine3.21 -o alp</p><h1>Convert second image to the same output folder</h1>
-oci2git nginx:1.28.0-alpine-slim -o alp</code></pre></p><p>OCI2Git erkennt automatisch gemeinsam genutzte Layer zwischen Images und erstellt eine Verzweigungsstruktur, die deren gemeinsamen Ursprung widerspiegelt. Die Git-Historie zeigt:
-<ul><li>Einen gemeinsamen Stamm, der alle geteilten Layer enthält</li>
+oci2git nginx:1.28.0-alpine-slim -o alp</code></pre></p><p>OCI2Git erkennt automatisch gemeinsam genutzte Layer zwischen Images und erstellt eine Verzweigungsstruktur, die ihre gemeinsame Basis widerspiegelt. Die Git-Historie zeigt:
+<ul><li>Einen gemeinsamen Hauptstrang, der alle geteilten Layer enthält</li>
 <li>Separate Zweige, die sich nur dann unterscheiden, wenn die Images tatsächlich abweichen</li>
-<li>Eine klare Visualisierung, wo Images gemeinsame Vorfahren haben und wo sie einzigartig werden</li>
-<li>Intelligente Duplikaterkennung: Wird dasselbe Image zweimal verarbeitet, erkennt der Algorithmus dies vor dem finalen Metadaten-Commit und überspringt das Erstellen eines doppelten Zweigs</li></p><p></ul>Dieser Ansatz ist besonders wertvoll für:
-<ul><li><strong>Analyse von Bildfamilien</strong>: Verstehen, wie verschiedene Varianten eines Images (unterschiedliche Versionen, Architekturen oder Konfigurationen) miteinander verwandt sind</li>
-<li><strong>Auswirkungen von Basis-Images</strong>: Genau sehen, wie Änderungen am Basis-Image mehrere abgeleitete Images beeinflussen</li>
-<li><strong>Optimierungsmöglichkeiten</strong>: Gemeinsame Komponenten identifizieren, die besser über Varianten hinweg genutzt werden könnten</li></p><p></ul><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/multiimage.png" alt="Multi-Image-Repository-Struktur mit gemeinsamem Basis und sich verzweigenden Branches"></p><h3>Weitere Anwendungsfälle</h3></p><ul><li><strong>Sicherheitsaudits</strong>: Exakt nachvollziehen, wann verwundbare Pakete oder Konfigurationen eingeführt wurden und diese auf bestimmte Build-Anweisungen zurückführen.</li>
+<li>Klare Visualisierung, wo Images gemeinsame Abstammung haben und wo sie einzigartig werden</li>
+<li>Intelligente Duplikaterkennung: Wenn genau dasselbe Image zweimal verarbeitet wird, erkennt der Algorithmus dies vor dem finalen Metadaten-Commit und überspringt das Erstellen eines doppelten Zweigs</li></p><p></ul>Dieser Ansatz ist besonders wertvoll für:
+<ul><li><strong>Analyse von Image-Familien</strong>: Verstehen, wie verschiedene Varianten eines Images (verschiedene Versionen, Architekturen oder Konfigurationen) miteinander verwandt sind</li>
+<li><strong>Auswirkungen von Basis-Images</strong>: Exakt sehen, wie Änderungen am Basis-Image mehrere abgeleitete Images beeinflussen</li>
+<li><strong>Optimierungsmöglichkeiten</strong>: Gemeinsame Komponenten identifizieren, die besser über Image-Varianten hinweg genutzt werden könnten</li></p><p></ul><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/multiimage.png" alt="Multi-Image-Repository-Struktur mit gemeinsam genutzter Basis und divergierenden Zweigen"></p><h3>Weitere Anwendungsfälle</h3></p><ul><li><strong>Sicherheitsaudits</strong>: Exakt feststellen, wann verwundbare Pakete oder Konfigurationen eingeführt wurden und sie auf bestimmte Build-Anweisungen zurückverfolgen.</li>
 <li><strong>Image-Optimierung</strong>: Layer-Strukturen analysieren, um redundante Operationen oder große Dateien zu finden, die konsolidiert werden könnten, um die Image-Größe zu reduzieren.</li>
-<li><strong>Abhängigkeitsmanagement</strong>: Überwachen, wann Abhängigkeiten hinzugefügt, aktualisiert oder entfernt wurden, und zwar über die gesamte Image-Historie hinweg.</li>
-<li><strong>Verbesserung des Build-Prozesses</strong>: Layer-Zusammensetzung untersuchen, um Dockerfile-Anweisungen für besseres Caching und kleinere Images zu optimieren.</li>
-<li><strong>Vergleich zwischen Images</strong>: Mehrere verwandte Images in Git-Repositories umwandeln und die Vergleichswerkzeuge von Git nutzen, um Unterschiede und Gemeinsamkeiten zu analysieren.</li></p><p></ul><h2>Installation</h2></p><h3>Aus dem Quellcode</h3></p><pre><code class="language-bash"># Clone the repository
+<li><strong>Abhängigkeitsmanagement</strong>: Überwachen, wann Abhängigkeiten im Verlauf der Image-Historie hinzugefügt, aktualisiert oder entfernt wurden.</li>
+<li><strong>Verbesserung des Build-Prozesses</strong>: Layer-Zusammensetzung untersuchen, um Dockerfile-Anweisungen für besseres Caching und kleinere Image-Größe zu optimieren.</li>
+<li><strong>Vergleich zwischen Images</strong>: Mehrere verwandte Images in Git-Repositories konvertieren und Git-Vergleichswerkzeuge verwenden, um Unterschiede und Gemeinsamkeiten zu analysieren.</li></p><p></ul><h2>Installation</h2></p><h3>Paketmanager</h3></p><p>#### macOS / Linux (Homebrew)</p><pre><code class="language-bash">brew tap virviil/oci2git
+brew install oci2git</code></pre></p><p>#### Debian / Ubuntu</p><p>Laden Sie das .deb-Paket von der <a href="https://github.com/virviil/oci2git/releases/latest" target="_blank" rel="noopener noreferrer">neuesten Version</a> herunter und installieren Sie es:</p><pre><code class="language-bash"># For amd64 (x86_64)
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git_VERSION_amd64.deb
+sudo dpkg -i oci2git_VERSION_amd64.deb</p><h1>For arm64</h1>
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git_VERSION_arm64.deb
+sudo dpkg -i oci2git_VERSION_arm64.deb</code></pre></p><p>#### Arch Linux (AUR)</p><pre><code class="language-bash"># Using yay
+yay -S oci2git-bin</p><h1>Using paru</h1>
+paru -S oci2git-bin</p><h1>Manual installation</h1>
+git clone https://aur.archlinux.org/oci2git-bin.git
+cd oci2git-bin
+makepkg -si</code></pre></p><h3>Vorgefertigte Binärdateien</h3></p><p>Laden Sie die passende Binärdatei für Ihre Plattform aus der <a href="https://github.com/virviil/oci2git/releases/latest" target="_blank" rel="noopener noreferrer">neuesten Veröffentlichung</a> herunter:</p><pre><code class="language-bash"># Linux x86_64
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git-linux-x86_64.tar.gz
+tar xzf oci2git-linux-x86_64.tar.gz
+sudo mv oci2git-linux-x86_64 /usr/local/bin/oci2git
+chmod +x /usr/local/bin/oci2git</p><h1>macOS (Apple Silicon)</h1>
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git-darwin-aarch64.tar.gz
+tar xzf oci2git-darwin-aarch64.tar.gz
+sudo mv oci2git-darwin-aarch64 /usr/local/bin/oci2git
+chmod +x /usr/local/bin/oci2git</code></pre></p><h3>Von Crates.io</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h3>Aus der Quelle</h3></p><pre><code class="language-bash"># Clone the repository
 git clone https://github.com/virviil/oci2git.git
 cd oci2git</p><h1>Install locally</h1>
-cargo install --path .</code></pre></p><h3>Von Crates.io</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h2>Verwendung</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>Argumente:
+cargo install --path .</code></pre></p><h2>Verwendung</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>Argumente:
   <code><IMAGE></code>  Name des zu konvertierenden Images (z. B. 'ubuntu:latest') oder Pfad zur Tarball-Datei bei Verwendung der Tar-Engine</p><p>Optionen:
   <code>-o, --output <o></code>  Ausgabeverzeichnis für das Git-Repository [Standard: ./container_repo]
   <code>-e, --engine <ENGINE></code>  Zu verwendende Container-Engine (docker, nerdctl, tar) [Standard: docker]
@@ -374,7 +392,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Dadurch wir
 <li>Git</li></p><p></ul><h2>Lizenz</h2></p><p>MIT</p><p>[dokumentation]: https://docs.rs/oci2git/</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-12
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-30
 
 ---</p>
         </div>
@@ -386,7 +404,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Dadurch wir
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-12-12 
+        Last updated: 2026-01-30 
     </div>
     
 </body>

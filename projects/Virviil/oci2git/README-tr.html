@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>oci2git - Docker imajlarını incelemek, Git kullanmak kadar kolay</title>
-    <meta name="description" content="Docker imajlarını incelemek, Git kullanmak kadar kolay">
+    <title>oci2git - Docker imajlarını Git kullanmak kadar kolay bir şekilde inceleme</title>
+    <meta name="description" content="Docker imajlarını Git kullanmak kadar kolay bir şekilde inceleme">
     <meta name="keywords" content="oci2git, Turkish, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "oci2git",
-  "description": "Docker imajlarını incelemek, Git kullanmak kadar kolay",
+  "description": "Docker imajlarını Git kullanmak kadar kolay bir şekilde inceleme",
   "author": {
     "@type": "Person",
     "name": "Virviil"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 374
+    "ratingCount": 384
   },
   "url": "https://OpenAiTx.github.io/projects/Virviil/oci2git/README-tr.html",
   "sameAs": "https://raw.githubusercontent.com/Virviil/oci2git/main/README.md",
-  "datePublished": "2025-12-12",
-  "dateModified": "2025-12-12"
+  "datePublished": "2026-01-30",
+  "dateModified": "2026-01-30"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 374 stars</span>
+                <span class="stars">⭐ 384 stars</span>
                 <span class="language">Turkish</span>
                 <span>by Virviil</span>
             </div>
@@ -336,21 +336,39 @@ Bazen en anlamlı karşılaştırmalar, ardışık olmayan birden fazla katmanda
 Herhangi bir belirli commite geçmek için <code>git checkout</code> komutunu kullanarak, konteyner dosya sistemini o katmanda olduğu gibi inceleyebilirsiniz. Bu, geliştiricilere, imajın oluşturulma sürecinin herhangi bir noktasında dosyaların ve dizinlerin kesin durumunu inceleme olanağı sağlar, hata ayıklarken veya konteyner davranışını incelerken paha biçilmez bir bağlam sunar.
 <img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/checkout.png" alt="Önceki commite geçiş"></p><h3>Çoklu İmaj Analizi</h3></p><p>Ortak bir soya sahip birden fazla konteyner imajı ile çalışırken, OCI2Git yalnızca imajlar gerçekten ayrıştığında akıllıca dallar oluşturur. Böylece, ortak geçmişlerini korurken, tek bir depoda birden fazla ilgili imajı analiz edebilirsiniz.</p><pre><code class="language-bash"># Convert first image to create the base repository
 oci2git postgres:16.9-alpine3.21 -o alp</p><h1>Convert second image to the same output folder</h1>
-oci2git nginx:1.28.0-alpine-slim -o alp</code></pre></p><p>OCI2Git, görüntüler arasında paylaşılan katmanları otomatik olarak algılar ve ortak tabanlarını yansıtan dallanma yapısı oluşturur. Git geçmişi şunları gösterecektir:
-<ul><li>Tüm paylaşılan katmanları içeren ortak bir gövde</li>
+oci2git nginx:1.28.0-alpine-slim -o alp</code></pre></p><p>OCI2Git, görüntüler arasındaki paylaşılan katmanları otomatik olarak algılar ve ortak tabanlarını yansıtan bir dallanma yapısı oluşturur. Git geçmişi şunları gösterir:
+<ul><li>Tüm paylaşılan katmanları içeren ortak bir ana gövde</li>
 <li>Görüntüler gerçekten farklılaştığında ayrılan ayrı dallar</li>
-<li>Görüntülerin nerede ortak soya sahip olduğunu ve nerede benzersiz hale geldiğini net görselleştirme</li>
-<li>Akıllı çoğaltma yönetimi: Aynı görüntü iki kez işlenirse, algoritma son meta veri işlemi öncesinde bunu algılar ve kopya dal oluşturmadan atlar</li></p><p></ul>Bu yaklaşım özellikle şu durumlar için değerlidir:
-<ul><li><strong>Görüntü Ailesi Analizi</strong>: Bir görüntünün farklı varyantlarının (farklı sürümler, mimariler veya yapılandırmalar) birbirleriyle ilişkisini anlamak</li>
-<li><strong>Taban Görüntü Etkisi</strong>: Taban bir görüntüde yapılan değişikliklerin birden fazla türetilmiş görüntüyü nasıl etkilediğini görmek</li>
-<li><strong>Optimizasyon Fırsatları</strong>: Görüntü varyantları arasında daha iyi kullanılabilecek ortak bileşenleri belirlemek</li></p><p></ul><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/multiimage.png" alt="Paylaşılan taban ve ayrışan dalları gösteren çoklu görüntü depo yapısı"></p><h3>Ek Kullanım Senaryoları</h3></p><ul><li><strong>Güvenlik Denetimi</strong>: Savunmasız paket veya yapılandırmaların tam olarak ne zaman eklendiğini belirleyin ve bunları belirli yapı talimatlarına kadar izleyin.</li>
-<li><strong>Görüntü Optimizasyonu</strong>: Katman yapılarını analiz ederek gereksiz işlemleri veya büyük dosyaları belirleyin, böylece görüntü boyutunu küçültün.</li>
-<li><strong>Bağımlılık Yönetimi</strong>: Görüntü geçmişi boyunca bağımlılıkların ne zaman eklendiğini, yükseltildiğini veya kaldırıldığını takip edin.</li>
-<li><strong>Yapı Süreci İyileştirme</strong>: Katman bileşimini inceleyerek Dockerfile talimatlarını daha iyi önbellekleme ve daha küçük görüntü boyutu için optimize edin.</li>
-<li><strong>Görüntüler Arası Karşılaştırma</strong>: Birden fazla ilişkili görüntüyü Git depolarına dönüştürün ve Git’in karşılaştırma araçlarını kullanarak farklılıklarını ve benzerliklerini analiz edin.</li></p><p></ul><h2>Kurulum</h2></p><h3>Kaynaktan</h3></p><pre><code class="language-bash"># Clone the repository
+<li>Görüntülerin nerede ortak bir kökene sahip olduğunu ve nerede benzersiz hale geldiğini açıkça görselleştirme</li>
+<li>Akıllı çoğaltma yönetimi: Aynı görüntü iki kez işlenirse, algoritma son meta veri işlemesinden önce bunu algılar ve yinelenen bir dal oluşturmayı atlar</li></p><p></ul>Bu yaklaşım özellikle şu durumlarda değerlidir:
+<ul><li><strong>Görüntü Ailesi Analizi</strong>: Bir görüntünün farklı varyantlarının (farklı sürümler, mimariler veya yapılandırmalar) birbiriyle nasıl ilişkili olduğunu anlamak</li>
+<li><strong>Taban Görüntü Etkisi</strong>: Bir taban görüntüde yapılan değişikliklerin türetilmiş birden fazla görüntüyü nasıl etkilediğini doğrudan görmek</li>
+<li><strong>Optimizasyon Fırsatları</strong>: Görüntü varyantları arasında daha iyi değerlendirilebilecek paylaşılan bileşenleri belirlemek</li></p><p></ul><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/multiimage.png" alt="Paylaşılan taban ve ayrılan dalları gösteren çoklu-görüntü depo yapısı"></p><h3>Ek Kullanım Durumları</h3></p><ul><li><strong>Güvenlik Denetimi</strong>: Savunmasız paket veya yapılandırmaların tam olarak ne zaman eklendiğini tespit edin ve bunları belirli derleme talimatlarına kadar takip edin.</li>
+<li><strong>Görüntü Optimizasyonu</strong>: Katman yapılarını analiz ederek gereksiz işlemleri veya birleştirilebilecek büyük dosyaları tespit edin, böylece görüntü boyutunu azaltın.</li>
+<li><strong>Bağımlılık Yönetimi</strong>: Görüntü geçmişi boyunca bağımlılıkların ne zaman eklendiğini, yükseltildiğini veya kaldırıldığını izleyin.</li>
+<li><strong>Derleme Süreci İyileştirmesi</strong>: Daha iyi önbellekleme ve daha küçük görüntü boyutu için Dockerfile talimatlarını optimize etmek üzere katman bileşimini inceleyin.</li>
+<li><strong>Çapraz Görüntü Karşılaştırması</strong>: Birbiriyle ilişkili birden fazla görüntüyü Git depolarına dönüştürün ve farklarını ve ortak yönlerini analiz etmek için Git'in karşılaştırma araçlarını kullanın.</li></p><p></ul><h2>Kurulum</h2></p><h3>Paket Yöneticileri</h3></p><p>#### macOS / Linux (Homebrew)</p><pre><code class="language-bash">brew tap virviil/oci2git
+brew install oci2git</code></pre></p><p>#### Debian / Ubuntu</p><p><a href="https://github.com/virviil/oci2git/releases/latest" target="_blank" rel="noopener noreferrer">En son sürümden</a> .deb paketini indirip kurun:</p><pre><code class="language-bash"># For amd64 (x86_64)
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git_VERSION_amd64.deb
+sudo dpkg -i oci2git_VERSION_amd64.deb</p><h1>For arm64</h1>
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git_VERSION_arm64.deb
+sudo dpkg -i oci2git_VERSION_arm64.deb</code></pre></p><p>#### Arch Linux (AUR)</p><pre><code class="language-bash"># Using yay
+yay -S oci2git-bin</p><h1>Using paru</h1>
+paru -S oci2git-bin</p><h1>Manual installation</h1>
+git clone https://aur.archlinux.org/oci2git-bin.git
+cd oci2git-bin
+makepkg -si</code></pre></p><h3>Önceden Derlenmiş İkili Dosyalar</h3></p><p>Platformunuza uygun ikili dosyayı <a href="https://github.com/virviil/oci2git/releases/latest" target="_blank" rel="noopener noreferrer">en son sürümden</a> indirin:</p><pre><code class="language-bash"># Linux x86_64
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git-linux-x86_64.tar.gz
+tar xzf oci2git-linux-x86_64.tar.gz
+sudo mv oci2git-linux-x86_64 /usr/local/bin/oci2git
+chmod +x /usr/local/bin/oci2git</p><h1>macOS (Apple Silicon)</h1>
+wget https://github.com/virviil/oci2git/releases/latest/download/oci2git-darwin-aarch64.tar.gz
+tar xzf oci2git-darwin-aarch64.tar.gz
+sudo mv oci2git-darwin-aarch64 /usr/local/bin/oci2git
+chmod +x /usr/local/bin/oci2git</code></pre></p><h3>Crates.io'dan</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h3>Kaynak</h3></p><pre><code class="language-bash"># Clone the repository
 git clone https://github.com/virviil/oci2git.git
 cd oci2git</p><h1>Install locally</h1>
-cargo install --path .</code></pre></p><h3>Crates.io'dan</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h2>Kullanım</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>Argümanlar:
+cargo install --path .</code></pre></p><h2>Kullanım</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>Argümanlar:
   <code><IMAGE></code>  Dönüştürülecek imaj adı (örn., 'ubuntu:latest') veya tar motoru kullanılırken tarball yolu</p><p>Seçenekler:
   <code>-o, --output <o></code>  Git deposu için çıktı dizini [varsayılan: ./container_repo]
   <code>-e, --engine <ENGINE></code>  Kullanılacak konteyner motoru (docker, nerdctl, tar) [varsayılan: docker]
@@ -377,7 +395,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Bu, <code>.
 
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-12-12
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-30
 
 ---</p>
         </div>
@@ -389,7 +407,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Bu, <code>.
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-12-12 
+        Last updated: 2026-01-30 
     </div>
     
 </body>
