@@ -1,0 +1,401 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jib.jl - Interactive Brokers API의 Julia 구현체</title>
+    <meta name="description" content="Interactive Brokers API의 Julia 구현체">
+    <meta name="keywords" content="Jib.jl, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Jib.jl",
+  "description": "Interactive Brokers API의 Julia 구현체",
+  "author": {
+    "@type": "Person",
+    "name": "lbilli"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 67
+  },
+  "url": "https://OpenAiTx.github.io/projects/lbilli/Jib.jl/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/lbilli/Jib.jl/master/README.md",
+  "datePublished": "2026-02-06",
+  "dateModified": "2026-02-06"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/lbilli/Jib.jl" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Jib.jl
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 67 stars</span>
+                <span class="language">Korean</span>
+                <span>by lbilli</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Jib</h1></p><p><em>Interactive Brokers API의 Julia 구현체</em></p><p><code>Jib</code>는 TWS 또는 IBGateway와 통신하기 위해
+<a href="https://www.interactivebrokers.com/" target="_blank" rel="noopener noreferrer">Interactive Brokers</a> API를 구현한
+네이티브 <a href="https://julialang.org/" target="_blank" rel="noopener noreferrer">Julia</a> 클라이언트입니다.</p><p>기능적으로 완전함을 목표로 하지만, 레거시 버전은 지원하지 않습니다.</p><p>공식 IB API가 최근 프로토콜 버퍼(Protocol Buffers)를 기본 전송 형식으로 채택하여
+기존의 커스텀 프로토콜을 대체했다는 점도 주목할 만합니다.
+이 패키지도 이를 따라 후자를 지원하지 않게 되었습니다.</p><p>현재는 API 버전 <code>v213+</code>만 지원하며, 이는
+TWS 버전 <code>10.40</code> 이상에 해당합니다.</p><p>패키지 설계는 비동기 통신 모델을 기반으로 하는 공식 C++/Java
+<a href="https://interactivebrokers.github.io/tws-api/" target="_blank" rel="noopener noreferrer">IB API</a>를 따릅니다.</p><h2>설치</h2>
+GitHub에서 설치하려면:</p><pre><code class="language-julia">] add https://github.com/lbilli/Jib.jl</code></pre>
+<h2>사용법</h2>
+사용자는 주로 이 두 객체와 상호작용합니다:
+<ul><li><code>Connection</code>: 서버와의 연결을 유지하는 핸들</li>
+<li><code>Wrapper</code>: 서버 응답이 처리될 때 호출되는 콜백을 담는 컨테이너</li></p><p></ul><code>Contract</code> 및 <code>Order</code>와 같은 다른 데이터 구조체는 Julia <code>struct</code>로 구현되어 있으며
+공식 IB API의 해당 클래스와 동일하게 설계되었습니다.</p><p>완전한 최소 작동 예제가 제시됩니다.
+이 코드가 작동하려면 로컬 머신에서 IB TWS 또는 IBGateway 인스턴스가 실행 중이어야 하며
+포트 <code>4002</code>를 수신 대기해야 합니다.
+<strong>참고:</strong> _데모_ 또는 _페이퍼_ 계정 사용을 권장합니다!! :smirk:</p><pre><code class="language-julia">using Jib</p><p>wrap = Jib.Wrapper(
+         # Customized methods go here
+         error= (id, errorTime, errorCode, errorString, advancedOrderRejectJson) ->
+                  println("Error: $(something(id, "NA")) $errorTime $errorCode $errorString $advancedOrderRejectJson"),</p><p>         nextValidId= (orderId) -> println("Next OrderId: $orderId"),</p><p>         managedAccounts= (accountsList) -> println("Managed Accounts: $accountsList")</p><p>         # more method overrides can go here...
+       );</p><h1>Connect to the server with clientId = 1</h1>
+ib = Jib.connect(4002, 1);</p><h1>Start a background Task to process the server responses</h1>
+Jib.start_reader(ib, wrap);</p><h1>Define contract</h1>
+contract = Jib.Contract(symbol="GOOG",
+                        secType="STK",
+                        exchange="SMART",
+                        currency="USD");</p><h1>Define order</h1>
+order = Jib.Order();
+order.action        = "BUY"
+order.totalQuantity = 10
+order.orderType     = "LMT"
+order.lmtPrice      = 100</p><p>orderId = 1    # Should match whatever is returned by the server</p><h1>Send order</h1>
+Jib.placeOrder(ib, orderId, contract, order)</p><h1>Disconnect</h1>
+Jib.disconnect(ib)</code></pre>
+#### 전경 처리 vs. 배경 처리  
+서버 응답을 메인 프로세스 내에서 처리하거나  
+별도의 배경 <code>Task</code>에서 처리할 수 있습니다:  
+<ul><li><strong>전경 처리</strong>는 <code>Jib.check_all(ib, wrap)</code>을 호출하여 트리거됩니다.  </li>
+  </ul>특히 데이터가 스트리밍될 때 <strong>정기적으로</strong> 호출하는 것은 사용자 책임입니다.  
+<ul><li><strong>배경 처리</strong>는 <code>Jib.start_reader(ib, wrap)</code>에 의해 시작됩니다.  </li>
+  </ul>별도의 <code>Task</code>가 배경에서 시작되어 연결을 모니터링하고  
+  응답이 도착하면 처리합니다.  
+  
+원하지 않는 효과를 피하기 위해 같은 연결에서 두 접근 방식을 혼용하지 않아야 합니다.  
+  
+<h2>구현 세부사항  </h2>
+이 패키지는 어떤 이름도 내보내지 않으므로, 여기서 설명하는 함수나  
+타입은 모두 <code>Jib.*</code> 접두어를 붙여야 합니다.  
+  
+Julia는 객체지향 언어가 아니므로, IB의 <code>EClient</code> 클래스 기능은  
+일반 함수로 제공됩니다. 특히:  
+<ul><li><code>connect(port, clientId, connectOptions)</code>: 연결을 설정하고  </li>
+  </ul><code>Connection</code> 객체를 반환합니다.  
+<ul><li><code>disconnect(::Connection)</code>: 연결을 종료합니다.  </li>
+<li><code>check_all(::Connection, ::Wrapper)</code>: 사용 가능한 응답을 처리하며, <strong>블로킹하지 않습니다.</strong>  </li>
+  </ul>처리한 메시지 개수를 반환합니다. <strong>정기적으로 호출해야 합니다!</strong>  
+<ul><li><code>start_reader(::Connection, ::Wrapper)</code>: 배경 처리를 위한 <code>Task</code>를 시작합니다.  </li>
+<li>서버에 특정 요청을 보내는 메서드들.  </li>
+  </ul>자세한 내용과 메서드 시그니처는 공식 IB <code>EClient</code> 클래스 문서를 참조하세요.  
+  유의할 점은 첫 번째 인자로 <code>Connection</code>을 전달해야 한다는 것입니다: _예를 들어_  
+  <code>reqContractDetails(ib::Connection, reqId:Int, contract::Contract)</code>  
+  
+#### <a href="https://raw.githubusercontent.com/lbilli/Jib.jl/master/src/wrapper.jl" target="_blank" rel="noopener noreferrer"><code>Wrapper</code></a>  
+공식 IB <code>EWrapper</code> 클래스처럼, 이 <code>struct</code>는  
+응답이 처리될 때 호출되는 콜백들을 보유합니다.  
+사용자는 생성자에서 키워드 인수로 콜백 정의를 제공하거나  
+기존 인스턴스의 프로퍼티를 설정하여 정의할 수 있습니다.  
+  
+더 포괄적인 예시는 <a href="https://raw.githubusercontent.com/lbilli/Jib.jl/master/src/wrapper.jl#L130" target="_blank" rel="noopener noreferrer"><code>simple_wrap()</code></a>  
+에서 제공하며, 다음과 같이 사용됩니다:</p><pre><code class="language-julia">using Jib: Jib, Contract, reqContractDetails, simple_wrap, start_reader</p><p>data, wrap = simple_wrap();</p><p>ib = Jib.connect(4002, 1);
+start_reader(ib, wrap);</p><p>reqContractDetails(ib, 99, Contract(conId=208813720, exchange="SMART"))</p><h1>Wait for the response and then access the "ContractDetails" result:</h1>
+data[:cd]</code></pre>
+클로저 덕분에 <code>data</code>(이 경우 <code>Dict</code>)는 모든 <code>wrap</code> 메서드와 메인 프로그램에서 접근할 수 있습니다.  
+이는 들어오는 데이터를 프로그램의 다양한 부분으로 전파하는 한 가지 방법입니다.  </p><p>콜백 정의 및 서명에 대한 자세한 내용은 공식 IB <code>EWrapper</code> 클래스 문서를 참조하세요.  
+참고로, 이 패키지에서 사용되는 정확한 서명은  
+<a href="https://raw.githubusercontent.com/lbilli/Jib.jl/master/data/wrapper_signatures.jl" target="_blank" rel="noopener noreferrer">여기</a>에서 확인할 수 있습니다.  </p><h2>참고 사항  </h2>
+콜백은 일반적으로 공식 문서에 기술된 서명과 일치하는 인수 및 타입으로 호출됩니다.  
+하지만 몇 가지 예외가 있습니다:  
+<ul><li><code>tickPrice()</code>는 추가 <code>size::Float64</code> 인수를 가지며,  </li>
+  </ul>이는 <code>TickType ∈ {BID, ASK, LAST}</code>일 때만 의미가 있습니다.  
+  이 경우 공식 IB API는 대신 추가 <code>tickSize()</code> 이벤트를 발생시킵니다.  
+<ul><li><code>historicalData()</code>는 요청당 한 번만 호출되며,  </li>
+  </ul>모든 히스토리 데이터를 단일 <code>Vector{Bar}</code>로 제공합니다.  
+  반면 공식 IB API는 데이터를 행 단위로 호출합니다.  
+<ul><li><code>scannerData()</code> 역시 요청당 한 번 호출되며, 인수로 <code>Vector{ScannerDataElement}</code>를 받습니다.  </li>
+  </ul>따라서 <code>scannerDataEnd()</code>는 중복되어 이 패키지에서는 <strong>사용하지 않습니다</strong>.  </p><p>이러한 변경사항은 다음 규칙을 확립할 수 있게 합니다:  
+_서버 응답당 하나의 콜백_.  </p><p>#### 누락된 값  
+가끔 수치형 타입에서 값이 없음을 표현해야 할 필요가 있습니다.  </p><p>IB API는 일관된 해결책이 없으며,  
+다양한 센티넬 값을 사용합니다.  
+이는 단순한 <code>0</code>이거나, 주어진 타입의 최대 표현 가능한 값일 수 있습니다.  
+예를 들어 32비트 및 64비트 정수의 경우 각각 <code>2147483647</code> 및 <code>9223372036854775807</code>,  
+64비트 부동소수점의 경우 <code>1.7976931348623157E308</code> 등이 있습니다.  </p><p>이 패키지는 모든 상황에서 Julia 내장 <code>Nothing</code>을 사용하려 노력합니다.</p><p>
+#### 데이터 구조
+주로 데이터를 보유하는 다른 클래스들도 복제됩니다.
+이들은 IB API 대응물과 이름, 타입, 기본값이 일치하도록 Julia <code>struct</code> 또는 <code>mutable struct</code>로 구현됩니다: _예를 들어_ <code>Contract</code>, <code>Order</code>, <code>ComboLeg</code>, <code>ExecutionFilter</code>, <code>ScannerSubscription</code> 및 <code>Condition*</code> 등이 있습니다.</p><p><code>TagValueList</code>는 Julia <code>NamedTuple</code>로 구현됩니다.
+TagValue가 필요한 곳에서는 다음과 같은 것을 사용할 수 있습니다:</p><pre><code class="language-julia">tagvaluelist = (tag1="value1", tag2="value2")
+<h1>or, in case of an empty list:</h1>
+emptylist = (;)</code></pre>
+값은 <code>String</code> 타입일 필요가 없습니다. <code>Int</code>와 <code>Float64</code>도 허용됩니다.</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-06
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/lbilli/Jib.jl/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-02-06 
+    </div>
+    
+</body>
+</html>
