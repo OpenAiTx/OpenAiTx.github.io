@@ -1,0 +1,331 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiliAnalysis - A Tampermonkey script for obtaining direct links to Bilibili videos.</title>
+    <meta name="description" content="A Tampermonkey script for obtaining direct links to Bilibili videos.">
+    <meta name="keywords" content="BiliAnalysis, English, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "BiliAnalysis",
+  "description": "A Tampermonkey script for obtaining direct links to Bilibili videos.",
+  "author": {
+    "@type": "Person",
+    "name": "mmyo456"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 121
+  },
+  "url": "https://OpenAiTx.github.io/projects/mmyo456/BiliAnalysis/README-en.html",
+  "sameAs": "https://raw.githubusercontent.com/mmyo456/BiliAnalysis/main/README.md",
+  "datePublished": "2026-02-13",
+  "dateModified": "2026-02-13"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/mmyo456/BiliAnalysis" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    BiliAnalysis
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 121 stars</span>
+                <span class="language">English</span>
+                <span>by mmyo456</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>BiliAnalysis</h1></p><p><a href="https://github.com/mmyo456/BiliAnalysis/stargazers" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/stars/mmyo456/BiliAnalysis?style=flat-square" alt="Stars"></a>
+<a href="https://github.com/mmyo456/BiliAnalysis/blob/main/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/license/mmyo456/BiliAnalysis?style=flat-square" alt="License"></a>
+<a href="https://github.com/mmyo456/BiliAnalysis/releases/latest" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/v/release/mmyo456/BiliAnalysis?style=flat-square" alt="Release"></a></p><p><strong>Lightweight · Simple · Open Source · Modular</strong></p><p>Userscript and browser extension for obtaining direct links of Bilibili videos and live streams.</p><h2>Features</h2></p><ul><li>Supports video and live room parsing</li>
+<li>Offers local parsing and cloud parsing</li>
+<li>Quick copy direct link from right-click menu</li>
+<li>Modular design, install as needed</li></p><p></ul><h2>Version Selection</h2></p><p>| Version | Parsing Method | Description |
+| :--- | :--- | :--- |
+| <strong>BiliCloudAnalysis</strong> | Cloud (Recommended) | Stable and reliable, solves 1080P+ parsing issues |
+| BiliAnalysis | Local | Fast, but some HD videos may fail |
+| BiliRoomAnalysis | Local | For live rooms only |
+| Right-click Parsing Plugin | Browser Extension | Same as cloud version, no userscript needed |</p><h2>Quick Installation</h2></p><h3>Userscript</h3></p><ul><li>Install <a href="https://www.tampermonkey.net/" target="_blank" rel="noopener noreferrer">Tampermonkey</a></li>
+<li>Click the links below to install the script</li></p><p></ul>| Script | GitHub | Domestic Mirror |
+| :--- | :--- | :--- |
+| Video Cloud Parsing (Recommended) | <a href="https://raw.githubusercontent.com/mmyo456/BiliAnalysis/main/BiliCloudAnalysis.user.js" target="_blank" rel="noopener noreferrer">Install</a> | <a href="https://raw.gitmirror.com/mmyo456/BiliAnalysis/main/BiliCloudAnalysis.user.js" target="_blank" rel="noopener noreferrer">Install</a> |
+| Video Cloud Parsing 1 | <a href="https://raw.githubusercontent.com/mmyo456/BiliAnalysis/main/BiliCloudAnalysis_1.user.js" target="_blank" rel="noopener noreferrer">Install</a> | <a href="https://raw.gitmirror.com/mmyo456/BiliAnalysis/main/BiliCloudAnalysis_1.user.js" target="_blank" rel="noopener noreferrer">Install</a> |
+| Local Parsing | <a href="https://raw.githubusercontent.com/mmyo456/BiliAnalysis/main/BiliAnalysis.user.js" target="_blank" rel="noopener noreferrer">Install</a> | <a href="https://raw.gitmirror.com/mmyo456/BiliAnalysis/main/BiliAnalysis.user.js" target="_blank" rel="noopener noreferrer">Install</a> |
+| Live Room Parsing | <a href="https://raw.githubusercontent.com/mmyo456/BiliAnalysis/main/BiliRoomAnalysis.user.js" target="_blank" rel="noopener noreferrer">Install</a> | <a href="https://raw.gitmirror.com/mmyo456/BiliAnalysis/main/BiliRoomAnalysis.user.js" target="_blank" rel="noopener noreferrer">Install</a> |</p><h3>Browser Extension</h3></p><ul><li>Download <code>RightClickParsingPlugin.zip</code> and unzip it  </li>
+<li>Enable "Developer Mode" on the browser extensions page  </li>
+<li>Load the unpacked extension  </li>
+<li>See <a href="https://learn.microsoft.com/en-us/microsoft-edge/extensions-chromium/getting-started/extension-sideloading" target="_blank" rel="noopener noreferrer">Edge Extension Loading Tutorial</a> for details  </li>
+ 
+</ul>Effect as shown</p><p><img src="https://github.com/mmyo456/BiliAnalysis/assets/70092715/27911680-9d0f-4f84-b849-22165381f6fa" alt="QQ Screenshot 20230909142830" width="400"> <br></p><h2>Usage</h2></p><p>Right-click on the video title on the Bilibili website and select "Video Parsing" to get the direct link.</p><blockquote><strong>Important Note</strong>: Cloud parsing depends on public servers; please do not abuse it. When using in VRChat worlds or websites, please keep the original author information.</blockquote></p><h2>Supported Projects</h2></p><p>Cloud parsing service incurs server costs; if you find it helpful, feel free to <a href="https://www.ouo.chat/sponsor" target="_blank" rel="noopener noreferrer">sponsor and support</a>.</p><h2>Acknowledgments</h2></p><ul><li><a href="https://www.91vrchat.com/" target="_blank" rel="noopener noreferrer">91VRChat</a> - Provided cloud parsing resources and ideas  </li>
+<li><a href="https://ouo.chat/" target="_blank" rel="noopener noreferrer">ouo.chat</a> - Provided cloud parsing service resources  </li>
+<li><a href="https://github.com/gujimy/BiliBili-JX" target="_blank" rel="noopener noreferrer">BiliBili-JX</a> - Provided code reference  </li></p><p></ul><h2>Contributors  </h2>
+Special thanks to everyone who contributed to this project:  
+<a href="https://github.com/mmyo456/BiliAnalysis/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=mmyo456/BiliAnalysis" />
+</a></p><h2>License</h2></p><p><a href="https://github.com/mmyo456/BiliAnalysis/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a></p><h2>Star History</h2></p><p><a href="https://star-history.com/#mmyo456/BiliAnalysis&Date" target="_blank" rel="noopener noreferrer"><img src="https://api.star-history.com/svg?repos=mmyo456/BiliAnalysis&type=Date" alt="Star History Chart"></a></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-13
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/mmyo456/BiliAnalysis/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-02-13 
+    </div>
+    
+</body>
+</html>
