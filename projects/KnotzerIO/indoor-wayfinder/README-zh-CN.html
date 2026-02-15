@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>indoor-wayfinder - 基于 React 的交互式 SVG 室内导航地图</title>
+    <meta name="description" content="基于 React 的交互式 SVG 室内导航地图">
+    <meta name="keywords" content="indoor-wayfinder, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "indoor-wayfinder",
+  "description": "基于 React 的交互式 SVG 室内导航地图",
+  "author": {
+    "@type": "Person",
+    "name": "KnotzerIO"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 91
+  },
+  "url": "https://OpenAiTx.github.io/projects/KnotzerIO/indoor-wayfinder/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/KnotzerIO/indoor-wayfinder/main/README.md",
+  "datePublished": "2026-02-15",
+  "dateModified": "2026-02-15"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/KnotzerIO/indoor-wayfinder" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    indoor-wayfinder
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 91 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by KnotzerIO</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>[!TIP]</blockquote>
+<blockquote>寻找更高级的室内导航解决方案？</blockquote>
+<blockquote>试试 <a href="https://github.com/openindoormap/openindoormaps" target="_blank" rel="noopener noreferrer">OpenIndoorMaps</a> —— 提供地图编辑、3D 视图和户外地图集成功能。</blockquote></p><h1>Pathpal：基于网页的室内导航器</h1></p><p>Pathpal 是一款创新的网页应用，旨在革新室内导航。通过交互式地图和高效的路径查找算法，提供了一个直观的解决方案，用于导航复杂的室内空间。
+<br>
+<strong>演示:</strong> <a href="https://indoor-wayfinder.vercel.app" target="_blank" rel="noopener noreferrer">访问 Pathpal</a></p><h2>目录：</h2></p><ul><li><a href="#pathpal-web-based-indoor-wayfinder" target="_blank" rel="noopener noreferrer">Pathpal：基于网页的室内导航器</a></li>
+  <li><a href="#table-of-content" target="_blank" rel="noopener noreferrer">目录：</a></li>
+  <li><a href="#about-the-app" target="_blank" rel="noopener noreferrer">关于该应用</a></li>
+  <li><a href="#screenshots" target="_blank" rel="noopener noreferrer">截图</a></li>
+  <li><a href="#features" target="_blank" rel="noopener noreferrer">功能</a></li>
+  <li><a href="#technologies" target="_blank" rel="noopener noreferrer">技术</a></li>
+  <li><a href="#setup" target="_blank" rel="noopener noreferrer">安装</a></li>
+  <li><a href="#technical-insights" target="_blank" rel="noopener noreferrer">技术见解</a></li>
+    <li><a href="#map-technology" target="_blank" rel="noopener noreferrer">地图技术</a></li>
+    <li><a href="#pathfinding" target="_blank" rel="noopener noreferrer">路径查找</a></li>
+    <li><a href="#core-map-technology" target="_blank" rel="noopener noreferrer">核心地图技术</a></li>
+    <li><a href="#path-drawing-and-wayfinding" target="_blank" rel="noopener noreferrer">路径绘制与导航</a></li>
+    <li><a href="#customizing-the-map" target="_blank" rel="noopener noreferrer">自定义地图</a></li>
+  <li><a href="#credits" target="_blank" rel="noopener noreferrer">鸣谢</a></li>
+  <li><a href="#license" target="_blank" rel="noopener noreferrer">许可证</a></li></p><p></ul><h2>关于该应用</h2></p><p>该项目是我毕业设计的一个变体，重点是用于室内导航的交互式地图。它采用交互式 SVG 地图，并利用 Dijkstra 算法计算到兴趣点（POI）的最短路径。最初，应用尝试使用 BLE 技术进行室内定位，但由于蓝牙 Web API 仍处于实验阶段，该功能在此变体中被省略。</p><blockquote>[!WARNING]  </blockquote>
+<blockquote>本项目的后端已被移除。所有数据均存储在 JSON 文件中。该项目是一个原型，不建议用于生产环境。请查看我的新项目 <a href="https://github.com/yourusername/OpenIndoorMaps" target="_blank" rel="noopener noreferrer">OpenIndoorMaps</a> 以获取更完整的解决方案。</blockquote></p><h2>截图</h2></p><p><table style="border-radius: 10px;  border: 1px solid gray;">
+  <tr >
+    <td align="center"><img src="https://raw.githubusercontent.com/KnotzerIO/indoor-wayfinder/main/media/indoor-map-details.png"/></td>
+   <td align="center"><h3 >点击显示对象信息</h3></td>
+  </tr>
+    <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/KnotzerIO/indoor-wayfinder/main/media/indoor-wayfinding.png"/></td>
+    <td align="center"><h3>最短路径计算演示</h3></td>
+  </tr>
+</table></p><h2>功能特点</h2></p><ul><li><strong>交互式 SVG 地图</strong>：轻松导航复杂的室内空间。</li>
+<li><strong>迪杰斯特拉路径查找</strong>：计算到目的地的最短路径。</li>
+<li><strong>响应式设计</strong>：针对任何设备和屏幕尺寸进行优化。</li>
+<li><strong>可定制兴趣点</strong>：编辑兴趣点的名称和类别。</li>
+<li><strong>捏合缩放</strong>：通过触控手势轻松放大和缩小地图。</li></p><p></ul><h2>技术栈</h2></p><p>Pathpal 采用最新的网络技术构建，确保速度、效率和适应性：</p><ul><li>React</li>
+<li>Vite</li>
+<li>TypeScript</li>
+<li>TailwindCSS</li>
+<li>SVG</li>
+<li>迪杰斯特拉算法</li></p><p></ul><h2>安装指南</h2></p><p>按照以下步骤启动项目：</p><ul><li><strong>克隆仓库</strong>：使用您喜欢的 Git 客户端将此仓库克隆到本地机器。</li></p><p><li><strong>安装 Node.js</strong>：本项目需要 Node.js。如果您没有安装 Node.js 21 版本，可以从 <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">nodejs.org</a> 下载并安装。</li></p><p><li><strong>安装依赖</strong>：在终端中切换到项目目录，运行以下命令安装所需依赖：</li></p><p>   </ul>``<code>bash
+   npm install
+   </code>`<code>
+<ul><li><strong>启动应用程序</strong>：安装依赖项后，您可以通过在终端运行以下命令来启动应用程序：</li></p><p>
+   </ul></code>`<code>bash
+   npm run dev
+   </code>`<code>
+运行这些命令后，您的默认网页浏览器应自动打开并导航到 </code>localhost:5173`，您可以在那里看到正在运行的应用程序。</p><h2>技术见解</h2></p><h3>地图技术</h3></p><ul><li><strong>SVG 格式</strong>：地图主要采用 SVG 格式，因其灵活性和交互功能，适合详细导航。</li>
+<li><strong>图像格式支持</strong>：支持 PNG、JPEG 等多种格式作为地图背景，交互功能最佳适用于 SVG。</li></p><p></ul><h3>路径查找</h3></p><ul><li><strong>路线定义</strong>：地图中的路径代表可通行路线，对于 Dijkstra 算法计算高效路径至关重要。</li>
+<li><strong>Dijkstra 算法</strong>：确保兴趣点之间的导航准确且快速。</li></p><p></ul><h3>核心地图技术</h3></p><ul><li><strong>SVG 作为默认格式</strong>：应用程序主要使用 SVG（可缩放矢量图形）文件作为地图，因其可伸缩性和易于操作。SVG 允许对室内空间进行交互和动态渲染，非常适合详细导航路径。</li>
+<li><strong>支持多种图像格式</strong>：虽然默认使用 SVG，系统设计为支持任何图像格式（如 PNG、JPEG）作为地图背景。这种灵活性确保开发者可以使用现有的平面图或地图，无需转换为 SVG。但主要的交互和导航功能针对 SVG 进行了优化。</li></p><p></ul><h3>路径绘制与导航</h3></p><ul><li><strong>路径绘制</strong>：导航功能依赖于地图中定义的路径。这些路径表示可行走路线，对于寻路算法非常关键。在 SVG 文件中，可以直接绘制和编辑路径，实现对导航路线的精确控制。</li>
+<li><strong>寻路算法</strong>：应用程序使用 Dijkstra 算法计算地图上兴趣点（POI）之间的最短路径。该算法基于地图上绘制的路径网络，确保导航高效且准确。</li></p><p></ul><h3>地图定制</h3></p><ul><li><strong>编辑工具</strong>：开发者可选择使用 Adobe Illustrator 或 Boxy SVG 等矢量图形编辑工具修改 SVG 地图。修改内容可包括更新布局、添加或移除兴趣点（POI）及调整路径。参见下方截图，展示使用 Boxy SVG 进行地图编辑的示例。将 SVG 转换为 JSX，可参考 <a href="https://transform.tools/" target="_blank" rel="noopener noreferrer">Transform Tools</a>。</li></p><p></ul><img src="https://raw.githubusercontent.com/KnotzerIO/indoor-wayfinder/main/media/map-editing-preview.png" alt="IndoorMap Editing Example"></p><h2>致谢</h2></p><p>本项目灵感来源于我的毕业设计，并深受导师、同辈及诸如 <a href="https://github.com/maciejb2k/pathfinding_app" target="_blank" rel="noopener noreferrer">maciejb2k 的路径查找应用</a>等资源的支持影响。</p><h2>许可协议</h2></p><p>Pathpal 采用 MIT 许可开源，欢迎贡献和反馈！</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-15
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/KnotzerIO/indoor-wayfinder/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-02-15 
+    </div>
+    
+</body>
+</html>
