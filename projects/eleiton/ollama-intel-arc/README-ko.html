@@ -1,0 +1,398 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ollama-intel-arc - Intel Arc 시리즈 GPU를 활용하여 Ollama, StableDiffusion, Whisper 및 Open WebUI를 실행하고 이미지 생성, 음성 인식 및 대형 언어 모델(LLM)과의 상호작용을 지원합니다.</title>
+    <meta name="description" content="Intel Arc 시리즈 GPU를 활용하여 Ollama, StableDiffusion, Whisper 및 Open WebUI를 실행하고 이미지 생성, 음성 인식 및 대형 언어 모델(LLM)과의 상호작용을 지원합니다.">
+    <meta name="keywords" content="ollama-intel-arc, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ollama-intel-arc",
+  "description": "Intel Arc 시리즈 GPU를 활용하여 Ollama, StableDiffusion, Whisper 및 Open WebUI를 실행하고 이미지 생성, 음성 인식 및 대형 언어 모델(LLM)과의 상호작용을 지원합니다.",
+  "author": {
+    "@type": "Person",
+    "name": "eleiton"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 241
+  },
+  "url": "https://OpenAiTx.github.io/projects/eleiton/ollama-intel-arc/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/eleiton/ollama-intel-arc/main/README.md",
+  "datePublished": "2026-02-16",
+  "dateModified": "2026-02-16"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/eleiton/ollama-intel-arc" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    ollama-intel-arc
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 241 stars</span>
+                <span class="language">Korean</span>
+                <span>by eleiton</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>인텔 Arc GPU로 Ollama, Stable Diffusion 및 자동 음성 인식 실행하기</h1></p><p><a href="https://blog.eleiton.dev/posts/llm-and-genai-in-docker/" target="_blank" rel="noopener noreferrer">[블로그</a>]</p><p><a href="https://github.com/open-webui/open-webui" target="_blank" rel="noopener noreferrer">Open WebUI</a>를 사용자 친화적인 AI 인터페이스로 사용하고, 대형 언어 모델(LLM) 통합을 위해 <a href="https://github.com/ollama/ollama" target="_blank" rel="noopener noreferrer">Ollama</a>를 사용하는 Docker 기반 솔루션을 손쉽게 배포하세요.</p><p>또한, <a href="https://github.com/comfyanonymous/ComfyUI" target="_blank" rel="noopener noreferrer">ComfyUI</a> 또는 <a href="https://github.com/vladmandic/sdnext" target="_blank" rel="noopener noreferrer">SD.Next</a> 도커 컨테이너를 실행하여 Stable Diffusion 기능을 간소화할 수 있습니다.</p><p>자동 음성 인식(ASR) 작업을 수행하기 위해 <a href="https://github.com/openai/whisper" target="_blank" rel="noopener noreferrer">OpenAI Whisper</a> 도커 컨테이너를 선택적으로 실행할 수도 있습니다.</p><p>이 모든 컨테이너는 <a href="https://github.com/intel/intel-extension-for-pytorch" target="_blank" rel="noopener noreferrer">Intel® Extension for PyTorch</a>를 사용하여 Linux 시스템의 인텔 Arc 시리즈 GPU에 최적화되어 있습니다.</p><p><img src="https://raw.githubusercontent.com/eleiton/ollama-intel-arc/main/resources/open-webui.png" alt="screenshot"></p><h2>서비스</h2>
+<ul><li>Ollama  </li>
+   <li>인텔 Arc GPU가 탑재된 Linux 컴퓨터에서 llama.cpp와 Ollama를 IPEX-LLM과 함께 실행합니다.  </li>
+   <li><a href="https://github.com/intel/ipex-llm/blob/main/docs/mddocs/DockerGuides/README.md" target="_blank" rel="noopener noreferrer">Intel</a> 가이드라인을 따라 빌드되었습니다.  </li>
+   <li>공식 <a href="https://hub.docker.com/r/intelanalytics/ipex-llm-inference-cpp-xpu" target="_blank" rel="noopener noreferrer">Intel ipex-llm 도커 이미지</a>를 기본 컨테이너로 사용합니다.  </li>
+   <li>최신 패키지 버전을 사용하며, 안정성보다는 최신 기능을 우선시합니다.  </li>
+   <li>Ollama 서비스에 연결할 수 있도록 <code>11434</code> 포트를 개방합니다.</li></p><p><li>Open WebUI  </li>
+   <li>Open WebUI의 공식 배포판을 사용합니다.  </li>
+   <li>인증 없이 사용 가능하도록 <code>WEBUI_AUTH</code>가 비활성화되어 있습니다.  </li>
+   <li><code>ENABLE_OPENAI_API</code>는 비활성화, <code>ENABLE_OLLAMA_API</code>는 활성화하여 Ollama를 통한 상호작용만 허용합니다.  </li>
+   <li>UI에서 이미지 생성이 가능하도록 <code>ENABLE_IMAGE_GENERATION</code>이 활성화되어 있습니다.  </li>
+   <li>이미지 생성 엔진은 자동1111(Automatic1111)로 설정되어 있으며, SD.Next도 호환됩니다.</li></p><p><li>ComfyUI  </li>
+   <li>가장 강력하고 모듈화된 확산 모델 GUI, API 및 백엔드로 그래프/노드 인터페이스를 제공합니다.  </li>
+   <li>공식 <a href="https://pytorch-extension.intel.com/installation?platform=gpu" target="_blank" rel="noopener noreferrer">Intel® Extension for PyTorch</a>를 기본 컨테이너로 사용합니다.</li></p><p><li>SD.Next  </li>
+   <li>Automatic1111 기반 AI 생성 이미지 올인원 솔루션입니다.  </li>
+   <li>공식 <a href="https://pytorch-extension.intel.com/installation?platform=gpu" target="_blank" rel="noopener noreferrer">Intel® Extension for PyTorch</a>를 기본 컨테이너로 사용합니다.  </li>
+   <li>인텔 Extension for Pytorch 이미지와 호환되도록 SD.Next의 <a href="https://github.com/vladmandic/sdnext/blob/dev/configs/Dockerfile.ipex" target="_blank" rel="noopener noreferrer">도커 파일</a>을 맞춤화하여 사용합니다.</li></p><p><li>OpenAI Whisper</li>
+   <li>대규모 약한 감독을 통한 강력한 음성 인식</li>
+   </ul><em> 공식 [Intel® Extension for PyTorch]를 기본 컨테이너로 사용합니다(</em> 공식 <a href="https://pytorch-extension.intel.com/installation?platform=gpu" target="_blank" rel="noopener noreferrer">Intel® Extension for PyTorch</a>를 기본 컨테이너로 사용합니다)</p><h2>설정</h2>
+다음 명령어를 실행하여 Open WebUI와 함께 Ollama 인스턴스를 시작하세요
+<pre><code class="language-bash">$ git clone https://github.com/eleiton/ollama-intel-arc.git
+$ cd ollama-intel-arc
+$ podman compose up</code></pre>
+추가로, 하나 이상의 이미지 생성 도구를 실행하려면, 다른 터미널에서 다음 명령어를 실행하세요:</p><p>ComfyUI의 경우</p><pre><code class="language-bash">$ podman compose -f docker-compose.comfyui.yml up</code></pre>
+SD.Next 용</p><pre><code class="language-bash">$ podman compose -f docker-compose.sdnext.yml up</code></pre></p><p>자동 음성 인식을 위해 Whisper를 실행하려면, 다른 터미널에서 다음 명령어를 실행하세요:
+<pre><code class="language-bash">$ podman compose -f docker-compose.whisper.yml up</code></pre></p><h2>검증</h2>
+다음 명령어를 실행하여 Ollama 인스턴스가 정상적으로 실행 중인지 확인하세요
+<pre><code class="language-bash">$ curl http://localhost:11434/
+Ollama is running</code></pre>
+Open WebUI를 사용할 때, 콘솔에 이 일부 출력이 표시되어 arc GPU가 감지되었음을 나타냅니다
+<pre><code class="language-bash">[ollama-intel-arc] | Found 1 SYCL devices:
+[ollama-intel-arc] | |  |                   |                                       |       |Max    |        |Max  |Global |                     |
+[ollama-intel-arc] | |  |                   |                                       |       |compute|Max work|sub  |mem    |                     |
+[ollama-intel-arc] | |ID|        Device Type|                                   Name|Version|units  |group   |group|size   |       Driver version|
+[ollama-intel-arc] | |--|-------------------|---------------------------------------|-------|-------|--------|-----|-------|---------------------|
+[ollama-intel-arc] | | 0| [level_zero:gpu:0]|                     Intel Arc Graphics|  12.71|    128|    1024|   32| 62400M|         1.6.32224+14|</code></pre>
+<h2>이미지 생성 사용하기</h2>
+<ul><li>웹 브라우저를 열고 http://localhost:7860 에 접속하여 SD.Next 웹 페이지에 접근합니다.</li>
+<li>이 데모에서는 <a href="https://civitai.com/models/4384/dreamshaper" target="_blank" rel="noopener noreferrer">DreamShaper</a> 모델을 사용합니다.</li>
+<li>다음 단계를 따르세요:</li>
+<li>이미지(1)를 클릭하여 <code>dreamshaper_8</code> 모델을 다운로드합니다.</li>
+<li>다운로드가 완료될 때까지 기다립니다 (~2GB 크기), 그리고 드롭박스(2)에서 선택합니다.</li>
+<li>(선택 사항) SD.Next UI에 머무르고 싶다면 자유롭게 탐색하세요(3).</li>
+</ul><img src="https://raw.githubusercontent.com/eleiton/ollama-intel-arc/main/resources/sd.next.png" alt="screenshot">
+<ul><li>SD.Next 사용에 대한 자세한 정보는 공식 <a href="https://vladmandic.github.io/sdnext-docs/" target="_blank" rel="noopener noreferrer">문서</a>를 참고하세요.</li>
+<li>웹 브라우저를 열고 http://localhost:4040 에 접속하여 Open WebUI 웹 페이지에 접근합니다.</li>
+<li>관리자 <a href="http://localhost:4040/admin/settings" target="_blank" rel="noopener noreferrer">설정</a> 페이지로 이동합니다.</li>
+<li>이미지 섹션(1)으로 이동합니다.</li>
+<li>모든 설정이 올바른지 확인하고 새로고침 버튼(2)을 눌러 검증합니다.</li>
+<li>(선택 사항) 변경 사항이 있으면 저장하세요(3).</li>
+</ul><img src="https://raw.githubusercontent.com/eleiton/ollama-intel-arc/main/resources/open-webui-settings.png" alt="screenshot">
+<ul><li>Open WebUI 사용에 대한 자세한 정보는 공식 <a href="https://docs.openwebui.com/" target="_blank" rel="noopener noreferrer">문서</a>를 참고하세요.</li>
+<li>이제 완료되었습니다. Open WebUI 메인 페이지로 돌아가서 채팅을 시작하세요. 이미지 생성 의사를 나타내려면 <code>Image</code> 버튼을 반드시 선택하세요.</li>
+</ul><img src="https://raw.githubusercontent.com/eleiton/ollama-intel-arc/main/resources/open-webui-chat.png" alt="screenshot"></p><h2>자동 음성 인식 사용하기</h2>
+<ul><li>오디오 파일을 전사하기 위한 명령 예시는 다음과 같습니다:</li></p><p></ul><pre><code class="language-bash">  podman exec -it  whisper-ipex whisper https://www.lightbulblanguages.co.uk/resources/ge-audio/hobbies-ge.mp3 --device xpu --model small --language German --task transcribe</code></pre>
+<ul><li>응답:</li>
+</ul><pre><code class="language-bash">  [00:00.000 --> 00:08.000]  Ich habe viele Hobbys. In meiner Freizeit mache ich sehr gerne Sport, wie zum Beispiel Wasserball oder Radfahren.
+  [00:08.000 --> 00:13.000]  Außerdem lese ich gerne und lerne auch gerne Fremdsprachen.
+  [00:13.000 --> 00:19.000]  Ich gehe gerne ins Kino, höre gerne Musik und treffe mich mit meinen Freunden.
+  [00:19.000 --> 00:22.000]  Früher habe ich auch viel Basketball gespielt.
+  [00:22.000 --> 00:26.000]  Im Frühling und im Sommer werde ich viele Radtouren machen.
+  [00:26.000 --> 00:29.000]  Außerdem werde ich viel schwimmen gehen.
+  [00:29.000 --> 00:33.000]  Am liebsten würde ich das natürlich im Meer machen.</code></pre>
+<ul><li>오디오 파일을 변환하는 명령어의 예입니다:</li>
+</ul><pre><code class="language-bash">  podman exec -it  whisper-ipex whisper https://www.lightbulblanguages.co.uk/resources/ge-audio/hobbies-ge.mp3 --device xpu --model small --language German --task translate</code></pre>
+<ul><li>응답:</li>
+</ul><pre><code class="language-bash">  [00:00.000 --> 00:02.000]  I have a lot of hobbies.
+  [00:02.000 --> 00:05.000]  In my free time I like to do sports,
+  [00:05.000 --> 00:08.000]  such as water ball or cycling.
+  [00:08.000 --> 00:10.000]  Besides, I like to read
+  [00:10.000 --> 00:13.000]  and also like to learn foreign languages.
+  [00:13.000 --> 00:15.000]  I like to go to the cinema,
+  [00:15.000 --> 00:16.000]  like to listen to music
+  [00:16.000 --> 00:19.000]  and meet my friends.
+  [00:19.000 --> 00:22.000]  I used to play a lot of basketball.
+  [00:22.000 --> 00:26.000]  In spring and summer I will do a lot of cycling tours.
+  [00:26.000 --> 00:29.000]  Besides, I will go swimming a lot.
+  [00:29.000 --> 00:33.000]  Of course, I would prefer to do this in the sea.</code></pre>
+<ul><li>웹 파일 대신 자신의 오디오 파일을 사용하려면, <code>~/whisper-files</code> 폴더에 파일을 넣고 다음과 같이 접근하세요:</li>
+</ul><pre><code class="language-bash">  podman exec -it  whisper-ipex whisper YOUR_FILE_NAME.mp3 --device xpu --model small --task translate</code></pre></p><h2>컨테이너 업데이트</h2>
+<a href="https://hub.docker.com/r/intelanalytics/ipex-llm-inference-cpp-xpu" target="_blank" rel="noopener noreferrer">ipex-llm-inference-cpp-xpu</a> 도커 이미지나 Open WebUI 도커 이미지에 새로운 업데이트가 있을 경우, 최신 상태를 유지하기 위해 컨테이너를 업데이트할 수 있습니다.</p><p>업데이트 전에 반드시 컨테이너를 중지하세요
+<pre><code class="language-bash">$ podman compose down </code></pre></p><p>그런 다음 pull 명령을 실행하여 <code>latest</code> 이미지를 가져오십시오.
+<pre><code class="language-bash">$ podman compose pull</code></pre>
+그 후에, 다시 서비스를 시작하려면 compose up을 실행할 수 있습니다.</p><pre><code class="language-bash">$ podman compose up</code></pre></p><h2>Ollama 컨테이너에 수동으로 연결하기</h2>
+다음 명령어를 실행하여 Ollama 컨테이너에 직접 연결할 수 있습니다:</p><pre><code class="language-bash">$ podman exec -it ollama-intel-arc /bin/bash
+$ /llm/ollama/ollama -v</code></pre>
+<h2>나의 개발 환경:</h2>
+<ul><li>Core Ultra 7 155H</li>
+<li>Intel® Arc™ 그래픽스 (Meteor Lake-P)</li>
+<li>Fedora 41</li></p><p></ul><h2>참고 자료</h2>
+<ul><li><a href="https://docs.openwebui.com/" target="_blank" rel="noopener noreferrer">Open WebUI 문서</a></li>
+<li><a href="https://hub.docker.com/r/intelanalytics/ipex-llm-serving-xpu/tags" target="_blank" rel="noopener noreferrer">Docker - Intel ipex-llm 태그</a></li>
+<li><a href="https://hub.docker.com/r/intel/intel-extension-for-pytorch/tags" target="_blank" rel="noopener noreferrer">Docker - Intel pytorch 확장</a></li>
+<li><a href="https://github.com/intel/ipex-llm/tags" target="_blank" rel="noopener noreferrer">GitHub - Intel ipex-llm 태그</a></li>
+<li><a href="https://github.com/intel/intel-extension-for-pytorch/tags" target="_blank" rel="noopener noreferrer">GitHub - Intel pytorch 확장</a></li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-16
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/eleiton/ollama-intel-arc/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-02-16 
+    </div>
+    
+</body>
+</html>
