@@ -1,0 +1,413 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TVT - [ICCV2025] 细节保留的真实世界图像超分辨率迁移VAE训练官方代码</title>
+    <meta name="description" content="[ICCV2025] 细节保留的真实世界图像超分辨率迁移VAE训练官方代码">
+    <meta name="keywords" content="TVT, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "TVT",
+  "description": "[ICCV2025] 细节保留的真实世界图像超分辨率迁移VAE训练官方代码",
+  "author": {
+    "@type": "Person",
+    "name": "Joyies"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 116
+  },
+  "url": "https://OpenAiTx.github.io/projects/Joyies/TVT/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/Joyies/TVT/main/README.md",
+  "datePublished": "2026-02-22",
+  "dateModified": "2026-02-22"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Joyies/TVT" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    TVT
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 116 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by Joyies</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><div align="center">
+<h2>通过迁移VAE训练实现细节保留的真实世界图像超分辨率</h2></p><p>🚩 已被ICCV2025接受</p><p><a href="https://dblp.org/pid/249/8335.html" target="_blank" rel="noopener noreferrer">易巧思</a><sup>1,2</sup>
+| <a href="https://scholar.google.com/citations?hl=zh-CN&user=Bd73ldQAAAAJ" target="_blank" rel="noopener noreferrer">李帅</a><sup>1</sup>
+| <a href="https://scholar.google.com/citations?user=A-U8zE8AAAAJ&hl=zh-CN" target="_blank" rel="noopener noreferrer">吴荣元</a><sup>1,2</sup>
+| <a href="https://scholar.google.com/citations?hl=zh-CN&tzom=-480&user=ZCDjTn8AAAAJ" target="_blank" rel="noopener noreferrer">孙凌辰</a><sup>1,2</sup>
+| <a href="https://dblp.org/pid/41/915-1.html" target="_blank" rel="noopener noreferrer">吴宇辉</a><sup>1,2</sup>
+| <a href="https://www4.comp.polyu.edu.hk/~cslzhang" target="_blank" rel="noopener noreferrer">张磊</a><sup>1,2</sup></p><p><sup>1</sup>香港理工大学, <sup>2</sup>OPPO研究院
+</div></p><p><a href="https://arxiv.org/pdf/2507.20291" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/ArXiv%20-Paper-b31b1b?logo=arxiv&logoColor=red" alt=""></a>&nbsp; <a href="https://huggingface.co/Joypop/TVTSR/tree/main" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-model%20weights-blue" alt="weights"></a></p><h2>⏰ 更新</h2>
+<ul><li><strong>2025.7.29</strong>：论文已发布于<a href="https://arxiv.org/pdf/2507.20291" target="_blank" rel="noopener noreferrer">ArXiv</a>。</li>
+<li><strong>2025.7.28</strong>：训练代码和测试代码已发布。</li>
+<li><strong>2025.7.24</strong>：仓库已发布。</li></p><p></ul>:star: 如果TVT对您的图像或项目有帮助，请帮忙给这个仓库点个星。谢谢！:hugs:</p><h3>待办事项 </h3>
+<ul><li>[x] 发布推理代码。</li>
+<li>[x] 更新训练代码。</li>
+<li>[ ] fp16 VAED4。</li></p><p>
+</ul><h2>⚙ 依赖和安装</h2>
+<pre><code class="language-shell">## git clone this repository
+git clone https://github.com/Joyies/TVT.git
+cd TVT</p><h1>create an environment</h1>
+conda create -n TVT python=3.10
+conda activate TVT
+pip install --upgrade pip
+pip install -r requirements.txt</code></pre></p><h2>🏂 快速推理</h2></p><h3>真实世界图像超分辨率</h3></p><p>#### 第1步：下载预训练模型
+<ul><li>从<a href="https://huggingface.co/Joypop/stable-diffusion-2-1-base" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-SD%202.1%20Base-blue" alt="weights"></a>&nbsp;下载预训练的SD-2.1-base模型</li>
+<li>从<a href="https://huggingface.co/Joypop/TVTSR/tree/main" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-model%20weights-blue" alt="weights"></a>&nbsp;下载模型权重(<a href="https://huggingface.co/Joypop/TVTSR/tree/main/ckp" target="_blank" rel="noopener noreferrer">VAED4</a>, <a href="https://huggingface.co/Joypop/TVTSR/tree/main/ckp" target="_blank" rel="noopener noreferrer">TVT模型</a>, <a href="https://huggingface.co/Joypop/TVTSR/tree/main/ckp" target="_blank" rel="noopener noreferrer">TVTUNet</a>, <a href="https://huggingface.co/Joypop/TVTSR/tree/main/ckp" target="_blank" rel="noopener noreferrer">DAPE</a>，和 <a href="https://huggingface.co/Joypop/TVTSR/tree/main/ckp" target="_blank" rel="noopener noreferrer">RAM</a>)，并将模型权重放入 <code>ckp/</code> 文件夹：</li></p><p></ul>#### 第2步：准备测试数据并运行测试命令
+您可以修改 input_path 和 output_path 来运行测试命令。input_path 是测试图像的路径，output_path 是输出图像保存的路径。
+<pre><code class="language-">python TVT/inferences/inference.py \
+--input_image input_path \
+--output_dir output_path \
+--pretrained_path ckp/model_TVT.pkl \
+--pretrained_model_name_or_path stabilityai/stable-diffusion-2-1-base \
+--pretrained_unet_path ckp/TVTUNet \
+--vae4d_path ckp/vae.ckpt \
+--ram_ft_path ckp/DAPE.pth \
+--negprompt 'dotted, noise, blur, lowres, smooth' \
+--prompt 'clean, high-resolution, 8k' \
+--upscale 4 \
+--time_step 1</code></pre>
+or 
+<pre><code class="language-">bash scripts/test/test_realsr.sh</code></pre>
+我们还提供了切片代码以节省推理时的GPU内存。您可以运行该命令，并根据设备的显存调整切片大小和步幅。
+<pre><code class="language-">python TVT/inferences/inference_tile.py \
+--input_image input_path \
+--output_dir output_path \
+--pretrained_path ckp/model_TVT.pkl \
+--pretrained_model_name_or_path stabilityai/stable-diffusion-2-1-base \
+--pretrained_unet_path ckp/TVTUNet \
+--vae4d_path ckp/vae.ckpt \
+--ram_ft_path ckp/DAPE.pth \
+--negprompt 'dotted, noise, blur, lowres, smooth' \
+--prompt 'clean, high-resolution, 8k' \
+--upscale 4 \
+--time_step 1 \
+--tiled_size 96 \
+--tiled_overlap 32</code></pre></p><h2>🚄 训练阶段</h2></p><h3>在 OpenImage 数据集和 LSDIR 数据集上训练 VAED4。</h3>
+#### 第一步：准备训练数据
+下载 <a href="https://storage.googleapis.com/openimages/web/index.html" target="_blank" rel="noopener noreferrer">OpenImage 数据集</a> 和 <a href="https://github.com/ofsoundof/LSDIR" target="_blank" rel="noopener noreferrer">LSIDR 数据集</a>。对于 LSDIR 数据集中的每张图像，使用步长为64像素的滑动窗口裁剪多个512×512的图像块；</p><p>#### 第二步：训练 VAED4
+使用 <a href="https://github.com/CompVis/latent-diffusion" target="_blank" rel="noopener noreferrer">LDM 代码</a> 来训练 VAED4。 </p><h3>在 Real-ISR 数据集上训练 TVTSR</h3>
+#### 第一步：准备训练数据</p><p>下载 <a href="https://github.com/ofsoundof/LSDIR" target="_blank" rel="noopener noreferrer">LSIDR 数据集</a> 和前 1 万张 <a href="https://github.com/NVlabs/ffhq-dataset" target="_blank" rel="noopener noreferrer">FFHQ 数据集</a>。随后对训练数据集进行数据增强。具体来说，对于 LSDIR 数据集中的每张图像，使用步长为64像素的滑动窗口裁剪多个512×512的图像块；对于 FFHQ 数据集，直接将所有图像调整为512×512。</p><p>#### 第二步：训练 Real-ISR 模型</p><ul><li>下载 <a href="https://huggingface.co/Joypop/TVTSR/tree/main/ckp" target="_blank" rel="noopener noreferrer">VAED4</a>、<a href="https://huggingface.co/Joypop/TVTSR/tree/main/ckp" target="_blank" rel="noopener noreferrer">TVTUNet</a> 和 <a href="https://huggingface.co/Joypop/TVTSR/tree/main/ckp" target="_blank" rel="noopener noreferrer">RAM</a> 模型，并将这些模型放入 <code>ckp/</code> 文件夹中。</li></p><p><li>开始训练。</li>
+    </ul><pre><code class="language-shell">   accelerate launch --gpu_ids=0,1,2,3, --num_processes=4 TVT/train_TVTSR/train.py \
+    --pretrained_model_name_or_path="stabilityai/stable-diffusion-2-1-base" \
+    --pretrained_model_name_or_path_vsd="stabilityai/stable-diffusion-2-1-base" \
+    --pretrained_unet_path='ckp/TVTUNet' \
+    --vae4d_path='ckp/vae.ckpt' \
+    --dataset_folder="data_path" \
+    --testdataset_folder="test_path" \
+    --resolution=512 \
+    --learning_rate=5e-5 \
+    --train_batch_size=2 \
+    --gradient_accumulation_steps=2 \
+    --enable_xformers_memory_efficient_attention \
+    --eval_freq 500 \
+    --checkpointing_steps 500 \
+    --mixed_precision='fp16' \
+    --report_to "tensorboard" \
+    --output_dir="output_path" \
+    --lora_rank_unet_vsd=4 \
+    --lora_rank_unet=4 \
+    --lambda_lpips=2 \
+    --lambda_l2=1 \
+    --lambda_vsd=1 \
+    --lambda_vsd_lora=1 \
+    --min_dm_step_ratio=0.25 \
+    --max_dm_step_ratio=0.75 \
+    --use_vae_encode_lora \
+    --align_method="adain" \
+    --use_online_deg \
+    --deg_file_path="params_TVT.yml" \
+    --negative_prompt='painting, oil painting, illustration, drawing, art, sketch, oil painting, cartoon, CG Style, 3D render, unreal engine, blurring, dirty, messy, worst quality, low quality, frames, watermark, signature, jpeg artifacts, deformed, lowres, over-smooth' \
+    --test_image_prep='no_resize' \
+    --time_step=1 \
+    --tracker_project_name "experiment_track_name"
+    ``<code>
+    or
+    </code>`<code>shell
+   bash scripts/train/train.sh
+    </code>`<code></p><h2>🔗 引用</h2>
+如果我们的代码对您的研究或工作有所帮助，请考虑引用我们的论文。
+以下是BibTeX引用格式：
+</code></pre>
+@article{yi2025fine,
+  title={Fine-structure Preserved Real-world Image Super-resolution via Transfer VAE Training},
+  author={Yi, Qiaosi and Li, Shuai and Wu, Rongyuan and Sun, Lingchen and Wu, Yuhui and Zhang, Lei},
+  booktitle={Proceedings of the IEEE/CVF international conference on computer vision},
+  year={2025}
+}
+</code>``</p><h2>©️ 许可证</h2>
+本项目采用<a href="LICENSE" target="_blank" rel="noopener noreferrer">Apache 2.0 许可证</a>发布。</p><h2>📧 联系方式</h2>
+如有任何疑问，请联系：qiaosiyijoyies@gmail.com</p><h2>致谢</h2>
+本项目基于<a href="https://github.com/huggingface/diffusers" target="_blank" rel="noopener noreferrer">diffusers</a>、<a href="https://github.com/CompVis/latent-diffusion" target="_blank" rel="noopener noreferrer">LDM</a>、<a href="https://github.com/cswry/OSEDiff" target="_blank" rel="noopener noreferrer">OSEDiff</a>和<a href="https://github.com/csslc/PiSA-SR" target="_blank" rel="noopener noreferrer">PiSA-SR</a>。感谢这些出色的工作。</p><p><details>
+<summary>统计信息</summary></p><p><img src="https://visitor-badge.laobi.icu/badge?page_id=Joyies/TVT" alt="访客"></p><p></details></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-22
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Joyies/TVT/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-02-22 
+    </div>
+    
+</body>
+</html>
