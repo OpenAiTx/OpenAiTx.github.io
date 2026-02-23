@@ -1,0 +1,393 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pytorch-accelerated - A lightweight library designed to speed up training PyTorch models by offering a minimal yet extensible training loop that is flexible enough for most use cases and can utilize different hardware options without requiring code changes. Docs: https://pytorch-accelerated.readthedocs.io/en/latest/</title>
+    <meta name="description" content="A lightweight library designed to speed up training PyTorch models by offering a minimal yet extensible training loop that is flexible enough for most use cases and can utilize different hardware options without requiring code changes. Docs: https://pytorch-accelerated.readthedocs.io/en/latest/">
+    <meta name="keywords" content="pytorch-accelerated, English, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "pytorch-accelerated",
+  "description": "A lightweight library designed to speed up training PyTorch models by offering a minimal yet extensible training loop that is flexible enough for most use cases and can utilize different hardware options without requiring code changes. Docs: https://pytorch-accelerated.readthedocs.io/en/latest/",
+  "author": {
+    "@type": "Person",
+    "name": "Chris-hughes10"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 192
+  },
+  "url": "https://OpenAiTx.github.io/projects/Chris-hughes10/pytorch-accelerated/README-en.html",
+  "sameAs": "https://raw.githubusercontent.com/Chris-hughes10/pytorch-accelerated/main/README.md",
+  "datePublished": "2026-02-23",
+  "dateModified": "2026-02-23"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Chris-hughes10/pytorch-accelerated" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    pytorch-accelerated
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 192 stars</span>
+                <span class="language">English</span>
+                <span>by Chris-hughes10</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>pytorch-accelerated</h1></p><p><code>pytorch-accelerated</code> is a lightweight library designed to accelerate the process of training PyTorch models  
+by providing a minimal, but extensible training loop - encapsulated in a single <code>Trainer</code>  
+object - which is flexible enough to handle the majority of use cases, and capable of utilizing different hardware  
+options with no code changes required.  
+ 
+<code>pytorch-accelerated</code> offers a streamlined feature set, and places a huge emphasis on <strong>simplicity</strong> and <strong>transparency</strong>,  
+to enable users to understand exactly what is going on under the hood, but without having to write and maintain the boilerplate themselves!  
+   
+The key features are:  
+<ul><li>A simple and contained, but easily customisable, training loop, which should work out of the box in straightforward cases;  </li>
+ </ul>behaviour can be customised using inheritance and/or callbacks.  
+<ul><li>Handles device placement, mixed-precision, DeepSpeed integration, multi-GPU and distributed training with no code changes.  </li>
+<li>Uses pure PyTorch components, with no additional modifications or wrappers, and easily interoperates  </li>
+ </ul>with other popular libraries such as <a href="https://github.com/rwightman/pytorch-image-models" target="_blank" rel="noopener noreferrer">timm</a>,  
+ <a href="https://huggingface.co/transformers/" target="_blank" rel="noopener noreferrer">transformers</a> and <a href="https://torchmetrics.readthedocs.io/en/latest/" target="_blank" rel="noopener noreferrer">torchmetrics</a>.  
+<ul><li>A small, streamlined API ensures that there is a minimal learning curve for existing PyTorch users.  </li></p><p></ul>Significant effort has been taken to ensure that every part of the library - both internal and external components - is as clear and simple as possible,  
+making it easy to customise, debug and understand exactly what is going on behind the scenes at each step; most of the  
+behaviour of the trainer is contained in a single class!  
+In the spirit of Python, nothing is hidden and everything is accessible.  </p><p><code>pytorch-accelerated</code> is proudly and transparently built on top of  
+<a href="https://github.com/huggingface/accelerate" target="_blank" rel="noopener noreferrer">Hugging Face Accelerate</a>, which is responsible for the  
+movement of data between devices and launching of training configurations. When customizing the trainer, or launching  
+training, users are encouraged to consult the <a href="https://huggingface.co/docs/accelerate/" target="_blank" rel="noopener noreferrer">Accelerate documentation</a>  
+to understand all available options; Accelerate provides convenient functions for operations such gathering tensors  
+and gradient clipping, usage of which can be seen in the <code>pytorch-accelerated</code>  
+<a href="https://github.com/Chris-hughes10/pytorch-accelerated/tree/main/examples" target="_blank" rel="noopener noreferrer">examples</a> folder!  </p><p>To learn more about the motivations behind this library, along with a detailed getting started guide, check out <a href="https://medium.com/@chris.p.hughes10/introducing-pytorch-accelerated-6ba99530608c?source=friends_link&sk=868c2d2ec5229fdea42877c0bf82b968" target="_blank" rel="noopener noreferrer">this blog post</a>.  </p><h2>Installation  </h2></p><p><code>pytorch-accelerated</code> can be installed from pip using the following command:
+<pre><code class="language-">pip install pytorch-accelerated</code></pre>
+To make the package as slim as possible, the packages required to run the examples are not included by default. To include these packages, you can use the following command:</p><pre><code class="language-">pip install pytorch-accelerated[examples]</code></pre></p><h2>Quickstart</h2></p><p>To get started, simply import and use the pytorch-accelerated <code>Trainer</code>, as demonstrated in the following snippet,  
+and then launch training using the  
+<a href="https://huggingface.co/docs/accelerate/quicktour.html#launching-your-distributed-script" target="_blank" rel="noopener noreferrer">accelerate CLI</a>  
+described below.</p><pre><code class="language-python"># examples/core/train_mnist.py
+import os</p><p>from torch import nn, optim
+from torch.utils.data import random_split
+from torchvision import transforms
+from torchvision.datasets import MNIST</p><p>from pytorch_accelerated import Trainer</p><p>class MNISTModel(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.main = nn.Sequential(
+            nn.Linear(in_features=784, out_features=128),
+            nn.ReLU(),
+            nn.Linear(in_features=128, out_features=64),
+            nn.ReLU(),
+            nn.Linear(in_features=64, out_features=10),
+        )</p><p>    def forward(self, input):
+        return self.main(input.view(input.shape[0], -1))</p><p>def main():
+    dataset = MNIST(os.getcwd(), download=True, transform=transforms.ToTensor())
+    train_dataset, validation_dataset, test_dataset = random_split(dataset, [50000, 5000, 5000])
+    model = MNISTModel()
+    optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
+    loss_func = nn.CrossEntropyLoss()</p><p>    trainer = Trainer(
+            model,
+            loss_func=loss_func,
+            optimizer=optimizer,
+    )</p><p>    trainer.train(
+        train_dataset=train_dataset,
+        eval_dataset=validation_dataset,
+        num_epochs=8,
+        per_device_batch_size=32,
+    )</p><p>    trainer.evaluate(
+        dataset=test_dataset,
+        per_device_batch_size=64,
+    )
+    
+if __name__ == "__main__":
+    main()</code></pre>
+To launch training using the <a href="https://huggingface.co/docs/accelerate/quicktour.html#launching-your-distributed-script" target="_blank" rel="noopener noreferrer">accelerate CLI</a>
+, on your machine(s), run:</p><p><code> accelerate config --config_file accelerate_config.yaml</code></p><p>and answer the questions asked. This will generate a config file that will be used to properly set the default options when doing</p><p><code>accelerate launch --config_file accelerate_config.yaml train.py [--training-args]</code></p><p><em>Note</em>: Using the <a href="https://huggingface.co/docs/accelerate/quicktour.html#launching-your-distributed-script" target="_blank" rel="noopener noreferrer">accelerate CLI</a> is completely optional, training can also be launched in the usual way using:</p><p><code>python train.py</code> / <code>python -m torch.distributed ...</code></p><p>depending on your infrastructure configuration, for users who would like to maintain a more fine-grained control 
+over the launch command.</p><p>More complex training examples can be seen in the examples folder 
+<a href="https://github.com/Chris-hughes10/pytorch-accelerated/tree/main/examples" target="_blank" rel="noopener noreferrer">here</a>. </p><p>Alternatively, if you would rather understand the core concepts first, this can be found in the <a href="https://pytorch-accelerated.readthedocs.io/en/latest/" target="_blank" rel="noopener noreferrer">documentation</a>.</p><h2>Usage</h2></p><h3>Who is pytorch-accelerated aimed at?</h3></p><ul><li>Users that are familiar with PyTorch but would like to avoid having to write the common training loop boilerplate</li>
+</ul>to focus on the interesting parts of the training loop.
+<ul><li>Users who like, and are comfortable with, selecting and creating their own models, loss functions, optimizers and datasets.</li>
+<li>Users who value a simple and streamlined feature set, where the behaviour is easy to debug, understand, and reason about!</li></p><p></ul><h3>When shouldn't I use pytorch-accelerated?</h3></p><ul><li>If you are looking for an end-to-end solution, encompassing everything from loading data to inference,</li>
+  </ul>which helps you to select a model, optimizer or loss function, you would probably be better suited to
+  <a href="https://github.com/fastai/fastai" target="_blank" rel="noopener noreferrer">fastai</a>. <code>pytorch-accelerated</code> focuses only on the training process, with all other
+  concerns being left to the responsibility of the user.
+<ul><li>If you would like to write the entire training loop yourself, just without all of the device management headaches, </li>
+</ul>you would probably be best suited to using <a href="https://github.com/huggingface/accelerate" target="_blank" rel="noopener noreferrer">Accelerate</a> directly! Whilst it
+is possible to customize every part of the <code>Trainer</code>, the training loop is fundamentally broken up into a number of </p><p>different methods that you would have to override. But, before you go, is writing those <code>for</code> loops really important 
+enough to warrant starting from scratch <em>again</em> 😉.
+<ul><li>If you are working on a custom, highly complex, use case which does not fit the patterns of usual training loops </li>
+</ul>and want to squeeze out every last bit of performance on your chosen hardware, you are probably best off sticking 
+ with vanilla PyTorch; any high-level API becomes an overhead in highly specialized cases!</p><h2>Acknowledgements</h2></p><p>Many aspects behind the design and features of <code>pytorch-accelerated</code> were greatly inspired by a number of excellent 
+libraries and frameworks such as <a href="https://github.com/fastai/fastai" target="_blank" rel="noopener noreferrer">fastai</a>, <a href="https://github.com/rwightman/pytorch-image-models" target="_blank" rel="noopener noreferrer">timm</a>, 
+<a href="https://github.com/PyTorchLightning/pytorch-lightning" target="_blank" rel="noopener noreferrer">PyTorch-lightning</a> and <a href="https://github.com/huggingface/accelerate" target="_blank" rel="noopener noreferrer">Hugging Face Accelerate</a>. Each of these tools 
+have made an enormous impact on both this library and the machine learning community, and their influence can not be 
+stated enough!</p><p><code>pytorch-accelerated</code> has taken only inspiration from these tools, and all of the functionality contained has been implemented 
+ from scratch in a way that benefits this library. The only exceptions to this are some of the scripts in the 
+ <a href="https://github.com/Chris-hughes10/pytorch-accelerated/tree/main/examples" target="_blank" rel="noopener noreferrer">examples</a> 
+ folder in which existing resources were taken and modified in order to showcase the features of <code>pytorch-accelerated</code>; 
+ these cases are clearly marked, with acknowledgement being given to the original authors.
+ </p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-23
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Chris-hughes10/pytorch-accelerated/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-02-23 
+    </div>
+    
+</body>
+</html>
