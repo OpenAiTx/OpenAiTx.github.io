@@ -1,0 +1,388 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComfyUI-Qwen-Image-Integrated-KSampler - Qwen Image Integrated KSampler, an intelligent multimodal sampler supporting Z-Image, optimizes official offset issues, image scaling, multiple reference images, automatic VRAM/RAM management, batch generation, automatic saving, sound notifications, AuraFlow optimization, and CFG standardization adjustment features.</title>
+    <meta name="description" content="Qwen Image Integrated KSampler, an intelligent multimodal sampler supporting Z-Image, optimizes official offset issues, image scaling, multiple reference images, automatic VRAM/RAM management, batch generation, automatic saving, sound notifications, AuraFlow optimization, and CFG standardization adjustment features.">
+    <meta name="keywords" content="ComfyUI-Qwen-Image-Integrated-KSampler, English, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ComfyUI-Qwen-Image-Integrated-KSampler",
+  "description": "Qwen Image Integrated KSampler, an intelligent multimodal sampler supporting Z-Image, optimizes official offset issues, image scaling, multiple reference images, automatic VRAM/RAM management, batch generation, automatic saving, sound notifications, AuraFlow optimization, and CFG standardization adjustment features.",
+  "author": {
+    "@type": "Person",
+    "name": "luguoli"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 206
+  },
+  "url": "https://OpenAiTx.github.io/projects/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/README-en.html",
+  "sameAs": "https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/README.md",
+  "datePublished": "2026-02-25",
+  "dateModified": "2026-02-25"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    ComfyUI-Qwen-Image-Integrated-KSampler
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 206 stars</span>
+                <span class="language">English</span>
+                <span>by luguoli</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>🐋 Qwen Image Integrated KSampler</h1></p><p><a href="https://github.com/luguoli" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/GitHub-luguoli-orange" alt="GitHub"></a>
+<a href="https://github.com/comfyanonymous/ComfyUI" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/ComfyUI-CustomNode-blue" alt="ComfyUI"></a></p><p><a href="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/README-en.md" target="_blank" rel="noopener noreferrer">English</a> | <strong><a href="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/README-zh.md" target="_blank" rel="noopener noreferrer">简体中文</a></strong></p><p>QwenImageIntegratedKSampler</p><p>This is an integrated ComfyUI Qwen-Image image generation sampler node, supporting Z-Image. Compared to using the official KSampler, it eliminates the messy wiring, supports both text-to-image and image-to-image generation, solves the offset issues of the official nodes, and integrates prompt input box, automatic image scaling, automatic memory/vRAM cleanup, batch generation, automatic saving and other comprehensive optimization features, so mom no longer has to worry about my messy wiring~~~~</p><p>#### If this project helps you, please give it a ⭐Star — it lets me know there are humans out there using it!</p><h2>🏆 Features</h2></p><h3>🎨 Supported Generation Modes</h3>
+<ul><li><strong>Z-Image</strong>: Support Z-Image Model</li>
+<li><strong>Text-to-Image</strong>: Generate images from text prompts</li>
+<li><strong>Image-to-Image</strong>: Generate based on reference images, image editing, supports up to 5 images</li></p><p></ul><h3>⚡ Advanced Optimizations</h3>
+<ul><li><strong>Optimize Offset Issues</strong>: Solves the offset issues of official nodes, and better follows instructions</li>
+<li><strong>Integrated Sampling Algorithm (AuraFlow)</strong>: Integrates Sampling Algorithm (AuraFlow) node, no additional wiring needed</li>
+<li><strong>CFGNorm Integration</strong>: Integrates CFGNorm node, no additional wiring needed</li></p><p></ul><h3>🖼️ Image Processing</h3>
+<ul><li><strong>Integrated Prompt Input Box</strong>: Integrates prompt input box, no additional wiring needed</li>
+<li><strong>Multiple Reference Images</strong>: Supports up to 5 reference images for conditional generation</li>
+<li><strong>Automatic Image Scaling</strong>: Maintains aspect ratio while resizing to target dimensions</li></p><p><li><strong>Support ControlNet Control</strong>: Additional connection to [🐋 Qwen ControlNet Integrated Loader] for pose, depth and other controls</li></p><p></ul><h3>🔧 Productivity Enhancement</h3>
+<ul><li><strong>Batch Generation</strong>: Generate multiple images in a single operation</li>
+<li><strong>Automatic VRAM Cleanup</strong>: Automatic cleanup options for GPU/VRAM memory</li>
+<li><strong>Automatic RAM Cleanup</strong>: Automatic cleanup options for RAM memory</li>
+<li><strong>Automatic Save Results</strong>: Automatically save generated result images to specified folder</li>
+<li><strong>Completion Sound Notification</strong>: Play audio reminder after generation completes</li></p><p></ul><h2>🍧 Comparison Display</h2>
+<h3>🔄 Workflow Complexity Comparison</h3>
+<ul><li><strong>❌ Workflow without using [Qwen Image Integrated KSampler] (complicated, too many nodes, too many wires)</strong></li>
+</ul><img src="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/images/1-1-en.png" alt="alt text">
+<ul><li><strong>✅ Workflow using [Qwen Image Integrated KSampler] (extremely simple, single node done, almost no wires)</strong></li>
+</ul><img src="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/images/1-2-en.png" alt="alt text"></p><h3>🖼️ Generated Image Effect Comparison</h3>
+<ul><li><strong>❌ Workflow without using [Qwen Image Integrated KSampler] (obvious offset, scaling)</strong></li>
+</ul><img src="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/images/2-1.png" alt="alt text">
+<ul><li><strong>✅ Workflow using [Qwen Image Integrated KSampler] (completely no offset, scaling)</strong></li>
+</ul><img src="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/images/2-2.png" alt="alt text"></p><h2>📦 Installation Method</h2></p><h3>Method 1: Via ComfyUI Manager (Recommended)</h3>
+<ul><li>Open ComfyUI Manager in the ComfyUI interface</li>
+<li>Search for "ComfyUI-Qwen-Image-Integrated-KSampler"</li>
+<li>Click Install</li></p><p></ul><h3>Method 2: Manual Installation</h3>
+<ul><li>Navigate to your ComfyUI custom nodes directory:</li>
+   </ul>``<code>bash
+   cd /path/to/ComfyUI/custom_nodes
+   </code>`<code></p><ul><li>Clone the repository:</li>
+   </ul></code>`<code>bash
+   git clone https://github.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler.git
+   or gitee repository:
+   git clone https://gitee.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler.git
+   </code>`<code>
+<ul><li>Install dependencies:</li></p><p>   </ul></code>`<code>bash
+   pip install -r requirements.txt
+   </code>`<code></p><ul><li>Restart ComfyUI</li></p><p></ul><h2>🚀 Usage Method</h2></p><h3><a href="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/workflow_example.json" target="_blank" rel="noopener noreferrer">Workflow Example</a></h3></p><h3>Basic Text-to-Image Generation</h3></p><ul><li>Add the "🐋 Qwen Image Integrated KSampler" node to the workflow</li>
+<li>Set </code>generation_mode<code> to "text-to-image"</li>
+<li>Connect required inputs:</li>
+   <li>Model (🤖 Model)</li>
+   <li>CLIP (🟡 Clip)</li>
+   <li>VAE (🎨 Vae)</li>
+<li>Enter positive and negative prompts</li>
+<li>Set width and height (required for text-to-image)</li>
+<li>Configure sampling parameters (steps, CFG, sampler, scheduler)</li>
+<li>Execute the workflow</li></p><p></ul><h3>Image-to-Image Generation</h3></p><ul><li>Add the node to the workflow</li>
+<li>Set </code>generation_mode` to "image-to-image"</li>
+<li>Connect at least one reference image (🖼️ Image1)</li>
+<li>Optionally add up to 4 other reference images</li>
+<li>Enter positive/negative prompts and instructions</li>
+<li>Set target width/height for scaling (optional)</li>
+<li>Configure other parameters as needed</li>
+<li>Execute the workflow</li></p><p></ul><h3>ControlNet Control</h3></p><ul><li>Add the [🐋 Qwen ControlNet Integrated Loader] node, connect to [📦 ControlNet Data]</li></p><p><li>Connect pose, depth control images</li></p><p><li>Select ControlNet model, set control type and strength</li></p><p><li>Execute the workflow</li></p><p></ul><img src="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/images/3-en.png" alt="alt text"></p><h3>Advanced Features</h3></p><ul><li><strong>Memory Management</strong>: Enable GPU/CPU cleanup options to improve resource efficiency</li>
+<li><strong>Batch Processing</strong>: Set batch_size > 1 for multiple image generation</li>
+<li><strong>Auto-Save</strong>: Specify output folder for automatic saving</li>
+<li><strong>AuraFlow Tuning</strong>: Adjust auraflow_shift to balance speed and quality</li>
+<li><strong>CFG Enhancement</strong>: Stabilizer for CFG</li></p><p></ul><h2>⚠️ Notes</h2></p><h3>📝 Usage Requirements</h3>
+<ul><li><strong>Text-to-Image Mode</strong>: Must set width (Width) and height (Height), these are required parameters</li>
+<li><strong>Image-to-Image Mode</strong>: Must provide at least one reference image (Image1), supports up to 5 reference images (Image1-Image5)</li></p><p></ul><h3>🎛️ Parameter Setting Suggestions</h3>
+<ul><li><strong>Batch Size</strong>: Choose between 1-10, adjust according to GPU memory, recommend starting testing from 1</li>
+<li><strong>Resolution (Width/Height)</strong>: Must be multiples of 8, range 0-16384, recommend starting testing from lower resolutions (like 512x512)</li>
+<li><strong>Sampling Steps</strong>: Qwen models recommend 4-20 steps, too high may increase computation time but not necessarily improve quality</li>
+<li><strong>CFG Value</strong>: Range 0-100, default 1.0, recommend 1.0-7.0 range</li>
+<li><strong>Denoise Strength</strong>: Range 0-1, default 1.0, can lower appropriately in image-to-image mode</li>
+<li><strong>AuraFlow Shift</strong>: Range 0-100, default 3.0, used to balance generation speed and quality</li>
+<li><strong>CFG Normalization Strength</strong>: Range 0-100, default 1.0, stabilizer for CFG</li></p><p></ul><h3>🔧 Image Processing</h3>
+<ul><li><strong>Automatic Scaling</strong>: Text-to-image must input width and height parameters, image-to-image fills in to auto-scale reference images while maintaining aspect ratio, setting either width or height to 0 disables scaling</li>
+<li><strong>Reference Image Order</strong>: Supports up to 5 reference images, processed in order Image1-Image5, Image1 is the main image</li>
+<li><strong>Image Format</strong>: Supports standard image input formats, automatically handles batch dimensions</li></p><p></ul><h3>💾 Memory Management</h3>
+<ul><li><strong>GPU Memory Cleanup</strong>: Enable enable_clean_gpu_memory option, automatically clean VRAM before/after generation</li>
+<li><strong>CPU Memory Cleanup</strong>: Enable enable_clean_cpu_memory_after_finish, clean RAM after generation completes (including file cache, processes, dynamic libraries)</li>
+<li>For continuous large-scale generation, it is recommended to always enable memory cleanup options to prevent memory overflow</li></p><p></ul><h3>💾 Auto-Save</h3>
+<ul><li><strong>Output Folder</strong>: Set auto_save_output_folder to enable auto-save function, leave blank to disable, supports absolute and relative paths</li>
+<li><strong>File Naming</strong>: output_filename_prefix custom prefix, default "auto_save"</li>
+<li>Save format is PNG, filename includes seed and batch number (e.g.: auto_save_123456_00000.png)</li></p><p></ul><h3>🔊 Notification Function</h3>
+<ul><li><strong>Sound Notification</strong>: Only supported on Windows systems</li></p><p></ul><h2>📝 Update Records</h2>
+<h3>v1.0.6:</h3>
+<ul><li><strong>Added Localization Script:</strong> Starting from ComfyUI v0.3.68, Chinese language files became invalid. Added automatic localization script, double-click [自动汉化节点.bat] and restart ComfyUI, requires installing ComfyUI-DD-Translation plugin</li></p><p>
+</ul><h2>📞 Contact for Special Customization 📞</h2>
+<ul><li>Author: @luguoli (Sunflower on the Wall)</li>
+<li>Author Email: luguoli@vip.qq.com</li></p><p>
+</ul>---</p><p><strong>Made with ❤️ for the ComfyUI community</strong></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-25
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-02-25 
+    </div>
+    
+</body>
+</html>

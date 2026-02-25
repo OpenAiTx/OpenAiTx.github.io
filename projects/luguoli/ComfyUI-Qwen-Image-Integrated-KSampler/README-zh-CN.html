@@ -1,0 +1,390 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComfyUI-Qwen-Image-Integrated-KSampler - 千问图像集成K采样器，智能多模态采样器，支持Z-Image，优化官方偏移问题，图片缩放，多张参考图，自动显存/内存管理，批量生成，自动保存，声音通知，AuraFlow优化，CFG标准化调节等功能。</title>
+    <meta name="description" content="千问图像集成K采样器，智能多模态采样器，支持Z-Image，优化官方偏移问题，图片缩放，多张参考图，自动显存/内存管理，批量生成，自动保存，声音通知，AuraFlow优化，CFG标准化调节等功能。">
+    <meta name="keywords" content="ComfyUI-Qwen-Image-Integrated-KSampler, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ComfyUI-Qwen-Image-Integrated-KSampler",
+  "description": "千问图像集成K采样器，智能多模态采样器，支持Z-Image，优化官方偏移问题，图片缩放，多张参考图，自动显存/内存管理，批量生成，自动保存，声音通知，AuraFlow优化，CFG标准化调节等功能。",
+  "author": {
+    "@type": "Person",
+    "name": "luguoli"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 206
+  },
+  "url": "https://OpenAiTx.github.io/projects/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/README.md",
+  "datePublished": "2026-02-25",
+  "dateModified": "2026-02-25"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    ComfyUI-Qwen-Image-Integrated-KSampler
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 206 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by luguoli</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>🐋 Qwen 图像集成 KSampler</h1></p><p><a href="https://github.com/luguoli" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/GitHub-luguoli-orange" alt="GitHub"></a>
+<a href="https://github.com/comfyanonymous/ComfyUI" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/ComfyUI-CustomNode-blue" alt="ComfyUI"></a></p><p><a href="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/README-en.md" target="_blank" rel="noopener noreferrer">English</a> | <strong><a href="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/README-zh.md" target="_blank" rel="noopener noreferrer">简体中文</a></strong></p><p>QwenImageIntegratedKSampler</p><p>这是一个集成的 ComfyUI Qwen-Image 图像生成采样节点，支持 Z-Image。相比官方 KSampler，消除了繁杂的连线，支持文本到图像和图像到图像生成，解决了官方节点的偏移问题，集成了提示词输入框、自动图像缩放、自动内存/显存清理、批量生成、自动保存等多项综合优化功能，妈妈再也不用担心我乱接线了~~~~</p><p>#### 如果本项目对你有帮助，请给它一个 ⭐Star — 这让我知道有人在使用它！</p><h2>🏆 功能特点</h2></p><h3>🎨 支持的生成模式</h3>
+<ul><li><strong>Z-Image</strong>：支持 Z-Image 模型</li>
+<li><strong>文本到图像</strong>：根据文本提示生成图像</li>
+<li><strong>图像到图像</strong>：基于参考图像生成，图像编辑，支持最多5张图像</li></p><p></ul><h3>⚡ 高级优化</h3>
+<ul><li><strong>优化偏移问题</strong>：解决官方节点偏移问题，更好地遵循指令</li>
+<li><strong>集成采样算法（AuraFlow）</strong>：集成采样算法（AuraFlow）节点，无需额外连线</li>
+<li><strong>集成 CFGNorm</strong>：集成 CFGNorm 节点，无需额外连线</li></p><p></ul><h3>🖼️ 图像处理</h3>
+<ul><li><strong>集成提示词输入框</strong>：集成提示词输入框，无需额外连线</li>
+<li><strong>多参考图像支持</strong>：支持最多5张参考图像进行条件生成</li>
+<li><strong>自动图像缩放</strong>：保持宽高比的同时缩放到目标尺寸</li></p><p><li><strong>支持 ControlNet 控制</strong>：额外连接到 [🐋 Qwen ControlNet 集成加载器] 以控制姿势、深度等</li></p><p></ul><h3>🔧 生产力提升</h3>
+<ul><li><strong>批量生成</strong>：一次操作生成多张图像</li>
+<li><strong>自动显存清理</strong>：自动清理 GPU/显存内存选项</li>
+<li><strong>自动内存清理</strong>：自动清理 RAM 内存选项</li>
+<li><strong>自动保存结果</strong>：自动将生成结果图像保存到指定文件夹</li>
+<li><strong>完成音效提醒</strong>：生成完成后播放音频提醒</li></p><p></ul><h2>🍧 对比展示</h2>
+<h3>🔄 工作流程复杂度比较</h3>
+<ul><li><strong>❌ 未使用 [Qwen Image Integrated KSampler] 的工作流程（复杂，节点过多，连线过多）</strong></li>
+</ul><img src="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/images/1-1-en.png" alt="alt text">
+<ul><li><strong>✅ 使用 [Qwen Image Integrated KSampler] 的工作流程（极其简单，单节点完成，几乎无连线）</strong></li>
+</ul><img src="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/images/1-2-en.png" alt="alt text"></p><h3>🖼️ 生成图像效果比较</h3>
+<ul><li><strong>❌ 未使用 [Qwen Image Integrated KSampler] 的工作流程（明显偏移，缩放）</strong></li>
+</ul><img src="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/images/2-1.png" alt="alt text">
+<ul><li><strong>✅ 使用 [Qwen Image Integrated KSampler] 的工作流程（完全无偏移，缩放）</strong></li>
+</ul><img src="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/images/2-2.png" alt="alt text"></p><h2>📦 安装方法</h2></p><h3>方法一：通过 ComfyUI Manager（推荐）</h3>
+<ul><li>在 ComfyUI 界面打开 ComfyUI Manager</li>
+<li>搜索 “ComfyUI-Qwen-Image-Integrated-KSampler”</li>
+<li>点击安装</li></p><p></ul><h3>方法二：手动安装</h3>
+<ul><li>进入你的 ComfyUI 自定义节点目录：</li>
+   </ul>``<code>bash
+   cd /path/to/ComfyUI/custom_nodes
+   </code>`<code></p><ul><li>克隆仓库：</li>
+   </ul></code>`<code>bash
+   git clone https://github.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler.git
+   or gitee repository:
+   git clone https://gitee.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler.git
+   </code>`<code></p><ul><li>安装依赖项：</li>
+   </ul></code>`<code>bash
+   pip install -r requirements.txt
+   </code>`<code>
+<ul><li>重启 ComfyUI</li></p><p></ul><h2>🚀 使用方法</h2></p><h3><a href="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/workflow_example.json" target="_blank" rel="noopener noreferrer">工作流示例</a></h3></p><h3>基本文本到图像生成</h3></p><ul><li>将“🐋 Qwen 图像集成 KSampler”节点添加到工作流中</li>
+<li>将 </code>generation_mode<code> 设置为“text-to-image”</li>
+<li>连接所需输入：</li>
+   <li>模型 (🤖 Model)</li>
+   <li>CLIP (🟡 Clip)</li>
+   <li>VAE (🎨 Vae)</li>
+<li>输入正向和负向提示词</li>
+<li>设置宽度和高度（文本到图像必需）</li>
+<li>配置采样参数（步数，CFG，采样器，调度器）</li>
+<li>执行工作流</li></p><p></ul><h3>图像到图像生成</h3></p><ul><li>将节点添加到工作流中</li>
+<li>将 </code>generation_mode` 设置为“image-to-image”</li>
+<li>连接至少一张参考图像（🖼️ Image1）</li>
+<li>可选添加最多 4 张其他参考图像</li>
+<li>输入正向/负向提示词和说明</li>
+<li>设置目标宽度/高度进行缩放（可选）</li>
+<li>根据需要配置其他参数</li>
+<li>执行工作流</li></p><p></ul><h3>ControlNet 控制</h3></p><ul><li>添加 [🐋 Qwen ControlNet 集成加载器] 节点，连接到 [📦 ControlNet 数据]</li></p><p><li>连接姿态、深度控制图像</li></p><p><li>选择 ControlNet 模型，设置控制类型和强度</li></p><p><li>执行工作流</li></p><p></ul><img src="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/images/3-en.png" alt="alt text"></p><h3>高级功能</h3></p><ul><li><strong>内存管理</strong>：启用 GPU/CPU 清理选项以提升资源效率</li>
+<li><strong>批处理</strong>：将 batch_size 设置为大于1以生成多张图像</li>
+<li><strong>自动保存</strong>：指定输出文件夹以实现自动保存</li>
+<li><strong>AuraFlow 调节</strong>：调整 auraflow_shift 以平衡速度与质量</li>
+<li><strong>CFG 增强</strong>：CFG 稳定器</li></p><p></ul><h2>⚠️ 注意事项</h2></p><h3>📝 使用要求</h3>
+<ul><li><strong>文本生成图像模式</strong>：必须设置宽度（Width）和高度（Height），这是必填参数</li>
+<li><strong>图像生成图像模式</strong>：必须至少提供一张参考图像（Image1），最多支持5张参考图像（Image1-Image5）</li></p><p></ul><h3>🎛️ 参数设置建议</h3>
+<ul><li><strong>批量大小</strong>：选择 1-10，根据 GPU 内存调整，建议从1开始测试</li>
+<li><strong>分辨率（宽度/高度）</strong>：必须是8的倍数，范围0-16384，建议从较低分辨率（如512x512）开始测试</li>
+<li><strong>采样步数</strong>：Qwen模型推荐4-20步，过高可能增加计算时间但不一定提升质量</li>
+<li><strong>CFG值</strong>：范围0-100，默认1.0，建议在1.0-7.0范围内</li>
+<li><strong>去噪强度</strong>：范围0-1，默认1.0，图像生成图像模式下可适当降低</li>
+<li><strong>AuraFlow Shift</strong>：范围0-100，默认3.0，用于平衡生成速度和质量</li>
+<li><strong>CFG归一化强度</strong>：范围0-100，默认1.0，CFG的稳定器</li></p><p></ul><h3>🔧 图像处理</h3>
+<ul><li><strong>自动缩放</strong>：文本生成图像必须输入宽度和高度参数，图像生成图像时自动缩放参考图像并保持长宽比，设置宽度或高度为0则禁用缩放</li>
+<li><strong>参考图像顺序</strong>：支持最多5张参考图像，按顺序处理 Image1-Image5，Image1为主图像</li>
+<li><strong>图像格式</strong>：支持标准图像输入格式，自动处理批量维度</li></p><p></ul><h3>💾 内存管理</h3>
+<ul><li><strong>GPU内存清理</strong>：启用 enable_clean_gpu_memory 选项，自动在生成前后清理显存</li>
+<li><strong>CPU内存清理</strong>：启用 enable_clean_cpu_memory_after_finish，生成完成后清理内存（包括文件缓存、进程、动态库）</li>
+<li>对于持续的大规模生成，建议始终开启内存清理选项以防止内存溢出</li></p><p></ul><h3>💾 自动保存</h3>
+<ul><li><strong>输出文件夹</strong>：设置 auto_save_output_folder 启用自动保存功能，留空则禁用，支持绝对路径和相对路径</li>
+<li><strong>文件命名</strong>：output_filename_prefix 自定义前缀，默认“auto_save”</li>
+<li>保存格式为 PNG，文件名包含种子和批次号（如：auto_save_123456_00000.png）</li></p><p>
+</ul><h3>🔊 通知功能</h3>
+<ul><li><strong>声音通知</strong>：仅支持Windows系统</li></p><p></ul><h2>📝 更新记录</h2>
+<h3>v1.0.6:</h3>
+<ul><li><strong>新增本地化脚本：</strong> 从ComfyUI v0.3.68开始，中文语言文件失效。新增自动汉化脚本，双击[自动汉化节点.bat]并重启ComfyUI，需安装ComfyUI-DD-Translation插件</li></p><p>
+</ul><h2>📞 特殊定制联系方式 📞</h2>
+<ul><li>作者：@luguoli（墙上的向日葵）</li>
+<li>作者邮箱：luguoli@vip.qq.com</li></p><p>
+</ul>---</p><p><strong>为ComfyUI社区倾心制作 ❤️</strong></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-25
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-02-25 
+    </div>
+    
+</body>
+</html>

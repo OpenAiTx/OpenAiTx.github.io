@@ -1,0 +1,390 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComfyUI-Qwen-Image-Integrated-KSampler - Qwen 이미지 통합 KSampler, 지능형 다중 모달 샘플러, Z-Image 지원, 공식 오프셋 문제 최적화, 이미지 스케일링, 다중 참조 이미지, 자동 VRAM/RAM 관리, 배치 생성, 자동 저장, 사운드 알림 / 천문 이미지 통합 샘플러 - K샘플러, Z-Image 지원, 공식 오프셋 문제 최적화, 이미지 축소/확대, 다중 참조 이미지, 자동 메모리 관리, 배치 생성, 자동 저장, 사운드 알림, AuraFlow 최적화, CFG 표준화 조절 기능 포함</title>
+    <meta name="description" content="Qwen 이미지 통합 KSampler, 지능형 다중 모달 샘플러, Z-Image 지원, 공식 오프셋 문제 최적화, 이미지 스케일링, 다중 참조 이미지, 자동 VRAM/RAM 관리, 배치 생성, 자동 저장, 사운드 알림 / 천문 이미지 통합 샘플러 - K샘플러, Z-Image 지원, 공식 오프셋 문제 최적화, 이미지 축소/확대, 다중 참조 이미지, 자동 메모리 관리, 배치 생성, 자동 저장, 사운드 알림, AuraFlow 최적화, CFG 표준화 조절 기능 포함">
+    <meta name="keywords" content="ComfyUI-Qwen-Image-Integrated-KSampler, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ComfyUI-Qwen-Image-Integrated-KSampler",
+  "description": "Qwen 이미지 통합 KSampler, 지능형 다중 모달 샘플러, Z-Image 지원, 공식 오프셋 문제 최적화, 이미지 스케일링, 다중 참조 이미지, 자동 VRAM/RAM 관리, 배치 생성, 자동 저장, 사운드 알림 / 천문 이미지 통합 샘플러 - K샘플러, Z-Image 지원, 공식 오프셋 문제 최적화, 이미지 축소/확대, 다중 참조 이미지, 자동 메모리 관리, 배치 생성, 자동 저장, 사운드 알림, AuraFlow 최적화, CFG 표준화 조절 기능 포함",
+  "author": {
+    "@type": "Person",
+    "name": "luguoli"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 206
+  },
+  "url": "https://OpenAiTx.github.io/projects/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/README.md",
+  "datePublished": "2026-02-25",
+  "dateModified": "2026-02-25"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    ComfyUI-Qwen-Image-Integrated-KSampler
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 206 stars</span>
+                <span class="language">Korean</span>
+                <span>by luguoli</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>🐋 Qwen 이미지 통합 KSampler</h1></p><p><a href="https://github.com/luguoli" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/GitHub-luguoli-orange" alt="GitHub"></a>
+<a href="https://github.com/comfyanonymous/ComfyUI" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/ComfyUI-CustomNode-blue" alt="ComfyUI"></a></p><p><a href="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/README-en.md" target="_blank" rel="noopener noreferrer">English</a> | <strong><a href="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/README-zh.md" target="_blank" rel="noopener noreferrer">简体中文</a></strong></p><p>QwenImageIntegratedKSampler</p><p>이것은 ComfyUI Qwen-Image 이미지 생성 샘플러 노드의 통합 버전으로, Z-Image를 지원합니다. 공식 KSampler 사용과 비교하여 복잡한 배선을 없애고, 텍스트-이미지 및 이미지-이미지 생성을 모두 지원하며, 공식 노드의 오프셋 문제를 해결하고, 프롬프트 입력 상자 통합, 자동 이미지 크기 조정, 자동 메모리/VRAM 정리, 배치 생성, 자동 저장 등 포괄적인 최적화 기능을 통합하여 엄마가 내 복잡한 배선 걱정을 더 이상 하지 않도록 했습니다~~~~</p><p>#### 이 프로젝트가 도움이 되셨다면, ⭐Star를 눌러주세요 — 사용자가 있음을 알 수 있습니다!</p><h2>🏆 기능</h2></p><h3>🎨 지원 생성 모드</h3>
+<ul><li><strong>Z-Image</strong>: Z-Image 모델 지원</li>
+<li><strong>텍스트-이미지</strong>: 텍스트 프롬프트로부터 이미지 생성</li>
+<li><strong>이미지-이미지</strong>: 참조 이미지를 기반으로 생성, 이미지 편집, 최대 5장 이미지 지원</li></p><p></ul><h3>⚡ 고급 최적화</h3>
+<ul><li><strong>오프셋 문제 최적화</strong>: 공식 노드의 오프셋 문제 해결, 명령어 준수 향상</li>
+<li><strong>통합 샘플링 알고리즘 (AuraFlow)</strong>: 샘플링 알고리즘 (AuraFlow) 노드 통합, 추가 배선 불필요</li>
+<li><strong>CFGNorm 통합</strong>: CFGNorm 노드 통합, 추가 배선 불필요</li></p><p></ul><h3>🖼️ 이미지 처리</h3>
+<ul><li><strong>통합 프롬프트 입력 상자</strong>: 프롬프트 입력 상자 통합, 추가 배선 불필요</li>
+<li><strong>다중 참조 이미지</strong>: 조건 생성용 최대 5장 참조 이미지 지원</li>
+<li><strong>자동 이미지 크기 조정</strong>: 목표 치수에 맞춰 종횡비 유지하며 크기 조정</li></p><p><li><strong>ControlNet 제어 지원</strong>: 포즈, 깊이 등 제어를 위한 [🐋 Qwen ControlNet 통합 로더] 추가 연결 지원</li></p><p></ul><h3>🔧 생산성 향상</h3>
+<ul><li><strong>배치 생성</strong>: 한 번에 여러 이미지 생성</li>
+<li><strong>자동 VRAM 정리</strong>: GPU/VRAM 메모리 자동 정리 옵션</li>
+<li><strong>자동 RAM 정리</strong>: RAM 메모리 자동 정리 옵션</li>
+<li><strong>자동 결과 저장</strong>: 생성된 결과 이미지 자동 지정 폴더 저장</li>
+<li><strong>완료 음성 알림</strong>: 생성 완료 후 음성 알림 재생</li></p><p></ul><h2>🍧 비교 표시</h2>
+<h3>🔄 워크플로우 복잡도 비교</h3>
+<ul><li><strong>❌ [Qwen Image Integrated KSampler] 미사용 워크플로우 (복잡함, 노드 및 와이어 과다)</strong></li>
+</ul><img src="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/images/1-1-en.png" alt="alt text">
+<ul><li><strong>✅ [Qwen Image Integrated KSampler] 사용 워크플로우 (매우 간단, 단일 노드 완료, 거의 와이어 없음)</strong></li>
+</ul><img src="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/images/1-2-en.png" alt="alt text"></p><h3>🖼️ 생성된 이미지 효과 비교</h3>
+<ul><li><strong>❌ [Qwen Image Integrated KSampler] 미사용 워크플로우 (명백한 오프셋, 스케일링)</strong></li>
+</ul><img src="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/images/2-1.png" alt="alt text">
+<ul><li><strong>✅ [Qwen Image Integrated KSampler] 사용 워크플로우 (완전한 무 오프셋, 스케일링)</strong></li>
+</ul><img src="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/images/2-2.png" alt="alt text"></p><h2>📦 설치 방법</h2></p><h3>방법 1: ComfyUI 매니저를 통한 설치 (추천)</h3>
+<ul><li>ComfyUI 인터페이스에서 ComfyUI 매니저를 엽니다</li>
+<li>"ComfyUI-Qwen-Image-Integrated-KSampler"를 검색합니다</li>
+<li>설치를 클릭합니다</li></p><p></ul><h3>방법 2: 수동 설치</h3>
+<ul><li>ComfyUI 사용자 정의 노드 디렉터리로 이동합니다:</li>
+   </ul>``<code>bash
+   cd /path/to/ComfyUI/custom_nodes
+   </code>`<code>
+<ul><li>저장소를 복제합니다:</li></p><p>   </ul></code>`<code>bash
+   git clone https://github.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler.git
+   or gitee repository:
+   git clone https://gitee.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler.git
+   </code>`<code></p><ul><li>종속성 설치:</li>
+   </ul></code>`<code>bash
+   pip install -r requirements.txt
+   </code>`<code>
+<ul><li>ComfyUI 재시작</li></p><p></ul><h2>🚀 사용 방법</h2></p><h3><a href="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/workflow_example.json" target="_blank" rel="noopener noreferrer">워크플로우 예제</a></h3></p><h3>기본 텍스트-투-이미지 생성</h3></p><ul><li>워크플로우에 "🐋 Qwen Image Integrated KSampler" 노드 추가</li>
+<li></code>generation_mode<code>를 "text-to-image"로 설정</li>
+<li>필수 입력 연결:</li>
+   <li>모델 (🤖 Model)</li>
+   <li>CLIP (🟡 Clip)</li>
+   <li>VAE (🎨 Vae)</li>
+<li>긍정 및 부정 프롬프트 입력</li>
+<li>너비 및 높이 설정 (텍스트-투-이미지에 필요)</li>
+<li>샘플링 매개변수 설정 (스텝, CFG, 샘플러, 스케줄러)</li>
+<li>워크플로우 실행</li></p><p></ul><h3>이미지-투-이미지 생성</h3></p><ul><li>워크플로우에 노드 추가</li>
+<li></code>generation_mode`를 "image-to-image"로 설정</li>
+<li>최소 한 개의 참조 이미지 연결 (🖼️ Image1)</li>
+<li>선택적으로 최대 4개의 추가 참조 이미지 추가</li>
+<li>긍정/부정 프롬프트 및 지시사항 입력</li>
+<li>스케일링을 위한 목표 너비/높이 설정 (선택 사항)</li>
+<li>필요에 따라 기타 매개변수 설정</li>
+<li>워크플로우 실행</li></p><p></ul><h3>ControlNet 제어</h3></p><ul><li>[🐋 Qwen ControlNet Integrated Loader] 노드 추가, [📦 ControlNet Data]에 연결</li></p><p><li>포즈, 깊이 제어 이미지 연결</li></p><p><li>ControlNet 모델 선택, 제어 유형 및 강도 설정</li></p><p><li>워크플로우 실행</li></p><p></ul><img src="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/images/3-en.png" alt="alt text"></p><h3>고급 기능</h3></p><ul><li><strong>메모리 관리</strong>: GPU/CPU 정리 옵션을 활성화하여 자원 효율성 향상</li>
+<li><strong>배치 처리</strong>: batch_size > 1 설정 시 다중 이미지 생성 가능</li>
+<li><strong>자동 저장</strong>: 출력 폴더 지정 시 자동 저장 기능 활성화</li>
+<li><strong>AuraFlow 조정</strong>: auraflow_shift 값을 조절하여 속도와 품질 균형 맞춤</li>
+<li><strong>CFG 향상</strong>: CFG 안정화 기능 제공</li></p><p></ul><h2>⚠️ 주의사항</h2></p><h3>📝 사용 요구사항</h3>
+<ul><li><strong>텍스트-이미지 모드</strong>: 너비(Width)와 높이(Height)를 반드시 설정해야 하며, 필수 매개변수임</li>
+<li><strong>이미지-이미지 모드</strong>: 최소 1개의 참조 이미지(Image1)를 제공해야 하며, 최대 5개 참조 이미지(Image1-Image5) 지원</li></p><p></ul><h3>🎛️ 매개변수 설정 권장사항</h3>
+<ul><li><strong>배치 크기</strong>: 1-10 사이 선택, GPU 메모리에 따라 조정, 테스트는 1부터 시작 권장</li>
+<li><strong>해상도(너비/높이)</strong>: 8의 배수여야 하며, 범위는 0-16384, 낮은 해상도(예: 512x512)부터 테스트 권장</li>
+<li><strong>샘플링 단계</strong>: Qwen 모델은 4-20단계 권장, 너무 높으면 계산 시간이 길어지지만 품질 향상과는 무관</li>
+<li><strong>CFG 값</strong>: 0-100 범위, 기본값 1.0, 1.0-7.0 범위 권장</li>
+<li><strong>노이즈 제거 강도</strong>: 0-1 범위, 기본값 1.0, 이미지-이미지 모드에서는 적절히 낮출 수 있음</li>
+<li><strong>AuraFlow Shift</strong>: 0-100 범위, 기본값 3.0, 생성 속도와 품질 균형 조절용</li>
+<li><strong>CFG 정규화 강도</strong>: 0-100 범위, 기본값 1.0, CFG 안정화용</li></p><p></ul><h3>🔧 이미지 처리</h3>
+<ul><li><strong>자동 스케일링</strong>: 텍스트-이미지 모드에서는 너비와 높이 입력 필수, 이미지-이미지 모드는 참조 이미지 비율 유지하며 자동 스케일링, 너비 또는 높이를 0으로 설정하면 스케일링 비활성화</li>
+<li><strong>참조 이미지 순서</strong>: 최대 5개 참조 이미지 지원, Image1-Image5 순서로 처리, Image1이 주 이미지</li>
+<li><strong>이미지 형식</strong>: 표준 이미지 입력 형식 지원, 배치 차원 자동 처리</li></p><p></ul><h3>💾 메모리 관리</h3>
+<ul><li><strong>GPU 메모리 정리</strong>: enable_clean_gpu_memory 옵션 활성화 시 생성 전후 VRAM 자동 정리</li>
+<li><strong>CPU 메모리 정리</strong>: enable_clean_cpu_memory_after_finish 옵션 활성화 시 생성 완료 후 RAM 정리 (파일 캐시, 프로세스, 동적 라이브러리 포함)</li>
+<li>대규모 연속 생성 시 메모리 오버플로우 방지를 위해 항상 메모리 정리 옵션 활성화 권장</li></p><p></ul><h3>💾 자동 저장</h3>
+<ul><li><strong>출력 폴더</strong>: auto_save_output_folder 설정 시 자동 저장 기능 활성화, 비워두면 비활성, 절대경로 및 상대경로 지원</li>
+<li><strong>파일명 지정</strong>: output_filename_prefix 사용자 지정 접두사, 기본값 "auto_save"</li>
+<li>저장 형식은 PNG이며, 파일명에 시드와 배치 번호 포함 (예: auto_save_123456_00000.png)</li></p><p></ul><h3>🔊 알림 기능</h3>
+<ul><li><strong>사운드 알림</strong>: 윈도우 시스템에서만 지원됨</li></p><p></ul><h2>📝 업데이트 기록</h2>
+<h3>v1.0.6:</h3>
+<ul><li><strong>로컬라이제이션 스크립트 추가:</strong> ComfyUI v0.3.68부터 중국어 언어 파일이 무효화됨. 자동 로컬라이제이션 스크립트 추가, [自动汉化节点.bat]를 더블 클릭하고 ComfyUI를 재시작하세요, ComfyUI-DD-Translation 플러그인 설치 필요</li></p><p>
+</ul><h2>📞 특수 맞춤 문의 📞</h2>
+<ul><li>작성자: @luguoli（벽에 붙은 해바라기）</li>
+<li>작성자 이메일: luguoli@vip.qq.com</li></p><p>
+</ul>---</p><p><strong>ComfyUI 커뮤니티를 위해 ❤️로 제작됨</strong></p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-25
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/luguoli/ComfyUI-Qwen-Image-Integrated-KSampler/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-02-25 
+    </div>
+    
+</body>
+</html>
