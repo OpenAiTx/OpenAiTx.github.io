@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiniExcel - Assistente Excel .NET veloce, a basso consumo di memoria e facile da usare per importare/esportare/modellare fogli di calcolo (supporta Linux, Mac)</title>
-    <meta name="description" content="Assistente Excel .NET veloce, a basso consumo di memoria e facile da usare per importare/esportare/modellare fogli di calcolo (supporta Linux, Mac)">
+    <title>MiniExcel - Helper Excel .NET veloce, a basso consumo di memoria e facile da usare per importare/esportare/modellare fogli di calcolo (supporta Linux, Mac)</title>
+    <meta name="description" content="Helper Excel .NET veloce, a basso consumo di memoria e facile da usare per importare/esportare/modellare fogli di calcolo (supporta Linux, Mac)">
     <meta name="keywords" content="MiniExcel, Italian, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "MiniExcel",
-  "description": "Assistente Excel .NET veloce, a basso consumo di memoria e facile da usare per importare/esportare/modellare fogli di calcolo (supporta Linux, Mac)",
+  "description": "Helper Excel .NET veloce, a basso consumo di memoria e facile da usare per importare/esportare/modellare fogli di calcolo (supporta Linux, Mac)",
   "author": {
     "@type": "Person",
     "name": "mini-software"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 3234
+    "ratingCount": 3374
   },
   "url": "https://OpenAiTx.github.io/projects/mini-software/MiniExcel/README-it.html",
   "sameAs": "https://raw.githubusercontent.com/mini-software/MiniExcel/master/README.md",
-  "datePublished": "2025-10-09",
-  "dateModified": "2025-10-09"
+  "datePublished": "2026-03-01",
+  "dateModified": "2026-03-01"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 3234 stars</span>
+                <span class="stars">⭐ 3374 stars</span>
                 <span class="language">Italian</span>
                 <span>by mini-software</span>
             </div>
@@ -595,7 +595,9 @@ var value = new Dictionary<string, object>()
     }
 };
 MiniExcel.SaveAsByTemplate(path, templatePath, value);
-<pre><code class="language-">#### 3. Compilazione Dati Complessi</p><blockquote>Nota: Supporta più fogli e utilizzo della stessa variabile</blockquote></p><p>Template:</p><p><img src="https://user-images.githubusercontent.com/12729184/114565255-acf0da00-9ca3-11eb-8a7f-8131b2265ae8.png" alt="image"></p><p>Risultato:</p><p><img src="https://user-images.githubusercontent.com/12729184/114565329-bf6b1380-9ca3-11eb-85e3-3969e8bf6378.png" alt="image"></p><p></code></pre>csharp
+<pre><code class="language-">
+#### 3. Compilazione Dati Complessi</p><blockquote>Nota: Supporta multi-fogli e utilizzo della stessa variabile</blockquote></p><p>Template:</p><p><img src="https://user-images.githubusercontent.com/12729184/114565255-acf0da00-9ca3-11eb-8a7f-8131b2265ae8.png" alt="image"></p><p>Risultato:</p><p><img src="https://user-images.githubusercontent.com/12729184/114565329-bf6b1380-9ca3-11eb-85e3-3969e8bf6378.png" alt="image">
+</code></pre>csharp
 // 1. By POCO
 var value = new
 {
@@ -770,7 +772,8 @@ public class Dto
     public string Empno { get; set; }
     public string Name { get; set; }
 }
-<pre><code class="language-">#### 5. System.ComponentModel.DisplayNameAttribute = ExcelColumnName.excelColumnNameAttribute</p><p>Dalla versione 1.24.0, il sistema supporta System.ComponentModel.DisplayNameAttribute = ExcelColumnName.excelColumnNameAttribute</p><p></code></pre>C#
+<pre><code class="language-"></p><p>#### 5. System.ComponentModel.DisplayNameAttribute = ExcelColumnName.excelColumnNameAttribute</p><p>Dalla versione 1.24.0, il sistema supporta System.ComponentModel.DisplayNameAttribute = ExcelColumnName.excelColumnNameAttribute
+</code></pre>C#
 public class TestIssueI4TXGTDto
 {
     public int ID { get; set; }
@@ -1191,8 +1194,19 @@ foreach (var sheetInfo in sheets)
     Console.WriteLine($"sheet index : {sheetInfo.Index} "); // next sheet index - numbered from 0
     Console.WriteLine($"sheet name : {sheetInfo.Name} ");   // sheet name
     Console.WriteLine($"sheet state : {sheetInfo.State} "); // sheet visibility state - visible / hidden
-}</code></pre>
-#### D. L'utilizzo di Count caricherà tutti i dati in memoria?</p><p>No, il test sull'immagine ha 1 milione di righe * 10 colonne di dati, l'utilizzo massimo della memoria è <60MB e ci vogliono 13,65 secondi</p><p><img src="https://user-images.githubusercontent.com/12729184/117118518-70586000-adc3-11eb-9ce3-2ba76cf8b5e5.png" alt="image"></p><p>#### D. Come utilizza Query gli indici interi?</p><p>L'indice predefinito di Query è la chiave stringa: A,B,C.... Se si desidera passare a un indice numerico, creare il seguente metodo di conversione</p><pre><code class="language-csharp">void Main()
+}</code></pre></p><p>#### D. Come compilare i dati orizzontalmente (da sinistra a destra) con i modelli?</p><p>R. Il rendering della raccolta di modelli MiniExcel si espande verticalmente (dall'alto verso il basso). Il riempimento orizzontale (da sinistra a destra) non è ancora supportato (vedi https://github.com/mini-software/MiniExcel/issues/619).</p><p>Se ti serve solo il layout finale, trasponi i tuoi dati in una matrice ed esportali con </code>printHeader: false<code>:</p><pre><code class="language-csharp">var employees = new[]
+{
+    new { Name = "Name1", Department = "Department1", City = "City1", Country = "Country1" },
+    new { Name = "Name2", Department = "Department2", City = "City2", Country = "Country2" },
+    new { Name = "Name3", Department = "Department3", City = "City3", Country = "Country3" },
+};</p><p>var table = new DataTable();
+table.Columns.Add("A");
+for (var i = 0; i < employees.Length; i++)
+    table.Columns.Add($"B{i + 1}");</p><p>table.Rows.Add(new object[] { "Name" }.Concat(employees.Select(e => (object)e.Name)).ToArray());
+table.Rows.Add(new object[] { "Department" }.Concat(employees.Select(e => (object)e.Department)).ToArray());
+table.Rows.Add(new object[] { "City" }.Concat(employees.Select(e => (object)e.City)).ToArray());
+table.Rows.Add(new object[] { "Country" }.Concat(employees.Select(e => (object)e.Country)).ToArray());</p><p>MiniExcel.SaveAs(path, table, printHeader: false);</code></pre></p><p>Se devi utilizzare un template per lo stile, una opzione è usare segnaposto scalari (ad es. </code>{{Name_1}}<code>, </code>{{Name_2}}<code> ...) e riempire un dizionario (richiede un numero massimo fisso di colonne).</p><p>
+#### D. L'utilizzo di Count carica tutti i dati in memoria?</p><p>No, il test con immagini ha 1 milione di righe*10 colonne di dati, l'utilizzo massimo della memoria è <60MB e impiega 13,65 secondi</p><p><img src="https://user-images.githubusercontent.com/12729184/117118518-70586000-adc3-11eb-9ce3-2ba76cf8b5e5.png" alt="image"></p><p>#### D. Come Query utilizza indici interi?</p><p>L'indice predefinito di Query è la chiave stringa: A,B,C.... Se vuoi cambiare ad un indice numerico, crea il seguente metodo per convertire</p><pre><code class="language-csharp">void Main()
 {
     var path = @"D:\git\MiniExcel\samples\xlsx\TestTypeMapping.xlsx";
     var rows = MiniExcel.Query(path,true);
@@ -1269,7 +1283,7 @@ Link https://github.com/orgs/mini-software/discussions/754</p><h3>Contributori</
 
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-10-09
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-01
 
 ---</p>
         </div>
@@ -1281,7 +1295,7 @@ Link https://github.com/orgs/mini-software/discussions/754</p><h3>Contributori</
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-10-09 
+        Last updated: 2026-03-01 
     </div>
     
 </body>

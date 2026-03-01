@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 3234
+    "ratingCount": 3374
   },
   "url": "https://OpenAiTx.github.io/projects/mini-software/MiniExcel/README-ja.html",
   "sameAs": "https://raw.githubusercontent.com/mini-software/MiniExcel/master/README.md",
-  "datePublished": "2025-10-09",
-  "dateModified": "2025-10-09"
+  "datePublished": "2026-03-01",
+  "dateModified": "2026-03-01"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 3234 stars</span>
+                <span class="stars">⭐ 3374 stars</span>
                 <span class="language">Japanese</span>
                 <span>by mini-software</span>
             </div>
@@ -594,7 +594,9 @@ var value = new Dictionary<string, object>()
     }
 };
 MiniExcel.SaveAsByTemplate(path, templatePath, value);
-<pre><code class="language-">#### 3. 複雑なデータの埋め込み</p><blockquote>注意: 複数シートをサポートし、同じ変数を使用可能</blockquote></p><p>テンプレート:</p><p><img src="https://user-images.githubusercontent.com/12729184/114565255-acf0da00-9ca3-11eb-8a7f-8131b2265ae8.png" alt="image"></p><p>結果:</p><p><img src="https://user-images.githubusercontent.com/12729184/114565329-bf6b1380-9ca3-11eb-85e3-3969e8bf6378.png" alt="image"></p><p></code></pre>csharp
+<pre><code class="language-">
+#### 3. 複雑なデータの入力</p><blockquote>注意: 複数シートのサポートおよび同じ変数の使用</blockquote></p><p>テンプレート:</p><p><img src="https://user-images.githubusercontent.com/12729184/114565255-acf0da00-9ca3-11eb-8a7f-8131b2265ae8.png" alt="image"></p><p>結果:</p><p><img src="https://user-images.githubusercontent.com/12729184/114565329-bf6b1380-9ca3-11eb-85e3-3969e8bf6378.png" alt="image">
+</code></pre>csharp
 // 1. By POCO
 var value = new
 {
@@ -769,7 +771,8 @@ public class Dto
     public string Empno { get; set; }
     public string Name { get; set; }
 }
-<pre><code class="language-">#### 5. System.ComponentModel.DisplayNameAttribute = ExcelColumnName.excelColumnNameAttribute</p><p>バージョン1.24.0以降、システムはSystem.ComponentModel.DisplayNameAttribute = ExcelColumnName.excelColumnNameAttributeをサポートします。</p><p></code></pre>C#
+<pre><code class="language-"></p><p>#### 5. System.ComponentModel.DisplayNameAttribute = ExcelColumnName.excelColumnNameAttribute</p><p>バージョン1.24.0以降、システムはSystem.ComponentModel.DisplayNameAttribute = ExcelColumnName.excelColumnNameAttributeをサポートしています
+</code></pre>C#
 public class TestIssueI4TXGTDto
 {
     public int ID { get; set; }
@@ -1190,8 +1193,19 @@ foreach (var sheetInfo in sheets)
     Console.WriteLine($"sheet index : {sheetInfo.Index} "); // next sheet index - numbered from 0
     Console.WriteLine($"sheet name : {sheetInfo.Name} ");   // sheet name
     Console.WriteLine($"sheet state : {sheetInfo.State} "); // sheet visibility state - visible / hidden
-}</code></pre>
-#### Q. Countを使用するとすべてのデータがメモリにロードされますか？</p><p>いいえ、イメージテストは100万行×10列のデータで、最大メモリ使用量は60MB未満、所要時間は13.65秒です</p><p><img src="https://user-images.githubusercontent.com/12729184/117118518-70586000-adc3-11eb-9ce3-2ba76cf8b5e5.png" alt="image"></p><p>#### Q. Queryはどのように整数インデックスを使用しますか？</p><p>Queryのデフォルトインデックスは文字列キー：A,B,C...です。数値インデックスに変更したい場合は、以下のメソッドを作成して変換してください</p><pre><code class="language-csharp">void Main()
+}</code></pre></p><p>#### Q. テンプレートを使ってデータを横方向（左から右へ）に入力する方法は？</p><p>A. MiniExcelのテンプレートコレクションレンダリングは縦方向（上から下へ）に展開されます。横方向（左から右へ）の入力はまだ対応していません（詳細は https://github.com/mini-software/MiniExcel/issues/619 を参照）。</p><p>最終的なレイアウトだけが必要な場合は、データを行列に転置して </code>printHeader: false<code> でエクスポートしてください。</p><pre><code class="language-csharp">var employees = new[]
+{
+    new { Name = "Name1", Department = "Department1", City = "City1", Country = "Country1" },
+    new { Name = "Name2", Department = "Department2", City = "City2", Country = "Country2" },
+    new { Name = "Name3", Department = "Department3", City = "City3", Country = "Country3" },
+};</p><p>var table = new DataTable();
+table.Columns.Add("A");
+for (var i = 0; i < employees.Length; i++)
+    table.Columns.Add($"B{i + 1}");</p><p>table.Rows.Add(new object[] { "Name" }.Concat(employees.Select(e => (object)e.Name)).ToArray());
+table.Rows.Add(new object[] { "Department" }.Concat(employees.Select(e => (object)e.Department)).ToArray());
+table.Rows.Add(new object[] { "City" }.Concat(employees.Select(e => (object)e.City)).ToArray());
+table.Rows.Add(new object[] { "Country" }.Concat(employees.Select(e => (object)e.Country)).ToArray());</p><p>MiniExcel.SaveAs(path, table, printHeader: false);</code></pre>
+スタイリングのためにテンプレートを使用する必要がある場合、1つの方法としてスカラープレースホルダー（例：</code>{{Name_1}}<code>, </code>{{Name_2}}<code> ...）を使用し、辞書を埋める方法があります（固定された最大列数が必要です）。</p><p>#### Q. Countを使用すると全データがメモリにロードされますか？</p><p>いいえ、画像テストには100万行×10列のデータがあり、最大メモリ使用量は60MB未満で、13.65秒かかります。</p><p><img src="https://user-images.githubusercontent.com/12729184/117118518-70586000-adc3-11eb-9ce3-2ba76cf8b5e5.png" alt="image"></p><p>#### Q. Queryで整数インデックスを使うには？</p><p>Queryのデフォルトインデックスは文字列Key（A,B,C...）です。数値インデックスに変更したい場合は、以下のメソッドを作成して変換してください。</p><pre><code class="language-csharp">void Main()
 {
     var path = @"D:\git\MiniExcel\samples\xlsx\TestTypeMapping.xlsx";
     var rows = MiniExcel.Query(path,true);
@@ -1267,7 +1281,7 @@ Streamクラスを使用して、ファイル作成のロジックをカスタ�
 
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-10-09
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-01
 
 ---</p>
         </div>
@@ -1279,7 +1293,7 @@ Streamクラスを使用して、ファイル作成のロジックをカスタ�
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-10-09 
+        Last updated: 2026-03-01 
     </div>
     
 </body>

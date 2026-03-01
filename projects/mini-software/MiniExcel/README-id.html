@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 3234
+    "ratingCount": 3374
   },
   "url": "https://OpenAiTx.github.io/projects/mini-software/MiniExcel/README-id.html",
   "sameAs": "https://raw.githubusercontent.com/mini-software/MiniExcel/master/README.md",
-  "datePublished": "2025-10-09",
-  "dateModified": "2025-10-09"
+  "datePublished": "2026-03-01",
+  "dateModified": "2026-03-01"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 3234 stars</span>
+                <span class="stars">⭐ 3374 stars</span>
                 <span class="language">Indonesian</span>
                 <span>by mini-software</span>
             </div>
@@ -595,7 +595,9 @@ var value = new Dictionary<string, object>()
     }
 };
 MiniExcel.SaveAsByTemplate(path, templatePath, value);
-<pre><code class="language-">#### 3. Pengisian Data Kompleks</p><blockquote>Catatan: Mendukung multi-sheet dan menggunakan variabel yang sama</blockquote></p><p>Template:</p><p><img src="https://user-images.githubusercontent.com/12729184/114565255-acf0da00-9ca3-11eb-8a7f-8131b2265ae8.png" alt="image"></p><p>Hasil:</p><p><img src="https://user-images.githubusercontent.com/12729184/114565329-bf6b1380-9ca3-11eb-85e3-3969e8bf6378.png" alt="image"></p><p></code></pre>csharp
+<pre><code class="language-">
+#### 3. Pengisian Data Kompleks</p><blockquote>Catatan: Mendukung multi-sheet dan penggunaan variabel yang sama</blockquote></p><p>Template:</p><p><img src="https://user-images.githubusercontent.com/12729184/114565255-acf0da00-9ca3-11eb-8a7f-8131b2265ae8.png" alt="image"></p><p>Hasil:</p><p><img src="https://user-images.githubusercontent.com/12729184/114565329-bf6b1380-9ca3-11eb-85e3-3969e8bf6378.png" alt="image">
+</code></pre>csharp
 // 1. By POCO
 var value = new
 {
@@ -770,7 +772,8 @@ public class Dto
     public string Empno { get; set; }
     public string Name { get; set; }
 }
-<pre><code class="language-">#### 5. System.ComponentModel.DisplayNameAttribute = ExcelColumnName.excelColumnNameAttribute</p><p>Sejak 1.24.0, sistem mendukung System.ComponentModel.DisplayNameAttribute = ExcelColumnName.excelColumnNameAttribute</p><p></code></pre>C#
+<pre><code class="language-"></p><p>#### 5. System.ComponentModel.DisplayNameAttribute = ExcelColumnName.excelColumnNameAttribute</p><p>Sejak 1.24.0, sistem mendukung System.ComponentModel.DisplayNameAttribute = ExcelColumnName.excelColumnNameAttribute
+</code></pre>C#
 public class TestIssueI4TXGTDto
 {
     public int ID { get; set; }
@@ -1191,8 +1194,19 @@ foreach (var sheetInfo in sheets)
     Console.WriteLine($"sheet index : {sheetInfo.Index} "); // next sheet index - numbered from 0
     Console.WriteLine($"sheet name : {sheetInfo.Name} ");   // sheet name
     Console.WriteLine($"sheet state : {sheetInfo.State} "); // sheet visibility state - visible / hidden
-}</code></pre>
-#### Q. Apakah penggunaan Count akan memuat semua data ke dalam memori?</p><p>Tidak, pengujian gambar memiliki 1 juta baris*10 kolom data, penggunaan memori maksimum adalah <60MB, dan memerlukan waktu 13,65 detik</p><p><img src="https://user-images.githubusercontent.com/12729184/117118518-70586000-adc3-11eb-9ce3-2ba76cf8b5e5.png" alt="image"></p><p>#### Q. Bagaimana Query menggunakan indeks integer?</p><p>Indeks default dari Query adalah string Key: A,B,C.... Jika Anda ingin mengubah ke indeks numerik, silakan buat metode berikut untuk mengonversi</p><pre><code class="language-csharp">void Main()
+}</code></pre></p><p>#### Q. Bagaimana cara mengisi data secara horizontal (kiri-ke-kanan) dengan template?</p><p>A. Perenderan koleksi template MiniExcel berkembang secara vertikal (atas-ke-bawah). Pengisian horizontal (kiri-ke-kanan) belum didukung (lihat https://github.com/mini-software/MiniExcel/issues/619).</p><p>Jika Anda hanya membutuhkan tata letak akhir, transpose data Anda ke dalam matriks dan ekspor dengan </code>printHeader: false<code>:</p><pre><code class="language-csharp">var employees = new[]
+{
+    new { Name = "Name1", Department = "Department1", City = "City1", Country = "Country1" },
+    new { Name = "Name2", Department = "Department2", City = "City2", Country = "Country2" },
+    new { Name = "Name3", Department = "Department3", City = "City3", Country = "Country3" },
+};</p><p>var table = new DataTable();
+table.Columns.Add("A");
+for (var i = 0; i < employees.Length; i++)
+    table.Columns.Add($"B{i + 1}");</p><p>table.Rows.Add(new object[] { "Name" }.Concat(employees.Select(e => (object)e.Name)).ToArray());
+table.Rows.Add(new object[] { "Department" }.Concat(employees.Select(e => (object)e.Department)).ToArray());
+table.Rows.Add(new object[] { "City" }.Concat(employees.Select(e => (object)e.City)).ToArray());
+table.Rows.Add(new object[] { "Country" }.Concat(employees.Select(e => (object)e.Country)).ToArray());</p><p>MiniExcel.SaveAs(path, table, printHeader: false);</code></pre></p><p>Jika Anda harus menggunakan template untuk styling, salah satu opsinya adalah menggunakan placeholder skalar (mis. </code>{{Name_1}}<code>, </code>{{Name_2}}<code> ...) dan mengisi kamus (memerlukan jumlah kolom maksimum yang tetap).</p><p>
+#### Q. Apakah penggunaan Count akan memuat semua data ke dalam memori?</p><p>Tidak, pengujian gambar memiliki 1 juta baris*10 kolom data, penggunaan memori maksimum <60MB, dan memerlukan waktu 13,65 detik</p><p><img src="https://user-images.githubusercontent.com/12729184/117118518-70586000-adc3-11eb-9ce3-2ba76cf8b5e5.png" alt="image"></p><p>#### Q. Bagaimana Query menggunakan indeks integer?</p><p>Indeks default Query adalah string Key: A,B,C.... Jika Anda ingin mengubah menjadi indeks numerik, silakan buat metode berikut untuk mengonversi</p><pre><code class="language-csharp">void Main()
 {
     var path = @"D:\git\MiniExcel\samples\xlsx\TestTypeMapping.xlsx";
     var rows = MiniExcel.Query(path,true);
@@ -1269,7 +1283,7 @@ Tautan https://github.com/orgs/mini-software/discussions/754</p><h3>Kontributor<
 
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-10-09
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-01
 
 ---</p>
         </div>
@@ -1281,7 +1295,7 @@ Tautan https://github.com/orgs/mini-software/discussions/754</p><h3>Kontributor<
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-10-09 
+        Last updated: 2026-03-01 
     </div>
     
 </body>
