@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API_Sword - NSFOCUS API_Sword：Burp Suite拡張機能。任意のレスポンスからAPIエンドポイントを自動的に再帰的に収集します。</title>
+    <meta name="description" content="NSFOCUS API_Sword：Burp Suite拡張機能。任意のレスポンスからAPIエンドポイントを自動的に再帰的に収集します。">
+    <meta name="keywords" content="API_Sword, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "API_Sword",
+  "description": "NSFOCUS API_Sword：Burp Suite拡張機能。任意のレスポンスからAPIエンドポイントを自動的に再帰的に収集します。",
+  "author": {
+    "@type": "Person",
+    "name": "Sugobet"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 361
+  },
+  "url": "https://OpenAiTx.github.io/projects/Sugobet/API_Sword/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/Sugobet/API_Sword/main/README.md",
+  "datePublished": "2026-03-03",
+  "dateModified": "2026-03-03"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Sugobet/API_Sword" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    API_Sword
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 361 stars</span>
+                <span class="language">Japanese</span>
+                <span>by Sugobet</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>[\[EN-ReadMe\]](https://github.com/Sugobet/API_Sword/blob/main/%5BEN%5D-README.md) <------ これをお読みください  
+<h1>微信公众号：APT250</h1></p><h2>オープンソース第一主義と交流学習の原則に基づき、API剣は2週間後（9月7日以降）にオープンソース化し、同時にBurp公式プラグインストアBApp Storeに登録されます。これにより、皆様が今後の更新と使用を便利に行えます。現在、公式によるコード審査中であり、間もなくBApp Storeで公開されると信じています。</h2></p><h1>[burp新クラシックプラグイン] API剣 - 全自動で様々なレスポンス中のAPIインターフェースを深く収集</h1></p><p>jarパッケージはreleaseにあり、後日Burp公式プラグインストアに登録された後はストアからもダウンロード可能です。</p><h2>前書き</h2></p><p>このプラグインは私の最近の仕事内容と、以前に私が4万ドルの賞金を獲得したMicrosoftアカウントの脆弱性APIに関する一部の経験を組み合わせたものです。</p><p>API剣の開発者はAPI剣を利用してプロジェクトで複数回成果を上げ、汎用0dayを獲得しました。このツールを持ってからは、もう手動でどのjsからも苦痛を伴ってインターフェースやパス、パラメータを探す必要がなくなりました。</p><p><img src="https://i-blog.csdnimg.cn/direct/388ed286aff845ce8863640b37d4636e.png" alt="在这里插入图片描述"></p><p>多くのJS Finder、URLFinderなどの人気のあるjsやapi発掘ツールと似ていますが、それらは非常に優れたツールです。<strong>API剣はburpの特性を活かして能力と優位性を獲得しています。</strong></p><p>プラグインのメイン画面のスクリーンショット：</p><p><img width="3020" height="1582" alt="image" src="https://github.com/user-attachments/assets/e1677009-917b-4e90-a5e8-ccd067263d6e" /></p><h2>API剣の主な機能</h2></p><p>API剣は全自動でループ防止機能を備え、様々なレスポンスから指定範囲内のAPIとjsファイルを抽出し、再帰的に深くAPIを抽出、APIやjsなど価値あるファイルを能動的にリクエストします。</p><p>APIの結果は見たままの通りで、右側のウィンドウにはAPIの元となったjsが表示され、すぐにjs内からAPIのパラメータ情報を取得できます。その後burpでCtrl + Rを押せば一発でテストに移れます。</p><p>想像ほど複雑ではなく、API剣が行うことは私たちのために<strong>大量の繰り返しで時間のかかり、退屈なjs、api、apiパラメータの探索作業を大幅に削減することです。</strong></p><ul><li>API剣はburpを通過する範囲内のトラフィックを捕捉し、<strong>httpレスポンスから大部分のリンクを抽出</strong>します  </li>
+<li>API剣は前ステップで抽出した任意のリンクやパスをクリーンアップし、<strong>API剣が判断してAPIやJSなどに対してGET、POSTリクエストを能動的に発行します</strong>  </li>
+<li>API剣は前ステップの能動的リクエストのレスポンスをさらに処理し、レスポンスから情報を抽出し続け、前ステップの動作を繰り返します。<strong>API剣はループ防止機能を持ち、無限ループリクエストの問題を心配する必要はありません</strong>  </li>
+<li>API剣は条件に合致した全てのAPIリクエスト・レスポンス及びそのAPIインターフェースの元となるjsファイルのレスポンスを全てAPI剣のburp GUIにプッシュします  </li>
+<li>API剣は関連する全てのリクエストをburpのtarget sitemapに自動で追加し、<strong>targetのsitemapの分析機能などでAPI剣の成果を存分に楽しめます</strong></li></p><p></ul>ユーザーはAPI剣を有効にし「合理的な範囲」を設定するだけで、あとはブラウザでwebシステムの様々な機能をクリックし続け、全トラフィックをburpに通過させ、最後にAPI剣に分析と処理を任せれば、API剣はあなたの欲しい悪魔の実を返してくれます。</p><p><strong>opsecなど操作上の安全リスクを考慮し、現時点でAPI剣はパラメータの自動fuzzは行いません。今後ニーズがあれば追加でオプション機能として実装予定です。</strong>
+<h2>如何使用？</h2></p><p><code>注意：プラグインは2024.7以降のバージョンのburpsuiteで動作する必要があります；（2024.7未満のバージョンの場合は、プラグインの設定ページで「元のheadersを使用する」機能を手動でオフにする必要があります）</code></p><p>API剣の使用は非常に簡単です、</p><ul><li>プラグインをburp 2024以降のバージョンにインストールし、プラグインにエラーがないことを確認する</li>
+<li>プラグインのScopeを設定する</li>
+<li>ブラウザを開き、ブラウザのトラフィックがburpを通るようにする</li>
+<li>ターゲットサイトに入り、サイト内で見たものを何でもクリックしてテストする</li>
+<li>一定時間経過後、API剣のSitemapから成果を確認する</li></p><p></ul><h2>API剣の設定</h2></p><p>Scopeタブでは、範囲を設定できます。範囲はURL、ドメイン、IPで設定可能です</p><p><img width="1946" height="1068" alt="image" src="https://github.com/user-attachments/assets/945d1e66-9d1a-4c59-920c-3fadacbeeb4f" /></p><p>この範囲は特に重要で、慎重に検討することを推奨します。そうしないと宇宙の彼方までスキャンしてしまう恐れがあります。</p><p>範囲を設定したら、Settingタブを見てみましょう</p><p><img width="3018" height="1338" alt="image" src="https://github.com/user-attachments/assets/4e67c07f-0e37-470c-881e-fa234632d30b" /></p><ul><li>APIリクエストの積極的許可</li></p><p></ul>このオプションはデフォルトでオンです。オフにすることは推奨しません。オフにするとAPI剣がより深いデータ抽出を行えません。</p><ul><li>元のheadersを使用するかどうか</li></p><p></ul>デフォルトでオンです。未認証APIインターフェースを特別にテストしたい場合、このオプションをオフにしてください。オフにすると、cookieやsessionなどの情報を一切持ちません。</p><ul><li>すべてのリクエスト送信を即時停止</li></p><p></ul>デフォルトでオフです。緊急時に一時停止したいときのブレーキとして使用します。最初のオプションと併用することを推奨します。</p><ul><li>現在のSiteMapのすべてのデータをクリア</li></p><p></ul>このボタンはAPI剣のSite Map内のすべてのサイトデータを削除するために使用します。</p><p><img src="https://i-blog.csdnimg.cn/direct/d7e8eca0e2994a65b9bae2abb8554e69.png" alt="在这里插入图片描述"></p><ul><li>アクティブHTTPリクエストの速度を有効にする</li></p><p></ul>各リクエストの間隔時間を制限する</p><ul><li>アクティブリクエスト時に追加のカスタムパスリクエストを行うかどうか</li></p><p></ul>このオプションを有効にすると、API剣はメインURLに指定されたカスタムパスを先に追加してから結合を行う</p><ul><li>200以外のカスタムレスポンスコードをフィルタリングする</li></p><p><li>API剣がレスポンスからbaseURLを積極的に探し、baseURLに対してパス結合を行うことを許可する</li></p><p><li>カスタムヘッダーフィールドを追加：（既存のヘッダーフィールドを自動的に上書き）</li></p><p><li>危険なインターフェースアクセスを回避する機能を有効にする（インターフェースに特定の文字列が含まれる場合はスキップ）</li></p><p><li>範囲およびすべての設定を保存</li></p><p><li>APIインターフェースの後、パラメータの前に追加のカスタムパスを追加するかどうか</li></p><p><li>スレッド数の制御</li></p><p></ul>その他の設定は開発および改善中です。ご意見・ご要望・ご質問があれば、githubでissueを通じてフィードバックしてください。</p><h2>謝辞</h2></p><p><code>Microsoft</code>に感謝</p><p>私の<code>緑盟メンター</code>に感謝</p><p><code>mil1ln</code>に感謝</p><p><code>探姬</code>に感謝</p><p>API剣のテスト段階で貴重な意見とフィードバックを提供してくださったすべての方に感謝</p><p>以上すべての方々のAPI剣へのご支援に感謝します！</p><h2>TODO</h2></p><ul><li>梅花Kのポロシャツを1枚収集する ⬛️  </li>
+<li>選択可能なbase urlパスのファズを追加 ✅  </li>
+<li>カスタムレスポンスコードフィルタを追加 ✅  </li>
+<li>API剣の能動リクエスト時にカスタムbaseパスのオプションを追加 ✅  </li>
+<li>マッチング戦略を最適化し、API剣のパフォーマンスを80%向上 ✅  </li>
+<li>API剣の能動リクエストを最適化し、危険なAPIへのアクセスを回避 ✅  </li>
+<li>burpのデフォルトヘッダーでCTフィールドが含まれない問題を解決 ✅  </li>
+<li>レスポンステーブルのタグ幅を最適化 ✅  </li>
+<li>sitemapのUIのちらつき問題を修正 ✅  </li>
+<li>カスタムリクエストヘッダーのオプション機能を追加 ✅  </li>
+<li>レスポンスリストのタグ自動ソートを追加 ✅  </li>
+<li>マッチング戦略を最適化 ✅  </li>
+<li>コードブロックを最適化 ⬛️  </li>
+<li>burpアンインストール処理を登録 ✅  </li>
+<li>全コードに中英両言語で読みやすいコードコメントを追加 ⬛️  </li>
+<li>GUIに中英切替機能を追加 ✅  </li>
+<li>burpのカクつきやレンダリング問題を引き起こすUIを最適化 ✅  </li>
+<li>範囲と設定の保存機能を追加 ✅  </li>
+<li>能動HTTPリクエストのレート機能を追加 ✅  </li>
+<li>マルチスレッド機能を追加 ✅  </li>
+<li>インターフェース後、パラメータ前のカスタムパス機能を追加 ✅  </li>
+<li>マルチスレッドによるループ防止ロジックの無効化問題を緊急修正 ✅  </li>
+<li>自動ソートの表示エラー問題を修正 ✅  </li>
+<li>APIリストのUIを最適化、データ挿入時に方向キーでの操作が中断されないように ✅  </li>
+<li>マルチスレッドにより防ループロジックが依然無効になるバグを完全修正 ✅  </li>
+<li>フィルターを追加 ✅  </li>
+<li>ノード展開、全ノード折りたたみを追加 ✅  </li>
+<li>サイトマップクリア機能を最適化 ✅  </li>
+<li>CDN｜クロスサイトのJS連結ロジックを最適化し、RefererをbaseUrlとして使用 ✅  </li>
+<li>手動スキャン機能を追加、手動スキャンはホストを範囲リストに自動追加：burpでリクエストボディを右クリック -> 拡張機能 -> API Sword -> API Scan ✅</li></p><p>
+
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-03
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Sugobet/API_Sword/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-03-03 
+    </div>
+    
+</body>
+</html>
