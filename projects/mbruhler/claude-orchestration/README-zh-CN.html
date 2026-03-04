@@ -1,0 +1,430 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>claude-orchestration - Claude Code 的多代理工作流编排插件</title>
+    <meta name="description" content="Claude Code 的多代理工作流编排插件">
+    <meta name="keywords" content="claude-orchestration, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "claude-orchestration",
+  "description": "Claude Code 的多代理工作流编排插件",
+  "author": {
+    "@type": "Person",
+    "name": "mbruhler"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 197
+  },
+  "url": "https://OpenAiTx.github.io/projects/mbruhler/claude-orchestration/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/mbruhler/claude-orchestration/main/README.md",
+  "datePublished": "2026-03-04",
+  "dateModified": "2026-03-04"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/mbruhler/claude-orchestration" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    claude-orchestration
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 197 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by mbruhler</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>🎭 Claude Code 的编排插件</h1></p><blockquote>_类似 Claude Code 中的 N8N_</blockquote></p><h3>如果你喜欢这个项目，请考虑 ⭐ 支持！<br/></h3></p><h2><strong>多智能体工作流编排。</strong> 链接 AI 代理，使用自然语言或声明式语法自动化复杂任务。</h2></p><p><a href="https://claude.com/claude-code" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Claude%20Code-Compatible-blue" alt="Claude Code"></a>
+<a href="LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a></p><hr></p><h2>安装</h2></p><h3>1. 添加插件市场</h3></p><p>首先，将编排市场添加到你的 Claude Code：</p><pre><code class="language-bash">/plugin marketplace add mbruhler/claude-orchestration</code></pre>
+<h3>2. 安装插件</h3></p><pre><code class="language-bash">/plugin install orchestration@mbruhler</code></pre>
+或使用交互式菜单：</p><pre><code class="language-bash">/plugin</code></pre></p><p>然后选择 <strong>"浏览插件"</strong> → 找到 <strong>orchestration</strong> → <strong>安装</strong></p><h3>3. 验证安装</h3></p><p>检查插件是否已安装：</p><pre><code class="language-bash">/help</code></pre>
+你应该能看到类似 <code>/orchestration:menu</code>、<code>/orchestration:init</code> 等编排命令。</p><hr></p><h2>快速开始</h2></p><h3>0. 导入你的自定义代理（可选）</h3></p><pre><code class="language-">/orchestration:init</code></pre></p><p>从 <code>~/.claude/agents/</code> 导入您的自定义代理到编排插件中。</p><p><strong>示例：</strong>
+<pre><code class="language-">/orchestration:init
+→ Select agents to import
+→ Agents become available as expert-code-implementer, etc. and the plugin can create workflows using them</code></pre></p><h3>1. 自然语言</h3>
+<pre><code class="language-">"Create a workflow that fetches 10 Reddit posts about startups,
+analyzes competition, and shows a ratings table"</code></pre></p><p>该插件：
+<ul><li>✅ 创建必要的临时脚本（Python/Node.js）</li>
+<li>✅ 通过可点击的问题引导您</li>
+<li>✅ 生成并执行优化的工作流程</li>
+<li>✅ 返回格式化结果</li></p><p></ul><h3>2. 直接语法</h3>
+<pre><code class="language-flow"># Parallel bug investigation
+[
+  Explore:"Find related code":code ||
+  general-purpose:"Check recent changes":changes ||
+  general-purpose:"Search similar issues":similar
+] ->
+general-purpose:"Identify root cause from {code}, {changes}, {similar}":analysis ->
+@review:"Approve fix?" ->
+general-purpose:"Implement fix and run tests":fix ->
+general-purpose:"Commit changes with detailed message"</code></pre></p><h3>3. 模板</h3>
+<pre><code class="language-">"Use the TDD implementation template"</code></pre></p><hr></p><h2>核心功能</h2></p><h3>流程控制</h3>
+<pre><code class="language-flow"># Sequential
+step1 -> step2 -> step3</p><h1>Parallel</h1>
+[task1 || task2 || task3]</p><h1>Conditional</h1>
+test -> (if passed)~> deploy
+     -> (if failed)~> rollback</code></pre>
+<h3>自动化临时脚本</h3>
+自动创建用于以下用途的 Python/Node.js 脚本：
+<ul><li>🌐 网络爬虫（BeautifulSoup，Selenium）</li>
+<li>📡 API 接口（Reddit，Twitter，GitHub）</li>
+<li>📊 数据处理（pandas，NumPy）</li>
+<li>🗄️ 数据库查询</li></p><p></ul><h3>手动检查点</h3></p><pre><code class="language-flow">build:"Compile app" ->
+@review:"Check output. Continue?" ->
+deploy:"Deploy to production"</code></pre>
+<h3>视觉进度</h3></p><pre><code class="language-">╔════════════════════════════════════╗
+║  TDD Implementation                ║
+╠════════════════════════════════════╣
+║    [Write Test] ●                  ║
+║         │                          ║
+║    [Implement] ○                   ║
+║         │                          ║
+║    [@Review] ○                     ║
+╠════════════════════════════════════╣
+║ Status: Writing test...            ║
+╚════════════════════════════════════╝</code></pre></p><hr></p><h2>语法参考</h2></p><p>| 语法 | 含义 | 示例 |
+|--------|---------|---------|
+| <code>-></code> | 顺序 | <code>step1 -> step2</code> |
+| <code>||</code> | 并行 | <code>[step1 \|\| step2]</code> |
+| <code>~></code> | 条件 | <code>(if passed)~> next</code> |
+| <code>@label</code> | 检查点 | <code>@review-code</code> |
+| <code>:var</code> | 捕获输出 | <code>analyze:"task":result</code> |
+| <code>{var}</code> | 使用变量 | <code>"Process {result}"</code> |
+| <code>$agent</code> | 临时代理 | <code>$scanner:"Scan"</code> |</p><hr></p><h2>内置代理</h2></p><ul><li><strong>Explore</strong> - 快速代码库探索与搜索</li>
+<li><strong>Plan</strong> - 任务规划与拆解</li>
+<li><strong>general-purpose</strong> - 用于复杂多步骤任务的多功能代理</li></p><p></ul>---</p><h2>示例</h2></p><h3>Reddit 启动分析器</h3>
+<pre><code class="language-flow">general-purpose:"Create Python PRAW script to fetch 10 r/startups posts.
+                 Return JSON with title, url, description":posts -></p><p>[
+  general-purpose:"Research competition for post {posts[0]}":a1 ||
+  general-purpose:"Research competition for post {posts[1]}":a2 ||
+  # ... parallel analyses
+] -></p><p>general-purpose:"Rate ideas (1-10) on competition, market, feasibility.
+                 Create markdown table":ratings -></p><p>@review:"Review {ratings}. Ban any?" -></p><p>general-purpose:"Generate top 3 opportunities summary"</code></pre></p><h3>TDD 实现</h3>
+<pre><code class="language-flow"># RED: Write failing test
+general-purpose:"Write failing test for the feature":test ->
+general-purpose:"Run test suite - verify it fails":red_result ->
+@review-coverage:"Test coverage sufficient?" -></p><h1>GREEN: Minimal implementation</h1>
+general-purpose:"Write minimal code to pass the test":impl ->
+general-purpose:"Run test suite - verify it passes":green_result ->
+@review:"Code quality OK?" -></p><h1>REFACTOR: Clean up</h1>
+general-purpose:"Refactor code and add documentation":refactored ->
+general-purpose:"Final test run and commit"</code></pre></p><h3>错误调查</h3>
+<pre><code class="language-flow"># Parallel investigation
+[
+  Explore:"Find error pattern in codebase":code ||
+  general-purpose:"Analyze error logs":logs ||
+  general-purpose:"Check recent commits":commits ||
+  general-purpose:"Search for similar bugs":known
+] -></p><h1>Diagnosis</h1>
+general-purpose:"Identify root cause from {code}, {logs}, {commits}, {known}":cause ->
+@review:"Diagnosis correct?" -></p><h1>Fix with testing</h1>
+general-purpose:"Write regression test for the bug":test ->
+general-purpose:"Implement fix":fix -></p><h1>Verification</h1>
+[
+  general-purpose:"Run regression test" ||
+  general-purpose:"Run full test suite" ||
+  general-purpose:"Perform smoke test"
+] -></p><p>@review:"Approve deployment?" ->
+general-purpose:"Commit with detailed bug fix message"</code></pre></p><hr></p><h2>Project Structure</h2></p><pre><code class="language-">orchestration/
+├── skills/              # Auto-activating skills
+│   ├── creating-workflows/
+│   ├── executing-workflows/
+│   ├── managing-agents/
+│   ├── managing-temp-scripts/
+│   ├── designing-syntax/
+│   ├── debugging-workflows/
+│   └── using-templates/
+├── agents/              # Permanent agents
+├── temp-agents/         # Ephemeral (auto-cleaned)
+├── temp-scripts/        # Generated scripts
+├── examples/            # Templates (.flow)
+└── docs/                # Documentation</code></pre></p><hr></p><h2>高级</h2></p><h3>独立执行</h3>
+<pre><code class="language-bash"># Headless (no checkpoints)
+claude -p "Execute @examples/tdd-implementation.flow"</p><h1>With parameters</h1>
+claude -p "/orchestration:run $(cat workflow.flow)" \
+  --output-format json</code></pre></p><h3>代理推广</h3>
+<pre><code class="language-">Workflow complete!</p><p>Temp agents: security-scanner, api-wrapper</p><p>Save as permanent?
+[Save all] [Save security-scanner] [Delete all]</code></pre></p><h3>模板参数</h3>
+<pre><code class="language-yaml">---
+name: api-integration
+parameters:
+  <ul><li>API_URL: "https://api.example.com"</li>
+  <li>NUM_ITEMS: 10</li>
+</ul>---</p><p>workflow: |
+  general-purpose:"Fetch {{NUM_ITEMS}} from {{API_URL}}":data ->
+  general-purpose:"Format results":output</code></pre></p><hr></p><h2>故障排除</h2></p><p><strong>工作流挂起</strong>  
+→ 检查点需要用户响应，或在无头模式下移除</p><p><strong>临时脚本失败</strong>  
+→ 检查 <code>temp-scripts/</code> 目录中的生成文件  
+→ 验证 API 凭证和依赖项</p><p><strong>找不到代理</strong>  
+→ 内置：精确名称（Explore，通用）  
+→ 插件：使用 <code>orchestration:</code> 前缀  
+→ 临时：使用 <code>$</code> 前缀</p><h2>星标历史</h2></p><p><a href="https://www.star-history.com/#mbruhler/claude-orchestration&type=date&legend=top-left" target="_blank" rel="noopener noreferrer"><img src="https://api.star-history.com/svg?repos=mbruhler/claude-orchestration&type=date&legend=top-left" alt="星标历史图表"></a></p><hr></p><h2>支持</h2></p><ul><li>📖 <a href="docs/" target="_blank" rel="noopener noreferrer">文档</a>  </li>
+<li>💬 <a href="https://github.com/anthropics/orchestration/discussions" target="_blank" rel="noopener noreferrer">讨论</a>  </li>
+<li>🐛 <a href="https://github.com/anthropics/orchestration/issues" target="_blank" rel="noopener noreferrer">问题</a></li></p><p></ul>---</p><p><strong>MIT 许可证</strong> | 为 Claude Code 社区构建</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-04
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/mbruhler/claude-orchestration/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-03-04 
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,429 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>claude-orchestration - Claude Code용 다중 에이전트 워크플로우 오케스트레이션 플러그인</title>
+    <meta name="description" content="Claude Code용 다중 에이전트 워크플로우 오케스트레이션 플러그인">
+    <meta name="keywords" content="claude-orchestration, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "claude-orchestration",
+  "description": "Claude Code용 다중 에이전트 워크플로우 오케스트레이션 플러그인",
+  "author": {
+    "@type": "Person",
+    "name": "mbruhler"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 197
+  },
+  "url": "https://OpenAiTx.github.io/projects/mbruhler/claude-orchestration/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/mbruhler/claude-orchestration/main/README.md",
+  "datePublished": "2026-03-04",
+  "dateModified": "2026-03-04"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/mbruhler/claude-orchestration" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    claude-orchestration
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 197 stars</span>
+                <span class="language">Korean</span>
+                <span>by mbruhler</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>🎭 Claude Code용 오케스트레이션 플러그인</h1></p><blockquote>_Claude Code의 N8N과 같음_</blockquote></p><h3>프로젝트가 마음에 드시면, ⭐을 눌러주세요!<br/></h3></p><h2><strong>멀티 에이전트 워크플로우 오케스트레이션.</strong> 자연어 또는 선언적 구문을 사용하여 AI 에이전트들을 연결해 복잡한 작업을 자동화하세요.</h2></p><p><a href="https://claude.com/claude-code" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Claude%20Code-Compatible-blue" alt="Claude Code"></a>
+<a href="LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a></p><hr></p><h2>설치</h2></p><h3>1. 플러그인 마켓플레이스 추가</h3></p><p>먼저, Claude Code에 오케스트레이션 마켓플레이스를 추가하세요:</p><pre><code class="language-bash">/plugin marketplace add mbruhler/claude-orchestration</code></pre></p><h3>2. 플러그인 설치</h3></p><pre><code class="language-bash">/plugin install orchestration@mbruhler</code></pre></p><p>또는 대화형 메뉴를 사용하세요:</p><pre><code class="language-bash">/plugin</code></pre>
+그런 다음 <strong>"플러그인 찾아보기"</strong> → <strong>orchestration</strong> 검색 → <strong>설치</strong> 선택</p><h3>3. 설치 확인</h3></p><p>플러그인이 설치되었는지 확인:</p><pre><code class="language-bash">/help</code></pre>
+오케스트레이션 명령어로 <code>/orchestration:menu</code>, <code>/orchestration:init</code> 등을 볼 수 있습니다.</p><hr></p><h2>빠른 시작</h2></p><h3>0. 사용자 지정 에이전트 가져오기 (선택 사항)</h3></p><pre><code class="language-">/orchestration:init</code></pre></p><p>사용자 지정 에이전트를 <code>~/.claude/agents/</code>에서 오케스트레이션 플러그인으로 가져옵니다.</p><p><strong>예시:</strong>
+<pre><code class="language-">/orchestration:init
+→ Select agents to import
+→ Agents become available as expert-code-implementer, etc. and the plugin can create workflows using them</code></pre></p><h3>1. 자연어</h3>
+<pre><code class="language-">"Create a workflow that fetches 10 Reddit posts about startups,
+analyzes competition, and shows a ratings table"</code></pre>
+플러그인:
+<ul><li>✅ 필요한 임시 스크립트 생성 (Python/Node.js)</li>
+<li>✅ 클릭 가능한 질문으로 안내</li>
+<li>✅ 최적화된 워크플로우 생성 및 실행</li>
+<li>✅ 형식화된 결과 반환</li></p><p></ul><h3>2. 직접 구문</h3></p><pre><code class="language-flow"># Parallel bug investigation
+[
+  Explore:"Find related code":code ||
+  general-purpose:"Check recent changes":changes ||
+  general-purpose:"Search similar issues":similar
+] ->
+general-purpose:"Identify root cause from {code}, {changes}, {similar}":analysis ->
+@review:"Approve fix?" ->
+general-purpose:"Implement fix and run tests":fix ->
+general-purpose:"Commit changes with detailed message"</code></pre></p><h3>3. 템플릿</h3>
+<pre><code class="language-">"Use the TDD implementation template"</code></pre></p><hr></p><h2>핵심 기능</h2></p><h3>흐름 제어</h3>
+<pre><code class="language-flow"># Sequential
+step1 -> step2 -> step3</p><h1>Parallel</h1>
+[task1 || task2 || task3]</p><h1>Conditional</h1>
+test -> (if passed)~> deploy
+     -> (if failed)~> rollback</code></pre></p><h3>자동 온도 스크립트</h3>
+다음 용도의 Python/Node.js 스크립트를 자동 생성합니다:
+<ul><li>🌐 웹 스크래핑 (BeautifulSoup, Selenium)</li>
+<li>📡 API (Reddit, Twitter, GitHub)</li>
+<li>📊 데이터 처리 (pandas, NumPy)</li>
+<li>🗄️ 데이터베이스 쿼리</li></p><p></ul><h3>수동 점검 지점</h3>
+<pre><code class="language-flow">build:"Compile app" ->
+@review:"Check output. Continue?" ->
+deploy:"Deploy to production"</code></pre></p><h3>시각적 진행 상황</h3>
+<pre><code class="language-">╔════════════════════════════════════╗
+║  TDD Implementation                ║
+╠════════════════════════════════════╣
+║    [Write Test] ●                  ║
+║         │                          ║
+║    [Implement] ○                   ║
+║         │                          ║
+║    [@Review] ○                     ║
+╠════════════════════════════════════╣
+║ Status: Writing test...            ║
+╚════════════════════════════════════╝</code></pre></p><hr></p><h2>문법 참조</h2></p><p>| 문법 | 의미 | 예제 |
+|--------|---------|---------|
+| <code>-></code> | 순차적 | <code>step1 -> step2</code> |
+| <code>||</code> | 병렬 | <code>[step1 \|\| step2]</code> |
+| <code>~></code> | 조건부 | <code>(if passed)~> next</code> |
+| <code>@label</code> | 체크포인트 | <code>@review-code</code> |
+| <code>:var</code> | 출력 캡처 | <code>analyze:"task":result</code> |
+| <code>{var}</code> | 변수 사용 | <code>"Process {result}"</code> |
+| <code>$agent</code> | 임시 에이전트 | <code>$scanner:"Scan"</code> |</p><hr></p><h2>내장 에이전트</h2></p><ul><li><strong>Explore</strong> - 빠른 코드베이스 탐색 및 검색</li>
+<li><strong>Plan</strong> - 계획 수립 및 작업 분해</li>
+<li><strong>general-purpose</strong> - 복잡한 다단계 작업을 위한 다목적 에이전트</li></p><p></ul>---</p><h2>예제</h2></p><h3>Reddit 스타트업 분석기</h3>
+<pre><code class="language-flow">general-purpose:"Create Python PRAW script to fetch 10 r/startups posts.
+                 Return JSON with title, url, description":posts -></p><p>[
+  general-purpose:"Research competition for post {posts[0]}":a1 ||
+  general-purpose:"Research competition for post {posts[1]}":a2 ||
+  # ... parallel analyses
+] -></p><p>general-purpose:"Rate ideas (1-10) on competition, market, feasibility.
+                 Create markdown table":ratings -></p><p>@review:"Review {ratings}. Ban any?" -></p><p>general-purpose:"Generate top 3 opportunities summary"</code></pre></p><h3>TDD 구현</h3>
+<pre><code class="language-flow"># RED: Write failing test
+general-purpose:"Write failing test for the feature":test ->
+general-purpose:"Run test suite - verify it fails":red_result ->
+@review-coverage:"Test coverage sufficient?" -></p><h1>GREEN: Minimal implementation</h1>
+general-purpose:"Write minimal code to pass the test":impl ->
+general-purpose:"Run test suite - verify it passes":green_result ->
+@review:"Code quality OK?" -></p><h1>REFACTOR: Clean up</h1>
+general-purpose:"Refactor code and add documentation":refactored ->
+general-purpose:"Final test run and commit"</code></pre></p><h3>버그 조사</h3>
+<pre><code class="language-flow"># Parallel investigation
+[
+  Explore:"Find error pattern in codebase":code ||
+  general-purpose:"Analyze error logs":logs ||
+  general-purpose:"Check recent commits":commits ||
+  general-purpose:"Search for similar bugs":known
+] -></p><h1>Diagnosis</h1>
+general-purpose:"Identify root cause from {code}, {logs}, {commits}, {known}":cause ->
+@review:"Diagnosis correct?" -></p><h1>Fix with testing</h1>
+general-purpose:"Write regression test for the bug":test ->
+general-purpose:"Implement fix":fix -></p><h1>Verification</h1>
+[
+  general-purpose:"Run regression test" ||
+  general-purpose:"Run full test suite" ||
+  general-purpose:"Perform smoke test"
+] -></p><p>@review:"Approve deployment?" ->
+general-purpose:"Commit with detailed bug fix message"</code></pre></p><hr></p><h2>Project Structure</h2></p><pre><code class="language-">orchestration/
+├── skills/              # Auto-activating skills
+│   ├── creating-workflows/
+│   ├── executing-workflows/
+│   ├── managing-agents/
+│   ├── managing-temp-scripts/
+│   ├── designing-syntax/
+│   ├── debugging-workflows/
+│   └── using-templates/
+├── agents/              # Permanent agents
+├── temp-agents/         # Ephemeral (auto-cleaned)
+├── temp-scripts/        # Generated scripts
+├── examples/            # Templates (.flow)
+└── docs/                # Documentation</code></pre></p><hr></p><h2>고급</h2></p><h3>독립 실행</h3>
+<pre><code class="language-bash"># Headless (no checkpoints)
+claude -p "Execute @examples/tdd-implementation.flow"</p><h1>With parameters</h1>
+claude -p "/orchestration:run $(cat workflow.flow)" \
+  --output-format json</code></pre></p><h3>에이전트 프로모션</h3>
+<pre><code class="language-">Workflow complete!</p><p>Temp agents: security-scanner, api-wrapper</p><p>Save as permanent?
+[Save all] [Save security-scanner] [Delete all]</code></pre></p><h3>템플릿 매개변수</h3>
+<pre><code class="language-yaml">---
+name: api-integration
+parameters:
+  <ul><li>API_URL: "https://api.example.com"</li>
+  <li>NUM_ITEMS: 10</li>
+</ul>---</p><p>workflow: |
+  general-purpose:"Fetch {{NUM_ITEMS}} from {{API_URL}}":data ->
+  general-purpose:"Format results":output</code></pre></p><hr></p><h2>문제 해결</h2></p><p><strong>워크플로우 중단</strong>
+→ 체크포인트가 사용자 응답을 요구하거나 무인 모드에서는 제거 필요</p><p><strong>임시 스크립트 실패</strong>
+→ 생성된 파일은 <code>temp-scripts/</code> 확인
+→ API 자격 증명 및 종속성 확인</p><p><strong>에이전트가 발견되지 않음</strong>
+→ 내장: 정확한 이름 사용 (Explore, 범용)
+→ 플러그인: <code>orchestration:</code> 접두사 사용
+→ 임시: <code>$</code> 접두사 사용</p><h2>스타 히스토리</h2></p><p><a href="https://www.star-history.com/#mbruhler/claude-orchestration&type=date&legend=top-left" target="_blank" rel="noopener noreferrer"><img src="https://api.star-history.com/svg?repos=mbruhler/claude-orchestration&type=date&legend=top-left" alt="Star History Chart"></a></p><hr></p><h2>지원</h2></p><ul><li>📖 <a href="docs/" target="_blank" rel="noopener noreferrer">문서</a></li>
+<li>💬 <a href="https://github.com/anthropics/orchestration/discussions" target="_blank" rel="noopener noreferrer">토론</a></li>
+<li>🐛 <a href="https://github.com/anthropics/orchestration/issues" target="_blank" rel="noopener noreferrer">이슈</a></li></p><p></ul>---</p><p><strong>MIT 라이선스</strong> | Claude Code 커뮤니티를 위해 제작됨</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-04
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/mbruhler/claude-orchestration/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-03-04 
+    </div>
+    
+</body>
+</html>
