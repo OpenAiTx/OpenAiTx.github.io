@@ -1,0 +1,383 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letterboxd-to-IMDb - 将您的 Letterboxd 评分导入 IMDb</title>
+    <meta name="description" content="将您的 Letterboxd 评分导入 IMDb">
+    <meta name="keywords" content="Letterboxd-to-IMDb, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Letterboxd-to-IMDb",
+  "description": "将您的 Letterboxd 评分导入 IMDb",
+  "author": {
+    "@type": "Person",
+    "name": "TobiasPankner"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 134
+  },
+  "url": "https://OpenAiTx.github.io/projects/TobiasPankner/Letterboxd-to-IMDb/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/TobiasPankner/Letterboxd-to-IMDb/master/README.md",
+  "datePublished": "2026-03-06",
+  "dateModified": "2026-03-06"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/TobiasPankner/Letterboxd-to-IMDb" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Letterboxd-to-IMDb
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 134 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by TobiasPankner</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Letterboxd-to-IMDb</h1></p><p><a href="https://GitHub.com/TobiasPankner/Letterboxd-to-IMDb/stargazers/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/stars/TobiasPankner/Letterboxd-to-IMDb.svg?style=social&label=Star" alt="GitHub stars"></a>
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3TU2XDBK2JFU4&source=url" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Donate-PayPal-green.svg" alt="Donate"></a></p><ul><li><a href="#prerequisites" target="_blank" rel="noopener noreferrer">前提条件</a></li>
+<li><a href="#run-the-script" target="_blank" rel="noopener noreferrer">运行脚本</a></li>
+<li><a href="#getting-the-imdb-cookie" target="_blank" rel="noopener noreferrer">获取 IMDb Cookie</a></li>
+<li><a href="#common-use-cases" target="_blank" rel="noopener noreferrer">常见用例</a></li>
+<li><a href="#command-line-options" target="_blank" rel="noopener noreferrer">命令行选项</a></li></p><p></ul>将您的 Letterboxd 电影导入 IMDb 的 Python 脚本。  </p><p>工作原理：  
+脚本首先“访问”您压缩文件中的所有 Letterboxd 链接，并获取对应的 IMDb 页面。这样可以确保评分的是正确的电影。  
+之后，使用您的 Cookie 认证对 IMDb 内部 GraphQL 评分 API 的请求。  </p><p><strong>视频教程</strong> 如何使用此脚本：<https://www.youtube.com/watch?v=KF7cfdUTEgw></p><h2>在线运行此脚本（无需 Python）</h2></p><p><a href="https://simple-script.com/app/letterboxd-to-imdb" target="_blank" rel="noopener noreferrer"><img src="https://simple-script.com/api/badge/letterboxd-to-imdb" alt="运行脚本"></a></p><h2>前提条件  </h2>
+  
+<ul><li>Python 3 (<a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreferrer">下载</a>)</li>
+<li><a href="https://letterboxd.com/" target="_blank" rel="noopener noreferrer">Letterboxd</a> 账户</li>
+<li><a href="https://www.imdb.com/" target="_blank" rel="noopener noreferrer">IMDb</a> 账户</li></p><p></ul><h2>运行脚本</h2></p><ul><li>导出您的 Letterboxd 评分和观看列表（<a href="https://listy.is/help/how-to-export-letterboxd-watchlists-reviews/" target="_blank" rel="noopener noreferrer">操作方法</a>）</li>
+ <li><a href="#getting-the-imdb-cookie" target="_blank" rel="noopener noreferrer">获取 IMDb Cookie</a> 并保存为脚本文件夹中的 "cookie.txt"</li>
+ <li>安装依赖项：<code>pip install -r requirements.txt</code></li>
+ <li>运行 letterboxd2imdb.py：<code>python letterboxd2imdb.py -f <您的 ZIP 文件>.zip</code></li></p><p></ul><a href="#common-use-cases" target="_blank" rel="noopener noreferrer">常见用例</a></p><h2>获取 IMDb Cookie</h2></p><p><strong>请像保护密码一样保护此 Cookie！</strong></p><ul><li>登录您的 IMDb 账户</li>
+  <li>打开 Chrome 开发者工具 -> 网络 (Network)</li>
+  <li>筛选 Fetch/XHR</li>
+  <li>刷新页面</li>
+  <li>复制某个请求的 Cookie（右键 -> 复制值）</li>
+  
+  </ul><img src="https://imgur.com/chRo9wj.jpg" alt="示例">  </p><h2>常见用例</h2></p><p><strong>转移您的评分和观看列表：</strong>  
+<code>py letterboxd2imdb.py -f .\letterboxd-user-2022-02-20-16-16-utc.zip -w</code></p><p><strong>转移您评分为 5/10 的已观看电影：</strong>  
+<code>py letterboxd2imdb.py -f .\letterboxd-user-2022-02-20-16-16-utc.zip -r 5</code></p><p><strong>为未评分的已观看电影创建 IMDb 列表：</strong>  
+<code>py letterboxd2imdb.py -f .\letterboxd-user-2022-02-20-16-16-utc.zip -l</code></p><p><strong>为未评分的已观看电影创建自定义名称的 IMDb 列表：</strong>  
+<code>py letterboxd2imdb.py -f .\letterboxd-user-2022-02-20-16-16-utc.zip -l --list-name "My Letterboxd Movies"</code></p><h2>命令行选项</h2></p><pre><code class="language-">usage: letterboxd2imdb.py [-h] -f ZIPFILE [-p PARALLEL] [-c] [-r RATING] [-w] [-l] [--list-name LIST_NAME]</p><p>Imports your Letterboxd ratings and watchlist into IMDb. Can also create custom lists for unrated movies.</p><p>required arguments:
+  -f ZIPFILE            The exported zip file from letterboxd</p><p>options:
+  -h, --help            show this help message and exit
+  -p PARALLEL           Urls to be processed in parallel (valid: 1 to 20)
+  -c                    Add this flag to disable the history
+  -r RATING             The rating to give watched but unrated movies. By default they are ignored (valid: 1 to 10)
+  -w                    Add this flag to also transfer your watchlist
+  -l                    Create an IMDb list for watched but unrated movies instead of rating them
+  --list-name LIST_NAME Name for the IMDb list to create for unrated movies (default: 'Watched on Letterboxd - Unrated')</code></pre>
+<code>-p</code>：如果想加快处理速度可以使用该参数，设置过高可能会导致速率限制。默认值：5  
+<code>-c</code>：如果历史记录导致问题，可以添加此标志来禁用它。  
+<code>-r</code>：用于给已观看但未评分的电影评分。由于 IMDb 没有“仅观看”选项，必须指定一个默认评分  
+<code>-w</code>：用于同时传输你的观看列表  
+<code>-l</code>：为已观看但未评分的电影创建 IMDb 列表，而不是赋予任意评分。这样可以保持评分数据的整洁，同时跟踪已观看电影。  
+<code>--list-name</code>：指定使用 <code>-l</code> 选项创建的 IMDb 列表的自定义名称。默认值："Watched on Letterboxd - Unrated"  </p><p><strong>注意：</strong> <code>-r</code> 和 <code>-l</code> 选项互斥。你只能给未评分电影赋默认评分（<code>-r</code>）或为它们创建列表（<code>-l</code>），不能同时使用。  
+  
+<h2>使用示例  </h2>
+  
+<strong>基础导入（仅评分）：</strong>  
+<code>py letterboxd2imdb.py -f .\letterboxd-user-2022-02-20-16-16-utc.zip</code>  
+<em>仅从 Letterboxd 导入你的评分电影。未评分电影将被忽略。</em>  
+  
+<strong>导入评分和观看列表：</strong>  
+<code>py letterboxd2imdb.py -f .\letterboxd-user-2022-02-20-16-16-utc.zip -w</code>  
+<em>同时传输你的电影评分和观看列表到 IMDb。</em>  
+  
+<strong>给未评分电影赋默认评分：</strong>  
+<code>py letterboxd2imdb.py -f .\letterboxd-user-2022-02-20-16-16-utc.zip -r 7</code>  
+<em>导入你的评分并给所有已观看但未评分的电影赋默认评分 7/10。</em>  
+  
+<strong>为未评分电影创建列表：</strong>  
+<code>py letterboxd2imdb.py -f .\letterboxd-user-2022-02-20-16-16-utc.zip -l</code>  
+<em>为你已观看但未评分的电影创建名为“Watched on Letterboxd - Unrated”的 IMDb 列表。</em>  
+  
+<strong>为未评分电影创建自定义名称列表：</strong>  
+<code>py letterboxd2imdb.py -f .\letterboxd-user-2022-02-20-16-16-utc.zip -l --list-name "My Letterboxd Backlog"</code>  
+<em>为你的未评分已观看电影创建带自定义名称的 IMDb 列表。</em>  
+  
+<strong>更高并行度的快速处理：</strong>  
+<code>py letterboxd2imdb.py -f .\letterboxd-user-2022-02-20-16-16-utc.zip -p 15</code>  
+<em>并行处理 15 部电影以加快执行速度（注意速率限制）。</em>  
+  
+<strong>自定义设置的完整传输：</strong>  
+<code>py letterboxd2imdb.py -f .\letterboxd-user-2022-02-20-16-16-utc.zip -p 10 -r 5 -w</code>  
+<em>快速处理（10 并行），导入评分和观看列表，给未评分电影赋 5/10 评分。</em>  </p><p>
+<strong>创建带有观影列表和快速处理的自定义列表：</strong>  
+<code>py letterboxd2imdb.py -f .\letterboxd-user-2022-02-20-16-16-utc.zip -p 10 -l --list-name "我的 Letterboxd 电影" -w</code>  
+<em>处理速度快，导入观影列表，并为未评分电影创建自定义命名列表。</em>  
+  
+<strong>禁用历史记录（故障排除）：</strong>  
+<code>py letterboxd2imdb.py -f .\letterboxd-user-2022-02-20-16-16-utc.zip -c</code>  
+<em>运行时不使用历史记录功能，如果您在使用历史文件时遇到问题，此选项非常有用。</em>  
+  
+<strong>保守方法（慢但安全）：</strong>  
+<code>py letterboxd2imdb.py -f .\letterboxd-user-2022-02-20-16-16-utc.zip -p 1 -w</code>  
+<em>一次处理一部电影，避免在导入评分和观影列表时出现速率限制问题。</em></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-06
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/TobiasPankner/Letterboxd-to-IMDb/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-03-06 
+    </div>
+    
+</body>
+</html>
