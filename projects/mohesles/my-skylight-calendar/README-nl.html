@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my-skylight-calendar - Read my-skylight-calendar documentation in Dutch. This project has 140 stars on GitHub.</title>
-    <meta name="description" content="Read my-skylight-calendar documentation in Dutch. This project has 140 stars on GitHub.">
+    <title>my-skylight-calendar - Read my-skylight-calendar documentation in Dutch. This project has 248 stars on GitHub.</title>
+    <meta name="description" content="Read my-skylight-calendar documentation in Dutch. This project has 248 stars on GitHub.">
     <meta name="keywords" content="my-skylight-calendar, Dutch, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "my-skylight-calendar",
-  "description": "Read my-skylight-calendar documentation in Dutch. This project has 140 stars on GitHub.",
+  "description": "Read my-skylight-calendar documentation in Dutch. This project has 248 stars on GitHub.",
   "author": {
     "@type": "Person",
     "name": "mohesles"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 140
+    "ratingCount": 248
   },
   "url": "https://OpenAiTx.github.io/projects/mohesles/my-skylight-calendar/README-nl.html",
   "sameAs": "https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/README.md",
-  "datePublished": "2026-01-14",
-  "dateModified": "2026-01-14"
+  "datePublished": "2026-03-08",
+  "dateModified": "2026-03-08"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 140 stars</span>
+                <span class="stars">⭐ 248 stars</span>
                 <span class="language">Dutch</span>
                 <span>by mohesles</span>
             </div>
@@ -328,42 +328,45 @@ Jouw situatie kan echter anders zijn en vereist mogelijk aanpassingen, bijvoorbe
 <li><code>card-mod</code></li>
 <li><code>better-moment-card</code></li>
 <li><code>weather-card</code></li>
-<li><code>browser_mod</code> (Vereist voor het functioneren van pop-ups)</li>
-<li><code>layout-card</code> (Vereist voor de sectieweergave)</li>
-<li><code>button-card</code> (Vereist voor de pop-up om een evenement toe te voegen)</li></p><p></ul><h3>2. De Backend (Het Brein)</h3></p><ul><li>Open je <code>configuration.yaml</code> bestand in Home Assistant.</li>
-<li>Zorg ervoor dat je deze regel hebt toegevoegd onder <code>homeassistant:</code> om pakketten in te schakelen:</li></p><p>   </ul><pre><code class="language-yaml">   homeassistant:
+<li><code>browser_mod</code> (Vereist voor het werken van pop-ups)</li>
+<li><code>layout-card</code> (Vereist voor het Secties-overzicht)</li>
+<li><code>button-card</code> (Vereist voor de pop-up om een gebeurtenis toe te voegen)</li></p><p></ul>*Opmerking: In Instellingen → Apparaten & Diensten, zorg ervoor dat Browser Mod als een integratie (tegel) verschijnt en niet alleen onder HACS.
+Als het daar niet staat, klik op Integratie toevoegen → Browser Mod en voltooi het proces, daarna herstart HA.
+Installeren via HACS downloadt alleen bestanden; je moet de integratie toevoegen zodat HA zijn acties/entiteiten registreert.</p><h3>2. De Backend (Het Brein)</h3></p><ul><li>Open je <code>configuration.yaml</code> bestand in Home Assistant.</li>
+<li>Zorg dat je deze regel hebt toegevoegd onder <code>homeassistant:</code> om pakketten te activeren:</li></p><p>   </ul><pre><code class="language-yaml">   homeassistant:
      packages: !include_dir_named packages
    ``<code>
-<ul><li>Maak een map genaamd </code>packages<code> aan in je HA-configuratiemap (als je die nog niet hebt).</li>
-<li>Download <a href="https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/packages/family_calendar.yaml" target="_blank" rel="noopener noreferrer">packages/family_calendar.yaml</a> van deze repository.</li>
+<ul><li>Maak een map genaamd </code>packages<code> in je HA-configuratiemap (als je er nog geen hebt).</li>
+<li>Download <a href="https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/packages/family_calendar.yaml" target="_blank" rel="noopener noreferrer">packages/family_calendar.yaml</a> uit deze repo.</li>
+<li>Zoek naar de string [ #<--- UPDATE THIS ENTITY] en werk de kalender-entiteit-ID bij zodat deze overeenkomt met jouw omgeving. Zie sectie 3 voor meer details.</li>
 <li>Plaats het bestand in je </code>packages/<code> map.</li>
-<li><strong>Herstart Home Assistant</strong>.</li></p><p></ul><h3>3. De Kalenders</h3></p><p>Je kunt <strong>Google Kalenders</strong> of <strong>Lokale Kalenders</strong> gebruiken.</p><p>#### Optie A: Lokale Kalender (Meest eenvoudig)</p><p>Let op: dit is niet getest, aangezien ik uitsluitend Google Kalenders gebruik</p><ul><li>Ga naar <strong>Instellingen > Apparaten & Diensten</strong>.</li>
+<li><strong>Herstart Home Assistant</strong>.</li></p><p></ul><h3>3. De Kalenders</h3></p><p>Je kunt <strong>Google Kalenders</strong> of <strong>Lokale Kalenders</strong> gebruiken.</p><p>#### Optie A: Kalendernamen Hergebruiken (Eenvoudigst)</p><ul><li>Ga naar <strong>Instellingen > Apparaten & Diensten</strong>.</li>
 <li>Voeg de <strong>Lokale Kalender</strong> integratie toe.</li>
-<li>Maak kalenders aan met exact de volgende namen: </code>Alice<code>, </code>Bob<code>, </code>Charlie<code>, </code>Daisy<code>, </code>Family<code>.</li>
-    </ul><em> </em>Als je deze namen gebruikt, werkt de code direct uit de doos!*</p><p>#### Optie B: Google Kalender</p><ul><li>Open </code>packages/family_calendar.yaml<code>.</li>
-<li>Scroll naar het script </code>add_google_calendar_event<code>.</li>
-<li>Werk de </code>calendar_map<code> bij zodat deze naar je echte Google-entiteiten verwijst:</li></p><p>
-    </ul></code>`<code>yaml
-    calendar_map:
-      "Alice": "calendar.alice_gmail_com"
-      "Bob": "calendar.bob_work_account"
-    </code>`<code></p><p>#### Feestdagen instellen</p><p>Sinds de updates van Home Assistant worden feestdagen nu via de UI toegevoegd:</p><ul><li>Ga naar <strong>Instellingen > Apparaten & Diensten > Integratie toevoegen > Holiday</strong>.</li>
+<li>Maak kalenders met exact deze namen: </code>calendar1<code>, </code>calendar2<code>, </code>calendar3<code>, </code>calendar4<code>, </code>Family<code>.</li>
+    </ul><em> </em>Als je deze namen gebruikt, werkt de code direct!*</p><p>#### Optie B: Aangepaste Kalender</p><ul><li>Ga naar <strong>Instellingen > Apparaten & Diensten</strong>.</li>
+<li>Voeg de <strong>Lokale Kalender</strong> integratie toe of <strong>Google Calendar</strong>.</li>
+<li>Navigeer naar <strong>Configuratie > Integraties > Lokale Kalender</strong> of <strong>Google Calendar</strong> en selecteer "Voeg item toe"</li>
+<li>Voor elk aangemaakt item, verkrijg de entiteit-ID om dashboard.yaml bij te werken.</li>
+<li>Open </code>dashboard.yaml<code>.</li>
+<li>Zoek naar </code># <--- UPDATE THIS ENTITY<code>.</li>
+<li>Werk de entiteit-ID bij zodat deze overeenkomt met jouw omgeving</li></p><p>
+</ul>#### Vakanties instellen</p><p>Sinds Home Assistant updates worden vakanties nu via de UI toegevoegd:</p><ul><li>Ga naar <strong>Instellingen > Apparaten & Diensten > Integratie toevoegen > Vakantie</strong>.</li>
 <li>Selecteer je land.</li>
-<li>Controleer de entity-ID (bijv. </code>calendar.holidays<code>). Als deze afwijkt van de standaard, werk deze dan bij in de dashboard YAML.</li></p><p></ul><h3>4. Het Dashboard (Het Uiterlijk)</h3></p><ul><li>Maak een nieuw Dashboard View aan (Stel View Type in op <strong>Secties</strong>).</li>
-<li>Kopieer de code uit <a href="https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/dashboard.yaml" target="_blank" rel="noopener noreferrer">dashboard.yaml</a>.</li>
-<li><strong>Aanpassen:</strong></li>
-   <li><strong>Zoek & Vervang:</strong> Vervang </code>person.alice<code> door je daadwerkelijke gezinsleden.</li>
-   <li><strong>Weer:</strong> Vervang </code>weather.home<code> door je eigen weerprovider.</li>
-   <li><strong>Achtergrond:</strong> Werk de afbeeldings-URL onderaan de yaml bij.</li></p><p></ul><h3>Stap 5: Het Thema (Optioneel)</h3></p><p>Om het specifieke lettertype (Ovo) te krijgen:</p><ul><li>Zorg dat je </code>configuration.yaml<code> deze regel bevat onder </code>frontend:<code></li></p><p>   </ul></code>`<code>yaml
+<li>Controleer de entiteit-ID (bijv. </code>calendar.holidays<code>). Als deze afwijkt van de standaard, werk hem bij in de dashboard YAML.</li></p><p></ul><h3>4. Het Dashboard (De Look)</h3></p><ul><li>Ga naar <strong>Instellingen > Dashboard</strong></li>
+<li>Klik op <strong>Dashboard toevoegen</strong> (Selecteer de optie "Nieuw dashboard vanaf nul" en zorg ervoor dat "Toevoegen aan zijbalk" is geselecteerd).</li>
+<li>Selecteer in het linkermenu het nieuw aangemaakte dashboard en klik op het potloodicoon om het te bewerken.</li>
+<li>Selecteer het pictogram met de 3 stippen en kies "Raw configurator editor".</li>
+<li>Kopieer en plak de code uit <a href="https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/dashboard.yaml" target="_blank" rel="noopener noreferrer">dashboard.yaml</a>.</li></p><p></ul><h3>Stap 5: Het Thema (Optioneel)</h3></p><p>Om het specifieke lettertype (Ovo) te krijgen:</p><ul><li>Zorg ervoor dat je </code>configuration.yaml<code> deze regel onder </code>frontend:<code> heeft staan.</li></p><p>   </ul></code>`<code>yaml
    frontend:
      themes: !include_dir_merge_named themes
    </code>`<code>
 <ul><li>Maak een map genaamd </code>themes<code> in je configuratiemap.</li>
-<li>Download <a href="https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/themes/skylight.yaml" target="_blank" rel="noopener noreferrer">themes/skylight.yaml</a> en plaats deze in die map.</li>
+<li>Download <a href="https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/themes/skylight.yaml" target="_blank" rel="noopener noreferrer">themes/skylight.yaml</a> en plaats het in die map.</li>
+<li>Gebruik de File Editor en upload calbackgrd.png naar de /www/ map, dit vertaalt intern naar /local op het dashboard.</li>
 <li>Herstart Home Assistant.</li>
 <li>Ga naar je Profiel (Gebruikersicoon linksonder) en verander <strong>Thema</strong> naar </code>Skylight<code>.</li>
-</ul>OPMERKING: Het thema is niet allesomvattend, houd daar rekening mee</p><hr></p><h2>📐 Hoe het werkt (onder de motorkap)</h2></p><h3>Filterlogica</h3></p><p>De </code>week-planner-card<code> ondersteunt niet standaard het verbergen van specifieke agenda's op aanvraag. Om dit op te lossen heb ik <strong>Input Texts</strong> gebruikt die functioneren als Regex-filters.</p><p><em> Wanneer je op de knop van een persoon klikt, schakelt deze hun filter tussen </code>.</em><code> (Alles tonen) en </code>^$<code> (Niets tonen).
-<ul><li></code>config-template-card<code> injecteert deze variabelen dynamisch in de kalenderkaart.</li></p><p></ul><h3>Script voor het aanmaken van gebeurtenissen</h3></p><p>De "Gebeurtenis toevoegen" popup gebruikt één script dat de logica afhandelt voor meerdere personen en gebeurtenistypes (Hele dag versus met tijd).</p><p></code></pre>yaml
+</ul>OPMERKING: Het thema is niet allesomvattend, houd daar rekening mee</p><hr></p><h2>📐 Hoe het Werkt (Onder de Motorkap)</h2></p><h3>Filterlogica</h3></p><p>De </code>week-planner-card<code> ondersteunt niet standaard het verbergen van specifieke kalenders on-the-fly. Om dit op te lossen heb ik <strong>Input Texts</strong> gebruikt die dienen als Regex-filters.</p><p><em> Wanneer je op de knop van een persoon klikt, schakelt deze hun filter tussen </code>.</em><code> (Toon alles) en </code>^$<code> (Toon niets).
+<ul><li></code>config-template-card<code> injecteert deze variabelen dynamisch in de kalenderkaart.</li></p><p></ul><h3>Event Aanmaakscript</h3></p><p>Het "Evenement Toevoegen"-popup gebruikt één script dat de logica afhandelt voor meerdere personen en evenementtypes (Hele dag vs Getimed).</p><p></code></pre>yaml
 <h1>Simplified Logic Example</h1>
 target_calendar: "{{ calendar_map.get(states('input_select.calendar_select')) }}"</p><p>choose:
   <ul><li>conditions: "All Day Event is ON"</li>
@@ -374,7 +377,7 @@ target_calendar: "{{ calendar_map.get(states('input_select.calendar_select')) }}
 
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-14
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-08
 
 ---</p>
         </div>
@@ -386,7 +389,7 @@ target_calendar: "{{ calendar_map.get(states('input_select.calendar_select')) }}
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-01-14 
+        Last updated: 2026-03-08 
     </div>
     
 </body>

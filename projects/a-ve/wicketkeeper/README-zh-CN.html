@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wicketkeeper - 一个注重隐私、自托管的工作量证明（PoW）验证码系统</title>
+    <meta name="description" content="一个注重隐私、自托管的工作量证明（PoW）验证码系统">
+    <meta name="keywords" content="wicketkeeper, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "wicketkeeper",
+  "description": "一个注重隐私、自托管的工作量证明（PoW）验证码系统",
+  "author": {
+    "@type": "Person",
+    "name": "a-ve"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 199
+  },
+  "url": "https://OpenAiTx.github.io/projects/a-ve/wicketkeeper/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/a-ve/wicketkeeper/develop/README.md",
+  "datePublished": "2026-03-08",
+  "dateModified": "2026-03-08"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/a-ve/wicketkeeper" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    wicketkeeper
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 199 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by a-ve</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><p align="center">
+  <a href="https://wicketkeeper.io"><img alt="wicketkeeper" src="/assets/hero-repo.png" width="100%"></a>
+</p></p><p><img src="https://img.shields.io/badge/Go-1.23-00ADD8?logo=go&logoColor=white" alt="Go">
+<img src="https://img.shields.io/badge/Node.js-16+-43853d?logo=node.js&logoColor=white" alt="Node.js">
+<img src="https://img.shields.io/badge/Express.js-4.x-000000?logo=express&logoColor=white" alt="Express.js">
+<img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white" alt="TypeScript">
+<img src="https://img.shields.io/badge/Docker-Supported-2496ED?logo=docker&logoColor=white" alt="Docker"></p><p>一个注重隐私的工作量证明（PoW）验证码系统，旨在成为传统验证码的以用户为中心的替代方案。Wicketkeeper 保护您的网页表单免受简单机器人攻击，无需用户解决令人沮丧的谜题。</p><p>它通过发出一个小型的客户端计算挑战来实现，这对现代设备来说易于解决，但对机器人大规模执行则代价高昂。该系统由 Go 后端、可嵌入的 JavaScript 客户端以及一个全栈演示应用组成。</p><hr></p><h2>目录</h2></p><ul><li><a href="#features" target="_blank" rel="noopener noreferrer">功能</a></li>
+<li><a href="#how-it-works" target="_blank" rel="noopener noreferrer">工作原理</a></li>
+<li><a href="#project-structure" target="_blank" rel="noopener noreferrer">项目结构</a></li>
+<li><a href="#getting-started-full-demo-setup" target="_blank" rel="noopener noreferrer">快速开始：完整演示搭建</a></li>
+  <li><a href="#prerequisites" target="_blank" rel="noopener noreferrer">先决条件</a></li>
+  <li><a href="#step-1-clone-the-repository" target="_blank" rel="noopener noreferrer">步骤 1：克隆仓库</a></li>
+  <li><a href="#step-2-run-the-backend-services" target="_blank" rel="noopener noreferrer">步骤 2：运行后端服务</a></li>
+  <li><a href="#step-3-build-the-client-widget" target="_blank" rel="noopener noreferrer">步骤 3：构建客户端组件</a></li>
+  <li><a href="#step-4-run-the-example-application" target="_blank" rel="noopener noreferrer">步骤 4：运行示例应用</a></li>
+<li><a href="#usage-of-individual-components" target="_blank" rel="noopener noreferrer">各组件使用方法</a></li>
+  <li><a href="#wicketkeeper-server-go" target="_blank" rel="noopener noreferrer">Wicketkeeper 服务器（Go）</a></li>
+  <li><a href="#client-widget-javascript" target="_blank" rel="noopener noreferrer">客户端组件（JavaScript）</a></li></p><p></ul><h2>功能</h2></p><ul><li><strong>工作量证明引擎：</strong> 用计算挑战替代视觉谜题，对用户友好但对机器人难以应对。</li>
+<li><strong>无状态且安全：</strong> 使用签名的 JSON Web Token (JWT) 进行挑战/响应，消除服务器端会话状态。</li>
+<li><strong>防重放攻击：</strong> 利用 Redis Bloom 过滤器实现高性能、基于时间窗口的挑战重用防护。</li>
+<li><strong>可嵌入客户端组件：</strong> 轻量、无依赖的 JavaScript 组件，轻松集成至任何网页表单。</li>
+<li><strong>可配置：</strong> 通过环境变量轻松调整 PoW 难度、CORS 源和端口。</li>
+<li><strong>容器化：</strong> 完整支持 Docker 和 Docker Compose，方便部署后端服务器及其 Redis 依赖。</li>
+<li><strong>全栈演示：</strong> 包含完整的 Express.js + TypeScript 示例，展示真实世界的集成方式。</li></p><p></ul><h2>工作原理</h2></p><p>Wicketkeeper 生态系统涉及四个主要参与者：用户的浏览器、客户端小部件、您的应用后端和 Wicketkeeper 服务器。</p><pre><code class="language-mermaid">sequenceDiagram
+    %% define IDs and human-readable labels
+    participant UB as "User's Browser"
+    participant CW as "Client Widget"
+    participant AB as "Your App Backend"
+    participant WKS as "Wicketkeeper Server"</p><p>    UB->>+CW: User interacts with form
+    CW->>+WKS: GET /v0/challenge
+    WKS-->>-CW: Returns signed JWT (Challenge + Difficulty)</p><p>    CW->>CW: Solves Proof-of-Work in-browser
+    Note over CW: Finds a valid nonce/hash pair
+    CW-->>UB: Populates hidden form field with solution</p><p>    UB->>+AB: Submits form with solution data
+    AB->>+WKS: POST /v0/siteverify (with solution)
+    WKS->>WKS: Verify JWT, Check PoW hash and Bloom-filter
+    WKS-->>-AB: Returns success/failure</p><p>    alt Verification Successful
+        AB->>AB: Process form data (e.g., save comment)
+        AB-->>UB: Show success message
+    else Verification Failed
+        AB-->>UB: Show error message
+    end
+</code></pre>
+<ul><li> <strong>挑战请求：</strong> 客户端小部件向 Wicketkeeper 服务器请求新的 PoW 挑战。  </li>
+<li> <strong>挑战发放：</strong> 服务器生成唯一挑战，将其打包成签名的 JWT，并发送给客户端。  </li>
+<li> <strong>工作量证明：</strong> 客户端浏览器（使用 Web Workers）找到密码难题的解决方案（<code>nonce</code>）。  </li>
+<li> <strong>表单集成：</strong> 解决方案被放置在网页表单的隐藏输入字段中。  </li>
+<li> <strong>服务器端验证：</strong> 用户提交表单时，应用后端将解决方案发送到 Wicketkeeper 服务器的 <code>/v0/siteverify</code> 端点。  </li>
+<li> <strong>验证：</strong> Wicketkeeper 服务器验证 JWT 签名、PoW 的正确性，并检查 Redis Bloom 过滤器以确保挑战未被重复使用。服务器返回最终成功或失败响应。  </li></p><p></ul><h2>项目结构  </h2></p><p>该仓库分为三个主要组件：</p><pre><code class="language-">.
+├── client/          # The frontend JS widget that solves the PoW challenge
+├── server/          # The Go backend that issues and verifies challenges
+├── example/         # A full-stack Express.js demo application
+└── README.md        # This file</code></pre></p><h2>入门指南：完整演示设置</h2></p><p>本指南将帮助您运行完整的 Wicketkeeper 生态系统，包括后端服务器、客户端组件和示例应用程序。</p><h3>先决条件</h3></p><ul><li><a href="https://go.dev/doc/install" target="_blank" rel="noopener noreferrer">Go</a>（v1.23+）</li>
+<li><a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">Node.js</a>（v16+）和 npm</li>
+<li><a href="https://www.docker.com/products/docker-desktop/" target="_blank" rel="noopener noreferrer">Docker</a> 和 Docker Compose</li></p><p></ul><h3>第一步：克隆仓库</h3></p><pre><code class="language-bash">git clone https://github.com/a-ve/wicketkeeper.git
+cd wicketkeeper</code></pre></p><h3>第2步：运行后端服务</h3></p><p>运行Go服务器及其Redis依赖的最简单方法是使用Docker Compose。</p><pre><code class="language-bash">cd server/
+mkdir data
+docker-compose up -d</code></pre>
+这将构建并启动 <code>wicketkeeper</code> Go 服务，端口为 <code>8080</code>，以及一个 <code>redis-stack</code> 容器。首次运行时，会在 <code>server/data/</code> 生成一个 <code>wicketkeeper.key</code> 文件。</p><h3>第三步：构建客户端小部件</h3></p><p>客户端小部件需要编译成一个单独的 JavaScript 文件。</p><pre><code class="language-bash">cd ../client/
+npm install
+npm run build:fast</code></pre></p><p>这将创建 <code>client/dist/fast.js</code>。现在，将此文件复制到示例应用程序的公共目录：</p><pre><code class="language-bash">cp dist/fast.js ../example/public/</code></pre></p><h3>第4步：运行示例应用程序</h3></p><p>该示例是一个Express.js服务器，提供一个简单的HTML表单并处理提交。</p><pre><code class="language-bash">cd ../example/
+npm install</p><h1>Compile the TypeScript code</h1>
+npx tsc</p><h1>Start the server</h1>
+node dist/server.js</code></pre>
+你应该看到输出：<code>🚀 服务器正在监听 http://localhost:8081</code>。</p><p>你现在可以在浏览器中访问 <strong><http://localhost:8081></strong> 来查看 Wicketkeeper 演示效果！</p><h2>单个组件的使用</h2></p><h3>Wicketkeeper 服务器（Go）</h3></p><p>服务器通过环境变量进行配置。详情请参见 <code>server/README.md</code>。</p><p>| 变量               | 描述                                                                                                                                                                                                  | 默认值               |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
+| <code>LISTEN_PORT</code>      | 服务器监听的端口号。                                                                                                                                                                                   | <code>8080</code>               |
+| <code>REDIS_ADDR</code>       | Redis 实例的地址。                                                                                                                                                                                     | <code>127.0.0.1:6379</code>     |
+| <code>REDIS_DB</code>         | Redis 数据库编号（0-15）。<strong>注意：</strong> Redis 集群仅支持 DB 0。                                                                                                                                          | <code>0</code>                  |
+| <code>DIFFICULTY</code>       | PoW 哈希要求的前导零数量。值越大难度越高。                                                                                                                                                            | <code>4</code>                  |
+| <code>ALLOWED_ORIGINS</code>  | 用逗号分隔的 CORS 允许来源列表（例如，<code>https://domain.com</code>）。                                                                                                                                         | <code>*</code>                  |
+| <code>BASE_PATH</code>        | 服务器的基础路径。注意：对于非 <code>/</code> 路径，客户端使用时应使用 <code>data-challenge-url</code>。详见 <a href="https://wicketkeeper.io/components/frontend-widget.html#configuration" target="_blank" rel="noopener noreferrer">这里</a>。                                   | <code>/</code>                  |
+| <code>PRIVATE_KEY_PATH</code> | 用于存储 Ed25519 私钥的路径。如果不存在则会创建。                                                                                                                                                     | <code>./wicketkeeper.key</code> |</p><p><strong>API 端点：</strong></p><ul><li><code>GET /v0/challenge</code>：发放一个新的 PoW 挑战。</li>
+<li><code>POST /v0/siteverify</code>：验证已解答的挑战。</li></p><p></ul><h3>客户端控件（JavaScript）</h3></p><p>客户端是一个单独的 JS 文件（<code>dist/fast.js</code> 或 <code>dist/slow.js</code>），可以嵌入任何 HTML 页面。</p><p><strong>1. 引入脚本</strong></p><pre><code class="language-html"><script defer src="path/to/fast-or-slow.js"></script></code></pre></p><p><strong>2. 将控件添加到表单中</strong></p><p>该脚本会自动初始化任何带有 <code>.wicketkeeper</code> 类的 <code>div</code>。</p><pre><code class="language-html"><form action="/submit" method="POST">
+  <!-- Other form fields -->
+  <div class="wicketkeeper" data-input-name="my_captcha_field"></div>
+  <button type="submit">Submit</button>
+</form></code></pre>
+客户端可以在构建步骤中配置自定义挑战端点。详细信息请参见 <code>client/README.md</code>。</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-08
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/a-ve/wicketkeeper/develop/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-03-08 
+    </div>
+    
+</body>
+</html>

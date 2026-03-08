@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my-skylight-calendar - Read my-skylight-calendar documentation in German. This project has 140 stars on GitHub.</title>
-    <meta name="description" content="Read my-skylight-calendar documentation in German. This project has 140 stars on GitHub.">
+    <title>my-skylight-calendar - Read my-skylight-calendar documentation in German. This project has 248 stars on GitHub.</title>
+    <meta name="description" content="Read my-skylight-calendar documentation in German. This project has 248 stars on GitHub.">
     <meta name="keywords" content="my-skylight-calendar, German, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "my-skylight-calendar",
-  "description": "Read my-skylight-calendar documentation in German. This project has 140 stars on GitHub.",
+  "description": "Read my-skylight-calendar documentation in German. This project has 248 stars on GitHub.",
   "author": {
     "@type": "Person",
     "name": "mohesles"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 140
+    "ratingCount": 248
   },
   "url": "https://OpenAiTx.github.io/projects/mohesles/my-skylight-calendar/README-de.html",
   "sameAs": "https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/README.md",
-  "datePublished": "2026-01-14",
-  "dateModified": "2026-01-14"
+  "datePublished": "2026-03-08",
+  "dateModified": "2026-03-08"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 140 stars</span>
+                <span class="stars">⭐ 248 stars</span>
                 <span class="language">German</span>
                 <span>by mohesles</span>
             </div>
@@ -328,42 +328,44 @@ Nichtsdestotrotz kann dein Anwendungsfall anders sein und du musst es ggf. anpas
 <li><code>card-mod</code></li>
 <li><code>better-moment-card</code></li>
 <li><code>weather-card</code></li>
-<li><code>browser_mod</code> (Erforderlich, damit die Popups funktionieren)</li>
+<li><code>browser_mod</code> (Erforderlich für die Popups)</li>
 <li><code>layout-card</code> (Erforderlich für die Sections-Ansicht)</li>
-<li><code>button-card</code> (Erforderlich für das Hinzufügen von Terminen per Popup)</li></p><p></ul><h3>2. Das Backend (Das Gehirn)</h3></p><ul><li>Öffnen Sie Ihre Datei <code>configuration.yaml</code> in Home Assistant.</li>
+<li><code>button-card</code> (Erforderlich für das Popup zum Hinzufügen eines Ereignisses)</li></p><p></ul>*Hinweis: Unter Einstellungen → Geräte & Dienste stellen Sie sicher, dass Browser Mod als Integration (Kachel) erscheint und nicht nur unter HACS. 
+Falls dies nicht der Fall ist, klicken Sie auf Integration hinzufügen → Browser Mod und schließen Sie den Vorgang ab, danach starten Sie HA neu.
+Die Installation über HACS lädt nur Dateien herunter; Sie müssen die Integration hinzufügen, damit HA deren Aktionen/Entitäten registriert.</p><h3>2. Das Backend (Das Gehirn)</h3></p><ul><li>Öffnen Sie Ihre <code>configuration.yaml</code>-Datei in Home Assistant.</li>
 <li>Stellen Sie sicher, dass Sie diese Zeile unter <code>homeassistant:</code> hinzugefügt haben, um Pakete zu aktivieren:</li></p><p>   </ul><pre><code class="language-yaml">   homeassistant:
      packages: !include_dir_named packages
-   ``<code>
-<ul><li>Erstellen Sie einen Ordner namens </code>packages<code> in Ihrem HA-Konfigurationsverzeichnis (falls Sie noch keinen haben).</li>
+   ``<code></p><ul><li>Erstellen Sie einen Ordner namens </code>packages<code> in Ihrem HA-Konfigurationsverzeichnis (falls Sie keinen haben).</li>
 <li>Laden Sie <a href="https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/packages/family_calendar.yaml" target="_blank" rel="noopener noreferrer">packages/family_calendar.yaml</a> aus diesem Repository herunter.</li>
+<li>Suchen Sie nach dem String [ #<--- UPDATE THIS ENTITY] und aktualisieren Sie die Kalender-Entity-ID, damit sie Ihrer Umgebung entspricht. Weitere Details finden Sie in Abschnitt 3.</li>
 <li>Legen Sie die Datei in Ihren </code>packages/<code>-Ordner.</li>
-<li><strong>Starten Sie Home Assistant neu</strong>.</li></p><p></ul><h3>3. Die Kalender</h3></p><p>Sie können <strong>Google-Kalender</strong> oder <strong>Lokale Kalender</strong> verwenden.</p><p>#### Option A: Lokaler Kalender (am einfachsten)</p><p>Beachten Sie, dass dies ungetestet ist, da ich ausschließlich Google-Kalender verwende</p><ul><li>Gehen Sie zu <strong>Einstellungen > Geräte & Dienste</strong>.</li>
-<li>Fügen Sie die Integration <strong>Lokaler Kalender</strong> hinzu.</li>
-<li>Erstellen Sie Kalender mit genau diesen Namen: </code>Alice<code>, </code>Bob<code>, </code>Charlie<code>, </code>Daisy<code>, </code>Family<code>.</li>
-    </ul><em> </em>Wenn Sie diese Namen verwenden, funktioniert der Code direkt!*</p><p>#### Option B: Google-Kalender</p><ul><li>Öffnen Sie </code>packages/family_calendar.yaml<code>.</li>
-<li>Scrollen Sie zum Skript </code>add_google_calendar_event<code>.</li>
-<li>Aktualisieren Sie die </code>calendar_map<code>, sodass sie auf Ihre realen Google-Entitäten zeigt:</li></p><p>
-    </ul></code>`<code>yaml
-    calendar_map:
-      "Alice": "calendar.alice_gmail_com"
-      "Bob": "calendar.bob_work_account"
-    </code>`<code></p><p>#### Feiertage einrichten</p><p>Seit den Updates von Home Assistant werden Feiertage jetzt über die Benutzeroberfläche hinzugefügt:</p><ul><li>Gehe zu <strong>Einstellungen > Geräte & Dienste > Integration hinzufügen > Feiertag</strong>.</li>
-<li>Wähle dein Land aus.</li>
-<li>Überprüfe die Entity-ID (z. B. </code>calendar.holidays<code>). Falls diese von der Standard-ID abweicht, aktualisiere sie im Dashboard-YAML.</li></p><p></ul><h3>4. Das Dashboard (Das Aussehen)</h3></p><ul><li>Erstelle eine neue Dashboard-Ansicht (Ansichtstyp auf <strong>Abschnitte</strong> setzen).</li>
-<li>Kopiere den Code aus <a href="https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/dashboard.yaml" target="_blank" rel="noopener noreferrer">dashboard.yaml</a>.</li>
-<li><strong>Anpassen:</strong></li>
-   <li><strong>Suchen & Ersetzen:</strong> Ersetze </code>person.alice<code> durch deine tatsächlichen Familienmitglied-Entitäten.</li>
-   <li><strong>Wetter:</strong> Ersetze </code>weather.home<code> durch deinen Wetteranbieter.</li>
-   <li><strong>Hintergrund:</strong> Aktualisiere die Bild-URL am Ende der yaml.</li></p><p></ul><h3>Schritt 5: Das Theme (Optional)</h3></p><p>Um das spezielle Schriftbild (Ovo) zu erhalten:</p><ul><li>Stelle sicher, dass deine </code>configuration.yaml<code> diese Zeile unter </code>frontend:<code> enthält.</li></p><p>   </ul></code>`<code>yaml
+<li><strong>Starten Sie Home Assistant neu</strong>.</li></p><p></ul><h3>3. Die Kalender</h3></p><p>Sie können <strong>Google-Kalender</strong> oder <strong>lokale Kalender</strong> verwenden.</p><p>#### Option A: Kalendernamen wiederverwenden (am einfachsten)</p><ul><li>Gehen Sie zu <strong>Einstellungen > Geräte & Dienste</strong>.</li>
+<li>Fügen Sie die <strong>Local Calendar</strong>-Integration hinzu.</li>
+<li>Erstellen Sie Kalender mit exakt folgenden Namen: </code>calendar1<code>, </code>calendar2<code>, </code>calendar3<code>, </code>calendar4<code>, </code>Family<code>.</li>
+    </ul><em> </em>Wenn Sie diese Namen verwenden, funktioniert der Code direkt!*</p><p>#### Option B: Benutzerdefinierter Kalender</p><ul><li>Gehen Sie zu <strong>Einstellungen > Geräte & Dienste</strong>.</li>
+<li>Fügen Sie die <strong>Local Calendar</strong>-Integration oder <strong>Google Calendar</strong> hinzu.</li>
+<li>Navigieren Sie zu <strong>Konfiguration > Integrationen > Local Calendar</strong> oder <strong>Google Calendar</strong> und wählen Sie "Eintrag hinzufügen".</li>
+<li>Für jeden erstellten Eintrag erhalten Sie die Entity-ID, um die dashboard.yaml-Datei zu aktualisieren.</li>
+<li>Öffnen Sie </code>dashboard.yaml<code>.</li>
+<li>Suchen Sie nach </code># <--- UPDATE THIS ENTITY<code>.</li>
+<li>Aktualisieren Sie die Entity-ID entsprechend Ihrer Umgebung.</li></p><p>
+</ul>#### Feiertage einrichten</p><p>Seit den Updates von Home Assistant werden Feiertage jetzt über die Benutzeroberfläche hinzugefügt:</p><ul><li>Gehen Sie zu <strong>Einstellungen > Geräte & Dienste > Integration hinzufügen > Holiday</strong>.</li>
+<li>Wählen Sie Ihr Land aus.</li>
+<li>Prüfen Sie die Entity-ID (z.B. </code>calendar.holidays<code>). Wenn diese von der Standard-ID abweicht, aktualisieren Sie sie in der Dashboard-YAML.</li></p><p></ul><h3>4. Das Dashboard (Das Aussehen)</h3></p><ul><li>Gehe zu <strong>Einstellungen > Dashboard</strong></li>
+<li>Klicke auf <strong>Dashboard hinzufügen</strong> (Wähle die Option "Neues Dashboard von Grund auf" und stelle sicher, dass "Zur Seitenleiste hinzufügen" ausgewählt ist).</li>
+<li>Wähle im linken Menü das neu erstellte Dashboard aus und klicke auf das Stiftsymbol, um es zu bearbeiten.</li>
+<li>Wähle das Dreipunkt-Symbol und dann "Roher Konfigurator-Editor".</li>
+<li>Kopiere und füge den Code aus <a href="https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/dashboard.yaml" target="_blank" rel="noopener noreferrer">dashboard.yaml</a> ein.</li></p><p></ul><h3>Schritt 5: Das Theme (Optional)</h3></p><p>Um das spezielle Schriftbild (Ovo) zu erhalten:</p><ul><li>Stelle sicher, dass deine </code>configuration.yaml<code> diese Zeile unter </code>frontend:<code> enthält:</li></p><p>   </ul></code>`<code>yaml
    frontend:
      themes: !include_dir_merge_named themes
    </code>`<code>
 <ul><li>Erstellen Sie einen Ordner namens </code>themes<code> in Ihrem Konfigurationsverzeichnis.</li>
 <li>Laden Sie <a href="https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/themes/skylight.yaml" target="_blank" rel="noopener noreferrer">themes/skylight.yaml</a> herunter und legen Sie diese Datei in diesem Ordner ab.</li>
+<li>Verwenden Sie den Dateieditor und laden Sie calbackgrd.png in den /www/ Ordner hoch, dieser wird intern als /local im Dashboard übersetzt.</li>
 <li>Starten Sie Home Assistant neu.</li>
-<li>Gehen Sie zu Ihrem Profil (Benutzersymbol unten links) und ändern Sie das <strong>Theme</strong> auf </code>Skylight<code>.</li>
-</ul>HINWEIS: Das Theme ist nicht umfassend, behalten Sie dies im Hinterkopf.</p><hr></p><h2>📐 Funktionsweise (unter der Haube)</h2></p><h3>Filter-Logik</h3></p><p>Die </code>week-planner-card<code> unterstützt das Ausblenden bestimmter Kalender nicht nativ. Um dies zu lösen, habe ich <strong>Input Texts</strong> als Regex-Filter verwendet.</p><p><em> Wenn Sie auf die Schaltfläche einer Person klicken, wird deren Filter zwischen </code>.</em><code> (Alles anzeigen) und </code>^$<code> (Nichts anzeigen) umgeschaltet.
-<ul><li>Die </code>config-template-card<code> injiziert diese Variablen dynamisch in die Kalenderkarte.</li></p><p></ul><h3>Ereigniserstellungs-Skript</h3></p><p>Das "Add Event"-Popup verwendet ein einziges Skript, das die Logik für mehrere Personen und Ereignistypen (Ganztägig vs. zeitlich) übernimmt.</p><p></code></pre>yaml
+<li>Gehen Sie zu Ihrem Profil (Benutzersymbol unten links) und ändern Sie das <strong>Theme</strong> zu </code>Skylight<code>.</li>
+</ul>HINWEIS: Das Theme ist nicht umfassend, behalten Sie das im Hinterkopf.</p><hr></p><h2>📐 Wie es funktioniert (unter der Haube)</h2></p><h3>Filter-Logik</h3></p><p>Die </code>week-planner-card<code> unterstützt das Ausblenden bestimmter Kalender nicht nativ. Um das zu lösen, habe ich <strong>Input Texts</strong> als Regex-Filter verwendet.</p><p><em> Wenn Sie auf den Button einer Person klicken, wird deren Filter zwischen </code>.</em><code> (Alles anzeigen) und </code>^$<code> (Nichts anzeigen) umgeschaltet.
+<ul><li>Die </code>config-template-card<code> injiziert diese Variablen dynamisch in die Kalenderkarte.</li></p><p></ul><h3>Ereigniserstellungs-Skript</h3></p><p>Das "Ereignis hinzufügen"-Popup verwendet ein einziges Skript, das die Logik für mehrere Personen und Ereignistypen (Ganztägig vs. Zeitlich) verwaltet.</p><p></code></pre>yaml
 <h1>Simplified Logic Example</h1>
 target_calendar: "{{ calendar_map.get(states('input_select.calendar_select')) }}"</p><p>choose:
   <ul><li>conditions: "All Day Event is ON"</li>
@@ -374,7 +376,7 @@ target_calendar: "{{ calendar_map.get(states('input_select.calendar_select')) }}
 
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-14
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-08
 
 ---</p>
         </div>
@@ -386,7 +388,7 @@ target_calendar: "{{ calendar_map.get(states('input_select.calendar_select')) }}
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-01-14 
+        Last updated: 2026-03-08 
     </div>
     
 </body>

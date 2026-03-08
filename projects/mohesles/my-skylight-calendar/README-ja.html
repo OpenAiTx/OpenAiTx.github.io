@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my-skylight-calendar - Read my-skylight-calendar documentation in Japanese. This project has 140 stars on GitHub.</title>
-    <meta name="description" content="Read my-skylight-calendar documentation in Japanese. This project has 140 stars on GitHub.">
+    <title>my-skylight-calendar - Read my-skylight-calendar documentation in Japanese. This project has 248 stars on GitHub.</title>
+    <meta name="description" content="Read my-skylight-calendar documentation in Japanese. This project has 248 stars on GitHub.">
     <meta name="keywords" content="my-skylight-calendar, Japanese, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "my-skylight-calendar",
-  "description": "Read my-skylight-calendar documentation in Japanese. This project has 140 stars on GitHub.",
+  "description": "Read my-skylight-calendar documentation in Japanese. This project has 248 stars on GitHub.",
   "author": {
     "@type": "Person",
     "name": "mohesles"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 140
+    "ratingCount": 248
   },
   "url": "https://OpenAiTx.github.io/projects/mohesles/my-skylight-calendar/README-ja.html",
   "sameAs": "https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/README.md",
-  "datePublished": "2026-01-14",
-  "dateModified": "2026-01-14"
+  "datePublished": "2026-03-08",
+  "dateModified": "2026-03-08"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 140 stars</span>
+                <span class="stars">⭐ 248 stars</span>
                 <span class="language">Japanese</span>
                 <span>by mohesles</span>
             </div>
@@ -329,42 +329,45 @@
 <li><code>card-mod</code></li>
 <li><code>better-moment-card</code></li>
 <li><code>weather-card</code></li>
-<li><code>browser_mod</code>（ポップアップ動作に必須）</li>
+<li><code>browser_mod</code>（ポップアップの動作に必須）</li>
 <li><code>layout-card</code>（Sectionsビューに必須）</li>
-<li><code>button-card</code>（イベント追加用ポップアップに必須）</li></p><p></ul><h3>2. バックエンド（頭脳）</h3></p><ul><li>Home Assistant の <code>configuration.yaml</code> ファイルを開きます。</li>
-<li>パッケージを有効にするために、<code>homeassistant:</code> の下に次の行が追加されていることを確認してください：</li></p><p>   </ul><pre><code class="language-yaml">   homeassistant:
+<li><code>button-card</code>（イベント追加ポップアップに必須）</li></p><p></ul>*注意: 設定 → デバイス & サービスで、Browser Modが統合（タイル）として表示されていることを確認してください。HACSの下だけに表示されている場合は、統合の追加 → Browser Mod をクリックし、フローを完了してからHAを再起動してください。
+HACSでのインストールはファイルをダウンロードするだけです。統合を追加することで、HAがそのアクション/エンティティを認識します。</p><h3>2. バックエンド（頭脳部分）</h3></p><ul><li>Home Assistantで <code>configuration.yaml</code> ファイルを開きます。</li>
+<li>パッケージを有効にするため、<code>homeassistant:</code> の下に次の行が追加されていることを確認してください：</li></p><p>
+   </ul><pre><code class="language-yaml">   homeassistant:
      packages: !include_dir_named packages
    ``<code>
-<ul><li>HAの設定ディレクトリに</code>packages<code>というフォルダを作成します（まだない場合）。</li>
-<li>このリポジトリから<a href="https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/packages/family_calendar.yaml" target="_blank" rel="noopener noreferrer">packages/family_calendar.yaml</a>をダウンロードします。</li>
+<ul><li>HAの設定ディレクトリ内に</code>packages<code>というフォルダを作成します（まだない場合）。</li>
+<li>このリポジトリから <a href="https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/packages/family_calendar.yaml" target="_blank" rel="noopener noreferrer">packages/family_calendar.yaml</a> をダウンロードします。</li>
+<li>文字列 [ #<--- UPDATE THIS ENTITY] を検索し、カレンダーエンティティIDを自分の環境に合わせて更新します。詳細はセクション3を参照してください。</li>
 <li>ファイルを</code>packages/<code>フォルダ内に配置します。</li>
-<li><strong>Home Assistantを再起動します</strong>。</li></p><p></ul><h3>3. カレンダー</h3></p><p><strong>Googleカレンダー</strong>または<strong>ローカルカレンダー</strong>を使用できます。</p><p>#### オプションA: ローカルカレンダー（最も簡単）</p><p>これは未検証です。私はGoogleカレンダーのみを使用しているためです。</p><ul><li><strong>設定 > デバイスとサービス</strong> に移動します。</li>
-<li><strong>ローカルカレンダー</strong>の統合を追加します。</li>
-<li>正確に次の名前のカレンダーを作成します：</code>Alice<code>、</code>Bob<code>、</code>Charlie<code>、</code>Daisy<code>、</code>Family<code>。</li>
-    </ul><em> </em>これらの名前を使うと、コードはすぐに動作します！*</p><p>#### オプションB: Googleカレンダー</p><ul><li></code>packages/family_calendar.yaml<code>を開きます。</li>
-<li></code>add_google_calendar_event<code>スクリプトまでスクロールします。</li>
-<li></code>calendar_map<code>をあなたの実際のGoogleエンティティに更新します：</li></p><p>
-    </ul></code>`<code>yaml
-    calendar_map:
-      "Alice": "calendar.alice_gmail_com"
-      "Bob": "calendar.bob_work_account"
-    </code>`<code></p><p>#### 休日の設定</p><p>Home Assistantのアップデートにより、休日はUIから追加するようになりました：</p><ul><li><strong>設定 > デバイスとサービス > インテグレーションを追加 > Holiday</strong> に移動します。</li>
+<li><strong>Home Assistantを再起動</strong>します。</li></p><p></ul><h3>3. カレンダー</h3></p><p><strong>Googleカレンダー</strong>または<strong>ローカルカレンダー</strong>を使用できます。</p><p>#### オプションA: カレンダー名を再利用（最も簡単）</p><ul><li><strong>設定 > デバイス & サービス</strong> に移動します。</li>
+<li><strong>ローカルカレンダー</strong>インテグレーションを追加します。</li>
+<li>以下の正確な名前でカレンダーを作成します: </code>calendar1<code>, </code>calendar2<code>, </code>calendar3<code>, </code>calendar4<code>, </code>Family<code>。</li>
+    </ul><em> </em>これらの名前を使用すれば、コードはすぐに動作します！*</p><p>#### オプションB: カスタムカレンダー</p><ul><li><strong>設定 > デバイス & サービス</strong> に移動します。</li>
+<li><strong>ローカルカレンダー</strong>または<strong>Googleカレンダー</strong>インテグレーションを追加します。</li>
+<li><strong>設定 > インテグレーション > ローカルカレンダー</strong>または<strong>Googleカレンダー</strong>に移動し、「エントリを追加」を選択します。</li>
+<li>作成した各エントリについて、dashboard.yamlファイルを更新するためのエンティティIDを取得します。</li>
+<li></code>dashboard.yaml<code>を開きます。</li>
+<li></code># <--- UPDATE THIS ENTITY<code> を検索します。</li>
+<li>環境に合わせてエンティティIDを更新します。</li></p><p>
+</ul>#### 祝日の設定</p><p>Home Assistantのアップデートにより、祝日はUIから追加されるようになりました：</p><ul><li><strong>設定 > デバイス & サービス > インテグレーションを追加 > Holiday</strong> に移動します。</li>
 <li>国を選択します。</li>
-<li>エンティティID（例：</code>calendar.holidays<code>）を確認します。デフォルトと異なる場合は、ダッシュボードのYAMLで更新してください。</li></p><p></ul><h3>4. ダッシュボード（見た目）</h3></p><ul><li>新しいダッシュボードビューを作成します（ビュータイプを<strong>セクション</strong>に設定）。</li>
-<li><a href="https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/dashboard.yaml" target="_blank" rel="noopener noreferrer">dashboard.yaml</a>からコードをコピーします。</li>
-<li><strong>カスタマイズ：</strong></li>
-   <li><strong>検索と置換：</strong> </code>person.alice<code> を実際の家族メンバーのエンティティに置き換えます。</li>
-   <li><strong>天気：</strong> </code>weather.home<code> をご利用の天気提供元に置き換えます。</li>
-   <li><strong>背景：</strong> yamlの一番下の画像URLを更新します。</li></p><p></ul><h3>ステップ5：テーマ（オプション）</h3></p><p>特定のフォント（Ovo）を使用するには：</p><ul><li></code>configuration.yaml<code> の </code>frontend:<code> の下にこの行があることを確認してください。</li></p><p>   </ul></code>`<code>yaml
+<li>エンティティID（例: </code>calendar.holidays<code>）を確認します。デフォルトと異なる場合は、dashboard YAMLで更新してください。</li></p><p></ul><h3>4. ダッシュボード（見た目）</h3></p><ul><li><strong>設定 > ダッシュボード</strong> に移動します</li>
+<li><strong>ダッシュボードを追加</strong> をクリックします（「新しいダッシュボードを最初から」を選択し、「サイドバーに追加」を選択してください）。</li>
+<li>左側のメニューで新しく作成したダッシュボードを選択し、鉛筆アイコンをクリックして編集します。</li>
+<li>3つの点のアイコンを選択し、「Raw configurator editor」を選択します。</li>
+<li><a href="https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/dashboard.yaml" target="_blank" rel="noopener noreferrer">dashboard.yaml</a> のコードをコピーして貼り付けます。</li></p><p></ul><h3>ステップ 5: テーマ（オプション）</h3></p><p>特定のフォント（Ovo）の見た目を得るには：</p><ul><li></code>configuration.yaml<code> の </code>frontend:<code> の下に次の行があることを確認してください。</li></p><p>   </ul></code>`<code>yaml
    frontend:
      themes: !include_dir_merge_named themes
    </code>`<code>
-<ul><li>configディレクトリ内に </code>themes<code> という名前のフォルダを作成します。  </li>
-<li><a href="https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/themes/skylight.yaml" target="_blank" rel="noopener noreferrer">themes/skylight.yaml</a> をダウンロードし、そのフォルダに配置します。  </li>
-<li>Home Assistantを再起動します。  </li>
-<li>プロフィール（左下のユーザーアイコン）に移動し、<strong>テーマ</strong> を </code>Skylight<code> に変更します。  </li>
-</ul>注意：テーマは完全なものではないため、その点を考慮してください。  </p><p>---  </p><h2>📐 仕組み（内部動作）  </h2></p><h3>フィルターのロジック  </h3></p><p></code>week-planner-card<code> は特定のカレンダーを動的に非表示にする機能をネイティブにはサポートしていません。これを解決するために、正規表現フィルターとして機能する <strong>Input Texts</strong> を使用しています。  </p><p><em> 人物のボタンをクリックすると、そのフィルターが </code>.</em><code>（すべて表示）と </code>^$<code>（何も表示しない）を切り替えます。  
-<ul><li></code>config-template-card<code> がこれらの変数をカレンダーカードに動的に注入します。  </li></p><p></ul><h3>イベント作成スクリプト  </h3></p><p>「イベント追加」ポップアップは、複数の人物およびイベントタイプ（終日イベントと時間指定イベント）のロジックを処理する単一のスクリプトを使用しています。</p><p></code></pre>yaml
+<ul><li>設定ディレクトリに </code>themes<code> という名前のフォルダを作成します。</li>
+<li><a href="https://raw.githubusercontent.com/mohesles/my-skylight-calendar/main/themes/skylight.yaml" target="_blank" rel="noopener noreferrer">themes/skylight.yaml</a> をダウンロードし、そのフォルダに配置します。</li>
+<li>File Editor を使って calbackgrd.png を /www/ フォルダにアップロードします。これはダッシュボード上で内部的に /local に変換されます。</li>
+<li>Home Assistant を再起動します。</li>
+<li>プロファイル（左下のユーザーアイコン）に移動し、<strong>テーマ</strong> を </code>Skylight<code> に変更します。</li>
+</ul>注意: このテーマは包括的ではないため、その点を考慮してください。</p><hr></p><h2>📐 仕組み（内部動作）</h2></p><h3>フィルターロジック</h3></p><p></code>week-planner-card<code> は特定のカレンダーをその場で非表示にすることをネイティブにはサポートしていません。これを解決するために、<strong>Input Texts</strong> を Regex フィルターとして使用しました。</p><p><em> 人物ボタンをクリックすると、そのフィルターが </code>.</em><code>（すべて表示）と </code>^$<code>（何も表示しない）でトグルされます。
+<ul><li></code>config-template-card<code> がこれらの変数をカレンダーカードに動的に注入します。</li></p><p></ul><h3>イベント作成スクリプト</h3></p><p>「イベント追加」ポップアップは、複数の人物やイベント種別（終日 vs 時間指定）のロジックを処理する単一のスクリプトを使用しています。</p><p></code></pre>yaml
 <h1>Simplified Logic Example</h1>
 target_calendar: "{{ calendar_map.get(states('input_select.calendar_select')) }}"</p><p>choose:
   <ul><li>conditions: "All Day Event is ON"</li>
@@ -375,7 +378,7 @@ target_calendar: "{{ calendar_map.get(states('input_select.calendar_select')) }}
 
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-14
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-08
 
 ---</p>
         </div>
@@ -387,7 +390,7 @@ target_calendar: "{{ calendar_map.get(states('input_select.calendar_select')) }}
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-01-14 
+        Last updated: 2026-03-08 
     </div>
     
 </body>
