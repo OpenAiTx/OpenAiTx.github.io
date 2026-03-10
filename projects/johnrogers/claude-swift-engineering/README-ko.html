@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>claude-swift-engineering - Swift/TCA 코드의 기획, 구현, 문서화 및 테스트를 지원하는 에이전트와 스킬 모음입니다.</title>
+    <meta name="description" content="Swift/TCA 코드의 기획, 구현, 문서화 및 테스트를 지원하는 에이전트와 스킬 모음입니다.">
+    <meta name="keywords" content="claude-swift-engineering, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "claude-swift-engineering",
+  "description": "Swift/TCA 코드의 기획, 구현, 문서화 및 테스트를 지원하는 에이전트와 스킬 모음입니다.",
+  "author": {
+    "@type": "Person",
+    "name": "johnrogers"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 157
+  },
+  "url": "https://OpenAiTx.github.io/projects/johnrogers/claude-swift-engineering/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/johnrogers/claude-swift-engineering/main/README.md",
+  "datePublished": "2026-03-10",
+  "dateModified": "2026-03-10"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/johnrogers/claude-swift-engineering" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    claude-swift-engineering
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 157 stars</span>
+                <span class="language">Korean</span>
+                <span>by johnrogers</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>claude-swift-engineering</h1></p><p><a href="#" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/license-MIT-green" alt="License"></a> <a href="#" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/platform-iOS%2026%2B%20%7C%20macOS-blue" alt="Platform"></a></p><blockquote>현대 Swift/SwiftUI 개발을 위한 Claude Code 플러그인 마켓플레이스</blockquote></p><p>최신 Swift 6.2, TCA(The Composable Architecture), SwiftUI를 사용하여 전문적인 iOS/macOS 기능을 구축하기 위한 특화된 AI 툴킷입니다. 이 플러그인은 기획, 구현, 테스트 및 배포를 조율하는 초특화 에이전트를 제공합니다.</p><h2>Swift Engineering Plugin</h2></p><p><strong>swift-engineering 플러그인</strong>은 전문 Swift 개발을 위한 생산 준비 완료 툴킷입니다:</p><ul><li><strong>12개의 초특화 에이전트</strong> — 기획(Opus), 구현(Inherit), 유틸리티(Haiku)로 명확한 업무 인수인계</li>
+<li><strong>TCA 지원</strong> — The Composable Architecture를 위한 아키텍처 설계부터 테스트까지 전체 워크플로우</li>
+<li><strong>최신 Swift 6.2</strong> — 엄격한 동시성, async/await, 액터, Sendable을 지원하는 iOS 26 이상</li>
+<li><strong>코드 품질</strong> — 통합 코드 리뷰, 접근성 준수, 성능 점검 기능 포함</li>
+<li><strong>지식 스킬</strong> — 아키텍처 패턴, 프레임워크, 디자인 및 개발 도구를 아우르는 18개의 전문 지식 기반</li></p><p></ul><h2>빠른 시작</h2></p><h3>설치</h3></p><p>Claude Code에 플러그인을 추가하세요:</p><pre><code class="language-bash"># Add marketplace source
+/plugin marketplace add https://github.com/johnrogers/claude-swift-engineering</p><h1>Install swift-engineering plugin</h1>
+/plugin install swift-engineering</code></pre>
+<h3>훅(선택 사항)</h3></p><p>더 나은 작업 흐름 규율을 위해 스킬/에이전트 평가 훅을 활성화하세요:</p><pre><code class="language-bash"># 1. Symlink hooks-scripts to ~/.claude
+ln -s /path/to/claude-swift-engineering/plugins/swift-engineering/hooks-scripts ~/.claude/hooks-scripts</p><h1>2. Add to ~/.claude/settings.json</h1>
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat ~/.claude/hooks-scripts/UserPromptSubmit/skill-forced-eval-hook.sh"
+          },
+          {
+            "type": "command",
+            "command": "cat ~/.claude/hooks-scripts/UserPromptSubmit/agent-forced-eval-hook.sh"
+          }
+        ]
+      }
+    ]
+  }
+}</code></pre>
+전체 후크 문서는 <a href="https://raw.githubusercontent.com/johnrogers/claude-swift-engineering/main/plugins/swift-engineering/hooks-scripts/README.md" target="_blank" rel="noopener noreferrer">plugins/swift-engineering/hooks-scripts/README.md</a>를 참조하세요.</p><p>에이전트 사용 및 가능한 워크플로우에 대한 전체 문서는 <a href="https://raw.githubusercontent.com/johnrogers/claude-swift-engineering/main/plugins/swift-engineering/README.md" target="_blank" rel="noopener noreferrer">plugins/swift-engineering/README.md</a>를 참조하세요.</p><h2>포함된 내용</h2></p><h3>12개의 전문화된 에이전트</h3></p><p>| 유형 | 에이전트 | 책임 |
+|------|--------|-----------------|
+| <strong>기획</strong> | @swift-ui-design, @swift-architect, @tca-architect | 아키텍처 결정 (Opus, 읽기 전용) |
+| <strong>구현</strong> | @tca-engineer, @swift-engineer, @swiftui-specialist, @swift-test-creator, @documentation-generator, @swift-code-reviewer, @swift-modernizer | 코드 생성 및 검토 (상속) |
+| <strong>유틸리티</strong> | @swift-documenter, @search | API 문서화 및 코드 검색 (Haiku) |</p><h3>18가지 지식 기술</h3></p><p>아키텍처 패턴 (TCA, SwiftUI, 최신 Swift, 고급 제스처), 프레임워크 (SQLite, GRDB, StoreKit, 네트워킹), 플랫폼 디자인 (iOS 26, HIG, 현지화, 햅틱), 개발 도구 (테스트, 스타일, 진단). 각 기술은 최신 패턴과 모범 사례에 대해 심층적인 지침을 제공합니다.</p><h2>기여자를 위한 안내</h2></p><h3>저장소 구조</h3></p><pre><code class="language-">claude-swift-engineering/
+├── .claude-plugin/
+│   └── marketplace.json                    # Marketplace configuration
+├── .github/workflows/                      # CI/CD pipelines
+├── plugins/
+│   └── swift-engineering/                  # Main plugin
+│       ├── agents/                         # 12 specialized agents
+│       ├── skills/                         # 18 comprehensive skills
+│       ├── hooks-scripts/                  # Hooks system
+│       ├── scripts/                        # Helper utilities
+│       ├── rules/                          # Development rules
+│       └── README.md                       # Plugin documentation
+└── worktrees/                              # Git worktrees for features</code></pre></p><h3>개발 워크플로우</h3></p><p>#### 버전 올리기</p><p>변경 사항이 있을 때는 플러그인 버전을 증가시킵니다:</p><pre><code class="language-bash">bash plugins/swift-engineering/scripts/bump-plugin-version.sh <new-version></code></pre>
+이 업데이트는 plugin.json, marketplace.json 및 기타 메타데이터 파일의 버전 번호를 갱신합니다.</p><p>#### 에이전트 또는 스킬 추가</p><ul><li>기존 패턴을 따라 새로운 에이전트 또는 스킬 파일 생성 (<code>agents/</code> 또는 <code>skills/</code> 예제 참고)</li>
+<li>새로운 도구 기능 정의 시 <code>plugin.json</code> 업데이트</li>
+<li>구성 검증을 위한 스모크 테스트 실행</li>
+<li>두 README 파일(루트 및 플러그인) 업데이트</li>
+<li>워크플로우와의 통합 테스트 수행</li></p><p></ul><h3>코드 구성</h3></p><ul><li><strong>에이전트</strong> (<code>agents/</code>) — 각 에이전트는 메타데이터 및 지침이 담긴 <code>.md</code> 파일 보유</li>
+<li><strong>스킬</strong> (<code>skills/</code>) — 에이전트가 참조하는 주제별 지식 리소스</li>
+<li><strong>훅</strong> (<code>hooks-scripts/</code>) — 워크플로우를 강제하는 실행 가능한 훅</li>
+<li><strong>스크립트</strong> (<code>scripts/</code>) — 자동화를 위한 유틸리티 셸 스크립트</li>
+<li><strong>규칙</strong> (<code>rules/</code>) — 개발 관행 및 의사결정 프레임워크</li>
+<li><strong>문서</strong> (<code>docs/</code>) — 스모크 테스트 및 검증 스위트</li></p><p></ul><h2>아키텍처 및 설계 원칙</h2></p><p>플러그인은 다음의 주요 원칙들을 구현합니다:</p><ul><li><strong>초전문화(Ultra-Specialization)</strong> — 각 에이전트는 명확한 책임과 정의된 인계 절차를 가짐</li>
+<li><strong>모델 층화(Model Stratification)</strong> — 아키텍처용 Opus(최상의 추론), 구현용 Inherit(비용 효율적), 유틸리티용 Haiku(빠름)</li>
+<li><strong>로컬 우선(Local-First)</strong> — 기본값은 SQLite 및 UserDefaults, SwiftData 또는 Core Data는 사용하지 않음</li>
+<li><strong>모던 스위프트 전용(Modern Swift Only)</strong> — Swift 6.2 및 엄격한 동시성, 폐기된 API 미사용</li>
+<li><strong>읽기 전용 기획(Read-Only Planning)</strong> — 기획 에이전트는 코드 수정 불가, 명확한 분리 보장</li>
+<li><strong>기획 파일 조정(Plan File Coordination)</strong> — 에이전트들은 <code>docs/plans/<feature>.md</code>를 통해 상태 공유</li></p><p></ul>아키텍처 세부사항, 워크플로우 다이어그램, 인계 모델은 <a href="https://raw.githubusercontent.com/johnrogers/claude-swift-engineering/main/plugins/swift-engineering/README.md" target="_blank" rel="noopener noreferrer">plugins/swift-engineering/README.md</a> 참고.</p><h2>라이선스</h2></p><p>MIT 라이선스 — 자세한 내용은 <a href="LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a> 파일 참조.</p><h2>기여자</h2></p><p><strong>저자:</strong> John Rogers</p><p><strong>저장소:</strong> claude-swift-engineering
+<strong>Swift 버전:</strong> 6.2+
+<strong>iOS 배포 대상:</strong> 26.0+</p><hr></p><p>자세한 문서, 에이전트 사양 및 사용 예제는 <a href="https://raw.githubusercontent.com/johnrogers/claude-swift-engineering/main/plugins/swift-engineering/README.md" target="_blank" rel="noopener noreferrer">plugins/swift-engineering/README.md</a>를 참조하세요.</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-10
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/johnrogers/claude-swift-engineering/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-03-10 
+    </div>
+    
+</body>
+</html>

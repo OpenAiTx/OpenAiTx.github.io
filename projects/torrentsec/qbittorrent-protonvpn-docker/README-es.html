@@ -1,0 +1,358 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qbittorrent-protonvpn-docker - Ejecuta qBittorrent de forma segura en Docker con ProtonVPN (WireGuard) usando Gluetun, con enrutamiento completo de VPN y reenv&#237;o autom&#225;tico de puertos.</title>
+    <meta name="description" content="Ejecuta qBittorrent de forma segura en Docker con ProtonVPN (WireGuard) usando Gluetun, con enrutamiento completo de VPN y reenv&#237;o autom&#225;tico de puertos.">
+    <meta name="keywords" content="qbittorrent-protonvpn-docker, Spanish, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "qbittorrent-protonvpn-docker",
+  "description": "Ejecuta qBittorrent de forma segura en Docker con ProtonVPN (WireGuard) usando Gluetun, con enrutamiento completo de VPN y reenvío automático de puertos.",
+  "author": {
+    "@type": "Person",
+    "name": "torrentsec"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 169
+  },
+  "url": "https://OpenAiTx.github.io/projects/torrentsec/qbittorrent-protonvpn-docker/README-es.html",
+  "sameAs": "https://raw.githubusercontent.com/torrentsec/qbittorrent-protonvpn-docker/main/README.md",
+  "datePublished": "2026-03-10",
+  "dateModified": "2026-03-10"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/torrentsec/qbittorrent-protonvpn-docker" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    qbittorrent-protonvpn-docker
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 169 stars</span>
+                <span class="language">Spanish</span>
+                <span>by torrentsec</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>🏰️ qBittorrent + ProtonVPN (WireGuard) en Docker (macOS)</h1></p><p><strong>Ejecute qBittorrent de forma segura en Docker con ProtonVPN (WireGuard) usando Gluetun, asegurando un enrutamiento completo por VPN y reenvío de puertos automático para mejorar el rendimiento del torrenting.</strong></p><p>&#x20;</p><hr></p><h2>📌 Tabla de Contenidos</h2></p><ul><li><a href="#overview" target="_blank" rel="noopener noreferrer">Resumen</a></li>
+<li><a href="#features" target="_blank" rel="noopener noreferrer">Características</a></li>
+<li><a href="#prerequisites" target="_blank" rel="noopener noreferrer">Requisitos Previos</a></li>
+<li><a href="#installation-guide" target="_blank" rel="noopener noreferrer">Guía de Instalación</a></li>
+   <li><a href="#install-docker" target="_blank" rel="noopener noreferrer">Instalar Docker</a></li>
+   <li><a href="#clone-the-repository" target="_blank" rel="noopener noreferrer">Clonar el Repositorio</a></li>
+   <li><a href="#set-up-the-env-file" target="_blank" rel="noopener noreferrer">Configurar el </a><a href="#set-up-the-env-file" target="_blank" rel="noopener noreferrer">archivo <code>.env</code></a></li>
+   <li><a href="#configure-authentication" target="_blank" rel="noopener noreferrer">Configurar la Autenticación</a></li>
+   <li><a href="#start-the-containers" target="_blank" rel="noopener noreferrer">Iniciar los Contenedores</a></li>
+<li><a href="#accessing-qbittorrent-web-ui" target="_blank" rel="noopener noreferrer">Acceso a la Interfaz Web de qBittorrent</a></li>
+<li><a href="#security--best-practices" target="_blank" rel="noopener noreferrer">Seguridad y Mejores Prácticas</a></li>
+<li><a href="#troubleshooting" target="_blank" rel="noopener noreferrer">Solución de Problemas</a></li>
+<li><a href="#license" target="_blank" rel="noopener noreferrer">Licencia</a></li>
+<li><a href="#contributing" target="_blank" rel="noopener noreferrer">Contribuciones</a></li>
+<li><a href="#support--feedback" target="_blank" rel="noopener noreferrer">Soporte y Comentarios</a></li></p><p></ul>---</p><h2>🔹 Resumen</h2></p><p>Esta configuración garantiza que <strong>qBittorrent solo se conecte a través de ProtonVPN (WireGuard)</strong> usando <strong>Gluetun</strong>, evitando fugas y mejorando la seguridad.\
+También <strong>automatiza el reenvío de puertos</strong> para mejores velocidades de torrent y <strong>ejecuta todo dentro de Docker</strong> para facilitar la gestión.</p><hr></p><h2>✅ Características</h2></p><ul><li><strong>🔒 Torrenting forzado por VPN</strong> – Sin fugas, todo el tráfico se ejecuta <strong>dentro</strong> de la VPN.</li>
+<li><strong>⚡ Reenvío automático de puertos</strong> – Asegura mejores velocidades y conexiones mejoradas con pares.</li>
+<li><strong>🌐 Acceso local a la interfaz web</strong> – Controle fácilmente los torrents via <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer"><code>http://localhost:8080</code></a>.</li>
+<li><strong>📺 Totalmente Contenerizado</strong> – Usa Docker para una implementación, actualizaciones y aislamiento fáciles.  </li>
+<li><strong>🔄 Configuración Resiliente</strong> – Los contenedores <strong>se reinician automáticamente</strong> si algo falla.  </li>
+<li>Usa <strong>almacenamiento separado</strong> para torrents incompletos y completos  </li>
+<li><strong>Actualiza automáticamente los contenedores usando Watchtower</strong> 🛠️  </li></p><p></ul>---  </p><h2>🛠️ Requisitos Previos  </h2></p><ul><li><strong>Docker Desktop</strong> (macOS/Windows/Linux)  </li>
+<li><strong>Docker Compose</strong> (incluido con Docker Desktop)  </li>
+<li><strong>Cuenta ProtonVPN</strong> (se requiere Plus o Visionary para soporte WireGuard)  </li></p><p></ul>---  </p><h2>📂 Guía de Instalación  </h2></p><h3><strong>1️⃣ Instalar Docker</strong>  </h3></p><p>Descargue e instale <strong>Docker Desktop</strong> desde <a href="https://www.docker.com/products/docker-desktop/" target="_blank" rel="noopener noreferrer">aquí</a>.\
+Asegúrese de que Docker esté <strong>en ejecución</strong> antes de continuar.  </p><p>---  </p><h3><strong>2️⃣ Clonar el Repositorio</strong>  </h3></p><pre><code class="language-sh">git clone https://github.com/torrentsec/qbittorrent-protonvpn-docker.git
+cd qbittorrent-protonvpn-docker</code></pre></p><hr></p><h3><strong>3️⃣ Configurar el archivo </strong><code>.env</code><em></em></h3></p><p>Este proyecto utiliza un archivo <code>.env</code> para almacenar <strong>valores de configuración sensibles</strong> (que Git ignora por seguridad).</p><p>#### <strong>Crea tu archivo </strong><code>.env</code><em></em>  </p><pre><code class="language-sh">cp .env.example .env
+nano .env</code></pre></p><p>#### <strong>Complete las siguientes variables</strong></p><pre><code class="language-ini">WIREGUARD_PRIVATE_KEY=your_private_key_here
+SERVER_COUNTRIES="United Kingdom"
+SERVER_CITIES="London"</p><p>PUID=1000
+PGID=1000
+TZ=Europe/London</p><p>GLUETUN_USER=your_admin_username
+GLUETUN_PASS=your_admin_password</p><p>GSP_GTN_API_KEY=your_random_api_key_here
+GSP_QBITTORRENT_PORT=your_forwarded_port_here</code></pre></p><p>Save and close (<code>CTRL + X</code>, then <code>Y</code>, then <code>ENTER</code>).</p><hr></p><h3><strong>4️⃣ Start the Containers</strong></h3></p><pre><code class="language-sh">docker-compose up -d</code></pre></p><p>🚀 <strong>¡qBittorrent ahora funciona de forma segura a través de ProtonVPN!</strong></p><hr></p><h2>📚 Accediendo a la interfaz web de qBittorrent</h2></p><p>Una vez en funcionamiento, abra:\
+📌 <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer"><strong>http://localhost:8080</strong></a>\
+<em>(Usuario por defecto: admin, contraseña: consulte la consola para la contraseña temporal)</em></p><p>Asegúrese de cambiar su contraseña de la interfaz web después del primer inicio de sesión. De lo contrario, la contraseña se generará aleatoriamente tras cada reinicio del contenedor.</p><hr></p><h2>🛡️ Seguridad y mejores prácticas</h2></p><ul><li><strong>Mantenga el archivo </strong><code>.env</code><strong> privado</strong></li></p><p>   <li>El archivo <code>.gitignore</code> <strong>ya evita que </strong><code>.env</code><strong> se suba a GitHub.</strong></li></p><p><li><strong>Use una contraseña fuerte para la API de Gluetun</strong></li></p><p>   <li><strong>Modifique </strong><code>GLUETUN_PASS</code><strong> en el archivo </strong><code>.env</code> para evitar accesos no autorizados a la API.</li></p><p><li><strong>Verifique la conexión VPN antes de descargar torrents</strong></li></p><p>   <li>Ejecute <code>curl ifconfig.me</code> dentro del contenedor:</li>
+     </ul><pre><code class="language-sh">     docker exec -it qbittorrent curl ifconfig.me
+     ``<code>
+   <ul><li>✅ <strong>Si la IP coincide con ProtonVPN</strong>, está funcionando.</li>
+   <li>❌ <strong>Si muestra tu IP real, algo está mal.</strong></li></p><p></ul>---</p><h2>🛠️ Solución de problemas</h2></p><h3><strong>Verificar si la VPN está activa</strong></h3>
+</code></pre>sh
+docker ps
+<pre><code class="language-">Si Gluetun no está en funcionamiento, reinicia todo:</p><p></code></pre>sh
+docker-compose down && docker-compose up -d
+<pre><code class="language-">
+<h3><strong>Verificar que qBittorrent esté usando VPN</strong></h3>
+</code></pre>sh
+docker exec -it qbittorrent curl ifconfig.me
+<pre><code class="language-">
+🟢 Si la IP coincide con ProtonVPN, está funcionando.\
+🔴 Si muestra tu IP real, hay un problema.</p><h3><strong>Revisar registros para errores</strong></h3>
+</code></pre>sh
+docker logs -f gluetun
+</code>``</p><p>Busca <strong>AUTH\_FAILED</strong> o problemas de conexión.</p><hr></p><h2>💎 Licencia</h2></p><p>Este proyecto está licenciado bajo la <strong>Licencia MIT</strong> – consulta el archivo LICENSE para más detalles.</p><hr></p><h2>💪 Contribuciones</h2></p><p>¡Las contribuciones son bienvenidas! Si tienes mejoras o comentarios, no dudes en enviar un issue o pull request.</p><hr></p><h2>💬 Soporte y Comentarios</h2></p><ul><li>Si te fue útil, ¡dale una ⭐ estrella en GitHub!</li>
+<li>Los comentarios y sugerencias siempre son bienvenidos.</li></p><p>
+
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-10
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/torrentsec/qbittorrent-protonvpn-docker/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-03-10 
+    </div>
+    
+</body>
+</html>
