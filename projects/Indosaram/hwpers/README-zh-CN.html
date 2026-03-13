@@ -1,0 +1,484 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hwpers - 一个用于解析韩国韩文处理器（HWP）文件的 Rust 库，支持完整布局渲染。</title>
+    <meta name="description" content="一个用于解析韩国韩文处理器（HWP）文件的 Rust 库，支持完整布局渲染。">
+    <meta name="keywords" content="hwpers, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "hwpers",
+  "description": "一个用于解析韩国韩文处理器（HWP）文件的 Rust 库，支持完整布局渲染。",
+  "author": {
+    "@type": "Person",
+    "name": "Indosaram"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 179
+  },
+  "url": "https://OpenAiTx.github.io/projects/Indosaram/hwpers/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/Indosaram/hwpers/main/README.md",
+  "datePublished": "2026-03-13",
+  "dateModified": "2026-03-13"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Indosaram/hwpers" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    hwpers
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 179 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by Indosaram</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>hwpers</h1></p><p><a href="https://crates.io/crates/hwpers" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/v/hwpers.svg" alt="Crates.io"></a>
+<a href="https://docs.rs/hwpers" target="_blank" rel="noopener noreferrer"><img src="https://docs.rs/hwpers/badge.svg" alt="Documentation"></a>
+<a href="https://github.com/Indosaram/hwpers/actions" target="_blank" rel="noopener noreferrer"><img src="https://github.com/Indosaram/hwpers/workflows/CI/badge.svg" alt="CI"></a>
+<a href="LICENSE-MIT" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/license-MIT%2FApache--2.0-blue.svg" alt="License"></a></p><p>一个用于解析韩国韩文文字处理器（HWP）文件的 Rust 库，支持完整的布局渲染。</p><h2>功能</h2></p><h3>解析器（读取 HWP 文件）</h3>
+<ul><li><strong>完整支持 HWP 5.0 格式</strong>：解析所有文档组件，包括文本、格式、表格和嵌入对象</li>
+<li><strong>视觉布局渲染</strong>：在有布局数据时，实现像素级精准文档重构</li>
+<li><strong>字体和样式保留</strong>：提取并应用原始字体、大小、颜色和文本格式</li>
+<li><strong>高级布局引擎</strong>：支持多栏布局、逐行定位和字符级格式化</li>
+<li><strong>SVG 导出</strong>：将文档渲染为可缩放矢量图形</li>
+<li><strong>零拷贝解析</strong>：高效解析，最小内存分配</li>
+<li><strong>安全的 Rust</strong>：内存安全实现，全面的错误处理</li></p><p></ul><h3>写入器（创建 HWP 文件）- v0.3.0+</h3>
+<ul><li><strong>文档创建</strong>：完整支持 HWP 文档写入</li>
+<li><strong>丰富文本格式</strong>：加粗、斜体、颜色、字体、大小</li>
+<li><strong>表格</strong>：创建、样式、单元格合并</li>
+<li><strong>列表</strong>：项目符号、编号、韩文/字母/罗马格式</li>
+<li><strong>图片</strong>：PNG/JPEG/BMP/GIF 及带标题</li>
+<li><strong>文本框</strong>：定位和样式文本框</li>
+<li><strong>超链接</strong>：URL、电子邮件、文件和书签链接</li>
+<li><strong>页眉/页脚</strong>：页码和自定义内容</li>
+<li><strong>页面布局</strong>：尺寸、边距、方向、栏数、背景</li></p><p></ul><h2>快速开始</h2></p><p>将以下内容添加到你的 <code>Cargo.toml</code>：</p><pre><code class="language-toml">[dependencies]
+hwpers = "0.3"</code></pre></p><h3>基本用法</h3></p><pre><code class="language-rust">use hwpers::HwpReader;</p><p>// Parse an HWP file
+let document = HwpReader::from_file("document.hwp")?;</p><p>// Extract text content
+let text = document.extract_text();
+println!("{}", text);</p><p>// Access document properties
+if let Some(props) = document.get_properties() {
+    println!("Pages: {}", props.total_page_count);
+}</p><p>// Iterate through sections and paragraphs
+for (i, section) in document.sections().enumerate() {
+    println!("Section {}: {} paragraphs", i, section.paragraphs.len());
+    
+    for paragraph in &section.paragraphs {
+        if let Some(text) = &paragraph.text {
+            println!("  {}", text.content);
+        }
+    }
+}</code></pre></p><h3>可视布局渲染</h3></p><pre><code class="language-rust">use hwpers::{HwpReader, render::{HwpRenderer, RenderOptions}};</p><p>let document = HwpReader::from_file("document.hwp")?;</p><p>// Create renderer with custom options
+let options = RenderOptions {
+    dpi: 96,
+    scale: 1.0,
+    show_margins: false,
+    show_baselines: false,
+};</p><p>let renderer = HwpRenderer::new(&document, options);
+let result = renderer.render();</p><p>// Export first page to SVG
+if let Some(svg) = result.to_svg(0) {
+    std::fs::write("page1.svg", svg)?;
+}</p><p>println!("Rendered {} pages", result.pages.len());</code></pre>
+<h3>创建文档（v0.3.0+）</h3></p><pre><code class="language-rust">use hwpers::writer::HwpWriter;
+use hwpers::model::hyperlink::Hyperlink;</p><p>// Create a new document
+let mut writer = HwpWriter::new();</p><p>// Add formatted text
+writer.add_aligned_paragraph(
+    "제목",
+    hwpers::writer::style::ParagraphAlignment::Center
+)?;</p><p>// Add hyperlinks
+let link = Hyperlink::new_url("Rust", "https://rust-lang.org");
+writer.add_paragraph_with_hyperlinks(
+    "Visit Rust website",
+    vec![link]
+)?;</p><p>// Configure page layout
+writer.set_custom_page_size(210.0, 297.0, // A4 size
+    hwpers::model::page_layout::PageOrientation::Portrait)?;
+writer.set_page_margins_mm(20.0, 20.0, 20.0, 20.0);</p><p>// Add header and footer
+writer.add_header("Document Header");
+writer.add_footer_with_page_number("Page ", 
+    hwpers::model::header_footer::PageNumberFormat::Numeric);</p><p>// Save the document
+writer.save_to_file("output.hwp")?;</code></pre></p><h3>高级格式访问</h3></p><pre><code class="language-rust">// Access character and paragraph formatting
+for section in document.sections() {
+    for paragraph in &section.paragraphs {
+        // Get paragraph formatting
+        if let Some(para_shape) = document.get_para_shape(paragraph.para_shape_id as usize) {
+            println!("Indent: {}, Alignment: {}", 
+                para_shape.indent, 
+                para_shape.get_alignment()
+            );
+        }
+        
+        // Get character formatting runs
+        if let Some(char_shapes) = &paragraph.char_shapes {
+            for pos_shape in &char_shapes.char_positions {
+                if let Some(char_shape) = document.get_char_shape(pos_shape.char_shape_id as usize) {
+                    println!("Position {}: Size {}, Bold: {}", 
+                        pos_shape.position,
+                        char_shape.base_size / 100,
+                        char_shape.is_bold()
+                    );
+                }
+            }
+        }
+    }
+}</code></pre></p><h2>支持的功能</h2></p><h3>文档结构</h3>
+<ul><li>✅ 文件头和版本检测</li>
+<li>✅ 文档属性和元数据</li>
+<li>✅ 节定义和页面布局</li>
+<li>✅ 段落和字符格式化</li>
+<li>✅ 字体定义（FaceName）</li>
+<li>✅ 样式和模板</li></p><p></ul><h3>内容类型</h3>
+<ul><li>✅ 支持完整Unicode的文本内容</li>
+<li>✅ 表格和结构化数据</li>
+<li>✅ 控制对象（图像、OLE对象）</li>
+<li>✅ 编号和项目符号列表</li>
+<li>✅ 制表位和对齐</li></p><p></ul><h3>布局和渲染</h3>
+<ul><li>✅ 页面尺寸和边距</li>
+<li>✅ 多栏布局</li>
+<li>✅ 按行定位（可用时）</li>
+<li>✅ 字符级定位（可用时）</li>
+<li>✅ 边框和填充图案</li>
+<li>✅ 精确定位的SVG导出</li></p><p></ul><h3>高级功能</h3>
+<ul><li>✅ 压缩文档支持</li>
+<li>✅ CFB（复合文件二进制）格式处理</li>
+<li>✅ 多种编码支持（UTF-16LE）</li>
+<li>✅ 错误恢复和部分解析</li></p><p></ul><h2>命令行工具</h2></p><p>该库包含一个用于检查HWP文件的命令行工具：</p><pre><code class="language-bash"># Install the tool
+cargo install hwpers</p><h1>Inspect an HWP file</h1>
+hwp_info document.hwp</code></pre></p><h2>格式支持</h2></p><p>本库支持 HWP 5.0 格式文件。对于更早版本的 HWP 格式，建议先使用格式转换工具。</p><h2>写入器功能（v0.3.0+）</h2></p><p>HWP 写入器功能得到了显著提升，支持全面的功能特性：</p><h3>✅ 完全实现</h3>
+<ul><li><strong>超链接</strong>：完整的超链接支持及正确的序列化</li>
+  <li>URL 链接、电子邮件链接、文件链接、书签</li>
+  <li>每段支持多个超链接</li>
+  <li>自定义样式（颜色、下划线、访问状态）</li>
+<li><strong>页眉/页脚</strong>：完整的页眉和页脚实现</li>
+  <li>自定义页眉/页脚文本</li>
+  <li>多种格式的页码（数字、罗马数字等）</li>
+  <li>每文档支持多个页眉/页脚</li>
+<li><strong>页面布局</strong>：全面的页面布局控制</li>
+  <li>自定义页面大小及标准尺寸（A4、信纸等）</li>
+  <li>纵向/横向方向</li>
+  <li>自定义页边距（窄、正常、宽、自定义）</li>
+  <li>多栏布局及可调间距</li>
+  <li>页面背景颜色</li>
+<li><strong>表格</strong>：完整的表格创建与格式化</li>
+  <li>单元格边框及样式</li>
+  <li>单元格合并（横向和纵向）</li>
+  <li>自定义单元格内容</li>
+<li><strong>列表/编号</strong>：完整的列表支持</li>
+  <li>不同层级的项目符号列表</li>
+  <li>编号列表（1., 2., 3., ...）</li>
+  <li>字母列表（a), b), c), ...）</li>
+  <li>罗马数字列表（i., ii., iii., ...）</li>
+  <li>韩文列表（가., 나., 다., ...）</li>
+  <li>嵌套列表及正确缩进</li>
+<li><strong>文本框</strong>：完整的文本框实现</li>
+  <li>定位文本框</li>
+  <li>样式文本框（高亮、警告、信息等）</li>
+  <li>自定义样式（边框、背景、对齐）</li>
+  <li>浮动文本框支持旋转及透明度</li>
+<li><strong>图片</strong>：完整的图片插入功能  </li>
+  <li>支持 PNG、JPEG、BMP、GIF  </li>
+  <li>自定义尺寸和位置  </li>
+  <li>图片说明文字  </li>
+  <li>正确的 BinData 集成  </li>
+<li><strong>样式文本</strong>：丰富的文本格式化  </li>
+  <li>粗体、斜体、下划线、删除线  </li>
+  <li>自定义字体和字号  </li>
+  <li>文字颜色和背景颜色  </li>
+  <li>单段落内多重样式  </li>
+<li><strong>高级格式</strong>：  </li>
+  <li>段落对齐（左对齐、居中、右对齐、两端对齐）  </li>
+  <li>行距控制  </li>
+  <li>段前/段后间距  </li>
+  <li>自动调整大小的标题  </li>
+  <li>字符和段落样式  </li>
+<li><strong>文档属性</strong>：完整的元数据支持  </li>
+  <li>标题、作者、主题、关键词  </li>
+  <li>文档统计信息（字符数、字数等）  </li>
+  <li>自动统计信息更新  </li></p><p></ul><h3>❌ 尚未实现  </h3>
+<ul><li><strong>形状/绘图</strong>：几何形状和绘图对象  </li>
+  <li>矩形、圆形、椭圆  </li>
+  <li>直线、箭头、多边形  </li>
+  <li>带样式的自定义形状  </li>
+  <li>带文本内容的形状  </li>
+  <li>形状分组  </li>
+  <li><em>（参见 examples/shape_document.rs.disabled 中的用例）</em>  </li>
+<li><strong>图表/图形</strong>：数据可视化对象  </li>
+<li><strong>数学公式</strong>：MathML 支持  </li>
+<li><strong>表单</strong>：输入字段和表单控件  </li>
+<li><strong>评论/批注</strong>：审阅和评论功能  </li>
+<li><strong>修订</strong>：修订历史  </li>
+<li><strong>邮件合并</strong>：变量字段插入  </li></p><p></ul><h3>🔧 已知问题  </h3>
+<ul><li>写入器不支持压缩（读取器支持压缩和非压缩）  </li>
+<li>某些高级表格功能可能与较旧的 Hanword 版本存在兼容性问题  </li></p><p></ul><h2>贡献</h2></p><p>欢迎贡献！请随时提交 Pull Request。对于重大更改，请先开启 issue 以讨论您想要更改的内容。</p><h2>许可证</h2></p><p>本项目授权协议为以下任意一种</p><ul><li>Apache 许可证 2.0 版，(<a href="LICENSE-APACHE" target="_blank" rel="noopener noreferrer">LICENSE-APACHE</a> 或 http://www.apache.org/licenses/LICENSE-2.0)</li>
+<li>MIT 许可证 (<a href="LICENSE-MIT" target="_blank" rel="noopener noreferrer">LICENSE-MIT</a> 或 http://opensource.org/licenses/MIT)</li></p><p></ul>由您选择。</p><h2>致谢</h2></p><ul><li>Hancom Inc. 提供的 HWP 文件格式规范</li>
+<li>韩国文本处理社区</li>
+<li>Rust 解析和文档处理生态系统</li>
+
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-13
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Indosaram/hwpers/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-03-13 
+    </div>
+    
+</body>
+</html>
