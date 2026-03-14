@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>self-hosted-simplelogin - Docker 기반 셀프 호스팅 SimpleLogin.io 구성</title>
+    <meta name="description" content="Docker 기반 셀프 호스팅 SimpleLogin.io 구성">
+    <meta name="keywords" content="self-hosted-simplelogin, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "self-hosted-simplelogin",
+  "description": "Docker 기반 셀프 호스팅 SimpleLogin.io 구성",
+  "author": {
+    "@type": "Person",
+    "name": "springcomp"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 87
+  },
+  "url": "https://OpenAiTx.github.io/projects/springcomp/self-hosted-simplelogin/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/springcomp/self-hosted-simplelogin/main/README.md",
+  "datePublished": "2026-03-14",
+  "dateModified": "2026-03-14"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/springcomp/self-hosted-simplelogin" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    self-hosted-simplelogin
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 87 stars</span>
+                <span class="language">Korean</span>
+                <span>by springcomp</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>SimpleLogin</h1></p><p>이것은 <a href="https://simplelogin.io" target="_blank" rel="noopener noreferrer">SimpleLogin</a>을 위한 셀프 호스팅 도커 컴포즈 구성입니다.</p><h2>사전 요구사항</h2></p><ul><li>리눅스 서버 (가상 머신 또는 전용 서버). 이 문서는 Ubuntu 18.04 LTS 설정을 보여주지만 다른 인기 있는 리눅스 배포판에도 적용할 수 있습니다. 대부분의 구성 요소가 도커 컨테이너로 실행되고 도커가 다소 무거울 수 있으므로 최소 2GB의 RAM을 권장합니다. 서버는 포트 25(이메일), 80, 443(웹앱용), 22(SSH 접속용)가 열려 있어야 합니다.</li></p><p><li>DNS 설정이 가능한 도메인. 서브도메인도 가능합니다. 문서에서는 이메일용으로 <code>mydomain.com</code>과 SimpleLogin 웹앱용으로 <code>app.mydomain.com</code>을 예시로 사용합니다. 문서 내에 등장하는 이 값들을 반드시 본인의 도메인 이름과 서브도메인 이름으로 바꾸어 주세요. 저희가 사용하는 팁은 이 README 파일을 컴퓨터에 다운로드한 후 모든 <code>mydomain.com</code>과 <code>app.mydomain.com</code>을 본인의 도메인으로 일괄 교체하는 것입니다.</li></p><p></ul>도메인 등록기관 인터페이스에서 주로 하는 DNS 설정을 제외하고, 아래 모든 단계는 서버에서 진행합니다. 명령어는 <code>bash</code>(또는 <code>zsh</code> 같은 bash 호환 셸)에서 실행해야 합니다. <code>fish</code> 같은 다른 셸을 사용할 경우 명령어를 적절히 변환해야 합니다.</p><ul><li>설정 확인에 사용되는 유틸리티 패키지들. 다음 명령어로 설치하세요:</li></p><p></ul><pre><code class="language-bash">sudo apt update \
+  && sudo apt install -y net-tools dnsutils</code></pre>
+<h2>DNS 구성</h2></p><p>_자세한 내용은 <a href="https://github.com/springcomp/self-hosted-simplelogin/wiki/DNS-Configuration" target="_blank" rel="noopener noreferrer">참고 문서</a>를 참조하세요_</p><blockquote><strong>참고</strong> DNS 변경 사항이 전파되는 데 최대 24시간이 걸릴 수 있습니다. 실제로는 훨씬 빠르며(테스트에서는 약 1분 정도) DNS 설정 시, 일반적으로 도메인의 끝에 점(<code>.</code>)을 붙여 절대 도메인을 강제로 사용합니다.</blockquote></p><p>다음 DNS 레코드를 설정해야 합니다:</p><ul><li><strong>A</strong>: 도메인을 서버의 IPv4 주소에 매핑합니다.</li>
+<li><strong>AAAA</strong>: 도메인을 서버의 IPv6 주소에 매핑합니다.</li>
+<li><strong>MX</strong>: 들어오는 이메일을 메일 서버로 전달합니다(<code>*</code> 와일드카드 포함).</li>
+<li><strong>PTR</strong>: 서버의 IP 주소를 도메인 이름으로 역매핑합니다.</li></p><p></ul>필수 보안 정책을 설정하세요:</p><ul><li><strong>DKIM</strong>: 발신 이메일에 디지털 서명을 하여 진위 여부를 검증합니다.</li>
+<li><strong>DMARC</strong>: 인증 실패 시 이메일 수신자가 메시지를 처리하는 방식을 정의합니다.</li>
+<li><strong>SPF</strong>: 특정 메일 서버가 도메인에서 이메일을 보낼 수 있도록 권한을 부여합니다.</li></p><p></ul>추가 단계:</p><ul><li><strong>CAA</strong>: 도메인에 대해 SSL 인증서를 발급할 수 있는 인증 기관을 지정합니다.</li>
+<li><strong>MTA-STS</strong>: 메일 서버 간 보안 암호화 연결을 강제합니다.</li>
+<li><strong>TLS-RPT</strong>: TLS 연결 실패를 보고하여 이메일 전달 보안을 개선합니다.</li></p><p></ul><strong>경고</strong>: CAA 레코드를 설정하면 도메인에 대해 SSL 인증서를 성공적으로 발급할 수 있는 인증 기관이 제한됩니다.
+이로 인해 Let’s Encrypt 스테이징 서버에서 인증서 발급이 차단됩니다. SSL 인증서가 성공적으로 발급될 때까지 이 DNS 레코드를 미루는 것이 좋습니다.</p><h2>도커</h2></p><p>서버에 도커가 설치되어 있지 않은 경우, <a href="https://docs.docker.com/v17.12/install/linux/docker-ce/ubuntu/" target="_blank" rel="noopener noreferrer">Ubuntu용 Docker CE</a>의 단계에 따라 도커를 설치하세요.</p><p>또한 <a href="https://github.com/docker/docker-install" target="_blank" rel="noopener noreferrer">docker-install</a> 스크립트를 사용하여 도커를 설치할 수도 있습니다. 이는</p><pre><code class="language-bash">curl -fsSL https://get.docker.com | sh</code></pre>
+<a href="https://docs.docker.com/config/daemon/ipv6/#use-ipv6-for-the-default-bridge-network" target="_blank" rel="noopener noreferrer">기본 브리지 네트워크</a>에 대해 IPv6 활성화하기</p><pre><code class="language-json">{
+  "ipv6": true,
+  "fixed-cidr-v6": "2001:db8:1::/64",
+  "experimental": true,
+  "ip6tables": true
+}</code></pre>
+이 절차는 Docker 컨테이너를 사용하여 전체 스택을 실행하는 방법을 안내합니다.  
+여기에는 다음이 포함됩니다:  </p><ul><li>traefik  </li>
+<li><a href="https://github.com/simple-login/app" target="_blank" rel="noopener noreferrer">SimpleLogin 앱</a> 컨테이너  </li>
+<li>postfix  </li></p><p></ul>Docker 컨테이너에서 SimpleLogin 실행:  </p><ul><li>이 저장소를 <code>/opt/simplelogin</code>에 클론합니다.  </li>
+<li><code>.env.example</code>을 <code>.env</code>로 복사하고 적절한 값을 설정합니다.  </li></p><p>    <li><code>DOMAIN</code> 변수를 도메인으로 설정합니다.  </li>
+    <li><code>SUBDOMAIN</code> 변수를 도메인 하위 도메인으로 설정합니다. 기본값은 <code>app</code>입니다.  </li>
+    <li><code>POSTGRES_USER</code> 변수를 postgres 자격 증명에 맞게 설정합니다 (처음부터 시작할 때는 <code>simplelogin</code> 사용).  </li>
+    <li><code>POSTGRES_PASSWORD</code>를 postgres 자격 증명에 맞게 설정합니다 (처음부터 시작할 때는 임의의 키로 설정).  </li>
+    <li><code>FLASK_SECRET</code>을 임의의 비밀 키로 설정합니다.  </li></p><p></ul><h3>Postgres SQL  </h3></p><p>이 저장소는 Docker 컨테이너에서 postgres SQL을 실행합니다.  </p><p><strong>경고</strong>: 이전 버전의 이 저장소는 <code>12.1</code> 버전을 실행했습니다.  
+자세한 내용과 업그레이드 지침은 <a href="https://github.com/springcomp/self-hosted-simplelogin/wiki/PostgreSQL" target="_blank" rel="noopener noreferrer">참고 문서</a>를 참조하십시오.  </p><h3>애플리케이션 실행  </h3></p><p>다음 명령어를 사용하여 애플리케이션을 실행합니다:</p><pre><code class="language-sh">docker compose up --detach --remove-orphans --build && docker compose logs -f</code></pre></p><p>이 시점에서 <a href="https://github.com/springcomp/self-hosted-simplelogin/wiki/dns-caa" target="_blank" rel="noopener noreferrer">인증서 기관 권한 부여(CAA)</a>를 설정하는 것이 좋습니다.</p><h2>다음 단계</h2></p><p>위의 모든 단계가 성공적으로 완료되면 <https://app.mydomain.com/>을 열고 첫 번째 계정을 만드세요!</p><p>기본적으로 새 계정은 프리미엄이 아니므로 무제한 별칭을 가지지 않습니다. 계정을 프리미엄으로 만들려면,
+데이터베이스의 "users" 테이블로 가서 "lifetime" 열을 "1" 또는 "TRUE"로 설정하세요:</p><pre><code class="language-bash">docker compose exec -it postgres psql -U myuser simplelogin
+<blockquote>UPDATE users SET lifetime = TRUE;</blockquote>
+<blockquote>\q</code></pre></blockquote></p><p>원하는 모든 로그인 계정을 생성한 후, 추가 등록을 비활성화하려면 <code>.env</code>에 다음 줄을 추가하세요:</p><pre><code class="language-env">DISABLE_REGISTRATION=1
+DISABLE_ONBOARDING=true</code></pre>
+그런 다음, 웹 앱을 다시 시작하려면 다음을 적용하세요: <code>docker compose restart app</code></p><h2>기타</h2></p><h3>Postfix 설정 - Spamhaus</h3></p><p>Spamhaus 프로젝트는 스팸의 출처로 알려진 IP 주소 목록을 신뢰성 있게 유지합니다.  
+해당 IP 주소가 목록에 있는지 확인하려면 DNS 인프라에 쿼리를 제출할 수 있습니다.</p><p>Spamhaus는 공개(오픈) DNS-리졸버에서 오는 쿼리를 차단하므로(참조: <https://check.spamhaus.org/returnc/pub>) postfix 컨테이너가  
+기본적으로 공개 리졸버를 사용할 수 있으니, 무료  
+<a href="https://www.spamhaus.com/free-trial/sign-up-for-a-free-data-query-service-account/" target="_blank" rel="noopener noreferrer">Spamhaus 데이터 쿼리 서비스</a>에 가입하고  
+Spamhaus DQS 키를 받는 것을 권장합니다.</p><p>이 키를 <code>.env</code> 파일의 <code>SPAMHAUS_DQS_KEY</code>에 붙여넣으세요.</p><p>DQS 키가 제공되지 않으면 postfix 컨테이너는 Spamhaus 공개 미러가 쿼리를 수락하는지 확인하고 대신 이를 사용합니다.  
+Spamhaus가 공개 미러에 대한 postfix 컨테이너의 쿼리를 거부하면, 해당 기능은 완전히 비활성화됩니다.</p><h3>Postfix 설정 - 가상 별칭</h3></p><p>postfix 설정은 <code>postfix/conf.d/virtual</code> 및 <code>postfix/conf.d/virtual-regexp</code> 파일을 사용한 가상 별칭을 지원합니다.  
+이 파일들은 시작 시 대응하는 <a href="https://raw.githubusercontent.com/springcomp/self-hosted-simplelogin/main/./postfix/templates/virtual.tpl" target="_blank" rel="noopener noreferrer"><code>postfix/templates/virtual.tpl</code></a>  
+및 <a href="https://raw.githubusercontent.com/springcomp/self-hosted-simplelogin/main/./postfix/templates/virtual-regexp.tpl" target="_blank" rel="noopener noreferrer"><code>postfix/templates/virtual-regexp.tpl</code></a> 템플릿 파일을 기반으로 자동 생성됩니다.</p><p>기본 설정은 다음과 같습니다:</p><p>#### virtual.tpl</p><p><code>virtual</code> 파일은 postfix <code>virtual_alias_maps</code> 설정을 지원합니다.  
+존재하지 않는 별칭에 해당하는 특정 주소인 <code>unknown@mydomain.com</code>에서 오는 메일을  
+존재하는 다른 별칭인 <code>contact@mydomain.com</code>으로 매핑하는 규칙을 포함하여 수신을 시연합니다.</p><p>
+``<code>postfix-conf
+unknown@mydomain.com  contact@mydomain.com
+<pre><code class="language-">
+#### virtual-regexp.tpl</p><p></code>virtual-regexp<code> 파일은 postfix의 </code>virtual_alias_maps<code> 설정을 지원합니다.
+기존의 별칭과 일치하지 않는 임의의 서브도메인으로 주소가 지정된 이메일을
+서브도메인 이름을 딴 디렉터리에 속한 새 별칭으로 재작성하는 규칙을 포함합니다.
+해당 별칭이 존재하지 않을 경우 즉시 생성될 수 있습니다.
+</code></pre>postfix-conf
+/^([^@]+)@([^.]+)\.mydomain.com/   $2/$1@mydomain.com
+</code>`<code>
+예를 들어, </code>someone@directory.mydomain.com<code>으로 전송된 이메일은 postfix에 의해 </code>directory/someone@mydomain.com`으로 라우팅됩니다.</p><h2>3.4.0 버전에서 업그레이드하는 방법</h2></p><p>_이 섹션은 <a href="https://github.com/springcomp/self-hosted-simplelogin/wiki/upgrade-sl" target="_blank" rel="noopener noreferrer">참고 문서</a>로 이동되었습니다_</p><h2>이전 NGinx 기반 설정에서 업그레이드하는 방법</h2></p><p>_이 섹션은 <a href="https://github.com/springcomp/self-hosted-simplelogin/wiki/upgrade-from-nginx" target="_blank" rel="noopener noreferrer">참고 문서</a>로 이동되었습니다_</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-14
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/springcomp/self-hosted-simplelogin/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-03-14 
+    </div>
+    
+</body>
+</html>
