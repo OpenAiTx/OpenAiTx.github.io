@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>self-hosted-simplelogin - Docker 기반 셀프 호스팅 SimpleLogin.io 구성</title>
-    <meta name="description" content="Docker 기반 셀프 호스팅 SimpleLogin.io 구성">
+    <title>self-hosted-simplelogin - Docker 기반 자체 호스팅 SimpleLogin.io 구성</title>
+    <meta name="description" content="Docker 기반 자체 호스팅 SimpleLogin.io 구성">
     <meta name="keywords" content="self-hosted-simplelogin, Korean, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "self-hosted-simplelogin",
-  "description": "Docker 기반 셀프 호스팅 SimpleLogin.io 구성",
+  "description": "Docker 기반 자체 호스팅 SimpleLogin.io 구성",
   "author": {
     "@type": "Person",
     "name": "springcomp"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 87
+    "ratingCount": 88
   },
   "url": "https://OpenAiTx.github.io/projects/springcomp/self-hosted-simplelogin/README-ko.html",
   "sameAs": "https://raw.githubusercontent.com/springcomp/self-hosted-simplelogin/main/README.md",
-  "datePublished": "2026-03-14",
-  "dateModified": "2026-03-14"
+  "datePublished": "2026-03-15",
+  "dateModified": "2026-03-15"
 }
     </script>
     
@@ -275,14 +275,44 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 87 stars</span>
+                <span class="stars">⭐ 88 stars</span>
                 <span class="language">Korean</span>
                 <span>by springcomp</span>
             </div>
         </div>
         
         <div class="content">
-            <h1>SimpleLogin</h1></p><p>이것은 <a href="https://simplelogin.io" target="_blank" rel="noopener noreferrer">SimpleLogin</a>을 위한 셀프 호스팅 도커 컴포즈 구성입니다.</p><h2>사전 요구사항</h2></p><ul><li>리눅스 서버 (가상 머신 또는 전용 서버). 이 문서는 Ubuntu 18.04 LTS 설정을 보여주지만 다른 인기 있는 리눅스 배포판에도 적용할 수 있습니다. 대부분의 구성 요소가 도커 컨테이너로 실행되고 도커가 다소 무거울 수 있으므로 최소 2GB의 RAM을 권장합니다. 서버는 포트 25(이메일), 80, 443(웹앱용), 22(SSH 접속용)가 열려 있어야 합니다.</li></p><p><li>DNS 설정이 가능한 도메인. 서브도메인도 가능합니다. 문서에서는 이메일용으로 <code>mydomain.com</code>과 SimpleLogin 웹앱용으로 <code>app.mydomain.com</code>을 예시로 사용합니다. 문서 내에 등장하는 이 값들을 반드시 본인의 도메인 이름과 서브도메인 이름으로 바꾸어 주세요. 저희가 사용하는 팁은 이 README 파일을 컴퓨터에 다운로드한 후 모든 <code>mydomain.com</code>과 <code>app.mydomain.com</code>을 본인의 도메인으로 일괄 교체하는 것입니다.</li></p><p></ul>도메인 등록기관 인터페이스에서 주로 하는 DNS 설정을 제외하고, 아래 모든 단계는 서버에서 진행합니다. 명령어는 <code>bash</code>(또는 <code>zsh</code> 같은 bash 호환 셸)에서 실행해야 합니다. <code>fish</code> 같은 다른 셸을 사용할 경우 명령어를 적절히 변환해야 합니다.</p><ul><li>설정 확인에 사용되는 유틸리티 패키지들. 다음 명령어로 설치하세요:</li></p><p></ul><pre><code class="language-bash">sudo apt update \
+            <p>
+<div align="right">
+  <details>
+    <summary >🌐 언어</summary>
+    <div>
+      <div align="center">
+        <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=en">English</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=zh-CN">简体中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=zh-TW">繁體中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=ja">日本語</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=ko">한국어</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=hi">हिन्दी</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=th">ไทย</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=fr">Français</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=de">Deutsch</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=es">Español</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=it">Italiano</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=ru">Русский</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=pt">Português</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=nl">Nederlands</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=pl">Polski</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=ar">العربية</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=fa">فارسی</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=tr">Türkçe</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=vi">Tiếng Việt</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=id">Bahasa Indonesia</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=as">অসমীয়া</
+      </div>
+    </div>
+  </details>
+</div></p><h1>SimpleLogin</h1></p><p>이것은 <a href="https://simplelogin.io" target="_blank" rel="noopener noreferrer">SimpleLogin</a>을 위한 셀프 호스팅 docker-compose 구성입니다.</p><h2>사전 준비 사항</h2></p><ul><li>리눅스 서버(가상 머신 또는 전용 서버). 이 문서는 Ubuntu 18.04 LTS에 대한 설정을 보여주지만, 다른 인기 있는 리눅스 배포판에도 적용할 수 있습니다. 대부분의 구성 요소가 Docker 컨테이너로 실행되고 Docker가 다소 무거울 수 있기 때문에 최소 2GB의 RAM을 권장합니다. 서버는 25번(이메일), 80, 443(웹앱용), 22(ssh 접속용) 포트가 열려 있어야 합니다.</li></p><p><li>DNS를 설정할 수 있는 도메인이 필요합니다. 서브도메인도 가능합니다. 이 문서의 나머지 부분에서는 이메일용 <code>mydomain.com</code>과 SimpleLogin 웹앱용 <code>app.mydomain.com</code>을 예시로 사용합니다. 문서에 이러한 값이 나올 때마다 반드시 자신의 도메인명과 서브도메인명으로 바꿔주세요. 한 가지 팁은 이 README 파일을 컴퓨터에 다운로드한 후, 모든 <code>mydomain.com</code>과 <code>app.mydomain.com</code>을 자신의 도메인으로 일괄 변경하는 것입니다.</li></p><p></ul>DNS 설정은 일반적으로 도메인 등록기관의 인터페이스에서 진행하며, 아래 단계들은 모두 자신의 서버에서 진행해야 합니다. 명령어는 <code>bash</code>(또는 <code>zsh</code>와 같은 bash 호환 셸)에서 실행해야 합니다. 만약 <code>fish</code>와 같은 다른 셸을 사용한다면, 명령어를 알맞게 수정해 주세요.</p><ul><li>설치 상태를 확인하기 위해 사용하는 몇 가지 유틸리티 패키지입니다. 다음과 같이 설치하세요:</li></p><p></ul><pre><code class="language-bash">sudo apt update \
   && sudo apt install -y net-tools dnsutils</code></pre>
 <h2>DNS 구성</h2></p><p>_자세한 내용은 <a href="https://github.com/springcomp/self-hosted-simplelogin/wiki/DNS-Configuration" target="_blank" rel="noopener noreferrer">참고 문서</a>를 참조하세요_</p><blockquote><strong>참고</strong> DNS 변경 사항이 전파되는 데 최대 24시간이 걸릴 수 있습니다. 실제로는 훨씬 빠르며(테스트에서는 약 1분 정도) DNS 설정 시, 일반적으로 도메인의 끝에 점(<code>.</code>)을 붙여 절대 도메인을 강제로 사용합니다.</blockquote></p><p>다음 DNS 레코드를 설정해야 합니다:</p><ul><li><strong>A</strong>: 도메인을 서버의 IPv4 주소에 매핑합니다.</li>
 <li><strong>AAAA</strong>: 도메인을 서버의 IPv6 주소에 매핑합니다.</li>
@@ -337,7 +367,7 @@ unknown@mydomain.com  contact@mydomain.com
 
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-14
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-15
 
 ---</p>
         </div>
@@ -349,7 +379,7 @@ unknown@mydomain.com  contact@mydomain.com
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-03-14 
+        Last updated: 2026-03-15 
     </div>
     
 </body>

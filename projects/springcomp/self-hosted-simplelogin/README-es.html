@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>self-hosted-simplelogin - Configuraci&#243;n autoalojada de SimpleLogin.io basada en Docker</title>
-    <meta name="description" content="Configuraci&#243;n autoalojada de SimpleLogin.io basada en Docker">
+    <title>self-hosted-simplelogin - Configuraci&#243;n autohospedada de SimpleLogin.io basada en Docker</title>
+    <meta name="description" content="Configuraci&#243;n autohospedada de SimpleLogin.io basada en Docker">
     <meta name="keywords" content="self-hosted-simplelogin, Spanish, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "self-hosted-simplelogin",
-  "description": "Configuración autoalojada de SimpleLogin.io basada en Docker",
+  "description": "Configuración autohospedada de SimpleLogin.io basada en Docker",
   "author": {
     "@type": "Person",
     "name": "springcomp"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 87
+    "ratingCount": 88
   },
   "url": "https://OpenAiTx.github.io/projects/springcomp/self-hosted-simplelogin/README-es.html",
   "sameAs": "https://raw.githubusercontent.com/springcomp/self-hosted-simplelogin/main/README.md",
-  "datePublished": "2026-03-14",
-  "dateModified": "2026-03-14"
+  "datePublished": "2026-03-15",
+  "dateModified": "2026-03-15"
 }
     </script>
     
@@ -275,14 +275,44 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 87 stars</span>
+                <span class="stars">⭐ 88 stars</span>
                 <span class="language">Spanish</span>
                 <span>by springcomp</span>
             </div>
         </div>
         
         <div class="content">
-            <h1>SimpleLogin</h1></p><p>Esta es una configuración de docker-compose autoalojada para <a href="https://simplelogin.io" target="_blank" rel="noopener noreferrer">SimpleLogin</a>.</p><h2>Requisitos previos</h2></p><ul><li>un servidor Linux (ya sea una VM o un servidor dedicado). Este documento muestra la configuración para Ubuntu 18.04 LTS pero los pasos podrían adaptarse para otras distribuciones populares de Linux. Como la mayoría de los componentes se ejecutan como contenedores Docker y Docker puede ser un poco pesado, se recomienda tener al menos 2 GB de RAM. El servidor debe tener abiertos los puertos 25 (correo electrónico), 80, 443 (para la aplicación web), 22 (para que puedas acceder por ssh).</li></p><p><li>un dominio para el cual puedas configurar el DNS. Podría ser un subdominio. En el resto del documento, diremos que es <code>mydomain.com</code> para el correo y <code>app.mydomain.com</code> para la aplicación web de SimpleLogin. Por favor asegúrate de reemplazar estos valores por tu nombre de dominio y subdominio cada vez que aparezcan en el documento. Un truco que usamos es descargar este archivo README en tu computadora y reemplazar todas las ocurrencias de <code>mydomain.com</code> y <code>app.mydomain.com</code> por tu dominio.</li></p><p></ul>Excepto la configuración del DNS que usualmente se hace en la interfaz de tu registrador de dominio, todos los pasos siguientes deben hacerse en tu servidor. Los comandos deben ejecutarse con <code>bash</code> (o cualquier shell compatible con bash como <code>zsh</code>) siendo la shell. Si usas otras shells como <code>fish</code>, asegúrate de adaptar los comandos.</p><ul><li>Algunos paquetes de utilidad usados para verificar la configuración. Instálalos con:</li></p><p></ul><pre><code class="language-bash">sudo apt update \
+            <p>
+<div align="right">
+  <details>
+    <summary >🌐 Idioma</summary>
+    <div>
+      <div align="center">
+        <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=en">English</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=zh-CN">简体中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=zh-TW">繁體中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=ja">日本語</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=ko">한국어</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=hi">हिन्दी</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=th">ไทย</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=fr">Français</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=de">Deutsch</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=es">Español</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=it">Italiano</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=ru">Русский</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=pt">Português</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=nl">Nederlands</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=pl">Polski</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=ar">العربية</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=fa">فارسی</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=tr">Türkçe</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=vi">Tiếng Việt</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=id">Bahasa Indonesia</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=as">অসমীয়া</
+      </div>
+    </div>
+  </details>
+</div></p><h1>SimpleLogin</h1></p><p>Esta es una configuración autoalojada de docker-compose para <a href="https://simplelogin.io" target="_blank" rel="noopener noreferrer">SimpleLogin</a>.</p><h2>Requisitos previos</h2></p><ul><li>un servidor Linux (puede ser una máquina virtual o un servidor dedicado). Este documento muestra la configuración para Ubuntu 18.04 LTS pero los pasos pueden adaptarse a otras distribuciones populares de Linux. Como la mayoría de los componentes se ejecutan como contenedores Docker y Docker puede ser algo pesado, se recomienda tener al menos 2 GB de RAM. El servidor debe tener abiertos los puertos 25 (correo electrónico), 80, 443 (para la aplicación web), 22 (para poder acceder por SSH).</li></p><p><li>un dominio para el cual puedas configurar el DNS. Puede ser un subdominio. En el resto del documento, supongamos que es <code>mydomain.com</code> para el correo electrónico y <code>app.mydomain.com</code> para la aplicación web de SimpleLogin. Por favor, asegúrate de reemplazar estos valores por el nombre de tu dominio y subdominio cada vez que aparezcan en el documento. Un truco que usamos es descargar este archivo README en tu computadora y reemplazar todas las ocurrencias de <code>mydomain.com</code> y <code>app.mydomain.com</code> por tu dominio.</li></p><p></ul>Excepto la configuración de DNS, que normalmente se realiza en la interfaz de tu registrador de dominios, todos los pasos a continuación deben hacerse en tu servidor. Los comandos deben ejecutarse con <code>bash</code> (o cualquier shell compatible con bash, como <code>zsh</code>) como la shell. Si usas otros shells como <code>fish</code>, por favor asegúrate de adaptar los comandos.</p><ul><li>Algunos paquetes de utilidades utilizados para verificar la configuración. Instálalos mediante:</li></p><p></ul><pre><code class="language-bash">sudo apt update \
   && sudo apt install -y net-tools dnsutils</code></pre></p><h2>Configuración DNS</h2></p><p>_Consulte la <a href="https://github.com/springcomp/self-hosted-simplelogin/wiki/DNS-Configuration" target="_blank" rel="noopener noreferrer">documentación de referencia</a> para más detalles_</p><blockquote><strong>Tenga en cuenta</strong> que los cambios en DNS pueden tardar hasta 24 horas en propagarse. En la práctica, sin embargo, es mucho más rápido (~1 minuto aproximadamente en nuestra prueba). En la configuración DNS, generalmente usamos el dominio con un punto final (<code>.</code>) para forzar el uso del dominio absoluto.</blockquote></p><p>Necesitará configurar los siguientes registros DNS:</p><ul><li><strong>A</strong>: Asocia su dominio con la dirección IPv4 de su servidor.</li>
 <li><strong>AAAA</strong>: Asocia su dominio con la dirección IPv6 de su servidor.</li>
 <li><strong>MX</strong>: Dirige los correos entrantes a su servidor de correo (incluyendo comodines <code>*</code>).</li>
@@ -334,7 +364,7 @@ Ese alias puede crearse al vuelo si no existe.
 Por ejemplo, los correos electrónicos enviados a </code>someone@directory.mydomain.com<code> se enrutarán a </code>directory/someone@mydomain.com` por postfix.</p><h2>Cómo actualizar desde la versión 3.4.0</h2></p><p>_Esta sección se ha movido a la <a href="https://github.com/springcomp/self-hosted-simplelogin/wiki/upgrade-sl" target="_blank" rel="noopener noreferrer">documentación de referencia</a>_</p><h2>Cómo actualizar desde la configuración previa basada en NGinx</h2></p><p>_Esta sección se ha movido a la <a href="https://github.com/springcomp/self-hosted-simplelogin/wiki/upgrade-from-nginx" target="_blank" rel="noopener noreferrer">documentación de referencia</a>_</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-14
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-15
 
 ---</p>
         </div>
@@ -346,7 +376,7 @@ Por ejemplo, los correos electrónicos enviados a </code>someone@directory.mydom
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-03-14 
+        Last updated: 2026-03-15 
     </div>
     
 </body>

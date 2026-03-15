@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 87
+    "ratingCount": 88
   },
   "url": "https://OpenAiTx.github.io/projects/springcomp/self-hosted-simplelogin/README-en.html",
   "sameAs": "https://raw.githubusercontent.com/springcomp/self-hosted-simplelogin/main/README.md",
-  "datePublished": "2026-03-14",
-  "dateModified": "2026-03-14"
+  "datePublished": "2026-03-15",
+  "dateModified": "2026-03-15"
 }
     </script>
     
@@ -275,14 +275,44 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 87 stars</span>
+                <span class="stars">⭐ 88 stars</span>
                 <span class="language">English</span>
                 <span>by springcomp</span>
             </div>
         </div>
         
         <div class="content">
-            <h1>SimpleLogin</h1></p><p>This is a self-hosted docker-compose configuration for <a href="https://simplelogin.io" target="_blank" rel="noopener noreferrer">SimpleLogin</a>.</p><h2>Prerequisites</h2></p><ul><li>a Linux server (either a VM or dedicated server). This doc shows the setup for Ubuntu 18.04 LTS but the steps could be adapted for other popular Linux distributions. As most of components run as Docker container and Docker can be a bit heavy, having at least 2 GB of RAM is recommended. The server needs to have the port 25 (email), 80, 443 (for the webapp), 22 (so you can ssh into it) open.</li></p><p><li>a domain for which you can config the DNS. It could be a sub-domain. In the rest of the doc, let's say it's <code>mydomain.com</code> for the email and <code>app.mydomain.com</code> for SimpleLogin webapp. Please make sure to replace these values by your domain name and subdomain name whenever they appear in the doc. A trick we use is to download this README file on your computer and replace all <code>mydomain.com</code> and <code>app.mydomain.com</code> occurrences by your domain.</li></p><p></ul>Except for the DNS setup that is usually done on your domain registrar interface, all the below steps are to be done on your server. The commands are to run with <code>bash</code> (or any bash-compatible shell like <code>zsh</code>) being the shell. If you use other shells like <code>fish</code>, please make sure to adapt the commands.</p><ul><li>Some utility packages used to verify the setup. Install them by:</li></p><p></ul><pre><code class="language-bash">sudo apt update \
+            <p>
+<div align="right">
+  <details>
+    <summary >🌐 Language</summary>
+    <div>
+      <div align="center">
+        <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=en">English</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=zh-CN">Simplified Chinese</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=zh-TW">Traditional Chinese</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=ja">Japanese</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=ko">Korean</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=hi">Hindi</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=th">Thai</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=fr">French</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=de">German</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=es">Spanish</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=it">Italian</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=ru">Russian</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=pt">Portuguese</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=nl">Dutch</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=pl">Polish</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=ar">Arabic</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=fa">Persian</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=tr">Turkish</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=vi">Vietnamese</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=id">Indonesian</a>
+        | <a href="https://openaitx.github.io/view.html?user=springcomp&project=self-hosted-simplelogin&lang=as">Assamese</
+      </div>
+    </div>
+  </details>
+</div></p><h1>SimpleLogin</h1></p><p>This is a self-hosted docker-compose configuration for <a href="https://simplelogin.io" target="_blank" rel="noopener noreferrer">SimpleLogin</a>.</p><h2>Prerequisites</h2></p><ul><li>a Linux server (either a VM or dedicated server). This document demonstrates setup for Ubuntu 18.04 LTS, but the steps can be adapted for other popular Linux distributions. Since most components run as Docker containers and Docker can be somewhat resource-intensive, at least 2 GB of RAM is recommended. The server must have port 25 (email), 80, 443 (for the webapp), and 22 (for SSH access) open.</li></p><p><li>a domain for which you can configure the DNS. It can be a subdomain. In the rest of the document, let's assume it's <code>mydomain.com</code> for email and <code>app.mydomain.com</code> for the SimpleLogin webapp. Please make sure to replace these values with your own domain name and subdomain name whenever they appear in the document. A trick we use is to download this README file to your computer and replace all occurrences of <code>mydomain.com</code> and <code>app.mydomain.com</code> with your own domain.</li></p><p></ul>Except for the DNS setup, which is usually done on your domain registrar's interface, all the following steps must be performed on your server. The commands are to be run with <code>bash</code> (or any bash-compatible shell like <code>zsh</code>). If you use other shells like <code>fish</code>, please make sure to adapt the commands.</p><ul><li>Some utility packages are used to verify the setup. Install them by:</li></p><p></ul><pre><code class="language-bash">sudo apt update \
   && sudo apt install -y net-tools dnsutils</code></pre></p><h2>DNS Configuration</h2></p><p>_Refer to the <a href="https://github.com/springcomp/self-hosted-simplelogin/wiki/DNS-Configuration" target="_blank" rel="noopener noreferrer">reference documentation</a> for more details_</p><blockquote><strong>Please note</strong> that DNS changes could take up to 24 hours to propagate. In practice, it's a lot faster though (~1 minute or so in our test). In DNS setup, we usually use domain with a trailing dot (<code>.</code>) at the end to to force using absolute domain.</blockquote></p><p>You will need to setup the following DNS records:</p><ul><li><strong>A</strong>: Maps your domain to your server's IPv4 address.</li>
 <li><strong>AAAA</strong>: Maps your domain to your server's IPv6 address.</li>
 <li><strong>MX</strong>: Directs incoming emails to your mail server (including <code>*</code> wildcards).</li>
@@ -332,7 +362,7 @@ That alias may be created on the fly if it does not exist.
 </code>`<code></p><p>For instance, emails sent to </code>someone@directory.mydomain.com<code> will be routed to </code>directory/someone@mydomain.com` by postfix.</p><h2>How-to Upgrade from 3.4.0</h2></p><p>_This section has been moved to the <a href="https://github.com/springcomp/self-hosted-simplelogin/wiki/upgrade-sl" target="_blank" rel="noopener noreferrer">reference documentation</a>_</p><h2>How-to Upgrade from previous NGinx-based setup</h2></p><p>_This section has been moved to the <a href="https://github.com/springcomp/self-hosted-simplelogin/wiki/upgrade-from-nginx" target="_blank" rel="noopener noreferrer">reference documentation</a>_</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-14
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-15
 
 ---</p>
         </div>
@@ -344,7 +374,7 @@ That alias may be created on the fly if it does not exist.
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-03-14 
+        Last updated: 2026-03-15 
     </div>
     
 </body>
