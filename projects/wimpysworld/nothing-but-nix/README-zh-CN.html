@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nothing-but-nix - Read nothing-but-nix documentation in Simplified Chinese. This project has 126 stars on GitHub.</title>
-    <meta name="description" content="Read nothing-but-nix documentation in Simplified Chinese. This project has 126 stars on GitHub.">
+    <title>nothing-but-nix - 在 GitHub Runner 中创建 130GB Nix 存储 ❄️ 多分区 BTRFS RAID-0 用于 /nix &#128170; 强力清除不必要的软件 &#129683; 动态扩展 Nix 存储 &#128200;</title>
+    <meta name="description" content="在 GitHub Runner 中创建 130GB Nix 存储 ❄️ 多分区 BTRFS RAID-0 用于 /nix &#128170; 强力清除不必要的软件 &#129683; 动态扩展 Nix 存储 &#128200;">
     <meta name="keywords" content="nothing-but-nix, Simplified Chinese, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "nothing-but-nix",
-  "description": "Read nothing-but-nix documentation in Simplified Chinese. This project has 126 stars on GitHub.",
+  "description": "在 GitHub Runner 中创建 130GB Nix 存储 ❄️ 多分区 BTRFS RAID-0 用于 /nix 💪 强力清除不必要的软件 🪓 动态扩展 Nix 存储 📈",
   "author": {
     "@type": "Person",
     "name": "wimpysworld"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 126
+    "ratingCount": 213
   },
   "url": "https://OpenAiTx.github.io/projects/wimpysworld/nothing-but-nix/README-zh-CN.html",
   "sameAs": "https://raw.githubusercontent.com/wimpysworld/nothing-but-nix/main/README.md",
-  "datePublished": "2025-09-16",
-  "dateModified": "2025-09-16"
+  "datePublished": "2026-03-18",
+  "dateModified": "2026-03-18"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 126 stars</span>
+                <span class="stars">⭐ 213 stars</span>
                 <span class="language">Simplified Chinese</span>
                 <span>by wimpysworld</span>
             </div>
@@ -311,8 +311,8 @@
       </div>
     </div>
   </details>
-</div></p><h1>Nothing but Nix</h1></p><p><strong>通过无情清除预装臃肿，将你的 GitHub Actions runner 变成 <a href="https://zero-to-nix.com/concepts/nix/" target="_blank" rel="noopener noreferrer">Nix</a> ❄️ 强力引擎。</strong></p><p>GitHub Actions runner 为 Nix 提供的磁盘空间非常有限——只有大约 20GB。
-<em>Nothing but Nix</em> <strong>会残酷地清理</strong>不必要的软件，让你的 Nix 存储空间提升到 <strong>65GB 到 130GB</strong>！💪</p><h2>用法 🔧</h2></p><p>在工作流中安装 Nix <strong>之前</strong>，添加此 Action：</p><pre><code class="language-yaml">jobs:
+</div></p><h1>Nothing but Nix</h1></p><p><strong>通过无情地精简预装臃肿，将你的 GitHub Actions runner 转变为 <a href="https://zero-to-nix.com/concepts/nix/" target="_blank" rel="noopener noreferrer">Nix</a> ❄️ 的强大引擎。</strong></p><p>GitHub Actions runner 为 Nix 提供的磁盘空间十分有限——仅有约 20GB。
+<em>Nothing but Nix</em> <strong>会彻底清理</strong>不必要的软件，为你的 Nix store 腾出 <strong>65GB 到 130GB</strong> 空间！💪</p><h2>用法 🔧</h2></p><p>在工作流程中安装 Nix <strong>之前</strong>添加此操作：</p><pre><code class="language-yaml">jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
@@ -326,30 +326,32 @@
       <ul><li>name: Run Nix</li>
         </ul>run: |
           nix --version
-          # Your Nix-powered steps here...</code></pre>
-<h3>要求 ️✔️</h3></p><ul><li>仅支持官方 <strong>Ubuntu</strong> GitHub Actions 运行器</li>
-<li>必须在安装 Nix <strong>之前</strong> 运行</li></p><p></ul><h2>问题：为 Nix 的繁荣腾出空间 🌱</h2></p><p>标准的 GitHub Actions 运行器装满了你在 Nix 工作流中永远不会用到的<em>“臃肿软件”</em>：</p><ul><li>🌍 网络浏览器。很多。必须全部拥有！</li>
-<li>🐳 占用数GB宝贵磁盘空间的 Docker 镜像</li>
-<li>💻 不必要的语言运行时（.NET、Ruby、PHP、Java……）</li>
-<li>📦 堆积数字灰尘的软件包管理器</li>
-<li>📚 无人阅读的文档</li></p><p></ul>这些臃肿软件只剩下大约 20GB 的空间给你的 Nix 存储——几乎不够进行严肃的 Nix 构建！😞</p><h2>解决方案：唯有 Nix ️❄️</h2></p><p><strong>唯有 Nix</strong> 采用焦土策略对 GitHub Actions 运行器进行无情的磁盘空间回收，采用两阶段攻势：</p><ul><li><strong>初步砍削：</strong> 通过从 <code>/mnt</code> 夺取空闲空间，立即创建一个大型 <code>/nix</code> 卷（约 65GB）</li>
-<li><strong>后台狂暴：</strong> 在你的工作流继续运行时，我们无情地清除不必要的软件，将 <code>/nix</code> 卷扩展至约 130GB</li>
-   <li>网络浏览器？不留 ⛔</li>
-   <li>Docker 镜像？清除 🗑️</li>
-   <li>语言运行时？彻底销毁 💥</li>
-   <li>软件包管理器？全数消灭 💣</li>
-   <li>文档？蒸发 ️👻</li></p><p></ul>文件系统清理由 <code>rmz</code>（来自 <a href="https://github.com/SUPERCILEX/fuc" target="_blank" rel="noopener noreferrer">Fast Unix Commands (FUC)</a> 项目）驱动——这是一个高性能的 <code>rm</code> 替代品，使空间回收速度快如闪电！⚡
+          # Your Nix-powered steps here...</code></pre></p><h3>要求 ️✔️</h3></p><ul><li>仅支持官方 <strong>Ubuntu</strong> GitHub Actions 运行器</li>
+<li>必须在安装 Nix 之前运行</li>
+<li><strong>macOS/Darwin 运行器</strong>：如果在 macOS 上运行，此操作将以警告信息优雅地跳过。macOS 运行器已为 Nix 提供了足够的空间，无需此操作</li>
+<li><strong>Windows 运行器</strong>：如果在 Windows 上运行，此操作将以警告信息优雅地跳过。Windows 运行器的文件系统结构和限制不同</li></p><p></ul><h2>问题：为 Nix 腾出空间 🌱</h2></p><p>标准的 GitHub Actions 运行器中充满了你在 Nix 工作流中永远不会用到的 <em>“臃肿软件”</em>：</p><ul><li>🌍 各种网页浏览器，应有尽有，非要全装！</li>
+<li>🐳 Docker 镜像，占用数 GB 宝贵磁盘空间</li>
+<li>💻 不必要的语言运行环境（.NET、Ruby、PHP、Java……）</li>
+<li>📦 积灰的软件包管理器</li>
+<li>📚 没人会看的文档</li></p><p></ul>这些臃肿内容让你的 Nix 存储区只剩下 ~20GB——对于严肃的 Nix 构建来说，几乎不够用！😞</p><h2>解决方案：只为 Nix ️❄️</h2></p><p><strong>Nothing but Nix</strong> 对 GitHub Actions 运行器采取焦土政策，通过两步攻击无情回收磁盘空间：</p><ul><li><strong>初始切割：</strong> 立即从 <code>/mnt</code> 释放空间，创建一个大型 <code>/nix</code> 卷（约 65GB）</li>
+<li><strong>后台清扫：</strong> 在你的工作流继续执行时，彻底清理无用软件，将 <code>/nix</code> 卷空间扩展至约 130GB</li>
+   <li>浏览器？不要 ⛔</li>
+   <li>Docker 镜像？删除 🗑️</li>
+   <li>语言运行环境？彻底移除 💥</li>
+   <li>包管理器？彻底清除 💣</li>
+   <li>文档？直接消失 ️👻</li></p><p></ul>文件系统清理由 <code>rmz</code>（来自 <a href="https://github.com/SUPERCILEX/fuc" target="_blank" rel="noopener noreferrer">Fast Unix Commands (FUC)</a> 项目）驱动——这是 <code>rm</code> 的高性能替代品，让空间回收飞快完成！⚡
    <ul><li>性能比标准 <code>rm</code> 高一个数量级</li>
-   <li>并行处理删除操作以实现最大效率</li>
-   <li><strong>几秒钟内回收磁盘空间，而非几分钟！</strong> ️⏱️</li></p><p></ul>最终结果？一个拥有 <strong>65GB 到 130GB</strong> Nix 准备空间的 GitHub Actions 运行器！😁</p><h3>动态卷增长</h3></p><p>与其他方案不同，<strong>唯有 Nix</strong> 动态扩展你的 <code>/nix</code> 卷：</p><ul><li><strong>初始卷创建（1-10 秒）：</strong>（<em>取决于 Hatchet 协议</em>）</li>
-   <li>从 <code>/mnt</code> 空闲空间创建环回设备</li>
+   <li>并行处理删除任务，效率最大化</li>
+   <li><strong>几秒钟而不是几分钟内回收磁盘空间！</strong> ️⏱️</li></p><p></ul>最终结果？你的 GitHub Actions 运行器将拥有 <strong>65GB 到 130GB</strong> Nix 可用空间！😁</p><h3>动态卷扩展</h3>
+与其他方案不同，<strong>Nothing but Nix</strong> 会动态扩展你的 <code>/nix</code> 卷：</p><ul><li><strong>初始卷创建（1-10秒）：</strong>（<em>取决于 Hatchet Protocol</em>）</li>
+   <li>从 <code>/mnt</code> 的空闲空间创建一个环回设备</li>
    <li>设置 RAID0 配置的 BTRFS 文件系统</li>
-   <li>以压缩和性能调优方式挂载</li>
-   <li>立即提供 65GB <code>/nix</code>，甚至在清理开始前</li></p><p><li><strong>后台扩展（30-180 秒）：</strong>（<em>取决于 Hatchet 协议</em>）</li>
+   <li>挂载时启用压缩和性能优化</li>
+   <li>即使清理尚未开始，也能立即提供 65GB 的 <code>/nix</code></li></p><p><li><strong>后台扩展（30-180秒）：</strong>（<em>取决于 Hatchet Protocol</em>）</li>
    <li>执行清理操作</li>
-   <li>监控消除臃肿后释放的新空间</li>
-   <li>动态向 <code>/nix</code> 卷添加扩展磁盘</li>
-   <li>重新平衡文件系统以纳入新空间</li></p><p></ul><code>/nix</code> 卷会在工作流执行期间自动<strong>增长</strong> 🎩🪄</p><h3>选择你的武器：Hatchet 协议 🪓</h3></p><p>通过 <code>hatchet-protocol</code> 输入控制灭绝程度 💥：</p><pre><code class="language-yaml">- uses: wimpysworld/nothing-but-nix@main
+   <li>随着冗余被消除，监控新释放的空间</li>
+   <li>动态将扩展磁盘添加到 <code>/nix</code> 卷</li>
+   <li>重新平衡文件系统以整合新空间</li></p><p></ul><code>/nix</code> 卷会在工作流执行期间<strong>自动增长</strong> 🎩🪄</p><h3>选择你的武器：Hatchet Protocol 🪓</h3></p><p>通过 <code>hatchet-protocol</code> 输入控制清除级别 💥：</p><pre><code class="language-yaml">- uses: wimpysworld/nothing-but-nix@main
   with:
     hatchet-protocol: 'cleave'  # Options: holster, carve, cleave (default), rampage</code></pre>
 #### 协议比较 ⚖️</p><p>| 协议     | <code>/nix</code> | 描述                                             | 清理 apt   | 清理 docker | 清理 snap | 清理的文件系统          |
@@ -375,10 +377,22 @@
 <li>默认的 <code>mnt-safe-haven</code> 为1024MB（1GB）</li></p><p></ul>如果您的文件系统需要更多的缓冲空间，可以增加这些值，或者减小它们以毫不留情地释放空间！😈</p><h3>授予用户对 /nix 的所有权（Nix 权限法令）🧑‍⚖️</h3></p><p>某些 Nix 安装程序或配置期望当前用户对 <code>/nix</code> 目录具有写权限。默认情况下，<code>/nix</code> 归 root 所有。如果您需要用户所有权（例如，对于某些不在 <code>/nix</code> 内所有操作都使用 <code>sudo</code> 的 Nix 安装脚本），可以启用 <code>nix-permission-edict</code>：</p><pre><code class="language-yaml">- uses: wimpysworld/nothing-but-nix@main
   with:
     nix-permission-edict: true  # Default: false</code></pre>
-当 <code>nix-permission-edict</code> 设置为 <code>true</code> 时，操作将在挂载 <code>/nix</code> 后运行 <code>sudo chown -R "$(id --user)":"$(id --group)" /nix</code>。</p><p>现在，利用所有那辉煌的 Nix 存储空间去构建一些惊人的东西吧！❄️</p><p>
+当 <code>nix-permission-edict</code> 设置为 <code>true</code> 时，该操作将在挂载 <code>/nix</code> 后运行 <code>sudo chown -R "$(id --user)":"$(id --group)" /nix</code>。</p><h3>配置 Nix 以使用 /nix/build</h3></p><p>此操作会创建 <code>/nix/build</code>，供 Nix 派生构建使用已回收的空间。请在你的 Nix 配置中添加 <code>build-dir</code>：</p><pre><code class="language-yaml">- uses: cachix/install-nix-action@v31
+  with:
+    extra_nix_config: |
+      build-dir = /nix/build</code></pre></p><p>或者使用 DeterminateSystems：</p><pre><code class="language-yaml">- uses: DeterminateSystems/nix-installer-action@main
+  with:
+    extra-conf: |
+      build-dir = /nix/build</code></pre></p><p>这会指示 Nix 在大型 BTRFS 卷上执行构建，而不是系统默认的临时目录。</p><h2>故障排除 🔍</h2></p><h3>大型构建时出现“No space left on device”</h3></p><p>如果你的构建在仅使用 Nix 的情况下仍然空间耗尽，很可能是后台清理工作在你的构建消耗可用空间之前尚未完成。这通常影响以下情况：</p><ul><li>组装大型磁盘镜像的 NixOS 虚拟机测试</li>
+<li>没有缓存的依赖项较多的构建</li>
+<li>Rust 工具链及其他大型编译</li></p><p></ul><strong>解决方法：</strong> 使用 <code>witness-carnage: true</code> 强制同步清理。这样可以确保所有空间在构建开始<em>之前</em>被回收：</p><pre><code class="language-yaml">- uses: wimpysworld/nothing-but-nix@main
+  with:
+    hatchet-protocol: 'rampage'
+    witness-carnage: true</code></pre>
+这会为你的工作流程设置增加30-180秒，但能确保在构建开始时有最大的空间可用。</p><p>现在，去利用所有那充足的Nix存储空间，构建令人惊叹的项目吧！❄️</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2025-07-24
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-18
 
 ---</p>
         </div>
@@ -390,7 +404,7 @@
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2025-09-16 
+        Last updated: 2026-03-18 
     </div>
     
 </body>
