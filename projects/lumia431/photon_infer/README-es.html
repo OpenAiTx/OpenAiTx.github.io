@@ -1,0 +1,367 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>photon_infer - Un motor de inferencia LLM de alto rendimiento con agrupamiento continuo al estilo vLLM</title>
+    <meta name="description" content="Un motor de inferencia LLM de alto rendimiento con agrupamiento continuo al estilo vLLM">
+    <meta name="keywords" content="photon_infer, Spanish, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "photon_infer",
+  "description": "Un motor de inferencia LLM de alto rendimiento con agrupamiento continuo al estilo vLLM",
+  "author": {
+    "@type": "Person",
+    "name": "lumia431"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 98
+  },
+  "url": "https://OpenAiTx.github.io/projects/lumia431/photon_infer/README-es.html",
+  "sameAs": "https://raw.githubusercontent.com/lumia431/photon_infer/master/README.md",
+  "datePublished": "2026-03-22",
+  "dateModified": "2026-03-22"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/lumia431/photon_infer" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    photon_infer
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 98 stars</span>
+                <span class="language">Spanish</span>
+                <span>by lumia431</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>PhotonInfer</h1></p><p><div align="center"></p><p><strong>Un motor de inferencia LLM de alto rendimiento con agrupamiento continuo al estilo vLLM</strong></p><p><a href="https://raw.githubusercontent.com/lumia431/photon_infer/master/README.md" target="_blank" rel="noopener noreferrer">English</a> | <a href="https://raw.githubusercontent.com/lumia431/photon_infer/master/README_ZH.md" target="_blank" rel="noopener noreferrer">中文</a> | <a href="https://photoninfer.xyz/" target="_blank" rel="noopener noreferrer">Demostración en vivo</a></p><p><a href="LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
+<a href="https://developer.nvidia.com/cuda-toolkit" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/CUDA-12.0+-green.svg" alt="CUDA"></a>
+<a href="https://en.cppreference.com/w/cpp/20" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/C++-20-orange.svg" alt="C++20"></a></p><p></div></p><hr></p><h2>🚀 Aspectos Destacados de Rendimiento</h2></p><p>PhotonInfer ofrece <strong>rendimiento de inferencia de calidad para producción</strong> para LLMs con capacidades avanzadas de agrupamiento. <strong>Soporta modelos Llama-3.2 y Qwen3</strong>.</p><h3>Inferencia de Solicitud Única</h3></p><p>| Modelo | PhotonInfer | llama.cpp | Aceleración |
+|--------|-------------|-----------|-------------|
+| Llama 3.2 1B | 185 tok/s | 252 tok/s | 0.73× (llama.cpp más rápido) |</p><p><strong>TTFT (Tiempo Hasta el Primer Token)</strong>: 387ms con prompt de 100 tokens (cuantización INT8)</p><h3>Rendimiento de Inferencia en Lote</h3></p><p>| Tamaño del Lote | PhotonInfer | llama.cpp | Aceleración |
+|-----------------|-------------|-----------|-------------|
+| 4               | 410 tok/s   | 252 tok/s | <strong>1.63×</strong>   |
+| 8               | 720 tok/s   | 255 tok/s | <strong>2.82×</strong>   |
+| 16              | 787 tok/s   | 253 tok/s | <strong>3.07×</strong>   |</p><p><strong>Probado en</strong>: NVIDIA A100, Llama 3.2 1B, cuantización Q8/INT8</p><h2>✨ Características Clave</h2></p><h3>🎯 <strong>Batching Continuo Estilo vLLM</strong></h3>
+<ul><li><strong>Programación dinámica a nivel de token</strong>: Agrega nuevas solicitudes durante la generación sin esperar a que termine el lote</li>
+<li><strong>Planificador en dos fases</strong>: Continúa ejecutando solicitudes mientras admite nuevas de forma fluida</li>
+<li><strong>Seguimiento del estado de la solicitud</strong>: Gestión precisa de <code>num_computed_tokens</code> para una reanudación eficiente</li>
+<li><strong>Perfecto para producción</strong>: Servicios de inferencia de alta concurrencia con capacidad de respuesta en tiempo real</li></p><p></ul><h3>⚡ <strong>Kernels Optimizados para GPU</strong></h3>
+<ul><li><strong>Atención Paginada en Lote</strong>: Gestión de caché KV a nivel de bloque con uso eficiente de memoria</li>
+<li><strong>Acceso a Memoria Vectorizado</strong>: Cargas <code>float4</code> para eficiencia de ancho de banda 2-4×</li>
+<li><strong>Operaciones Fusionadas</strong>: Muestreo en GPU sin copias, RoPE en lote, y normalización fusionada</li>
+<li><strong>Cuantización INT8</strong>: Cuantización por grupos con soporte cuBLASLt INT8 GEMM</li>
+<li><strong>Softmax Optimizado</strong>: CUB BlockReduce para cálculo numéricamente estable de atención</li></p><p></ul><h3>🏗️ <strong>Arquitectura Moderna C++20</strong></h3>
+<ul><li><strong>Manejo de Errores Seguro por Tipo</strong>: Tipo <code>Result<T, E></code> inspirado en Rust para propagación explícita de errores</li>
+<li><strong>Diseño Sin Copias</strong>: Uso extensivo de <code>std::span</code> y semántica de movimiento</li>
+<li><strong>Independiente del Dispositivo</strong>: Interfaz unificada para backends CPU y CUDA</li>
+<li><strong>Conceptos y Rangos</strong>: Restricciones en tiempo de compilación y seguridad de tipos expresiva</li></p><p></ul><h2>🚀 Inicio Rápido</h2></p><h3>Requisitos Previos</h3></p><ul><li><strong>Compilador</strong>: GCC 12+ (se requiere soporte C++20)</li>
+<li><strong>CMake</strong>: 3.20+</li>
+<li><strong>CUDA Toolkit</strong>: 12.0+ (probado en 12.5)</li>
+<li><strong>GPU</strong>: GPU NVIDIA con Capacidad de Cómputo 7.0+</li></p><p></ul><h3>Descargar Modelo</h3></p><p>Descarga un modelo pre-cuantiﬁcado para comenzar rápidamente:</p><p>https://huggingface.co/Lummy666/llama-3.2-1B-Instruct</p><h3>Compilar</h3></p><p>#### Opción 1: Compilar desde el Código Fuente</p><pre><code class="language-bash"># Clone repository
+cd photon_infer</p><h1>Configure with CUDA</h1>
+mkdir build && cd build
+cmake -DCMAKE_BUILD_TYPE=Release -DPHOTON_BUILD_CUDA=ON ..</p><h1>Build</h1>
+cmake --build . -j$(nproc)</p><h1>Install (optional)</h1>
+sudo cmake --install .</code></pre></p><p>Después de la instalación, puede ejecutar el servidor web directamente desde cualquier lugar:</p><pre><code class="language-bash">photon_web_server \
+    --port 5728 \
+    --model /path/to/llama-3.2-1B-Instruct \
+    --tokenizer /path/to/llama-3.2-1B-Instruct/tokenizer.json</code></pre></p><p>La instalación colocará:
+<ul><li><code>photon_web_server</code> → <code>/usr/local/bin/</code></li>
+<li>Archivos web estáticos → <code>/photon_infer/web/static/</code></li>
+<li>Biblioteca principal → <code>/usr/local/lib/</code></li></p><p></ul>Para desinstalar:
+<pre><code class="language-bash">cd build
+sudo cmake --build . --target uninstall</code></pre>
+#### Opción 2: Usar Docker (Recomendado)</p><pre><code class="language-bash"># Pull the pre-built Docker image
+docker pull lumia431/photon_infer:latest</p><h1>Run the container with GPU support</h1>
+docker run --rm --gpus all -p 5728:5728 -e PORT=5728 lumia431/photon_infer:latest</code></pre></p><p>La interfaz web estará disponible en <code>http://localhost:5728</code></p><h2>🔬 Detalles Técnicos</h2></p><h3>Cuantificación INT8</h3>
+<ul><li><strong>Cuantificación por grupos</strong>: Tamaño de grupo configurable (32, 64, 128)</li>
+<li><strong>Integración cuBLASLt</strong>: GEMM INT8 acelerado por hardware</li>
+<li><strong>Pérdida mínima de precisión</strong>: < 1% de degradación en perplexidad en modelos Llama</li></p><p></ul><h3>Atención Paginada</h3>
+<ul><li><strong>Cache KV a nivel de bloque</strong>: Asignación eficiente de memoria sin fragmentación</li>
+<li><strong>Gestión dinámica de secuencias</strong>: Desplazamientos de caché por secuencia para programación flexible</li>
+<li><strong>Operaciones en caché por lotes</strong>: Kernel único para escrituras K/V de múltiples secuencias</li></p><p></ul><h3>Planificador de Batching Continuo</h3>
+<ul><li><strong>Programación en dos fases</strong>:</li>
+  <li><strong>Fase 1</strong>: Continuar todas las solicitudes EN EJECUCIÓN (sin interrupción)</li>
+  <li><strong>Fase 2</strong>: Admitir solicitudes EN ESPERA para llenar la capacidad restante</li>
+<li><strong>Estados de solicitud</strong>: ESPERANDO → EN EJECUCIÓN → FINALIZADO (con soporte PREEMPTADO)</li>
+<li><strong>Granularidad a nivel de token</strong>: Seguimiento de <code>num_computed_tokens</code> para reanudación precisa</li></p><p></ul><h2>🛣️ Hoja de Ruta</h2></p><ul><li>[x] <strong>Infraestructura central</strong>: Tensores, operadores, gestión de memoria</li>
+<li>[x] <strong>Modelo LLaMA</strong>: Implementación completa del transformador con kernels CPU/GPU</li>
+<li>[x] <strong>Cuantificación INT8</strong>: Cuantificación por grupos con cuBLASLt</li>
+<li>[x] <strong>Atención paginada</strong>: Gestión de caché KV a nivel de bloque</li>
+<li>[x] <strong>Batching continuo</strong>: Programación dinámica de solicitudes estilo vLLM</li>
+<li>[ ] <strong>Flash Attention 2</strong>: Atención consciente de IO para secuencias largas</li>
+<li>[ ] <strong>Soporte Multi-GPU</strong>: Paralelismo tensorial para modelos grandes</li>
+<li>[ ] <strong>Precisión mixta FP16/BF16</strong>: Mayor rendimiento en GPUs modernas</li>
+<li>[ ] <strong>Decodificación especulativa</strong>: Generación multi-token con modelo borrador</li></p><p></ul><h2>📖 Documentación</h2></p><ul><li><a href="https://raw.githubusercontent.com/lumia431/photon_infer/master/docs/continuous_batching.md" target="_blank" rel="noopener noreferrer">Diseño de Batching Continuo</a></li>
+<li><a href="https://raw.githubusercontent.com/lumia431/photon_infer/master/docs/performance.md" target="_blank" rel="noopener noreferrer">Guía de Optimización de Rendimiento</a></li>
+<li><a href="https://raw.githubusercontent.com/lumia431/photon_infer/master/docs/api.md" target="_blank" rel="noopener noreferrer">Referencia API</a></li></p><p></ul><h2>🤝 Contribuyendo</h2></p><p>¡Contribuciones bienvenidas! Por favor, consulte <a href="https://raw.githubusercontent.com/lumia431/photon_infer/master/docs/contributing.md" target="_blank" rel="noopener noreferrer">CONTRIBUTING.md</a> para las pautas.</p><h2>📝 Licencia</h2></p><p>Licencia MIT - vea <a href="LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a> para detalles.</p><h2>🙏 Agradecimientos</h2></p><ul><li>Arquitectura inspirada en <a href="https://github.com/vllm-project/vllm" target="_blank" rel="noopener noreferrer">vLLM</a></li>
+<li>Referencia de optimizaciones de kernel <a href="https://github.com/ggerganov/llama.cpp" target="_blank" rel="noopener noreferrer">llama.cpp</a></li>
+<li>Diseño de manejo de errores basado en <code>Result<T, E></code> de Rust</li></p><p></ul>---</p><p><strong>Construido con ❤️ para inferencia de LLM de alto rendimiento</strong></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-22
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/lumia431/photon_infer/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-03-22 
+    </div>
+    
+</body>
+</html>
