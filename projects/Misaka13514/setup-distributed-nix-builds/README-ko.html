@@ -1,0 +1,420 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setup-distributed-nix-builds - Tailscale을 사용하여 GitHub Actions에서 즉시 크로스 플랫폼 분산 Nix 빌드 클러스터를 프로비저닝합니다.</title>
+    <meta name="description" content="Tailscale을 사용하여 GitHub Actions에서 즉시 크로스 플랫폼 분산 Nix 빌드 클러스터를 프로비저닝합니다.">
+    <meta name="keywords" content="setup-distributed-nix-builds, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "setup-distributed-nix-builds",
+  "description": "Tailscale을 사용하여 GitHub Actions에서 즉시 크로스 플랫폼 분산 Nix 빌드 클러스터를 프로비저닝합니다.",
+  "author": {
+    "@type": "Person",
+    "name": "Misaka13514"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 0
+  },
+  "url": "https://OpenAiTx.github.io/projects/Misaka13514/setup-distributed-nix-builds/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/Misaka13514/setup-distributed-nix-builds/main/README.md",
+  "datePublished": "2026-03-26",
+  "dateModified": "2026-03-26"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Misaka13514/setup-distributed-nix-builds" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    setup-distributed-nix-builds
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 0 stars</span>
+                <span class="language">Korean</span>
+                <span>by Misaka13514</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>❄️ 분산 Nix 빌드 설정</h1></p><p>GitHub Action을 사용하여 표준 <a href="https://docs.github.com/en/actions/reference/runners/github-hosted-runners" target="_blank" rel="noopener noreferrer">GitHub 호스팅 러너</a>를 통해 Tailscale로 안전하게 연결된 일시적이고 크로스 플랫폼 <a href="https://wiki.nixos.org/wiki/Distributed_build" target="_blank" rel="noopener noreferrer">분산 Nix 빌드</a> 클러스터를 즉시 프로비저닝합니다.</p><p>이 액션은 보조 GitHub 러너(즉, <strong>빌더</strong>)의 매트릭스를 실행하고 Tailscale SSH를 통해 기본 러너(즉, <strong>코디네이터</strong>)에 원활하게 연결할 수 있습니다. 코디네이터는 자동으로 Nix를 구성하여 이 노드들을 원격 빌더로 사용하도록 하여 외부 인프라를 관리하지 않고도 동시 빌드 성능을 극대화합니다! 다중 아키텍처 패키지를 빌드하거나 x86 러너들을 이용해 무거운 NixOS 시스템 클로저를 수평 확장하는 데 완벽합니다.</p><h2>기능</h2></p><ul><li>🚀 <strong>제로 구성 원격 빌더:</strong> <code>/etc/nix/machines</code>를 자동으로 구성하고 Tailscale SSH를 통해 노드를 연결합니다(수동 SSH 키 불필요!).</li>
+<li>🌍 <strong>크로스 플랫폼 및 다중 아키텍처:</strong> 동일 빌드 내에서 Ubuntu(x86, ARM)와 macOS(Intel, Apple Silicon) 러너를 혼합 사용 가능합니다.</li>
+<li>⚖️ <strong>NixOS를 위한 수평 확장:</strong> 대규모 NixOS 구성을 평가하고 빌드해야 하나요? 동일한 노드(예: 다섯 개의 <code>ubuntu-24.04</code> 러너) 전체를 실행하고 Nix가 클러스터 내 사용 가능한 모든 CPU 코어에 병렬 유도 빌드를 자동으로 분배하도록 하세요.</li>
+<li>🧹 <strong>최대 디스크 공간:</strong> Linux 러너에서 사전 설치된 소프트웨어를 자동으로 정리하여(<a href="https://github.com/wimpysworld/nothing-but-nix" target="_blank" rel="noopener noreferrer">nothing-but-nix</a> 사용) Nix 저장소에 최대한의 공간을 제공합니다.</li>
+<li>⚡ <strong>내장 캐싱:</strong> 플레이크 평가와 로컬 빌드를 가속화하는 <a href="https://github.com/DeterminateSystems/magic-nix-cache-action" target="_blank" rel="noopener noreferrer">magic-nix-cache</a>와 통합됩니다.</li>
+<li>🛑 <strong>우아한 종료:</strong> 빌더는 작업을 기다리며 코디네이터가 종료되면 자동으로 정상 종료됩니다.</li></p><p></ul><h2>작동 원리</h2></p><p>워크플로우는 러너를 <code>builder</code>와 <code>coordinator</code> 두 역할로 구분합니다.</p><pre><code class="language-mermaid">sequenceDiagram
+  participant GH as GitHub Actions
+  participant Coord as Coordinator (Ubuntu)
+  participant B1 as Builder 1 (Ubuntu ARM)
+  participant B2 as Builder 2 (macOS)
+  participant TS as Tailscale Network</p><p>  GH->>B1: Spawn Builder Node
+  GH->>B2: Spawn Builder Node
+  GH->>Coord: Spawn Coordinator Node</p><p>  B1->>TS: Auth & Idle Wait
+  B2->>TS: Auth & Idle Wait
+  Coord->>TS: Auth & Wait for Builders</p><p>  TS-->>Coord: Builders Online!</p><p>  Note over Coord: Tests Nix connection &<br/>Updates /etc/nix/machines</p><p>  Coord->>B1: Send aarch64-linux build tasks via SSH
+  Coord->>B2: Send aarch64-darwin build tasks via SSH</p><p>  B1-->>Coord: Return Build Artifacts
+  B2-->>Coord: Return Build Artifacts</p><p>  Note over Coord: Build Completes
+  Coord->>B1: Send Teardown Signal
+  Coord->>B2: Send Teardown Signal</code></pre>
+<h2>사전 준비 사항</h2></p><p>이 액션을 사용하기 전에 러너들이 안전하게 통신할 수 있도록 Tailscale 네트워크를 구성해야 합니다.</p><ul><li><strong>Tailscale ACL 구성:</strong></li>
+   </ul>Tailscale에 태그 그룹이 생성되어 있고 ACL이 코디네이터가 Tailscale SSH를 사용하여 빌더에 원활하게 SSH할 수 있도록 허용하는지 확인하세요.
+   다음 내용을 <a href="https://login.tailscale.com/admin/acls/file" target="_blank" rel="noopener noreferrer">Tailscale 접근 제어</a>에 추가하세요:</p><p><details>
+<summary>필요한 Tailscale ACL 구성 보기</summary></p><pre><code class="language-json">{
+  "grants": [
+    {
+      "src": ["tag:nix-ci-builder", "tag:nix-ci-coordinator"],
+      "dst": ["tag:nix-ci-builder", "tag:nix-ci-coordinator"],
+      "ip": ["*"]
+    }
+  ],
+  "ssh": [
+    {
+      "src": ["tag:nix-ci-coordinator"],
+      "dst": ["tag:nix-ci-builder"],
+      "users": ["autogroup:nonroot", "root"],
+      "action": "accept"
+    }
+  ],
+  "tagOwners": {
+    "tag:nix-ci-coordinator": ["autogroup:admin", "tag:nix-ci-coordinator"],
+    "tag:nix-ci-builder": ["autogroup:admin", "tag:nix-ci-builder"]
+  }
+}</code></pre>
+</details></p><ul><li><strong>Tailscale OAuth 클라이언트 생성:</strong></li>
+   </ul><a href="https://login.tailscale.com/admin/settings/trust-credentials" target="_blank" rel="noopener noreferrer">Tailscale 관리자 패널</a>에서 <code>auth_keys</code> 쓰기 권한과 <code>nix-ci-builder</code>, <code>nix-ci-coordinator</code> 태그를 가진 OAuth 클라이언트 비밀키를 생성하세요.  
+   이 비밀키를 GitHub 저장소 시크릿에 <code>TS_OAUTH_SECRET</code>로 추가하세요.</p><h2>입력값</h2></p><p>| 입력값                | 설명                                                                                           | 필수     | 기본값      |
+| -------------------- | ---------------------------------------------------------------------------------------------- | -------- | ----------- |
+| <code>tailscale_authkey</code>  | Tailscale OAuth 클라이언트 비밀키 또는 인증 키.                                                | <strong>예</strong>   | N/A         |
+| <code>tailscale_hostname</code> | Tailscale에 등록할 호스트명.                                                                   | <strong>예</strong>   | N/A         |
+| <code>tailscale_tags</code>     | Tailscale에 광고할 태그들 (예: <code>tag:nix-ci-builder</code>).                                         | <strong>예</strong>   | N/A         |
+| <code>role</code>               | 현재 작업의 역할: <code>"builder"</code> 또는 <code>"coordinator"</code>.                                           | 예       | <code>"builder"</code> |
+| <code>builders</code>           | 기다릴 전체 builder 호스트명들의 공백 구분 리스트. (_role이 coordinator인 경우 필수_)           | 아니오   | <code>""</code>        |
+| <code>builder_timeout</code>    | 빌더가 스스로 종료하기 전 최대 대기 시간(초).                                               | 아니오   | <code>"300"</code>     |
+| <code>extra_nix_config</code>   | <code>/etc/nix/nix.conf</code>에 추가할 추가 Nix 설정.                                                  | 아니오   | <code>""</code>        |</p><h2>사용법</h2></p><h3>완전한 분산 빌드 예시</h3></p><p>아래는 여러 런너 아키텍처(Ubuntu x86, Ubuntu ARM, macOS x86, macOS Apple Silicon)를 동적으로 생성하고 서로 연결하여 분산 Nix 빌드를 수행하는 전체 워크플로우(<code>nix-build.yml</code>) 예시입니다.</p><p>무거운 NixOS 구성을 빌드하고 단순히 수평 확장으로 속도를 높이고 싶다면, <code>BUILDER_COUNTS</code>를 변경하여 여러 개의 동일한 x86 런너를 생성할 수 있습니다. 예를 들어:  
+<code>BUILDER_COUNTS: '{"ubuntu-24.04": 4}'</code>  
+이렇게 하면 16 CPU 코어(4개의 런너 × 4코어)를 가진 빌드 팜이 즉시 생성되어 병렬로 파생상품을 처리할 수 있습니다.</p><p>GitHub 호스티드 런너는 일시적이므로, 워크플로우가 끝나면 Nix 저장소 내 모든 빌드 산출물이 사라집니다. 분산 빌드의 이점을 향후 CI 실행이나 로컬 머신에서 활용하려면, 결과물을 <a href="https://www.cachix.org" target="_blank" rel="noopener noreferrer">Cachix</a>나 <a href="https://github.com/zhaofengli/attic" target="_blank" rel="noopener noreferrer">Attic</a>과 같은 바이너리 캐시에 푸시하는 것이 강력히 권장됩니다.</p><pre><code class="language-yaml">name: Distributed Nix Build</p><p>on:
+  workflow_dispatch:</p><p>env:
+  # Define exactly how many runners of each OS type you want
+  BUILDER_COUNTS: '{"ubuntu-24.04": 1, "ubuntu-24.04-arm": 1, "macos-26-intel": 1, "macos-26": 1}'</p><p>jobs:
+  config:
+    runs-on: ubuntu-slim
+    outputs:
+      builder_matrix: ${{ steps.set.outputs.builder_matrix }}
+      builders_list: ${{ steps.set.outputs.builders_list }}
+      run_suffix: ${{ steps.set.outputs.run_suffix }}
+    steps:
+      <ul><li>id: set</li>
+        </ul>run: |
+          SUFFIX=$(openssl rand -hex 3)
+          echo "run_suffix=$SUFFIX" >> "$GITHUB_OUTPUT"</p><p>          # Dynamically generate the Matrix JSON based on BUILDER_COUNTS
+          MATRIX_JSON=$(echo '${{ env.BUILDER_COUNTS }}' | jq -c '[
+              to_entries[] | .key as $os | .value as $count |
+              range(1; $count + 1) | { os: $os, id: "\($os)-\(.)" }
+            ]
+          ')
+          echo "builder_matrix=$MATRIX_JSON" >> "$GITHUB_OUTPUT"</p><p>          # Create a space-separated list of hostnames for the coordinator
+          BUILDERS_LIST=$(echo "$MATRIX_JSON" | jq -r --arg suffix "$SUFFIX" 'map("nix-builder-\($suffix)-\(.id)") | join(" ")')
+          echo "builders_list=$BUILDERS_LIST" >> "$GITHUB_OUTPUT"</p><p>  builder:
+    needs: config
+    name: Builder ${{ matrix.builder.id }} (${{ needs.config.outputs.run_suffix }})
+    runs-on: ${{ matrix.builder.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        builder: ${{ fromJSON(needs.config.outputs.builder_matrix) }}
+    steps:
+      <ul><li>name: Setup Distributed Nix Builder</li>
+        </ul>uses: Misaka13514/setup-distributed-nix-builds@main
+        with:
+          tailscale_authkey: ${{ secrets.TS_OAUTH_SECRET }}
+          tailscale_hostname: nix-builder-${{ needs.config.outputs.run_suffix }}-${{ matrix.builder.id }}
+          tailscale_tags: tag:nix-ci-builder
+          role: builder</p><p>      # Optionally configure your Cachix/Attic or other caching here
+      # - uses: cachix/cachix-action@v17</p><p>  coordinator:
+    needs: config
+    name: Coordinator (${{ needs.config.outputs.run_suffix }})
+    runs-on: ubuntu-24.04
+    steps:
+      <ul><li>name: Setup Coordinator & Connect Builders</li>
+        </ul>uses: Misaka13514/setup-distributed-nix-builds@main
+        with:
+          tailscale_authkey: ${{ secrets.TS_OAUTH_SECRET }}
+          tailscale_hostname: nix-coordinator-${{ needs.config.outputs.run_suffix }}
+          tailscale_tags: tag:nix-ci-coordinator
+          role: coordinator
+          builders: ${{ needs.config.outputs.builders_list }}</p><p>      # Optionally configure your Cachix/Attic or other caching here
+      # - uses: cachix/cachix-action@v17</p><ul><li>name: Execute Distributed Build</li>
+        </ul>run: |
+          # Your build command here. Because builders are registered in /etc/nix/machines,
+          # Nix will automatically offload tasks to the correct architecture node.
+          nix build -L --max-jobs 0 .#my-package</p><p>      # Signal builders to terminate if they are not needed anymore
+      <ul><li>name: Teardown Builders</li>
+        </ul>run: stop-nix-builders</p><p>      # Push build results to Cachix/Attic or other cache here if desired
+      # - name: Push to Cachix
+      #   run: cachix push mycache --all</code></pre>
+<h2>라이선스</h2></p><p>이 프로젝트는 <a href="LICENSE" target="_blank" rel="noopener noreferrer">MIT 라이선스</a>에 따라 라이선스가 부여됩니다.</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-26
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Misaka13514/setup-distributed-nix-builds/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-03-26 
+    </div>
+    
+</body>
+</html>
