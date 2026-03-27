@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>setup-distributed-nix-builds - 使用 Tailscale 在 GitHub Actions 中即时配置跨平台分布式 Nix 构建集群。</title>
-    <meta name="description" content="使用 Tailscale 在 GitHub Actions 中即时配置跨平台分布式 Nix 构建集群。">
+    <title>setup-distributed-nix-builds - 使用 Tailscale 在 GitHub Actions 中即时部署跨平台分布式 Nix 构建集群。</title>
+    <meta name="description" content="使用 Tailscale 在 GitHub Actions 中即时部署跨平台分布式 Nix 构建集群。">
     <meta name="keywords" content="setup-distributed-nix-builds, Simplified Chinese, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "setup-distributed-nix-builds",
-  "description": "使用 Tailscale 在 GitHub Actions 中即时配置跨平台分布式 Nix 构建集群。",
+  "description": "使用 Tailscale 在 GitHub Actions 中即时部署跨平台分布式 Nix 构建集群。",
   "author": {
     "@type": "Person",
     "name": "Misaka13514"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 0
+    "ratingCount": 1
   },
   "url": "https://OpenAiTx.github.io/projects/Misaka13514/setup-distributed-nix-builds/README-zh-CN.html",
   "sameAs": "https://raw.githubusercontent.com/Misaka13514/setup-distributed-nix-builds/main/README.md",
-  "datePublished": "2026-03-26",
-  "dateModified": "2026-03-26"
+  "datePublished": "2026-03-27",
+  "dateModified": "2026-03-27"
 }
     </script>
     
@@ -275,19 +275,49 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 0 stars</span>
+                <span class="stars">⭐ 1 stars</span>
                 <span class="language">Simplified Chinese</span>
                 <span>by Misaka13514</span>
             </div>
         </div>
         
         <div class="content">
-            <h1>❄️ 设置分布式 Nix 构建</h1></p><p>一个 GitHub Action，可即时使用标准的<a href="https://docs.github.com/en/actions/reference/runners/github-hosted-runners" target="_blank" rel="noopener noreferrer">GitHub 托管运行器</a>通过 Tailscale 安全连接，配置一个临时的跨平台<a href="https://wiki.nixos.org/wiki/Distributed_build" target="_blank" rel="noopener noreferrer">分布式 Nix 构建</a>集群。</p><p>此 Action 允许你启动一个次级 GitHub 运行器矩阵（<strong>构建器</strong>），并通过 Tailscale SSH 无缝连接到主运行器（<strong>协调器</strong>）。协调器自动配置 Nix 使用这些节点作为远程构建器，最大化并发构建性能，无需管理外部基础设施！非常适合构建多架构包或在一组 x86 运行器上水平扩展重负载的 NixOS 系统闭包。</p><h2>功能</h2></p><ul><li>🚀 <strong>零配置远程构建器：</strong> 自动配置 <code>/etc/nix/machines</code> 并通过 Tailscale SSH 连接节点（无需手动 SSH 密钥！）。</li>
-<li>🌍 <strong>跨平台与多架构：</strong> 在同一构建中混合使用 Ubuntu（x86、ARM）和 macOS（Intel、Apple Silicon）运行器。</li>
-<li>⚖️ <strong>NixOS 水平扩展：</strong> 需要评估和构建大型 NixOS 配置？启动一整组相同节点（例如五个 <code>ubuntu-24.04</code> 运行器），让 Nix 自动将并行衍生构建分布到集群中的所有可用 CPU 核心。</li>
-<li>🧹 <strong>最大磁盘空间：</strong> 自动清理 Linux 运行器上的预装软件（通过 <a href="https://github.com/wimpysworld/nothing-but-nix" target="_blank" rel="noopener noreferrer">nothing-but-nix</a>），为你的 Nix 存储提供最大空间。</li>
-<li>⚡ <strong>内置缓存：</strong> 集成 <a href="https://github.com/DeterminateSystems/magic-nix-cache-action" target="_blank" rel="noopener noreferrer">magic-nix-cache</a>，加速 flake 评估和本地构建。</li>
-<li>🛑 <strong>优雅关闭：</strong> 构建器空闲等待任务，在协调器完成后优雅自我终止。</li></p><p></ul><h2>工作原理</h2></p><p>工作流将运行器分为两个角色：<code>builder</code> 和 <code>coordinator</code>。</p><pre><code class="language-mermaid">sequenceDiagram
+            <p>
+<div align="right">
+  <details>
+    <summary >🌐 语言</summary>
+    <div>
+      <div align="center">
+        <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=en">English</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=zh-CN">简体中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=zh-TW">繁體中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=ja">日本語</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=ko">한국어</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=hi">हिन्दी</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=th">ไทย</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=fr">Français</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=de">Deutsch</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=es">Español</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=it">Italiano</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=ru">Русский</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=pt">Português</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=nl">Nederlands</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=pl">Polski</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=ar">العربية</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=fa">فارسی</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=tr">Türkçe</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=vi">Tiếng Việt</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=id">Bahasa Indonesia</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=as">অসমীয়া</
+      </div>
+    </div>
+  </details>
+</div></p><h1>❄️ 配置分布式 Nix 构建</h1></p><p>一个 GitHub Action，可即时使用标准的 <a href="https://docs.github.com/en/actions/reference/runners/github-hosted-runners" target="_blank" rel="noopener noreferrer">GitHub 托管运行器</a> 通过 Tailscale 安全连接，快速搭建临时的、跨平台的 <a href="https://wiki.nixos.org/wiki/Distributed_build" target="_blank" rel="noopener noreferrer">分布式 Nix 构建</a> 集群。</p><p>此 Action 允许你启动一组作为辅助 GitHub 运行器（即 <strong>构建者</strong>），并通过 Tailscale SSH 无缝连接到主运行器（即 <strong>协调者</strong>）。协调者会自动配置 Nix 使用这些节点作为远程构建器，无需管理外部基础设施，即可最大化并发构建性能！非常适合构建多架构软件包，或在大量 x86 运行器间横向扩展 NixOS 系统闭包的重负载构建。</p><h2>功能</h2></p><ul><li>🚀 <strong>零配置远程构建器：</strong> 自动配置 <code>/etc/nix/machines</code> 并通过 Tailscale SSH 连接节点（无需手动 SSH 密钥！）。</li>
+<li>🌍 <strong>跨平台 & 多架构：</strong> 可在同一次构建中混合使用 Ubuntu（x86，ARM）和 macOS（Intel，Apple Silicon）运行器。</li>
+<li>⚖️ <strong>NixOS 水平扩展：</strong> 需要评估和构建庞大的 NixOS 配置？可启动一整个相同节点的集群（如五个 <code>ubuntu-24.04</code> 运行器），让 Nix 自动将并行派生构建分发到集群中所有可用 CPU 核心。</li>
+<li>🧹 <strong>最大磁盘空间：</strong> 自动清理 Linux 运行器上预装软件（通过 <a href="https://github.com/wimpysworld/nothing-but-nix" target="_blank" rel="noopener noreferrer">nothing-but-nix</a>），为 Nix store 腾出最大空间。</li>
+<li>⚡ <strong>内置缓存：</strong> 集成 <a href="https://github.com/DeterminateSystems/magic-nix-cache-action" target="_blank" rel="noopener noreferrer">magic-nix-cache</a> 加速 flake 评估和本地构建。</li>
+<li>🛑 <strong>优雅拆解：</strong> 构建器空闲等待任务，并在协调器完成后优雅自我终止。</li></p><p></ul><h2>工作原理</h2></p><p>工作流将运行器分为两类角色：<code>builder</code> 和 <code>coordinator</code>。</p><pre><code class="language-mermaid">sequenceDiagram
   participant GH as GitHub Actions
   participant Coord as Coordinator (Ubuntu)
   participant B1 as Builder 1 (Ubuntu ARM)
@@ -398,7 +428,7 @@
       #   run: cachix push mycache --all</code></pre></p><h2>许可证</h2></p><p>本项目根据<a href="LICENSE" target="_blank" rel="noopener noreferrer">MIT 许可证</a>授权。</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-26
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-27
 
 ---</p>
         </div>
@@ -410,7 +440,7 @@
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-03-26 
+        Last updated: 2026-03-27 
     </div>
     
 </body>

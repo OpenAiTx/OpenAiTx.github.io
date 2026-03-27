@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>setup-distributed-nix-builds - Provisionnez instantan&#233;ment un cluster de build Nix distribu&#233; et multiplateforme dans GitHub Actions en utilisant Tailscale.</title>
-    <meta name="description" content="Provisionnez instantan&#233;ment un cluster de build Nix distribu&#233; et multiplateforme dans GitHub Actions en utilisant Tailscale.">
+    <title>setup-distributed-nix-builds - Provisionnez instantan&#233;ment un cluster de compilation Nix distribu&#233; et multiplateforme dans GitHub Actions &#224; l’aide de Tailscale.</title>
+    <meta name="description" content="Provisionnez instantan&#233;ment un cluster de compilation Nix distribu&#233; et multiplateforme dans GitHub Actions &#224; l’aide de Tailscale.">
     <meta name="keywords" content="setup-distributed-nix-builds, French, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "setup-distributed-nix-builds",
-  "description": "Provisionnez instantanément un cluster de build Nix distribué et multiplateforme dans GitHub Actions en utilisant Tailscale.",
+  "description": "Provisionnez instantanément un cluster de compilation Nix distribué et multiplateforme dans GitHub Actions à l’aide de Tailscale.",
   "author": {
     "@type": "Person",
     "name": "Misaka13514"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 0
+    "ratingCount": 1
   },
   "url": "https://OpenAiTx.github.io/projects/Misaka13514/setup-distributed-nix-builds/README-fr.html",
   "sameAs": "https://raw.githubusercontent.com/Misaka13514/setup-distributed-nix-builds/main/README.md",
-  "datePublished": "2026-03-26",
-  "dateModified": "2026-03-26"
+  "datePublished": "2026-03-27",
+  "dateModified": "2026-03-27"
 }
     </script>
     
@@ -275,19 +275,49 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 0 stars</span>
+                <span class="stars">⭐ 1 stars</span>
                 <span class="language">French</span>
                 <span>by Misaka13514</span>
             </div>
         </div>
         
         <div class="content">
-            <h1>❄️ Configurer des Builds Nix Distribués</h1></p><p>Une action GitHub pour provisionner instantanément un cluster éphémère et multiplateforme de <a href="https://wiki.nixos.org/wiki/Distributed_build" target="_blank" rel="noopener noreferrer">Build Nix Distribués</a> utilisant des <a href="https://docs.github.com/en/actions/reference/runners/github-hosted-runners" target="_blank" rel="noopener noreferrer">GitHub Hosted Runners</a> standards, connectés de manière sécurisée via Tailscale.</p><p>Cette action vous permet de lancer une matrice de runners GitHub secondaires (les <strong>Builders</strong>) et de les connecter à un runner principal (le <strong>Coordinator</strong>) de manière transparente via Tailscale SSH. Le Coordinator configure automatiquement Nix pour utiliser ces nœuds comme builders distants, maximisant les performances de build concurrent sans gérer d'infrastructure externe ! C’est parfait pour construire des paquets multi-architecture ou pour scaler horizontalement des closures NixOS lourdes sur une flotte de runners x86.</p><h2>Fonctionnalités</h2></p><ul><li>🚀 <strong>Builders distants sans configuration :</strong> Configure automatiquement <code>/etc/nix/machines</code> et connecte les nœuds via Tailscale SSH (pas besoin de clés SSH manuelles !).</li>
-<li>🌍 <strong>Multi-plateforme & multi-archi :</strong> Combinez des runners Ubuntu (x86, ARM) et macOS (Intel, Apple Silicon) dans le même build.</li>
-<li>⚖️ <strong>Scalabilité horizontale pour NixOS :</strong> Besoin d’évaluer et construire une configuration NixOS massive ? Lancez une ferme entière de nœuds identiques (par ex., cinq runners <code>ubuntu-24.04</code>) et laissez Nix distribuer automatiquement les builds parallèles de dérivations sur tous les cœurs CPU disponibles du cluster.</li>
-<li>🧹 <strong>Espace disque maximal :</strong> Nettoie automatiquement les logiciels préinstallés sur les runners Linux (via <a href="https://github.com/wimpysworld/nothing-but-nix" target="_blank" rel="noopener noreferrer">nothing-but-nix</a>) pour libérer un maximum d’espace dans le store Nix.</li>
-<li>⚡ <strong>Cache intégré :</strong> Intègre <a href="https://github.com/DeterminateSystems/magic-nix-cache-action" target="_blank" rel="noopener noreferrer">magic-nix-cache</a> pour accélérer les évaluations de flakes et les builds locaux.</li>
-<li>🛑 <strong>Arrêt gracieux :</strong> Les builders attendent les tâches en veille et s’arrêtent proprement lorsque le Coordinator termine.</li></p><p></ul><h2>Comment ça marche</h2></p><p>Le workflow sépare les runners en deux rôles : <code>builder</code> et <code>coordinator</code>.</p><pre><code class="language-mermaid">sequenceDiagram
+            <p>
+<div align="right">
+  <details>
+    <summary >🌐 Langue</summary>
+    <div>
+      <div align="center">
+        <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=en">English</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=zh-CN">简体中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=zh-TW">繁體中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=ja">日本語</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=ko">한국어</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=hi">हिन्दी</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=th">ไทย</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=fr">Français</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=de">Deutsch</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=es">Español</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=it">Italiano</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=ru">Русский</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=pt">Português</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=nl">Nederlands</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=pl">Polski</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=ar">العربية</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=fa">فارسی</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=tr">Türkçe</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=vi">Tiếng Việt</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=id">Bahasa Indonesia</a>
+        | <a href="https://openaitx.github.io/view.html?user=Misaka13514&project=setup-distributed-nix-builds&lang=as">অসমীয়া</
+      </div>
+    </div>
+  </details>
+</div></p><h1>❄️ Configuration des Builds Nix Distribués</h1></p><p>Une action GitHub pour provisionner instantanément un cluster éphémère et multiplateforme de <a href="https://wiki.nixos.org/wiki/Distributed_build" target="_blank" rel="noopener noreferrer">Builds Nix Distribués</a> en utilisant les <a href="https://docs.github.com/en/actions/reference/runners/github-hosted-runners" target="_blank" rel="noopener noreferrer">GitHub Hosted Runners</a> standards, connectés en toute sécurité via Tailscale.</p><p>Cette action vous permet de lancer une matrice de runners GitHub secondaires (les <strong>Builders</strong>) et de les connecter à un runner principal (le <strong>Coordinateur</strong>) de façon transparente via Tailscale SSH. Le Coordinateur configure automatiquement Nix pour utiliser ces nœuds comme builders distants, maximisant les performances de build simultanées sans gérer d'infrastructure externe ! Parfait pour construire des paquets multi-architectures ou pour scaler horizontalement de lourdes clôtures système NixOS sur une flotte de runners x86.</p><h2>Fonctionnalités</h2></p><ul><li>🚀 <strong>Constructeurs distants sans configuration :</strong> Configure automatiquement <code>/etc/nix/machines</code> et connecte les nœuds via Tailscale SSH (aucune clé SSH manuelle requise !).</li>
+<li>🌍 <strong>Multi-plateforme & Multi-architecture :</strong> Combinez des runners Ubuntu (x86, ARM) et macOS (Intel, Apple Silicon) dans un même build.</li>
+<li>⚖️ <strong>Scalabilité horizontale pour NixOS :</strong> Besoin d’évaluer et de construire une configuration NixOS massive ? Lancez une ferme entière de nœuds identiques (par exemple, cinq runners <code>ubuntu-24.04</code>) et laissez Nix répartir automatiquement les builds de dérivations en parallèle sur tous les cœurs CPU disponibles du cluster.</li>
+<li>🧹 <strong>Espace disque maximal :</strong> Nettoie automatiquement les logiciels préinstallés sur les runners Linux (via <a href="https://github.com/wimpysworld/nothing-but-nix" target="_blank" rel="noopener noreferrer">nothing-but-nix</a>) pour offrir un maximum d’espace à votre Nix store.</li>
+<li>⚡ <strong>Mise en cache intégrée :</strong> Intègre <a href="https://github.com/DeterminateSystems/magic-nix-cache-action" target="_blank" rel="noopener noreferrer">magic-nix-cache</a> pour accélérer l’évaluation des flakes et les builds locaux.</li>
+<li>🛑 <strong>Extinction en douceur :</strong> Les builders attendent passivement les tâches et s’auto-terminent proprement lorsque le coordinateur termine.</li></p><p></ul><h2>Fonctionnement</h2></p><p>Le workflow sépare les runners en deux rôles : <code>builder</code> et <code>coordinator</code>.</p><pre><code class="language-mermaid">sequenceDiagram
   participant GH as GitHub Actions
   participant Coord as Coordinator (Ubuntu)
   participant B1 as Builder 1 (Ubuntu ARM)
@@ -398,7 +428,7 @@ Cela vous fournira instantanément une ferme de build avec 16 cœurs CPU (4 runn
       #   run: cachix push mycache --all</code></pre></p><h2>Licence</h2></p><p>Ce projet est sous licence <a href="LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a>.</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-26
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-03-27
 
 ---</p>
         </div>
@@ -410,7 +440,7 @@ Cela vous fournira instantanément une ferme de build avec 16 cœurs CPU (4 runn
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-03-26 
+        Last updated: 2026-03-27 
     </div>
     
 </body>
