@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>oci2git - Kiểm tra h&#236;nh ảnh Docker dễ d&#224;ng như sử dụng Git</title>
-    <meta name="description" content="Kiểm tra h&#236;nh ảnh Docker dễ d&#224;ng như sử dụng Git">
+    <title>oci2git - Kh&#225;m ph&#225; h&#236;nh ảnh Docker dễ d&#224;ng như sử dụng Git</title>
+    <meta name="description" content="Kh&#225;m ph&#225; h&#236;nh ảnh Docker dễ d&#224;ng như sử dụng Git">
     <meta name="keywords" content="oci2git, Vietnamese, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "oci2git",
-  "description": "Kiểm tra hình ảnh Docker dễ dàng như sử dụng Git",
+  "description": "Khám phá hình ảnh Docker dễ dàng như sử dụng Git",
   "author": {
     "@type": "Person",
     "name": "Virviil"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 384
+    "ratingCount": 401
   },
   "url": "https://OpenAiTx.github.io/projects/Virviil/oci2git/README-vi.html",
   "sameAs": "https://raw.githubusercontent.com/Virviil/oci2git/main/README.md",
-  "datePublished": "2026-01-30",
-  "dateModified": "2026-01-30"
+  "datePublished": "2026-04-02",
+  "dateModified": "2026-04-02"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 384 stars</span>
+                <span class="stars">⭐ 401 stars</span>
                 <span class="language">Vietnamese</span>
                 <span>by Virviil</span>
             </div>
@@ -316,17 +316,18 @@
 <img src="https://raw.githubusercontent.com/Virviil/oci2git/main/assets/logo.png" width="140px" /></p><h1>OCI2Git</h1></p><p>[<img src="https://docs.rs/oci2git/badge.svg" alt="Tài liệu">][documentation]
 <a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/v/oci2git.svg" alt="Crates.io"></a>
 <a href="https://github.com/Virviil/oci2git/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/l/oci2git.svg" alt="Giấy phép"></a>
-<a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/d/oci2git.svg" alt="Số lượt tải xuống"></a></p><p>[//]: # (giả lập cho future test.yaml)
+<a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/d/oci2git.svg" alt="Lượt tải xuống"></a></p><p>[//]: # (mock for future test.yaml)
 [//]: # ([![Trạng thái kiểm thử]&#40;https://img.shields.io/github/actions/workflow/status/Virviil/oci2git/rust.yml?branch=master&event=push&label=Test&#41;]&#40;https://github.com/Virviil/oci2git/actions&#41;)</p><p><div align="left"> </div>  
-</div></p><p>Một ứng dụng Rust giúp chuyển đổi các image container (Docker, v.v.) sang kho lưu trữ Git. Mỗi layer của container sẽ được biểu diễn dưới dạng một commit Git, giữ nguyên lịch sử và cấu trúc của image gốc.</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="Demo OCI2Git chuyển đổi image nginx"></p><h2>Tính năng</h2></p><ul><li>Phân tích image Docker và trích xuất thông tin layer</li>
-<li>Tạo kho Git, trong đó mỗi layer của image là một commit</li>
-<li>Hỗ trợ các layer rỗng (ENV, WORKDIR, v.v.) dưới dạng commit rỗng</li>
-<li>Trích xuất đầy đủ metadata sang định dạng Markdown</li>
-<li>Kiến trúc mở rộng, hỗ trợ nhiều engine container khác nhau</li></p><p></ul><h2>Trường hợp sử dụng</h2></p><h3>So sánh các layer</h3>
-Khi xử lý sự cố container, bạn có thể sử dụng khả năng diff mạnh mẽ của Git để xác định chính xác những gì đã thay đổi giữa hai layer bất kỳ. Bằng cách chạy <code>git diff</code> giữa các commit, kỹ sư có thể thấy rõ tệp nào được thêm, sửa đổi hoặc xóa, giúp dễ dàng hiểu tác động của từng lệnh Dockerfile và xác định thay đổi gây vấn đề.
-<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="Ví dụ về diff layer"></p><h3>Theo dõi nguồn gốc</h3>
-Sử dụng <code>git blame</code>, các nhà phát triển có thể nhanh chóng xác định layer nào đã giới thiệu một tệp hoặc dòng mã cụ thể. Điều này đặc biệt hữu ích khi xử lý sự cố với file cấu hình hoặc phụ thuộc. Thay vì kiểm tra từng layer một cách thủ công, bạn có thể truy dấu nguồn gốc bất kỳ tệp nào về đúng layer gốc và chỉ thị Dockerfile tương ứng.</p><h3>Theo dõi vòng đời tệp tin</h3>
-OCI2Git cho phép bạn theo dõi hành trình của một tệp cụ thể xuyên suốt lịch sử của image container. Bạn có thể xem khi nào tệp lần đầu xuất hiện, bị chỉnh sửa qua các layer, và khi nào (nếu có) bị xóa. Góc nhìn toàn diện này giúp hiểu quá trình phát triển của file mà không cần theo dõi thủ công qua hàng chục layer.</p><p>Để theo dõi lịch sử của một tệp trong image container — gồm khi nào nó xuất hiện, bị thay đổi, hoặc bị xóa — bạn có thể dùng các lệnh Git sau sau khi chuyển đổi:</p><pre><code class="language-bash"># Full history of a file (including renames)
+</div></p><p>Một ứng dụng Rust chuyển đổi các ảnh container (Docker, v.v.) sang kho lưu trữ Git và tạo bill of materials hệ thống tệp (fsbom) ở định dạng YAML. Mỗi lớp container được biểu diễn dưới dạng một commit Git, giữ nguyên lịch sử và cấu trúc của ảnh gốc.</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="Demo OCI2Git chuyển đổi ảnh nginx"></p><h2>Tính năng</h2></p><ul><li>Phân tích ảnh Docker và trích xuất thông tin lớp</li>
+<li>Tạo kho lưu trữ Git trong đó mỗi lớp ảnh là một commit</li>
+<li>Sinh bill of materials hệ thống tệp (fsbom) dạng YAML với danh sách tệp từng lớp</li>
+<li>Hỗ trợ các lớp rỗng (ENV, WORKDIR, v.v.) như các commit rỗng</li>
+<li>Trích xuất đầy đủ metadata ra định dạng Markdown</li>
+<li>Kiến trúc mở rộng để hỗ trợ nhiều engine container khác nhau</li></p><p></ul><h2>Các trường hợp sử dụng</h2></p><h3>So sánh các lớp (Layer Diffing)</h3>
+Khi xử lý sự cố container, bạn có thể sử dụng khả năng diff mạnh mẽ của Git để xác định chính xác sự thay đổi giữa hai lớp bất kỳ. Bằng cách chạy <code>git diff</code> giữa các commit, kỹ sư có thể xem chính xác tệp nào được thêm, sửa đổi hoặc xóa, giúp dễ dàng hiểu tác động của từng lệnh Dockerfile và xác định thay đổi gây lỗi.
+<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="Ví dụ về so sánh lớp"></p><h3>Truy vết nguồn gốc (Origin Tracking)</h3>
+Dùng <code>git blame</code>, các nhà phát triển có thể nhanh chóng xác định lớp nào đã đưa vào một tệp hoặc dòng mã cụ thể. Điều này đặc biệt hữu ích khi xác định sự cố với tệp cấu hình hoặc thư viện phụ thuộc. Thay vì kiểm tra thủ công từng lớp, bạn có thể truy xuất ngay nguồn gốc của bất kỳ tệp nào về lớp gốc và lệnh Dockerfile tương ứng.</p><h3>Theo dõi vòng đời tệp (File Lifecycle Tracking)</h3>
+OCI2Git cho phép bạn theo dõi hành trình của một tệp cụ thể trong suốt lịch sử ảnh container. Bạn có thể quan sát lúc tệp được tạo ra, cách nó thay đổi qua các lớp, và khi nào (nếu có) nó bị xóa. Cái nhìn toàn diện này giúp hiểu sự phát triển của tệp mà không cần theo dõi thủ công qua hàng chục lớp.</p><p>Để theo dõi lịch sử một tệp trong ảnh container của bạn — bao gồm lúc nó xuất hiện, bị thay đổi hoặc xóa — bạn có thể sử dụng các lệnh Git sau khi chuyển đổi:</p><pre><code class="language-bash"># Full history of a file (including renames)
 git log --follow -- /rootfs/my/file/path</p><h1>First appearance (i.e. creation) - see which layer introduced the file</h1>
 git log --diff-filter=A -- /rootfs/my/file/path</p><h1>All changes made to the file (with diffs)</h1>
 git log -p --follow -- /rootfs/my/file/path</p><h1>When the file was deleted</h1>
@@ -369,23 +370,63 @@ sudo mv oci2git-darwin-aarch64 /usr/local/bin/oci2git
 chmod +x /usr/local/bin/oci2git</code></pre></p><h3>Từ Crates.io</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h3>Từ nguồn</h3></p><pre><code class="language-bash"># Clone the repository
 git clone https://github.com/virviil/oci2git.git
 cd oci2git</p><h1>Install locally</h1>
-cargo install --path .</code></pre></p><h2>Cách sử dụng</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>Tham số:
-  <code><IMAGE></code>  Tên ảnh cần chuyển đổi (ví dụ: 'ubuntu:latest') hoặc đường dẫn tới file tar khi sử dụng engine tar</p><p>Tùy chọn:
-  <code>-o, --output <o></code>  Thư mục đầu ra cho kho Git [mặc định: ./container_repo]
-  <code>-e, --engine <ENGINE></code>  Engine container để sử dụng (docker, nerdctl, tar) [mặc định: docker]
-  <code>-h, --help</code>            In thông tin trợ giúp
-  <code>-V, --version</code>         In thông tin phiên bản</p><p>Biến môi trường:
-  <code>TMPDIR</code>  Thiết lập biến môi trường này để thay đổi vị trí mặc định dùng cho xử lý dữ liệu trung gian. Tùy thuộc vào nền tảng (ví dụ: <code>TMPDIR</code> trên Unix/macOS, <code>TEMP</code> hoặc <code>TMP</code> trên Windows).</p><h2>Ví dụ</h2></p><p>Sử dụng engine Docker (mặc định):
-<pre><code class="language-bash">oci2git -o ./ubuntu-repo ubuntu:latest</code></pre></p><p>Sử dụng một tarball hình ảnh đã được tải xuống:
-<pre><code class="language-bash">oci2git -e tar -o ./ubuntu-repo /path/to/ubuntu-latest.tar</code></pre></p><p>Công cụ tar yêu cầu một tệp tarball định dạng OCI hợp lệ, thường được tạo bằng lệnh <code>docker save</code>:
+cargo install --path .</code></pre></p><h2>Cách sử dụng</h2></p><pre><code class="language-">oci2git [OPTIONS] <IMAGE>
+oci2git convert [OPTIONS] <IMAGE>
+oci2git fsbom [OPTIONS] <IMAGE></code></pre></p><h3><code>convert</code> — hình ảnh OCI → kho Git</h3></p><pre><code class="language-bash">oci2git convert [OPTIONS] <IMAGE>
+<h1>or simply:</h1>
+oci2git <IMAGE></code></pre></p><p>Tùy chọn:
+  <code>-o, --output <OUTPUT></code>  Thư mục đầu ra cho kho Git [mặc định: ./container_repo]
+  <code>-e, --engine <ENGINE></code>  Công cụ container sử dụng (docker, nerdctl, tar) [mặc định: docker]
+  <code>-v, --verbose</code>          Chế độ chi tiết (-v cho thông tin, -vv cho debug, -vvv cho trace)</p><h3><code>fsbom</code> — Danh mục vật liệu của hệ thống tập tin</h3></p><pre><code class="language-bash">oci2git fsbom [OPTIONS] <IMAGE></code></pre></p><p>Tùy chọn:
+  <code>-o, --output <OUTPUT></code>  Đường dẫn xuất ra cho tệp YAML BOM [mặc định: ./fsbom.yml]
+  <code>-e, --engine <ENGINE></code>  Công cụ container để sử dụng (docker, nerdctl, tar) [mặc định: docker]
+  <code>-v, --verbose</code>          Chế độ chi tiết (-v cho thông tin, -vv cho debug, -vvv cho trace)</p><p>Biến môi trường:
+  <code>TMPDIR</code>  Đặt biến môi trường này để thay đổi vị trí mặc định dùng cho xử lý dữ liệu trung gian. Điều này phụ thuộc vào nền tảng (ví dụ: <code>TMPDIR</code> trên Unix/macOS, <code>TEMP</code> hoặc <code>TMP</code> trên Windows).</p><h2>Ví dụ</h2></p><h3>Chuyển đổi</h3></p><p>Sử dụng engine Docker (mặc định):
+<pre><code class="language-bash">oci2git ubuntu:latest
+<h1>or explicitly:</h1>
+oci2git convert ubuntu:latest -o ./ubuntu-repo</code></pre></p><p>Sử dụng một tarball hình ảnh đã được tải xuống:
+<pre><code class="language-bash">oci2git convert -e tar -o ./ubuntu-repo /path/to/ubuntu-latest.tar</code></pre></p><p>Công cụ tar yêu cầu một tệp tarball định dạng OCI hợp lệ, thường được tạo bằng lệnh <code>docker save</code>:
 <pre><code class="language-bash"># Create a tarball from a local Docker image
 docker save -o ubuntu-latest.tar ubuntu:latest</p><h1>Convert the tarball to a Git repository</h1>
-oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Điều này sẽ tạo một kho Git tại <code>./ubuntu-repo</code> chứa:
-<ul><li><code>Image.md</code> - Metadata đầy đủ về ảnh dưới dạng Markdown</li>
-<li><code>rootfs/</code> - Nội dung hệ thống tập tin từ container</li></p><p></ul>Lịch sử Git phản ánh lịch sử các lớp của container:
-<ul><li>Commit đầu tiên chỉ chứa tệp <code>Image.md</code> với đầy đủ metadata</li>
-<li>Mỗi commit tiếp theo đại diện cho một lớp từ ảnh gốc</li>
-<li>Các commit bao gồm lệnh Dockerfile như thông điệp commit</li></p><p></ul><h2>Cấu trúc Kho lưu trữ</h2></p><pre><code class="language-">repository/
+oci2git convert -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Điều này sẽ tạo một kho Git tại <code>./ubuntu-repo</code> chứa:
+<ul><li><code>Image.md</code> - Dữ liệu metadata đầy đủ về hình ảnh ở định dạng Markdown</li>
+<li><code>rootfs/</code> - Nội dung hệ thống tệp từ container</li></p><p></ul>Lịch sử Git phản ánh lịch sử các lớp của container:
+<ul><li>Commit đầu tiên chỉ chứa tệp <code>Image.md</code> với metadata đầy đủ</li>
+<li>Mỗi commit tiếp theo đại diện cho một lớp từ hình ảnh gốc</li>
+<li>Commit bao gồm lệnh Dockerfile làm thông điệp commit</li></p><p></ul><h3>Hóa đơn vật liệu hệ thống tệp (fsbom)</h3></p><p>Tạo một tệp YAML liệt kê mọi tệp được thêm hoặc sửa đổi theo từng lớp:
+<pre><code class="language-bash">oci2git fsbom ubuntu:latest -o ubuntu.yml</code></pre>
+Sử dụng tarball:</p><pre><code class="language-bash">oci2git fsbom -e tar image.tar -o image-bom.yml</code></pre></p><p>Đầu ra YAML liệt kê mọi lớp với các mục của nó được gắn thẻ theo loại (<code>file</code>, <code>hardlink</code>, <code>symlink</code>, <code>directory</code>) và trạng thái (<code>n:uid:gid</code> cho mới, <code>m:uid:gid</code> cho đã sửa đổi). Các tệp đã xóa (OCI whiteouts) bị loại trừ.</p><pre><code class="language-yaml">layers:
+  <ul><li>index: 0</li>
+    </ul>command: "ADD rootfs.tar.gz / # buildkit"
+    digest: "sha256:45f3ea58..."
+    entries:
+      <ul><li>type: file</li>
+        </ul>path: "bin/busybox"
+        size: 919304
+        mode: 493
+        stat: "n:0:0"
+      <ul><li>type: hardlink</li>
+        </ul>path: "bin/sh"
+        target: "bin/busybox"
+        stat: "n:0:0"
+      <ul><li>type: symlink</li>
+        </ul>path: "lib64"
+        target: "lib"
+        stat: "n:0:0"
+  <ul><li>index: 1</li>
+    </ul>command: "RUN apk add --no-cache curl"
+    digest: "sha256:..."
+    entries:
+      <ul><li>type: file</li>
+        </ul>path: "usr/bin/curl"
+        size: 204800
+        mode: 493
+        stat: "n:0:0"
+      <ul><li>type: file</li>
+        </ul>path: "etc/apk/world"
+        size: 32
+        mode: 420
+        stat: "m:0:0"</code></pre></p><h2>Cấu trúc Kho lưu trữ</h2></p><pre><code class="language-">repository/
 ├── .git/
 ├── Image.md     # Complete image metadata
 └── rootfs/      # Filesystem content from the container</code></pre>
@@ -394,7 +435,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Điều nà
 <li>Git</li></p><p></ul><h2>Giấy phép</h2></p><p>MIT</p><p>[tài liệu]: https://docs.rs/oci2git/</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-30
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-02
 
 ---</p>
         </div>
@@ -406,7 +447,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Điều nà
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-01-30 
+        Last updated: 2026-04-02 
     </div>
     
 </body>

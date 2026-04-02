@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>oci2git - L&#39;ispezione delle immagini Docker &#232; facile come usare Git</title>
-    <meta name="description" content="L&#39;ispezione delle immagini Docker &#232; facile come usare Git">
+    <title>oci2git - Introspezionare le immagini Docker &#232; facile come usare Git</title>
+    <meta name="description" content="Introspezionare le immagini Docker &#232; facile come usare Git">
     <meta name="keywords" content="oci2git, Italian, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "oci2git",
-  "description": "L'ispezione delle immagini Docker è facile come usare Git",
+  "description": "Introspezionare le immagini Docker è facile come usare Git",
   "author": {
     "@type": "Person",
     "name": "Virviil"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 384
+    "ratingCount": 401
   },
   "url": "https://OpenAiTx.github.io/projects/Virviil/oci2git/README-it.html",
   "sameAs": "https://raw.githubusercontent.com/Virviil/oci2git/main/README.md",
-  "datePublished": "2026-01-30",
-  "dateModified": "2026-01-30"
+  "datePublished": "2026-04-02",
+  "dateModified": "2026-04-02"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 384 stars</span>
+                <span class="stars">⭐ 401 stars</span>
                 <span class="language">Italian</span>
                 <span>by Virviil</span>
             </div>
@@ -316,17 +316,18 @@
 <img src="https://raw.githubusercontent.com/Virviil/oci2git/main/assets/logo.png" width="140px" /></p><h1>OCI2Git</h1></p><p>[<img src="https://docs.rs/oci2git/badge.svg" alt="Documentazione">][documentation]
 <a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/v/oci2git.svg" alt="Crates.io"></a>
 <a href="https://github.com/Virviil/oci2git/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/l/oci2git.svg" alt="Licenza"></a>
-<a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/d/oci2git.svg" alt="Download"></a></p><p>[//]: # (mock per future test.yaml)
+<a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/d/oci2git.svg" alt="Download"></a></p><p>[//]: # (mock per futuro test.yaml)
 [//]: # ([![Stato Test]&#40;https://img.shields.io/github/actions/workflow/status/Virviil/oci2git/rust.yml?branch=master&event=push&label=Test&#41;]&#40;https://github.com/Virviil/oci2git/actions&#41;)</p><p><div align="left"> </div>  
-</div></p><p>Un'applicazione Rust che converte le immagini di container (Docker, ecc.) in repository Git. Ogni livello del container è rappresentato come un commit Git, preservando la cronologia e la struttura dell'immagine originale.</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="Demo di OCI2Git che converte l'immagine nginx"></p><h2>Caratteristiche</h2></p><ul><li>Analizza le immagini Docker ed estrae le informazioni sui livelli</li>
-<li>Crea un repository Git dove ogni livello dell'immagine è rappresentato come un commit</li>
-<li>Supporto per livelli vuoti (ENV, WORKDIR, ecc.) come commit vuoti</li>
+</div></p><p>Un'applicazione Rust che converte immagini di container (Docker, ecc.) in repository Git e genera una bill of materials del filesystem (fsbom) in YAML. Ogni layer del container è rappresentato come un commit Git, preservando la cronologia e la struttura dell'immagine originale.</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="Dimostrazione di OCI2Git che converte l'immagine nginx"></p><h2>Funzionalità</h2></p><ul><li>Analizza immagini Docker ed estrae informazioni sui layer</li>
+<li>Crea un repository Git dove ogni layer dell'immagine è rappresentato come un commit</li>
+<li>Genera una bill of materials del filesystem (fsbom) in YAML con elenco dei file per layer</li>
+<li>Supporta layer vuoti (ENV, WORKDIR, ecc.) come commit vuoti</li>
 <li>Estrazione completa dei metadati in formato Markdown</li>
-<li>Architettura estensibile per supportare diversi motori di container</li></p><p></ul><h2>Casi d'Uso</h2></p><h3>Differenze tra Livelli</h3>
-Quando si risolvono problemi con i container, puoi utilizzare le potenti funzionalità di confronto di Git per identificare esattamente cosa è cambiato tra due livelli. Eseguendo <code>git diff</code> tra i commit, gli ingegneri possono vedere con precisione quali file sono stati aggiunti, modificati o eliminati, rendendo molto più semplice comprendere l'impatto di ogni istruzione Dockerfile e individuare modifiche problematiche.
-<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="Esempio di differenza tra livelli"></p><h3>Tracciamento dell'Origine</h3>
-Usando <code>git blame</code>, gli sviluppatori possono determinare rapidamente quale livello ha introdotto uno specifico file o riga di codice. Questo è particolarmente utile quando si diagnosticano problemi con file di configurazione o dipendenze. Invece di ispezionare manualmente ogni livello, puoi tracciare immediatamente l'origine di qualsiasi file fino al livello sorgente e alla corrispondente istruzione Dockerfile.</p><h3>Tracciamento del Ciclo di Vita dei File</h3>
-OCI2Git ti permette di seguire il percorso di uno specifico file attraverso la cronologia dell'immagine del container. Puoi osservare quando un file è stato creato inizialmente, come è stato modificato nei vari livelli e se/quando è stato eventualmente rimosso. Questa visione completa aiuta a comprendere l'evoluzione dei file senza dover tracciare manualmente le modifiche su decine di livelli.</p><p>Per tracciare la storia di un file nella tua immagine container — incluso quando è apparso per la prima volta, è stato modificato o eliminato — puoi usare questi comandi Git dopo la conversione:</p><pre><code class="language-bash"># Full history of a file (including renames)
+<li>Architettura estensibile per supportare diversi motori di container</li></p><p></ul><h2>Casi d'Uso</h2></p><h3>Differenziazione dei Layer</h3>
+Durante la risoluzione di problemi con i container, puoi utilizzare le potenti capacità di diff di Git per identificare esattamente cosa è cambiato tra due layer. Eseguendo <code>git diff</code> tra i commit, gli ingegneri possono vedere precisamente quali file sono stati aggiunti, modificati o eliminati, rendendo molto più facile comprendere l'impatto di ogni istruzione Dockerfile e individuare cambiamenti problematici.
+<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="Esempio di diff tra layer"></p><h3>Tracciamento dell'Origine</h3>
+Utilizzando <code>git blame</code>, gli sviluppatori possono determinare rapidamente quale layer ha introdotto uno specifico file o linea di codice. Questo è particolarmente utile quando si diagnosticano problemi con file di configurazione o dipendenze. Invece di ispezionare manualmente ogni layer, puoi immediatamente risalire all'origine di qualsiasi file fino al layer sorgente e alla corrispondente istruzione Dockerfile.</p><h3>Tracciamento del Ciclo di Vita dei File</h3>
+OCI2Git consente di seguire l'evoluzione di un file specifico nella cronologia dell'immagine del container. Puoi vedere quando un file è stato creato, come è stato modificato tra i layer e se/quando è stato eventualmente rimosso. Questa visione completa aiuta a comprendere l'evoluzione dei file senza dover tracciare manualmente le modifiche tra decine di layer.</p><p>Per tracciare la cronologia di un file nella tua immagine container — inclusi quando è apparso, è stato modificato o eliminato — puoi usare questi comandi Git dopo la conversione:</p><pre><code class="language-bash"># Full history of a file (including renames)
 git log --follow -- /rootfs/my/file/path</p><h1>First appearance (i.e. creation) - see which layer introduced the file</h1>
 git log --diff-filter=A -- /rootfs/my/file/path</p><h1>All changes made to the file (with diffs)</h1>
 git log -p --follow -- /rootfs/my/file/path</p><h1>When the file was deleted</h1>
@@ -368,23 +369,63 @@ sudo mv oci2git-darwin-aarch64 /usr/local/bin/oci2git
 chmod +x /usr/local/bin/oci2git</code></pre></p><h3>Da Crates.io</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h3>Dalla fonte</h3></p><pre><code class="language-bash"># Clone the repository
 git clone https://github.com/virviil/oci2git.git
 cd oci2git</p><h1>Install locally</h1>
-cargo install --path .</code></pre></p><h2>Utilizzo</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>Argomenti:
-  <code><IMAGE></code>  Nome dell'immagine da convertire (es. 'ubuntu:latest') o percorso al file tar quando si usa il motore tar</p><p>Opzioni:
-  <code>-o, --output <o></code>  Directory di output per il repository Git [default: ./container_repo]
-  <code>-e, --engine <ENGINE></code>  Motore container da usare (docker, nerdctl, tar) [default: docker]
-  <code>-h, --help</code>            Stampa le informazioni di aiuto
-  <code>-V, --version</code>         Stampa le informazioni sulla versione</p><p>Variabili d'Ambiente:
-  <code>TMPDIR</code>  Imposta questa variabile d'ambiente per cambiare la posizione predefinita usata per l'elaborazione dei dati intermedi. Questa è dipendente dalla piattaforma (es. <code>TMPDIR</code> su Unix/macOS, <code>TEMP</code> o <code>TMP</code> su Windows).</p><h2>Esempi</h2></p><p>Utilizzo del motore Docker (predefinito):
-<pre><code class="language-bash">oci2git -o ./ubuntu-repo ubuntu:latest</code></pre></p><p>Utilizzo di un tarball di immagini già scaricato:
-<pre><code class="language-bash">oci2git -e tar -o ./ubuntu-repo /path/to/ubuntu-latest.tar</code></pre></p><p>Il motore tar si aspetta un tarball in formato OCI valido, che viene tipicamente creato con <code>docker save</code>:
+cargo install --path .</code></pre></p><h2>Utilizzo</h2></p><pre><code class="language-">oci2git [OPTIONS] <IMAGE>
+oci2git convert [OPTIONS] <IMAGE>
+oci2git fsbom [OPTIONS] <IMAGE></code></pre></p><h3><code>convert</code> — immagine OCI → repository Git</h3></p><pre><code class="language-bash">oci2git convert [OPTIONS] <IMAGE>
+<h1>or simply:</h1>
+oci2git <IMAGE></code></pre></p><p>Opzioni:
+  <code>-o, --output <OUTPUT></code>  Directory di output per il repository Git [predefinito: ./container_repo]
+  <code>-e, --engine <ENGINE></code>  Motore container da utilizzare (docker, nerdctl, tar) [predefinito: docker]
+  <code>-v, --verbose</code>          Modalità verbosa (-v per info, -vv per debug, -vvv per trace)</p><h3><code>fsbom</code> — Distinta materiali del filesystem</h3></p><pre><code class="language-bash">oci2git fsbom [OPTIONS] <IMAGE></code></pre>
+Opzioni:
+  <code>-o, --output <OUTPUT></code>  Percorso di output per il file BOM YAML [predefinito: ./fsbom.yml]
+  <code>-e, --engine <ENGINE></code>  Motore di container da utilizzare (docker, nerdctl, tar) [predefinito: docker]
+  <code>-v, --verbose</code>          Modalità verbosa (-v per info, -vv per debug, -vvv per trace)</p><p>Variabili d'Ambiente:
+  <code>TMPDIR</code>  Imposta questa variabile d'ambiente per cambiare la posizione predefinita utilizzata per l'elaborazione dati intermedia. Questo dipende dalla piattaforma (ad es. <code>TMPDIR</code> su Unix/macOS, <code>TEMP</code> o <code>TMP</code> su Windows).</p><h2>Esempi</h2></p><h3>Converti</h3></p><p>Utilizzando il motore Docker (predefinito):</p><pre><code class="language-bash">oci2git ubuntu:latest
+<h1>or explicitly:</h1>
+oci2git convert ubuntu:latest -o ./ubuntu-repo</code></pre></p><p>Utilizzo di un tarball di immagini già scaricato:
+<pre><code class="language-bash">oci2git convert -e tar -o ./ubuntu-repo /path/to/ubuntu-latest.tar</code></pre></p><p>Il motore tar si aspetta un tarball in formato OCI valido, che viene tipicamente creato con <code>docker save</code>:
 <pre><code class="language-bash"># Create a tarball from a local Docker image
 docker save -o ubuntu-latest.tar ubuntu:latest</p><h1>Convert the tarball to a Git repository</h1>
-oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Questo creerà un repository Git in <code>./ubuntu-repo</code> contenente:
+oci2git convert -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Questo creerà un repository Git in <code>./ubuntu-repo</code> contenente:
 <ul><li><code>Image.md</code> - Metadati completi sull'immagine in formato Markdown</li>
 <li><code>rootfs/</code> - Il contenuto del filesystem dal container</li></p><p></ul>La cronologia Git riflette la cronologia dei layer del container:
 <ul><li>Il primo commit contiene solo il file <code>Image.md</code> con tutti i metadati</li>
 <li>Ogni commit successivo rappresenta un layer dell'immagine originale</li>
-<li>I commit includono il comando Dockerfile come messaggio di commit</li></p><p></ul><h2>Struttura del repository</h2></p><pre><code class="language-">repository/
+<li>I commit includono il comando Dockerfile come messaggio di commit</li></p><p></ul><h3>Distinta Materiali del Filesystem (fsbom)</h3></p><p>Genera un file YAML che elenca ogni file introdotto o modificato per layer:
+<pre><code class="language-bash">oci2git fsbom ubuntu:latest -o ubuntu.yml</code></pre></p><p>Utilizzando un tarball:
+<pre><code class="language-bash">oci2git fsbom -e tar image.tar -o image-bom.yml</code></pre></p><p>L'output YAML elenca ogni layer con le sue voci etichettate per tipo (<code>file</code>, <code>hardlink</code>, <code>symlink</code>, <code>directory</code>) e stato (<code>n:uid:gid</code> per nuovo, <code>m:uid:gid</code> per modificato). I file eliminati (whiteout OCI) sono esclusi.</p><pre><code class="language-yaml">layers:
+  <ul><li>index: 0</li>
+    </ul>command: "ADD rootfs.tar.gz / # buildkit"
+    digest: "sha256:45f3ea58..."
+    entries:
+      <ul><li>type: file</li>
+        </ul>path: "bin/busybox"
+        size: 919304
+        mode: 493
+        stat: "n:0:0"
+      <ul><li>type: hardlink</li>
+        </ul>path: "bin/sh"
+        target: "bin/busybox"
+        stat: "n:0:0"
+      <ul><li>type: symlink</li>
+        </ul>path: "lib64"
+        target: "lib"
+        stat: "n:0:0"
+  <ul><li>index: 1</li>
+    </ul>command: "RUN apk add --no-cache curl"
+    digest: "sha256:..."
+    entries:
+      <ul><li>type: file</li>
+        </ul>path: "usr/bin/curl"
+        size: 204800
+        mode: 493
+        stat: "n:0:0"
+      <ul><li>type: file</li>
+        </ul>path: "etc/apk/world"
+        size: 32
+        mode: 420
+        stat: "m:0:0"</code></pre></p><h2>Struttura del Repository</h2></p><pre><code class="language-">repository/
 ├── .git/
 ├── Image.md     # Complete image metadata
 └── rootfs/      # Filesystem content from the container</code></pre></p><h2>Requisiti</h2></p><ul><li>Rust edizione 2021</li>
@@ -392,7 +433,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Questo cree
 <li>Git</li></p><p></ul><h2>Licenza</h2></p><p>MIT</p><p>[documentazione]: https://docs.rs/oci2git/</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-30
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-02
 
 ---</p>
         </div>
@@ -404,7 +445,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Questo cree
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-01-30 
+        Last updated: 2026-04-02 
     </div>
     
 </body>

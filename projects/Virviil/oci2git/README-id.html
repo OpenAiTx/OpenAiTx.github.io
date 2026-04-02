@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>oci2git - Melakukan introspeksi gambar Docker semudah menggunakan Git</title>
-    <meta name="description" content="Melakukan introspeksi gambar Docker semudah menggunakan Git">
+    <title>oci2git - Mengintrospeksi image Docker semudah menggunakan Git</title>
+    <meta name="description" content="Mengintrospeksi image Docker semudah menggunakan Git">
     <meta name="keywords" content="oci2git, Indonesian, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "oci2git",
-  "description": "Melakukan introspeksi gambar Docker semudah menggunakan Git",
+  "description": "Mengintrospeksi image Docker semudah menggunakan Git",
   "author": {
     "@type": "Person",
     "name": "Virviil"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 384
+    "ratingCount": 401
   },
   "url": "https://OpenAiTx.github.io/projects/Virviil/oci2git/README-id.html",
   "sameAs": "https://raw.githubusercontent.com/Virviil/oci2git/main/README.md",
-  "datePublished": "2026-01-30",
-  "dateModified": "2026-01-30"
+  "datePublished": "2026-04-02",
+  "dateModified": "2026-04-02"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 384 stars</span>
+                <span class="stars">⭐ 401 stars</span>
                 <span class="language">Indonesian</span>
                 <span>by Virviil</span>
             </div>
@@ -318,15 +318,16 @@
 <a href="https://github.com/Virviil/oci2git/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/l/oci2git.svg" alt="Lisensi"></a>
 <a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/d/oci2git.svg" alt="Unduhan"></a></p><p>[//]: # (mock untuk test.yaml di masa depan)
 [//]: # ([![Status Tes]&#40;https://img.shields.io/github/actions/workflow/status/Virviil/oci2git/rust.yml?branch=master&event=push&label=Test&#41;]&#40;https://github.com/Virviil/oci2git/actions&#41;)</p><p><div align="left"> </div>  
-</div></p><p>Aplikasi Rust yang mengonversi image container (Docker, dll.) menjadi repository Git. Setiap layer container direpresentasikan sebagai commit Git, menjaga riwayat dan struktur dari image asli.</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="Demo OCI2Git mengonversi image nginx"></p><h2>Fitur</h2></p><ul><li>Menganalisis image Docker dan mengekstrak informasi layer</li>
+</div></p><p>Aplikasi Rust yang mengonversi image kontainer (Docker, dll.) ke repository Git, dan menghasilkan filesystem bill of materials (fsbom) dalam format YAML. Setiap layer kontainer direpresentasikan sebagai commit Git, menjaga riwayat dan struktur image asli.</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="Demo OCI2Git mengonversi image nginx"></p><h2>Fitur</h2></p><ul><li>Menganalisis image Docker dan mengekstrak informasi layer</li>
 <li>Membuat repository Git di mana setiap layer image direpresentasikan sebagai commit</li>
+<li>Menghasilkan filesystem bill of materials (fsbom) dalam YAML dengan daftar file per layer</li>
 <li>Dukungan untuk layer kosong (ENV, WORKDIR, dll.) sebagai commit kosong</li>
-<li>Ekstraksi metadata secara lengkap ke format Markdown</li>
-<li>Arsitektur yang dapat diperluas untuk mendukung berbagai engine container</li></p><p></ul><h2>Kasus Penggunaan</h2></p><h3>Perbandingan Layer</h3>
-Saat menelusuri masalah container, Anda dapat menggunakan kemampuan diffing Git yang kuat untuk mengidentifikasi perubahan tepat antara dua layer mana pun. Dengan menjalankan <code>git diff</code> antar commit, engineer dapat melihat secara persis file mana yang ditambahkan, diubah, atau dihapus, sehingga lebih mudah memahami dampak dari setiap instruksi Dockerfile dan menemukan perubahan bermasalah.
-<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="Contoh diff layer"></p><h3>Pelacakan Asal</h3>
-Dengan menggunakan <code>git blame</code>, developer dapat dengan cepat menentukan layer mana yang memperkenalkan file atau baris kode tertentu. Ini sangat berguna saat mendiagnosis masalah pada file konfigurasi atau dependensi. Alih-alih memeriksa setiap layer secara manual, Anda dapat langsung menelusuri asal file mana pun kembali ke layer sumbernya dan instruksi Dockerfile yang sesuai.</p><h3>Pelacakan Siklus Hidup File</h3>
-OCI2Git memungkinkan Anda mengikuti perjalanan file tertentu sepanjang riwayat image container. Anda dapat mengamati kapan sebuah file pertama kali dibuat, bagaimana file tersebut diubah di berbagai layer, dan jika/kapan akhirnya dihapus. Pandangan komprehensif ini membantu memahami evolusi file tanpa harus melacak perubahan secara manual di puluhan layer.</p><p>Untuk melacak riwayat suatu file dalam image container Anda — termasuk kapan file itu pertama kali muncul, diubah, atau dihapus — Anda dapat menggunakan perintah Git berikut setelah konversi:</p><pre><code class="language-bash"># Full history of a file (including renames)
+<li>Ekstraksi metadata lengkap ke format Markdown</li>
+<li>Arsitektur yang dapat diperluas untuk mendukung berbagai engine kontainer</li></p><p></ul><h2>Kasus Penggunaan</h2></p><h3>Perbandingan Layer</h3>
+Saat melakukan troubleshooting masalah kontainer, Anda dapat menggunakan kapabilitas diffing dari Git untuk mengidentifikasi perubahan antara dua layer. Dengan menjalankan <code>git diff</code> antar commit, engineer dapat melihat file mana yang ditambahkan, diubah, atau dihapus, sehingga lebih mudah memahami dampak setiap instruksi Dockerfile dan menemukan perubahan bermasalah.
+<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="Contoh perbandingan layer"></p><h3>Pelacakan Asal</h3>
+Dengan menggunakan <code>git blame</code>, developer dapat dengan cepat menentukan layer mana yang memasukkan file atau baris kode tertentu. Ini sangat berguna saat mendiagnosis masalah pada file konfigurasi atau dependensi. Alih-alih memeriksa setiap layer secara manual, Anda dapat langsung melacak asal suatu file ke layer sumber dan instruksi Dockerfile yang sesuai.</p><h3>Pelacakan Siklus Hidup File</h3>
+OCI2Git memungkinkan Anda menelusuri perjalanan file tertentu sepanjang riwayat image kontainer. Anda dapat melihat kapan file pertama kali dibuat, bagaimana file itu diubah di tiap layer, dan jika/kapan akhirnya dihapus. Pandangan komprehensif ini membantu memahami evolusi file tanpa harus melacak perubahan secara manual di puluhan layer.</p><p>Untuk melacak riwayat file dalam image kontainer Anda — termasuk kapan pertama kali muncul, diubah, atau dihapus — Anda dapat menggunakan perintah Git berikut setelah konversi:</p><pre><code class="language-bash"># Full history of a file (including renames)
 git log --follow -- /rootfs/my/file/path</p><h1>First appearance (i.e. creation) - see which layer introduced the file</h1>
 git log --diff-filter=A -- /rootfs/my/file/path</p><h1>All changes made to the file (with diffs)</h1>
 git log -p --follow -- /rootfs/my/file/path</p><h1>When the file was deleted</h1>
@@ -369,23 +370,64 @@ sudo mv oci2git-darwin-aarch64 /usr/local/bin/oci2git
 chmod +x /usr/local/bin/oci2git</code></pre></p><h3>Dari Crates.io</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h3>Dari Sumber</h3></p><pre><code class="language-bash"># Clone the repository
 git clone https://github.com/virviil/oci2git.git
 cd oci2git</p><h1>Install locally</h1>
-cargo install --path .</code></pre></p><h2>Penggunaan</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>Argumen:
-  <code><IMAGE></code>  Nama image yang akan dikonversi (misal, 'ubuntu:latest') atau path ke tarball saat menggunakan engine tar</p><p>Opsi:
-  <code>-o, --output <o></code>  Direktori output untuk repositori Git [default: ./container_repo]
-  <code>-e, --engine <ENGINE></code>  Engine container yang digunakan (docker, nerdctl, tar) [default: docker]
-  <code>-h, --help</code>            Cetak informasi bantuan
-  <code>-V, --version</code>         Cetak informasi versi</p><p>Variabel Lingkungan:
-  <code>TMPDIR</code>  Atur variabel lingkungan ini untuk mengubah lokasi default yang digunakan untuk pemrosesan data sementara. Ini bergantung pada platform (misal, <code>TMPDIR</code> di Unix/macOS, <code>TEMP</code> atau <code>TMP</code> di Windows).</p><h2>Contoh</h2></p><p>Menggunakan engine Docker (default):
-<pre><code class="language-bash">oci2git -o ./ubuntu-repo ubuntu:latest</code></pre>
-Menggunakan tarball citra yang sudah diunduh:</p><pre><code class="language-bash">oci2git -e tar -o ./ubuntu-repo /path/to/ubuntu-latest.tar</code></pre></p><p>Mesin tar mengharapkan tarball format OCI yang valid, yang biasanya dibuat dengan <code>docker save</code>:
+cargo install --path .</code></pre></p><h2>Penggunaan</h2></p><pre><code class="language-">oci2git [OPTIONS] <IMAGE>
+oci2git convert [OPTIONS] <IMAGE>
+oci2git fsbom [OPTIONS] <IMAGE></code></pre></p><h3><code>convert</code> — Gambar OCI → Repositori Git</h3></p><pre><code class="language-bash">oci2git convert [OPTIONS] <IMAGE>
+<h1>or simply:</h1>
+oci2git <IMAGE></code></pre></p><p>Opsi:
+  <code>-o, --output <OUTPUT></code>  Direktori output untuk repositori Git [default: ./container_repo]
+  <code>-e, --engine <ENGINE></code>  Engine kontainer yang digunakan (docker, nerdctl, tar) [default: docker]
+  <code>-v, --verbose</code>          Mode verbose (-v untuk info, -vv untuk debug, -vvv untuk trace)</p><h3><code>fsbom</code> — Daftar material filesystem</h3></p><pre><code class="language-bash">oci2git fsbom [OPTIONS] <IMAGE></code></pre></p><p>Opsi:
+  <code>-o, --output <OUTPUT></code>  Jalur output untuk file YAML BOM [default: ./fsbom.yml]
+  <code>-e, --engine <ENGINE></code>  Mesin kontainer yang digunakan (docker, nerdctl, tar) [default: docker]
+  <code>-v, --verbose</code>          Mode verbose (-v untuk info, -vv untuk debug, -vvv untuk trace)</p><p>Variabel Lingkungan:
+  <code>TMPDIR</code>  Atur variabel lingkungan ini untuk mengubah lokasi default yang digunakan untuk pemrosesan data sementara. Ini tergantung pada platform (misal, <code>TMPDIR</code> di Unix/macOS, <code>TEMP</code> atau <code>TMP</code> di Windows).</p><h2>Contoh</h2></p><h3>Konversi</h3></p><p>Menggunakan mesin Docker (default):
+<pre><code class="language-bash">oci2git ubuntu:latest
+<h1>or explicitly:</h1>
+oci2git convert ubuntu:latest -o ./ubuntu-repo</code></pre>
+Menggunakan tarball citra yang sudah diunduh:</p><pre><code class="language-bash">oci2git convert -e tar -o ./ubuntu-repo /path/to/ubuntu-latest.tar</code></pre></p><p>Mesin tar mengharapkan tarball format OCI yang valid, yang biasanya dibuat dengan <code>docker save</code>:
 <pre><code class="language-bash"># Create a tarball from a local Docker image
 docker save -o ubuntu-latest.tar ubuntu:latest</p><h1>Convert the tarball to a Git repository</h1>
-oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Ini akan membuat repositori Git di <code>./ubuntu-repo</code> yang berisi:
+oci2git convert -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Ini akan membuat repository Git di <code>./ubuntu-repo</code> yang berisi:
 <ul><li><code>Image.md</code> - Metadata lengkap tentang image dalam format Markdown</li>
-<li><code>rootfs/</code> - Konten filesystem dari container</li></p><p></ul>Riwayat Git mencerminkan riwayat layer container:
+<li><code>rootfs/</code> - Isi filesystem dari container</li></p><p></ul>Riwayat Git mencerminkan riwayat layer container:
 <ul><li>Commit pertama hanya berisi file <code>Image.md</code> dengan metadata lengkap</li>
-<li>Setiap commit berikutnya mewakili satu layer dari image asli</li>
-<li>Commit mencantumkan perintah Dockerfile sebagai pesan commit</li></p><p></ul><h2>Struktur Repositori</h2></p><pre><code class="language-">repository/
+<li>Setiap commit berikutnya merepresentasikan satu layer dari image asli</li>
+<li>Commit mencantumkan perintah Dockerfile sebagai pesan commit</li></p><p></ul><h3>Daftar Bahan Filesystem (fsbom)</h3></p><p>Hasilkan YAML yang mencantumkan setiap file yang ditambahkan atau diubah per layer:
+<pre><code class="language-bash">oci2git fsbom ubuntu:latest -o ubuntu.yml</code></pre>
+Menggunakan tarball:</p><pre><code class="language-bash">oci2git fsbom -e tar image.tar -o image-bom.yml</code></pre>
+Output YAML mencantumkan setiap lapisan dengan entri-entrinya yang ditandai berdasarkan tipe (<code>file</code>, <code>hardlink</code>, <code>symlink</code>, <code>directory</code>) dan status (<code>n:uid:gid</code> untuk baru, <code>m:uid:gid</code> untuk dimodifikasi). Berkas yang dihapus (OCI whiteouts) tidak disertakan.</p><pre><code class="language-yaml">layers:
+  <ul><li>index: 0</li>
+    </ul>command: "ADD rootfs.tar.gz / # buildkit"
+    digest: "sha256:45f3ea58..."
+    entries:
+      <ul><li>type: file</li>
+        </ul>path: "bin/busybox"
+        size: 919304
+        mode: 493
+        stat: "n:0:0"
+      <ul><li>type: hardlink</li>
+        </ul>path: "bin/sh"
+        target: "bin/busybox"
+        stat: "n:0:0"
+      <ul><li>type: symlink</li>
+        </ul>path: "lib64"
+        target: "lib"
+        stat: "n:0:0"
+  <ul><li>index: 1</li>
+    </ul>command: "RUN apk add --no-cache curl"
+    digest: "sha256:..."
+    entries:
+      <ul><li>type: file</li>
+        </ul>path: "usr/bin/curl"
+        size: 204800
+        mode: 493
+        stat: "n:0:0"
+      <ul><li>type: file</li>
+        </ul>path: "etc/apk/world"
+        size: 32
+        mode: 420
+        stat: "m:0:0"</code></pre></p><h2>Struktur Repository</h2></p><pre><code class="language-">repository/
 ├── .git/
 ├── Image.md     # Complete image metadata
 └── rootfs/      # Filesystem content from the container</code></pre>
@@ -394,7 +436,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Ini akan me
 <li>Git</li></p><p></ul><h2>Lisensi</h2></p><p>MIT</p><p>[dokumentasi]: https://docs.rs/oci2git/</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-30
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-02
 
 ---</p>
         </div>
@@ -406,7 +448,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Ini akan me
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-01-30 
+        Last updated: 2026-04-02 
     </div>
     
 </body>

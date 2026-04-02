@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 384
+    "ratingCount": 401
   },
   "url": "https://OpenAiTx.github.io/projects/Virviil/oci2git/README-zh-TW.html",
   "sameAs": "https://raw.githubusercontent.com/Virviil/oci2git/main/README.md",
-  "datePublished": "2026-01-30",
-  "dateModified": "2026-01-30"
+  "datePublished": "2026-04-02",
+  "dateModified": "2026-04-02"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 384 stars</span>
+                <span class="stars">⭐ 401 stars</span>
                 <span class="language">Traditional Chinese</span>
                 <span>by Virviil</span>
             </div>
@@ -316,17 +316,18 @@
 <img src="https://raw.githubusercontent.com/Virviil/oci2git/main/assets/logo.png" width="140px" /></p><h1>OCI2Git</h1></p><p>[<img src="https://docs.rs/oci2git/badge.svg" alt="文件說明">][documentation]
 <a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/v/oci2git.svg" alt="Crates.io"></a>
 <a href="https://github.com/Virviil/oci2git/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/l/oci2git.svg" alt="授權"></a>
-<a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/d/oci2git.svg" alt="下載量"></a></p><p>[//]: # (mock for future test.yaml)
+<a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/d/oci2git.svg" alt="下載次數"></a></p><p>[//]: # (未來的 test.yaml 模擬)
 [//]: # ([![測試狀態]&#40;https://img.shields.io/github/actions/workflow/status/Virviil/oci2git/rust.yml?branch=master&event=push&label=Test&#41;]&#40;https://github.com/Virviil/oci2git/actions&#41;)</p><p><div align="left"> </div>  
-</div></p><p>一個用於將容器映像檔（Docker 等）轉換為 Git 儲存庫的 Rust 應用程式。每個容器層都被表示為一個 Git 提交，保留原始映像的歷史和結構。</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="OCI2Git 轉換 nginx 映像的演示"></p><h2>功能特色</h2></p><ul><li>分析 Docker 映像並提取層資訊</li>
-<li>建立一個 Git 儲存庫，每個映像層都被表示為一個提交</li>
-<li>支援空層（如 ENV、WORKDIR 等）以空提交方式呈現</li>
-<li>完整的中繼資料抽取並匯出為 Markdown 格式</li>
-<li>可擴充架構，支援不同的容器引擎</li></p><p></ul><h2>使用情境</h2></p><h3>層差異比對</h3>
-在排查容器問題時，可以利用 Git 強大的差異比較功能來精確辨識任兩層之間的變更。透過在提交間執行 <code>git diff</code>，工程師可以清楚看到哪些檔案被新增、修改或刪除，更容易理解每個 Dockerfile 指令的影響並定位問題變更。
-<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="層差異範例"></p><h3>來源追蹤</h3>
-利用 <code>git blame</code>，開發者能快速判斷是哪一層引入了特定檔案或程式碼行。這在診斷設定檔或相依套件問題時特別有用。無需手動檢查每一層，您可立即追溯任何檔案的來源層及對應的 Dockerfile 指令。</p><h3>檔案生命週期追蹤</h3>
-OCI2Git 讓您能夠追蹤特定檔案在容器映像歷史中的演變過程。您可以觀察檔案首次建立的時間、在各層間的修改，以及最終被移除的時點。這種全方位檢視，協助了解檔案演化過程，而不必手動追蹤數十層的變更。</p><p>要追蹤容器映像中檔案的歷史—包括首次出現、被修改或刪除的時點—您可以在轉換後使用以下 Git 指令：</p><pre><code class="language-bash"># Full history of a file (including renames)
+</div></p><p>一個將容器映像檔（如 Docker 等）轉換為 Git 儲存庫並產生 YAML 格式檔案系統物料清單（fsbom）的 Rust 應用程式。每個容器層都被表示為一個 Git commit，完整保留原始映像檔的歷史與結構。</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="OCI2Git 轉換 nginx 映像檔的示範"></p><h2>功能特色</h2></p><ul><li>分析 Docker 映像檔並提取層級資訊</li>
+<li>建立每個映像層都對應為 commit 的 Git 儲存庫</li>
+<li>產生每層檔案清單的 YAML 格式檔案系統物料清單（fsbom）</li>
+<li>支援空層（如 ENV、WORKDIR 等）作為空 commit</li>
+<li>完整提取中繼資料為 Markdown 格式</li>
+<li>可擴充架構以支援不同的容器引擎</li></p><p></ul><h2>使用情境</h2></p><h3>層級差異比對</h3>
+在排查容器問題時，可以使用 Git 強大的差異比對功能，精確找出任兩層間的變更內容。透過在 commit 之間執行 <code>git diff</code>，工程師能清楚看到新增、修改或刪除的檔案，大幅提升理解每條 Dockerfile 指令影響及定位問題變更的效率。
+<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="層級差異範例"></p><h3>來源追蹤</h3>
+利用 <code>git blame</code>，開發者能迅速確認某個檔案或程式行是由哪一層引入。這在診斷組態檔或相依套件問題時格外有價值。無須逐層人工檢查，就能直接追溯任何檔案的來源層級及對應的 Dockerfile 指令。</p><h3>檔案生命週期追蹤</h3>
+OCI2Git 讓您可追蹤特定檔案於容器映像檔歷史的完整歷程。您可以觀察檔案何時被建立、在各層中如何修改，及其最終是否被移除。這種全貌協助理解檔案演進過程，無需手動比對多層變更。</p><p>要追蹤容器映像檔中某個檔案的完整歷史——包括首次出現、變更及刪除時機——於轉換後可使用下列 Git 指令：</p><pre><code class="language-bash"># Full history of a file (including renames)
 git log --follow -- /rootfs/my/file/path</p><h1>First appearance (i.e. creation) - see which layer introduced the file</h1>
 git log --diff-filter=A -- /rootfs/my/file/path</p><h1>All changes made to the file (with diffs)</h1>
 git log -p --follow -- /rootfs/my/file/path</p><h1>When the file was deleted</h1>
@@ -370,23 +371,63 @@ sudo mv oci2git-darwin-aarch64 /usr/local/bin/oci2git
 chmod +x /usr/local/bin/oci2git</code></pre></p><h3>從 Crates.io</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h3>從來源</h3></p><pre><code class="language-bash"># Clone the repository
 git clone https://github.com/virviil/oci2git.git
 cd oci2git</p><h1>Install locally</h1>
-cargo install --path .</code></pre></p><h2>使用方法</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>參數：
-  <code><IMAGE></code>  要轉換的映像名稱（例如：'ubuntu:latest'）或使用 tar 引擎時的 tarball 路徑</p><p>選項：
-  <code>-o, --output <o></code>  Git 儲存庫的輸出目錄 [預設值：./container_repo]
+cargo install --path .</code></pre></p><h2>使用方法</h2></p><pre><code class="language-">oci2git [OPTIONS] <IMAGE>
+oci2git convert [OPTIONS] <IMAGE>
+oci2git fsbom [OPTIONS] <IMAGE></code></pre></p><h3><code>convert</code> — OCI 映像 → Git 存儲庫</h3></p><pre><code class="language-bash">oci2git convert [OPTIONS] <IMAGE>
+<h1>or simply:</h1>
+oci2git <IMAGE></code></pre></p><p>選項：
+  <code>-o, --output <OUTPUT></code>  Git 儲存庫的輸出目錄 [預設值：./container_repo]
   <code>-e, --engine <ENGINE></code>  要使用的容器引擎（docker、nerdctl、tar）[預設值：docker]
-  <code>-h, --help</code>            列印說明資訊
-  <code>-V, --version</code>         列印版本資訊</p><p>環境變數：
-  <code>TMPDIR</code>  設定此環境變數以變更用於中間資料處理的預設位置。此設定依平台而異（例如 Unix/macOS 為 <code>TMPDIR</code>，Windows 則為 <code>TEMP</code> 或 <code>TMP</code>）。</p><h2>範例</h2></p><p>使用 Docker 引擎（預設）：
-<pre><code class="language-bash">oci2git -o ./ubuntu-repo ubuntu:latest</code></pre></p><p>使用已下載的映像檔 tarball：
-<pre><code class="language-bash">oci2git -e tar -o ./ubuntu-repo /path/to/ubuntu-latest.tar</code></pre>
+  <code>-v, --verbose</code>          詳細模式（-v 為資訊，-vv 為偵錯，-vvv 為追蹤）</p><h3><code>fsbom</code> — 檔案系統物料清單</h3></p><pre><code class="language-bash">oci2git fsbom [OPTIONS] <IMAGE></code></pre>
+選項：
+  <code>-o, --output <OUTPUT></code>  輸出 YAML BOM 檔案的路徑 [預設值：./fsbom.yml]
+  <code>-e, --engine <ENGINE></code>  要使用的容器引擎（docker、nerdctl、tar）[預設值：docker]
+  <code>-v, --verbose</code>          詳細模式（-v 為 info，-vv 為 debug，-vvv 為 trace）</p><p>環境變數：
+  <code>TMPDIR</code>  設定此環境變數以更改用於中間資料處理的預設位置。此設定依平台而異（例如，Unix/macOS 上為 <code>TMPDIR</code>，Windows 上為 <code>TEMP</code> 或 <code>TMP</code>）。</p><h2>範例</h2></p><h3>轉換</h3></p><p>使用 Docker 引擎（預設）：</p><pre><code class="language-bash">oci2git ubuntu:latest
+<h1>or explicitly:</h1>
+oci2git convert ubuntu:latest -o ./ubuntu-repo</code></pre></p><p>使用已下載的映像檔 tarball：
+<pre><code class="language-bash">oci2git convert -e tar -o ./ubuntu-repo /path/to/ubuntu-latest.tar</code></pre>
 tar 引擎需要有效的 OCI 格式壓縮檔，這通常是用 <code>docker save</code> 建立的：</p><pre><code class="language-bash"># Create a tarball from a local Docker image
 docker save -o ubuntu-latest.tar ubuntu:latest</p><h1>Convert the tarball to a Git repository</h1>
-oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>這將在 <code>./ubuntu-repo</code> 中建立一個 Git 儲存庫，內容包括：
-<ul><li><code>Image.md</code> - 以 Markdown 格式記錄的完整映像中繼資料</li>
-<li><code>rootfs/</code> - 從容器取得的檔案系統內容</li></p><p></ul>Git 歷史記錄反映了容器的層次歷史：
+oci2git convert -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>這將在 <code>./ubuntu-repo</code> 中建立一個 Git 儲存庫，內容包括：
+<ul><li><code>Image.md</code> - 以 Markdown 格式完整記錄影像的中繼資料</li>
+<li><code>rootfs/</code> - 來自容器的檔案系統內容</li></p><p></ul>Git 的歷史會反映容器的層級歷史：
 <ul><li>第一個提交僅包含帶有完整中繼資料的 <code>Image.md</code> 檔案</li>
-<li>每個後續提交代表原始映像中的一個層</li>
-<li>提交訊息包含 Dockerfile 指令</li></p><p></ul><h2>儲存庫結構</h2></p><pre><code class="language-">repository/
+<li>每個後續提交都代表原始影像中的一個層級</li>
+<li>提交訊息包含 Dockerfile 的命令</li></p><p></ul><h3>檔案系統物料清單（fsbom）</h3></p><p>產生每個層級所引入或修改的所有檔案的 YAML 清單：
+<pre><code class="language-bash">oci2git fsbom ubuntu:latest -o ubuntu.yml</code></pre>
+使用 tarball：</p><pre><code class="language-bash">oci2git fsbom -e tar image.tar -o image-bom.yml</code></pre></p><p>輸出的 YAML 會列出每個層級，並將其條目按類型（<code>file</code>、<code>hardlink</code>、<code>symlink</code>、<code>directory</code>）和狀態（新項目為 <code>n:uid:gid</code>，修改項目為 <code>m:uid:gid</code>）標記。已刪除的檔案（OCI whiteouts）則不包含在內。</p><pre><code class="language-yaml">layers:
+  <ul><li>index: 0</li>
+    </ul>command: "ADD rootfs.tar.gz / # buildkit"
+    digest: "sha256:45f3ea58..."
+    entries:
+      <ul><li>type: file</li>
+        </ul>path: "bin/busybox"
+        size: 919304
+        mode: 493
+        stat: "n:0:0"
+      <ul><li>type: hardlink</li>
+        </ul>path: "bin/sh"
+        target: "bin/busybox"
+        stat: "n:0:0"
+      <ul><li>type: symlink</li>
+        </ul>path: "lib64"
+        target: "lib"
+        stat: "n:0:0"
+  <ul><li>index: 1</li>
+    </ul>command: "RUN apk add --no-cache curl"
+    digest: "sha256:..."
+    entries:
+      <ul><li>type: file</li>
+        </ul>path: "usr/bin/curl"
+        size: 204800
+        mode: 493
+        stat: "n:0:0"
+      <ul><li>type: file</li>
+        </ul>path: "etc/apk/world"
+        size: 32
+        mode: 420
+        stat: "m:0:0"</code></pre></p><h2>資料庫結構</h2></p><pre><code class="language-">repository/
 ├── .git/
 ├── Image.md     # Complete image metadata
 └── rootfs/      # Filesystem content from the container</code></pre>
@@ -395,7 +436,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>這將在 <
 <li>Git</li></p><p></ul><h2>授權條款</h2></p><p>MIT</p><p>[文件]: https://docs.rs/oci2git/</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-30
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-02
 
 ---</p>
         </div>
@@ -407,7 +448,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>這將在 <
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-01-30 
+        Last updated: 2026-04-02 
     </div>
     
 </body>

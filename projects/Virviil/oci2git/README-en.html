@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>oci2git - Introspect Docker images as easily as using Git</title>
-    <meta name="description" content="Introspect Docker images as easily as using Git">
+    <title>oci2git - Introspecting Docker images as easily as using Git</title>
+    <meta name="description" content="Introspecting Docker images as easily as using Git">
     <meta name="keywords" content="oci2git, English, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "oci2git",
-  "description": "Introspect Docker images as easily as using Git",
+  "description": "Introspecting Docker images as easily as using Git",
   "author": {
     "@type": "Person",
     "name": "Virviil"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 384
+    "ratingCount": 401
   },
   "url": "https://OpenAiTx.github.io/projects/Virviil/oci2git/README-en.html",
   "sameAs": "https://raw.githubusercontent.com/Virviil/oci2git/main/README.md",
-  "datePublished": "2026-01-30",
-  "dateModified": "2026-01-30"
+  "datePublished": "2026-04-02",
+  "dateModified": "2026-04-02"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 384 stars</span>
+                <span class="stars">⭐ 401 stars</span>
                 <span class="language">English</span>
                 <span>by Virviil</span>
             </div>
@@ -318,8 +318,9 @@
 <a href="https://github.com/Virviil/oci2git/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/l/oci2git.svg" alt="License"></a>
 <a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/d/oci2git.svg" alt="Downloads"></a></p><p>[//]: # (mock for future test.yaml)
 [//]: # ([![Test Status]&#40;https://img.shields.io/github/actions/workflow/status/Virviil/oci2git/rust.yml?branch=master&event=push&label=Test&#41;]&#40;https://github.com/Virviil/oci2git/actions&#41;)</p><p><div align="left"> </div>  
-</div></p><p>A Rust application that converts container images (Docker, etc.) to Git repositories. Each container layer is represented as a Git commit, preserving the history and structure of the original image.</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="Demo of OCI2Git converting the nginx image"></p><h2>Features</h2></p><ul><li>Analyze Docker images and extract layer information</li>
+</div></p><p>A Rust application that converts container images (Docker, etc.) to Git repositories, and generates filesystem bill of materials (fsbom) in YAML. Each container layer is represented as a Git commit, preserving the history and structure of the original image.</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="Demo of OCI2Git converting the nginx image"></p><h2>Features</h2></p><ul><li>Analyze Docker images and extract layer information</li>
 <li>Create a Git repository where each image layer is represented as a commit</li>
+<li>Generate a YAML filesystem bill of materials (fsbom) with per-layer file listings</li>
 <li>Support for empty layers (ENV, WORKDIR, etc.) as empty commits</li>
 <li>Complete metadata extraction to Markdown format</li>
 <li>Extensible architecture for supporting different container engines</li></p><p></ul><h2>Use Cases</h2></p><h3>Layer Diffing</h3>
@@ -369,23 +370,63 @@ sudo mv oci2git-darwin-aarch64 /usr/local/bin/oci2git
 chmod +x /usr/local/bin/oci2git</code></pre></p><h3>From Crates.io</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h3>From Source</h3></p><pre><code class="language-bash"># Clone the repository
 git clone https://github.com/virviil/oci2git.git
 cd oci2git</p><h1>Install locally</h1>
-cargo install --path .</code></pre></p><h2>Usage</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>Arguments:
-  <code><IMAGE></code>  Image name to convert (e.g., 'ubuntu:latest') or path to tarball when using the tar engine</p><p>Options:
-  <code>-o, --output <o></code>  Output directory for Git repository [default: ./container_repo]
+cargo install --path .</code></pre></p><h2>Usage</h2></p><pre><code class="language-">oci2git [OPTIONS] <IMAGE>
+oci2git convert [OPTIONS] <IMAGE>
+oci2git fsbom [OPTIONS] <IMAGE></code></pre></p><h3><code>convert</code> — OCI image → Git repository</h3></p><pre><code class="language-bash">oci2git convert [OPTIONS] <IMAGE>
+<h1>or simply:</h1>
+oci2git <IMAGE></code></pre></p><p>Options:
+  <code>-o, --output <OUTPUT></code>  Output directory for Git repository [default: ./container_repo]
   <code>-e, --engine <ENGINE></code>  Container engine to use (docker, nerdctl, tar) [default: docker]
-  <code>-h, --help</code>            Print help information
-  <code>-V, --version</code>         Print version information</p><p>Environment Variables:
-  <code>TMPDIR</code>  Set this environment variable to change the default location used for intermediate data processing. This is platform-dependent (e.g., <code>TMPDIR</code> on Unix/macOS, <code>TEMP</code> or <code>TMP</code> on Windows).</p><h2>Examples</h2></p><p>Using Docker engine (default):
-<pre><code class="language-bash">oci2git -o ./ubuntu-repo ubuntu:latest</code></pre></p><p>Using an already downloaded image tarball:
-<pre><code class="language-bash">oci2git -e tar -o ./ubuntu-repo /path/to/ubuntu-latest.tar</code></pre></p><p>The tar engine expects a valid OCI format tarball, which is typically created with <code>docker save</code>:
+  <code>-v, --verbose</code>          Verbose mode (-v for info, -vv for debug, -vvv for trace)</p><h3><code>fsbom</code> — Filesystem bill of materials</h3></p><pre><code class="language-bash">oci2git fsbom [OPTIONS] <IMAGE></code></pre></p><p>Options:
+  <code>-o, --output <OUTPUT></code>  Output path for the YAML BOM file [default: ./fsbom.yml]
+  <code>-e, --engine <ENGINE></code>  Container engine to use (docker, nerdctl, tar) [default: docker]
+  <code>-v, --verbose</code>          Verbose mode (-v for info, -vv for debug, -vvv for trace)</p><p>Environment Variables:
+  <code>TMPDIR</code>  Set this environment variable to change the default location used for intermediate data processing. This is platform-dependent (e.g., <code>TMPDIR</code> on Unix/macOS, <code>TEMP</code> or <code>TMP</code> on Windows).</p><h2>Examples</h2></p><h3>Convert</h3></p><p>Using Docker engine (default):
+<pre><code class="language-bash">oci2git ubuntu:latest
+<h1>or explicitly:</h1>
+oci2git convert ubuntu:latest -o ./ubuntu-repo</code></pre></p><p>Using an already downloaded image tarball:
+<pre><code class="language-bash">oci2git convert -e tar -o ./ubuntu-repo /path/to/ubuntu-latest.tar</code></pre></p><p>The tar engine expects a valid OCI format tarball, which is typically created with <code>docker save</code>:
 <pre><code class="language-bash"># Create a tarball from a local Docker image
 docker save -o ubuntu-latest.tar ubuntu:latest</p><h1>Convert the tarball to a Git repository</h1>
-oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>This will create a Git repository in <code>./ubuntu-repo</code> containing:
+oci2git convert -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>This will create a Git repository in <code>./ubuntu-repo</code> containing:
 <ul><li><code>Image.md</code> - Complete metadata about the image in Markdown format</li>
 <li><code>rootfs/</code> - The filesystem content from the container</li></p><p></ul>The Git history reflects the container's layer history:
 <ul><li>The first commit contains only the <code>Image.md</code> file with full metadata</li>
 <li>Each subsequent commit represents a layer from the original image</li>
-<li>Commits include the Dockerfile command as the commit message</li></p><p></ul><h2>Repository Structure</h2></p><pre><code class="language-">repository/
+<li>Commits include the Dockerfile command as the commit message</li></p><p></ul><h3>Filesystem Bill of Materials (fsbom)</h3></p><p>Generate a YAML listing of every file introduced or modified per layer:
+<pre><code class="language-bash">oci2git fsbom ubuntu:latest -o ubuntu.yml</code></pre></p><p>Using a tarball:
+<pre><code class="language-bash">oci2git fsbom -e tar image.tar -o image-bom.yml</code></pre></p><p>The output YAML lists every layer with its entries tagged by type (<code>file</code>, <code>hardlink</code>, <code>symlink</code>, <code>directory</code>) and status (<code>n:uid:gid</code> for new, <code>m:uid:gid</code> for modified). Deleted files (OCI whiteouts) are excluded.</p><pre><code class="language-yaml">layers:
+  <ul><li>index: 0</li>
+    </ul>command: "ADD rootfs.tar.gz / # buildkit"
+    digest: "sha256:45f3ea58..."
+    entries:
+      <ul><li>type: file</li>
+        </ul>path: "bin/busybox"
+        size: 919304
+        mode: 493
+        stat: "n:0:0"
+      <ul><li>type: hardlink</li>
+        </ul>path: "bin/sh"
+        target: "bin/busybox"
+        stat: "n:0:0"
+      <ul><li>type: symlink</li>
+        </ul>path: "lib64"
+        target: "lib"
+        stat: "n:0:0"
+  <ul><li>index: 1</li>
+    </ul>command: "RUN apk add --no-cache curl"
+    digest: "sha256:..."
+    entries:
+      <ul><li>type: file</li>
+        </ul>path: "usr/bin/curl"
+        size: 204800
+        mode: 493
+        stat: "n:0:0"
+      <ul><li>type: file</li>
+        </ul>path: "etc/apk/world"
+        size: 32
+        mode: 420
+        stat: "m:0:0"</code></pre></p><h2>Repository Structure</h2></p><pre><code class="language-">repository/
 ├── .git/
 ├── Image.md     # Complete image metadata
 └── rootfs/      # Filesystem content from the container</code></pre></p><h2>Requirements</h2></p><ul><li>Rust 2021 edition</li>
@@ -394,7 +435,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>This will c
 
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-30
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-02
 
 ---</p>
         </div>
@@ -406,7 +447,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>This will c
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-01-30 
+        Last updated: 2026-04-02 
     </div>
     
 </body>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>oci2git - Инспектирование Docker-образов так же просто, как использование Git</title>
-    <meta name="description" content="Инспектирование Docker-образов так же просто, как использование Git">
+    <title>oci2git - Инспекция Docker-образов так же проста, как использование Git</title>
+    <meta name="description" content="Инспекция Docker-образов так же проста, как использование Git">
     <meta name="keywords" content="oci2git, Russian, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "oci2git",
-  "description": "Инспектирование Docker-образов так же просто, как использование Git",
+  "description": "Инспекция Docker-образов так же проста, как использование Git",
   "author": {
     "@type": "Person",
     "name": "Virviil"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 384
+    "ratingCount": 401
   },
   "url": "https://OpenAiTx.github.io/projects/Virviil/oci2git/README-ru.html",
   "sameAs": "https://raw.githubusercontent.com/Virviil/oci2git/main/README.md",
-  "datePublished": "2026-01-30",
-  "dateModified": "2026-01-30"
+  "datePublished": "2026-04-02",
+  "dateModified": "2026-04-02"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 384 stars</span>
+                <span class="stars">⭐ 401 stars</span>
                 <span class="language">Russian</span>
                 <span>by Virviil</span>
             </div>
@@ -318,15 +318,16 @@
 <a href="https://github.com/Virviil/oci2git/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/l/oci2git.svg" alt="Лицензия"></a>
 <a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/d/oci2git.svg" alt="Загрузки"></a></p><p>[//]: # (макет для будущего test.yaml)
 [//]: # ([![Статус теста]&#40;https://img.shields.io/github/actions/workflow/status/Virviil/oci2git/rust.yml?branch=master&event=push&label=Test&#41;]&#40;https://github.com/Virviil/oci2git/actions&#41;)</p><p><div align="left"> </div>  
-</div></p><p>Rust-приложение, которое конвертирует образы контейнеров (Docker и др.) в Git-репозитории. Каждый слой контейнера отображается как коммит в Git, сохраняя историю и структуру исходного образа.</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="Демонстрация OCI2Git на примере конвертации образа nginx"></p><h2>Возможности</h2></p><ul><li>Анализировать Docker-образы и извлекать информацию о слоях</li>
+</div></p><p>Приложение на Rust, которое преобразует образы контейнеров (Docker и др.) в Git-репозитории и генерирует спецификацию файловой системы (fsbom) в YAML. Каждый слой контейнера представлен как коммит в Git, сохраняя историю и структуру исходного образа.</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="Демонстрация OCI2Git конвертирующего образ nginx"></p><h2>Возможности</h2></p><ul><li>Анализировать Docker-образы и извлекать информацию о слоях</li>
 <li>Создавать Git-репозиторий, где каждый слой образа представлен отдельным коммитом</li>
-<li>Поддержка пустых слоев (ENV, WORKDIR и др.) в виде пустых коммитов</li>
+<li>Генерировать YAML-спецификацию файловой системы (fsbom) с перечнем файлов по слоям</li>
+<li>Поддержка пустых слоев (ENV, WORKDIR и др.) как пустых коммитов</li>
 <li>Полное извлечение метаданных в формате Markdown</li>
 <li>Расширяемая архитектура для поддержки различных контейнерных движков</li></p><p></ul><h2>Сценарии использования</h2></p><h3>Сравнение слоев</h3>
-Для устранения проблем в контейнерах можно использовать мощные возможности сравнения Git для точного выявления изменений между любыми двумя слоями. С помощью <code>git diff</code> между коммитами инженеры могут увидеть, какие файлы были добавлены, изменены или удалены, что упрощает понимание влияния каждой инструкции Dockerfile и поиск проблемных изменений.
+При устранении неполадок контейнеров можно использовать мощные инструменты сравнения Git для точного выявления изменений между любыми двумя слоями. Выполняя <code>git diff</code> между коммитами, инженеры видят, какие файлы были добавлены, изменены или удалены, что значительно облегчает понимание воздействия каждой инструкции Dockerfile и поиск проблемных изменений.
 <img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="Пример сравнения слоев"></p><h3>Отслеживание происхождения</h3>
-Используя <code>git blame</code>, разработчики могут быстро определить, какой слой добавил конкретный файл или строку кода. Это особенно ценно при диагностике проблем с конфигурационными файлами или зависимостями. Вместо ручной проверки каждого слоя можно сразу отследить источник любого файла до его исходного слоя и соответствующей инструкции Dockerfile.</p><h3>Отслеживание жизненного цикла файлов</h3>
-OCI2Git позволяет проследить путь конкретного файла на протяжении всей истории образа контейнера. Вы можете увидеть, когда файл был создан, как он изменялся между слоями и был ли когда-либо удалён. Такой подробный обзор помогает понять эволюцию файла без необходимости вручную отслеживать изменения через десятки слоев.</p><p>Чтобы отследить историю файла в вашем образе контейнера — включая моменты его появления, изменения или удаления — после конвертации используйте следующие команды Git:</p><pre><code class="language-bash"># Full history of a file (including renames)
+Используя <code>git blame</code>, разработчики могут быстро определить, какой слой добавил конкретный файл или строку кода. Это особенно важно при диагностике проблем с конфигурационными файлами или зависимостями. Вместо ручной проверки каждого слоя можно сразу проследить происхождение любого файла до исходного слоя и соответствующей инструкции Dockerfile.</p><h3>Отслеживание жизненного цикла файлов</h3>
+OCI2Git позволяет отслеживать путь конкретного файла на протяжении всей истории образа контейнера. Можно наблюдать момент создания файла, как он изменялся на разных слоях и когда был удалён. Такой комплексный обзор помогает понять эволюцию файлов без необходимости вручную отслеживать изменения через десятки слоев.</p><p>Чтобы отслеживать историю файла в вашем контейнерном образе — когда он впервые появился, изменялся или был удалён — после конвертации используйте эти команды Git:</p><pre><code class="language-bash"># Full history of a file (including renames)
 git log --follow -- /rootfs/my/file/path</p><h1>First appearance (i.e. creation) - see which layer introduced the file</h1>
 git log --diff-filter=A -- /rootfs/my/file/path</p><h1>All changes made to the file (with diffs)</h1>
 git log -p --follow -- /rootfs/my/file/path</p><h1>When the file was deleted</h1>
@@ -369,23 +370,63 @@ sudo mv oci2git-darwin-aarch64 /usr/local/bin/oci2git
 chmod +x /usr/local/bin/oci2git</code></pre></p><h3>С Crates.io</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h3>Из источника</h3></p><pre><code class="language-bash"># Clone the repository
 git clone https://github.com/virviil/oci2git.git
 cd oci2git</p><h1>Install locally</h1>
-cargo install --path .</code></pre></p><h2>Использование</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>Аргументы:
-  <code><IMAGE></code>  Имя образа для конвертации (например, 'ubuntu:latest') или путь к tar-архиву при использовании tar-движка</p><p>Опции:
-  <code>-o, --output <o></code>  Каталог для вывода Git-репозитория [по умолчанию: ./container_repo]
-  <code>-e, --engine <ENGINE></code>  Движок контейнера для использования (docker, nerdctl, tar) [по умолчанию: docker]
-  <code>-h, --help</code>            Вывести справочную информацию
-  <code>-V, --version</code>         Вывести информацию о версии</p><p>Переменные окружения:
-  <code>TMPDIR</code>  Установите эту переменную окружения для изменения стандартного расположения, используемого для промежуточной обработки данных. Это зависит от платформы (например, <code>TMPDIR</code> на Unix/macOS, <code>TEMP</code> или <code>TMP</code> на Windows).</p><h2>Примеры</h2></p><p>Использование Docker-движка (по умолчанию):
-<pre><code class="language-bash">oci2git -o ./ubuntu-repo ubuntu:latest</code></pre>
-Использование уже загруженного tarball-образа:</p><pre><code class="language-bash">oci2git -e tar -o ./ubuntu-repo /path/to/ubuntu-latest.tar</code></pre></p><p>Движок tar ожидает действительный tarball в формате OCI, который обычно создается с помощью <code>docker save</code>:
+cargo install --path .</code></pre></p><h2>Использование</h2></p><pre><code class="language-">oci2git [OPTIONS] <IMAGE>
+oci2git convert [OPTIONS] <IMAGE>
+oci2git fsbom [OPTIONS] <IMAGE></code></pre></p><h3><code>convert</code> — OCI-образ → Git-репозиторий</h3></p><pre><code class="language-bash">oci2git convert [OPTIONS] <IMAGE>
+<h1>or simply:</h1>
+oci2git <IMAGE></code></pre></p><p>Параметры:
+  <code>-o, --output <OUTPUT></code>  Каталог вывода для репозитория Git [по умолчанию: ./container_repo]
+  <code>-e, --engine <ENGINE></code>  Контейнерный движок для использования (docker, nerdctl, tar) [по умолчанию: docker]
+  <code>-v, --verbose</code>          Подробный режим (-v для информации, -vv для отладки, -vvv для трассировки)</p><h3><code>fsbom</code> — Спецификация состава файловой системы</h3></p><pre><code class="language-bash">oci2git fsbom [OPTIONS] <IMAGE></code></pre></p><p>Опции:
+  <code>-o, --output <OUTPUT></code>  Путь вывода для файла YAML BOM [по умолчанию: ./fsbom.yml]
+  <code>-e, --engine <ENGINE></code>  Используемый контейнерный движок (docker, nerdctl, tar) [по умолчанию: docker]
+  <code>-v, --verbose</code>          Подробный режим (-v для info, -vv для debug, -vvv для trace)</p><p>Переменные среды:
+  <code>TMPDIR</code>  Установите эту переменную среды для изменения стандартного расположения, используемого для промежуточной обработки данных. Зависит от платформы (например, <code>TMPDIR</code> на Unix/macOS, <code>TEMP</code> или <code>TMP</code> на Windows).</p><h2>Примеры</h2></p><h3>Конвертация</h3></p><p>Использование движка Docker (по умолчанию):
+<pre><code class="language-bash">oci2git ubuntu:latest
+<h1>or explicitly:</h1>
+oci2git convert ubuntu:latest -o ./ubuntu-repo</code></pre>
+Использование уже загруженного tarball-образа:</p><pre><code class="language-bash">oci2git convert -e tar -o ./ubuntu-repo /path/to/ubuntu-latest.tar</code></pre></p><p>Движок tar ожидает действительный tarball в формате OCI, который обычно создается с помощью <code>docker save</code>:
 <pre><code class="language-bash"># Create a tarball from a local Docker image
 docker save -o ubuntu-latest.tar ubuntu:latest</p><h1>Convert the tarball to a Git repository</h1>
-oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Это создаст репозиторий Git в <code>./ubuntu-repo</code>, содержащий:
+oci2git convert -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Это создаст репозиторий Git в <code>./ubuntu-repo</code>, содержащий:
 <ul><li><code>Image.md</code> — Полные метаданные об образе в формате Markdown</li>
-<li><code>rootfs/</code> — Содержимое файловой системы из контейнера</li></p><p></ul>История Git отражает историю слоев контейнера:
-<ul><li>Первый коммит содержит только файл <code>Image.md</code> с полными метаданными</li>
-<li>Каждый последующий коммит представляет слой из исходного образа</li>
-<li>Коммиты включают команду Dockerfile в качестве сообщения коммита</li></p><p></ul><h2>Структура репозитория</h2></p><pre><code class="language-">repository/
+<li><code>rootfs/</code> — Содержимое файловой системы из контейнера</li></p><p></ul>История Git отражает историю слоёв контейнера:
+<ul><li>Первый коммит содержит только файл <code>Image.md</code> с полной метаинформацией</li>
+<li>Каждый последующий коммит соответствует одному слою из исходного образа</li>
+<li>Коммиты включают команду Dockerfile в качестве сообщения коммита</li></p><p></ul><h3>Ведомость файловой системы (fsbom)</h3></p><p>Генерируйте YAML, перечисляющий каждый файл, добавленный или изменённый в каждом слое:
+<pre><code class="language-bash">oci2git fsbom ubuntu:latest -o ubuntu.yml</code></pre>
+Использование tarball:</p><pre><code class="language-bash">oci2git fsbom -e tar image.tar -o image-bom.yml</code></pre></p><p>Выходной YAML перечисляет каждый слой с его элементами, отмеченными по типу (<code>file</code>, <code>hardlink</code>, <code>symlink</code>, <code>directory</code>) и статусу (<code>n:uid:gid</code> для новых, <code>m:uid:gid</code> для изменённых). Удалённые файлы (OCI whiteouts) исключены.</p><pre><code class="language-yaml">layers:
+  <ul><li>index: 0</li>
+    </ul>command: "ADD rootfs.tar.gz / # buildkit"
+    digest: "sha256:45f3ea58..."
+    entries:
+      <ul><li>type: file</li>
+        </ul>path: "bin/busybox"
+        size: 919304
+        mode: 493
+        stat: "n:0:0"
+      <ul><li>type: hardlink</li>
+        </ul>path: "bin/sh"
+        target: "bin/busybox"
+        stat: "n:0:0"
+      <ul><li>type: symlink</li>
+        </ul>path: "lib64"
+        target: "lib"
+        stat: "n:0:0"
+  <ul><li>index: 1</li>
+    </ul>command: "RUN apk add --no-cache curl"
+    digest: "sha256:..."
+    entries:
+      <ul><li>type: file</li>
+        </ul>path: "usr/bin/curl"
+        size: 204800
+        mode: 493
+        stat: "n:0:0"
+      <ul><li>type: file</li>
+        </ul>path: "etc/apk/world"
+        size: 32
+        mode: 420
+        stat: "m:0:0"</code></pre></p><h2>Структура репозитория</h2></p><pre><code class="language-">repository/
 ├── .git/
 ├── Image.md     # Complete image metadata
 └── rootfs/      # Filesystem content from the container</code></pre>
@@ -394,7 +435,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Это со
 <li>Git</li></p><p></ul><h2>Лицензия</h2></p><p>MIT</p><p>[документация]: https://docs.rs/oci2git/</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-30
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-02
 
 ---</p>
         </div>
@@ -406,7 +447,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>Это со
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-01-30 
+        Last updated: 2026-04-02 
     </div>
     
 </body>

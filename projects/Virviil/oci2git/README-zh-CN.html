@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>oci2git - 像使用 Git 一样轻松检查 Docker 镜像</title>
-    <meta name="description" content="像使用 Git 一样轻松检查 Docker 镜像">
+    <title>oci2git - 像使用 Git 一样轻松地自省 Docker 镜像</title>
+    <meta name="description" content="像使用 Git 一样轻松地自省 Docker 镜像">
     <meta name="keywords" content="oci2git, Simplified Chinese, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "oci2git",
-  "description": "像使用 Git 一样轻松检查 Docker 镜像",
+  "description": "像使用 Git 一样轻松地自省 Docker 镜像",
   "author": {
     "@type": "Person",
     "name": "Virviil"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 384
+    "ratingCount": 401
   },
   "url": "https://OpenAiTx.github.io/projects/Virviil/oci2git/README-zh-CN.html",
   "sameAs": "https://raw.githubusercontent.com/Virviil/oci2git/main/README.md",
-  "datePublished": "2026-01-30",
-  "dateModified": "2026-01-30"
+  "datePublished": "2026-04-02",
+  "dateModified": "2026-04-02"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 384 stars</span>
+                <span class="stars">⭐ 401 stars</span>
                 <span class="language">Simplified Chinese</span>
                 <span>by Virviil</span>
             </div>
@@ -316,17 +316,18 @@
 <img src="https://raw.githubusercontent.com/Virviil/oci2git/main/assets/logo.png" width="140px" /></p><h1>OCI2Git</h1></p><p>[<img src="https://docs.rs/oci2git/badge.svg" alt="文档">][documentation]
 <a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/v/oci2git.svg" alt="Crates.io"></a>
 <a href="https://github.com/Virviil/oci2git/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/l/oci2git.svg" alt="许可证"></a>
-<a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/d/oci2git.svg" alt="下载量"></a></p><p>[//]: # (mock for future test.yaml)
+<a href="https://crates.io/crates/oci2git" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/d/oci2git.svg" alt="下载量"></a></p><p>[//]: # (为未来的 test.yaml 预留的 mock)
 [//]: # ([![测试状态]&#40;https://img.shields.io/github/actions/workflow/status/Virviil/oci2git/rust.yml?branch=master&event=push&label=Test&#41;]&#40;https://github.com/Virviil/oci2git/actions&#41;)</p><p><div align="left"> </div>  
-</div></p><p>一个将容器镜像（如 Docker 等）转换为 Git 仓库的 Rust 应用程序。每个容器层都表示为一个 Git 提交，保留了原始镜像的历史和结构。</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="OCI2Git 转换 nginx 镜像的演示"></p><h2>功能特性</h2></p><ul><li>分析 Docker 镜像并提取层信息</li>
-<li>创建一个每个镜像层都作为提交的 Git 仓库</li>
-<li>支持空层（ENV、WORKDIR 等）作为空提交</li>
-<li>完整元数据提取并转为 Markdown 格式</li>
-<li>可扩展架构以支持不同的容器引擎</li></p><p></ul><h2>应用场景</h2></p><h3>层间差异分析</h3>
-在容器故障排查时，可以利用 Git 强大的差异分析功能，精确识别任意两层之间发生了什么变化。通过在提交间运行 <code>git diff</code>，工程师可以清楚看到哪些文件被添加、修改或删除，从而更容易理解每条 Dockerfile 指令的影响并定位有问题的变更。
-<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="层差异示例"></p><h3>源头追踪</h3>
-使用 <code>git blame</code>，开发者可以快速确定是哪个层引入了特定文件或代码行。这在诊断配置文件或依赖项问题时尤其有价值。无需手动检查每个层，您可以立即追溯任意文件的来源层及其对应的 Dockerfile 指令。</p><h3>文件生命周期追踪</h3>
-OCI2Git 让您能够跟踪特定文件在容器镜像历史中的演变过程。可以观察文件最初创建时间、在各层中的修改情况，以及最终是否被删除。这种全面视角有助于理解文件的演化，无需手动在可能多达数十层间逐步检查变更。</p><p>要追踪容器镜像中特定文件的历史——包括首次出现、变更和删除时间——在转换后可以使用以下 Git 命令：</p><pre><code class="language-bash"># Full history of a file (including renames)
+</div></p><p>这是一个 Rust 应用程序，可将容器镜像（如 Docker 等）转换为 Git 仓库，并以 YAML 生成文件系统物料清单（fsbom）。每个容器层被表示为一个 Git 提交，保留原始镜像的历史和结构。</p><p><img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/nginx.gif" alt="OCI2Git 转换 nginx 镜像的演示"></p><h2>功能特性</h2></p><ul><li>分析 Docker 镜像并提取层信息</li>
+<li>创建一个 Git 仓库，每个镜像层作为一次提交</li>
+<li>生成每层文件清单的 YAML 文件系统物料清单（fsbom）</li>
+<li>支持空层（如 ENV、WORKDIR 等）以空提交形式存在</li>
+<li>完整的元数据提取为 Markdown 格式</li>
+<li>可扩展架构以支持不同的容器引擎</li></p><p></ul><h2>使用场景</h2></p><h3>层级差异对比</h3>
+在排查容器问题时，可以利用 Git 强大的差异对比功能，准确识别任意两层之间的变更内容。通过在提交间运行 <code>git diff</code>，工程师可以精确看到哪些文件被添加、修改或删除，大大简化了理解每条 Dockerfile 指令影响和定位问题变更的过程。
+<img src="https://raw.githubusercontent.com/Virviil/oci2git/main/./assets/layer-diff.png" alt="层级差异示例"></p><h3>源头追踪</h3>
+通过使用 <code>git blame</code>，开发者可以快速确定是哪个层引入了某个特定文件或代码行。这在排查配置文件或依赖项问题时尤其有价值。无需手动检查每一层，您可以直接追溯任意文件的来源层及对应的 Dockerfile 指令。</p><h3>文件生命周期追踪</h3>
+OCI2Git 让您能够跟踪特定文件在容器镜像历史中的变化历程。您可以观察文件最初何时被创建、在各层中如何被修改以及是否/何时被删除。这种全景视角帮助理解文件的演变，无需手动追踪数十层的变更。</p><p>要在容器镜像中追踪某个文件的历史（包括首次出现、被修改或删除的时间），转换完成后可使用以下 Git 命令：</p><pre><code class="language-bash"># Full history of a file (including renames)
 git log --follow -- /rootfs/my/file/path</p><h1>First appearance (i.e. creation) - see which layer introduced the file</h1>
 git log --diff-filter=A -- /rootfs/my/file/path</p><h1>All changes made to the file (with diffs)</h1>
 git log -p --follow -- /rootfs/my/file/path</p><h1>When the file was deleted</h1>
@@ -370,24 +371,64 @@ sudo mv oci2git-darwin-aarch64 /usr/local/bin/oci2git
 chmod +x /usr/local/bin/oci2git</code></pre></p><h3>来自 Crates.io</h3></p><pre><code class="language-bash">cargo install oci2git</code></pre></p><h3>来自源头</h3></p><pre><code class="language-bash"># Clone the repository
 git clone https://github.com/virviil/oci2git.git
 cd oci2git</p><h1>Install locally</h1>
-cargo install --path .</code></pre></p><h2>用法</h2></p><pre><code class="language-bash">oci2git [OPTIONS] <IMAGE></code></pre></p><p>Arguments:
-  <code><IMAGE></code>  要转换的镜像名称（例如，'ubuntu:latest'）或使用 tar 引擎时的 tar 包路径</p><p>Options:
-  <code>-o, --output <o></code>  Git 仓库输出目录 [默认值: ./container_repo]
-  <code>-e, --engine <ENGINE></code>  使用的容器引擎（docker、nerdctl、tar）[默认值: docker]
-  <code>-h, --help</code>            打印帮助信息
-  <code>-V, --version</code>         打印版本信息</p><p>Environment Variables:
-  <code>TMPDIR</code>  设置此环境变量以更改用于中间数据处理的默认位置。此位置依赖于平台（例如，Unix/macOS 上的 <code>TMPDIR</code>，Windows 上的 <code>TEMP</code> 或 <code>TMP</code>）。</p><h2>Examples</h2></p><p>使用 Docker 引擎（默认）：
-<pre><code class="language-bash">oci2git -o ./ubuntu-repo ubuntu:latest</code></pre></p><p>使用已下载的镜像 tar 包：
-<pre><code class="language-bash">oci2git -e tar -o ./ubuntu-repo /path/to/ubuntu-latest.tar</code></pre></p><p>tar 引擎期望一个有效的 OCI 格式 tar 包，通常使用 <code>docker save</code> 创建：
+cargo install --path .</code></pre></p><h2>用法</h2></p><pre><code class="language-">oci2git [OPTIONS] <IMAGE>
+oci2git convert [OPTIONS] <IMAGE>
+oci2git fsbom [OPTIONS] <IMAGE></code></pre></p><h3><code>convert</code> — OCI镜像 → Git仓库</h3></p><pre><code class="language-bash">oci2git convert [OPTIONS] <IMAGE>
+<h1>or simply:</h1>
+oci2git <IMAGE></code></pre></p><p>选项：
+  <code>-o, --output <OUTPUT></code>  Git仓库的输出目录 [默认值: ./container_repo]
+  <code>-e, --engine <ENGINE></code>  要使用的容器引擎（docker, nerdctl, tar）[默认值: docker]
+  <code>-v, --verbose</code>          详细模式（-v为信息，-vv为调试，-vvv为跟踪）</p><h3><code>fsbom</code> — 文件系统物料清单</h3></p><pre><code class="language-bash">oci2git fsbom [OPTIONS] <IMAGE></code></pre></p><p>选项：
+  <code>-o, --output <OUTPUT></code>  YAML BOM 文件的输出路径 [默认值: ./fsbom.yml]
+  <code>-e, --engine <ENGINE></code>  要使用的容器引擎（docker、nerdctl、tar）[默认值: docker]
+  <code>-v, --verbose</code>          详细模式（-v 表示信息，-vv 表示调试，-vvv 表示跟踪）</p><p>环境变量：
+  <code>TMPDIR</code>  设置此环境变量以更改用于中间数据处理的默认位置。此设置依赖于平台（例如，Unix/macOS 上为 <code>TMPDIR</code>，Windows 上为 <code>TEMP</code> 或 <code>TMP</code>）。</p><h2>示例</h2></p><h3>转换</h3></p><p>使用 Docker 引擎（默认）：
+<pre><code class="language-bash">oci2git ubuntu:latest
+<h1>or explicitly:</h1>
+oci2git convert ubuntu:latest -o ./ubuntu-repo</code></pre></p><p>使用已下载的镜像 tar 包：
+<pre><code class="language-bash">oci2git convert -e tar -o ./ubuntu-repo /path/to/ubuntu-latest.tar</code></pre></p><p>tar 引擎期望一个有效的 OCI 格式 tar 包，通常使用 <code>docker save</code> 创建：
 <pre><code class="language-bash"># Create a tarball from a local Docker image
 docker save -o ubuntu-latest.tar ubuntu:latest</p><h1>Convert the tarball to a Git repository</h1>
-oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre>
-这将在 <code>./ubuntu-repo</code> 中创建一个 Git 仓库，包含：
-<ul><li><code>Image.md</code> - 以 Markdown 格式完整描述镜像的元数据</li>
+oci2git convert -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre></p><p>这将在 <code>./ubuntu-repo</code> 中创建一个 Git 仓库，包含以下内容：
+<ul><li><code>Image.md</code> - 关于镜像的完整元数据，采用 Markdown 格式</li>
 <li><code>rootfs/</code> - 来自容器的文件系统内容</li></p><p></ul>Git 历史反映了容器的层历史：
 <ul><li>第一次提交仅包含带有完整元数据的 <code>Image.md</code> 文件</li>
-<li>之后的每次提交代表原始镜像的一个层</li>
-<li>提交包含 Dockerfile 命令作为提交信息</li></p><p></ul><h2>仓库结构</h2></p><pre><code class="language-">repository/
+<li>每个后续提交代表原始镜像中的一个层</li>
+<li>提交信息包含 Dockerfile 命令作为提交消息</li></p><p></ul><h3>文件系统物料清单（fsbom）</h3></p><p>生成一个 YAML，列出每一层引入或修改的所有文件：
+<pre><code class="language-bash">oci2git fsbom ubuntu:latest -o ubuntu.yml</code></pre></p><p>使用 tar 包：
+<pre><code class="language-bash">oci2git fsbom -e tar image.tar -o image-bom.yml</code></pre>
+输出的 YAML 会列出每一层，并将其条目按类型（<code>file</code>、<code>hardlink</code>、<code>symlink</code>、<code>directory</code>）和状态（新建为 <code>n:uid:gid</code>，修改为 <code>m:uid:gid</code>）标记。已删除的文件（OCI whiteout）不会包含在内。</p><pre><code class="language-yaml">layers:
+  <ul><li>index: 0</li>
+    </ul>command: "ADD rootfs.tar.gz / # buildkit"
+    digest: "sha256:45f3ea58..."
+    entries:
+      <ul><li>type: file</li>
+        </ul>path: "bin/busybox"
+        size: 919304
+        mode: 493
+        stat: "n:0:0"
+      <ul><li>type: hardlink</li>
+        </ul>path: "bin/sh"
+        target: "bin/busybox"
+        stat: "n:0:0"
+      <ul><li>type: symlink</li>
+        </ul>path: "lib64"
+        target: "lib"
+        stat: "n:0:0"
+  <ul><li>index: 1</li>
+    </ul>command: "RUN apk add --no-cache curl"
+    digest: "sha256:..."
+    entries:
+      <ul><li>type: file</li>
+        </ul>path: "usr/bin/curl"
+        size: 204800
+        mode: 493
+        stat: "n:0:0"
+      <ul><li>type: file</li>
+        </ul>path: "etc/apk/world"
+        size: 32
+        mode: 420
+        stat: "m:0:0"</code></pre></p><h2>仓库结构</h2></p><pre><code class="language-">repository/
 ├── .git/
 ├── Image.md     # Complete image metadata
 └── rootfs/      # Filesystem content from the container</code></pre>
@@ -396,7 +437,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre>
 <li>Git</li></p><p></ul><h2>许可证</h2></p><p>MIT</p><p>[文档]: https://docs.rs/oci2git/</p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-01-30
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-02
 
 ---</p>
         </div>
@@ -408,7 +449,7 @@ oci2git -e tar -o ./ubuntu-repo ubuntu-latest.tar</code></pre>
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-01-30 
+        Last updated: 2026-04-02 
     </div>
     
 </body>
