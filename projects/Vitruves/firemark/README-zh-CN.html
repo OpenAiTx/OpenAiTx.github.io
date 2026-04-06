@@ -1,0 +1,417 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>firemark - 停止发送无水印文档。Firemark 一键为图片和 PDF 添加水印。针对 AI 水印去除进行了优化。使用 Rust 编写。</title>
+    <meta name="description" content="停止发送无水印文档。Firemark 一键为图片和 PDF 添加水印。针对 AI 水印去除进行了优化。使用 Rust 编写。">
+    <meta name="keywords" content="firemark, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "firemark",
+  "description": "停止发送无水印文档。Firemark 一键为图片和 PDF 添加水印。针对 AI 水印去除进行了优化。使用 Rust 编写。",
+  "author": {
+    "@type": "Person",
+    "name": "Vitruves"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 93
+  },
+  "url": "https://OpenAiTx.github.io/projects/Vitruves/firemark/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/Vitruves/firemark/main/README.md",
+  "datePublished": "2026-04-06",
+  "dateModified": "2026-04-06"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Vitruves/firemark" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    firemark
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 93 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by Vitruves</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><p align="center">
+  <img src="https://raw.githubusercontent.com/Vitruves/firemark/main/assets/img/firemark.png" alt="firemark" width="200">
+</p></p><p><h1 align="center">firemark</h1></p><p><p align="center">一个快速的单二进制图像和PDF水印工具。使用Rust构建。</p></p><h2>为什么要给文档加水印？</h2></p><p>每年，数百万人因简单的文档交换而成为身份欺诈的受害者。一个常见的场景是：你正在找房租。房东——或者冒充房东的人——要求提供你的身份证、工资单、税务通知的复印件。你未经标记地发送给他们。“房东”消失了，而你的文件现在被用来开设银行账户、贷款，或伪造你的身份。</p><p>给你发送的每份文件加水印是最有效的防御措施。一个可见的覆盖文字，写着<strong>“发送给XYZ机构——2026年3月——仅限租房申请”</strong>，使文档无法用于其他任何目的。如果文档泄露，你就能确切知道它来自哪里。</p><p>firemark 让这一切轻而易举：一条命令，任何图像或PDF，17种视觉样式，抗编辑的加密水印图案，以及整文件夹的批处理功能。</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/Vitruves/firemark/main/assets/img/paycheck-firemark-comparison.png" alt="Before and after watermarking" width="800">
+  <br>
+  <em>水印前后对比——一条命令，文档现在可追踪且防篡改。</em>
+</p></p><h2>安装</h2></p><p>从 <a href="https://crates.io/crates/firemark" target="_blank" rel="noopener noreferrer">crates.io</a>：</p><pre><code class="language-bash">cargo install firemark</code></pre>
+来自源头：</p><pre><code class="language-bash">git clone https://github.com/Vitruves/firemark.git
+cd firemark
+cargo install --path .</code></pre></p><p>生成一个单一的优化二进制文件（约5 MB）。</p><h2>快速开始</h2></p><pre><code class="language-bash"># Watermark a single image
+firemark photo_id.png -m "Flat rental — SCI Dupont — March 2026"</p><h1>Watermark a PDF</h1>
+firemark tax_notice.pdf -m "CONFIDENTIAL" -s "Do not distribute"</p><h1>Watermark an entire folder recursively</h1>
+firemark ./documents/ -R -m "Sent to Agency X" -t stamp</p><h1>Preview without writing files</h1>
+firemark id_card.jpg -m "Draft" -n</code></pre>
+输出默认保存在与输入文件相同目录下，文件名为 <code>{name}-watermarked.{ext}</code>。  
+使用 <code>-o</code> 可设置明确的输出路径，或用 <code>-S</code> 指定自定义后缀。  </p><h2>水印类型  </h2></p><p>| 标志 | 样式 | 描述 |  
+|---|---|---|  
+| <code>diagonal</code> | 斜线网格 | 全页重复斜向文字（默认） |  
+| <code>stamp</code> | 印章 | 大型居中印章，带双重边框 |  
+| <code>stencil</code> | 模板 | 全宽军事模板字体 |  
+| <code>typewriter</code> | 打字机 | 等宽打字机字体 |  
+| <code>handwritten</code> | 签名 | 手写风格签名并带下划线 |  
+| <code>redacted</code> | 涂黑 | 全宽黑色涂黑条 |  
+| <code>badge</code> | 徽章 | 安全盾牌/徽章标志 |  
+| <code>ribbon</code> | 缎带 | 斜角缎带横幅 |  
+| <code>seal</code> | 印章 | 圆形公证风格印章 |  
+| <code>frame</code> | 边框 | 全页装饰边框 |  
+| <code>tile</code> | 瓷砖 | 密集均匀文字网格 |  
+| <code>mosaic</code> | 马赛克 | 随机散布文字 |  
+| <code>weave</code> | 编织 | 交错斜向编织 |  
+| <code>ghost</code> | 幽灵 | 极其细微浮雕文字 |  
+| <code>watercolor</code> | 水彩 | 柔和模糊水彩效果 |  
+| <code>noise</code> | 噪点 | 像素噪点扰乱文字 |  
+| <code>halftone</code> | 半色调 | 点阵半色调文字 |</p><pre><code class="language-bash">firemark doc.pdf -t stamp -m "CONFIDENTIAL" --border --color red</code></pre>
+<h2>安全水印</h2></p><p>firemark 覆盖了受钞票安全特征启发的加密水印图案。  
+这些精细的几何图案极难被图像编辑器移除。</p><p>| 样式 | 描述 |
+|---|---|
+| <code>guilloche</code> | 正弦波包络带（默认） |
+| <code>rosette</code> | 斯比罗图 + 角玫瑰曲线 |
+| <code>crosshatch</code> | 细斜对角菱形格网 |
+| <code>border</code> | 波浪嵌套安全边框 |
+| <code>lissajous</code> | 参数化利萨茹图形 |
+| <code>moire</code> | 同心圆干涉 |
+| <code>spiral</code> | 阿基米德螺旋涡旋 |
+| <code>mesh</code> | 六边形蜂巢网格 |
+| <code>plume</code> | 散布在表面的流动羽毛状曲线 |
+| <code>constellation</code> | 由细几何网连接的星节点 |
+| <code>ripple</code> | 来自随机起点的重叠椭圆波前 |
+| <code>full</code> | 所有图案组合 |
+| <code>none</code> | 禁用水印 |</p><pre><code class="language-bash">firemark id.png -m "Rental application" --filigrane moire
+firemark id.png -m "Rental application" --filigrane none   # disable</code></pre></p><h2>AI去除加固</h2></p><p>每次渲染默认都是非确定性的。firemark应用通用的
+渲染后扰动（alpha抖动、亚像素色噪、边缘微点、
+稀疏幽灵像素）和每个渲染器的随机化，确保没有两个输出
+像素完全相同——即使设置相同。这使得AI
+视觉模型无法学习可预测的模式来进行去除。</p><p>除此之外，默认嵌入对抗性提示注入条以
+混淆AI水印去除工具。如果不想显示提示文本，可用<code>--no-anti-ai</code>禁用：</p><pre><code class="language-bash">firemark doc.png -m "CONFIDENTIAL" --no-anti-ai</code></pre></p><h2>常用选项</h2></p><pre><code class="language-">-m, --main-text           Primary watermark text
+-s, --secondary-text      Secondary text line
+-t, --type                Watermark style (see table above)
+-o, --output              Output file path
+-S, --suffix              Custom output suffix (default: "watermarked")
+-c, --color               Color — name or #RRGGBB (default: blue)
+-O, --opacity             Opacity 0.0–1.0 (default: 0.5)
+-r, --rotation            Angle in degrees (default: -45)
+-p, --position            center, top-left, top-right, bottom-left, bottom-right, tile
+-f, --font                Font name or path to .ttf/.otf
+-I, --image               Overlay an image as watermark
+    --qr-data             Embed a QR code with custom data
+    --qr-code-position    QR code placement (default: center)
+    --qr-code-size        QR code size in pixels (default: auto)
+    --border              Draw a border around the watermark
+    --shadow              Add a drop shadow
+    --filigrane           Security filigrane style (default: guilloche)
+    --no-anti-ai          Disable adversarial prompt injection (on by default)</code></pre></p><p>完整的70多个标志列表，请参见 <a href="https://raw.githubusercontent.com/Vitruves/firemark/main/CLI.md" target="_blank" rel="noopener noreferrer"><code>CLI.md</code></a>。</p><h2>PDF 选项</h2></p><pre><code class="language-">    --pages           Pages to watermark (e.g. 1,3-5 or "all")
+    --skip-pages      Pages to skip
+    --behind          Place watermark behind content
+    --no-flatten      Keep layers separate (flattened by default)
+    --dpi             Render resolution (default: 150)</code></pre></p><h2>批处理</h2></p><pre><code class="language-bash"># Process all images and PDFs in a folder
+firemark ./inbox/ -m "INTERNAL" -t tile</p><h1>Recursive, 8 threads, custom suffix</h1>
+firemark ./docs/ -R -j 8 -m "Draft" -S draft</p><h1>Dry run — list what would be processed</h1>
+firemark ./docs/ -R -m "Draft" -n</code></pre>
+已经带有水印的文件（匹配后缀）在重新运行时会自动跳过。</p><h2>配置文件</h2></p><p>将选项保存在 TOML 文件中，以避免重复输入参数。请参见
+<a href="https://raw.githubusercontent.com/Vitruves/firemark/main/examples/config/firemark.toml" target="_blank" rel="noopener noreferrer"><code>examples/config/firemark.toml</code></a> 获取包含两个预设的完整示例：<strong>超安全</strong>（密集铺设，完整水印，二维码可追踪，元数据清除）和<strong>轻量</strong>（简单对角文本，无额外功能）。</p><pre><code class="language-toml"># Global defaults
+main_text = "CONFIDENTIAL"
+secondary_text = "{author} — {date}"
+watermark_type = "diagonal"
+color = "#1a3c6e"
+opacity = 0.45
+font_weight = "bold"
+filigrane = "guilloche"
+border = true</p><p>[preset.ultra-secure]
+main_text = "CONFIDENTIAL — {author}"
+watermark_type = "tile"
+color = "#CC0000"
+opacity = 0.6
+filigrane = "full"
+anti_ai = true
+qr_data = "firemark://{author}/{timestamp}/{uuid}"
+strip_metadata = true</p><p>[preset.light]
+main_text = "COPY"
+watermark_type = "diagonal"
+color = "#555555"
+opacity = 0.3
+filigrane = "none"
+anti_ai = false</code></pre></p><pre><code class="language-bash">firemark doc.pdf --config firemark.toml
+firemark doc.pdf --config firemark.toml --preset ultra-secure
+firemark doc.pdf --config firemark.toml --preset light
+firemark doc.pdf --save-preset mypreset    # save current flags
+firemark --list-presets                     # list available presets</code></pre></p><h2>格式支持</h2></p><p>| 格式 | 输入 | 输出 |
+|---|---|---|
+| PNG | 是 | 是 |
+| JPEG | 是 | 是 |
+| PDF | 是 | 是 |
+| WebP | 是 | 是 |
+| TIFF | 是 | 是 |</p><p>支持跨格式转换（例如 <code>firemark photo.webp -o out.pdf</code>）。</p><h2>许可证</h2></p><p>MIT</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-06
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Vitruves/firemark/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-04-06 
+    </div>
+    
+</body>
+</html>
