@@ -1,0 +1,451 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>konvert - G&#233;n&#233;ration de code de mappage Kotlin propre, s&#251;r pour les types et les null &#224; la compilation avec interop&#233;rabilit&#233; Java</title>
+    <meta name="description" content="G&#233;n&#233;ration de code de mappage Kotlin propre, s&#251;r pour les types et les null &#224; la compilation avec interop&#233;rabilit&#233; Java">
+    <meta name="keywords" content="konvert, French, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "konvert",
+  "description": "Génération de code de mappage Kotlin propre, sûr pour les types et les null à la compilation avec interopérabilité Java",
+  "author": {
+    "@type": "Person",
+    "name": "mcarleio"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 156
+  },
+  "url": "https://OpenAiTx.github.io/projects/mcarleio/konvert/README-fr.html",
+  "sameAs": "https://raw.githubusercontent.com/mcarleio/konvert/main/README.md",
+  "datePublished": "2026-04-08",
+  "dateModified": "2026-04-08"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/mcarleio/konvert" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    konvert
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 156 stars</span>
+                <span class="language">French</span>
+                <span>by mcarleio</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Konvert</h1></p><p>[![Maven Central][maven-image]][maven-url]
+[![License][license-image]](LICENSE)
+[![Code Coverage][codecov-image]][codecov-url]</p><p>Voici Konvert, un générateur de code de mappage Kotlin utilisant <a href="https://github.com/google/ksp" target="_blank" rel="noopener noreferrer">Kotlin Symbol Processing (KSP)</a>.
+Conçu spécifiquement pour Kotlin et ses fonctionnalités, Konvert prend en charge un large éventail de cas d'utilisation.</p><p>Fonctionnalités principales :
+<ul><li>🧩 supporte <strong>divers types de classes</strong> → <code>data</code>, <code>enum</code>, <code>value</code>, POJO classiques</li>
+<li>🔄 <strong>Sécurité null</strong> par défaut</li>
+<li>⚙️ <strong>Conversions intelligentes</strong> (<code>Int</code> → <code>String</code>, <code>Instant</code> → <code>Date</code>, …)</li>
+   <li>🔧 Définir des <strong>convertisseurs réutilisables</strong> avec <code>@Konverter</code></li>
+   <li>🔌 Étendre via <strong>SPI</strong> pour un contrôle ultime</li>
+<li>🔗 <strong>Collections & maps</strong> — mappage des éléments inclus</li>
+<li>🛠️ <strong>Personnalisation</strong> fine du mappage des propriétés</li>
+<li>☕ 100% <strong>Interopérabilité Java</strong></li>
+<li>✨ Génère un code <strong>Kotlin propre et idiomatique</strong></li>
+   <li>⏱️ Généré à la <strong>compilation</strong></li>
+   <li>🚫 <strong>Zéro réflexion</strong>, <strong>aucune surcharge à l'exécution</strong></li>
+<li>📦 Fonctionne parfaitement avec <strong>Gradle</strong> et <strong>Maven</strong></li></p><p></ul>> ℹ️ Ce README fournit un aperçu basique, pour plus de détails consultez la <a href="https://mcarleio.github.io/konvert" target="_blank" rel="noopener noreferrer">documentation</a>.</p><h2>Utilisation</h2></p><p>Il existe trois façons différentes d’utiliser Konvert :</p><ul><li>Utilisation de <code>@KonvertTo</code> :</li>
+   </ul><pre><code class="language-kotlin">   @KonvertTo(PersonDto::class)
+   data class Person(val firstName: String, val lastName: String)
+   data class PersonDto(val firstName: String, val lastName: String)
+   ``<code>
+   Cela générera la fonction d'extension suivante
+   </code>`<code>kotlin
+   fun Person.toPersonDto(): PersonDto =
+      PersonDto(firstName = firstName, lastName = lastName)
+   </code>`<code>
+<ul><li>Utilisation de </code>@KonvertFrom<code> (particulièrement utile si vous ne pouvez pas modifier le code de la classe source)</li></p><p>   </ul></code>`<code>kotlin
+   class Person(val firstName: String, val lastName: String) {
+      @KonvertFrom(PersonDto::class)
+      companion object
+   }
+   class PersonDto(val firstName: String, val lastName: String)
+   </code>`<code>
+   Cela générera la fonction d'extension suivante
+   </code>`<code>kotlin
+   fun Person.Companion.fromPersonDto(personDto: PersonDto): Person =
+      Person(firstName = personDto.firstName, lastName = personDto.lastName)
+   </code>`<code></p><ul><li>Utilisation de </code>@Konverter<code> :</li>
+   </ul></code>`<code>kotlin
+   class Person(val firstName: String, val lastName: String)
+   data class PersonDto(val firstName: String, val lastName: String)</p><p>   @Konverter
+   interface PersonMapper {
+      fun toDto(person: Person): PersonDto
+   }
+   </code>`<code>
+   Cela générera l'objet suivant
+   </code>`<code>kotlin
+   object PersonMapperImpl: PersonMapper {
+      override fun toDto(person: Person): PersonDto
+         = PersonDto(firstName = person.firstName, lastName = person.lastName)
+   }
+   </code>`<code>
+Pour un exemple de projet simple, consultez le <a href="example" target="_blank" rel="noopener noreferrer">répertoire example</a>.</p><h3>Correspondances de types</h3></p><p>Pour des correspondances de types simples, comme de </code>Instant<code> à </code>Date<code>, un convertisseur de type est déjà fourni avec Konvert :
+</code></pre>kotlin
+@KonvertTo(PersonDto::class)
+class Person(val name: String, val birthday: Instant)
+class PersonDto(val name: String, val birthday: Date)
+<pre><code class="language-">
+Cela générera la fonction d'extension suivante
+</code></pre>kotlin
+fun Person.toPersonDto(): PersonDto = PersonDto(
+   name = name,
+   birthday = birthday.let { java.util.Date.from(it) }
+)
+<pre><code class="language-">
+Consultez la <a href="https://mcarleio.github.io/konvert/typeconverter/" target="_blank" rel="noopener noreferrer">documentation</a> pour une liste des convertisseurs de types fournis.</p><p>🛈 : Vous pouvez également créer votre propre bibliothèque de convertisseurs de types en
+implémentant <a href="https://raw.githubusercontent.com/mcarleio/konvert/main/converter-api/src/main/kotlin/io/mcarle/konvert/converter/api/TypeConverter.kt" target="_blank" rel="noopener noreferrer">TypeConverter</a> et en l'enregistrant
+via <a href="https://fr.wikipedia.org/wiki/Interface_de_fournisseur_de_services" target="_blank" rel="noopener noreferrer">SPI</a>.</p><h3>Ajustement fin</h3></p><p>La plupart du temps, les classes source et cible peuvent ne pas avoir les mêmes noms et types de propriétés.
+Vous pouvez configurer des mappages spécifiques et renommer la fonction d’extension générée ainsi :
+</code></pre>kotlin
+@KonvertTo(
+   PersonDto::class,
+   mappings = [
+      Mapping(source = "firstName", target = "givenName"),
+      Mapping(source = "lastName", target = "familyName")
+   ],
+   mapFunctionName = "asDto"
+)
+class Person(val firstName: String, val lastName: String)
+class PersonDto(val givenName: String, val familyName: String)
+<pre><code class="language-">
+Cela générera la fonction d'extension suivante
+</code></pre>kotlin
+fun Person.asDto(): PersonDto = PersonDto(
+   givenName = firstName,
+   familyName = lastName
+)
+</code>`<code></p><p>Pour plus de fonctionnalités, consultez
+la <a href="https://mcarleio.github.io/konvert/" target="_blank" rel="noopener noreferrer">documentation</a>
+les KDocs des <a href="annotations/src/main/kotlin/io/mcarle/konvert/api" target="_blank" rel="noopener noreferrer">annotations</a>,
+le <a href="example/src/main/kotlin/io/mcarle/konvert/example" target="_blank" rel="noopener noreferrer">projet exemple</a>
+ou les <a href="processor/src/test/kotlin/io/mcarle/konvert/processor" target="_blank" rel="noopener noreferrer">tests</a>.</p><h2>Configuration Gradle</h2></p><p>Pour utiliser Konvert avec Gradle, vous devez effectuer les étapes suivantes :</p><ul><li>Ajoutez </code>konvert-api<code> comme dépendance pour utiliser les annotations :</li>
+   </ul></code>`<code>kotlin
+   dependencies {
+      implementation("io.mcarle:konvert-api:$konvertVersion")
+   }
+   </code>`<code>
+<ul><li>Ajouter le plugin KSP :</li></p><p>   </ul></code>`<code>kotlin
+   plugins {
+       id("com.google.devtools.ksp").version("2.3.5")
+   }
+   </code>`<code></p><ul><li>Ajoutez </code>konvert<code> en tant que dépendance </code>ksp<code> :</li>
+   </ul></code>`<code>kotlin
+   dependencies {
+      ksp("io.mcarle:konvert:$konvertVersion")
+   }
+   </code>`<code></p><h2>Configuration Maven</h2></p><p>Pour utiliser Konvert avec Maven, vous devez effectuer les étapes suivantes :</p><ul><li>Ajoutez </code>konvert-api<code> en tant que dépendance pour utiliser les annotations :</li>
+   </ul></code>`<code>xml
+   <dependency>
+       <groupId>io.mcarle</groupId>
+       <artifactId>konvert-api</artifactId>
+       <version>${konvert.version}</version>
+   </dependency>
+   </code>`<code></p><ul><li>Utilisez le <a href="https://github.com/mcarleio/ksp-maven-plugin" target="_blank" rel="noopener noreferrer">ksp-maven-plugin</a> avec </code>konvert<code> comme dépendance :</li>
+   </ul></code>`<code>xml
+   <plugin>
+       <groupId>io.mcarle</groupId>
+       <artifactId>ksp-maven-plugin</artifactId>
+       <version>2.3.5-1</version>
+       <executions>
+           <execution>
+               <goals>
+                   <goal>ksp</goal>
+               </goals>
+           </execution>
+       </executions>
+       <dependencies>
+           <dependency>
+               <groupId>io.mcarle</groupId>
+               <artifactId>konvert</artifactId>
+               <version>${konvert.version}</version>
+           </dependency>
+       </dependencies>
+   </plugin>
+   </code>`<code></p><h2>Informations complémentaires</h2></p><ul><li>Konvert est principalement compilé et testé avec JDK >=17. Il devrait également fonctionner avec des versions inférieures à JDK 17, mais cela n’est pas garanti.</li>
+<li>Konvert est capable de convertir des classes depuis et vers des classes écrites en Java (et probablement aussi dans d’autres langages JVM).</li></p><p></ul><h3>Alternatives</h3></p><p>Il existe quelques alternatives à Konvert que vous pourriez vouloir découvrir :</p><ul><li><a href="https://github.com/Mr-Mappie/mappie" target="_blank" rel="noopener noreferrer">Mappie</a></li></p><p>  </ul>Mappie n’utilise pas KSP, mais est plutôt un plugin de compilation pour Kotlin lui-même.
+  Il utilise la réflexion plutôt que des références sous forme de chaînes pour <strong>définir</strong> les mappings,
+  mais <strong>remplace le code de réflexion</strong> lors de la compilation par du code Kotlin idiomatique.</p><ul><li><a href="https://mapstruct.org/" target="_blank" rel="noopener noreferrer">MapStruct</a></li></p><p>  </ul>MapStruct est une bibliothèque de mapping Java bien connue utilisant le traitement d’annotations (voir <a href="https://kotlinlang.org/docs/kapt.html" target="_blank" rel="noopener noreferrer">kapt</a>).
+  Peut être utilisée dans des projets Kotlin, mais ne supporte pas les fonctionnalités spécifiques à Kotlin.</p><ul><li><a href="https://github.com/s0nicyouth/kmapper" target="_blank" rel="noopener noreferrer">kMapper</a></li></p><p>  </ul>kMapper est aussi un processeur KSP, mais semble ne supporter que le mapping entre classes de données Kotlin.</p><ul><li><a href="https://github.com/krud-dev/shapeshift" target="_blank" rel="noopener noreferrer">ShapeShift️</a></li></p><p>  </ul>ShapeShift utilise la réflexion à l’exécution pour mapper entre les classes.</p><ul><li><strong>Codez vous-même</strong> (avec le support de l’IA)</li></p><p>  </ul>En effet, il peut parfois être plus rapide, plus simple et plus flexible d’écrire manuellement le code de mapping.
+  Avec l’aide des outils d’IA actuels, cette tâche répétitive peut être automatisée dans une certaine mesure.</p><h2>Compilation</h2></p><h3>Gradle</h3></p><p>Pour construire le projet, il suffit d’exécuter</p><blockquote>gradle build</blockquote></p><p>#### Exécuter tous les tests</p><p>Par défaut, seul un sous-ensemble des tests disponibles est exécuté, ce qui devrait vérifier la plupart des fonctionnalités de Konvert.
+Pour exécuter tous les tests, ajoutez la propriété </code>runAllTests<code>, par exemple :</p><blockquote>gradle test -PrunAllTests</blockquote></p><h3>Documentation</h3></p><p>Pour servir le site Jekyll localement, exécutez simplement la commande suivante dans </code>docs` :</p><blockquote>docker run --rm -it -v "$PWD":/site -p 4000:4000 bretfisher/jekyll-serve</blockquote></p><h3>CI</h3></p><p>GitHub Actions sont utilisés pour :</p><ul><li><a href="https://raw.githubusercontent.com/mcarleio/konvert/main/.github/workflows/build.yml" target="_blank" rel="noopener noreferrer">construire et tester</a></li>
+<li><a href="https://raw.githubusercontent.com/mcarleio/konvert/main/.github/workflows/release.yml" target="_blank" rel="noopener noreferrer">publier et diffuser</a> vers un dépôt Maven</li>
+<li><a href="https://raw.githubusercontent.com/mcarleio/konvert/main/.github/workflows/pages.yml" target="_blank" rel="noopener noreferrer">générer la documentation</a> et la déployer sur GitHub Pages.</li></p><p></ul><h2>Journal des modifications</h2></p><p>Le <a href="https://raw.githubusercontent.com/mcarleio/konvert/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">journal des modifications</a> contient tous les changements notables.</p><h2>Licence</h2></p><p>    Copyright 2023 Marcel Carlé</p><p>    Sous licence Apache, version 2.0 (la "Licence");
+    vous ne pouvez utiliser ce fichier que conformément à la Licence.
+    Vous pouvez obtenir une copie de la Licence à</p><p>    http://www.apache.org/licenses/LICENSE-2.0</p><p>    Sauf exigence légale ou accord écrit, le logiciel
+    distribué sous la Licence est distribué "EN L’ÉTAT",
+    SANS GARANTIES NI CONDITIONS D'AUCUNE SORTE, explicites ou implicites.
+    Consultez la Licence pour les permissions spécifiques régissant et
+    les limitations sous la Licence.</p><p>[maven-image]: https://img.shields.io/maven-central/v/io.mcarle/konvert.svg</p><p>[maven-url]: https://central.sonatype.com/artifact/io.mcarle/konvert/</p><p>[license-image]: https://img.shields.io/github/license/mcarleio/konvert.svg</p><p>[codecov-image]: https://img.shields.io/codecov/c/github/mcarleio/konvert.svg</p><p>[codecov-url]: https://codecov.io/gh/mcarleio/konvert</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-08
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/mcarleio/konvert/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-04-08 
+    </div>
+    
+</body>
+</html>
