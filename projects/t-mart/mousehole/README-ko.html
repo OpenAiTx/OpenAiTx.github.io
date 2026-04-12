@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mousehole - MAM용 시드박스 IP를 업데이트하는 백그라운드 서비스</title>
+    <meta name="description" content="MAM용 시드박스 IP를 업데이트하는 백그라운드 서비스">
+    <meta name="keywords" content="mousehole, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "mousehole",
+  "description": "MAM용 시드박스 IP를 업데이트하는 백그라운드 서비스",
+  "author": {
+    "@type": "Person",
+    "name": "t-mart"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 169
+  },
+  "url": "https://OpenAiTx.github.io/projects/t-mart/mousehole/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/t-mart/mousehole/master/README.md",
+  "datePublished": "2026-04-12",
+  "dateModified": "2026-04-12"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/t-mart/mousehole" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    mousehole
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 169 stars</span>
+                <span class="language">Korean</span>
+                <span>by t-mart</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Mousehole, MAM용 시드박스 IP 업데이트 도구</h1></p><p>MAM용 시드박스 IP를 업데이트하는 백그라운드 서비스와 이를 관리하는 HTTP 서버입니다.</p><p><img src="https://raw.githubusercontent.com/t-mart/mousehole/master/docs/images/demo.webp" alt="Mousehole Demo"></p><p>호스트/VPN/시드박스를 사용하여 시딩 중이고 IP 주소가 불안정할 때 유용할 수 있습니다.</p><p>특징:</p><ul><li>호스트의 IP 주소를 주기적으로 MAM에 업데이트하는 백그라운드 서비스.</li></p><p>  </ul>업데이트 전, Mousehole은 호스트의 현재 IP 주소와 AS를 마지막 MAM 응답과 비교하여
+  실제로 업데이트가 필요한지 확인합니다.</p><ul><li>서비스를 관리할 수 있는 프런트엔드 웹사이트 제공:</li></p><p>  <li>MAM 쿠키 설정</li>
+  <li>상태 정보 표시</li>
+  <li>수동 검사 트리거</li></p><p><li>관리 엔드포인트가 포함된 API 서버 제공.</li></p><p>  </ul>자세한 내용은 <a href="https://github.com/t-mart/mousehole/blob/master/docs/API.md" target="_blank" rel="noopener noreferrer">API.md</a>를 참고하세요.</p><h2>시작하기</h2></p><p>Mousehole을 사용하려면 다음을 수행해야 합니다:</p><ul><li><a href="#running-the-service" target="_blank" rel="noopener noreferrer">서비스 실행</a></li>
+<li><a href="#setting-your-mam-cookie" target="_blank" rel="noopener noreferrer">웹 인터페이스를 통해 MAM 쿠키 설정</a></li>
+<li><a href="#handling-errors" target="_blank" rel="noopener noreferrer">MAM 오류 처리</a> (있는 경우)</li></p><p></ul><h3>서비스 실행</h3></p><p>#### Docker Compose (권장)</p><pre><code class="language-yaml">services:
+  gluetun:
+    image: qmcgaw/gluetun:latest
+    cap_add:
+      <ul><li>NET_ADMIN</li>
+    </ul>devices:
+      <ul><li>/dev/net/tun:/dev/net/tun</li>
+    </ul>ports:
+      <ul><li>"5010:5010" # Mousehole port</li>
+      <li>"8080:8080" # qBittorrent Web UI port</li>
+      <li>"6881:6881/tcp" # qBittorrent TCP torrent port</li>
+      <li>"6881:6881/udp" # qBittorrent UDP torrent port</li>
+    </ul>environment:
+      VPN_SERVICE_PROVIDER: "your-vpn-provider"
+      FIREWALL_VPN_INPUT_PORTS: "6881" # qBittorrent torrent
+      # more is needed here -- see Gluetun documentation
+      # https://github.com/qdm12/gluetun-wiki
+      # https://github.com/qdm12/gluetun-wiki/tree/main/setup/providers
+    restart: unless-stopped</p><p>  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    network_mode: "service:gluetun"
+    environment:
+      TZ: Etc/UTC # Set to your timezone for localization
+      WEBUI_PORT: 8080
+      TORRENTING_PORT: 6881
+    restart: unless-stopped</p><p>  mousehole:
+    image: tmmrtn/mousehole:latest
+    network_mode: "service:gluetun"
+    environment:
+      TZ: Etc/UTC # Set to your timezone for localization
+    volumes:
+      # persist cookie data across container restarts
+      <ul><li>"mousehole:/srv/mousehole"</li>
+    </ul>restart: unless-stopped</p><p>volumes:
+  mousehole:</code></pre></p><p>
+시작용 Docker Compose 예제:</p><ul><li>⭐ <a href="https://raw.githubusercontent.com/t-mart/mousehole/master/docs/docker-compose-examples/gluetun-qb.md" target="_blank" rel="noopener noreferrer">Gluetun + qBittorrent + Mousehole</a></li>
+<li><a href="https://raw.githubusercontent.com/t-mart/mousehole/master/docs/docker-compose-examples/wireguard-qb.md" target="_blank" rel="noopener noreferrer">Wireguard + qBittorrent + Mousehole</a></li>
+<li><a href="https://raw.githubusercontent.com/t-mart/mousehole/master/docs/docker-compose-examples/non-vpn.md" target="_blank" rel="noopener noreferrer">비-VPN 예제</a></li></p><p></ul>모든 VPN 설정은 Mousehole을 사이드카로 포함하도록 조정할 수 있습니다. 자세한 내용은
+<a href="https://raw.githubusercontent.com/t-mart/mousehole/master/docs/sidecars.md" target="_blank" rel="noopener noreferrer">Docker Compose에서 Mousehole을 사이드카로 사용하기</a>를 참고하세요.</p><p>#### Unraid</p><p>설치 방법은 <a href="https://raw.githubusercontent.com/t-mart/mousehole/master/./contrib/unraid/README.md" target="_blank" rel="noopener noreferrer">Unraid 설치 가이드</a>를 참고하세요.</p><p>#### 로컬</p><p>서버를 실행하려면:</p><pre><code class="language-bash">bun run start</code></pre></p><h3>MAM 쿠키 설정하기</h3></p><p>Mousehole이 실행 중이면, 브라우저에서 <code>http://<host>:5010</code>의 웹 UI로 이동하세요.  
+로컬에서 실행 중이라면 아마 <http://localhost:5010>일 것입니다.</p><p>처음 실행할 때(또는 쿠키가 동기화되지 않은 경우) Mousehole의 쿠키를 수동으로 설정해야 합니다.</p><p>Mousehole 웹 인터페이스로 이동하면 쿠키를 설정하는 폼이 표시됩니다 -- 쿠키를 붙여넣고 "Set" 버튼을 클릭하세요.</p><p><img src="https://raw.githubusercontent.com/t-mart/mousehole/master/docs/images/cookie-form.png" alt="Mousehole 쿠키 폼"></p><p>쿠키를 얻는 데 도움이 필요하면 "What do I enter here?" 버튼을 클릭하여 튜토리얼을 확인하세요.</p><h3>오류 처리</h3></p><p>Mousehole이 실행 중이어도, Mousehole이 자동으로 수정할 수 없는 문제가 발생할 수 있습니다. 여기 흔한 문제들이 있습니다:</p><ul><li><a href="https://raw.githubusercontent.com/t-mart/mousehole/master/./docs/errors/asn-mismatch.md" target="_blank" rel="noopener noreferrer">"잘못된 세션 - ASN 불일치"</a></li>
+<li><a href="https://raw.githubusercontent.com/t-mart/mousehole/master/./docs/errors/invalid-cookie.md" target="_blank" rel="noopener noreferrer">"잘못된 세션 - 잘못된 쿠키"</a></li>
+<li><a href="https://raw.githubusercontent.com/t-mart/mousehole/master/./docs/errors/last-change-too-recent.md" target="_blank" rel="noopener noreferrer">"최근 변경 너무 잦음"</a></li></p><p></ul><h2>Docker 태그</h2></p><p>Mousehole은 여러 이미지 태그를  
+<a href="https://hub.docker.com/r/tmmrtn/mousehole" target="_blank" rel="noopener noreferrer">Docker Hub</a>에 게시합니다:</p><ul><li>SemVer 버전(<code>0</code>, <code>0.1</code>, <code>0.1.11</code> 등)</li>
+<li><code>latest</code>, 최신 릴리스 버전</li>
+<li><code>edge</code>, <code>master</code> 브랜치의 최신 커밋</li>
+<li>테스트용 <code>master</code> 대상 풀 리퀘스트, <code>pr-<number></code> 태그</li></p><p></ul>어떤 것을 선택할지 모르면 <code>latest</code>를 선택하세요.</p><h2>환경 변수</h2></p><ul><li><code>MOUSEHOLE_PORT</code>: _(기본값 <code>5010</code>)_ HTTP 서버가 수신 대기할 포트입니다.</li>
+<li><code>MOUSEHOLE_STATE_DIR_PATH</code>: _(기본값 <code>/srv/mousehole</code>)_ 서비스가 데이터를 저장할 디렉터리입니다.</li>
+<li><code>MOUSEHOLE_USER_AGENT</code>: _(기본값 <code>mousehole-by-timtimtim/<version></code>)_ MAM에 요청할 때 사용할 사용자 에이전트입니다.</li>
+<li><code>MOUSEHOLE_CHECK_INTERVAL_SECONDS</code>: _(기본값 <code>300</code> (5분))_ 검사 간격(초)입니다.</li>
+<li><code>MOUSEHOLE_STALE_RESPONSE_SECONDS</code>: _(기본값 <code>86400</code> (1일))_ MAM 응답을 오래된 것으로 간주하는 초 수입니다. 이는 Mousehole이 정기적으로 MAM과 통신하며 쿠키의 외부 변경을 감지하고 있는지 확인합니다.</li>
+<li><code>TZ</code>: _(기본값 <code>Etc/UTC</code>)_ 현지화된 시간 표시를 위한 타임존입니다.</li></p><p></ul><h2>기여</h2></p><p>기여하고 싶으신가요? <a href="https://raw.githubusercontent.com/t-mart/mousehole/master/./CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">기여 가이드라인</a>을 확인하세요.</p><p>유용한 추가 기능이 포함된 <a href="./contrib/" target="_blank" rel="noopener noreferrer"><code>contrib</code></a> 디렉터리도 있습니다.</p><h2>링크</h2></p><ul><li><a href="https://github.com/t-mart/mousehole" target="_blank" rel="noopener noreferrer">저장소</a></li>
+<li><a href="https://hub.docker.com/r/tmmrtn/mousehole" target="_blank" rel="noopener noreferrer">Docker Hub 이미지</a></li>
+<li><a href="https://www.myanonamouse.net/f/t/84712/p/p1013257" target="_blank" rel="noopener noreferrer">포럼 게시물</a></li></p><p></ul><h2>개발</h2></p><ul><li>개발 서버를 시작하려면:</li></p><p>  </ul>``<code>bash
+  bun run dev
+  </code>`<code>
+<ul><li>새 버전은 </code>package.json`의 버전을 변경하고 GitHub에 푸시하는 것만으로 태그 지정, 릴리스 및 Docker Hub에 푸시할 수 있습니다. CI 워크플로우가 나머지를 처리합니다.</li></p><p></ul><h2>저작권 표시</h2></p><p>Mouse Hole by Sergey Demushkin from
+<a href="https://thenounproject.com/term/mouse-hole/" target="_blank" rel="noopener noreferrer">Noun Project</a> (CC BY 3.0)</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-12
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/t-mart/mousehole/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-04-12 
+    </div>
+    
+</body>
+</html>

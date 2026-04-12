@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mousehole - 一个用于更新 MAM 种子盒 IP 的后台服务</title>
+    <meta name="description" content="一个用于更新 MAM 种子盒 IP 的后台服务">
+    <meta name="keywords" content="mousehole, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "mousehole",
+  "description": "一个用于更新 MAM 种子盒 IP 的后台服务",
+  "author": {
+    "@type": "Person",
+    "name": "t-mart"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 169
+  },
+  "url": "https://OpenAiTx.github.io/projects/t-mart/mousehole/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/t-mart/mousehole/master/README.md",
+  "datePublished": "2026-04-12",
+  "dateModified": "2026-04-12"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/t-mart/mousehole" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    mousehole
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 169 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by t-mart</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Mousehole，MAM 的 Seedbox IP 更新器</h1></p><p>一个后台服务，用于更新 MAM 的 seedbox IP，并提供一个 HTTP 服务器来管理该服务。</p><p><img src="https://raw.githubusercontent.com/t-mart/mousehole/master/docs/images/demo.webp" alt="Mousehole 演示"></p><p>如果您使用主机/VPN/seedbox 进行种子上传且其 IP 地址不稳定，这将非常有用。</p><p>功能：</p><ul><li>后台服务，定期使用主机的 IP 地址更新 MAM。</li></p><p>  </ul>在更新之前，Mousehole 通过比较主机当前的 IP 地址和 AS 与上次 MAM 响应，检查是否确实需要更新。</p><ul><li>前端网站管理服务，允许：</li></p><p>  <li>设置您的 MAM Cookie</li>
+  <li>显示状态信息</li>
+  <li>手动触发检查</li></p><p><li>带有管理端点的 API 服务器。</li></p><p>  </ul>详情见 <a href="https://github.com/t-mart/mousehole/blob/master/docs/API.md" target="_blank" rel="noopener noreferrer">API.md</a>。</p><h2>快速开始</h2></p><p>使用 Mousehole，您需要：</p><ul><li><a href="#running-the-service" target="_blank" rel="noopener noreferrer">运行服务</a></li>
+<li><a href="#setting-your-mam-cookie" target="_blank" rel="noopener noreferrer">通过网页界面设置您的 MAM Cookie</a></li>
+<li><a href="#handling-errors" target="_blank" rel="noopener noreferrer">处理 MAM 错误</a>（如果有）</li></p><p></ul><h3>运行服务</h3></p><p>#### Docker Compose（推荐）</p><pre><code class="language-yaml">services:
+  gluetun:
+    image: qmcgaw/gluetun:latest
+    cap_add:
+      <ul><li>NET_ADMIN</li>
+    </ul>devices:
+      <ul><li>/dev/net/tun:/dev/net/tun</li>
+    </ul>ports:
+      <ul><li>"5010:5010" # Mousehole port</li>
+      <li>"8080:8080" # qBittorrent Web UI port</li>
+      <li>"6881:6881/tcp" # qBittorrent TCP torrent port</li>
+      <li>"6881:6881/udp" # qBittorrent UDP torrent port</li>
+    </ul>environment:
+      VPN_SERVICE_PROVIDER: "your-vpn-provider"
+      FIREWALL_VPN_INPUT_PORTS: "6881" # qBittorrent torrent
+      # more is needed here -- see Gluetun documentation
+      # https://github.com/qdm12/gluetun-wiki
+      # https://github.com/qdm12/gluetun-wiki/tree/main/setup/providers
+    restart: unless-stopped</p><p>  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    network_mode: "service:gluetun"
+    environment:
+      TZ: Etc/UTC # Set to your timezone for localization
+      WEBUI_PORT: 8080
+      TORRENTING_PORT: 6881
+    restart: unless-stopped</p><p>  mousehole:
+    image: tmmrtn/mousehole:latest
+    network_mode: "service:gluetun"
+    environment:
+      TZ: Etc/UTC # Set to your timezone for localization
+    volumes:
+      # persist cookie data across container restarts
+      <ul><li>"mousehole:/srv/mousehole"</li>
+    </ul>restart: unless-stopped</p><p>volumes:
+  mousehole:</code></pre></p><p>
+入门级 Docker Compose 示例：</p><ul><li>⭐ <a href="https://raw.githubusercontent.com/t-mart/mousehole/master/docs/docker-compose-examples/gluetun-qb.md" target="_blank" rel="noopener noreferrer">Gluetun + qBittorrent + Mousehole</a></li>
+<li><a href="https://raw.githubusercontent.com/t-mart/mousehole/master/docs/docker-compose-examples/wireguard-qb.md" target="_blank" rel="noopener noreferrer">Wireguard + qBittorrent + Mousehole</a></li>
+<li><a href="https://raw.githubusercontent.com/t-mart/mousehole/master/docs/docker-compose-examples/non-vpn.md" target="_blank" rel="noopener noreferrer">非 VPN 示例</a></li></p><p></ul>任何 VPN 设置都可以调整为包含 Mousehole 作为 sidecar。详情请参见
+<a href="https://raw.githubusercontent.com/t-mart/mousehole/master/docs/sidecars.md" target="_blank" rel="noopener noreferrer">在 Docker Compose 中将 Mousehole 用作 Sidecar</a>。</p><p>#### Unraid</p><p>请参阅 <a href="https://raw.githubusercontent.com/t-mart/mousehole/master/./contrib/unraid/README.md" target="_blank" rel="noopener noreferrer">Unraid 安装指南</a> 获取
+安装说明。</p><p>#### 本地</p><p>运行服务器命令：</p><pre><code class="language-bash">bun run start</code></pre></p><h3>设置您的 MAM Cookie</h3></p><p>一旦 Mousehole 运行，使用浏览器访问其网页界面，地址为 <code>http://<host>:5010</code>。  
+如果您本地运行，地址很可能是 <http://localhost:5010>。</p><p>首次运行（或 Cookie 不同步时），需要手动设置 Mousehole 的 Cookie。</p><p>访问 Mousehole 网页界面时，您会看到一个设置 Cookie 的表单 —— 粘贴您的 Cookie 后点击“Set”按钮。</p><p><img src="https://raw.githubusercontent.com/t-mart/mousehole/master/docs/images/cookie-form.png" alt="Mousehole Cookie Form"></p><p>如果您需要获取 Cookie 的帮助，请点击“我该输入什么？”按钮查看教程。</p><h3>处理错误</h3></p><p>即使 Mousehole 已启动运行，仍有可能出现 Mousehole 无法自动修复的问题。以下是一些常见错误：</p><ul><li><a href="https://raw.githubusercontent.com/t-mart/mousehole/master/./docs/errors/asn-mismatch.md" target="_blank" rel="noopener noreferrer">"无效会话 - ASN 不匹配"</a></li>
+<li><a href="https://raw.githubusercontent.com/t-mart/mousehole/master/./docs/errors/invalid-cookie.md" target="_blank" rel="noopener noreferrer">"无效会话 - 无效的 Cookie"</a></li>
+<li><a href="https://raw.githubusercontent.com/t-mart/mousehole/master/./docs/errors/last-change-too-recent.md" target="_blank" rel="noopener noreferrer">"最近的更改过于频繁"</a></li></p><p></ul><h2>Docker 标签</h2></p><p>Mousehole 在
+<a href="https://hub.docker.com/r/tmmrtn/mousehole" target="_blank" rel="noopener noreferrer">Docker Hub</a> 发布多个镜像标签：</p><ul><li>语义版本号（<code>0</code>，<code>0.1</code>，<code>0.1.11</code> 等）</li>
+<li><code>latest</code>，最新发布版本</li>
+<li><code>edge</code>，<code>master</code> 分支的最新代码</li>
+<li>针对 <code>master</code> 分支的拉取请求，用于测试，标记为 <code>pr-<number></code></li></p><p></ul>如果您不知道选哪个，请选择 <code>latest</code>。</p><h2>环境变量</h2></p><ul><li><code>MOUSEHOLE_PORT</code>：_(默认 <code>5010</code>)_ HTTP 服务器监听的端口。</li>
+<li><code>MOUSEHOLE_STATE_DIR_PATH</code>：_(默认 <code>/srv/mousehole</code>)_ 服务存储数据的目录。</li>
+<li><code>MOUSEHOLE_USER_AGENT</code>：_(默认 <code>mousehole-by-timtimtim/<version></code>)_ 向 MAM 发送请求时使用的用户代理。</li>
+<li><code>MOUSEHOLE_CHECK_INTERVAL_SECONDS</code>：_(默认 <code>300</code>（5分钟）)_ 检查的时间间隔，单位为秒。</li>
+<li><code>MOUSEHOLE_STALE_RESPONSE_SECONDS</code>：_(默认 <code>86400</code>（1天）)_ MAM 响应被视为过时的秒数。这确保 Mousehole 以某个固定间隔与 MAM 通信，并检测对 cookie 的带外更改。</li>
+<li><code>TZ</code>：_(默认 <code>Etc/UTC</code>)_ 用于显示本地化时间的时区。</li></p><p></ul><h2>贡献</h2></p><p>想要贡献代码？请查看 <a href="https://raw.githubusercontent.com/t-mart/mousehole/master/./CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">贡献指南</a>。</p><p>还有一个包含有用辅助功能的 <a href="./contrib/" target="_blank" rel="noopener noreferrer"><code>contrib</code></a> 目录。</p><h2>链接</h2></p><ul><li><a href="https://github.com/t-mart/mousehole" target="_blank" rel="noopener noreferrer">代码仓库</a></li>
+<li><a href="https://hub.docker.com/r/tmmrtn/mousehole" target="_blank" rel="noopener noreferrer">Docker Hub 镜像</a></li>
+<li><a href="https://www.myanonamouse.net/f/t/84712/p/p1013257" target="_blank" rel="noopener noreferrer">论坛帖子</a></li></p><p></ul><h2>开发</h2></p><ul><li>启动开发服务器：</li></p><p>  </ul>``<code>bash
+  bun run dev
+  </code>`<code></p><ul><li>新版本可以通过简单地更改 </code>package.json` 中的版本号并推送到 GitHub 来标记、发布并推送到 Docker Hub。CI 工作流会处理剩下的工作。</li></p><p></ul><h2>归属</h2></p><p>鼠洞 图标由 Sergey Demushkin 提供，来自
+<a href="https://thenounproject.com/term/mouse-hole/" target="_blank" rel="noopener noreferrer">Noun Project</a> （CC BY 3.0）</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-12
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/t-mart/mousehole/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-04-12 
+    </div>
+    
+</body>
+</html>
