@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diffusion-SDF - [CVPR 2023] Diffusion-SDF：基于体素扩散的文本到形状转换</title>
+    <meta name="description" content="[CVPR 2023] Diffusion-SDF：基于体素扩散的文本到形状转换">
+    <meta name="keywords" content="Diffusion-SDF, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Diffusion-SDF",
+  "description": "[CVPR 2023] Diffusion-SDF：基于体素扩散的文本到形状转换",
+  "author": {
+    "@type": "Person",
+    "name": "ttlmh"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 206
+  },
+  "url": "https://OpenAiTx.github.io/projects/ttlmh/Diffusion-SDF/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/ttlmh/Diffusion-SDF/master/README.md",
+  "datePublished": "2026-04-13",
+  "dateModified": "2026-04-13"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/ttlmh/Diffusion-SDF" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Diffusion-SDF
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 206 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by ttlmh</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Diffusion-SDF：通过体素化扩散实现文本到形状转换</h1></p><p>由 <a href="https://ttlmh.github.io/" target="_blank" rel="noopener noreferrer">李沐恒</a>、<a href="https://duanyueqi.github.io/" target="_blank" rel="noopener noreferrer">段岳琪</a>、<a href="https://scholar.google.com/citations?user=6a79aPwAAAAJ&hl=en&authuser=1" target="_blank" rel="noopener noreferrer">周杰</a> 和 <a href="https://scholar.google.com/citations?user=TN8uDQoAAAAJ&hl=en&authuser=1" target="_blank" rel="noopener noreferrer">卢继文</a> 创建。</p><p><img src="https://raw.githubusercontent.com/ttlmh/Diffusion-SDF/master/media/intro.png" alt="intro"></p><p>We propose a new generative 3D modeling framework called <strong>Diffusion-SDF</strong> for the challenging task of text-to-shape synthesis. Previous approaches lack flexibility in both 3D data representation and shape generation, thereby failing to generate highly diversified 3D shapes conforming to the given text descriptions. To address this, we propose a SDF autoencoder together with the Voxelized Diffusion model to learn and generate representations for voxelized signed distance fields (SDFs) of 3D shapes. Specifically, we design a novel UinU-Net architecture that implants a local-focused inner network inside the standard U-Net architecture, which enables better reconstruction of patch-independent SDF representations. We extend our approach to further text-to-shape tasks including text-conditioned shape completion and manipulation. Experimental results show that Diffusion-SDF is capable of generating both high-quality and highly diversified 3D shapes that conform well to the given text descriptions. Diffusion-SDF has demonstrated its superiority compared to previous state-of-the-art text-to-shape approaches.</p><p><img src="https://raw.githubusercontent.com/ttlmh/Diffusion-SDF/master/media/pipeline.gif" alt="intro"></p><p>[[项目主页]](https://ttlmh.github.io/DiffusionSDF/) [[arXiv]](https://arxiv.org/abs/2212.03293)</p><h2>代码</h2></p><h3>安装</h3>
+要设置 Diffusion-SDF 环境，可以使用提供的 <code>diffusionsdf.yml</code> 文件来创建 Conda 环境。请按照以下步骤操作：
+<ul><li>克隆仓库：</li>
+</ul><pre><code class="language-">git clone https://github.com/ttlmh/Diffusion-SDF.git</code></pre>
+<ul><li>使用提供的 YAML 文件创建 Conda 环境并激活：</li>
+</ul><pre><code class="language-">conda env create -f diffusionsdf.yml
+conda activate diffusionsdf</code></pre></p><h3>下载预训练模型</h3>
+下载SDF自动编码器模型文件（vae_epoch-120.pth：<a href="https://pan.baidu.com/s/1z0eh8SXSrn8tbq5epo0r6Q?pwd=f1cv" target="_blank" rel="noopener noreferrer">百度网盘</a> / <a href="https://drive.google.com/file/d/18MxWYf6IItYOxUzdM5LiWb8dr9zSwA-2/view?usp=sharing" target="_blank" rel="noopener noreferrer">谷歌云盘</a>）和体素扩散模型文件（voxdiff-uinu.ckpt：<a href="https://pan.baidu.com/s/1Emu5kFVaYbuKIkdCKlghXQ?pwd=q1wv" target="_blank" rel="noopener noreferrer">百度网盘</a> / <a href="https://drive.google.com/file/d/1yeB0dJGZvIXdF1V1DhI-fRz6CKnGbIwJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">谷歌云盘</a>））。将下载的模型文件放置在目录``<code>./ckpt</code>`<code>中。</p><hr></p><h2>推理</h2></p><h3>文本到形状生成</h3>
+使用Diffusion-SDF从文本描述生成3D形状，运行：</p><pre><code class="language-">python txt2sdf.py --prompt "a revolving chair" --save_obj</code></pre>
+生成的3D形状将以GIF渲染图像和OBJ文件的形式保存在</code>outputs/<code>目录下。</p><h3>文本条件形状补全</h3>
+给定一个部分/不完整的3D形状（以</code>.h5<code>格式的SDF文件）和文本提示，Diffusion-SDF可以补全缺失区域：</p><pre><code class="language-bash"># Axial cut: mask out the bottom half along the Z axis
+python shape_completion.py \
+    --input_sdf path/to/partial.h5 \
+    --prompt "a wooden chair" \
+    --mask_axis z --mask_ratio 0.5</p><h1>SDF-value based masking (mask voxels with SDF >= threshold)</h1>
+python shape_completion.py \
+    --input_sdf path/to/shape.h5 \
+    --prompt "a dining table" \
+    --mask_type threshold --mask_value 0.0</code></pre>
+结果（GIF 渲染和可选的 OBJ 文件）保存在 </code>outputs/shape_completion/<code> 目录下。</p><h3>文本条件形状操作</h3>
+给定一个现有的 3D 形状和文本提示，Diffusion-SDF 通过 SDEdit 方法修改形状——将形状编码到潜在空间，添加噪声直到选定的时间步，然后使用新的文本提示进行去噪：</p><pre><code class="language-bash"># Moderate manipulation (50% noise strength)
+python shape_manipulation.py \
+    --input_sdf path/to/shape.h5 \
+    --prompt "a chair with a cushion" \
+    --strength 0.5</p><h1>Strong manipulation (75% noise strength — more creative freedom)</h1>
+python shape_manipulation.py \
+    --input_sdf path/to/shape.h5 \
+    --prompt "a modern minimalist chair" \
+    --strength 0.75</code></pre>
+结果保存在 </code>outputs/shape_manipulation/<code> 下，包括用于对比的原始形状渲染图。</p><hr></p><h2>训练</h2></p><h3>数据准备</h3></p><p>训练需要两样东西：三维形状的体素化 SDF 文件，以及 Text2Shape 提供的文本描述。</p><p>#### 第 0 步 — 下载 ShapeNet Core v1</p><p>注册并下载 <a href="https://shapenet.org/" target="_blank" rel="noopener noreferrer">ShapeNet Core v1</a>，并解压到某处（例如 </code>data/ShapeNetCore.v1/<code>）。</p><p>#### 第 1 步 — 预计算 64³ SDF 体积</p><p>ShapeNet 提供三角网格；自编码器和扩散模型需要在 64³ 网格上的体素化符号距离场，存储为 HDF5 文件。我们遵循与 <a href="https://github.com/yccyenchicheng/SDFusion" target="_blank" rel="noopener noreferrer">SDFusion</a> 相同的预处理流程：</p><pre><code class="language-bash"># Install system dependencies (Ubuntu/Debian)
+sudo apt-get install freeglut3-dev libtbb-dev</p><h1>Clone SDFusion and run their SDF generation scripts</h1>
+<h1>(see SDFusion repo for the full launcher scripts)</h1>
+cd preprocess
+bash launch_create_sdf_shapenet.sh \
+    --shapenet_root data/ShapeNetCore.v1 \
+    --out_root data/ShapeNet/sdf</code></pre>
+预期的输出布局是：</p><pre><code class="language-">data/ShapeNet/
+  sdf/
+    <synset_id>/          e.g. 03001627 (chair), 04379243 (table)
+      <model_id>/
+        pc_sdf_sample.h5  float32 array of shape (262144,) = 64³ SDF values</code></pre></p><p>HDF5 键为 </code>pc_sdf_sample<code>，数组以扁平形式存储（262144 = 64×64×64 个元素）。</p><p>#### 第 2 步 — 准备 Text2Shape 标注</p><p><a href="http://text2shape.stanford.edu/" target="_blank" rel="noopener noreferrer">Text2Shape</a> 仅提供 ShapeNet <strong>椅子</strong>和<strong>桌子</strong>的自然语言描述。其他类别将进行无条件训练（空标注）。</p><pre><code class="language-bash"># Download the caption CSV
+mkdir -p data/ShapeNet/text
+wget http://text2shape.stanford.edu/dataset/captions.tablechair.csv \
+    -O data/ShapeNet/text/captions.tablechair.csv</p><h1>Convert to captions.json and generate train/val/test splits</h1>
+python preprocess/prepare_text2shape.py --data_root data/ShapeNet</code></pre>
+这将产生：</p><pre><code class="language-">data/ShapeNet/
+  text/
+    captions.tablechair.csv   (raw Text2Shape CSV)
+    captions.json             {model_id: [caption, ...]}
+  train_models.json           [model_id, ...]
+  val_models.json
+  test_models.json</code></pre></p><p>如果您有 ShapeNet 的官方拆分 JSON 文件，请通过 </code>--shapenet_split_dir<code> 传递它们，以使用规范拆分而不是随机拆分：</p><pre><code class="language-bash">python preprocess/prepare_text2shape.py \
+    --data_root data/ShapeNet \
+    --shapenet_split_dir data/ShapeNet/splits</code></pre></p><h3>第一步 — 训练 SDF 自编码器</h3>
+训练逐块变分自编码器，将 64³ 的 SDF 体积编码为紧凑的 8³ 潜在空间：</p><pre><code class="language-bash"># Single GPU
+python train_ae.py --data_root data/ShapeNet --cat all</p><h1>Resume from a checkpoint</h1>
+python train_ae.py --data_root data/ShapeNet \
+    --resume ckpt/vae_epoch-120.pth --start_epoch 121</p><h1>Multi-GPU (DDP via torchrun)</h1>
+torchrun --nproc_per_node=4 train_ae.py --data_root data/ShapeNet --dist_train</code></pre>
+检查点保存到 </code>./ckpt/<code>，文件名为 </code>vae_epoch-{N}.pth<code>。</p><h3>第2步 — 训练体素扩散模型</h3>
+AE训练完成后，使用PyTorch Lightning训练文本条件的3D扩散模型：</p><pre><code class="language-bash"># Single GPU
+python main.py --config configs/voxdiff-uinu.yaml</p><h1>Resume from a checkpoint</h1>
+python main.py --config configs/voxdiff-uinu.yaml --resume /path/to/checkpoint.ckpt</p><h1>Multi-GPU</h1>
+python main.py --config configs/voxdiff-uinu.yaml --gpus 0,1,2,3</code></pre></p><p>检查点保存在 </code>logs/<run_name>/checkpoints/` 下。</p><h2>致谢</h2>
+我们的代码基于 <a href="https://github.com/CompVis/stable-diffusion" target="_blank" rel="noopener noreferrer">Stable-Diffusion</a> 和 <a href="https://github.com/yccyenchicheng/AutoSDF" target="_blank" rel="noopener noreferrer">AutoSDF</a>。</p><h2>引用</h2>
+如果您在研究中发现我们的工作有用，请考虑引用：</p><pre><code class="language-">@inproceedings{li2023diffusionsdf,
+  author={Li, Muheng and Duan, Yueqi and Zhou, Jie and Lu, Jiwen},
+  title={Diffusion-SDF: Text-to-Shape via Voxelized Diffusion},
+  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2023}
+}</code></pre></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-13
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/ttlmh/Diffusion-SDF/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-04-13 
+    </div>
+    
+</body>
+</html>
