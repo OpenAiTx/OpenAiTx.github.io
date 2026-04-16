@@ -1,0 +1,383 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>asmr-downloader - 一个用于从 asmr.one 下载 ASMR 媒体的工具（感谢 asmr.one）</title>
+    <meta name="description" content="一个用于从 asmr.one 下载 ASMR 媒体的工具（感谢 asmr.one）">
+    <meta name="keywords" content="asmr-downloader, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "asmr-downloader",
+  "description": "一个用于从 asmr.one 下载 ASMR 媒体的工具（感谢 asmr.one）",
+  "author": {
+    "@type": "Person",
+    "name": "fireinrain"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 164
+  },
+  "url": "https://OpenAiTx.github.io/projects/fireinrain/asmr-downloader/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/README.md",
+  "datePublished": "2026-04-16",
+  "dateModified": "2026-04-16"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/fireinrain/asmr-downloader" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    asmr-downloader
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 164 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by fireinrain</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h2>📖 项目简介</h2></p><p>ASMRoner 是一款 Go 语言命令行工具，用于搜索、下载、同步 asmr.one 音声作品，并提供简易 Web 播放界面。</p><blockquote>🌐 衍生作品：<a href="https://asmr.furina.in" target="_blank" rel="noopener noreferrer">asmr.furina.in</a> — 一个简洁干净的在线 ASMR 听音页面</blockquote></p><h2>🚀 快速开始</h2></p><pre><code class="language-bash">git clone https://github.com/fireinrain/asmroner.git && cd asmroner
+go build -o asmroner
+./asmroner config   # 交互式初始化配置</code></pre></p><h2>📋 常用命令</h2></p><pre><code class="language-bash"># 搜索
+./asmroner search "护士" -c 20
+./asmroner search "护士,-中出@duration:1h" -c 50</p><h1>下载</h1>
+./asmroner download RJ01037721 -d ./downloads
+./asmroner download RJ01037721,RJ02000001 -d ./downloads
+./asmroner download hot100 -n 10 -d ./downloads</p><h1>搜索 + 下载/导出</h1>
+./asmroner search download "护士" -d ./downloads -s 20
+./asmroner search export "护士" -n 100 -f data.json</p><h1>同步元数据 & 批量下载</h1>
+./asmroner sync
+./asmroner sync download -d ./downloads
+./asmroner sync retry -d ./downloads
+./asmroner sync report</p><h1>Web 播放界面</h1>
+./asmroner listen -p 8080 ./syncdata</code></pre></p><h2>📸 截图</h2></p><p>| 配置 | 搜索 |
+|:---:|:---:|
+| <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/config.png" alt="配置"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/search.png" alt="搜索"> |
+| <strong>下载</strong> | <strong>同步</strong> |
+| <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/download.png" alt="下载"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/sync.png" alt="同步"> |
+| <strong>同步下载</strong> | <strong>统计</strong> |
+| <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/sync-down.png" alt="同步下载"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/sync-report.png" alt="统计"> |
+| <strong>Web 界面</strong> | <strong>Web 界面 2</strong> |
+| <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/listen.png" alt="Web界面"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/listen2.png" alt="Web界面2"> |</p><p><details>
+<summary><b>✨ 功能特性</b></summary></p><ul><li><strong>搜索</strong>：单个/批量 RJID、高级搜索语法、结果导出 CSV/JSON</li>
+<li><strong>下载</strong>：单个/批量/热门作品下载，自动限流、重试、指数退避</li>
+<li><strong>同步</strong>：元数据同步、批量下载控制、状态跟踪、失败重试</li>
+<li><strong>Web 界面</strong>：可视化浏览、浏览器内播放、响应式设计</li>
+<li><strong>配置</strong>：交互式初始化，支持代理、限流、抖动等高级配置</li></p><p></ul></details></p><p><details>
+<summary><b>⚙️ 配置文件说明</b></summary></p><p>配置文件路径：<code>~/.asmroner/config.toml</code>（TOML 格式）</p><pre><code class="language-toml">[user]
+account = "guest"
+password = "guest"</p><p>[downloader]
+api_url = ""                # 留空自动获取最快站点
+proxy_url = ""              # 支持 http / socks5
+max_workers = 5
+max_retries = 3
+sync_data_folder = "./syncdata"
+sync_wanted_size = "200MB"  # 同步容量限制
+prefer_media = "all"        # all | mp3>wav>flac</p><p>[limit]
+sync_qps = 2
+sync_jitter_min = 100       # ms
+sync_jitter_max = 500
+download_qps = 0.2
+download_jitter_min = 2000
+download_jitter_max = 5000</code></pre>
+</details></p><p><details>
+<summary><b>📋 命令选项速查</b></summary></p><p>| 命令 | 选项 | 说明 |
+|------|------|------|
+| <code>search</code> | <code>-c</code> | 搜索结果数量（默认 10） |
+| <code>search download</code> | <code>-d</code>, <code>-s</code> | 下载目录、下载数量 |
+| <code>search export</code> | <code>-f</code>, <code>-n</code> | 导出文件名（.csv/.json）、导出数量 |
+| <code>download</code> | <code>-d</code>, <code>-n</code> | 下载目录、hot100 数量 |
+| <code>sync download</code> | <code>-d</code> | 下载目录 |
+| <code>sync retry</code> | <code>-d</code> | 失败文件所在目录 |
+| <code>sync export</code> | <code>-s</code>, <code>-f</code> | 状态（failed/success）、导出文件 |
+| <code>listen</code> | <code>-p</code> | 端口（默认 9999） |</p><p></details></p><p><details>
+<summary><b>📁 项目结构</b></summary></p><pre><code class="language-">asmroner/
+├── cmd/                # 命令行接口（config/download/search/sync/listen）
+├── internal/
+│   ├── engine/        # 核心下载引擎（限流、重试、并发控制）
+│   ├── logger/        # 结构化日志系统
+│   ├── model/         # 数据模型与查询参数解析
+│   ├── database/      # SQLite 数据库
+│   ├── consts/        # 常量定义
+│   └── utils/         # 工具函数
+├── webui/             # 内嵌 Web 界面（Tailwind + Plyr）
+├── main.go
+└── go.mod</code></pre></p><p></details></p><p><details>
+<summary><b>🛠 技术栈</b></summary></p><p>| 组件 | 用途 |
+|------|------|
+| Cobra + Viper | CLI 框架 + 配置管理 |
+| GORM + SQLite | 数据持久化 |
+| Resty | HTTP 客户端（支持 HTTP/SOCKS5 代理） |
+| Pond | 并发工作池 |
+| x/time/rate | 令牌桶限流 |
+| Gin | Web 服务 |
+| Tailwind + Plyr | 前端界面 + 音频播放 |</p><p></details></p><p><details>
+<summary><b>🔧 常见问题</b></summary></p><p><strong>配置文件未找到</strong> → 运行 <code>./asmroner config</code> 初始化</p><p><strong>下载失败（stream error）</strong> → 程序会自动重试；若仍失败，用 <code>sync retry</code> 重试，或查看 <code>.asmroner-data/download_errors.log</code></p><p><strong>Web 界面无法访问</strong> → 确认端口未被占用，尝试 <code>-p</code> 指定其他端口</p><p><strong>搜索结果为空</strong> → 检查查询语法，尝试简化条件</p><p></details></p><h2>🤝 贡献</h2></p><p>欢迎提交 Pull Request！Fork → 新建分支 → 提交更改 → 开启 PR。</p><h2>📄 许可证</h2></p><p>本项目采用 MIT 许可证，详情请查看 <a href="/LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a> 文件。</p><h2>🙏 致谢</h2>
+<ul><li>特别感谢 <a href="https://github.com/DiheChen/go-asmr-spider" target="_blank" rel="noopener noreferrer">go-asmr-spider</a></li>
+<li>感谢所有贡献者和用户！</li></p><p></ul>---</p><p><strong>ASMRoner</strong> — 每天晚上都有不同的小姐姐陪你入睡 :)</p><p><em>最后更新：2026 年 2 月</em></p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-16
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-04-16 
+    </div>
+    
+</body>
+</html>
