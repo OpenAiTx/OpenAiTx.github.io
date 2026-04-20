@@ -1,0 +1,367 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pathfinder - Next.js 15, MapboxGL, TypeScript로 구축된 현대적이고 인터랙티브한 지도 애플리케이션입니다.</title>
+    <meta name="description" content="Next.js 15, MapboxGL, TypeScript로 구축된 현대적이고 인터랙티브한 지도 애플리케이션입니다.">
+    <meta name="keywords" content="pathfinder, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "pathfinder",
+  "description": "Next.js 15, MapboxGL, TypeScript로 구축된 현대적이고 인터랙티브한 지도 애플리케이션입니다.",
+  "author": {
+    "@type": "Person",
+    "name": "shadowoff09"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 145
+  },
+  "url": "https://OpenAiTx.github.io/projects/shadowoff09/pathfinder/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/shadowoff09/pathfinder/master/README.md",
+  "datePublished": "2026-04-20",
+  "dateModified": "2026-04-20"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/shadowoff09/pathfinder" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    pathfinder
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 145 stars</span>
+                <span class="language">Korean</span>
+                <span>by shadowoff09</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>🗺️ Pathfinder</h1></p><p><div align="center">
+  <img src="https://raw.githubusercontent.com/shadowoff09/pathfinder/master/public/banner-readme.png" alt="Pathfinder 배너" width="1280"/>
+  
+  Next.js 15, MapboxGL, TypeScript로 구축된 현대적이고 인터랙티브한 지도 애플리케이션입니다. Pathfinder는 실시간 날씨 데이터, 위치 검색, 사용자 정의 가능한 지도 스타일과 같은 기능으로 원활한 지도 경험을 제공합니다.</p><p>  <a href="https://link.shadowdev.xyz/r/m3tydbf12hb" target="_blank" rel="noopener noreferrer">데모</a> · <a href="https://github.com/shadowoff09/pathfinder/issues" target="_blank" rel="noopener noreferrer">버그 신고</a> · <a href="https://github.com/shadowoff09/pathfinder/issues" target="_blank" rel="noopener noreferrer">기능 요청</a>
+</div></p><h2>✨ 기능</h2></p><ul><li>🌓 다크/라이트 모드 지원</li>
+<li>🏢 3D 건물 시각화</li>
+<li>🔍 자동 완성 위치 검색</li>
+<li>🌤️ 실시간 날씨 정보</li>
+<li>📍 현재 위치 감지</li>
+<li>🛰️ 거리/위성 뷰 전환</li>
+<li>📱 완전 반응형 디자인</li>
+<li>⌨️ 키보드 단축키 지원</li>
+<li>🎨 Tailwind CSS와 shadcn/ui를 사용한 현대적인 UI</li></p><p></ul><h2>🚀 시작하기</h2></p><h3>필수 조건</h3></p><ul><li>Node.js 22+</li>
+<li>Mapbox API 키 (<a href="https://www.mapbox.com/" target="_blank" rel="noopener noreferrer">Mapbox</a>에서 발급)</li>
+<li>OpenWeather API 키 (<a href="https://openweathermap.org/api" target="_blank" rel="noopener noreferrer">OpenWeather</a>에서 발급)</li>
+<li>npm 또는 yarn</li></p><p></ul><h3>설치</h3></p><ul><li>저장소 클론:</li>
+</ul><pre><code class="language-bash">git clone https://github.com/shadowoff09/pathfinder.git
+cd pathfinder</code></pre>
+<ul><li>의존성 설치:</li></p><p></ul><pre><code class="language-bash">npm install
+<h1>or</h1>
+yarn install</code></pre>
+<ul><li>환경 변수 설정:</li>
+   <li><code>.env.example</code> 파일을 <code>.env.local</code>로 복사하세요:</li></p><p>     </ul><pre><code class="language-bash">     cp .env.example .env.local
+     ``<code>
+   <ul><li></code>.env.local<code> 파일을 열고 Mapbox API 키를 추가하세요:</li>
+     </ul></code>`<code>env
+     NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=your_mapbox_token_here
+     NEXT_PUBLIC_WEATHER_API_KEY=your_weather_api_key_here
+     </code>`<code>
+   <ul><li>API 키를 다음에서 가져오세요:</li>
+     <li><a href="https://www.mapbox.com/" target="_blank" rel="noopener noreferrer">Mapbox</a> - 지도 기능용</li>
+     <li><a href="https://openweathermap.org/api" target="_blank" rel="noopener noreferrer">OpenWeather</a> - 날씨 데이터용</li></p><p><li>개발 서버 시작:</code></pre>bash</li>
+</ul>npm run dev
+<h1>or</h1>
+yarn dev
+</code>`<code>
+<ul><li>브라우저에서 <a href="http://localhost:3000" target="_blank" rel="noopener noreferrer">http://localhost:3000</a> 을 엽니다.</li></p><p></ul><h2>🎮 사용법</h2></p><h3>지도 탐색</h3>
+<ul><li>이동: 클릭 후 드래그</li>
+<li>확대/축소: 스크롤 또는 확대/축소 컨트롤 사용</li>
+<li>회전: 우클릭 후 드래그</li>
+<li>뷰 초기화: Ctrl+Q 키 누르기</li></p><p></ul><h3>기능</h3>
+<ul><li>검색창을 통해 위치 검색</li>
+<li>거리뷰와 위성뷰 전환</li>
+<li>거리뷰 모드에서 3D 건물 보기 (줌 레벨 15 이상)</li>
+<li>날씨 정보 확인 (줌 레벨 14 이상)</li>
+<li>한 번의 클릭으로 현재 위치 가져오기</li>
+<li>좌표를 클립보드에 복사</li></p><p></ul><h2>🛠️ 사용 기술</h2></p><ul><li><a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer">Next.js 15</a> - React 프레임워크</li>
+<li><a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">TypeScript</a> - 타입 안전성</li>
+<li><a href="https://www.mapbox.com/mapbox-gl-js" target="_blank" rel="noopener noreferrer">Mapbox GL JS</a> - 지도 API</li>
+<li><a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer">Tailwind CSS</a> - 스타일링</li>
+<li><a href="https://ui.shadcn.com/" target="_blank" rel="noopener noreferrer">shadcn/ui</a> - UI 컴포넌트</li>
+<li><a href="https://visgl.github.io/react-map-gl/" target="_blank" rel="noopener noreferrer">React Map GL</a> - Mapbox GL의 React 래퍼</li></p><p></ul><h2>🤝 기여하기</h2></p><p>기여를 환영합니다! Pull Request를 자유롭게 제출해 주세요. 주요 변경 사항의 경우, 변경하고자 하는 내용을 먼저 논의하기 위해 이슈를 열어 주세요.</p><ul><li>프로젝트를 포크하세요</li>
+<li>기능 브랜치 생성 (</code>git checkout -b feature/AmazingFeature<code>)</li>
+<li>변경 사항 커밋 (</code>git commit -m 'Add some AmazingFeature'<code>)</li>
+<li>브랜치에 푸시 (</code>git push origin feature/AmazingFeature`)</li>
+<li>Pull Request를 오픈하세요</li></p><p></ul><h2>📝 라이선스</h2></p><p>
+이 프로젝트는 MIT 라이선스에 따라 라이선스가 부여되었습니다 - 자세한 내용은 <a href="LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a> 파일을 참조하세요.</p><h2>🙏 감사의 말씀</h2></p><ul><li>훌륭한 지도 플랫폼을 제공해 주신 <a href="https://www.mapbox.com/" target="_blank" rel="noopener noreferrer">Mapbox</a></li>
+<li>아름다운 UI 컴포넌트를 제공해 주신 <a href="https://ui.shadcn.com/" target="_blank" rel="noopener noreferrer">shadcn/ui</a></li>
+<li>호스팅 및 배포를 지원해 주신 <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">Vercel</a></li></p><p></ul><h2>📫 연락처</h2></p><p>X - <a href="https://twitter.com/shadowdev09" target="_blank" rel="noopener noreferrer">@shadowdev09</a></p><p>포트폴리오 - <a href="https://shadowdev.xyz" target="_blank" rel="noopener noreferrer">https://shadowdev.xyz</a></p><h2>💖 프로젝트 지원하기</h2></p><p>Pathfinder를 즐겨 사용하시고 개발을 지원하고 싶으시다면, 기부를 고려해 주세요:</p><ul><li><a href="https://paypal.me/diogogaspar123" target="_blank" rel="noopener noreferrer">PayPal로 기부하기</a></li>
+<li><a href="ko-fi.com/shadowoff09" target="_blank" rel="noopener noreferrer">Ko-Fi로 기부하기</a></li>
+<li><a href="https://github.com/sponsors/shadowoff09" target="_blank" rel="noopener noreferrer">GitHub 후원하기</a></li></p><p>
+</ul>여러분의 기여는 프로젝트를 지속하고 기능을 개선하는 데 큰 도움이 됩니다! 지원해 주셔서 감사합니다!</p><hr>
+<a href="https://www.producthunt.com/posts/pathfinder-11?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-pathfinder&#0045;11" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=915601&theme=dark&t=1740532963013" alt="Pathfinder - Navigate&#0032;Your&#0032;World&#0044;&#0032;Beautifully | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a></p><p>⭐️ 이 프로젝트가 마음에 드신다면, 별을 눌러 주세요!</p><p><a href="https://starchart.cc/shadowoff09/pathfinder" target="_blank" rel="noopener noreferrer"><img src="https://starchart.cc/shadowoff09/pathfinder.svg?variant=adaptive" alt="시간에 따른 스타 수"></a></p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-20
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/shadowoff09/pathfinder/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-04-20 
+    </div>
+    
+</body>
+</html>

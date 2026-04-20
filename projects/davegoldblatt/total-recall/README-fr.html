@@ -1,0 +1,389 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>total-recall - Plugin de m&#233;moire persistante pour Claude Code. Syst&#232;me de m&#233;moire hi&#233;rarchis&#233; avec portes d&#39;&#233;criture, propagation de correction et commandes slash.</title>
+    <meta name="description" content="Plugin de m&#233;moire persistante pour Claude Code. Syst&#232;me de m&#233;moire hi&#233;rarchis&#233; avec portes d&#39;&#233;criture, propagation de correction et commandes slash.">
+    <meta name="keywords" content="total-recall, French, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "total-recall",
+  "description": "Plugin de mémoire persistante pour Claude Code. Système de mémoire hiérarchisé avec portes d'écriture, propagation de correction et commandes slash.",
+  "author": {
+    "@type": "Person",
+    "name": "davegoldblatt"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 194
+  },
+  "url": "https://OpenAiTx.github.io/projects/davegoldblatt/total-recall/README-fr.html",
+  "sameAs": "https://raw.githubusercontent.com/davegoldblatt/total-recall/main/README.md",
+  "datePublished": "2026-04-20",
+  "dateModified": "2026-04-20"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/davegoldblatt/total-recall" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    total-recall
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 194 stars</span>
+                <span class="language">French</span>
+                <span>by davegoldblatt</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Total Recall</h1></p><p>Un système de mémoire pour Claude Code qui retient l'essentiel et oublie le superflu.</p><h2>Le Problème</h2></p><p>Claude Code oublie tout entre les sessions. À chaque nouvelle conversation, c’est comme parler à quelqu’un atteint d’amnésie. Vous vous retrouvez à vous répéter :</p><ul><li>« Nous avons déjà essayé cette approche, ça n’a pas marché. »</li>
+<li>« Ne touche pas au fichier d’auth. »</li>
+<li>« Je préfère les tabulations aux espaces. »</li>
+<li>« Le nom du client est Sarah, pas Sara. »</li></p><p></ul>Ça devient vite lassant.</p><h2>Ce Que Fait Total Recall</h2></p><p>Il donne à Claude Code un bloc-notes qui se conserve entre les sessions, mais un bloc-notes <em>exigeant</em>. Tout ne s’y inscrit pas. Avant qu’une information soit sauvegardée définitivement, elle doit passer un test simple : <strong>est-ce que cela aura de l’importance demain ?</strong></p><p>Une préférence que vous garderez pendant des mois ? Enregistrée. Une décision prise et ses raisons ? Enregistrées. Le fait d’avoir lancé un test il y a cinq minutes ? Pas enregistré. Le système reste propre pour que Claude ne patauge pas dans le superflu pour trouver ce qui est pertinent.</p><h2>Comment Ça Marche</h2></p><p>Pensez-y comme une cuisine avec quatre zones de rangement :</p><p><strong>Plan de travail</strong> (<code>CLAUDE.local.md</code>) : Ce que vous utilisez tous les jours. Chargé automatiquement à chaque session. Gardé petit volontairement, environ une page de texte.</p><p><strong>Garde-manger</strong> (<code>memory/registers/</code>) : Organisé par catégorie. Vos préférences, décisions clés, détails de projets, personnes avec qui vous travaillez. Claude vérifie ici quand il a besoin de quelque chose de précis.</p><p><strong>Carnet quotidien</strong> (<code>memory/daily/</code>) : Notes brutes horodatées de chaque jour. Tout s’écrit d’abord ici. Vous décidez ensuite ce qui mérite d’être conservé définitivement.</p><p><strong>Placard de stockage</strong> (<code>memory/archive/</code>) : Vieilles données terminées ou obsolètes. Toujours consultables, mais jamais chargées automatiquement.</p><p>L’idée clé : <strong>les notes vont d’abord dans le carnet quotidien, puis vous promouvez celles à garder.</strong> Claude ne décide pas seul ce qui est assez important pour être mémorisé à long terme. C’est vous qui décidez.</p><h2>Démarrage Rapide</h2></p><h3>Installer comme plugin (recommandé)</h3></p><pre><code class="language-">/plugin marketplace add davegoldblatt/recall-marketplace
+/plugin install recall@recall-marketplace</code></pre></p><h3>Ou installez en mode autonome</h3></p><pre><code class="language-">git clone https://github.com/davegoldblatt/total-recall.git
+cd total-recall
+./install.sh /path/to/your/project</code></pre></p><p>Après l'installation, redémarrez Claude Code ou exécutez <code>/hooks</code> pour activer.</p><h2>Utilisation</h2></p><p>Voici votre quotidien :</p><p><strong>Claude remarque quelque chose à retenir.</strong> Il l'écrit dans votre carnet quotidien et vous le dit. Vous n'avez rien à faire.</p><p><strong>Vous voulez que Claude retienne quelque chose.</strong> Dites simplement "souviens-toi de ça" ou utilisez la commande d'écriture :</p><pre><code class="language-">/recall-write Dave prefers concise error messages, no stack traces in prod</code></pre>
+<strong>Fin de journée (ou à tout moment).</strong> Passez en revue ce qui s’est accumulé et mettez en avant les bonnes choses :</p><pre><code class="language-">/recall-promote</code></pre></p><p><strong>Trouvez quelque chose de la semaine dernière.</strong> Recherchez dans tout :</p><pre><code class="language-">/recall-search authentication decision</code></pre></p><p><strong>Vous avez raison Claude.</strong> La correction met à jour partout en même temps : le cahier quotidien, les registres et le compteur. La même erreur ne se reproduira plus.</p><h3>Toutes les commandes</h3></p><p>| Commande | Ce qu'elle fait |
+|---|---|
+| <code>/recall-init</code> | Configurer les dossiers de mémoire pour la première fois |
+| <code>/recall-write <note></code> | Enregistrer une note (vérifie si elle vaut la peine d'être gardée, suggère où) |
+| <code>/recall-log <note></code> | Note rapide dans le cahier quotidien, sans poser de questions |
+| <code>/recall-search <requête></code> | Rechercher partout |
+| <code>/recall-promote</code> | Revoir les notes quotidiennes, déplacer les gardiennes vers les registres |
+| <code>/recall-status</code> | Vérification de santé. Tout fonctionne-t-il ? |
+| <code>/recall-maintain</code> | Nettoyer les entrées obsolètes ou en double |
+| <code>/recall-forget <requête></code> | Marquer quelque chose comme périmé |
+| <code>/recall-context</code> | Montrer quelle mémoire Claude a chargée actuellement |</p><p>Si installé comme plugin, les commandes sont sous un namespace : <code>/recall:recall-write</code> au lieu de <code>/recall-write</code>.</p><h2>La Porte d'Écriture</h2></p><p>C’est l’idée centrale. Avant qu’une information soit promue en mémoire permanente, elle doit passer au moins une de ces vérifications :</p><ul><li><strong>Cela va-t-il changer le comportement de Claude la prochaine fois ?</strong> (une préférence, une limite, un schéma)</li>
+<li><strong>Est-ce un engagement sur lequel quelqu’un compte ?</strong> (une échéance, une livraison, un suivi)</li>
+<li><strong>Est-ce une décision dont il vaut la peine de se rappeler la raison ?</strong> (pourquoi vous avez choisi X plutôt que Y)</li>
+<li><strong>Est-ce un fait stable qui reviendra ?</strong> (pas quelque chose qui sera différent demain)</li>
+<li><strong>Avez-vous explicitement dit « souviens-toi de ça » ?</strong></li></p><p></ul>Si aucun de ces cas n’est vrai, cela reste dans le cahier quotidien et finit par disparaître avec le temps. Cela maintient la mémoire légère. Pas de tiroir à bazar.</p><h2>Quand les corrections arrivent</h2></p><p>Si vous dites à Claude qu’il a fait une erreur, il ne se contente pas de dire « désolé » et de passer à autre chose. Il met à jour le cahier quotidien, le registre concerné, et le compteur, tout en une fois. L’ancienne information est marquée comme remplacée (pas supprimée) pour qu’il y ait une trace de ce qui a changé et quand.</p><h2>Ce qui se charge automatiquement</h2></p><p>Seulement deux choses, à chaque session :</p><p>| Quoi | Où | Comment |
+|---|---|---|
+| Les règles (write gate, protocole de correction) | <code>rules/total-recall.md</code> | Claude Code charge automatiquement tous les fichiers de règles |
+| Compteur / mémoire de travail | <code>CLAUDE.local.md</code> | Claude Code charge ceci automatiquement |</p><p>Tout le reste se charge à la demande : lors d'une recherche, lorsque c'est pertinent, ou au démarrage de la session via des hooks.</p><h2>Hooks</h2></p><p>Deux choses se passent automatiquement en arrière-plan :</p><p><strong>Quand une session démarre :</strong> Claude reçoit un résumé des éléments ouverts et des notes journalières récentes. C'est le briefing "voici où nous en étions restés".</p><p><strong>Avant que la mémoire soit compactée :</strong> Un horodatage est écrit dans le carnet quotidien pour garder une trace. Celui-ci est silencieux. Claude ne le voit pas, c'est juste de la tenue de registre.</p><p>Les deux hooks échouent sans risque. Si quelque chose ne va pas, ils ne bloquent pas le fonctionnement de Claude Code.</p><p>Les hooks utilisent <code>$CLAUDE_PROJECT_DIR</code> (mode autonome) ou <code>${CLAUDE_PLUGIN_ROOT}</code> (plugin) pour résoudre les chemins. Pas de parsing de transcript. Le hook PreCompact écrit uniquement un marqueur d’horodatage dans le journal quotidien. Il ne lit ni ne parse les transcripts de conversation.</p><h2>Architecture</h2></p><p>Pour ceux qui veulent les détails techniques.</p><pre><code class="language-">Conversation (ephemeral, compacted/discarded)
+    |
+    v  WRITE GATE: "Does this change future behavior?"
+    |
+Daily Log (memory/daily/YYYY-MM-DD.md)
+    All writes land here first. Raw, timestamped.
+    |
+    v  PROMOTION: user-controlled via /recall-promote
+    |
+Registers (memory/registers/*.md)
+    Structured claims with metadata (confidence, evidence, last_verified)
+    |
+    v  DISTILLATION: only what's essential for every session
+    |
+Working Memory (CLAUDE.local.md)
+    ~1500 words. Auto-loaded. The persistent "personality."
+    |
+    v  EXPIRY
+    |
+Archive (memory/archive/)
+    Searchable history. Never auto-loaded.</code></pre></p><h3>Mécanismes Clés</h3></p><p><strong>Porte d’écriture :</strong> Filtre le bruit. Seuls les faits modifiant le comportement, les engagements, décisions et demandes explicites de « se souvenir de ceci » passent.</p><p><strong>Journal Quotidien d’Abord :</strong> Toutes les écritures atterrissent dans le journal quotidien. La promotion vers les registres est une étape distincte, contrôlée par l’utilisateur. Cela empêche le modèle de figer prématurément les inférences.</p><p><strong>Protocole de Contradiction :</strong> Ne remplace jamais silencieusement. Les anciennes affirmations sont marquées <code>[superseded]</code> avec date et raison. Le schéma de changement est conservé.</p><p><strong>Porte de Correction :</strong> Les corrections humaines ont la plus haute priorité. Une correction déclenche des écritures dans le journal quotidien + registre + mémoire de travail.</p><h3>Structure des Fichiers</h3></p><p><strong>Format du plugin</strong> (installé via <code>/plugin install</code>) :</p><pre><code class="language-">total-recall/                     # Plugin root
+├── .claude-plugin/
+│   └── plugin.json               # Plugin manifest
+├── skills/                       # Slash commands (namespaced)
+│   ├── recall-write/SKILL.md
+│   ├── recall-search/SKILL.md
+│   └── ...
+├── hooks/
+│   ├── hooks.json                # Hook configuration
+│   ├── session-start.sh
+│   └── pre-compact.sh
+├── rules/
+│   └── total-recall.md           # Protocol (auto-loaded)
+└── templates/                    # Scaffolding templates
+    ├── SCHEMA.md
+    ├── CLAUDE.local.md
+    └── registers/</code></pre></p><p><strong>Format autonome</strong> (installé via <code>install.sh</code>) :</p><pre><code class="language-">your-project/
+├── .claude/
+│   ├── commands/recall-*.md      # Slash commands
+│   ├── rules/total-recall.md     # Protocol (auto-loaded)
+│   ├── hooks/*.sh                # Hook scripts
+│   └── settings.local.json       # Hook configuration
+├── memory/
+│   ├── SCHEMA.md
+│   ├── daily/YYYY-MM-DD.md
+│   ├── registers/*.md
+│   └── archive/
+├── CLAUDE.md
+└── CLAUDE.local.md               # Working memory (gitignored)</code></pre></p><h3>Comparé à d'autres outils de mémoire</h3></p><p>|  | Total Recall | Outils d'auto-ingestion |
+|---|---|---|
+| <strong>Ce qui est sauvegardé</strong> | Seulement ce qui passe la porte d'écriture | Tout |
+| <strong>Destination par défaut</strong> | Journal quotidien (promotion ultérieure) | Stockage permanent |
+| <strong>Coût en contexte</strong> | Mémoire de travail d'environ 1500 mots | Croît sans limite |
+| <strong>Corrections</strong> | Propagation immédiate à tous les niveaux | Variable |
+| <strong>Contrôle utilisateur</strong> | La promotion est explicite | Automatique |
+| <strong>Architecture</strong> | 4 niveaux avec métadonnées | Plate ou à 2 niveaux |</p><h2>Confidentialité</h2></p><ul><li>Tout est local. Pas d'appels réseau, pas de télémétrie, pas de services externes.</li>
+<li>Toute la mémoire est constituée de fichiers markdown que vous pouvez lire et modifier vous-même.</li>
+<li><code>CLAUDE.local.md</code> est ignoré par git par défaut (c'est personnel).</li>
+<li><code>memory/</code> est ignoré par git par défaut (il peut contenir des notes personnelles).</li>
+<li>Les hooks ne lisent jamais vos transcriptions de conversation.</li>
+<li>Pour voir exactement ce qui se passe : vérifiez <code>hooks/*.sh</code> et <code>memory/</code>. Tout est en texte clair.</li>
+<li>Pour désinstaller : supprimez <code>memory/</code>, <code>CLAUDE.local.md</code> et les entrées <code>.claude/</code> (ou <code>/plugin uninstall recall</code>).</li></p><p></ul><h2>Fonctionne avec Superpowers</h2></p><p>Si vous utilisez <a href="https://github.com/obra/superpowers" target="_blank" rel="noopener noreferrer">Superpowers</a>, il n'y a pas de conflits. Superpowers gère <em>comment</em> Claude fonctionne (méthodologie, TDD, plans). Total Recall gère <em>ce que</em> Claude retient. Différents rôles, même projet.</p><h2>Licence</h2></p><p>MIT</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-20
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/davegoldblatt/total-recall/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-04-20 
+    </div>
+    
+</body>
+</html>
