@@ -1,0 +1,349 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>netevent - 입력 이벤트 장치 복제 유틸리티입니다. ssh/netcat/...과 함께 사용하여 여러 기기 간에 입력 장치를 공유할 수 있습니다.</title>
+    <meta name="description" content="입력 이벤트 장치 복제 유틸리티입니다. ssh/netcat/...과 함께 사용하여 여러 기기 간에 입력 장치를 공유할 수 있습니다.">
+    <meta name="keywords" content="netevent, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "netevent",
+  "description": "입력 이벤트 장치 복제 유틸리티입니다. ssh/netcat/...과 함께 사용하여 여러 기기 간에 입력 장치를 공유할 수 있습니다.",
+  "author": {
+    "@type": "Person",
+    "name": "Blub"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 159
+  },
+  "url": "https://OpenAiTx.github.io/projects/Blub/netevent/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/Blub/netevent/master/README.md",
+  "datePublished": "2026-04-21",
+  "dateModified": "2026-04-21"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Blub/netevent" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    netevent
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 159 stars</span>
+                <span class="language">Korean</span>
+                <span>by Blub</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>netevent</h1></p><p>Netevent는 리눅스 이벤트 장치를 다른
+기기와 공유할 수 있는 도구입니다 (<code>/dev/uinput</code>을 통해서든 동일한
+프로토콜의 클라이언트를 다른 수단으로 구현하든 상관없습니다).</p><p>원래는 단순히 장치 기능을 stdout으로 출력하고 이후에는
+한 모드에서는 <code>cat /dev/input/eventX</code>를 실행하는 것처럼 동작했고,
+다른 모드에서는 파싱된 기능을 <code>/dev/uinput</code>에 전달한 후 이벤트를
+전달했습니다.</p><p>여러 목적지가 있을 때 여러 장치를 관리하는 것이 번거로워질 수 있으므로
+(그리고 원래의 grab/toggle/hotkey 메커니즘이 이상하고 저의 개인 사용 사례에
+맞춰져 있었기 때문에), netevent2는 이제
+한 패킷에 여러 장치를 포함할 수 있고 장치를 실시간으로 추가 및
+제거할 수 있는 패킷을 포함하도록 프로토콜을 확장했습니다.</p><p>원래의 <code>cat</code>과 같은 동작(현재는 핫키 지원 없이)도 디버깅 용도로
+사용 가능하며(<code>create</code> 모드는 두 프로토콜 버전을 모두 지원합니다).</p><p>주요 도구는 이제 명령 소켓(선택적으로 추상 유닉스 소켓)이 있는
+<code>netevent daemon</code>으로, 이를 통해 장치, 출력 및
+핫키를 실시간으로 추가할 수 있습니다. 아래 예제를 참조하십시오.</p><h2>컴파일</h2></p><ul><li>선택사항: <code>./configure --prefix=/usr</code></li>
+<li><code>make</code></li></p><p></ul>이전처럼 여전히 <code>make</code>만 실행해도 됩니다. 다만 일반적인
+설치 워크플로우를 지원하고, <code>/dev/uinput</code>이 <code>UI_DEV_SETUP</code> <code>ioctl</code>로 확장된
+최신 커널 시스템과 구분하기 위해,
+<code>./configure</code> 스크립트가 추가되어 이를 검사하고 <code>config.h</code>
+및 <code>config.mak</code>를 생성하며 PREFIX/BINDIR/... 설정을 포함합니다
+(이 모든 변수는 일반적인 <code>DESTDIR</code>과 함께 직접 <code>make</code>에 전달할 수도 있습니다).</p><h2>설치</h2></p><ul><li><code>make install</code> 또는 <code>make DESTDIR=/my/staging/dir install</code></li></p><p></ul>또는: 이전과 같이 <code>netevent</code> 바이너리를 아무 곳에나 두면 됩니다.</p><h2>사용법</h2></p><p>아래 설정 스크립트에서 사용된 명령어에 대한 자세한 내용은 netevent(1)의 DAEMON COMMANDS 섹션을 참조하세요.</p><h3>예제</h3></p><p><code>examples/</code> 디렉토리를 참조하세요. 아래 setup-example을 읽어 핫키 라인을 장치에 맞게 조정하는 방법을 확인하세요.</p><p>#### 간단한 예제 설정: ssh를 통해 키보드 및 마우스 공유하기:</p><p>호스트 측:</p><ul><li>준비: 사용자로서 이벤트 장치에 접근할 수 있는지 확인</li></p><p>    </ul>보통은 <code>gpasswd -a myuser input</code> 같은 명령을 실행합니다.</p><ul><li>1단계: 전달할 /dev/input/eventXY 장치를 결정합니다.</li></p><p>    </ul>일관된 파일 이름을 위해 다음과 같이 사용하세요:
+    <code>/dev/input/by-id/usb-MyAwesomeKeyboard-event-kbd</code>
+    <code>/dev/input/by-id/usb-BestMouseEver-event-mouse</code></p><ul><li>2단계: 핫키를 결정하고 해당 이벤트 코드를 찾습니다:</li></p><p>    </ul>위 예제에서는 키보드의 키를 사용하려고 합니다 (마우스 버튼이 엄청 많지 않은 한…).
+    <code>netevent</code>는 이벤트를 읽기 쉽게 덤프하는 데 사용할 수 있으며, 장치에서 <code>show</code> 서브커맨드를 실행하고 핫키로 사용할 키를 누릅니다.
+    이 명령을 입력하는 키보드가 같다면, netevent가 엔터 키 릴리즈를 감지하여 혼동하지 않도록 sleep을 미리 넣으세요.</p><p>    ``<code>
+    $ sleep 0.3 && netevent show /dev/input/by-id/usb-...-event-kbd
+    MSC:4:3829
+    KEY:189:1
+    SYN:0:0
+    MSC:4:3829
+    KEY:189:0
+    SYN:0:0
+    </code>`<code>
+<ul><li>3단계: 데몬용 설정 스크립트를 준비합니다:</li></p><p>
+    </ul></code>`<code>
+    # file: netevent-setup.ne2
+    # Add mouse & keyboard
+    device add mymouse /dev/input/by-id/usb-BestMouseEver-event-mouse
+    device add mykbd /dev/input/by-id/usb-MyAwesomeKeyboard-event-kbd</p><p>    # Add toggle hotkey (on press, and ignore the release event)
+    hotkey add mykbd key:189:1 grab-devices toggle\; write-events toggle
+    hotkey add mykbd key:189:0 nop</p><p>    # Connect to the two devices via password-less ssh
+    output add myremote exec:ssh user@other-host netevent create
+    # Select the output to write to
+    use myremote
+    </code>`<code>
+<ul><li>4단계: netevent 데몬 실행:</li></p><p>    </ul></code>$ netevent daemon -s netevent-setup.ne2 netevent-command.sock<code></p><p>이제 소켓에 연결하여 데몬에 추가 명령을 보낼 수 있습니다.
+예를 들어 </code>socat READLINE UNIX-CONNECT:netevent-command.sock`을 통해 가능합니다.</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-21
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Blub/netevent/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-04-21 
+    </div>
+    
+</body>
+</html>
