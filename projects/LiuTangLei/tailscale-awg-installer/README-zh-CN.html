@@ -1,0 +1,358 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tailscale-awg-installer - 我的非官方 Tailscale 构建的一键安装程序，使用 Amnezia-WG 混淆技术。支持 Linux、macOS、Windows 和 OpenWrt。仅限自托管/研究使用；与 Tailscale 无关。</title>
+    <meta name="description" content="我的非官方 Tailscale 构建的一键安装程序，使用 Amnezia-WG 混淆技术。支持 Linux、macOS、Windows 和 OpenWrt。仅限自托管/研究使用；与 Tailscale 无关。">
+    <meta name="keywords" content="tailscale-awg-installer, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "tailscale-awg-installer",
+  "description": "我的非官方 Tailscale 构建的一键安装程序，使用 Amnezia-WG 混淆技术。支持 Linux、macOS、Windows 和 OpenWrt。仅限自托管/研究使用；与 Tailscale 无关。",
+  "author": {
+    "@type": "Person",
+    "name": "LiuTangLei"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 142
+  },
+  "url": "https://OpenAiTx.github.io/projects/LiuTangLei/tailscale-awg-installer/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/LiuTangLei/tailscale-awg-installer/main/README.md",
+  "datePublished": "2026-04-29",
+  "dateModified": "2026-04-29"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/LiuTangLei/tailscale-awg-installer" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    tailscale-awg-installer
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 142 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by LiuTangLei</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Tailscale 与 Amnezia-WG 2.0 (v1.88.2+)</h1></p><p><a href="https://github.com/LiuTangLei/tailscale/releases/latest" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/v/release/LiuTangLei/tailscale" alt="GitHub Release"></a>
+<a href="https://github.com/LiuTangLei/tailscale/releases/latest" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/platform-Linux%20|%20macOS%20|%20Windows%20|%20OpenWrt%20|%20Android-blue" alt="Platform Support"></a>
+<a href="LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/license-BSD--3--Clause-green" alt="License"></a></p><p>增强型 Tailscale 客户端，集成 Amnezia-WG 2.0 混淆：垃圾流量、协议签名和握手/头信息伪装，以抵御 DPI 和封锁。在启用 AWG 设置前，其行为与标准 Tailscale 相同。</p><p>语言： <a href="https://raw.githubusercontent.com/LiuTangLei/tailscale-awg-installer/main/README.md" target="_blank" rel="noopener noreferrer">English</a> | <a href="https://raw.githubusercontent.com/LiuTangLei/tailscale-awg-installer/main/doc/README-zh.md" target="_blank" rel="noopener noreferrer">中文</a> | <a href="https://raw.githubusercontent.com/LiuTangLei/tailscale-awg-installer/main/doc/README-fa.md" target="_blank" rel="noopener noreferrer">فارسی</a> | <a href="https://raw.githubusercontent.com/LiuTangLei/tailscale-awg-installer/main/doc/README-ru.md" target="_blank" rel="noopener noreferrer">Русский</a></p><p>有关 AWG v1.5 文档，请参阅 <a href="https://raw.githubusercontent.com/LiuTangLei/tailscale-awg-installer/main/doc/README-awg-v1.5.md" target="_blank" rel="noopener noreferrer">doc/README-awg-v1.5.md</a>。</p><h2>安装</h2></p><p>| 平台 | 命令 / 操作 |
+| --- | --- |
+| Linux | <code>curl -fsSL https://raw.githubusercontent.com/LiuTangLei/tailscale-awg-installer/main/install-linux.sh \| bash</code> |
+| macOS* | <code>curl -fsSL https://raw.githubusercontent.com/LiuTangLei/tailscale-awg-installer/main/install-macos.sh \| bash</code> |
+| Windows (管理员 PowerShell) | <code>iwr -useb https://raw.githubusercontent.com/LiuTangLei/tailscale-awg-installer/main/install-windows.ps1 \| iex</code> |
+| OpenWrt | 参见 <a href="#openwrt-installation" target="_blank" rel="noopener noreferrer">OpenWrt 安装</a> |
+| Android | 从 <a href="https://github.com/LiuTangLei/tailscale-android/releases" target="_blank" rel="noopener noreferrer">releases</a> 下载 APK |</p><ul><li>macOS：安装程序仅使用命令行的 <code>tailscaled</code>。如果检测到官方 Tailscale.app，会提示你移除以避免冲突。</li>
+<li>Android 目前仅支持 AWG 配置同步。请使用应用内的同步按钮。</li></p><p></ul><img src="https://raw.githubusercontent.com/LiuTangLei/tailscale-awg-installer/main/doc/sync1.jpg" alt="Android AWG 同步示例"></p><h2>Docker Compose</h2></p><p>仓库包含用于运行带 AWG 支持的 <code>tailscaled</code> 的 <code>docker-compose.yml</code> 文件。</p><ul><li>状态存储在 compose 文件旁的 <code>./tailscale-state</code> 中，因此节点状态和 AWG 设置能在容器重启及主机重启后保留。</li>
+<li>如果你是从旧的绑定挂载 <code>/var/lib/tailscale:/var/lib/tailscale</code> 升级，请先复制现有状态：</li></p><p></ul><pre><code class="language-bash">docker compose down
+cp -a /var/lib/tailscale ./tailscale-state
+<h1>update docker-compose.yml</h1>
+docker compose up -d</code></pre>
+基本流程：</p><ul><li>启动服务：<code>docker compose up -d</code></li>
+<li>在容器内认证：<code>docker compose exec tailscaled tailscale up</code></li>
+<li>以相同方式运行 AWG 命令，例如：<code>docker compose exec tailscaled tailscale awg sync</code></li></p><p></ul>如果使用 Headscale，向 <code>tailscale up</code> 添加 <code>--login-server https://your-headscale-domain</code>。</p><p>可选的主机别名：</p><pre><code class="language-bash">alias tailscale='docker exec -it tailscaled tailscale'</code></pre>
+那个别名仅适用于当前的 shell。要在重启或新的终端会话后保留它，请将其添加到 <code>~/.bashrc</code> 或 <code>~/.zshrc</code> 并重新加载你的 shell。</p><h2>OpenWrt 安装</h2></p><p>默认命令：</p><pre><code class="language-bash">wget -O /usr/bin/install.sh https://raw.githubusercontent.com/LiuTangLei/openwrt-tailscale-awg/main/install_en.sh && chmod +x /usr/bin/install.sh && /usr/bin/install.sh</code></pre></p><p>适用于受限 GitHub 访问区域的镜像命令：</p><pre><code class="language-bash">wget -O /usr/bin/install.sh https://ghfast.top/https://raw.githubusercontent.com/LiuTangLei/openwrt-tailscale-awg/main/install.sh && chmod +x /usr/bin/install.sh && /usr/bin/install.sh</code></pre></p><p>此脚本源自 <a href="https://github.com/GuNanOvO/openwrt-tailscale" target="_blank" rel="noopener noreferrer">GuNanOvO/openwrt-tailscale</a>。</p><h2>镜像</h2></p><p>如果 GitHub 访问缓慢或被屏蔽，您可以自建一个前缀镜像，例如 <code>https://your-mirror-site.com</code>：</p><pre><code class="language-bash"># Linux
+curl -fsSL https://your-mirror-site.com/https://raw.githubusercontent.com/LiuTangLei/tailscale-awg-installer/main/install-linux.sh | bash -s -- --mirror https://your-mirror-site.com</p><h1>macOS</h1>
+curl -fsSL https://your-mirror-site.com/https://raw.githubusercontent.com/LiuTangLei/tailscale-awg-installer/main/install-macos.sh | bash -s -- --mirror https://your-mirror-site.com</code></pre></p><pre><code class="language-powershell"># Windows
+$scriptContent = (iwr -useb https://your-mirror-site.com/https://raw.githubusercontent.com/LiuTangLei/tailscale-awg-installer/main/install-windows.ps1).Content; $scriptBlock = [scriptblock]::Create($scriptContent); & $scriptBlock -MirrorPrefix 'https://your-mirror-site.com/'</code></pre>
+如果 PowerShell 阻止执行，请使用 <code>Set-ExecutionPolicy RemoteSigned</code> 或 <code>Bypass -Scope Process</code>。</p><h2>快速开始</h2></p><p>提示：<code>tailscale amnezia-wg</code> 与 <code>tailscale awg</code> 是相同的。</p><ul><li>登录：</li></p><p>
+</ul><pre><code class="language-bash"># Official control server
+tailscale up</p><h1>Headscale</h1>
+tailscale up --login-server https://your-headscale-domain</code></pre></p><ul><li>配置AWG：</li></p><p></ul><pre><code class="language-bash">tailscale awg set</code></pre></p><p>在自动生成提示符处按 Enter 键，生成除 <code>i1</code>-<code>i5</code> 之外的所有推荐值。</p><ul><li>在其他设备上，从已配置的节点同步相同的 AWG 配置：</li></p><p><li>桌面端：在另一设备上运行 <code>tailscale awg sync</code></li>
+<li>安卓端：在另一设备的应用中点击同步</li></p><p><li>需要时进行验证或重置：</li></p><p></ul><pre><code class="language-bash">tailscale awg get
+tailscale awg reset</code></pre></p><h2>配置预设</h2></p><p>| 目标 | 示例 | 兼容性 |
+| --- | --- | --- |
+| 基础垃圾流量 | <code>tailscale awg set '{"jc":4,"jmin":64,"jmax":256}'</code> | 适用于标准 Tailscale 节点 |
+| 垃圾流量 + 签名 | <code>tailscale awg set '{"jc":2,"jmin":64,"jmax":128,"i1":"<b 0x40><r 12>"}'</code> | 适用于标准 Tailscale 节点 |
+| 握手伪装 | <code>tailscale awg set '{"s1":10,"s2":15,"s3":8,"s4":0}'</code> | 所有 AWG 节点必须使用相同的 <code>s1</code>-<code>s4</code> |
+| 全面伪装 | <code>tailscale awg set '{"s1":10,"s2":15,"s3":8,"s4":0,"h1":{"min":100000,"max":200000},"h2":{"min":300000,"max":350000},"h3":{"min":400000,"max":450000},"h4":{"min":500000,"max":550000}}'</code> | 所有 AWG 节点必须使用相同的 <code>s1</code>-<code>s4</code> 和 <code>h1</code>-<code>h4</code> |
+| 全面伪装 + 签名 | <code>tailscale awg set '{"s1":10,"s2":15,"s3":8,"s4":0,"h1":{"min":100000,"max":200000},"h2":{"min":300000,"max":350000},"h3":{"min":400000,"max":450000},"h4":{"min":500000,"max":550000},"i1":"<b 0xc0><r 32><c><t>"}'</code> | <code>i1</code>-<code>i5</code> 可因节点而异；<code>s1</code>-<code>s4</code> 和 <code>h1</code>-<code>h4</code> 必须匹配 |</p><h2>参数参考</h2></p><ul><li><code>jc</code> 与 <code>jmin</code> 和 <code>jmax</code>：垃圾包数量及大小范围。</li>
+<li><code>i1</code>-<code>i5</code>：可选的 CPS（自定义协议签名）链，用于自定义协议模拟包。</li>
+<li><code>s1</code>-<code>s4</code>：握手填充或前缀字段；所有 AWG 节点必须匹配。</li>
+<li><code>h1</code>-<code>h4</code>：头字段范围，格式为 <code>{"min": 低值, "max": 高值}</code>；必须全部设置或全部不设置。范围不能重叠，且所有 AWG 节点必须匹配。</li></p><p></ul>非常大的垃圾包数量或较长的签名链会增加延迟和带宽使用。</p><h2>平台支持</h2></p><p>| 平台 | 架构 | 状态 |
+| --- | --- | --- |
+| Linux | x86_64，ARM64 | ✅ 完整支持 |
+| macOS | Intel，Apple Silicon | ✅ 完整支持 |
+| Windows | x86_64，ARM64 | ✅ 安装程序 |
+| OpenWrt | 多种 | ✅ 脚本 |
+| Android | ARM64，ARM | ✅ APK（仅同步 AWG） |</p><h2>高级：CPS 协议签名</h2></p><p>CPS 即自定义协议签名。它允许你组装自定义混淆包，可以模仿任意协议头，不限于某一特定协议。</p><p>CPS 格式：</p><pre><code class="language-text">i{n} = <tag1><tag2>...<tagN></code></pre>
+标签：</p><ul><li><code><b 0xHEX></code>：静态字节  </li>
+<li><code><r N></code>：安全随机字节  </li>
+<li><code><c></code>：计数器  </li>
+<li><code><t></code>：时间戳  </li></p><p></ul>示例：</p><pre><code class="language-text">i1 = <b 0xf6ab3267fa><c><b 0xf6ab><t><r 10></code></pre>
+如果未设置 <code>i1</code>，则跳过 <code>i2</code>-<code>i5</code>。</p><h2>故障排除</h2></p><p>验证安装：</p><pre><code class="language-bash">tailscale version
+tailscale awg get</code></pre>
+如果连接中断，重置为标准 WireGuard 并从简单的预设开始：</p><pre><code class="language-bash">tailscale awg reset
+tailscale awg set '{"jc":2,"jmin":64,"jmax":128}'
+sudo journalctl -u tailscaled -f</code></pre>
+在 Windows PowerShell 上，建议使用交互式设置以避免 JSON 转义问题：</p><pre><code class="language-powershell">tailscale awg set</code></pre></p><h2>链接与支持</h2></p><ul><li>版本发布：<https://github.com/LiuTangLei/tailscale/releases></li>
+<li>安卓APK：<https://github.com/LiuTangLei/tailscale-android/releases></li>
+<li>安装程序问题：<https://github.com/LiuTangLei/tailscale-awg-installer/issues></li>
+<li>Amnezia-WG 文档：<https://docs.amnezia.org/documentation/instructions/new-amneziawg-selfhosted/#how-to-extract-a-protocol-signature-for-amneziawg-manually></li></p><p></ul><h2>许可证</h2></p><p>BSD 3-Clause 许可证，与上游 Tailscale 相同。</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-29
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/LiuTangLei/tailscale-awg-installer/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-04-29 
+    </div>
+    
+</body>
+</html>
