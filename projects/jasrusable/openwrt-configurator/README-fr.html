@@ -1,0 +1,493 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>openwrt-configurator - Une interface en ligne de commande pour provisionner facilement la configuration UCI sur les appareils OpenWrt.</title>
+    <meta name="description" content="Une interface en ligne de commande pour provisionner facilement la configuration UCI sur les appareils OpenWrt.">
+    <meta name="keywords" content="openwrt-configurator, French, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "openwrt-configurator",
+  "description": "Une interface en ligne de commande pour provisionner facilement la configuration UCI sur les appareils OpenWrt.",
+  "author": {
+    "@type": "Person",
+    "name": "jasrusable"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 89
+  },
+  "url": "https://OpenAiTx.github.io/projects/jasrusable/openwrt-configurator/README-fr.html",
+  "sameAs": "https://raw.githubusercontent.com/jasrusable/openwrt-configurator/main/README.md",
+  "datePublished": "2026-05-05",
+  "dateModified": "2026-05-05"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/jasrusable/openwrt-configurator" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    openwrt-configurator
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 89 stars</span>
+                <span class="language">French</span>
+                <span>by jasrusable</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>OpenWrt Configurator</h1></p><p>OpenWrt Configurator est un outil CLI et un fichier de configuration JSON correspondant qui vous permet de spécifier l'état complet de votre réseau, y compris la configuration UCI, les paquets et les versions du firmware dans un seul fichier de configuration JSON de type UCI pouvant être déployé sur vos appareils OpenWrt à l'aide d'OpenWrt Configurator.</p><pre><code class="language-sh">$ openwrt-configurator provision ./network-config.json</code></pre></p><p>Le fichier de configuration JSON peut être composé de manière conditionnelle avec les clés <code>.if</code> et/ou <code>.overrides</code>, et implémente de légères abstractions sur les ports Ethernet des appareils et les radios Wi-Fi pour prendre en charge de manière transparente la configuration de plusieurs appareils, différents modèles/types d'appareils, ainsi que différents rôles d'appareils (routeur, commutateur, point d'accès dump, etc.) à partir d'un seul fichier de configuration JSON.</p><pre><code class="language-json">  "interface": [
+    {
+      ".if": "device.tag.role == 'router'", // Apply the pppoe interface to only the router.
+      ".name": "wan",
+      "device": "eth0",
+      "proto": "pppoe",
+      "username": "me@pppoe.com",
+      "password": "123"
+    },
+    {
+      ".name": "lan",
+      "device": "br-lan.1",
+      ".overrides": [
+        {
+          ".if": "device.tag.role == 'router'", // Apply a static ip to only the router.
+          "override": {
+            "proto": "static",
+            "ipaddr": "10.0.0.1",
+            "netmask": "255.255.0.0"
+          }
+        },
+        {
+          ".if": "device.tag.role != 'router'", // Apply dhcp to all non-router devices.
+          "override": {
+            "proto": "dhcp"
+          }
+        }
+      ]
+    },
+  ]</code></pre>
+<h2>Fonctionnalités</h2></p><ul><li>Stockez toute la configuration réseau de tous les appareils dans un seul fichier de configuration JSON de type UCI (configuration UCI, paquets, versions du firmware et plus).</li>
+<li>Composez conditionnellement votre fichier JSON pour prendre en charge plusieurs appareils OpenWrt, différents modèles/types d'appareils, et différents rôles (routeurs, commutateurs et points d'accès dump, etc.).</li>
+<li>Abstractions légères sur les ports Ethernet et les radios WiFi pour garder la configuration multi-appareils simple.</li>
+<li>Validation stricte de la syntaxe de la configuration et vérification des erreurs logiques pour éviter une configuration invalide.</li>
+<li>Convertissez votre fichier JSON en commandes UCI pour chacun de vos appareils OpenWrt.</li>
+<li>Provisionnez votre fichier JSON sur vos appareils OpenWrt.</li>
+<li>Migrations de fichiers JSON pour maintenir votre fichier JSON à jour avec les changements/mises à jour de la configuration UCI.</li>
+<li>Construisez et flashez des images sysupgrade sur vos appareils OpenWrt basées sur votre fichier de configuration JSON.</li></p><p></ul><h2>Pour commencer</h2></p><ul><li>Téléchargez OpenWrt Configurator depuis la <a href="https://github.com/jasrusable/openwrt-configurator/releases" target="_blank" rel="noopener noreferrer">page des releases GitHub</a>.</li></p><p><li>Téléchargez un <a href="https://github.com/jasrusable/openwrt-configurator/tree/main/sampleConfigs" target="_blank" rel="noopener noreferrer">fichier de configuration exemple</a>.</li></p><p><li>Ajustez votre fichier de configuration selon vos besoins.</li></p><p><li>Imprimez et inspectez les commandes UCI de votre appareil.</li></p><p>
+</ul><pre><code class="language-sh">$ openwrt-configurator print-uci-commands ./network-config.json
+<h1>device my-ap</h1>
+apk del --rdepends firewall firewall4
+uci set system.system0=system
+uci set system.system0.hostname='my-ap'
+uci set system.system0.timezone='Africa/Johannesburg'
+uci set network.switch0=switch
+uci set network.switch0.name='switch0'
+uci set network.switch0.reset='1'
+uci set network.switch0.enable_vlan='1'
+...</code></pre></p><blockquote>Remarque : Pour que cette commande fonctionne, les détails SSH doivent être correctement configurés dans les sections <code>provisioning_config</code> pour chacun de vos appareils.</blockquote></p><ul><li>Provisionnez la configuration sur vos appareils (implémenté avec SSH).</li></p><p></ul><pre><code class="language-sh">$ openwrt-configurator provision ./network-config.json
+Provisioning device "my-ap" @ root@10.0.0.218
+Connecting over SSH...
+Connected.
+Verifying device...
+Verified.
+Setting configuration...
+Configuration set.
+Provisioning completed.
+...</code></pre></p><blockquote>Remarque : Pour que cette commande fonctionne, les détails SSH doivent être correctement configurés dans les sections <code>provisioning_config</code> pour chacun de vos appareils.</blockquote></p><h2>Comment ça fonctionne</h2></p><ul><li>Ajoutez vos appareils dans le fichier de configuration JSON.</li></p><p></ul><pre><code class="language-json">  "devices": [
+    {
+      "model_id": "ubnt,edgerouter-x",
+      "ipaddr": "10.0.0.1",
+      "tags": { "role": "router" }, // Give the Edgerouter a tag with role of "router".
+      "hostname": "my-router",
+      "provisioning_config": {
+        "ssh_auth": {
+          "username": "root",
+          "password": "123"
+        }
+      }
+    },
+    {
+      "model_id": "tplink,eap245-v3",
+      "ipaddr": "10.0.0.218",
+      "tags": { "role": "ap" }, // Give the EAP245 a tag with role of "ap".
+      "hostname": "my-ap",
+      "provisioning_config": {
+        "ssh_auth": {
+          "username": "root",
+          "password": "123"
+        }
+      }
+    }
+  ],</code></pre></p><ul><li>Spécifiez quels paquets vous souhaitez installer ou désinstaller sur vos appareils.</li></p><p></ul><pre><code class="language-json">  "package_profiles": [
+    {
+      ".if": "device.tag.role == 'router'", // Install sqm and https-dns-proxy on the router.
+      "packages": [
+        "sqm-scripts",
+        "luci-app-sqm",
+        "https-dns-proxy",
+        "luci-app-https-dns-proxy"
+      ]
+    },
+    {
+      ".if": "device.tag.role == 'ap'", // Uninstall firewall packages from ap's.
+      "packages": ["-firewall", "-firewall4"]
+    }
+  ],</code></pre>
+<ul><li>Spécifiez votre configuration UCI en JSON, et ajoutez les clés <code>.if</code> et/ou <code>.overrides</code> pour appliquer la configuration de manière conditionnelle.</li></p><p>
+</ul><pre><code class="language-json">  "config": {
+    "dropbear": {
+      "dropbear": [
+        {
+          "PasswordAuth": "on",
+          "RootPasswordAuth": "on",
+          "Port": 22,
+          "BannerFile": "/etc/banner"
+        }
+      ]
+    },
+    "system": {
+      "system": [
+        {
+          "timezone": "Africa/Johannesburg"
+        }
+      ]
+    },
+    "interface": [
+      {
+        ".name": "loopback",
+        "device": "lo",
+        "proto": "static",
+        "ipaddr": "127.0.0.1",
+        "netmask": "255.0.0.0"
+      },
+      {
+        ".if": "device.tag.role == 'router'", // Apply the pppoe interface to only the router.
+        ".name": "wan",
+        "device": "eth0",
+        "proto": "pppoe",
+        "username": "me@pppoe.com",
+        "password": "123"
+      },
+      {
+        ".name": "lan",
+        "device": "br-lan.1",
+        ".overrides": [
+          {
+            ".if": "device.tag.role == 'router'", // Apply a static ip to only the router.
+            "override": {
+              "proto": "static",
+              "ipaddr": "10.0.0.1",
+              "netmask": "255.255.0.0"
+            }
+          },
+          {
+            ".if": "device.tag.role != 'router'", // Apply dhcp to all non-router devices.
+            "override": {
+              "proto": "dhcp"
+            }
+          }
+        ]
+      }
+    ],
+    "wireless": {
+      ".if": "device.tag.role == 'ap'", // Applies the entire "wireless" object to only devices with the "ap" tag set.
+      "wifi-device": [
+        {
+          ".name": "radio0",
+          "band": "2g"
+        },
+        {
+          ".name": "radio1",
+          "band": "5g"
+        }
+      ],
+      "wifi-iface": [
+        {
+          "mode": "ap",
+          "device": ["radio0", "radio1"],
+          "network": "lan",
+          "ssid": "my-ssid",
+          "encryption": "psk2",
+          "key": "123456789"
+        },
+        {
+          "mode": "ap",
+          "device": ["radio0", "radio1"],
+          "network": "guest",
+          "ssid": "my-ssid-guest",
+          "encryption": "none"
+        }
+      ]
+    }
+  }</code></pre></p><h2>Feuille de route</h2></p><h3>Court terme</h3></p><ul><li>Améliorer le README.md et ajouter plus de documentation.</li>
+<li>Ajouter plus de validation de configuration et de vérification des erreurs.</li>
+<li>Améliorer la gestion des erreurs et les messages.</li>
+<li>Ajouter plus d’exemples de configurations.</li>
+<li>Supporter la compilation et le flashage du firmware.</li></p><p></ul><h3>Long terme</h3></p><ul><li>Migrations de configuration.</li>
+<li>Réduire la taille de l’exécutable CLI.</li>
+<li>Interface web pour la création de configuration.</li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-05
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/jasrusable/openwrt-configurator/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-05-05 
+    </div>
+    
+</body>
+</html>

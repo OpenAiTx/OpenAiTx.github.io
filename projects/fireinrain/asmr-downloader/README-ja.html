@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 165
+    "ratingCount": 170
   },
   "url": "https://OpenAiTx.github.io/projects/fireinrain/asmr-downloader/README-ja.html",
   "sameAs": "https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/README.md",
-  "datePublished": "2026-04-17",
-  "dateModified": "2026-04-17"
+  "datePublished": "2026-05-05",
+  "dateModified": "2026-05-05"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 165 stars</span>
+                <span class="stars">⭐ 170 stars</span>
                 <span class="language">Japanese</span>
                 <span>by fireinrain</span>
             </div>
@@ -312,7 +312,7 @@
       </div>
     </div>
   </details>
-</div></p><h2>📖 プロジェクト概要</h2></p><p>ASMRoner は Go 言語で作られたコマンドラインツールで、asmr.one の音声作品の検索、ダウンロード、同期を行い、シンプルな Web 再生画面も提供します。</p><blockquote>🌐 派生作品：<a href="https://asmr.furina.in" target="_blank" rel="noopener noreferrer">asmr.furina.in</a> — シンプルでクリーンなオンライン ASMR 視聴ページ</blockquote></p><h2>🚀 クイックスタート</h2></p><pre><code class="language-bash">git clone https://github.com/fireinrain/asmroner.git && cd asmroner
+</div></p><h2>📖 プロジェクト概要</h2></p><p>ASMRoner は Go 言語で作られたコマンドラインツールで、asmr.one の音声作品の検索、ダウンロード、同期を行い、シンプルな Web 再生画面も提供します。</p><blockquote>🌐 派生作品：<a href="https://asmr.furina.in" target="_blank" rel="noopener noreferrer">asmr.furina.in</a> — シンプルでクリーンなオンライン ASMR 視聴ページ</blockquote></p><h2>🚀 クイックスタート</h2></p><pre><code class="language-bash">https://github.com/MIKANOoOo/asmr-downloader.git && cd asmroner
 go build -o asmroner
 ./asmroner config   # 交互式初始化配置</code></pre></p><h2>📋 Common Commands</h2></p><pre><code class="language-bash"># 搜索
 ./asmroner search "护士" -c 20
@@ -325,9 +325,12 @@ go build -o asmroner
 ./asmroner sync
 ./asmroner sync download -d ./downloads
 ./asmroner sync retry -d ./downloads
-./asmroner sync report</p><h1>Web 播放界面</h1>
-./asmroner listen -p 8080 ./syncdata</code></pre>
-<h2>📸 スクリーンショット</h2></p><p>| 設定 | 検索 |
+./asmroner sync report</p><p>  # 导出单个作品或指定数量热门榜链接 & 导出到指定目录
+./asmroner export RJ01544940 -o ./downloads
+./asmroner export hot100 -n 20 -o ./downloads
+./asmroner export hot100 -n 10 -o ./downloads
+更多内容参考常见问题中的guide</p><h1>Web 播放界面</h1>
+./asmroner listen -p 8080 ./syncdata</code></pre></p><h2>📸 スクリーンショット</h2></p><p>| 設定 | 検索 |
 |:---:|:---:|
 | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/config.png" alt="設定"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/search.png" alt="検索"> |
 | <strong>ダウンロード</strong> | <strong>同期</strong> |
@@ -335,13 +338,15 @@ go build -o asmroner
 | <strong>同期ダウンロード</strong> | <strong>統計</strong> |
 | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/sync-down.png" alt="同期ダウンロード"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/sync-report.png" alt="統計"> |
 | <strong>Web インターフェース</strong> | <strong>Web インターフェース 2</strong> |
-| <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/listen.png" alt="Webインターフェース"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/listen2.png" alt="Webインターフェース2"> |</p><p><details>
-<summary><b>✨ 機能特性</b></summary></p><ul><li><strong>検索</strong>：単一/バッチ RJID、高度な検索構文、結果の CSV/JSON エクスポート</li>
-<li><strong>ダウンロード</strong>：単一/バッチ/人気作品のダウンロード、自動レート制限、リトライ、指数バックオフ</li>
-<li><strong>同期</strong>：メタデータ同期、バッチダウンロード制御、状態追跡、失敗時リトライ</li>
+| <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/listen.png" alt="Webインターフェース"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/listen2.png" alt="Webインターフェース2"> |
+| <strong>export インターフェース</strong> | <strong>export インターフェース 2</strong> |
+| <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/export1.png" alt="exportインターフェース"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/export2.png" alt="exportインターフェース2"> |</p><p><details>
+<summary><b>✨ 機能特性</b></summary></p><ul><li><strong>検索</strong>：単体/バッチ RJID、高度な検索構文、結果をCSV/JSONでエクスポート</li>
+<li><strong>ダウンロード</strong>：単体/バッチ/人気作品ダウンロード、自動帯域制限、リトライ、指数バックオフ</li>
+<li><strong>同期</strong>：メタデータ同期、バッチダウンロード管理、状態追跡、失敗時リトライ</li>
 <li><strong>Web インターフェース</strong>：ビジュアルブラウズ、ブラウザ内再生、レスポンシブデザイン</li>
-<li><strong>設定</strong>：インタラクティブ初期化、プロキシ、レート制限、ジッターなどの高度設定対応</li></p><p></ul></details></p><p><details>
-<summary><b>⚙️ 設定ファイルの説明</b></summary></p><p>設定ファイルのパス：<code>~/.asmroner/config.toml</code>（TOML 形式）</p><pre><code class="language-toml">[user]
+<li><strong>設定</strong>：対話型初期化、プロキシ・帯域制限・ジッター等の高度な設定対応</li></p><p></ul></details></p><p><details>
+<summary><b>⚙️ 設定ファイル説明</b></summary></p><p>設定ファイルのパス：<code>~/.asmroner/config.toml</code>（TOML形式）</p><pre><code class="language-toml">[user]
 account = "guest"
 password = "guest"</p><p>[downloader]
 api_url = ""                # 留空自动获取最快站点
@@ -358,16 +363,17 @@ download_qps = 0.2
 download_jitter_min = 2000
 download_jitter_max = 5000</code></pre>
 </details></p><p><details>
-<summary><b>📋 コマンドオプションクイックリファレンス</b></summary></p><p>| コマンド | オプション | 説明 |
+<summary><b>📋 コマンドオプション早見表</b></summary></p><p>| コマンド | オプション | 説明 |
 |------|------|------|
 | <code>search</code> | <code>-c</code> | 検索結果数（デフォルト 10） |
 | <code>search download</code> | <code>-d</code>, <code>-s</code> | ダウンロードディレクトリ、ダウンロード数 |
 | <code>search export</code> | <code>-f</code>, <code>-n</code> | エクスポートファイル名（.csv/.json）、エクスポート数 |
 | <code>download</code> | <code>-d</code>, <code>-n</code> | ダウンロードディレクトリ、hot100 数 |
 | <code>sync download</code> | <code>-d</code> | ダウンロードディレクトリ |
-| <code>sync retry</code> | <code>-d</code> | 失敗ファイルのあるディレクトリ |
-| <code>sync export</code> | <code>-s</code>, <code>-f</code> | ステータス（failed/success）、エクスポートファイル |
-| <code>listen</code> | <code>-p</code> | ポート（デフォルト 9999） |</p><p></details></p><p><details>
+| <code>sync retry</code> | <code>-d</code> | 失敗ファイルのディレクトリ |
+| <code>sync export</code> | <code>-s</code>, <code>-f</code> | 状態（failed/success）、エクスポートファイル |
+| <code>listen</code> | <code>-p</code> | ポート（デフォルト 9999） |
+| <code>export</code> | <code>-o</code>, <code>-n</code> | エクスポートディレクトリ、hot100数 |</p><p></details></p><p><details>
 <summary><b>📁 プロジェクト構成</b></summary></p><pre><code class="language-">asmroner/
 ├── cmd/                # 命令行接口（config/download/search/sync/listen）
 ├── internal/
@@ -383,19 +389,18 @@ download_jitter_max = 5000</code></pre>
 </details></p><p><details>
 <summary><b>🛠 技術スタック</b></summary></p><p>| コンポーネント | 用途 |
 |------|------|
-| Cobra + Viper | CLI フレームワーク + 設定管理 |
+| Cobra + Viper | CLIフレームワーク + 設定管理 |
 | GORM + SQLite | データ永続化 |
-| Resty | HTTP クライアント（HTTP/SOCKS5 プロキシ対応） |
-| Pond | 並行処理ワークプール |
-| x/time/rate | トークンバケットレート制限 |
-| Gin | Web サービス |
-| Tailwind + Plyr | フロントエンド UI + オーディオ再生 |</p><p></details></p><p><details>
-<summary><b>🔧 よくある質問</b></summary></p><p><strong>設定ファイルが見つかりません</strong> → <code>./asmroner config</code> を実行して初期化してください</p><p><strong>ダウンロード失敗（stream error）</strong> → プログラムが自動リトライします；それでも失敗する場合は <code>sync retry</code> を実行するか、<code>.asmroner-data/download_errors.log</code> を確認してください</p><p><strong>Web インターフェースにアクセスできない</strong> → ポートが使用中でないか確認し、<code>-p</code> オプションで別のポートを指定してみてください</p><p><strong>検索結果が空です</strong> → クエリ構文を確認し、条件を簡略化してみてください</p><p></details></p><h2>🤝 貢献</h2></p><p>Pull Request の提出を歓迎します！Fork → 新しいブランチ作成 → 変更をコミット → PR を作成してください。</p><h2>📄 ライセンス</h2></p><p>本プロジェクトは MIT ライセンスのもとで公開されています。詳細は <a href="/LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a> ファイルをご覧ください。</p><h2>🙏 感謝の意</h2></p><ul><li>特別感謝 <a href="https://github.com/DiheChen/go-asmr-spider" target="_blank" rel="noopener noreferrer">go-asmr-spider</a></li>
-<li>すべての貢献者とユーザーに感謝します！</li></p><p></ul>---</p><p><strong>ASMRoner</strong> — 毎晩違う妹があなたの眠りをサポートします :)</p><p><em>最終更新：2026年2月</em></p><p>
-
+| Resty | HTTPクライアント（HTTP/SOCKS5プロキシ対応） |
+| Pond | 並列ワークプール |
+| x/time/rate | トークンバケットによるレート制限 |
+| Gin | Webサービス |
+| Tailwind + Plyr | フロントエンドUI + オーディオ再生 |</p><p></details></p><p><details>
+<summary><b>🔧 よくある質問</b></summary></p><p><strong>設定ファイルが見つかりません</strong> → <code>./asmroner config</code> を実行して初期化</p><p><strong>ダウンロード失敗（stream error）</strong> → 自動で再試行します；失敗する場合は <code>sync retry</code> で再試行、または <code>.asmroner-data/download_errors.log</code> を確認</p><p><strong>Web画面がアクセスできません</strong> → ポートが占有されていないか確認し、<code>-p</code> で別のポートを指定してみてください</p><p><strong>検索結果が空です</strong> → クエリ構文を確認し、条件を簡素化して試してください</p><p><strong>exportコマンドに対応したダウンロード方法</strong> → <a href="/dist/guide.pdf" target="_blank" rel="noopener noreferrer">guide</a> を参照してください</p><p></details></p><h2>🤝 貢献</h2></p><p>Pull Requestの提出を歓迎します！Fork → 新しいブランチ作成 → 変更をコミット → PRを開始。</p><h2>📄 ライセンス</h2></p><p>本プロジェクトはMITライセンスを採用しています。詳細は <a href="/LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a> ファイルをご覧ください。</p><h2>🙏 致谢</h2></p><ul><li>特别感谢 <a href="https://github.com/DiheChen/go-asmr-spider" target="_blank" rel="noopener noreferrer">go-asmr-spider</a></li>
+<li>感谢所有贡献者和用户！</li></p><p></ul>---</p><p><strong>ASMRoner</strong> — 每天晚上都有不同的妹妹陪你入睡 :)</p><p><em>最后更新：2026 年 2 月</em></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-17
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-05
 
 ---</p>
         </div>
@@ -407,7 +412,7 @@ download_jitter_max = 5000</code></pre>
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-04-17 
+        Last updated: 2026-05-05 
     </div>
     
 </body>

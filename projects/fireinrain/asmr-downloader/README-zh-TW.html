@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 165
+    "ratingCount": 170
   },
   "url": "https://OpenAiTx.github.io/projects/fireinrain/asmr-downloader/README-zh-TW.html",
   "sameAs": "https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/README.md",
-  "datePublished": "2026-04-17",
-  "dateModified": "2026-04-17"
+  "datePublished": "2026-05-05",
+  "dateModified": "2026-05-05"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 165 stars</span>
+                <span class="stars">⭐ 170 stars</span>
                 <span class="language">Traditional Chinese</span>
                 <span>by fireinrain</span>
             </div>
@@ -312,7 +312,7 @@
       </div>
     </div>
   </details>
-</div></p><h2>📖 專案簡介</h2></p><p>ASMRoner 是一款 Go 語言命令列工具，用於搜尋、下載、同步 asmr.one 聲音作品，並提供簡易的網頁播放介面。</p><blockquote>🌐 衍生作品：<a href="https://asmr.furina.in" target="_blank" rel="noopener noreferrer">asmr.furina.in</a> — 一個簡潔乾淨的線上 ASMR 聽音頁面</blockquote></p><h2>🚀 快速開始</h2></p><pre><code class="language-bash">git clone https://github.com/fireinrain/asmroner.git && cd asmroner
+</div></p><h2>📖 專案簡介</h2></p><p>ASMRoner 是一款 Go 語言命令列工具，用於搜尋、下載、同步 asmr.one 聲音作品，並提供簡易的網頁播放介面。</p><blockquote>🌐 衍生作品：<a href="https://asmr.furina.in" target="_blank" rel="noopener noreferrer">asmr.furina.in</a> — 一個簡潔乾淨的線上 ASMR 聽音頁面</blockquote></p><h2>🚀 快速開始</h2></p><pre><code class="language-bash">https://github.com/MIKANOoOo/asmr-downloader.git && cd asmroner
 go build -o asmroner
 ./asmroner config   # 交互式初始化配置</code></pre></p><h2>📋 常用指令</h2></p><pre><code class="language-bash"># 搜索
 ./asmroner search "护士" -c 20
@@ -325,8 +325,13 @@ go build -o asmroner
 ./asmroner sync
 ./asmroner sync download -d ./downloads
 ./asmroner sync retry -d ./downloads
-./asmroner sync report</p><h1>Web 播放界面</h1>
-./asmroner listen -p 8080 ./syncdata</code></pre></p><h2>📸 截圖</h2></p><p>| 設定 | 搜尋 |
+./asmroner sync report</p><p>  # 导出单个作品或指定数量热门榜链接 & 导出到指定目录
+./asmroner export RJ01544940 -o ./downloads
+./asmroner export hot100 -n 20 -o ./downloads
+./asmroner export hot100 -n 10 -o ./downloads
+更多内容参考常见问题中的guide</p><h1>Web 播放界面</h1>
+./asmroner listen -p 8080 ./syncdata</code></pre>
+<h2>📸 截圖</h2></p><p>| 設定 | 搜尋 |
 |:---:|:---:|
 | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/config.png" alt="設定"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/search.png" alt="搜尋"> |
 | <strong>下載</strong> | <strong>同步</strong> |
@@ -334,11 +339,13 @@ go build -o asmroner
 | <strong>同步下載</strong> | <strong>統計</strong> |
 | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/sync-down.png" alt="同步下載"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/sync-report.png" alt="統計"> |
 | <strong>Web 介面</strong> | <strong>Web 介面 2</strong> |
-| <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/listen.png" alt="Web介面"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/listen2.png" alt="Web介面2"> |</p><p><details>
-<summary><b>✨ 功能特性</b></summary></p><ul><li><strong>搜尋</strong>：單個／批次 RJID、高級搜尋語法、結果匯出 CSV/JSON</li>
-<li><strong>下載</strong>：單個／批次／熱門作品下載，自動限速、重試、指數退避</li>
+| <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/listen.png" alt="Web介面"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/listen2.png" alt="Web介面2"> |
+| <strong>export 介面</strong> | <strong>export 介面 2</strong> |
+| <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/export1.png" alt="export介面"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/export2.png" alt="export介面2"> |</p><p><details>
+<summary><b>✨ 功能特性</b></summary></p><ul><li><strong>搜尋</strong>：單個/批次 RJID、高級搜尋語法、結果匯出 CSV/JSON</li>
+<li><strong>下載</strong>：單個/批次/熱門作品下載，自動限速、重試、指數退避</li>
 <li><strong>同步</strong>：中繼資料同步、批次下載控制、狀態追蹤、失敗重試</li>
-<li><strong>Web 介面</strong>：視覺化瀏覽、瀏覽器內播放、響應式設計</li>
+<li><strong>Web 介面</strong>：可視化瀏覽、瀏覽器內播放、響應式設計</li>
 <li><strong>設定</strong>：互動式初始化，支援代理、限速、抖動等進階設定</li></p><p></ul></details></p><p><details>
 <summary><b>⚙️ 設定檔說明</b></summary></p><p>設定檔路徑：<code>~/.asmroner/config.toml</code>（TOML 格式）</p><pre><code class="language-toml">[user]
 account = "guest"
@@ -366,7 +373,8 @@ download_jitter_max = 5000</code></pre>
 | <code>sync download</code> | <code>-d</code> | 下載目錄 |
 | <code>sync retry</code> | <code>-d</code> | 失敗檔案所在目錄 |
 | <code>sync export</code> | <code>-s</code>, <code>-f</code> | 狀態（failed/success）、匯出檔案 |
-| <code>listen</code> | <code>-p</code> | 連接埠（預設 9999） |</p><p></details></p><p><details>
+| <code>listen</code> | <code>-p</code> | 埠號（預設 9999） |
+| <code>export</code> | <code>-o</code>, <code>-n</code> | 匯出目錄、hot100數量 |</p><p></details></p><p><details>
 <summary><b>📁 專案結構</b></summary></p><pre><code class="language-">asmroner/
 ├── cmd/                # 命令行接口（config/download/search/sync/listen）
 ├── internal/
@@ -380,7 +388,7 @@ download_jitter_max = 5000</code></pre>
 ├── main.go
 └── go.mod</code></pre>
 </details></p><p><details>
-<summary><b>🛠 技術棧</b></summary></p><p>| 組件 | 用途 |
+<summary><b>🛠 技術堆疊</b></summary></p><p>| 組件 | 用途 |
 |------|------|
 | Cobra + Viper | CLI 框架 + 配置管理 |
 | GORM + SQLite | 數據持久化 |
@@ -389,11 +397,11 @@ download_jitter_max = 5000</code></pre>
 | x/time/rate | 令牌桶限流 |
 | Gin | Web 服務 |
 | Tailwind + Plyr | 前端介面 + 音訊播放 |</p><p></details></p><p><details>
-<summary><b>🔧 常見問題</b></summary></p><p><strong>找不到配置文件</strong> → 執行 <code>./asmroner config</code> 初始化</p><p><strong>下載失敗（stream error）</strong> → 程式會自動重試；若仍失敗，請用 <code>sync retry</code> 重試，或查看 <code>.asmroner-data/download_errors.log</code></p><p><strong>Web 介面無法訪問</strong> → 確認埠未被占用，嘗試用 <code>-p</code> 指定其他埠</p><p><strong>搜尋結果為空</strong> → 檢查查詢語法，嘗試簡化條件</p><p></details></p><h2>🤝 貢獻</h2></p><p>歡迎提交 Pull Request！Fork → 新建分支 → 提交更改 → 發起 PR。</p><h2>📄 許可證</h2></p><p>本專案採用 MIT 許可證，詳情請參閱 <a href="/LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a> 檔案。</p><h2>🙏 致謝</h2></p><ul><li>特別感謝 <a href="https://github.com/DiheChen/go-asmr-spider" target="_blank" rel="noopener noreferrer">go-asmr-spider</a></li>
-<li>感謝所有貢獻者和使用者！</li></p><p></ul>---</p><p><strong>ASMRoner</strong> — 每天晚上都有不同的妹妹陪你入睡 :)</p><p><em>最後更新：2026 年 2 月</em></p><p>
+<summary><b>🔧 常見問題</b></summary></p><p><strong>找不到配置文件</strong> → 執行 <code>./asmroner config</code> 初始化</p><p><strong>下載失敗（stream error）</strong> → 程式會自動重試；若仍失敗，使用 <code>sync retry</code> 重試，或查看 <code>.asmroner-data/download_errors.log</code></p><p><strong>Web 介面無法訪問</strong> → 確認埠口未被佔用，嘗試用 <code>-p</code> 指定其他埠口</p><p><strong>搜尋結果為空</strong> → 檢查查詢語法，嘗試簡化條件</p><p><strong>export 指令配套的下載方式</strong> → 參考<a href="/dist/guide.pdf" target="_blank" rel="noopener noreferrer">guide</a> </p><p></details></p><h2>🤝 貢獻</h2></p><p>歡迎提交 Pull Request！Fork → 新建分支 → 提交更改 → 開啟 PR。</p><h2>📄 授權條款</h2></p><p>本專案採用 MIT 授權，詳情請參閱 <a href="/LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a> 檔案。</p><h2>🙏 致謝</h2></p><ul><li>特別感謝 <a href="https://github.com/DiheChen/go-asmr-spider" target="_blank" rel="noopener noreferrer">go-asmr-spider</a></li>
+<li>感謝所有貢獻者和用戶！</li></p><p></ul>---</p><p><strong>ASMRoner</strong> — 每天晚上都有不同的妹妹陪你入睡 :)</p><p><em>最後更新：2026 年 2 月</em></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-17
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-05
 
 ---</p>
         </div>
@@ -405,7 +413,7 @@ download_jitter_max = 5000</code></pre>
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-04-17 
+        Last updated: 2026-05-05 
     </div>
     
 </body>

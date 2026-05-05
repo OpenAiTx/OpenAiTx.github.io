@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 165
+    "ratingCount": 170
   },
   "url": "https://OpenAiTx.github.io/projects/fireinrain/asmr-downloader/README-id.html",
   "sameAs": "https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/README.md",
-  "datePublished": "2026-04-17",
-  "dateModified": "2026-04-17"
+  "datePublished": "2026-05-05",
+  "dateModified": "2026-05-05"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 165 stars</span>
+                <span class="stars">⭐ 170 stars</span>
                 <span class="language">Indonesian</span>
                 <span>by fireinrain</span>
             </div>
@@ -312,7 +312,7 @@
       </div>
     </div>
   </details>
-</div></p><h2>📖 Deskripsi Proyek</h2></p><p>ASMRoner adalah alat baris perintah berbasis Go untuk mencari, mengunduh, menyinkronkan karya audio asmr.one, serta menyediakan antarmuka web pemutar sederhana.</p><blockquote>🌐 Proyek turunan: <a href="https://asmr.furina.in" target="_blank" rel="noopener noreferrer">asmr.furina.in</a> — Sebuah halaman mendengarkan ASMR online yang sederhana dan bersih</blockquote></p><h2>🚀 Mulai Cepat</h2></p><pre><code class="language-bash">git clone https://github.com/fireinrain/asmroner.git && cd asmroner
+</div></p><h2>📖 Deskripsi Proyek</h2></p><p>ASMRoner adalah alat baris perintah berbasis Go untuk mencari, mengunduh, menyinkronkan karya audio asmr.one, serta menyediakan antarmuka web pemutar sederhana.</p><blockquote>🌐 Proyek turunan: <a href="https://asmr.furina.in" target="_blank" rel="noopener noreferrer">asmr.furina.in</a> — Sebuah halaman mendengarkan ASMR online yang sederhana dan bersih</blockquote></p><h2>🚀 Mulai Cepat</h2></p><pre><code class="language-bash">https://github.com/MIKANOoOo/asmr-downloader.git && cd asmroner
 go build -o asmroner
 ./asmroner config   # 交互式初始化配置</code></pre></p><h2>📋 Perintah Umum</h2></p><pre><code class="language-bash"># 搜索
 ./asmroner search "护士" -c 20
@@ -325,22 +325,28 @@ go build -o asmroner
 ./asmroner sync
 ./asmroner sync download -d ./downloads
 ./asmroner sync retry -d ./downloads
-./asmroner sync report</p><h1>Web 播放界面</h1>
+./asmroner sync report</p><p>  # 导出单个作品或指定数量热门榜链接 & 导出到指定目录
+./asmroner export RJ01544940 -o ./downloads
+./asmroner export hot100 -n 20 -o ./downloads
+./asmroner export hot100 -n 10 -o ./downloads
+更多内容参考常见问题中的guide</p><h1>Web 播放界面</h1>
 ./asmroner listen -p 8080 ./syncdata</code></pre></p><h2>📸 Tangkapan Layar</h2></p><p>| Pengaturan | Pencarian |
 |:---:|:---:|
 | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/config.png" alt="Pengaturan"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/search.png" alt="Pencarian"> |
 | <strong>Unduh</strong> | <strong>Sinkronisasi</strong> |
 | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/download.png" alt="Unduh"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/sync.png" alt="Sinkronisasi"> |
-| <strong>Unduh Sinkronisasi</strong> | <strong>Statistik</strong> |
-| <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/sync-down.png" alt="Unduh Sinkronisasi"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/sync-report.png" alt="Statistik"> |
+| <strong>Sinkronisasi & Unduh</strong> | <strong>Statistik</strong> |
+| <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/sync-down.png" alt="Sinkronisasi & Unduh"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/sync-report.png" alt="Statistik"> |
 | <strong>Antarmuka Web</strong> | <strong>Antarmuka Web 2</strong> |
-| <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/listen.png" alt="Antarmuka Web"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/listen2.png" alt="Antarmuka Web 2"> |</p><p><details>
-<summary><b>✨ Fitur Utama</b></summary></p><ul><li><strong>Pencarian</strong>: RJID tunggal/massal, sintaks pencarian lanjutan, ekspor hasil ke CSV/JSON</li>
-<li><strong>Unduhan</strong>: Unduhan tunggal/massal/karya populer, pembatasan otomatis, percobaan ulang, backoff eksponensial</li>
-<li><strong>Sinkronisasi</strong>: Sinkronisasi metadata, kontrol unduhan massal, pelacakan status, percobaan ulang gagal</li>
-<li><strong>Antarmuka Web</strong>: Penjelajahan visual, pemutaran di dalam browser, desain responsif</li>
-<li><strong>Pengaturan</strong>: Inisialisasi interaktif, dukungan proxy, pembatasan, jitter, dan pengaturan lanjutan lainnya</li></p><p></ul></details></p><p><details>
-<summary><b>⚙️ Penjelasan File Konfigurasi</b></summary></p><p>Path file konfigurasi: <code>~/.asmroner/config.toml</code> (format TOML)</p><pre><code class="language-toml">[user]
+| <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/listen.png" alt="Antarmuka Web"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/listen2.png" alt="Antarmuka Web 2"> |
+| <strong>Antarmuka export</strong> | <strong>Antarmuka export 2</strong> |
+| <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/export1.png" alt="Antarmuka export"> | <img src="https://raw.githubusercontent.com/fireinrain/asmr-downloader/v2/dist/export2.png" alt="Antarmuka export 2"> |</p><p><details>
+<summary><b>✨ Fitur dan Keunggulan</b></summary></p><ul><li><strong>Pencarian</strong>: RJID tunggal/massal, sintaks pencarian lanjutan, ekspor hasil ke CSV/JSON</li>
+<li><strong>Unduh</strong>: Unduh karya tunggal/massal/populer, pembatasan otomatis, coba ulang, eksponensial backoff</li>
+<li><strong>Sinkronisasi</strong>: Sinkronisasi metadata, kontrol unduhan massal, pelacakan status, coba ulang jika gagal</li>
+<li><strong>Antarmuka Web</strong>: Penjelajahan visual, pemutaran dalam browser, desain responsif</li>
+<li><strong>Pengaturan</strong>: Inisialisasi interaktif, mendukung proxy, pembatasan, jitter, dan konfigurasi lanjutan lainnya</li></p><p></ul></details></p><p><details>
+<summary><b>⚙️ Penjelasan Berkas Konfigurasi</b></summary></p><p>Lokasi berkas konfigurasi: <code>~/.asmroner/config.toml</code> (format TOML)</p><pre><code class="language-toml">[user]
 account = "guest"
 password = "guest"</p><p>[downloader]
 api_url = ""                # 留空自动获取最快站点
@@ -355,17 +361,19 @@ sync_jitter_min = 100       # ms
 sync_jitter_max = 500
 download_qps = 0.2
 download_jitter_min = 2000
-download_jitter_max = 5000</code></pre></p><p></details></p><p><details>
-<summary><b>📋 Ringkasan Opsi Perintah</b></summary></p><p>| Perintah | Opsi | Keterangan |
-|----------|------|-----------|
+download_jitter_max = 5000</code></pre>
+</details></p><p><details>
+<summary><b>📋 Tinjauan Cepat Opsi Perintah</b></summary></p><p>| Perintah | Opsi | Keterangan |
+|------|------|------|
 | <code>search</code> | <code>-c</code> | Jumlah hasil pencarian (default 10) |
-| <code>search download</code> | <code>-d</code>, <code>-s</code> | Direktori unduhan, jumlah unduhan |
+| <code>search download</code> | <code>-d</code>, <code>-s</code> | Direktori unduh, jumlah unduhan |
 | <code>search export</code> | <code>-f</code>, <code>-n</code> | Nama file ekspor (.csv/.json), jumlah ekspor |
-| <code>download</code> | <code>-d</code>, <code>-n</code> | Direktori unduhan, jumlah hot100 |
-| <code>sync download</code> | <code>-d</code> | Direktori unduhan |
+| <code>download</code> | <code>-d</code>, <code>-n</code> | Direktori unduh, jumlah hot100 |
+| <code>sync download</code> | <code>-d</code> | Direktori unduh |
 | <code>sync retry</code> | <code>-d</code> | Direktori file gagal |
 | <code>sync export</code> | <code>-s</code>, <code>-f</code> | Status (failed/success), file ekspor |
-| <code>listen</code> | <code>-p</code> | Port (default 9999) |</p><p></details></p><p><details>
+| <code>listen</code> | <code>-p</code> | Port (default 9999) |
+| <code>export</code> | <code>-o</code>, <code>-n</code> | Direktori ekspor, jumlah hot100 |</p><p></details></p><p><details>
 <summary><b>📁 Struktur Proyek</b></summary></p><pre><code class="language-">asmroner/
 ├── cmd/                # 命令行接口（config/download/search/sync/listen）
 ├── internal/
@@ -381,18 +389,18 @@ download_jitter_max = 5000</code></pre></p><p></details></p><p><details>
 </details></p><p><details>
 <summary><b>🛠 Teknologi Stack</b></summary></p><p>| Komponen | Kegunaan |
 |------|------|
-| Cobra + Viper | Kerangka CLI + Manajemen Konfigurasi |
+| Cobra + Viper | Framework CLI + Manajemen Konfigurasi |
 | GORM + SQLite | Persistensi Data |
 | Resty | Klien HTTP (mendukung proxy HTTP/SOCKS5) |
 | Pond | Pool Pekerja Konkuren |
 | x/time/rate | Pembatasan Laju Token Bucket |
 | Gin | Layanan Web |
 | Tailwind + Plyr | Antarmuka Frontend + Pemutar Audio |</p><p></details></p><p><details>
-<summary><b>🔧 FAQ</b></summary></p><p><strong>File konfigurasi tidak ditemukan</strong> → Jalankan <code>./asmroner config</code> untuk inisialisasi</p><p><strong>Gagal mengunduh (stream error)</strong> → Program akan mencoba ulang secara otomatis; jika masih gagal, gunakan <code>sync retry</code> untuk mencoba lagi, atau cek <code>.asmroner-data/download_errors.log</code></p><p><strong>Antarmuka web tidak dapat diakses</strong> → Pastikan port tidak digunakan, coba tentukan port lain dengan <code>-p</code></p><p><strong>Hasil pencarian kosong</strong> → Periksa sintaks kueri, coba sederhanakan kondisi</p><p></details></p><h2>🤝 Kontribusi</h2></p><p>Silakan ajukan Pull Request! Fork → Buat cabang baru → Komit perubahan → Buka PR.</p><h2>📄 Lisensi</h2></p><p>Proyek ini menggunakan Lisensi MIT, silakan lihat file <a href="/LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a> untuk detailnya.</p><h2>🙏 Ucapan Terima Kasih</h2></p><ul><li>Terima kasih khusus kepada <a href="https://github.com/DiheChen/go-asmr-spider" target="_blank" rel="noopener noreferrer">go-asmr-spider</a></li>
-<li>Terima kasih kepada semua kontributor dan pengguna!</li></p><p></ul>---</p><p><strong>ASMRoner</strong> — Setiap malam ada saudari berbeda yang menemani tidurmu :)</p><p><em>Pembaruan terakhir: Februari 2026</em></p><p>
+<summary><b>🔧 Masalah Umum</b></summary></p><p><strong>File konfigurasi tidak ditemukan</strong> → Jalankan <code>./asmroner config</code> untuk inisialisasi</p><p><strong>Gagal mengunduh (stream error)</strong> → Program akan mencoba ulang otomatis; jika masih gagal, gunakan <code>sync retry</code> untuk mencoba ulang, atau cek <code>.asmroner-data/download_errors.log</code></p><p><strong>Antarmuka web tidak dapat diakses</strong> → Pastikan port tidak digunakan, coba gunakan <code>-p</code> untuk menentukan port lain</p><p><strong>Hasil pencarian kosong</strong> → Periksa sintaks query, coba sederhanakan kondisi</p><p><strong>Metode unduh untuk perintah export</strong> → Lihat <a href="/dist/guide.pdf" target="_blank" rel="noopener noreferrer">guide</a> </p><p></details></p><h2>🤝 Kontribusi</h2></p><p>Silakan ajukan Pull Request! Fork → Buat cabang baru → Komit perubahan → Ajukan PR.</p><h2>📄 Lisensi</h2></p><p>Proyek ini menggunakan lisensi MIT, lihat detailnya pada file <a href="/LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a>.</p><h2>🙏 致谢</h2></p><ul><li>特别感谢 <a href="https://github.com/DiheChen/go-asmr-spider" target="_blank" rel="noopener noreferrer">go-asmr-spider</a></li>
+<li>感谢所有贡献者和用户！</li></p><p></ul>---</p><p><strong>ASMRoner</strong> — 每天晚上都有不同的妹妹陪你入睡 :)</p><p><em>最后更新：2026 年 2 月</em></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-04-17
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-05
 
 ---</p>
         </div>
@@ -404,7 +412,7 @@ download_jitter_max = 5000</code></pre></p><p></details></p><p><details>
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-04-17 
+        Last updated: 2026-05-05 
     </div>
     
 </body>
