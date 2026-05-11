@@ -1,0 +1,416 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PartitionKit - 一个用于创建可调整大小视图内容分区的 SwiftUI 库。</title>
+    <meta name="description" content="一个用于创建可调整大小视图内容分区的 SwiftUI 库。">
+    <meta name="keywords" content="PartitionKit, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PartitionKit",
+  "description": "一个用于创建可调整大小视图内容分区的 SwiftUI 库。",
+  "author": {
+    "@type": "Person",
+    "name": "kieranb662"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 242
+  },
+  "url": "https://OpenAiTx.github.io/projects/kieranb662/PartitionKit/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/kieranb662/PartitionKit/master/README.md",
+  "datePublished": "2026-05-11",
+  "dateModified": "2026-05-11"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/kieranb662/PartitionKit" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    PartitionKit
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 242 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by kieranb662</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Partition Kit</h1></p><p><img src="https://github.com/kieranb662/PartitionKit/blob/master/partition-kit-logo.png" alt="partition kit logo"></p><p>最近登上了<a href="https://medium.com/better-programming/top-10-trending-android-and-ios-libraries-in-october-e7dd18f8b75b" target="_blank" rel="noopener noreferrer">十月安卓和iOS十大流行库</a>以及<a href="https://medium.com/better-programming/5-ios-libraries-to-enhance-your-app-17ae7ed350db" target="_blank" rel="noopener noreferrer">5个提升你应用的iOS库</a>！</p><p><img src="/nestedGrid.gif" alt="grid"></p><p>什么是 PartitionKit？ 
+<ul><li>它是满足 SwiftUI 中可组合且动态大小用户界面内容需求的解决方案。 </li>
+<li>也是我首次将软件做成库的作品，请多包涵（无论是使用场景还是对我的心情）。</li></p><p></ul>PartitionKit <strong>不是</strong> 什么？
+<ul><li>PartitionKit 不是用于处理任何形式存储数据的工具，这不是用来分区硬盘或任何其他类型可格式化数据驱动器的。</li></p><p></ul><h2>要求</h2></p><p>PartitionKit 默认需要 SwiftUI 框架支持，因此仅支持以下平台：</p><ul><li> macOS 10.15 或更高版本 </li>
+<li>iOS 13 或更高版本 </li>
+<li>tvOS 13 或更高版本 </li>
+<li>watchOS 6 或更高版本 </li></p><p></ul><h2>如何添加到你的项目</h2></p><ul><li>从 GitHub 仓库获取那个 URL </li>
+<li>在 Xcode 中 -> 文件 -> Swift Packages -> 添加包依赖 </li>
+<li>粘贴 URL 到输入框</li>
+<li>指定最低版本号（这是新功能，因此 1.0.0 及以上版本均可）。</li></p><p></ul><h2>少于两分钟的教程视频</h2></p><p><a href="https://www.youtube.com/watch?v=RSnEevQcqjk" target="_blank" rel="noopener noreferrer"><img src="https://img.youtube.com/vi/RSnEevQcqjk/0.jpg" alt="教程视频：如何使用 PartitionKit"></a></p><h2>如何使用 </h2></p><h3>垂直分区</h3></p><ul><li>决定您希望将哪个视图放在“顶部”，哪个视图放在“底部”，以及可选的用于拖动分区调整大小的“手柄”。</li>
+<li>执行此操作 </li>
+</ul>``<code> Swift
+VPart(top: {
+    MyTopView()
+    }, bottom: {
+    MyBottomView()
+    }) {
+    MyHandle()
+}
+<pre><code class="language-">
+<h3>水平分区</h3></p><ul><li>决定您希望在“左侧”显示的视图，您希望在“右侧”显示的视图，以及可选的用于拖动分区调整大小的“手柄”。</li>
+<li>执行此操作 </code></pre> Swift</li>
+</ul>HPart(left: {
+    MyLeftView()
+    }, right: {
+    MyRightView()
+    }) {
+    MyHandle()
+}
+<pre><code class="language-">
+<h3>GridPartition </h3></p><ul><li>决定哪些视图将放置在每个角落 </code>TopLeft<code>、</code>TopRight<code>、</code>BottomLeft<code>、</code>BottomRight<code>，以及可选的一个用于用户拖动和调整视图大小的 </code>Handle<code>。</li>
+<li>执行此操作 </code></pre> Swift</li>
+    </ul>GridPart(topLeft: {
+        MyTopLeftView()
+        }, topRight: {
+        MyTopRightView()
+        }, bottomLeft: {
+        MyBottomLeftView()
+        }, bottomRight: {
+        MyBottomRightView()
+        }) {
+        MyHandle()
+}
+<pre><code class="language-">## 示例</p><p>复制并粘贴此内容，我添加了命名图片以展示视图应有的外观，我使用的是暗模式，因此浅色模式的颜色可能看起来不同。</p><p>| H部分                    | V部分                    | 网格部分                       | 嵌套网格                             | 混合                        |
+|-------------------------|-------------------------|-------------------------------|----------------------------------------|-----------------------------|
+| <img src="/hExample.png" alt="HPart"> | <img src="/vExample.png" alt="VPart"> | <img src="/gridExample.png" alt="GridPart"> | <img src="/nestedGridExample.png" alt="Nested Grid"> | <img src="/nestedExample.png" alt="Mixed"> |</p><p>
+</code></pre> Swift
+import SwiftUI
+import PartitionKit</p><p>struct ContentView: View {
+    var vExample: some View {
+        VPart(top: {
+            RoundedRectangle(cornerRadius: 25).foregroundColor(.purple)
+        }) {
+            Circle().foregroundColor(.yellow)
+        }
+    }
+    
+    var hExample: some View {
+        HPart(left: {
+            RoundedRectangle(cornerRadius: 10).foregroundColor(.blue)
+        }) {
+            Circle().foregroundColor(.orange)
+        }
+    }
+    
+    var nestedExample: some View {
+        VPart(top: {
+            hExample
+        }) {
+            vExample
+        }
+    }
+    
+    var gridExample: some View {
+        GridPart(topLeft: {
+            RoundedRectangle(cornerRadius: 25).foregroundColor(.purple)
+        }, topRight: {
+            Circle().foregroundColor(.yellow)
+        }, bottomLeft: {
+            Circle().foregroundColor(.green)
+        }) {
+            RoundedRectangle(cornerRadius: 25).foregroundColor(.blue)
+        }
+    }
+    
+    var nestedGridsExample: some View {
+        GridPart(topLeft: {
+            gridExample
+        }, topRight: {
+            gridExample
+        }, bottomLeft: {
+            gridExample
+        }) {
+            gridExample
+        }
+    }
+    
+    var body: some View {
+        nestedExample
+        
+    }
+}</p><p>
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+</code>`<code>
+<h2>待办事项 </h2>
+<ul><li>添加约束，防止分区在拖动手柄超出容器框架时导致负帧值从而反转视图 </li>
+<li>增加初始布局的自定义功能 </li>
+<li>添加一种</code>List`样式的网格集合布局，可通过可识别数据元素列表初始化 </li>
+<li>一般清理，有些内容不应保留，我会在某个时候找到并处理它们。 </li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-11
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/kieranb662/PartitionKit/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-05-11 
+    </div>
+    
+</body>
+</html>
