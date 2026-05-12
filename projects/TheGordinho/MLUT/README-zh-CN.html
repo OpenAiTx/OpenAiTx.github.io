@@ -1,0 +1,325 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLUT - 前称为超级查找表</title>
+    <meta name="description" content="前称为超级查找表">
+    <meta name="keywords" content="MLUT, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "MLUT",
+  "description": "前称为超级查找表",
+  "author": {
+    "@type": "Person",
+    "name": "TheGordinho"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 77
+  },
+  "url": "https://OpenAiTx.github.io/projects/TheGordinho/MLUT/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/TheGordinho/MLUT/master/README.md",
+  "datePublished": "2026-05-12",
+  "dateModified": "2026-05-12"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/TheGordinho/MLUT" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    MLUT
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 77 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by TheGordinho</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>
+<h1 align="center">
+    <br>
+    如果你喜欢这些LUTs，考虑通过点击下面的图片请我喝咖啡来支持我的工作。
+    <br><br>
+        <a href="https://ko-fi.com/thegordinho">
+            <img src="https://user-images.githubusercontent.com/23023051/145260720-804dff82-add9-46bf-a28e-34513dca000f.png">
+        </a>
+    <br>
+    <a href="https://www.youtube.com/watch?v=EIyixC9NsLI">
+        :heart:
+    </a>
+</h1></p><h1>一个拥有数千预设色彩方案的ReShade资源库</h1></p><h2><strong>什么是LUT？</strong></h2></p><p>LUTs（颜色查找表）是预先烘焙的色彩预设，你可以在任何安装了ReShade的游戏中使用它们。</p><h2><strong>我需要什么来使其工作？</strong></h2></p><p>+ <a href="https://reshade.me" target="_blank" rel="noopener noreferrer">ReShade</a>
++ 本仓库附带的 <strong>_BaseLUT.fxh</strong> 文件
++ 默认ReShade安装包中附带的文件。
+  + <strong>ReShade.fxh</strong>
+  + <strong>ReShadeUI.fxh</strong>
++ 文件名匹配的 <strong>.fx</strong> 和 <strong>.png</strong> 文件。</p><h2><strong>安装</strong></h2></p><ul><li><a href="https://github.com/TheGordinho/MLUT/archive/refs/heads/master.zip" target="_blank" rel="noopener noreferrer">下载</a>该资源库。</li>
+<li>将你想要的 <strong>.fx</strong> 文件（不必全部，只需你想用的）移动到ReShade安装文件夹内的Shaders文件夹。</li>
+<li>将匹配的 <strong>.png</strong> 文件移动到ReShade安装文件夹内的Textures文件夹。</li>
+<li>完成！</li></p><p></ul>https://user-images.githubusercontent.com/23023051/118344702-16177780-b506-11eb-8b80-907017128b5b.mp4</p><h2><strong>技巧与窍门</strong></h2></p><p>你可以随意混合搭配任意数量的LUT，但请注意，当同时激活两个或更多LUT时，会开始出现严重的色带现象。</p><blockquote>改变着色器的加载顺序以获得不同的效果。</blockquote></p><p>https://user-images.githubusercontent.com/23023051/118404928-719f4d80-b64b-11eb-964d-09fa9b60fe8b.mp4</p><blockquote>将LUT夹在两个PCGI着色器之间以改变全局光照的颜色。</blockquote></p><p>https://user-images.githubusercontent.com/23023051/118405513-9cd76c00-b64e-11eb-915f-edffe52f1dae.mp4</p><blockquote>现在你可以使用带深度的MLUT，将天空涂成彩虹的所有颜色 \o/</blockquote></p><p>https://user-images.githubusercontent.com/23023051/146495932-cdbec80d-e532-4300-9a88-323bf675bc10.mp4</p><h2>下载前测试</h2></p><p>感谢Fraulk（<a href="https://twitter.com/freaksboi" target="_blank" rel="noopener noreferrer">twitter</a> <a href="https://github.com/Fraulk/vp-lut-tester" target="_blank" rel="noopener noreferrer">github</a>）  
+你可以在<a href="https://vp-lut-tester.netlify.app/" target="_blank" rel="noopener noreferrer">下载整个仓库之前测试MLUT</a>。</p><h2>致谢</h2></p><p>感谢<a href="https://discord.gg/PrwndfH" target="_blank" rel="noopener noreferrer">ReShade Discord社区</a>的所有帮助和支持，没有你们这一切都不可能实现。</p><p>特别感谢<a href="https://twitter.com/etra0" target="_blank" rel="noopener noreferrer">Etra0</a>提供的自定义工具，协助实现自动化。</p><p>同时感谢Framed社区所有的鼓励和反馈，快去看看他们在<a href="https://framedsc.github.io/HallOfFramed/" target="_blank" rel="noopener noreferrer">Hall of Framed</a>上的精彩作品。</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-12
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/TheGordinho/MLUT/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-05-12 
+    </div>
+    
+</body>
+</html>
