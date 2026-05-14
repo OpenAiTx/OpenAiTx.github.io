@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOMB - Klipper 优化刷头宏，终极喷嘴刷宏</title>
+    <meta name="description" content="Klipper 优化刷头宏，终极喷嘴刷宏">
+    <meta name="keywords" content="KOMB, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "KOMB",
+  "description": "Klipper 优化刷头宏，终极喷嘴刷宏",
+  "author": {
+    "@type": "Person",
+    "name": "TmRxJD"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 120
+  },
+  "url": "https://OpenAiTx.github.io/projects/TmRxJD/KOMB/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/TmRxJD/KOMB/main/README.md",
+  "datePublished": "2026-05-14",
+  "dateModified": "2026-05-14"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/TmRxJD/KOMB" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    KOMB
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 120 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by TmRxJD</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><head><meta name="google-site-verification" content="YTr2AYTpsxIQk7KIOlVTOfKr11dqkzZP-gOUiyhPU5s" />
+<body></p><h1>KOMB：Klipper的终极刷头宏</h1></p><p>欢迎使用KOMB，Klipper优化的刷头宏！这个多功能宏简化了刷头序列，专为床面和龙门安装的刷头量身定制。告别调整现有宏或创建新宏的麻烦——现在你可以在三维空间中充分发挥刷头的全部潜力！</p><h3> 安装： </h3></p><p>开始使用KAMP最简洁、最方便的方法是使用Moonraker的更新管理器工具。这将帮助你轻松安装，并在更多功能发布时提供未来更新！</p><ul><li>使用<code>ssh</code>连接到你的Klipper设备并执行以下命令：</li>
+   </ul>``<code>bash
+    cd
+    
+    git clone https://github.com/TmRxJD/KOMB    </p><p>    ln -s ~/KOMB printer_data/config/KOMB</p><p>    cp ~/KOMB/_KOMB_Variables.cfg ~/printer_data/config/KOMB_Variables.cfg</p><p>    </code>`<code></p><ul><li>打开你的 </code>moonraker.conf<code> 文件并添加以下配置：</li>
+   </ul></code>`<code>yaml
+   [update_manager KOMB]
+   type: git_repo
+   channel: dev
+   path: ~/KOMB
+   origin: https://github.com/TmRxJD/KOMB
+   managed_services: klipper
+   primary_branch: main
+    </code>`<code></p><p>    > <strong>注意：</strong>
+    > 每当更改 Moonraker 配置时，必须重启才能使更改生效。如果您不希望 Moonraker 通知您 KAMP 的未来更新，可以跳过此步骤。</p><ul><li>可选地，将 KOMB_Purge.cfg 包含在您的 KOMB_Variables.cfg 中以使用该宏。</li></p><p></ul><h3>功能与特性</h3></p><p>灵活运动：KOMB 的默认运动是从左下角扫到右侧，但您可以轻松自定义沿各轴和方向的运动。甚至可以根据您的打印机和刷子位置，在打印过程中使用它。</p><p>多样图案：目前支持对角线和圆形扫描（需要启用 gcode_arcs），KOMB 的图案库将很快扩展，包含更多模式。</p><p>三维刷洗：充分利用刷子的整个区域和深度，确保喷嘴更干净，性能更稳定，您可以放心，每次喷嘴都会保持干净。喷嘴可逐步下降进入刷子，以使更多喷嘴表面接触刷子。</p><p>打印中使用：使用 KOMB 触发器，您可以在打印过程中多次调用宏，确保喷嘴在整个打印期间保持清洁。</p><h3>可调刷子参数：调整变量以实现精确控制</h3>
+<ul><li>指定刷子位置的 (X, Y, Z)，以及大小和深度（单位：毫米）<br></li>
+<li>步进大小：对角线或圆形笔画之间的距离<br></li>
+<li>Z 步进：使用重复时每次迭代后下降的距离，设为 0 以禁用<br></li>
+<li>偏移量：允许您在刷子边界之外开始和结束运动，或使用负值限制在内部<br></li>
+<li>重复次数：指定图案迭代的次数<br></li>
+<li>反向：启用后在下一次重复前反向重复图案回到起点，禁用时喷嘴将直接返回起点<br></li>
+<li>从相对或邻近边开始：启用相对边时喷嘴从右向左移动；启用邻近边时喷嘴沿相反轴线从底部向上移动；两者均启用时喷嘴从上向下移动<br></li>
+<li>可变速度：指定速度（mm/s），并随着每次重复增加或减少速度，还可以控制移动到刷子时的速度<br></li>
+<li>图案：选择不同的刷洗图案，目前支持对角线和圆形（如果您仍想使用经典的水平图案，只需将相反轴上的刷子大小设为 0；如果仍需步进，将角度设为 0）<br></li>
+<li>角度：使用图案 1 时指定对角线笔画角度，默认推荐角度为 45<br></li>
+<li>自动加热：启用并指定允许刷洗的最低温度，刷洗前自动预热至该温度<br></li>
+<li>自动回原点：如有需要，自动回原点打印头，仅在未回原点时执行<br></li>
+<li>回抽：配置刷洗前、中、后的回抽动作<br></li>
+<li>Z 跳：指定移动到刷子位置前喷嘴提升的高度，然后下降，设为 0 以禁用<br></li>
+<li>详细反馈：启用详细控制台输出，提供刷洗过程的轴值、计算和定位点等全面信息<br></li></p><p></ul><h4>KOMB 触发器</h4></p><p>You can use KOMB at a specified frequency throughout the print to ensure your nozzle stays clean for the entire duration. Include </code>KOMB_trigger<code> in the 'at layer change' section of your slicer configuration to effortlessly trigger the macro at your preferred frequency. Additionally, integrate this macro name into your start print routine to use the macro before starting printing. This feature is not intended for per-object printing and is tailored for use with gantry and frame-mounted brushes. While functional with bed-mounted brushes, cautious use is advised, as attention to your printer's clearances is essential to prevent potential collisions. If utilizing Z hop, the nozzle will ascend before maneuvering over the brush, descend for brushing, and subsequently reascend to its initial height before resuming printing. Configure Z hop settings to provide added clearance during elevation and descent. It is strongly recommended not to set the Z hop value below 2. Additionally, ensure that your axis limits are accurately defined for the macro's effective operation. For guidance on setting axis limits, refer to the guide provided at the end of this readme.
+<h4>KOMB 清洗</h4></p><p>KOMB 的清洗选项使您能够在进入刷涂序列之前启动受控的材料清洗。此功能在精度至关重要的情况下尤为有用，例如在 Z 偏移校准或其他依赖测量的操作中，无需绘制额外的清洗线。通过使用此功能，您可以轻松定义清洗容器的位置、所需的挤出耗材量以及过渡到刷涂序列之前的等待时间。清洗选项也可以独立于宏的其他部分激活；这为您根据具体需求定制打印过程提供了灵活性。要在开始打印时使用该宏，请在配置中添加“KOMB_purge”。</p><h3>KOMB 的独特性</h3></p><p>KOMB 设计为无缝适应多样的打印机设置，支持不同的刷子尺寸和位置。不同于传统宏强制喷嘴移动到特定位置，KOMB 根据您的变量生成整个坐标序列，预先调整以保持在打印机限位内。这种主动方法几乎消除了错误风险，确保无论用户错误如何，刷涂都能成功执行。任何超出打印机边界的生成点都会自动调整至范围内，保证顺畅执行。列表一经生成，KOMB 便轻松引导喷嘴通过预定坐标。</p><h3>开始使用 KOMB</h3></p><p>确保您的 3D 打印机已安装 Klipper 固件。</p><p>将提供的 KOMB 宏代码 </code>KOMB.cfg<code> 集成到您的 Klipper 配置文件 “printer.cfg” 中，和其他宏一同使用。为提升用户友好性，建议将 KOMB 变量保存在单独文件中，并通过 </code>[include _KOMB_Variables.cfg]<code> 引入。或者，如果您觉得方便，也可以合并到主配置文件。</p><p>在 KOMB_Variables 部分指定变量以匹配您的刷涂需求。</p><p>通过打印机界面确定精确的 XY 刷子位置。以左下角为起点，若需要可调整至 0.1mm 精度。</p><p>测量刷子尺寸，或通过移动到右上角并从右上位置减去左下位置的 X 和 Y 坐标进行计算。
+对 Z 位置重复类似步骤，考虑每次迭代递减喷嘴高度的选项（z_step）。</p><p>保存配置文件并重新加载 Klipper 以应用更改。</p><p>通过控制台、UI 宏按钮执行 KOMB，或将 </code>KOMB` 添加到开始打印宏。执行前确保变量配置准确。</p><p>启用详细输出时，可通过控制台输出监控进度。</p><p>享受 KOMB 带来的增强刷涂体验！</p><h3>重要说明</h3></p><p>此宏设计支持多种变量和参数。请根据打印机规格和刷涂需求调整它们。务必理解每个变量的作用及使用方法。</p><p>必须确保轴限位设置正确，宏才能正常运行。如不确定，请参阅指南：https://github.com/rootiest/zippy_guides/blob/main/guides/axis_limits.md</p><p>由于宏涉及喷嘴移动，操作时请谨慎，避免刷涂过程中发生碰撞，并确保所有数值正确。建议先在刷子上方低速测试宏，然后再降低到指定位置。</p><p>请务必关注未来更新及更多图案！</p><p>
+KOMB仍在开发中，并非所有变量组合都经过了彻底测试。非常感谢您的反馈和对宏改进的贡献。</p><p>如果您遇到任何问题，有改进建议，或希望为KOMB的发展做出贡献，请随时给我留言，提交问题或在GitHub仓库中提交拉取请求。</p><p>祝您使用KOMB愉快！</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-14
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/TmRxJD/KOMB/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-05-14 
+    </div>
+    
+</body>
+</html>
