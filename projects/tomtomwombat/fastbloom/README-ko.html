@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fastbloom - Rust에서 가장 빠른 블룸 필터. 정확도 손실 없음. 완전한 동시성 지원 및 모든 해셔와 호환 가능.</title>
+    <meta name="description" content="Rust에서 가장 빠른 블룸 필터. 정확도 손실 없음. 완전한 동시성 지원 및 모든 해셔와 호환 가능.">
+    <meta name="keywords" content="fastbloom, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "fastbloom",
+  "description": "Rust에서 가장 빠른 블룸 필터. 정확도 손실 없음. 완전한 동시성 지원 및 모든 해셔와 호환 가능.",
+  "author": {
+    "@type": "Person",
+    "name": "tomtomwombat"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 348
+  },
+  "url": "https://OpenAiTx.github.io/projects/tomtomwombat/fastbloom/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/tomtomwombat/fastbloom/main/README.md",
+  "datePublished": "2026-05-15",
+  "dateModified": "2026-05-15"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/tomtomwombat/fastbloom" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    fastbloom
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 348 stars</span>
+                <span class="language">Korean</span>
+                <span>by tomtomwombat</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>fastbloom</h1>
+<a href="https://github.com/tomtomwombat/fastbloom" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/github-8da0cb?style=for-the-badge&labelColor=555555&logo=github" alt="Github"></a>
+<a href="https://crates.io/crates/fastbloom" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/crates.io-fc8d62?style=for-the-badge&labelColor=555555&logo=rust" alt="Crates.io"></a>
+<a href="https://docs.rs/fastbloom" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/docs.rs-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs" alt="docs.rs"></a>
+<img src="https://img.shields.io/crates/d/fastbloom?style=for-the-badge" alt="Downloads"></p><p>Rust에서 가장 빠른 Bloom 필터입니다. 정확도 손실 없이 완전한 동시성 지원과 모든 해셔와 호환됩니다.</p><h2>개요</h2></p><p>fastbloom은 Rust로 구현된 빠르고 유연하며 정확한 Bloom 필터입니다. fastbloom의 기본 해셔는 무작위 키를 사용하는 SipHash-1-3이지만, 시드를 설정하거나 어떤 해셔든 사용할 수 있도록 구성할 수 있습니다. fastbloom은 기존 Bloom 필터 구현보다 2~20배 빠르고 훨씬 더 정확합니다. fastbloom의 <code>AtomicBloomFilter</code>는 락 경합을 피하는 동시성 Bloom 필터입니다.</p><h2>사용법</h2></p><p>0.17.x 버전에서 다른(개선된!) 알고리즘 때문에 Bloom 필터의 직렬화/역직렬화가 이전 버전과 호환되지 않습니다.</p><pre><code class="language-toml"># Cargo.toml
+[dependencies]
+fastbloom = "0.17.0"</code></pre>
+기본 사용법:
+<pre><code class="language-rust">use fastbloom::BloomFilter;</p><p>let mut filter = BloomFilter::with_num_bits(1024).expected_items(2);
+filter.insert("42");
+filter.insert("🦀");</code></pre>
+목표 오탐률로 인스턴스화:
+<pre><code class="language-rust">use fastbloom::BloomFilter;</p><p>let filter = BloomFilter::with_false_pos(0.001).items(["42", "🦀"].iter());
+assert!(filter.contains("42"));
+assert!(filter.contains("🦀"));</code></pre>
+임의의 해시 함수를 사용하세요:
+<pre><code class="language-rust">use fastbloom::BloomFilter;
+use foldhash::fast::RandomState;</p><p>let filter = BloomFilter::with_num_bits(1024)
+    .hasher(RandomState::default())
+    .items(["42", "🦀"].iter());</code></pre>
+완전한 동시성 지원. <code>AtomicBloomFilter</code>는 모든 메서드가 <code>&self</code>를 받기 때문에 <code>RwLock<OtherBloomFilter></code>의 대체제로 바로 사용할 수 있습니다:
+<pre><code class="language-rust">use fastbloom::AtomicBloomFilter;</p><p>let filter = AtomicBloomFilter::with_num_bits(1024).expected_items(2);
+filter.insert("42");
+filter.insert("🦀");</code></pre></p><h2>배경  </h2>
+블룸 필터는 항목의 멤버십을 추적하기 위해 기본 비트 배열을 지원하는 공간 효율적인 근사 멤버십 집합 데이터 구조입니다. 멤버십 삽입/확인을 위해 항목의 해시를 기반으로 한 위치에서 여러 비트를 설정/확인합니다. 멤버십 확인 시 거짓 긍정은 발생할 수 있지만 거짓 부정은 발생하지 않습니다. 한 번 구성되면 블룸 필터의 기본 메모리 사용량이나 항목당 비트 수는 변경되지 않습니다. <a href="https://en.wikipedia.org/wiki/Bloom_filter" target="_blank" rel="noopener noreferrer">자세히 보기.</a></p><pre><code class="language-text">hash(4) ──────┬─────┬───────────────┐
+              ↓     ↓               ↓
+0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 1 0
+  ↑           ↑           ↑
+  └───────────┴───────────┴──── hash(3) (not in the set)</code></pre>
+<h2>구현</h2></p><p>fastbloom은 각 아이템당 <strong>단 하나의 실제 해시만으로도</strong> 많은 인덱스 비트를 효율적으로 파생시키고, Bloom 필터에 관한 다른 연구 결과를 활용하기 때문에 매우 빠릅니다. fastbloom은 원래 64비트 해시의 두 32비트 절반에 대해 "해시 합성(hash composition)"을 사용합니다. 각 후속 해시는 원래 해시 값에 서로 다른 상수를 모듈러 산술과 비트 연산을 이용해 결합하여 파생됩니다. 이로 인해 같은 원래 해시 함수에서 파생되었음에도 불구하고 효과적으로 독립적이고 균등 분포된 해시 함수 집합이 만들어집니다. 두 원래 해시의 합성을 계산하는 것이 다른 시드를 사용해 해시를 다시 계산하는 것보다 빠릅니다. 이 기법은 <a href="https://www.eecs.harvard.edu/~michaelm/postscripts/rsa2008.pdf" target="_blank" rel="noopener noreferrer">이 논문에서 자세히 설명되어 있습니다.</a></p><h2>속도</h2>
+<ul><li>AMD Ryzen 9 5900X 12코어 프로세서             (3.70 GHz)</li>
+<li>64비트 운영체제, x64 기반 프로세서</li></p><p></ul><img src="https://github.com/user-attachments/assets/a825d2f7-4cd7-4b6b-a447-fd7f3dab356b" alt="perf-non-member">
+<img src="https://github.com/user-attachments/assets/998f9470-b91f-460c-ad2d-1f197160c210" alt="perf-member">
+<blockquote>사용된 해시 함수:</blockquote>
+<blockquote>- xxhash: sbbf</blockquote>
+<blockquote>- Sip1-3: bloom, bloomfilter, probabilistic-collections</blockquote>
+<blockquote>- foldhash: fastbloom</blockquote>
+<blockquote></blockquote>
+<blockquote><a href="https://github.com/tomtomwombat/bench-bloom-filters" target="_blank" rel="noopener noreferrer">벤치마크 출처</a></blockquote></p><h2>정확도</h2></p><p>fastbloom은 정확도를 희생하지 않습니다. 아래는 다른 Bloom 필터 크레이트들과의 오탐률 비교입니다:</p><p><img src="https://github.com/user-attachments/assets/17ddaab7-c63f-456a-9e2e-b22c7f994386" alt="fp"></p><p><a href="https://github.com/tomtomwombat/bench-bloom-filters" target="_blank" rel="noopener noreferrer">벤치마크 출처</a></p><h2>사용 가능한 기능</h2></p><ul><li><strong><code>rand</code></strong> - 기본 활성화되어 있으며, <code>DefaultHasher</code>가 하드웨어 소스 대신 <code>thread_rng()</code>를 사용해 랜덤 상태를 생성합니다. 사용자 공간 소스에서 엔트로피를 얻는 것이 훨씬 빠르지만, 이를 위해 추가 의존성이 필요합니다. 이 기능을 <code>default-features = false</code>로 비활성화하면 <code>DefaultHasher</code>가 <code>foldhash</code>를 사용해 엔트로피를 생성하며, 속도는 느리지만 코드가 훨씬 단순해집니다.</li>
+<li><strong><code>serde</code></strong> - 가능할 경우 <code>BloomFilter</code>가 <code>Serialize</code>와 <code>Deserialize</code>를 구현합니다.</li>
+<li><strong><code>loom</code></strong> - <code>AtomicBloomFilter</code>는 <a href="https://github.com/tokio-rs/loom" target="_blank" rel="noopener noreferrer">loom</a> 원자적 연산을 사용하여 loom 테스트와 호환됩니다.</li></p><p></ul><h2>참고 문헌</h2>
+<ul><li><a href="https://en.wikipedia.org/wiki/Bloom_filter" target="_blank" rel="noopener noreferrer">Bloom filter - 위키백과</a></li>
+<li><a href="https://gopiandcode.uk/logs/log-bloomfilters-debunked.html" target="_blank" rel="noopener noreferrer">Bloom filters debunked: Dispelling 30 Years of bad math with Coq!</a></li>
+<li><a href="https://www.jasondavies.com/bloomfilter/" target="_blank" rel="noopener noreferrer">Bloom Filter Interactive Demonstration</a></li>
+<li><a href="https://web.archive.org/web/20070623102632/http://algo2.iti.uni-karlsruhe.de/singler/publications/cacheefficientbloomfilters-wea2007.pdf" target="_blank" rel="noopener noreferrer">Cache-, Hash- and Space-Efficient Bloom Filters</a></li>
+<li><a href="https://www.eecs.harvard.edu/~michaelm/postscripts/rsa2008.pdf" target="_blank" rel="noopener noreferrer">Less hashing, same performance: Building a better Bloom filter</a></li>
+<li><a href="https://lemire.me/blog/2016/06/27/a-fast-alternative-to-the-modulo-reduction/" target="_blank" rel="noopener noreferrer">A fast alternative to the modulo reduction</a></li></p><p>
+</ul><h2>라이선스</h2></p><p>다음 중 하나의 라이선스 하에 허가됩니다</p><ul><li>Apache 라이선스, 버전 2.0</li>
+   </ul>(<a href="LICENSE-APACHE" target="_blank" rel="noopener noreferrer">LICENSE-APACHE</a> 또는 http://www.apache.org/licenses/LICENSE-2.0)
+ <ul><li>MIT 라이선스</li>
+   </ul>(<a href="LICENSE-MIT" target="_blank" rel="noopener noreferrer">LICENSE-MIT</a> 또는 http://opensource.org/licenses/MIT)</p><p>선택에 따라 적용됩니다.</p><h2>기여</h2></p><p>명시적으로 달리 명시하지 않는 한, Apache-2.0 라이선스에 정의된 바와 같이
+귀하가 작업에 포함시키기 위해 의도적으로 제출한 모든 기여는
+추가 조건 없이 위와 같이 이중 라이선스가 적용됩니다.</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-15
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/tomtomwombat/fastbloom/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-05-15 
+    </div>
+    
+</body>
+</html>
