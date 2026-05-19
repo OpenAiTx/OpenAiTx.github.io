@@ -1,0 +1,327 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlayTheSpireModTutorials - 게임 Slay The Spire용 모드 제작 방법에 대한 일련의 튜토리얼입니다.</title>
+    <meta name="description" content="게임 Slay The Spire용 모드 제작 방법에 대한 일련의 튜토리얼입니다.">
+    <meta name="keywords" content="SlayTheSpireModTutorials, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "SlayTheSpireModTutorials",
+  "description": "게임 Slay The Spire용 모드 제작 방법에 대한 일련의 튜토리얼입니다.",
+  "author": {
+    "@type": "Person",
+    "name": "GlitchedReme"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 202
+  },
+  "url": "https://OpenAiTx.github.io/projects/GlitchedReme/SlayTheSpireModTutorials/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/GlitchedReme/SlayTheSpireModTutorials/master/README.md",
+  "datePublished": "2026-05-19",
+  "dateModified": "2026-05-19"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/GlitchedReme/SlayTheSpireModTutorials" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    SlayTheSpireModTutorials
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 202 stars</span>
+                <span class="language">Korean</span>
+                <span>by GlitchedReme</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>살륙 첨탑 mod 제작 튜토리얼
+=====================</p><p>《살륙 첨탑2》 모드 제작 튜토리얼 업데이트 중: https://github.com/GlitchedReme/SlayTheSpire2ModdingTutorials</p><p><b>본 튜토리얼은 Java 프로그래밍 지식을 다루지 않으니, 먼저 프로그래밍 기초를 익히고 학습하시길 권장합니다.</b></p><p><b>독자가 본 튜토리얼을 읽으면서 오류나 부적절한 부분을 발견하면, 이슈를 제출하여 튜토리얼 개선에 도움을 줄 수 있습니다.</b></p><p><b>궁금한 점이 있으면 아래의 개인 그룹에 참여하거나 위의 discussions에 질문을 남겨주세요.</b></p><p><b>상단의 Tutorials 폴더 또는 오른쪽의 <a href="https://glitchedreme.github.io/SlayTheSpireModTutorials/" target="_blank" rel="noopener noreferrer">튜토리얼 사이트</a>를 클릭하여 모든 튜토리얼을 확인하세요.</b></p><p>개인 그룹: 542370192</p><h1>몇 가지 유용한 도구/사이트</h1></p><h2>목차</h2>
+<ul><li><a href="#사이트" target="_blank" rel="noopener noreferrer">사이트</a></li>
+<li><a href="#도구" target="_blank" rel="noopener noreferrer">도구</a></li>
+<li><a href="mod샘플" target="_blank" rel="noopener noreferrer">mod 샘플</a></li>
+<li><a href="#애니메이션" target="_blank" rel="noopener noreferrer">애니메이션</a></li></p><p></ul><h2>사이트</h2>
+<ul><li><a href="https://github.com/kiooeht/ModTheSpire/wiki" target="_blank" rel="noopener noreferrer">ModTheSpire Wiki</a><br></li>
+</ul><b>ModTheSpire</b>(약칭 MTS)은 기본 게임 파일을 수정하지 않고 Slay the Spire에 외부 모드를 로드할 수 있는 도구이며, 모드가 자신의 코드를 게임 코드에 패치할 수 있도록 허용합니다.<br>
+MTS Wiki에는 전역 저장, 패치 방법 등이 작성되어 있습니다.</p><ul><li><a href="https://github.com/daviscook477/BaseMod/wiki" target="_blank" rel="noopener noreferrer">BaseMod Wiki</a><br></li>
+</ul><b>BaseMod</b>은 모드의 기본 API로, 모드 제작자가 게임에 자신의 카드 등 콘텐츠를 쉽게 추가하고 이를 집중 관리할 수 있게 해줍니다.<br>
+Wiki에는 자동 카드 등록(AutoAdd), 카드 수정기(CardModifier), 한 게임 내 저장(CustomSavable) 등 유용한 소도구들이 소개되어 있습니다. BaseMod 제작자가 작성한 모드 제작 튜토리얼도 포함되어 있습니다.</p><h2>도구</h2>
+<ul><li><a href="http://java-decompiler.github.io/" target="_blank" rel="noopener noreferrer">JD-GUI</a><br></li>
+</ul>Java 역컴파일 도구로 GUI 인터페이스를 갖추고 있습니다.<br>
+게임이나 다른 모드의 리팩토링된 소스 코드를 확인하여 편리하게 ~~복사~~ 학습할 수 있습니다.<br>
+패치를 위한 코드 행 수를 조회할 때도 사용할 수 있습니다.(IDEA 내장 역컴파일은 정확하지 않음)</p><ul><li><a href="https://github.com/JohnnyBazooka89/StSModdingToolCardImagesCreator" target="_blank" rel="noopener noreferrer">sts 이미지 자르기 도구</a><br></li>
+</ul>이미지를 뾰족탑 카드에 필요한 모양과 크기로 자릅니다.<br>
+저는 이 도구를 사용해본 적이 없고, 그룹 내에 같은 기능을 가진 다른 도구를 직접 만든 분이 있습니다.</p><h2>mod 샘플</h2>
+<ul><li><a href="https://github.com/Rita-Bernstein/Warlord-Emblem" target="_blank" rel="noopener noreferrer">전사 휘장 mod</a><br></li>
+</ul>~~Rita 추천, 반드시 명품~~<br>
+비교적 표준화된 mod 예제입니다.</p><h2>애니메이션</h2>
+<ul><li><a href="https://dragonbones.github.io/cn/index.html" target="_blank" rel="noopener noreferrer">DragonBones</a><br></li>
+</ul>spine 애니메이션을 내보낼 수 있는 소프트웨어로, 일반적으로 이것만으로 충분하며 사용 가능한 버전을 직접 찾아도 됩니다.</p><p><em>애니메이션 제작에는 약간의 기초가 필요하지만, 사실 대부분의 mod는 한 장의 그림만으로도 충분합니다.</em>
+<ul><li><a href="http://zh.esotericsoftware.com/" target="_blank" rel="noopener noreferrer">Spine</a><br></li>
+</ul>뾰족탑에서 사용하는 2D 애니메이션 소프트웨어입니다.</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-19
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/GlitchedReme/SlayTheSpireModTutorials/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-05-19 
+    </div>
+    
+</body>
+</html>
