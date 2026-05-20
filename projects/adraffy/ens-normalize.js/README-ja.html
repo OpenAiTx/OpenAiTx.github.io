@@ -1,0 +1,453 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ens-normalize.js - JSでのENSIP-15</title>
+    <meta name="description" content="JSでのENSIP-15">
+    <meta name="keywords" content="ens-normalize.js, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ens-normalize.js",
+  "description": "JSでのENSIP-15",
+  "author": {
+    "@type": "Person",
+    "name": "adraffy"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 71
+  },
+  "url": "https://OpenAiTx.github.io/projects/adraffy/ens-normalize.js/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/README.md",
+  "datePublished": "2026-05-20",
+  "dateModified": "2026-05-20"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/adraffy/ens-normalize.js" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    ens-normalize.js
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 71 stars</span>
+                <span class="language">Japanese</span>
+                <span>by adraffy</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>ens-normalize.js</h1>
+0依存 <a href="https://ens.domains/" target="_blank" rel="noopener noreferrer">Ethereum Name Service</a> (ENS) 名称正規化ツール。</p><p><code>npm i @adraffy/ens-normalize</code> <a href="https://www.npmjs.com/package/@adraffy/ens-normalize" target="_blank" rel="noopener noreferrer">&check;</a></p><ul><li>🏛️ <a href="https://docs.ens.domains/ensip/15" target="_blank" rel="noopener noreferrer"><strong>ENSIP-15</strong>: ENS 名称正規化標準</a> に準拠</li>
+	<li>Unicode: <a href="./derive/data/17.0.0/" target="_blank" rel="noopener noreferrer"><code>17.0.0</code></a> • CLDR: <a href="./derive/data/CLDR-47/" target="_blank" rel="noopener noreferrer"><code>47</code></a></li>
+	<li>他の実装例:</li>
+		<li>Python — <a href="https://github.com/namehash/ens-normalize-python" target="_blank" rel="noopener noreferrer">namehash/<strong>ens-normalize-python</strong></a></li>
+		<li>Rust — <a href="https://github.com/sevenzing/ens-normalize-rs" target="_blank" rel="noopener noreferrer">sevenzing/<strong>ens-normalize-rs</strong></a></li>
+		<li>Zig — <a href="https://github.com/evmts/z-ens-normalize" target="_blank" rel="noopener noreferrer">evmts/<strong>z-ens-normalize</strong></a></li>
+		<li>C# — <a href="https://github.com/adraffy/ENSNormalize.cs" target="_blank" rel="noopener noreferrer">adraffy/<strong>ENSNormalize.cs</strong></a></li>
+		<li>Java — <a href="https://github.com/adraffy/ENSNormalize.java" target="_blank" rel="noopener noreferrer">adraffy/<strong>ENSNormalize.java</strong></a></li>
+		<li>Swift – <a href="https://github.com/adraffy/ENSNormalize.swift" target="_blank" rel="noopener noreferrer">adraffy/<strong>ENSNormalize.swift</strong></a></li>
+		<li>Go — <a href="https://github.com/adraffy/go-ens-normalize" target="_blank" rel="noopener noreferrer">adraffy/<strong>go-ens-normalize</strong></a></li>
+		<li>Swift – <a href="https://github.com/adraffy/ENSNormalize.swift" target="_blank" rel="noopener noreferrer">adraffy/<strong>ENSNormalize.swift</strong></a></li>
+	<li>以前の実装:</li>
+		<li>Javascript — <a href="https://github.com/ensdomains/eth-ens-namehash" target="_blank" rel="noopener noreferrer">ensdomains/<strong>eth-ens-namehash</strong></a></li>
+	<li><a href="https://adraffy.github.io/ens-norm-tests/test-breakdown/output-20230226/" target="_blank" rel="noopener noreferrer">ENSIP-1からの内訳レポート</a>	</li>
+<li>✅️ <strong>100%</strong> 合格 <a href="https://adraffy.github.io/ens-normalize.js/test/validate.html" target="_blank" rel="noopener noreferrer">ENSIP-15 検証テスト</a></li>
+<li>✅️ <strong>100%</strong> 合格 <a href="https://adraffy.github.io/ens-normalize.js/test/report-nf.html" target="_blank" rel="noopener noreferrer">Unicode 正規化テスト</a></li>
+<li>ミニファイドファイルサイズ: </li>
+	<li><a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./dist/index-xnf.min.js" target="_blank" rel="noopener noreferrer"><code>29KB</code></a> — ネイティブNFC、<a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./src/nf-native.js" target="_blank" rel="noopener noreferrer">nf-native.js</a> による <code>String.normalize()</code> 使用 ⚠️</li>
+	<li><a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./dist/index.min.js" target="_blank" rel="noopener noreferrer"><code>38KB</code> <strong>デフォルト</strong></a> — カスタムNFC、<a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./src/nf.js" target="_blank" rel="noopener noreferrer">nf.js</a></li>
+	</ul><em> <a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./dist/all.min.js" target="_blank" rel="noopener noreferrer"><code>44KB</code></a> </em>全て含む!* — カスタムNFC + サブライブラリ: <a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./src/parts.js" target="_blank" rel="noopener noreferrer">parts.js</a>, <a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./src/utils.js" target="_blank" rel="noopener noreferrer">utils.js</a>
+<ul><li>含まれるアプリ:</li>
+	<li><a href="https://adraffy.github.io/ens-normalize.js/test/resolver.html" target="_blank" rel="noopener noreferrer"><strong>リゾルバーデモ</strong></a> ⭐</li>
+	<li><a href="https://adraffy.github.io/ens-normalize.js/test/emoji.html" target="_blank" rel="noopener noreferrer">対応絵文字</a></li>
+	<li><a href="https://adraffy.github.io/ens-normalize.js/test/chars.html" target="_blank" rel="noopener noreferrer">文字ビューア</a></li>
+	<li><a href="https://adraffy.github.io/ens-normalize.js/test/confused.html" target="_blank" rel="noopener noreferrer">混乱解説</a></li>
+<li>関連プロジェクト:</li>
+	<li><a href="https://raffy.antistupid.com/eth/ens-regs.html" target="_blank" rel="noopener noreferrer">最新の .eth 登録</a> • <a href="https://raffy.antistupid.com/eth/ens-renews.html" target="_blank" rel="noopener noreferrer">更新</a> • <a href="https://raffy.antistupid.com/eth/ens-exp.html" target="_blank" rel="noopener noreferrer">期限切れ</a></li>
+	<li><a href="https://github.com/adraffy/ens-labels/" target="_blank" rel="noopener noreferrer">ラベルデータベース</a> • <a href="https://adraffy.github.io/ens-labels/demo.html" target="_blank" rel="noopener noreferrer">Labelhash⁻¹</a> • <a href="https://raffy.antistupid.com/eth/ens-brute.html" target="_blank" rel="noopener noreferrer">総当たり</a></li>
+	<li><a href="https://raffy.antistupid.com/eth/ens-emoji-freq.html" target="_blank" rel="noopener noreferrer">絵文字頻度エクスプローラー</a></li>
+	<li><a href="https://github.com/adraffy/punycode.js/" target="_blank" rel="noopener noreferrer">adraffy/<strong>punycode.js</strong></a> • <a href="https://adraffy.github.io/punycode.js/test/demo.html" target="_blank" rel="noopener noreferrer">Punycode コーダー</a></li>
+	<li><a href="https://github.com/adraffy/keccak.js/" target="_blank" rel="noopener noreferrer">adraffy/<strong>keccak.js</strong></a> • <a href="https://adraffy.github.io/keccak.js/test/demo.html" target="_blank" rel="noopener noreferrer">Keccak ハッシャー</a></li>
+	<li><a href="https://github.com/adraffy/emoji.js/" target="_blank" rel="noopener noreferrer">adraffy/<strong>emoji.js</strong></a> • <a href="https://adraffy.github.io/emoji.js/test/demo.html" target="_blank" rel="noopener noreferrer">絵文字パーサー</a></li>
+	<li><a href="https://adraffy.github.io/ens-normalize.js/test/resolver.html" target="_blank" rel="noopener noreferrer">リゾルバーデモ</a> 下部にさらにリンクあり</li></p><p></ul><pre><code class="language-js">import {ens_normalize} from '@adraffy/ens-normalize'; // or require()
+// browser: https://cdn.jsdelivr.net/npm/@adraffy/ens-normalize@latest/dist/index.min.mjs (or .cjs)</p><p>// <strong><em> ALL errors thrown by this library are safe to print </strong></em>
+// - characters are shown as {HEX} if should_escape()
+// - potentially different bidi directions inside "quotes"
+// - 200E is used near "quotes" to prevent spillover
+// - an "error type" can be extracted by slicing up to the first (:)
+// - labels are middle-truncated with ellipsis (…) at 63 cps</p><p>// string -> string
+// throws on invalid names
+// output ready for namehash
+let normalized = ens_normalize('RaFFY🚴‍♂️.eTh');
+// => "raffy🚴‍♂.eth"</p><p>// note: does not enforce .eth registrar 3-character minimum</code></pre>
+絵文字を完全修飾形式でフォーマットする:</p><pre><code class="language-js">// works like ens_normalize()
+// output ready for display
+let pretty = ens_beautify('1⃣2⃣.eth'); 
+// => "1️⃣2️⃣.eth"</p><p>// note: normalization is unchanged:
+// ens_normalize(ens_beautify(x)) == ens_normalize(x)</code></pre></p><p><a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./test/fragment.js" target="_blank" rel="noopener noreferrer">部分文字列検索</a>のために名前の断片を正規化する:
+<pre><code class="language-js">// these fragments fail ens_normalize() 
+// but will normalize fine as fragments
+let frag1 = ens_normalize_fragment('AB--');    // expected error: label ext
+let frag2 = ens_normalize_fragment('\u{303}'); // expected error: leading cm
+let frag3 = ens_normalize_fragment('οо');      // expected error: mixture</code></pre>
+入力ベースのトークン化:</p><pre><code class="language-js">// string -> Token[]
+// never throws
+let tokens = ens_tokenize('_R💩\u{FE0F}a\u{FE0F}\u{304}\u{AD}./');
+// [
+//     { type: 'valid', cps: [ 95 ] }, // valid (as-is)
+//     {
+//         type: 'mapped', 
+//         cp: 82,         // input
+//         cps: [ 114 ]    // output
+//     }, 
+//     { 
+//         type: 'emoji',
+//         input: Emoji(2) [ 128169, 65039 ],  // input 
+//         emoji: [ 128169, 65039 ],           // fully-qualified
+//         cps: Emoji(1) [ 128169 ]            // output (normalized)
+//     },
+//     {
+//         type: 'nfc',
+//         input: [ 97, 772 ],  // input (before nfc)
+//         cps: [ 257 ],        // output (after nfc)
+//         tokens0: [           // tokens (before nfc)
+//             { type: 'valid', cps: [ 97 ] },
+//             { type: 'ignored', cp: 65039 },
+//             { type: 'valid', cps: [ 772 ] }
+//         ],
+//         tokens: [            // tokens (after nfc)
+//             { type: 'valid', cps: [ 257 ] }
+//         ]
+//     },
+//     { type: 'ignored', cp: 173 },
+//     { type: 'stop', cp: 46 },
+//     { type: 'disallowed', cp: 47 }
+// ]</p><p>// note: if name is normalizable, then:
+// ens_normalize(ens_tokenize(name).map(token => {
+//     <strong> convert valid/mapped/nfc/stop to string </strong>
+// }).join('')) == ens_normalize(name)</code></pre>
+出力ベースのトークン化:</p><pre><code class="language-js">// string -> Label[]
+// never throws
+let labels = ens_split('💩Raffy.eth_');
+// [
+//   {
+//     input: [ 128169, 82, 97, 102, 102, 121 ],  
+//     offset: 0, // index of codepoint, not substring index!
+//                // (corresponding length can be inferred from input)
+//     tokens: [
+//       Emoji(2) [ 128169, 65039 ],   // emoji
+//       [ 114, 97, 102, 102, 121 ]    // nfc-text
+//     ],
+//     output: [ 128169, 114, 97, 102, 102, 121 ],
+//     emoji: true,
+//     type: 'Latin'
+//   },
+//   {
+//     input: [ 101, 116, 104, 95 ],
+//     offset: 7,
+//     tokens: [ [ 101, 116, 104, 95 ] ],
+//     output: [ 101, 116, 104, 95 ],
+//     error: Error('underscore allowed only at start')
+//   }
+// ]</code></pre></p><p>（整形された）サポートされている絵文字コードポイントのソート済み配列を生成してください：
+<pre><code class="language-js">// () -> number[][]
+let emojis = ens_emoji();
+// [
+//     [ 2764 ],
+//     [ 128169, 65039 ],
+//     [ 128105, 127997, 8205, 9877, 65039 ],
+//     ...
+// ]</code></pre></p><p>文字が直接印刷されるべきでないかどうかを判断する:
+<pre><code class="language-js">// number -> bool
+should_escape(0x202E); // eg. RIGHT-TO-LEFT OVERRIDE => true</code></pre></p><p>文字が結合記号かどうかを判定する:
+<pre><code class="language-js">// number -> bool
+is_combining_mark(0x20E3); // eg. COMBINING ENCLOSING KEYCAP => true</code></pre>
+コードポイントを印刷可能な文字列としてフォーマットする:</p><pre><code class="language-js">// number[] -> string
+safe_str_from_cps([0x300, 0, 32, 97]); // "◌̀{00} a"
+safe_str_from_cps(Array(100).fill(97), 4); // "aa…aa" => middle-truncated</code></pre>
+<h2>ビルド</h2></p><ul><li>このリポジトリを <code>git clone</code> し、次に <code>npm install</code> を実行</li>
+<li><a href="./derive/" target="_blank" rel="noopener noreferrer">/derive/</a> 内の指示に従いデータファイルを生成</li>
+	<li><code>npm run derive</code></li>
+		<li><a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./derive/output/spec.json" target="_blank" rel="noopener noreferrer">spec.json</a></li>
+		<li><a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./derive/output/nf.json" target="_blank" rel="noopener noreferrer">nf.json</a></li>
+		<li><a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./derive/output/nf-tests.json" target="_blank" rel="noopener noreferrer">nf-tests.json</a></li>
+<li><code>npm run make</code> — <a href="./derive/output/" target="_blank" rel="noopener noreferrer">/derive/output/</a> からデータファイルを圧縮</li>
+	<li><a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./src/include-ens.js" target="_blank" rel="noopener noreferrer">include-ens.js</a></li>
+	<li><a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./src/include-nf.js" target="_blank" rel="noopener noreferrer">include-nf.js</a></li>
+	<li><a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./src/include-versions.js" target="_blank" rel="noopener noreferrer">include-versions.js</a></li>
+<li><a href="./validate/" target="_blank" rel="noopener noreferrer">/validate/</a> 内の指示に従い検証テストを生成</li>
+	<li><code>npm run validate</code></li>
+		<li><a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./validate/tests.json" target="_blank" rel="noopener noreferrer">tests.json</a></li>
+<li><code>npm run test</code> — 検証テストを実行</li>
+<li><code>npm run build</code> — <a href="./dist/" target="_blank" rel="noopener noreferrer">/dist/</a> を作成</li>
+<li><code>npm run rebuild</code> — 上記すべてのコマンドを実行</li>
+<li><code>npm run order</code> — 最適なグループ順序を作成して再ビルド</li></p><p></ul><h2>セキュリティ</h2></p><ul><li><a href="#build" target="_blank" rel="noopener noreferrer">ビルド</a> を実行し、<a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./src/include-versions.js" target="_blank" rel="noopener noreferrer">include-versions.js</a> と比較</li>
+	<li><code>spec_hash</code> — <a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./derive/output/spec.json" target="_blank" rel="noopener noreferrer">spec.json</a> の SHA-256 ハッシュ値（バイト単位）</li>
+	<li><code>ens_hash_base64</code> — <a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./src/include-ens.js" target="_blank" rel="noopener noreferrer">include-ens.js</a> の base64 リテラルの SHA-256 ハッシュ値</li>
+	<li><code>nf_hash_base64</code> — <a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/./src/include-nf.js" target="_blank" rel="noopener noreferrer">include-nf.js</a> の base64 リテラルの SHA-256 ハッシュ値</li></p><p>
+
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-20
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/adraffy/ens-normalize.js/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-05-20 
+    </div>
+    
+</body>
+</html>
