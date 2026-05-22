@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DisableCtrlClick - macOS에서 Control + 클릭으로 우클릭 비활성화하기</title>
+    <meta name="description" content="macOS에서 Control + 클릭으로 우클릭 비활성화하기">
+    <meta name="keywords" content="DisableCtrlClick, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "DisableCtrlClick",
+  "description": "macOS에서 Control + 클릭으로 우클릭 비활성화하기",
+  "author": {
+    "@type": "Person",
+    "name": "achendev"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 61
+  },
+  "url": "https://OpenAiTx.github.io/projects/achendev/DisableCtrlClick/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/achendev/DisableCtrlClick/master/README.md",
+  "datePublished": "2026-05-22",
+  "dateModified": "2026-05-22"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/achendev/DisableCtrlClick" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    DisableCtrlClick
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 61 stars</span>
+                <span class="language">Korean</span>
+                <span>by achendev</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>macOS용 DisableCtrlClick</h1></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/achendev/DisableCtrlClick/master/DisableCtrlClick.png" alt="앱 아이콘" width="128">
+</p></p><p><p align="center">
+  <a href="https://github.com/achendev/DisableCtrlClick/releases">
+    <img src="https://img.shields.io/github/downloads/achendev/DisableCtrlClick/total.svg" alt="총 다운로드 수">
+  </a>
+  <a href="https://github.com/achendev/DisableCtrlClick">
+    <img src="https://img.shields.io/github/stars/achendev/DisableCtrlClick?style=social" alt="GitHub에서 스타 받기">
+  </a>
+</p></p><p>Control 키만 누르려다 실수로 컨텍스트 메뉴가 열리는 게 지겹지 않으신가요? 저도 그래요.</p><p>많은 애플리케이션, 특히 프로그래밍, 디자인, 게임에서 <code>Control</code>은 기본 동작을 위한 수정키로 사용됩니다. 만약 오른쪽 클릭을 위해 두 손가락 탭이나 전용 마우스 버튼에 익숙하다면, 기본 <code>Ctrl-Click</code> 동작은 귀찮은 방해가 될 수 있습니다. 이 앱이 그 문제를 해결합니다.</p><h2>기능 설명</h2></p><p>이것은 메뉴바에 상주하며 단 하나의 일을 하는 작고 네이티브한 macOS 유틸리티입니다: <strong><code>Control + 왼쪽 클릭</code></strong>을 일반 <strong><code>왼쪽 클릭</code></strong>처럼 동작하게 강제하여 기본 오른쪽 클릭/컨텍스트 메뉴 동작을 비활성화합니다.</p><p>그게 다입니다. 더 이상 무작위 오른쪽 클릭은 없습니다.</p><h2>특징</h2></p><ul><li>  ✅ <strong>가볍고 네이티브:</strong> 최소한의 리소스를 사용하는 간단한 Swift 앱입니다.</li>
+<li>  ✅ <strong>메뉴바에서 설정 가능:</strong> 아이콘을 클릭하여 기능을 일시 비활성화하거나, "로그인 시 자동 실행"을 토글하거나, 앱을 종료할 수 있습니다.</li>
+<li>  ✅ <strong>메뉴바 앱:</strong> 메뉴바에 조용히 상주합니다. Cmd+드래그로 숨기고 다시 실행하면 복구됩니다.</li>
+<li>  ✅ <strong>로그인 시 시작 (선택 사항):</strong> 로그인 시 자동으로 시작합니다. 앱 메뉴에서 토글할 수 있습니다.</li>
+<li>  ✅ <strong>설정 불필요:</strong> 실행 후 권한만 부여하면 끝입니다.</li>
+<li>  ✅ <strong>현대적이고 안전:</strong> 최신 API로 구축되었으며, 기능 수행에 필요한 최소 권한만 요구합니다.</li>
+<li>  ✅ <strong>투명하고 작음:</strong> 앱 코드를 전부 읽거나 AI에 입력해 정확히 무엇을 하는지, Mac에서 어떤 앱이 실행되는지 알 수 있을 정도로 매우 작습니다.</li></p><p></ul><h2>설치 및 사용법</h2></p><ul><li> <strong>다운로드:</strong> <a href="https://github.com/achendev/DisableCtrlClick/releases" target="_blank" rel="noopener noreferrer"><strong>릴리스 페이지</strong></a>로 이동하여 최신 <code>DisableCtrlClick.dmg</code>를 다운로드하세요.</li>
+<li> <strong>설치:</strong> 파일을 열고 <code>DisableCtrlClick.app</code>를 <code>/Applications</code> 폴더로 드래그하세요.</li>
+<li> <strong>실행:</strong> Applications 폴더에서 앱을 엽니다.</li>
+<li> <strong>권한 부여:</strong> 처음 실행할 때 앱이 권한 부여를 요청한 후 종료됩니다. <code>DisableCtrlClick</code>에 대해 <strong>접근성</strong> 및 <strong>입력 모니터링</strong>을 활성화해야 합니다:</li>
+    <li>  <code>시스템 설정 > 개인정보 보호 및 보안 > 접근성</code></li>
+    </ul>> <strong>왜 필요한가요?</strong> 마우스나 키보드 이벤트를 시스템 전역에서 보고 수정해야 하는 모든 앱에 필요합니다. 이 앱은 <code>Ctrl-Click</code>만 감지하며 다른 작업은 하지 않습니다.</p><ul><li> <strong>완료!</strong> 앱을 한 번 더 실행하세요. 이제 실행 중이며 기본적으로 로그인할 때마다 자동으로 시작됩니다. 이 동작은 메뉴바 아이콘에서 변경할 수 있습니다.</li></p><p></ul>앱은 메뉴바에 작은 아이콘을 표시합니다.
+<ul><li>  아이콘을 클릭하면 기능을 일시적으로 비활성화하거나 로그인 시 실행 여부를 제어하거나 앱을 종료할 수 있는 메뉴가 열립니다.</li>
+<li>  <code>⌘</code> (커맨드)를 누른 상태에서 아이콘을 메뉴바 밖으로 드래그하면 아이콘을 숨길 수 있습니다. 다시 표시하려면 앱을 다시 실행하세요.</li></p><p></ul><h2>소스에서 빌드하기</h2></p><p>직접 앱을 빌드하려면:</p><ul><li> 이 저장소를 클론하세요:</li>
+    </ul>``<code>bash
+    git clone https://github.com/achendev/DisableCtrlClick.git
+    cd DisableCtrlClick
+    </code>`<code>
+<ul><li> Xcode용 명령줄 도구가 설치되어 있는지 확인하십시오.</li>
+<li> 터미널에서 빌드 스크립트를 실행하십시오:</li>
+    </ul></code>`<code>bash
+    ./build.sh
+    </code>`<code>
+<ul><li> </code>DisableCtrlClick.app<code> 번들이 프로젝트 디렉토리에 생성됩니다. 이후 이를 </code>/Applications<code> 폴더로 이동할 수 있습니다.</li></p><p><li> /Applications로 드래그하여 실행하세요. 기본적으로 '로그인 시 열기'에 자동으로 추가됩니다.</li></p><p><li> 시스템 설정에서 접근성 및 입력 모니터링 권한을 부여하세요.</li></p><p></ul><h2>문제 해결 </h2></p><p>앱은 '있는 그대로' 제공되며 명시적이거나 묵시적인 보증이 없습니다.</p><p>macOS 13.0 (Ventura) 이상이 필요합니다.</p><p><strong>종료 방법</strong>
+메뉴바 아이콘을 클릭하고 "종료"를 선택하세요. 아이콘을 숨긴 경우, 앱을 다시 실행하여 아이콘을 표시하거나 터미널에서 </code>killall DisableCtrlClick<code> 명령어를 사용하세요.</p><p><strong>권한 재설정 방법</strong>
+앱이 작동하지 않을 경우 권한을 재설정해 보세요:
+    </code>`<code>bash
+    tccutil reset Accessibility com.usr.DisableCtrlClick
+    </code>``
+<h2>라이선스</h2></p><p>이 프로젝트는 MIT 라이선스 하에 배포됩니다.</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-22
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/achendev/DisableCtrlClick/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-05-22 
+    </div>
+    
+</body>
+</html>
