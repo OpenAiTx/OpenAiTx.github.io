@@ -34,8 +34,8 @@
   },
   "url": "https://OpenAiTx.github.io/projects/RickyDane/CoDriver/README-tr.html",
   "sameAs": "https://raw.githubusercontent.com/RickyDane/CoDriver/master/README.md",
-  "datePublished": "2026-05-25",
-  "dateModified": "2026-05-25"
+  "datePublished": "2026-05-26",
+  "dateModified": "2026-05-26"
 }
     </script>
     
@@ -323,20 +323,20 @@
   </a>
 </p></p><p><p align="center">
   <a href='https://ko-fi.com/rickydane'>
-      <img height='36px' style='border: 0px; height: 36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='ko-fi.com'da bana bir kahve ısmarla' />
+      <img height='36px' style='border: 0px; height: 36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='ko-fi.com üzerinden bana bir kahve alın' />
   </a>
 </p></p><p><br/></p><p><p align="center">
-  Rust dilini öğrenmek istediğim için ortaya çıkan basit bir dosya gezgini.
+  Rust dilini öğrenmek istediğim için doğan basit bir dosya gezgini.
   <br>
   İşletim sistemi bağımsızdır ve optimizasyon için sadeleştirilmiştir.
-</p></p><p><br/><br/></p><p>Performans, <a href="https://crates.io/crates/jwalk/versions" target="_blank" rel="noopener noreferrer">"jwalk"</a> ve <a href="https://tauri.app/" target="_blank" rel="noopener noreferrer">"Tauri"</a> tarafından sağlanmaktadır.
+</p></p><p><br/><br/></p><p>Performans, <a href="https://crates.io/crates/jwalk/versions" target="_blank" rel="noopener noreferrer">"jwalk"</a> ve <a href="https://tauri.app/" target="_blank" rel="noopener noreferrer">"Tauri"</a> ile sağlanır.
 <br/><br/>
-CoDriver, dosya ve klasörlere erişmek için yol önbelleklemesi kullanmaz; bu nedenle performans Rust, disk hızı ve cpu gücünden sağlanmaktadır.</p><p>⁉️ Unutmayın ki bu yazılım hâlâ geliştirme aşamasındadır ve hatalar içerebilir!
+CoDriver, dosya ve klasörlere erişmek için yol önbelleklemesi kullanmaz, bu yüzden performans Rust dili, diskin hızı ve cpu gücü ile sağlanır.</p><p>⁉️ Unutmayın, bu yazılım halen geliştirme aşamasında ve hatalar içerebilir!
 <br/><br/></p><h1>Bağlantılar</h1>
 <ul><li><a href="#basic-features">Temel özellikler</a></li>
 <li><a href="#advanced-features">Gelişmiş özellikler</a></li>
 <li><a href="#dependencies-if-not-working-instantly">Bağımlılıklar</a></li>
-<li><a href="#%EF%B8%8F-ftp-integration-sshfs">FTP uygulaması (SSHFS)</a></li>
+<li><a href="#%EF%B8%8F-ftp-sftp-integration">FTP / SFTP entegrasyonu</a></li>
 <li><a href="#%EF%B8%8F-known-issues">Bilinen sorunlar</a></li>
 <li><a href="#-todos">Yapılacaklar</a></li>
 <li><a href="#user-interface">Kullanıcı arayüzü</a></li></p><p></ul><h2>Temel özellikler</h2>
@@ -404,50 +404,32 @@ sudo dnf install openssl1.1 \
     libappindicator-gtk3-devel \
     librsvg2-devel
 sudo dnf group install "C Development Tools and Libraries"</code></pre>
-</details></p><h2>🖥️ FTP entegrasyonu (sshfs)</h2>
-<details>
-  <summary>Göstermek için genişlet</summary>
-  <br/>
-  Bağımlılıklar (Ayrıca yüklenmesi gerekir):
-  <br/></p><p>  | macOS | Linux | Windows |
-  | ----- | ----- | ------- |
-  | fuse-t <br/> fuse-t-sshfs | libfuse | Henüz desteklenmiyor <strong>_henüz_</strong> |</p><p>  ### Kurulum:
-  #### macOS
-  ``<code>
-  brew tap macos-fuse-t/homebrew-cask
-  brew install fuse-t
-  brew install fuse-t-sshfs
-  </code>`<code>
-  #### Linux
-  </code>`<code>
-  sudo apt-get install sshfs
-  </code>`<code></p><h2>🏴‍☠️ Dil Desteği</h2>
+</details></p><h2>🖥️ FTP / SFTP entegrasyonu</h2></p><p>CoDriver, FTP ve SFTP uzak bağlantıları için tamamen yerel, kutudan çıkar çıkmaz destek sunar. Harici bağımlılıklara, FUSE katmanlarına veya <code>sshfs</code> bağlamalarına gerek yoktur! Uzak sunucularınızı doğrudan kenar çubuğu panelinden bağlayın.</p><h2>🏴‍☠️ Dil Desteği</h2>
 <ul><li>İngilizce</li>
-  <li>Yakında diller arasında seçim yapma seçeneği eklenecek ...</li>
-</ul></details></p><h2>⚠️ Bilinen sorunlar:</h2>
-<ul><li>Linux'ta pencere dışına sürükleyip bırakma şu anda her zaman çalışmıyor</li>
+  <li>Yakında diller arasında seçim yapma seçeneği eklenecek ...</li></p><p></ul><h2>⚠️ Bilinen sorunlar:</h2>
+<ul><li>Sürükle ve bırak işlemi, linux'ta pencerenin dışına çıkarken her zaman çalışmayabiliyor</li>
 <li>Windows'ta <a href="https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170" target="_blank" rel="noopener noreferrer">Microsoft Visual C++ Redistributable</a> yüklemeniz gerekebilir</li>
-<li>ms-windows üzerinde izinler biraz garip</li>
-  <li>Eğer elemanları kopyalama veya benzeri bir sorun yaşarsanız programı yönetici olarak çalıştırmanız gerekebilir</li>
-<li>Program başlamazsa linux sistemlerde openssl1.1 yüklemeniz gerekebilir</li></p><p></ul><h2>📝 Yapılacaklar:</h2>
+<li>ms-windows üzerindeki izinler biraz tuhaf</li>
+  <li>Eğer eleman kopyalama gibi işlemlerde sorun yaşarsanız programı yönetici olarak çalıştırmanız gerekebilir</li>
+<li>Program başlamazsa, linux sistemlerinde openssl1.1 yüklemeniz gerekebilir</li></p><p></ul><h2>📝 Yapılacaklar:</h2>
 <ul><li>Çoklu dil desteği</li>
 <li>Favoriler</li>
-<li>Çevrimiçi depolama servislerine erişim (Google Drive, vb.)</li></p><p></ul><h2>Kullanıcı arayüzü</h2>
+<li>Çevrimiçi depolama servislerine erişim (Google drive, vb.)</li></p><p></ul><h2>Kullanıcı arayüzü</h2>
 <img width="400" height="auto" alt="Screenshot 2026-05-24 at 12 19 16" src="https://github.com/user-attachments/assets/fc408504-3000-4325-bc2a-638cdd01ea0a" />
 <img width="400" height="auto" alt="Screenshot 2026-05-24 at 12 19 40" src="https://github.com/user-attachments/assets/5f772d02-6bc2-470c-b999-6982043496c1" />
 <img width="400" height="auto" alt="Screenshot 2026-05-24 at 12 20 02" src="https://github.com/user-attachments/assets/7f2ec5ea-a669-4630-a1f8-413c7ced3f3b" />
 <img width="400" height="auto" alt="Screenshot 2026-05-24 at 12 20 07" src="https://github.com/user-attachments/assets/4ac9930d-7b50-4910-afb3-d47c562c3b44" />
 <img width="400" height="auto" alt="Screenshot 2026-05-24 at 12 20 28" src="https://github.com/user-attachments/assets/7dcfb0fa-c106-401a-b917-06e766021368" />
 <img width="400" height="auto" alt="Screenshot 2026-05-24 at 12 23 18" src="https://github.com/user-attachments/assets/4bac06d1-22df-47d4-95c9-1ccb50083506" />
-<img width="400" height="auto" alt="Screenshot 2026-05-24 at 12 23 39" src="https://github.com/user-attachments/assets/fdca23b0-9ed5-495b-9fec-18ecbfd4d5f2" /></p><h2>Katkıda bulunmak için</h2>
-Makinenizi tauri v1 uygulamaları geliştirmek için hazırlayın: <a href="https://tauri.app/v1/guides/getting-started/prerequisites" target="_blank" rel="noopener noreferrer">Tauri önkoşulları</a>
+<img width="400" height="auto" alt="Screenshot 2026-05-24 at 12 23 39" src="https://github.com/user-attachments/assets/fdca23b0-9ed5-495b-9fec-18ecbfd4d5f2" /></p><h2>Katkıda bulunma</h2>
+Makinenizi tauri v1 uygulamalarını geliştirmek için kurun: <a href="https://tauri.app/v1/guides/getting-started/prerequisites" target="_blank" rel="noopener noreferrer">Tauri önkoşulları</a>
 </br></br>
-Bunu yaptıktan sonra makinenizde bir konumda </code>`<code>git clone https://github.com/RickyDane/CoDriver</code>`<code> veya </code>`<code>gh repo clone RickyDane/CoDriver</code>`<code> komutunu çalıştırın.
+Bunu yaptıktan sonra makinenizde bir konuma ``<code>git clone https://github.com/RickyDane/CoDriver</code>`<code> veya </code>`<code>gh repo clone RickyDane/CoDriver</code>`<code> komutunu girin.
 </br></br>
-Bu projenin kök dizininde </code>`<code>cargo tauri dev</code>`<code> komutunu çalıştırarak CoDriver'ı derleyip çalıştırmaya başlamalısınız.
+Projenin kök dizininde </code>`<code>cargo tauri dev</code>`<code> komutunu çalıştırarak CoDriver'ı derlemeye ve çalıştırmaya başlayabilirsiniz.
 </br>
-tauri-cli'nin kurulu olduğundan emin olun: </code>`<code>cargo install tauri-cli</code>``
-</br></p><h2>Sürüm imzalama</h2></p><p>macOS sürüm çıktıları, Gatekeeper'ın yüklenen uygulamanın hasarlı olduğunu bildirmesini önlemek için imzalanmalı ve noter tasdikli olmalıdır. Gerekli GitHub Actions gizli anahtarları ve doğrulama komutları için <a href="https://raw.githubusercontent.com/RickyDane/CoDriver/master/docs/macos-signing-notarization.md" target="_blank" rel="noopener noreferrer">macOS imzalama ve noter tasdik işlemleri</a> bölümüne bakınız.</p><h2>Yıldız Geçmişi</h2></p><p><a href="https://star-history.com/#rickydane/CoDriver&Date">
+Tauri-cli'nin kurulu olduğundan emin olun: </code>`<code>cargo install tauri-cli</code>``
+</br></p><h2>Yayın imzalama</h2></p><p>macOS yayın çıktıları imzalanmalı ve noter onayından geçmeli, aksi takdirde Gatekeeper yüklenen uygulamanın hasarlı olduğunu bildirebilir. Gerekli GitHub Actions gizli anahtarları ve doğrulama komutları için <a href="https://raw.githubusercontent.com/RickyDane/CoDriver/master/docs/macos-signing-notarization.md" target="_blank" rel="noopener noreferrer">macOS imzalama ve noter onayı</a> adresine bakınız.</p><h2>Yıldız Geçmişi</h2></p><p><a href="https://star-history.com/#rickydane/CoDriver&Date">
  <picture>
    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=rickydane/CoDriver&type=Date&theme=dark" />
    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=rickydane/CoDriver&type=Date" />
@@ -457,7 +439,7 @@ tauri-cli'nin kurulu olduğundan emin olun: </code>`<code>cargo install tauri-cl
 <ul><li>DragSelect (https://github.com/ThibaultJanBeyer/DragSelect)</li></p><p>
 </ul>---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-25
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-26
 
 ---</p>
         </div>
@@ -469,7 +451,7 @@ tauri-cli'nin kurulu olduğundan emin olun: </code>`<code>cargo install tauri-cl
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-05-25 
+        Last updated: 2026-05-26 
     </div>
     
 </body>

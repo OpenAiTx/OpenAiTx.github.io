@@ -34,8 +34,8 @@
   },
   "url": "https://OpenAiTx.github.io/projects/RickyDane/CoDriver/README-pl.html",
   "sameAs": "https://raw.githubusercontent.com/RickyDane/CoDriver/master/README.md",
-  "datePublished": "2026-05-25",
-  "dateModified": "2026-05-25"
+  "datePublished": "2026-05-26",
+  "dateModified": "2026-05-26"
 }
     </script>
     
@@ -321,20 +321,20 @@
   </a>
 </p></p><p><p align="center">
   <a href='https://ko-fi.com/rickydane'>
-      <img height='36px' style='border: 0px; height: 36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Kup mi kawę na ko-fi.com' />
+      <img height='36px' style='border: 0px; height: 36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Postaw mi kawę na ko-fi.com' />
   </a>
 </p></p><p><br/></p><p><p align="center">
   Prosty eksplorator plików, który powstał, ponieważ chciałem nauczyć się języka Rust.
   <br>
   Jest niezależny od systemu operacyjnego i zoptymalizowany pod kątem wydajności.
-</p></p><p><br/><br/></p><p>Wydajność została osiągnięta dzięki <a href="https://crates.io/crates/jwalk/versions" target="_blank" rel="noopener noreferrer">"jwalk"</a> oraz <a href="https://tauri.app/" target="_blank" rel="noopener noreferrer">"Tauri"</a>.
+</p></p><p><br/><br/></p><p>Wydajność jest osiągana dzięki <a href="https://crates.io/crates/jwalk/versions" target="_blank" rel="noopener noreferrer">"jwalk"</a> oraz <a href="https://tauri.app/" target="_blank" rel="noopener noreferrer">"Tauri"</a>.
 <br/><br/>
-CoDriver nie używa buforowania ścieżek do dostępu do plików i folderów, więc wydajność wynika z Rust, szybkości dysku i mocy procesora.</p><p>⁉️ Pamiętaj, że to oprogramowanie jest nadal w fazie rozwoju i może zawierać błędy!
+CoDriver nie używa buforowania ścieżek do dostępu do plików i folderów, więc wydajność zapewnia Rust, szybkość dysku i moc procesora.</p><p>⁉️ Pamiętaj, że to oprogramowanie jest nadal w fazie rozwoju i może zawierać błędy!
 <br/><br/></p><h1>Linki</h1>
 <ul><li><a href="#basic-features">Podstawowe funkcje</a></li>
 <li><a href="#advanced-features">Zaawansowane funkcje</a></li>
 <li><a href="#dependencies-if-not-working-instantly">Zależności</a></li>
-<li><a href="#%EF%B8%8F-ftp-integration-sshfs">Implementacja FTP (SSHFS)</a></li>
+<li><a href="#%EF%B8%8F-ftp-sftp-integration">Integracja FTP / SFTP</a></li>
 <li><a href="#%EF%B8%8F-known-issues">Znane problemy</a></li>
 <li><a href="#-todos">Zadania</a></li>
 <li><a href="#user-interface">Interfejs użytkownika</a></li></p><p></ul><h2>Podstawowe funkcje</h2>
@@ -402,50 +402,32 @@ sudo dnf install openssl1.1 \
     libappindicator-gtk3-devel \
     librsvg2-devel
 sudo dnf group install "C Development Tools and Libraries"</code></pre>
-</details></p><h2>🖥️ Integracja FTP (sshfs)</h2>
-<details>
-  <summary>Rozwiń, aby zobaczyć</summary>
-  <br/>
-  Wymagane zależności (należy zainstalować osobno):
-  <br/></p><p>  | macOS | Linux | Windows |
-  | ----- | ----- | ------- |
-  | fuse-t <br/> fuse-t-sshfs | libfuse | Nieobsługiwane <strong>_jeszcze_</strong> |</p><p>  ### Instalacja:
-  #### macOS
-  ``<code>
-  brew tap macos-fuse-t/homebrew-cask
-  brew install fuse-t
-  brew install fuse-t-sshfs
-  </code>`<code>
-  #### Linux
-  </code>`<code>
-  sudo apt-get install sshfs
-  </code>`<code></p><h2>🏴‍☠️ Wsparcie Językowe</h2>
+</details></p><h2>🖥️ Integracja FTP / SFTP</h2></p><p>CoDriver zapewnia natywną, gotową do użycia obsługę połączeń zdalnych FTP i SFTP. Nie są wymagane żadne zewnętrzne zależności, warstwy FUSE ani montowania <code>sshfs</code>! Po prostu połącz swoje zdalne serwery bezpośrednio w panelu bocznym.</p><h2>🏴‍☠️ Obsługa języków</h2>
 <ul><li>Angielski</li>
-  <li>Wkrótce możliwość wyboru języków ...</li>
-</ul></details></p><h2>⚠️ Znane problemy:</h2>
-<ul><li>Przeciąganie i upuszczanie poza okno nie zawsze działa na systemie linux</li>
-<li>Na systemie Windows może być konieczna instalacja <a href="https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170" target="_blank" rel="noopener noreferrer">Microsoft Visual C++ Redistributable</a></li>
+  <li>Wkrótce dostępna możliwość wyboru języka ...</li></p><p></ul><h2>⚠️ Znane problemy:</h2>
+<ul><li>Przeciąganie i upuszczanie poza okno obecnie nie zawsze działa na Linuksie</li>
+<li>Na Windowsie może być konieczna instalacja <a href="https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170" target="_blank" rel="noopener noreferrer">Microsoft Visual C++ Redistributable</a></li>
 <li>Uprawnienia na ms-windows są trochę dziwne</li>
   <li>Może być konieczne uruchomienie programu jako administrator, jeśli napotkasz problemy z kopiowaniem elementów lub podobne</li>
-<li>Może wystąpić problem wymagający instalacji openssl1.1 na systemach linux, jeśli program się nie uruchamia</li></p><p></ul><h2>📝 Zadania do zrobienia:</h2>
+<li>Może wystąpić problem wymagający instalacji openssl1.1 na systemach linux, jeśli program się nie uruchamia</li></p><p></ul><h2>📝 Zadania do wykonania:</h2>
 <ul><li>Wiele języków</li>
 <li>Ulubione</li>
-<li>Dostęp do usług przechowywania online (Google drive, itd.)</li></p><p></ul><h2>Interfejs użytkownika</h2>
+<li>Dostęp do usług przechowywania online (Google Drive, itp.)</li></p><p></ul><h2>Interfejs użytkownika</h2>
 <img width="400" height="auto" alt="Screenshot 2026-05-24 at 12 19 16" src="https://github.com/user-attachments/assets/fc408504-3000-4325-bc2a-638cdd01ea0a" />
 <img width="400" height="auto" alt="Screenshot 2026-05-24 at 12 19 40" src="https://github.com/user-attachments/assets/5f772d02-6bc2-470c-b999-6982043496c1" />
 <img width="400" height="auto" alt="Screenshot 2026-05-24 at 12 20 02" src="https://github.com/user-attachments/assets/7f2ec5ea-a669-4630-a1f8-413c7ced3f3b" />
 <img width="400" height="auto" alt="Screenshot 2026-05-24 at 12 20 07" src="https://github.com/user-attachments/assets/4ac9930d-7b50-4910-afb3-d47c562c3b44" />
 <img width="400" height="auto" alt="Screenshot 2026-05-24 at 12 20 28" src="https://github.com/user-attachments/assets/7dcfb0fa-c106-401a-b917-06e766021368" />
 <img width="400" height="auto" alt="Screenshot 2026-05-24 at 12 23 18" src="https://github.com/user-attachments/assets/4bac06d1-22df-47d4-95c9-1ccb50083506" />
-<img width="400" height="auto" alt="Screenshot 2026-05-24 at 12 23 39" src="https://github.com/user-attachments/assets/fdca23b0-9ed5-495b-9fec-18ecbfd4d5f2" /></p><h2>Jak wnieść swój wkład</h2>
-Przygotuj swój komputer do pracy z aplikacjami tauri v1: <a href="https://tauri.app/v1/guides/getting-started/prerequisites" target="_blank" rel="noopener noreferrer">Wymagania wstępne Tauri</a>
+<img width="400" height="auto" alt="Screenshot 2026-05-24 at 12 23 39" src="https://github.com/user-attachments/assets/fdca23b0-9ed5-495b-9fec-18ecbfd4d5f2" /></p><h2>Jak współtworzyć</h2>
+Skonfiguruj swoją maszynę do tworzenia aplikacji tauri v1: <a href="https://tauri.app/v1/guides/getting-started/prerequisites" target="_blank" rel="noopener noreferrer">Wymagania wstępne Tauri</a>
 </br></br>
-Gdy to zrobisz, po prostu wykonaj </code>`<code>git clone https://github.com/RickyDane/CoDriver</code>`<code> lub </code>`<code>gh repo clone RickyDane/CoDriver</code>`<code> w wybranej lokalizacji na swoim komputerze.
+Gdy to zrobisz, po prostu wykonaj ``<code>git clone https://github.com/RickyDane/CoDriver</code>`<code> lub </code>`<code>gh repo clone RickyDane/CoDriver</code>`<code> w wybranej lokalizacji na swoim komputerze.
 </br></br>
-Powinieneś być w stanie uruchomić </code>`<code>cargo tauri dev</code>`<code> w katalogu głównym projektu, aby rozpocząć budowanie i uruchamianie CoDriver.
+Powinieneś móc uruchomić </code>`<code>cargo tauri dev</code>`<code> w katalogu głównym tego projektu, aby rozpocząć budowę i uruchamianie CoDriver.
 </br>
 Upewnij się, że masz zainstalowany tauri-cli: </code>`<code>cargo install tauri-cli</code>``
-</br></p><h2>Podpisywanie wydań</h2></p><p>Artefakty wydania dla macOS muszą być podpisane i poddane notaryzacji, aby Gatekeeper nie zgłaszał, że zainstalowana aplikacja jest uszkodzona. Zobacz <a href="https://raw.githubusercontent.com/RickyDane/CoDriver/master/docs/macos-signing-notarization.md" target="_blank" rel="noopener noreferrer">podpisywanie i notaryzacja macOS</a> dla wymaganych sekretów GitHub Actions i poleceń weryfikacyjnych.</p><h2>Historia gwiazdek</h2></p><p><a href="https://star-history.com/#rickydane/CoDriver&Date">
+</br></p><h2>Podpisywanie wydania</h2></p><p>Artefakty wydania na macOS muszą być podpisane i poświadczone, aby uniknąć sytuacji, w której Gatekeeper zgłasza, że zainstalowana aplikacja jest uszkodzona. Zobacz <a href="https://raw.githubusercontent.com/RickyDane/CoDriver/master/docs/macos-signing-notarization.md" target="_blank" rel="noopener noreferrer">podpisywanie i poświadczanie macOS</a> dla wymaganych sekretów GitHub Actions oraz poleceń weryfikacyjnych.</p><h2>Historia gwiazdek</h2></p><p><a href="https://star-history.com/#rickydane/CoDriver&Date">
  <picture>
    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=rickydane/CoDriver&type=Date&theme=dark" />
    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=rickydane/CoDriver&type=Date" />
@@ -455,7 +437,7 @@ Upewnij się, że masz zainstalowany tauri-cli: </code>`<code>cargo install taur
 <ul><li>DragSelect (https://github.com/ThibaultJanBeyer/DragSelect)</li></p><p>
 </ul>---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-25
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-26
 
 ---</p>
         </div>
@@ -467,7 +449,7 @@ Upewnij się, że masz zainstalowany tauri-cli: </code>`<code>cargo install taur
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-05-25 
+        Last updated: 2026-05-26 
     </div>
     
 </body>
