@@ -1,0 +1,401 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTubePlayer - YouTube Kotlin 多平台播放器</title>
+    <meta name="description" content="YouTube Kotlin 多平台播放器">
+    <meta name="keywords" content="YouTubePlayer, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "YouTubePlayer",
+  "description": "YouTube Kotlin 多平台播放器",
+  "author": {
+    "@type": "Person",
+    "name": "IlyaPavlovskii"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 90
+  },
+  "url": "https://OpenAiTx.github.io/projects/IlyaPavlovskii/YouTubePlayer/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/IlyaPavlovskii/YouTubePlayer/main/README.md",
+  "datePublished": "2026-05-30",
+  "dateModified": "2026-05-30"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/IlyaPavlovskii/YouTubePlayer" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    YouTubePlayer
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 90 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by IlyaPavlovskii</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>YouTubePlayer</h1></p><p><a href="https://central.sonatype.com/artifact/io.github.ilyapavlovskii/youtubeplayer-compose" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/maven-central/v/io.github.ilyapavlovskii/youtubeplayer-compose.svg" alt="Maven Central"></a>
+<a href="http://kotlinlang.org" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/kotlin-v2.3.0-blue.svg?logo=kotlin" alt="Kotlin"></a>
+<a href="https://github.com/JetBrains/compose-multiplatform" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Compose%20Multiplatform-v8.13.2-blue" alt="Compose Multiplatform"></a></p><p><img src="http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat" alt="badge-android">
+<img src="http://img.shields.io/badge/platform-ios-CDCDCD.svg?style=flat" alt="badge-ios"></p><p>YouTube kotlin 多平台播放器。
+<code>YouTubePlayer</code> 组合式组件允许你在 Jetpack Compose 应用中嵌入一个 YouTube 视频播放器。</p><h2>捐赠</h2>
+如果你想感谢我或为项目开发做出贡献，可以捐赠给我。这有助于我更专注于项目。</p><p><a href="https://www.paypal.com/paypalme/ipavlovskii" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/IlyaPavlovskii/IlyaPavlovskii/main/resources/paypal.svg" alt=""PayPal""></a>
+<a href="https://www.buymeacoffee.com/ipavlovskii" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/IlyaPavlovskii/IlyaPavlovskii/main/resources/buy_me_a_coffee.svg" alt=""Buy Me A Coffee""></a></p><p>你也可以在以下平台关注我，以获取我主题的最新动态</p><p><a href="https://pavlovskiiilia.medium.com/" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/IlyaPavlovskii/IlyaPavlovskii/main/resources/medium.svg" alt="medium"></a>
+<a href="https://habr.com/ru/users/TranE91/posts/" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/IlyaPavlovskii/IlyaPavlovskii/main/resources/habr.svg" alt="habr"></a></p><h1>安装</h1>
+你可以使用 Gradle 将此库添加到你的项目中。</p><p>多平台
+要添加到多平台项目中，请将依赖项添加到 common 源代码集：</p><pre><code class="language-gradle">repositories {
+    mavenCentral()
+}</p><p>kotlin {
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation("io.github.ilyapavlovskii:youtubeplayer-compose:${latest_version}")
+            }
+        }
+    }
+}</code></pre></p><h1>用法</h1></p><pre><code class="language-kotlin">val coroutineScope = rememberCoroutineScope()
+val hostState = remember { YouTubePlayerHostState() }</p><p>when(val state = hostState.currentState) {
+    is YouTubePlayerState.Error -> {
+        Text(text = "Error: ${state.message}")
+    }
+    YouTubePlayerState.Idle -> {
+        // Do nothing, waiting for initialization
+    }
+    is YouTubePlayerState.Playing -> {
+        // Update UI button states
+    }
+    YouTubePlayerState.Ready -> coroutineScope.launch {
+        hostState.loadVideo(YouTubeVideoId("ufKj1sBrC4Q"))
+    }
+}</p><p>YouTubePlayer(
+    modifier = Modifier
+        .fillMaxWidth()
+        .height(300.dp)
+        .gesturesDisabled(),
+    hostState = hostState,
+    options = SimpleYouTubePlayerOptionsBuilder.builder {
+        autoplay(true)
+        mute(true) // autoplay works only with mute for mobile devices
+        controls(false)
+        rel(false)
+        ivLoadPolicy(false)
+        ccLoadPolicy(false)
+        fullscreen = true
+    },
+)</code></pre>
+可组合函数具有以下主要参数：</p><ul><li><code>options</code> - 播放器选项构建器。所有参数均来自<a href="https://developers.google.com/youtube/player_parameters#Parameters" target="_blank" rel="noopener noreferrer">官方YouTube iframe文档</a>。</li>
+<li><code>hostState</code> - 用于跟踪YouTube播放器状态并执行一次性命令的控制器</li></p><p></ul><h3>YouTubePlayerHostState</h3>
+主要控制器。包含两个主要公共组件：
+<ul><li>currentState - 定义屏幕上实际的YouTube播放器状态。可能为：Idle、Ready、Playing、Error</li>
+<li>executeCommand - 用于执行播放器命令的挂起函数。仅接收一个参数 - <a name="YouTubeExecCommand">YouTubeExecCommand</a>。还具有一些附加的便捷函数，例如：</li></p><p></ul><pre><code class="language-kotlin">suspend fun loadVideo(videoId: YouTubeVideoId) = executeCommand(YouTubeExecCommand.LoadVideo(videoId))
+suspend fun play() = executeCommand(YouTubeExecCommand.Play)
+suspend fun pause() = executeCommand(YouTubeExecCommand.Pause)
+suspend fun seekTo(duration: Duration) = executeCommand(YouTubeExecCommand.SeekTo(duration))
+suspend fun seekBy(duration: Duration) = executeCommand(YouTubeExecCommand.SeekBy(duration))
+suspend fun mute() = executeCommand(YouTubeExecCommand.Mute)
+suspend fun unMute() = executeCommand(YouTubeExecCommand.Unmute)
+suspend fun setVolume(volume: Int) = executeCommand(YouTubeExecCommand.SetVolume(volume))
+suspend fun setPlaybackRate(rate: Float) = executeCommand(YouTubeExecCommand.SetPlaybackRate(rate))
+suspend fun toggleFullScreen() = executeCommand(YouTubeExecCommand.ToggleFullscreen)</code></pre></p><h3><a name="YouTubePlayerState">YouTubePlayerState</a></h3>
+YouTube播放器状态定义屏幕上实际的YouTube播放器状态。包含以下可能的状态：
+<ul><li><code>Idle</code> - 空闲状态表示播放器尚未初始化</li>
+<li><code>Ready</code> - 表示播放器已准备好播放</li>
+<li><code>Playing</code> - 播放器正在播放视频。包含以下参数：  </li>
+</ul><pre><code class="language-kotlin">videoId: YouTubeVideoId - id of the video that is playing
+duration: Duration - duration of the video
+currentTime: Duration - current time of the video
+quality: YouTubeEvent.PlaybackQualityChange.Quality - quality of the video, see [YouTubeEvent.PlaybackQualityChange.Quality]
+isPlaying: Boolean - is video playing</code></pre>
+<ul><li><code>Error</code> - 定义错误状态，包含错误信息。</li></p><p>
+</ul><h3><a name="YouTubeExecCommand">YouTubeExecCommand</a></h3></p><ul><li><code>LoadVideo(val videoId: YouTubeVideoId,val startSeconds: Duration)</code> - 通过 YouTube ID 加载视频。可以设置默认起始时间偏移。</li></p><p><li><code>Play</code> - 播放视频</li>
+<li><code>Pause</code> - 暂停视频</li>
+<li><code>SeekTo(val duration: Duration)</code> - 跳转视频到指定时间</li>
+<li><code>SeekBy(val duration: Duration)</code> - 按指定时间跳转视频</li>
+<li><code>Mute</code> - 静音</li>
+<li><code>Unmute</code> - 取消静音</li>
+<li><code>SetVolume(val volumePercent: Int)</code> - 设置音量。参数值应为0到100之间。</li>
+<li><code>NextVideo</code> - 跳转到下一个视频</li>
+<li><code>PreviousVideo</code> - 跳转到上一个视频</li>
+<li><code>SetLoop(val loop: Boolean)</code> - 视频循环。由参数控制。</li>
+<li><code>SetShuffle(val shuffle: Boolean)</code> - 视频随机播放。由参数控制。</li></p><p></ul><h3><a name="YouTubeEvent">YouTubeEvent</a></h3></p><ul><li><code>Ready</code> - 当 YouTube 播放器初始化完成时调用</li>
+<li><code>PlaybackQualityChange(val quality: Quality)</code> - 播放器质量改变时调用</li>
+<li><code>Error(val error: String)</code> - 错误处理事件。详情见参数。</li>
+<li><code>VideoDuration(val duration: Duration)</code> - 视频时长初始化时调用</li>
+<li><code>StateChanged(val state: State)</code> - 视频状态改变时调用：<code>UNSTARTED</code>，<code>ENDED</code>，<code>PLAYING</code>，<code>PAUSED</code>，<code>BUFFERING</code>，<code>CUED</code>。</li>
+<li><code>TimeChanged(val time: Duration)</code> - 时间戳变化</li>
+<li><code>OnVideoIdHandled(val videoId: YouTubeVideoId)</code> - 视频加载完成回调</li></p><p></ul><h1>Sample</h1>
+<img src="https://raw.githubusercontent.com/IlyaPavlovskii/YouTubePlayer/main/sample.png" alt="Sample"></p><h1>LICENSE</h1></p><pre><code class="language-">Copyright 2026 Ilia Pavlovskii</p><p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p><p>    http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</code></pre>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-30
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/IlyaPavlovskii/YouTubePlayer/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-05-30 
+    </div>
+    
+</body>
+</html>

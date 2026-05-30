@@ -1,0 +1,349 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>readsql - Convert SQL into the most human-readable format</title>
+    <meta name="description" content="Convert SQL into the most human-readable format">
+    <meta name="keywords" content="readsql, English, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "readsql",
+  "description": "Convert SQL into the most human-readable format",
+  "author": {
+    "@type": "Person",
+    "name": "AzisK"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 60
+  },
+  "url": "https://OpenAiTx.github.io/projects/AzisK/readsql/README-en.html",
+  "sameAs": "https://raw.githubusercontent.com/AzisK/readsql/main/README.md",
+  "datePublished": "2026-05-30",
+  "dateModified": "2026-05-30"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/AzisK/readsql" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    readsql
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 60 stars</span>
+                <span class="language">English</span>
+                <span>by AzisK</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>readsql</h1></p><p>Convert SQL to the most human-readable format. For the time being, it uppercases SQL keywords; it might prettify or even suggest improvements to SQL code in the future. It converts SQL code and even SQL strings in programming languages (only Python at the moment).</p><p>So if we write</p><pre><code class="language-sql">select sushi, avg(price) from tokyo where ocean = 'pacific' group by sushi</code></pre>
+readsql will help us read it as</p><pre><code class="language-sql">SELECT sushi, AVG(price) FROM tokyo WHERE ocean = 'pacific' GROUP BY sushi</code></pre></p><h1>Installation</h1></p><pre><code class="language-bash">pip install readsql</code></pre></p><p>Requires Python 3.8+.</p><h1>Usage</h1></p><ul><li>Format SQL code provided in command line</li>
+    <li><code>readsql <SQL_STRING> -s</code></li>
+<li>Format an SQL file or folder</li>
+    <li>as in a folder, it will look for files ending with .sql or .py</li>
+    <li><code>readsql <FILE_OR_FOLDER_PATH></code></li></p><p></ul>It supports multiple strings and files or folders as well</p><p>1.
+<pre><code class="language-bash">readsql <SQL_STRING1> <SQL_STRING2> -s</code></pre>
+<ul><li>In Python files, it looks for variable <code>query</code> strings and formats them</li></p><p></ul><pre><code class="language-bash">readsql <FILE_OR_FOLDER_PATH1> <FILE_OR_FOLDER_PATH2></code></pre>
+We can look for different strings in Python files with <code>-py</code> arguments</p><pre><code class="language-bash">readsql <FILE_OR_FOLDER_PATH> -py <PY_VAR1> <PY_VAR2></code></pre></p><blockquote><strong>Note</strong>: <code>readsql</code> uses Python's AST parser, so it supports:</blockquote>
+<blockquote>- <strong>Type Hints</strong>: <code>query: str = "..."</code></blockquote>
+<blockquote>- <strong>F-strings</strong>: <code>f"SELECT * FROM {table}"</code></blockquote>
+<blockquote>- <strong>Nested Scopes</strong>: Robustly handles variables inside functions and classes.</blockquote>
+<blockquote>- <strong>Comments/Docstrings</strong>: Correctly ignores SQL-like text in comments or docstrings.</blockquote></p><h1>Usage examples</h1></p><ul><li><code>readsql 'select sushi from tokyo' -s</code> command returns</li>
+    <li><code>SELECT sushi FROM tokyo</code></li></p><p><li>a. <code>readsql sql_example.sql</code> command, while <code>sql_example.sql</code> is a SQL file with code as below,</li>
+</ul><pre><code class="language-sql">select max(height), avg(mass), min(age) from jungle group by forest where animal=elephant;</code></pre>
+replaces the file with this code
+<pre><code class="language-sql">SELECT MAX(height), AVG(mass), MIN(age) FROM jungle GROUP BY forest WHERE animal=elephant;</code></pre></p><ul><li>b. The <code>readsql sql_in_python_variable_example.py</code> command, while <code>sql_in_python_variable_example.py</code> is a Python file with code as below,</li>
+</ul><pre><code class="language-python">def get_query():
+    limit = 6
+    query = f"SELEct speed from world where animal='dolphin' limit {limit}"
+    return query</code></pre>
+replaces the file with this code
+<pre><code class="language-python">def get_query():
+    limit = 6
+    query = f"SELECT speed FROM world WHERE animal='dolphin' LIMIT {limit}"
+    return query</code></pre>
+<ul><li>c. <code>readsql sql_in_python_variable_example.py -py sql</code> command, while <code>sql_in_python_variable_example.py</code> is a Python file with code as below,</li></p><p></ul><pre><code class="language-python">def get_query():
+    limit = 6
+    sql = f"SELEct speed from world where animal='dolphin' limit {limit}"
+    return sql</code></pre>
+replaces the file with this code
+<pre><code class="language-python">def get_query():
+    limit = 6
+    sql = f"SELECT speed FROM world WHERE animal='dolphin' LIMIT {limit}"
+    return sql</code></pre></p><ul><li>d. The <code>readsql tests -n</code> command outputs all of the formatted SQL code in the <code>tests</code> folder; files are not replaced by the formatted version (<code>-n</code> argument stands for not-replace)</li></p><p></ul>More examples can be found in the <code>/tests</code> folder</p><h1>Add a pre-commit hook</h1>
+How to add a <a href="https://pre-commit.com/" target="_blank" rel="noopener noreferrer">pre-commit</a> hook for readsql?
+<pre><code class="language-yaml">repos:
+<ul><li>  repo: https://github.com/AzisK/readsql</li>
+    </ul>rev: v1.0.0  # Replace by any tag/version: https://github.com/azisk/readsql/tags
+    hooks:
+    <ul><li>  id: readsql</code></pre></li></p><p></ul><h1>Development</h1></p><p>Clone the repo and use <a href="https://docs.astral.sh/uv/" target="_blank" rel="noopener noreferrer">uv</a> for development:</p><pre><code class="language-bash">uv sync --all-extras                                    # Install dependencies
+uv run readsql "select sushi from tokyo" -s             # Format a string
+uv run readsql tests/sql_example.sql                    # Format SQL file
+uv run readsql tests/sql_in_python_example.py           # Format SQL in Python
+uv run readsql tests/sql_in_python_variable_example.py -py sql  # Custom variable
+uv run readsql tests                                    # Format all files in folder</code></pre></p><h1>Testing</h1></p><pre><code class="language-bash">uv run pytest -v</code></pre></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-05-30
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/AzisK/readsql/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-05-30 
+    </div>
+    
+</body>
+</html>
