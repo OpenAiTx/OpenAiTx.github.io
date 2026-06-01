@@ -1,0 +1,432 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>auth-flow-kit - Une bo&#238;te &#224; outils d&#39;&#233;tat d&#39;authentification globale pour React avec des &#233;crans UI pr&#233;construits et un hook useAuth() accessible globalement. Aucun magasin s&#233;par&#233;, couche de persistance ou fichier de configuration requis. S&#39;int&#232;gre directement au niveau de la mise en page de l&#39;application, avec un &#233;tat d&#39;authentification restant coh&#233;rent apr&#232;s actualisation sans persistance manuelle.</title>
+    <meta name="description" content="Une bo&#238;te &#224; outils d&#39;&#233;tat d&#39;authentification globale pour React avec des &#233;crans UI pr&#233;construits et un hook useAuth() accessible globalement. Aucun magasin s&#233;par&#233;, couche de persistance ou fichier de configuration requis. S&#39;int&#232;gre directement au niveau de la mise en page de l&#39;application, avec un &#233;tat d&#39;authentification restant coh&#233;rent apr&#232;s actualisation sans persistance manuelle.">
+    <meta name="keywords" content="auth-flow-kit, French, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "auth-flow-kit",
+  "description": "Une boîte à outils d'état d'authentification globale pour React avec des écrans UI préconstruits et un hook useAuth() accessible globalement. Aucun magasin séparé, couche de persistance ou fichier de configuration requis. S'intègre directement au niveau de la mise en page de l'application, avec un état d'authentification restant cohérent après actualisation sans persistance manuelle.",
+  "author": {
+    "@type": "Person",
+    "name": "kennethnnabuife"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 255
+  },
+  "url": "https://OpenAiTx.github.io/projects/kennethnnabuife/auth-flow-kit/README-fr.html",
+  "sameAs": "https://raw.githubusercontent.com/kennethnnabuife/auth-flow-kit/main/README.md",
+  "datePublished": "2026-06-01",
+  "dateModified": "2026-06-01"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/kennethnnabuife/auth-flow-kit" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    auth-flow-kit
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 255 stars</span>
+                <span class="language">French</span>
+                <span>by kennethnnabuife</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>@kendevelops/auth-flow-kit</h1></p><p>Une boîte à outils d'authentification conviviale pour les débutants, pour <strong>React</strong> et <strong>Next.js 13–16 (App Router)</strong>.</p><p>C'est littéralement la <strong>configuration la plus simple et la plus courte</strong> pour vos applications Next.js.  
+Vous n'avez <strong>pas</strong> besoin de fichiers wrapper supplémentaires.</p><hr></p><p>Elle vous offre :</p><ul><li>Un état d'authentification global (style Redux / Zustand, mais sans aucune configuration)  </li>
+<li>Des écrans d'authentification préconçus (Connexion, Inscription, Réinitialisation)  </li>
+<li>Un hook simple <code>useAuth()</code> que vous pouvez utiliser partout</li></p><p></ul>Cette bibliothèque est volontairement conçue pour être <strong>facile à comprendre</strong>, même si vous débutez en authentification.</p><hr></p><h2>🔄 Aucune configuration de persistance nécessaire</h2></p><p>auth-flow-kit conserve l'état d'authentification en mémoire par défaut, et restaure automatiquement la session lorsque l'application se recharge.</p><p><strong>Ce que cela signifie en pratique :</strong></p><p>Du point de vue du développeur :</p><blockquote>« Je rafraîchis la page et je suis toujours connecté. »</blockquote></p><p>C'est tout.</p><hr></p><h2>📦 Installation</h2></p><pre><code class="language-bash">npm install @kendevelops/auth-flow-kit</code></pre></p><pre><code class="language-bash">yarn add @kendevelops/auth-flow-kit</code></pre></p><pre><code class="language-bash">bun add @kendevelops/auth-flow-kit</code></pre></p><hr></p><h1>🚀 Usage with Next.js App Router (Recommended)</h1></p><hr></p><h2>Step 1: Wrap your app in <code>app/layout.tsx</code></h2></p><blockquote>Yes, <code>layout.tsx</code> can be a client component when it hosts providers. This is normal.</blockquote></p><pre><code class="language-tsx">// app/layout.tsx
+"use client";</p><p>import { AuthProvider } from "@kendevelops/auth-flow-kit";</p><p>export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <AuthProvider
+          config={{
+            baseURL: "https://your-backend-url.com",
+            endpoints: {
+              login: "/auth/login",
+              signup: "/auth/signup",
+              forgot: "/auth/forgot",
+            },
+          }}
+        >
+          {children}
+        </AuthProvider>
+      </body>
+    </html>
+  );
+}</code></pre></p><p>This makes auth <strong>global</strong> and available everywhere.</p><hr></p><h2>Step 2: Use auth screens in <code>app/page.tsx</code></h2></p><pre><code class="language-tsx">// app/page.tsx
+"use client";</p><p>import {
+  LoginScreen,
+  SignupScreen,
+  PasswordResetScreen,
+  Protected,
+  useAuth,
+} from "@kendevelops/auth-flow-kit";</p><p>import { useEffect, useState } from "react";</p><p>export default function Home() {
+  const { user } = useAuth();
+  const [page, setPage] = useState<"login" | "signup" | "reset" | "dashboard">(
+    "login",
+  );</p><p>  // Keep UI in sync with auth (important on refresh)
+  useEffect(() => {
+    if (user) setPage("dashboard");
+  }, [user]);</p><p>  return (
+    <>
+      {page === "login" && <LoginScreen />}
+      {page === "signup" && <SignupScreen />}
+      {page === "reset" && <PasswordResetScreen />}</p><p>      {page === "dashboard" && (
+        <Protected>
+          <Dashboard />
+        </Protected>
+      )}
+    </>
+  );
+}</p><p>function Dashboard() {
+  const { user, logout } = useAuth();</p><p>  return (
+    <div>
+      <h1>Dashboard</h1>Welcome {user?.name}</p>
+      <button onClick={logout}>Logout</button>
+    </div>
+  );
+}</code></pre></p><hr></p><h1>🔒 Protecting Components</h1></p><p>Wrap anything that requires authentication:</p><pre><code class="language-tsx"><Protected>
+  <SecretArea />
+</Protected></code></pre></p><ul><li>Pendant le chargement → affiche un état de chargement</li>
+<li>Si non authentifié → ne rend rien (ou redirige si configuré)</li></p><p></ul>---</p><h1>🧠 Utiliser <code>useAuth()</code> n'importe où</h1></p><pre><code class="language-tsx">"use client";
+import { useAuth } from "@kendevelops/auth-flow-kit";</p><p>export default function Navbar() {
+  const { user, logout } = useAuth();</p><p>  return (
+    <nav>
+      {user ? (
+        <>
+          <span>Hello {user.name}</span>
+          <button onClick={logout}>Logout</button>
+        </>
+      ) : (
+        <span>Not logged in</span>
+      )}
+    </nav>
+  );
+}</code></pre></p><hr></p><h1>🌐 React (Non‑Next.js) Usage</h1></p><pre><code class="language-tsx">import { AuthProvider, LoginScreen } from "@kendevelops/auth-flow-kit";</p><p>export default function App() {
+  return (
+    <AuthProvider
+      config={{
+        baseURL: "https://your-backend-url.com",
+        endpoints: {
+          login: "/auth/login",
+          signup: "/auth/signup",
+          forgot: "/auth/forgot",
+        },
+      }}
+    >
+      <LoginScreen />
+    </AuthProvider>
+  );
+}</code></pre></p><hr></p><h1>🛠 Exigences du Backend</h1></p><p>Cette section définit le contrat API exact que votre backend doit implémenter. La bibliothèque effectue trois types de requêtes et attend des réponses JSON spécifiques.</p><hr></p><h2>POST <code>/auth/login</code></h2></p><p><strong>Corps de la requête :</strong></p><pre><code class="language-json">{
+  "email": "user@example.com",
+  "password": "secret123"
+}</code></pre></p><p><strong>Réponse de succès (200) :</strong></p><pre><code class="language-json">{
+  "accessToken": "your-token-here",
+  "user": {
+    "id": "usr_abc123",
+    "name": "Jane Doe",
+    "email": "user@example.com"
+  }
+}</code></pre></p><p><strong>Réponse d'erreur (4xx) :</strong></p><pre><code class="language-json">{ "message": "Invalid email or password" }</code></pre></p><p>Le champ <code>message</code> est affiché directement à l'utilisateur dans le formulaire de connexion.</p><hr></p><h2>POST <code>/auth/signup</code></h2></p><p><strong>Corps de la requête :</strong></p><pre><code class="language-json">{
+  "name": "Jane Doe",
+  "email": "user@example.com",
+  "password": "secret123"
+}</code></pre></p><blockquote>Vous pouvez inclure des champs supplémentaires dans votre formulaire d'inscription et les transmettre — la bibliothèque transmet la charge utile complète telle quelle.</blockquote></p><p><strong>Réponse de succès (200) :</strong> Même format que la réponse de connexion.</p><pre><code class="language-json">{
+  "accessToken": "your-token-here",
+  "user": {
+    "id": "usr_xyz789",
+    "name": "Jane Doe",
+    "email": "user@example.com"
+  }
+}</code></pre></p><hr></p><h2>POST <code>/auth/forgot</code> _(optionnel)_</h2></p><p>Nécessaire uniquement si vous utilisez <code><PasswordResetScreen /></code>.</p><p><strong>Corps de la requête :</strong></p><pre><code class="language-json">{ "email": "user@example.com" }</code></pre></p><p><strong>Réponse :</strong> Toute réponse <code>2xx</code> est considérée comme un succès. La bibliothèque ne lit pas le corps de la réponse — elle affiche simplement une confirmation "Vérifiez votre email". Un <code>404</code> génère une erreur descriptive dans la console avec des conseils pour corriger <code>config.endpoints.forgot</code>.</p><hr></p><h2>Référence des champs de réponse</h2></p><p>| Champ          | Type   | Requis   | Description                                                                                         |
+| -------------- | ------ | -------- | --------------------------------------------------------------------------------------------------- |
+| <code>accessToken</code>  | string | ✅       | Stocké dans <code>localStorage</code> et envoyé comme <code>Authorization: Bearer <token></code> lors des requêtes authentifiées.     |
+| <code>user</code>         | object | ✅       | Stocké dans <code>localStorage</code> et accessible via <code>useAuth().user</code>.                                          |
+| <code>user.id</code>      | string | ✅       | Identifiant unique de l'utilisateur.                                                                             |
+| <code>user.name</code>    | string | ✅       | Nom affiché utilisé dans votre interface.                                                                       |
+| <code>user.email</code>   | string | ✅       | Adresse email de l'utilisateur.                                                                               |
+| <code>refreshToken</code> | string | ❌       | Accepté mais non utilisé par la bibliothèque pour l’instant, mise à jour prochaine. Vous pouvez l’inclure pour votre propre logique. |</p><hr></p><h2>Fonctionnement de la persistance de session</h2></p><p>auth-flow-kit gère la persistance entièrement côté client — <strong>votre backend n’a pas besoin d’un point de restauration de session ni d’un endpoint <code>/me</code>.</strong></p><p>Lors d’une connexion ou inscription réussie :</p><ul><li><code>accessToken</code> est sauvegardé dans <code>localStorage</code> sous <code>afk_access_token</code></li>
+<li><code>user</code> est sauvegardé dans <code>localStorage</code> sous <code>afk_user</code></li></p><p></ul>Au rechargement de la page, <code>AuthProvider</code> lit directement <code>afk_user</code> depuis <code>localStorage</code> et restaure la session instantanément — aucune requête réseau n’est effectuée.</p><p>À la déconnexion, les deux clés sont supprimées.</p><hr></p><h1>🎯 Pour Qui Est Cette Bibliothèque</h1></p><ul><li>Les développeurs qui veulent commencer à construire leur application avant de gérer l’authentification</li>
+<li>Les créateurs de MVP</li>
+<li>Les tableaux de bord SaaS</li>
+<li>Les outils internes</li>
+<li>Les apprenants qui veulent comprendre l’authentification</li></p><p></ul>Si vous avez déjà un backend et que vous voulez juste que l’authentification <strong>fonctionne</strong>, cette bibliothèque est pour vous.</p><hr></p><h1>🎉 Résumé</h1></p><p><strong>auth-flow-kit</strong> vous offre :</p><ul><li>Un état d’authentification global (pas de reducers, pas de stores)</li>
+<li>Des écrans UI d’authentification préconstruits</li>
+<li>Des exigences backend simples</li>
+<li>Une authentification sécurisée contre le rafraîchissement</li>
+<li>Fonctionne avec Next.js et React simple</li></p><p></ul>L’authentification, sans le chaos.</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-01
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/kennethnnabuife/auth-flow-kit/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-01 
+    </div>
+    
+</body>
+</html>

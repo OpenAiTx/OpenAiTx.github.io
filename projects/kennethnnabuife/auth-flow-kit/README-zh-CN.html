@@ -1,0 +1,434 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>auth-flow-kit - 一个用于 React 的全局认证状态工具包，内置预设 UI 界面和全局可访问的 useAuth() 钩子。无需单独的状态管理、持久化层或配置文件。直接集成于应用布局层，认证状态在刷新后保持一致，无需手动持久化。</title>
+    <meta name="description" content="一个用于 React 的全局认证状态工具包，内置预设 UI 界面和全局可访问的 useAuth() 钩子。无需单独的状态管理、持久化层或配置文件。直接集成于应用布局层，认证状态在刷新后保持一致，无需手动持久化。">
+    <meta name="keywords" content="auth-flow-kit, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "auth-flow-kit",
+  "description": "一个用于 React 的全局认证状态工具包，内置预设 UI 界面和全局可访问的 useAuth() 钩子。无需单独的状态管理、持久化层或配置文件。直接集成于应用布局层，认证状态在刷新后保持一致，无需手动持久化。",
+  "author": {
+    "@type": "Person",
+    "name": "kennethnnabuife"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 255
+  },
+  "url": "https://OpenAiTx.github.io/projects/kennethnnabuife/auth-flow-kit/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/kennethnnabuife/auth-flow-kit/main/README.md",
+  "datePublished": "2026-06-01",
+  "dateModified": "2026-06-01"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/kennethnnabuife/auth-flow-kit" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    auth-flow-kit
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 255 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by kennethnnabuife</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>@kendevelops/auth-flow-kit</h1></p><p>一个适合初学者的 <strong>React</strong> 和 <strong>Next.js 13–16（App Router）</strong> 认证工具包。</p><p>这实际上是你 Next.js 应用中<strong>最简单且最短的设置</strong>。
+你<strong>不</strong>需要额外的包装文件。</p><hr></p><p>它为你提供：</p><ul><li>全局认证状态（类似 Redux / Zustand，但无需配置）</li>
+<li>预构建的认证 UI 界面（登录、注册、重置）</li>
+<li>一个简单的 <code>useAuth()</code> 钩子，随处可用</li></p><p></ul>本库特意设计得<strong>易于理解</strong>，即使你是认证新手也能轻松上手。</p><hr></p><h2>🔄 无需持久化设置</h2></p><p>auth-flow-kit 默认将认证状态保存在内存中，并在应用重新加载时自动恢复会话。</p><p><strong>这在实际中的意义是：</strong></p><p>从开发者的角度看：</p><blockquote>“我刷新页面，仍然保持登录状态。”</blockquote></p><p>就是这么简单。</p><hr></p><h2>📦 安装</h2></p><pre><code class="language-bash">npm install @kendevelops/auth-flow-kit</code></pre></p><pre><code class="language-bash">yarn add @kendevelops/auth-flow-kit</code></pre></p><pre><code class="language-bash">bun add @kendevelops/auth-flow-kit</code></pre></p><hr></p><h1>🚀 Usage with Next.js App Router (Recommended)</h1></p><hr></p><h2>Step 1: Wrap your app in <code>app/layout.tsx</code></h2></p><blockquote>Yes, <code>layout.tsx</code> can be a client component when it hosts providers. This is normal.</blockquote></p><pre><code class="language-tsx">// app/layout.tsx
+"use client";</p><p>import { AuthProvider } from "@kendevelops/auth-flow-kit";</p><p>export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <AuthProvider
+          config={{
+            baseURL: "https://your-backend-url.com",
+            endpoints: {
+              login: "/auth/login",
+              signup: "/auth/signup",
+              forgot: "/auth/forgot",
+            },
+          }}
+        >
+          {children}
+        </AuthProvider>
+      </body>
+    </html>
+  );
+}</code></pre></p><p>This makes auth <strong>global</strong> and available everywhere.</p><hr></p><h2>Step 2: Use auth screens in <code>app/page.tsx</code></h2></p><pre><code class="language-tsx">// app/page.tsx
+"use client";</p><p>import {
+  LoginScreen,
+  SignupScreen,
+  PasswordResetScreen,
+  Protected,
+  useAuth,
+} from "@kendevelops/auth-flow-kit";</p><p>import { useEffect, useState } from "react";</p><p>export default function Home() {
+  const { user } = useAuth();
+  const [page, setPage] = useState<"login" | "signup" | "reset" | "dashboard">(
+    "login",
+  );</p><p>  // Keep UI in sync with auth (important on refresh)
+  useEffect(() => {
+    if (user) setPage("dashboard");
+  }, [user]);</p><p>  return (
+    <>
+      {page === "login" && <LoginScreen />}
+      {page === "signup" && <SignupScreen />}
+      {page === "reset" && <PasswordResetScreen />}</p><p>      {page === "dashboard" && (
+        <Protected>
+          <Dashboard />
+        </Protected>
+      )}
+    </>
+  );
+}</p><p>function Dashboard() {
+  const { user, logout } = useAuth();</p><p>  return (
+    <div>
+      <h1>Dashboard</h1>Welcome {user?.name}</p>
+      <button onClick={logout}>Logout</button>
+    </div>
+  );
+}</code></pre></p><hr></p><h1>🔒 Protecting Components</h1></p><p>Wrap anything that requires authentication:</p><pre><code class="language-tsx"><Protected>
+  <SecretArea />
+</Protected></code></pre></p><ul><li>加载时 → 显示加载状态</li>
+<li>未认证时 → 不渲染任何内容（或如果配置了则重定向）</li></p><p></ul>---</p><h1>🧠 在任何地方使用 <code>useAuth()</code> </h1></p><pre><code class="language-tsx">"use client";
+import { useAuth } from "@kendevelops/auth-flow-kit";</p><p>export default function Navbar() {
+  const { user, logout } = useAuth();</p><p>  return (
+    <nav>
+      {user ? (
+        <>
+          <span>Hello {user.name}</span>
+          <button onClick={logout}>Logout</button>
+        </>
+      ) : (
+        <span>Not logged in</span>
+      )}
+    </nav>
+  );
+}</code></pre></p><hr></p><h1>🌐 React (Non‑Next.js) Usage</h1></p><pre><code class="language-tsx">import { AuthProvider, LoginScreen } from "@kendevelops/auth-flow-kit";</p><p>export default function App() {
+  return (
+    <AuthProvider
+      config={{
+        baseURL: "https://your-backend-url.com",
+        endpoints: {
+          login: "/auth/login",
+          signup: "/auth/signup",
+          forgot: "/auth/forgot",
+        },
+      }}
+    >
+      <LoginScreen />
+    </AuthProvider>
+  );
+}</code></pre></p><hr></p><h1>🛠 后端需求</h1></p><p>本节定义了您的后端必须实现的精确 API 合约。该库发起三种类型的请求，并期望特定的 JSON 响应格式。</p><hr></p><h2>POST <code>/auth/login</code></h2></p><p><strong>请求体：</strong></p><pre><code class="language-json">{
+  "email": "user@example.com",
+  "password": "secret123"
+}</code></pre></p><p><strong>成功响应 (200):</strong></p><pre><code class="language-json">{
+  "accessToken": "your-token-here",
+  "user": {
+    "id": "usr_abc123",
+    "name": "Jane Doe",
+    "email": "user@example.com"
+  }
+}</code></pre></p><p><strong>错误响应 (4xx)：</strong></p><pre><code class="language-json">{ "message": "Invalid email or password" }</code></pre></p><p><code>message</code> 字段直接显示在登录表单中给用户。</p><hr></p><h2>POST <code>/auth/signup</code></h2></p><p><strong>请求体：</strong></p><pre><code class="language-json">{
+  "name": "Jane Doe",
+  "email": "user@example.com",
+  "password": "secret123"
+}</code></pre></p><blockquote>您可以在注册表单中包含额外字段并传递它们——库会按原样转发完整的负载。</blockquote></p><p><strong>成功响应 (200)：</strong> 与登录响应形状相同。</p><pre><code class="language-json">{
+  "accessToken": "your-token-here",
+  "user": {
+    "id": "usr_xyz789",
+    "name": "Jane Doe",
+    "email": "user@example.com"
+  }
+}</code></pre></p><hr></p><h2>POST <code>/auth/forgot</code> _(可选)_</h2></p><p>仅当您使用 <code><PasswordResetScreen /></code> 时需要。</p><p><strong>请求体：</strong></p><pre><code class="language-json">{ "email": "user@example.com" }</code></pre>
+<strong>响应：</strong> 任何 <code>2xx</code> 状态码都视为成功。库不会读取响应体 —— 它只是显示“请检查您的电子邮件”确认信息。<code>404</code> 会在控制台记录描述性错误，并提供修复 <code>config.endpoints.forgot</code> 的指导。</p><hr></p><h2>响应字段参考</h2></p><p>| 字段             | 类型   | 必填     | 描述                                                                                              |
+| -------------- | ------ | -------- | --------------------------------------------------------------------------------------------------- |
+| <code>accessToken</code>  | string | ✅       | 存储在 <code>localStorage</code> 中，并在认证请求中作为 <code>Authorization: Bearer <token></code> 发送。                  |
+| <code>user</code>         | object | ✅       | 存储在 <code>localStorage</code> 中，并通过 <code>useAuth().user</code> 公开。                                           |
+| <code>user.id</code>      | string | ✅       | 唯一用户标识符。                                                                                   |
+| <code>user.name</code>    | string | ✅       | 在您的用户界面中使用的显示名称。                                                                    |
+| <code>user.email</code>   | string | ✅       | 用户的电子邮件地址。                                                                               |
+| <code>refreshToken</code> | string | ❌       | 库当前接受但未使用，未来会更新。您可以自行包含它以实现自己的逻辑。                                  |</p><hr></p><h2>会话持久化工作原理</h2></p><p>auth-flow-kit 完全在客户端处理持久化 —— <strong>您的后端无需会话恢复或 <code>/me</code> 端点。</strong></p><p>登录或注册成功时：</p><ul><li><code>accessToken</code> 作为 <code>afk_access_token</code> 保存到 <code>localStorage</code></li>
+<li><code>user</code> 作为 <code>afk_user</code> 保存到 <code>localStorage</code></li></p><p></ul>页面重新加载时，<code>AuthProvider</code> 直接从 <code>localStorage</code> 读取 <code>afk_user</code> 并即时恢复会话 —— 不会发起网络请求。</p><p>登出时，两个键都会被移除。</p><hr></p><h1>🎯 这个库适合谁</h1></p><ul><li>希望直接开始构建应用而不必担心认证的开发者</li>
+<li>MVP 构建者</li>
+<li>SaaS 仪表盘</li>
+<li>内部工具</li>
+<li>想要理解认证机制的学习者</li></p><p></ul>如果你已经有了后端，只想让认证<strong>正常工作</strong>，这个库适合你。</p><hr></p><h1>🎉 总结</h1></p><p><strong>auth-flow-kit</strong> 为你提供：</p><ul><li>全局认证状态（无 reducer，无 store）</li>
+<li>预构建的认证 UI 界面</li>
+<li>简单的后端需求</li>
+<li>支持刷新安全的认证</li>
+<li>兼容 Next.js 和纯 React</li></p><p></ul>认证，不再混乱。</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-01
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/kennethnnabuife/auth-flow-kit/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-01 
+    </div>
+    
+</body>
+</html>

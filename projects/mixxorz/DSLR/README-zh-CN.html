@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSLR - 快速捕捉本地 Postgres 数据库的快照。</title>
+    <meta name="description" content="快速捕捉本地 Postgres 数据库的快照。">
+    <meta name="keywords" content="DSLR, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "DSLR",
+  "description": "快速捕捉本地 Postgres 数据库的快照。",
+  "author": {
+    "@type": "Person",
+    "name": "mixxorz"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 170
+  },
+  "url": "https://OpenAiTx.github.io/projects/mixxorz/DSLR/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/mixxorz/DSLR/main/README.md",
+  "datePublished": "2026-06-01",
+  "dateModified": "2026-06-01"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/mixxorz/DSLR" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    DSLR
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 170 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by mixxorz</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><br />
+<br />
+<p align="center">
+  <a href="https://github.com/mixxorz/DSLR">
+    <img width="281" height="84" src="https://user-images.githubusercontent.com/3102758/181914025-44bff27e-aac1-4d1b-a037-9fa98f9fed65.png" alt="The DSLR logo">
+  </a>
+</p>
+<br /></p><p><p align="center">
+  <a href=""><img src="" alt=""></a>
+  <a href="https://badge.fury.io/py/dslr"><img src="https://badge.fury.io/py/dslr.svg" alt="PyPI version"></a>
+  <a href="https://pypi.python.org/pypi/dslr/"><img src="https://img.shields.io/pypi/pyversions/dslr.svg" alt="PyPI Supported Python Versions"></a>
+  <a href="https://github.com/mixxorz/dslr"><img src="https://github.com/mixxorz/dslr/actions/workflows/tests.yml/badge.svg" alt="GitHub Actions (Code quality and tests)"></a></p></p><p><p align="center">
+  <img src="https://user-images.githubusercontent.com/3102758/190845105-dd2ec4e6-286b-431d-a33d-490805852b68.png" alt="A terminal showing DSLR's command line interface.">
+</p></p><hr></p><p>数据库快照、列表和恢复</p><p>以极快的速度对本地 Postgres 数据库进行快照。</p><h2>这是什么？</h2></p><p>DSLR 是一个工具，允许你在编写数据库迁移、切换分支或操作 SQL 时，快速创建和恢复数据库快照。</p><p>它旨在成为
+<a href="https://github.com/fastmonkeys/stellar" target="_blank" rel="noopener noreferrer">Stellar</a> 的精神继承者。</p><p><strong>重要提示：</strong> DSLR 仅供开发使用。不建议在生产数据库上使用 DSLR。</p><h2>性能</h2></p><p>DSLR 比标准的 <code>pg_dump</code>/<code>pg_restore</code> 快得多。</p><p><p align="center">
+  <img src="https://user-images.githubusercontent.com/3102758/182014327-1b13da6e-63ad-4bbe-817e-7d6c66befc98.png" alt="一张比较 DSLR 和 pg_dump/pg_restore 执行时间的图表。快照和恢复时，DSLR 分别用了 4.125 秒和 4.431 秒。pg_dump/pg_restore 分别用了 36.602 秒和 13.257 秒。">
+</p></p><p>DSLR 在拍摄快照时快 8 倍，恢复快照时快 3 倍，相比于 <code>pg_dump</code>/<code>pg_restore</code> 方法。</p><p><details>
+  <summary>测试方法论</summary>
+  
+  我使用 Docker 启动了 Postgres 12.3，创建了一个测试数据库，并使用此脚本填充了 1GB 的随机数据：
+  </p><pre><code class="language-SQL">  CREATE TABLE large_test (num1 bigint, num2 double precision, num3 double precision);</p><p>INSERT INTO large*test (num1, num2, num3)
+SELECT round(random() * 10), random(), random() \_ 142
+FROM generate_series(1, 20000000) s(i);
+</code></pre>
+我使用以下命令来测量执行时间：</p><pre><code class="language-">
+time dslr snapshot my-snapshot
+time dslr restore my-snapshot
+time pg_dump -Fc -f export.dump
+time pg_restore --no-acl --no-owner export.dump
+</code></pre>
+我对每个命令运行了三次，并在图表中绘制了平均值。</p><p>以下是原始数据：</p><p>| 命令          | 运行 | 执行时间（秒）           |
+| ------------- | ---- | ------------------------ |
+| dslr snapshot | 1    | 4.797                    |
+|               | 2    | 4.650                    |
+|               | 3    | 2.927                    |
+| dslr restore  | 1    | 5.840                    |
+|               | 2    | 4.122                    |
+|               | 3    | 3.331                    |
+| pg_dump       | 1    | 37.345                   |
+|               | 2    | 36.227                   |
+|               | 3    | 36.233                   |
+| pg_restore    | 1    | 13.304                   |
+|               | 2    | 13.148                   |
+|               | 3    | 13.320                   |
+</details></p><h2>安装</h2></p><pre><code class="language-">
+pip install DSLR psycopg2 # or psycopg2-binary, or psycopg
+</code></pre></p><p><strong>使用 pipx 安装</strong></p><pre><code class="language-">
+pipx install DSLR[psycopg2] # or psycopg2-binary, or psycopg
+</code></pre><code></p><p><strong>使用 uv 安装</strong></p><pre><code class="language-">
+uv tool install 'DSLR[psycopg2]' # or psycopg2-binary, or psycopg
+</code></pre></p><p>注意：DSLR 的 </code>export<code> 和 </code>import<code> 快照命令需要 </code>pg_dump<code> 和
+</code>pg_restore<code> 在您的 </code>PATH<code> 中，因此如果您想使用这些命令，
+需要安装 Postgres 命令行工具。</p><p><details>
+  <summary><strong>Shell 补全</strong></summary></p><p><strong>Bash</strong></p><p>将以下内容添加到 </code>~/.bashrc<code>：</p><pre><code class="language-">eval "$(_DSLR_COMPLETE=bash_source dslr)"</code></pre></p><p><strong>Zsh</strong></p><p>Add this to </code>~/.zshrc<code>:</p><pre><code class="language-">eval "$(_DSLR_COMPLETE=zsh_source dslr)"</code></pre></p><p><strong>Fish</strong></p><p>将此添加到 </code>~/.config/fish/completions/dslr.fish<code>：</p><pre><code class="language-">eval (env _DSLR_COMPLETE=fish_source dslr)</code></pre></p><p>这与下面激活脚本方法使用的是同一个文件。对于 Fish 来说，使用那个方法可能总是更简单。</p><p>使用 eval 意味着每次启动 shell 时都会调用并执行该命令，这可能会延迟 shell 的响应速度。为了加快速度，可以将生成的脚本写入文件，然后再 source 它。</p><p><strong>Bash</strong></p><p>将脚本保存到某个地方。</p><pre><code class="language-">_DSLR_COMPLETE=bash_source dslr > ~/.dslr-complete.bash</code></pre></p><p>在 ~/.bashrc 中引用该文件。</p><pre><code class="language-">. ~/.dslr-complete.bash</code></pre></p><p><strong>Zsh</strong></p><p>Save the script somewhere.</p><pre><code class="language-">_DSLR_COMPLETE=zsh_source dslr > ~/.dslr-complete.zsh</code></pre></p><p>在 ~/.zshrc 中加载该文件。</p><pre><code class="language-">. ~/.dslr-complete.zsh</code></pre></p><p><strong>Fish</strong></p><p>将脚本保存到 ~/.config/fish/completions/foo-bar.fish：</p><pre><code class="language-">_DSLR_COMPLETE=fish_source dslr > ~/.config/fish/completions/dslr.fish</code></pre></p><p></details></p><h2>配置</h2></p><p>您可以通过几种方式告诉 DSLR 对哪个数据库进行快照：</p><p><strong>DATABASE_URL</strong></p><p>如果设置了 </code>DATABASE_URL<code> 环境变量，DSLR 将使用它来连接
+到您的目标数据库。</p><pre><code class="language-bash">export DATABASE_URL=postgres://username:password@host:port/database_name</code></pre></code></p><p><strong>dslr.toml</strong></p><p>如果当前目录中存在 <code>dslr.toml</code> 文件，DSLR 将从中读取其设置。DSLR 会优先使用此文件而非环境变量。</p><pre><code class="language-toml">url = 'postgres://username:password@host:port/database_name'</code></pre></p><p><strong><code>--url</code> 选项</strong></p><p>最后，您可以通过 <code>--url</code> 选项显式传递连接字符串。  
+这将覆盖上述任何设置。</p><h2>用法</h2></p><pre><code class="language-">$ dslr snapshot my-first-snapshot
+Created new snapshot my-first-snapshot</p><p>$ dslr restore my-first-snapshot
+Restored database from snapshot my-first-snapshot</p><p>$ dslr list</p><p>  Name                Created            Size
+ ─────────────────────────────────────────────
+  my-first-snapshot   2 minutes ago   3253 kB</p><p>$ dslr rename my-first-snapshot fresh-db
+Renamed snapshot my-first-snapshot to fresh-db</p><p>$ dslr delete some-old-snapshot
+Deleted some-old-snapshot</p><p>$ dslr export my-feature-test
+Exported snapshot my-feature-test to my-feature-test_20220730-075650.dump</p><p>$ dslr import snapshot-from-a-friend_20220730-080632.dump friend-snapshot
+Imported snapshot friend-snapshot from snapshot-from-a-friend_20220730-080632.dump</code></pre></p><p>要在非交互式 shell 中强制覆盖现有快照，请使用标志 <code>-y</code>：</p><pre><code class="language-">$ dslr snapshot my-first-snapshot -y
+Updated snapshot my-first-snapshot</code></pre></p><h2>它是如何工作的？</h2></p><p>DSLR 通过使用 Postgres 的 <a href="https://www.postgresql.org/docs/current/manage-ag-templatedbs.html" target="_blank" rel="noopener noreferrer">模板数据库</a> 功能克隆数据库来拍摄快照。  
+这是 DSLR 速度的主要来源。</p><p>这意味着拍摄快照只是使用主数据库作为模板创建一个新数据库。  
+恢复快照只是删除主数据库并使用快照数据库作为模板创建一个新数据库。  
+依此类推。</p><h2>贡献者</h2></p><p><a href="https://github.com/mixxorz/DSLR/graphs/contributors" target="_blank" rel="noopener noreferrer"><img src="https://contrib.rocks/image?repo=mixxorz/DSLR" alt="贡献者"></a></p><h2>许可证</h2></p><p>MIT</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-01
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/mixxorz/DSLR/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-01 
+    </div>
+    
+</body>
+</html>
