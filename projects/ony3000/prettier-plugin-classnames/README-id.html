@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 194
+    "ratingCount": 205
   },
   "url": "https://OpenAiTx.github.io/projects/ony3000/prettier-plugin-classnames/README-id.html",
   "sameAs": "https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/README.md",
-  "datePublished": "2026-02-07",
-  "dateModified": "2026-02-07"
+  "datePublished": "2026-06-03",
+  "dateModified": "2026-06-03"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 194 stars</span>
+                <span class="stars">⭐ 205 stars</span>
                 <span class="language">Indonesian</span>
                 <span>by ony3000</span>
             </div>
@@ -320,7 +320,18 @@
 };</code></pre></p><p>Contoh JS (modul ES):</p><pre><code class="language-javascript">export default {
   plugins: ['prettier-plugin-classnames'],
   endingPosition: 'absolute',
-};</code></pre></p><h2>Opsi</h2></p><h3>Atribut Kustom</h3></p><p>Daftar atribut yang nama kelasnya disertakan.<br>
+};</code></pre></p><h3>Pengesampingan Markdown/MDX</h3></p><p>Plugin ini tidak mendukung Markdown dan MDX, namun jika plugin ini mendukung bahasa di dalam blok kode (mis. Vue), format yang tidak diinginkan dapat terjadi di dalam blok kode.</p><p>Untuk mencegah format yang tidak diinginkan, Anda dapat menggunakan pengaturan override untuk Markdown dan MDX.</p><p>Contoh JSON:</p><pre><code class="language-json">{
+  "plugins": ["prettier-plugin-classnames"],
+  "customFunctions": ["clsx"],
+  "overrides": [
+    {
+      "files": ["<em>.md", "</em>.mdx"],
+      "options": {
+        "plugins": []
+      }
+    }
+  ]
+}</code></pre></p><h2>Opsi</h2></p><h3>Atribut Kustom</h3></p><p>Daftar atribut yang nama kelasnya disertakan.<br>
 Atribut <code>class</code> dan <code>className</code> selalu didukung, bahkan jika tidak ada opsi yang ditentukan.</p><p><!-- prettier-ignore -->
 Default | Override CLI&nbsp; | Override API&nbsp;
 --- | --- | ---
@@ -331,41 +342,43 @@ Default | Override CLI&nbsp; | Override API&nbsp;
 <code>[]</code> | <code>--custom-functions <string></code> | <code>customFunctions: ["<string>"]</code></p><h3>Posisi Akhir</h3></p><p>Tersedia pertama kali di v0.5.0.<br>
 <code>absolute-with-indent</code> ditambahkan di v0.6.0.<br>
 <code>absolute-with-indent</code> dihapus di v0.8.0, tetapi Anda bisa mendapatkan keluaran yang sama dengan <code>absolute</code>.<br>
-Nilai default berubah dari <code>relative</code> menjadi <code>absolute</code> di v0.8.0.</p><p>Ini adalah kriteria untuk mengakhiri nama kelas pada setiap baris saat mengganti nama kelas asli dengan nama kelas multi-baris.</p><ul><li>Contoh <code>absolute</code>:</li></p><p>  </ul><pre><code class="language-">  --------------------------------------------------| printWidth=50
+Nilai default berubah dari <code>relative</code> menjadi <code>absolute</code> di v0.8.0.</p><p>Ini adalah kriteria untuk mengakhiri nama kelas pada setiap baris saat mengganti nama kelas asli dengan nama kelas multi-baris.</p><ul><li>Contoh <code>absolute</code>:</li></p><p>  </ul><pre><code class="language-">  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-        className="bg-gray-100/50 border
-          border-zinc-400/30 dark:bg-neutral-900/50
-          dark:border-neutral-500/30 px-4 py-4
-          rounded-xl"
+        className="bg-gray-100/50 dark:bg-neutral-900/50
+          border border-zinc-400/30 dark:border-neutral-500/30
+          rounded-xl px-4 py-4"
       >
         {children}
       </div>
     );
   }
   ``<code></p><ul><li>contoh </code>relative<code>:</li></p><p>  </ul></code>`<code>
-  --------------------------------------------------| printWidth=50
+  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-                  |--------------------------------------------------|
-        className="bg-gray-100/50 border border-zinc-400/30
-         |--------------------------------------------------|
-          dark:bg-neutral-900/50 dark:border-neutral-500/30
-          px-4 py-4 rounded-xl"
+       |------------------------------------------------------------|
+        className="bg-gray-100/50 dark:bg-neutral-900/50 border
+         |------------------------------------------------------------|
+          border-zinc-400/30 dark:border-neutral-500/30 rounded-xl
+          px-4 py-4"
       >
         {children}
       </div>
     );
   }
   </code>`<code></p><p><!-- prettier-ignore -->
-Default | Override&nbsp;CLI | Override&nbsp;API
+Default | Override CLI | Override API
 --- | --- | ---
-</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>Transformasi Sintaksis</h3></p><p>Pertama tersedia di v0.7.7.</p><p>Jika terjadi pembungkusan baris pada nama kelas yang ditulis dalam sintaks non-ekspresi, maka akan diubah menjadi sintaks ekspresi. Transformasi ini tidak mendukung pemformatan yang dapat dibalik.</p><p><!-- prettier-ignore -->
-Default | Override&nbsp;CLI | Override&nbsp;API
+</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>Transformasi Sintaks</h3></p><p>Pertama kali tersedia di v0.7.7.</p><p>Jika terjadi pemisahan baris pada nama kelas yang ditulis dalam sintaks non-ekspresi, maka akan diubah menjadi sintaks ekspresi. Transformasi ini tidak mendukung pemformatan yang dapat dibalik.</p><p><!-- prettier-ignore -->
+Default | Override CLI | Override API
 --- | --- | ---
-</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h2>Korelasi versi dengan plugin saudara</h2></p><p>Mulai dari </code>0.6.0<code>, ketika ada rilis minor di satu sisi, saya berencana untuk mencerminkan perubahan tersebut di sisi lain juga jika memungkinkan.</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="Korelasi versi."></p><h2>Kompatibilitas dengan plugin Prettier lain</h2></p><p>Jika lebih dari satu plugin Prettier dapat menangani teks yang ingin Anda format, Prettier hanya akan menggunakan plugin terakhir dari plugin-plugin tersebut.</p><p>Dalam kasus ini, Anda dapat mengaturnya seperti berikut dengan menambahkan <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> untuk menerapkan plugin-plugin tersebut secara berurutan.</p><p>Contoh JSON:</p><p><!-- prettier-ignore --></code></pre>json
+</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h3>Lebar Cetak Classnames</h3></p><p>Pertama kali tersedia di v0.10.0.</p><p>Tentukan lebar cetak dari nama kelas. Jika tidak ada nilai yang diberikan, nilai </code>printWidth<code> digunakan sebagai default.</p><p><!-- prettier-ignore -->
+Default | Override CLI | Override API
+--- | --- | ---
+</code>undefined<code> | </code>--classnames-print-width <number><code> | </code>classnamesPrintWidth: <number><code></p><h2>Korelasi Versi dengan Plugin Sibling</h2></p><p>Mulai dari </code>0.6.0<code>, ketika ada rilis minor di satu sisi, saya berencana untuk merefleksikan perubahan tersebut di sisi lain jika memungkinkan.</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="Korelasi versi."></p><h2>Kompatibilitas dengan Plugin Prettier Lainnya</h2></p><p>Jika lebih dari satu plugin Prettier dapat menangani teks yang ingin Anda format, Prettier hanya akan menggunakan plugin terakhir dari plugin-plugin tersebut.</p><p>Dalam kasus ini, Anda dapat mengkonfigurasinya seperti berikut dengan menambahkan <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> untuk menerapkan plugin-plugin tersebut secara berurutan.</p><p>Contoh JSON:</p><p><!-- prettier-ignore --></code></pre>json
 {
   "plugins": [
     "prettier-plugin-tailwindcss",
@@ -376,7 +389,7 @@ Default | Override&nbsp;CLI | Override&nbsp;API
 </code>``</p><h2>Stargazers over time</h2></p><p><a href="https://starchart.cc/ony3000/prettier-plugin-classnames" target="_blank" rel="noopener noreferrer"><img src="https://starchart.cc/ony3000/prettier-plugin-classnames.svg?variant=adaptive" alt="Stargazers over time"></a></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-07
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-03
 
 ---</p>
         </div>
@@ -388,7 +401,7 @@ Default | Override&nbsp;CLI | Override&nbsp;API
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-02-07 
+        Last updated: 2026-06-03 
     </div>
     
 </body>

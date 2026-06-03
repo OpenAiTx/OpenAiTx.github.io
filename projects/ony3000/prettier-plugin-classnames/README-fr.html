@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>prettier-plugin-classnames - Un plugin Prettier qui reformate les noms de classes trop longs en fonction de l’option `printWidth`.</title>
-    <meta name="description" content="Un plugin Prettier qui reformate les noms de classes trop longs en fonction de l’option `printWidth`.">
+    <title>prettier-plugin-classnames - Un plugin Prettier qui renvoie &#224; la ligne les noms de classes verbeux selon l’option `printWidth`.</title>
+    <meta name="description" content="Un plugin Prettier qui renvoie &#224; la ligne les noms de classes verbeux selon l’option `printWidth`.">
     <meta name="keywords" content="prettier-plugin-classnames, French, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "prettier-plugin-classnames",
-  "description": "Un plugin Prettier qui reformate les noms de classes trop longs en fonction de l’option `printWidth`.",
+  "description": "Un plugin Prettier qui renvoie à la ligne les noms de classes verbeux selon l’option `printWidth`.",
   "author": {
     "@type": "Person",
     "name": "ony3000"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 194
+    "ratingCount": 205
   },
   "url": "https://OpenAiTx.github.io/projects/ony3000/prettier-plugin-classnames/README-fr.html",
   "sameAs": "https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/README.md",
-  "datePublished": "2026-02-07",
-  "dateModified": "2026-02-07"
+  "datePublished": "2026-06-03",
+  "dateModified": "2026-06-03"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 194 stars</span>
+                <span class="stars">⭐ 205 stars</span>
                 <span class="language">French</span>
                 <span>by ony3000</span>
             </div>
@@ -320,7 +320,18 @@
 };</code></pre></p><p>Exemple JS (module ES) :</p><pre><code class="language-javascript">export default {
   plugins: ['prettier-plugin-classnames'],
   endingPosition: 'absolute',
-};</code></pre></p><h2>Options</h2></p><h3>Attributs personnalisés</h3></p><p>Liste des attributs qui englobent les noms de classe.<br>
+};</code></pre></p><h3>Substitution Markdown/MDX</h3></p><p>Ce plugin ne prend pas en charge Markdown et MDX, mais si ce plugin prend en charge un langage à l'intérieur des blocs de code (par exemple, Vue), un formatage non souhaité peut se produire à l'intérieur des blocs de code.</p><p>Pour éviter un formatage non souhaité, vous pouvez utiliser des substitutions de configuration pour Markdown et MDX.</p><p>Exemple JSON :</p><pre><code class="language-json">{
+  "plugins": ["prettier-plugin-classnames"],
+  "customFunctions": ["clsx"],
+  "overrides": [
+    {
+      "files": ["<em>.md", "</em>.mdx"],
+      "options": {
+        "plugins": []
+      }
+    }
+  ]
+}</code></pre></p><h2>Options</h2></p><h3>Attributs personnalisés</h3></p><p>Liste des attributs qui englobent les noms de classe.<br>
 Les attributs <code>class</code> et <code>className</code> sont toujours pris en charge, même si aucune option n'est spécifiée.</p><p><!-- prettier-ignore -->
 Par défaut | Remplacement CLI | Remplacement API
 --- | --- | ---
@@ -331,41 +342,43 @@ Par défaut | Remplacement CLI | Remplacement API
 <code>[]</code> | <code>--custom-functions <string></code> | <code>customFunctions: ["<string>"]</code></p><h3>Position de fin</h3></p><p>Disponible pour la première fois en v0.5.0.<br>
 <code>absolute-with-indent</code> a été ajouté en v0.6.0.<br>
 <code>absolute-with-indent</code> a été supprimé en v0.8.0, mais vous pouvez obtenir la même sortie avec <code>absolute</code>.<br>
-La valeur par défaut est passée de <code>relative</code> à <code>absolute</code> en v0.8.0.</p><p>Ceci est le critère pour terminer le nom de classe sur chaque ligne lors du remplacement du nom de classe original par un nom de classe multi-lignes.</p><ul><li>Exemple <code>absolute</code> :</li></p><p>  </ul><pre><code class="language-">  --------------------------------------------------| printWidth=50
+La valeur par défaut est passée de <code>relative</code> à <code>absolute</code> en v0.8.0.</p><p>Ceci est le critère pour terminer le nom de classe sur chaque ligne lors du remplacement du nom de classe original par un nom de classe multi-lignes.</p><ul><li>Exemple <code>absolute</code> :</li></p><p>  </ul><pre><code class="language-">  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-        className="bg-gray-100/50 border
-          border-zinc-400/30 dark:bg-neutral-900/50
-          dark:border-neutral-500/30 px-4 py-4
-          rounded-xl"
+        className="bg-gray-100/50 dark:bg-neutral-900/50
+          border border-zinc-400/30 dark:border-neutral-500/30
+          rounded-xl px-4 py-4"
       >
         {children}
       </div>
     );
   }
   ``<code></p><ul><li>Exemple </code>relative<code> :</li></p><p>  </ul></code>`<code>
-  --------------------------------------------------| printWidth=50
+  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-                  |--------------------------------------------------|
-        className="bg-gray-100/50 border border-zinc-400/30
-         |--------------------------------------------------|
-          dark:bg-neutral-900/50 dark:border-neutral-500/30
-          px-4 py-4 rounded-xl"
+       |------------------------------------------------------------|
+        className="bg-gray-100/50 dark:bg-neutral-900/50 border
+         |------------------------------------------------------------|
+          border-zinc-400/30 dark:border-neutral-500/30 rounded-xl
+          px-4 py-4"
       >
         {children}
       </div>
     );
   }
   </code>`<code></p><p><!-- prettier-ignore -->
-Par défaut | Surcharge CLI&nbsp; | Surcharge API&nbsp;
+Par défaut | Remplacement CLI&nbsp; | Remplacement API&nbsp;
 --- | --- | ---
-</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>Transformation de syntaxe</h3></p><p>Disponible pour la première fois en v0.7.7.</p><p>Si un retour à la ligne se produit dans un nom de classe écrit en syntaxe non-expression, il est transformé en syntaxe expression. Cette transformation ne supporte pas la mise en forme réversible.</p><p><!-- prettier-ignore -->
-Par défaut | Surcharge CLI&nbsp; | Surcharge API&nbsp;
+</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>Transformation de la syntaxe</h3></p><p>Disponible à partir de la v0.7.7.</p><p>Si un retour à la ligne se produit dans un nom de classe écrit en syntaxe non-expression, il est transformé en syntaxe d'expression. Cette transformation ne prend pas en charge le formatage réversible.</p><p><!-- prettier-ignore -->
+Par défaut | Remplacement CLI&nbsp; | Remplacement API&nbsp;
 --- | --- | ---
-</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h2>Corrélation de version avec les plugins associés</h2></p><p>À partir de </code>0.6.0<code>, lorsqu’une version mineure est publiée d’un côté, je prévois de refléter ce changement de l’autre côté si possible.</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="Corrélation de version."></p><h2>Compatibilité avec d’autres plugins Prettier</h2></p><p>Si plusieurs plugins Prettier peuvent gérer le texte que vous souhaitez formater, Prettier n’utilisera que le dernier de ces plugins.</p><p>Dans ce cas, vous pouvez configurer comme suit en ajoutant <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> pour appliquer ces plugins séquentiellement.</p><p>Exemple JSON :</p><p><!-- prettier-ignore --></code></pre>json
+</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h3>Largeur d’impression des noms de classes</h3></p><p>Disponible à partir de la v0.10.0.</p><p>Spécifiez la largeur d’impression du nom de classe. Si aucune valeur n’est fournie, la valeur de </code>printWidth<code> est utilisée par défaut.</p><p><!-- prettier-ignore -->
+Par défaut | Remplacement CLI&nbsp; | Remplacement API&nbsp;
+--- | --- | ---
+</code>undefined<code> | </code>--classnames-print-width <number><code> | </code>classnamesPrintWidth: <number><code></p><h2>Corrélation de versions avec les plugins frères</h2></p><p>À partir de la version </code>0.6.0<code>, lorsqu’il y a une version mineure d’un côté, je prévois de répercuter cette modification de l’autre côté également si possible.</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="Corrélation de versions."></p><h2>Compatibilité avec d’autres plugins Prettier</h2></p><p>Si plusieurs plugins Prettier peuvent gérer le texte que vous souhaitez formater, Prettier n’utilisera que le dernier de ces plugins.</p><p>Dans ce cas, vous pouvez le configurer comme suit en ajoutant <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> pour appliquer ces plugins de manière séquentielle.</p><p>Exemple JSON :</p><p><!-- prettier-ignore --></code></pre>json
 {
   "plugins": [
     "prettier-plugin-tailwindcss",
@@ -376,7 +389,7 @@ Par défaut | Surcharge CLI&nbsp; | Surcharge API&nbsp;
 </code>``</p><h2>Stargazers over time</h2></p><p><a href="https://starchart.cc/ony3000/prettier-plugin-classnames" target="_blank" rel="noopener noreferrer"><img src="https://starchart.cc/ony3000/prettier-plugin-classnames.svg?variant=adaptive" alt="Stargazers over time"></a></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-07
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-03
 
 ---</p>
         </div>
@@ -388,7 +401,7 @@ Par défaut | Surcharge CLI&nbsp; | Surcharge API&nbsp;
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-02-07 
+        Last updated: 2026-06-03 
     </div>
     
 </body>

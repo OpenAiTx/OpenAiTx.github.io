@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 194
+    "ratingCount": 205
   },
   "url": "https://OpenAiTx.github.io/projects/ony3000/prettier-plugin-classnames/README-en.html",
   "sameAs": "https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/README.md",
-  "datePublished": "2026-02-07",
-  "dateModified": "2026-02-07"
+  "datePublished": "2026-06-03",
+  "dateModified": "2026-06-03"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 194 stars</span>
+                <span class="stars">⭐ 205 stars</span>
                 <span class="language">English</span>
                 <span>by ony3000</span>
             </div>
@@ -320,7 +320,18 @@
 };</code></pre></p><p>JS example (ES module):</p><pre><code class="language-javascript">export default {
   plugins: ['prettier-plugin-classnames'],
   endingPosition: 'absolute',
-};</code></pre></p><h2>Options</h2></p><h3>Custom Attributes</h3></p><p>List of attributes that enclosing class names.<br>
+};</code></pre></p><h3>Markdown/MDX Override</h3></p><p>This plugin does not support Markdown and MDX, but if this plugin supports a language inside code blocks (e.g. Vue), unintended formatting may occur inside the code blocks.</p><p>To prevent unintended formatting, you can use configuration overrides for Markdown and MDX.</p><p>JSON example:</p><pre><code class="language-json">{
+  "plugins": ["prettier-plugin-classnames"],
+  "customFunctions": ["clsx"],
+  "overrides": [
+    {
+      "files": ["<em>.md", "</em>.mdx"],
+      "options": {
+        "plugins": []
+      }
+    }
+  ]
+}</code></pre></p><h2>Options</h2></p><h3>Custom Attributes</h3></p><p>List of attributes that enclosing class names.<br>
 The <code>class</code> and <code>className</code> attributes are always supported, even if no options are specified.</p><p><!-- prettier-ignore -->
 Default | CLI&nbsp;Override | API&nbsp;Override
 --- | --- | ---
@@ -331,29 +342,28 @@ Default | CLI&nbsp;Override | API&nbsp;Override
 <code>[]</code> | <code>--custom-functions <string></code> | <code>customFunctions: ["<string>"]</code></p><h3>Ending Position</h3></p><p>First available in v0.5.0.<br>
 <code>absolute-with-indent</code> was added in v0.6.0.<br>
 <code>absolute-with-indent</code> was removed in v0.8.0, but you can get the same output with <code>absolute</code>.<br>
-Default value changed from <code>relative</code> to <code>absolute</code> in v0.8.0.</p><p>This is the criterion for ending the class name on each line when replacing the original class name with a multi-line class name.</p><ul><li><code>absolute</code> example:</li></p><p>  </ul><pre><code class="language-">  --------------------------------------------------| printWidth=50
+Default value changed from <code>relative</code> to <code>absolute</code> in v0.8.0.</p><p>This is the criterion for ending the class name on each line when replacing the original class name with a multi-line class name.</p><ul><li><code>absolute</code> example:</li></p><p>  </ul><pre><code class="language-">  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-        className="bg-gray-100/50 border
-          border-zinc-400/30 dark:bg-neutral-900/50
-          dark:border-neutral-500/30 px-4 py-4
-          rounded-xl"
+        className="bg-gray-100/50 dark:bg-neutral-900/50
+          border border-zinc-400/30 dark:border-neutral-500/30
+          rounded-xl px-4 py-4"
       >
         {children}
       </div>
     );
   }
   ``<code></p><ul><li></code>relative<code> example:</li></p><p>  </ul></code>`<code>
-  --------------------------------------------------| printWidth=50
+  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-                  |--------------------------------------------------|
-        className="bg-gray-100/50 border border-zinc-400/30
-         |--------------------------------------------------|
-          dark:bg-neutral-900/50 dark:border-neutral-500/30
-          px-4 py-4 rounded-xl"
+       |------------------------------------------------------------|
+        className="bg-gray-100/50 dark:bg-neutral-900/50 border
+         |------------------------------------------------------------|
+          border-zinc-400/30 dark:border-neutral-500/30 rounded-xl
+          px-4 py-4"
       >
         {children}
       </div>
@@ -365,7 +375,10 @@ Default | CLI&nbsp;Override | API&nbsp;Override
 </code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>Syntax Transformation</h3></p><p>First available in v0.7.7.</p><p>If a line wrapping occurs in a class name written in non-expression syntax, it is transformed into expression syntax. This transformation does not support reversible formatting.</p><p><!-- prettier-ignore -->
 Default | CLI&nbsp;Override | API&nbsp;Override
 --- | --- | ---
-</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h2>Version correlation with sibling plugins</h2></p><p>Starting with </code>0.6.0<code>, when there is a minor release on one side, I plan to reflect that change on the other side as well if possible.</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="Version correlation."></p><h2>Compatibility with other Prettier plugins</h2></p><p>If more than one Prettier plugin can handle the text you want to format, Prettier will only use the last of those plugins.</p><p>In this case, you can configure it as follows by adding <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> to apply those plugins sequentially.</p><p>JSON example:</p><p><!-- prettier-ignore --></code></pre>json
+</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h3>Classnames Print Width</h3></p><p>First available in v0.10.0.</p><p>Specify the print width of the class name. If no value is provided, the </code>printWidth<code> value is used as default.</p><p><!-- prettier-ignore -->
+Default | CLI&nbsp;Override | API&nbsp;Override
+--- | --- | ---
+</code>undefined<code> | </code>--classnames-print-width <number><code> | </code>classnamesPrintWidth: <number><code></p><h2>Version correlation with sibling plugins</h2></p><p>Starting with </code>0.6.0<code>, when there is a minor release on one side, I plan to reflect that change on the other side as well if possible.</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="Version correlation."></p><h2>Compatibility with other Prettier plugins</h2></p><p>If more than one Prettier plugin can handle the text you want to format, Prettier will only use the last of those plugins.</p><p>In this case, you can configure it as follows by adding <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> to apply those plugins sequentially.</p><p>JSON example:</p><p><!-- prettier-ignore --></code></pre>json
 {
   "plugins": [
     "prettier-plugin-tailwindcss",
@@ -376,7 +389,7 @@ Default | CLI&nbsp;Override | API&nbsp;Override
 </code>``</p><h2>Stargazers over time</h2></p><p><a href="https://starchart.cc/ony3000/prettier-plugin-classnames" target="_blank" rel="noopener noreferrer"><img src="https://starchart.cc/ony3000/prettier-plugin-classnames.svg?variant=adaptive" alt="Stargazers over time"></a></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-07
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-03
 
 ---</p>
         </div>
@@ -388,7 +401,7 @@ Default | CLI&nbsp;Override | API&nbsp;Override
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-02-07 
+        Last updated: 2026-06-03 
     </div>
     
 </body>

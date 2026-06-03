@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>prettier-plugin-classnames - ปลั๊กอิน Prettier ที่ช่วยตัดบรรทัดชื่อคลาสที่ยาวตามตัวเลือก `printWidth`</title>
-    <meta name="description" content="ปลั๊กอิน Prettier ที่ช่วยตัดบรรทัดชื่อคลาสที่ยาวตามตัวเลือก `printWidth`">
+    <title>prettier-plugin-classnames - ปลั๊กอิน Prettier ที่จัดรูปแบบการขึ้นบรรทัดใหม่ให้กับชื่อคลาสที่ยาว ตามตัวเลือก `printWidth`</title>
+    <meta name="description" content="ปลั๊กอิน Prettier ที่จัดรูปแบบการขึ้นบรรทัดใหม่ให้กับชื่อคลาสที่ยาว ตามตัวเลือก `printWidth`">
     <meta name="keywords" content="prettier-plugin-classnames, Thai, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "prettier-plugin-classnames",
-  "description": "ปลั๊กอิน Prettier ที่ช่วยตัดบรรทัดชื่อคลาสที่ยาวตามตัวเลือก `printWidth`",
+  "description": "ปลั๊กอิน Prettier ที่จัดรูปแบบการขึ้นบรรทัดใหม่ให้กับชื่อคลาสที่ยาว ตามตัวเลือก `printWidth`",
   "author": {
     "@type": "Person",
     "name": "ony3000"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 194
+    "ratingCount": 205
   },
   "url": "https://OpenAiTx.github.io/projects/ony3000/prettier-plugin-classnames/README-th.html",
   "sameAs": "https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/README.md",
-  "datePublished": "2026-02-07",
-  "dateModified": "2026-02-07"
+  "datePublished": "2026-06-03",
+  "dateModified": "2026-06-03"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 194 stars</span>
+                <span class="stars">⭐ 205 stars</span>
                 <span class="language">Thai</span>
                 <span>by ony3000</span>
             </div>
@@ -320,7 +320,18 @@
 };</code></pre></p><p>ตัวอย่าง JS (ES module):</p><pre><code class="language-javascript">export default {
   plugins: ['prettier-plugin-classnames'],
   endingPosition: 'absolute',
-};</code></pre></p><h2>ตัวเลือก</h2></p><h3>คุณสมบัติที่กำหนดเอง</h3></p><p>รายการคุณสมบัติที่ชื่อคลาสที่ครอบคลุม<br>
+};</code></pre></p><h3>การแทนที่ Markdown/MDX</h3></p><p>ปลั๊กอินนี้ไม่รองรับ Markdown และ MDX แต่หากปลั๊กอินนี้รองรับภาษาในบล็อกโค้ด (เช่น Vue) อาจมีการจัดรูปแบบที่ไม่ตั้งใจเกิดขึ้นภายในบล็อกโค้ด</p><p>เพื่อป้องกันการจัดรูปแบบที่ไม่ตั้งใจ คุณสามารถใช้การแทนค่าคอนฟิกสำหรับ Markdown และ MDX ได้</p><p>ตัวอย่าง JSON:</p><pre><code class="language-json">{
+  "plugins": ["prettier-plugin-classnames"],
+  "customFunctions": ["clsx"],
+  "overrides": [
+    {
+      "files": ["<em>.md", "</em>.mdx"],
+      "options": {
+        "plugins": []
+      }
+    }
+  ]
+}</code></pre></p><h2>ตัวเลือก</h2></p><h3>คุณสมบัติที่กำหนดเอง</h3></p><p>รายการคุณสมบัติที่ชื่อคลาสที่ครอบคลุม<br>
 แอตทริบิวต์ <code>class</code> และ <code>className</code> จะรองรับเสมอ แม้ว่าจะไม่มีการระบุออปชั่นใด ๆ</p><p><!-- prettier-ignore -->
 ค่าเริ่มต้น | การแทนที่ด้วย CLI&nbsp; | การแทนที่ด้วย API&nbsp;
 --- | --- | ---
@@ -331,41 +342,43 @@
 <code>[]</code> | <code>--custom-functions <string></code> | <code>customFunctions: ["<string>"]</code></p><h3>ตำแหน่งสิ้นสุด</h3></p><p>เริ่มรองรับใน v0.5.0.<br>
 <code>absolute-with-indent</code> ถูกเพิ่มใน v0.6.0.<br>
 <code>absolute-with-indent</code> ถูกลบออกใน v0.8.0 แต่คุณสามารถได้ผลลัพธ์เดียวกันด้วย <code>absolute</code>.<br>
-ค่าดีฟอลต์ถูกเปลี่ยนจาก <code>relative</code> เป็น <code>absolute</code> ใน v0.8.0</p><p>นี่คือเกณฑ์สำหรับการสิ้นสุดชื่อคลาสในแต่ละบรรทัดเมื่อแทนที่ชื่อคลาสเดิมด้วยชื่อคลาสแบบหลายบรรทัด</p><ul><li>ตัวอย่าง <code>absolute</code>:</li></p><p>  </ul><pre><code class="language-">  --------------------------------------------------| printWidth=50
+ค่าดีฟอลต์ถูกเปลี่ยนจาก <code>relative</code> เป็น <code>absolute</code> ใน v0.8.0</p><p>นี่คือเกณฑ์สำหรับการสิ้นสุดชื่อคลาสในแต่ละบรรทัดเมื่อแทนที่ชื่อคลาสเดิมด้วยชื่อคลาสแบบหลายบรรทัด</p><ul><li>ตัวอย่าง <code>absolute</code>:</li></p><p>  </ul><pre><code class="language-">  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-        className="bg-gray-100/50 border
-          border-zinc-400/30 dark:bg-neutral-900/50
-          dark:border-neutral-500/30 px-4 py-4
-          rounded-xl"
+        className="bg-gray-100/50 dark:bg-neutral-900/50
+          border border-zinc-400/30 dark:border-neutral-500/30
+          rounded-xl px-4 py-4"
       >
         {children}
       </div>
     );
   }
   ``<code></p><ul><li>ตัวอย่าง </code>relative<code>:</li></p><p>  </ul></code>`<code>
-  --------------------------------------------------| printWidth=50
+  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-                  |--------------------------------------------------|
-        className="bg-gray-100/50 border border-zinc-400/30
-         |--------------------------------------------------|
-          dark:bg-neutral-900/50 dark:border-neutral-500/30
-          px-4 py-4 rounded-xl"
+       |------------------------------------------------------------|
+        className="bg-gray-100/50 dark:bg-neutral-900/50 border
+         |------------------------------------------------------------|
+          border-zinc-400/30 dark:border-neutral-500/30 rounded-xl
+          px-4 py-4"
       >
         {children}
       </div>
     );
   }
   </code>`<code></p><p><!-- prettier-ignore -->
-ค่าเริ่มต้น | การแทนที่ CLI&nbsp; | การแทนที่ API&nbsp;
+ค่าเริ่มต้น | คำสั่ง CLI&nbsp;Override | คำสั่ง API&nbsp;Override
 --- | --- | ---
-</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>การแปลงไวยากรณ์</h3></p><p>เริ่มใช้งานได้ตั้งแต่ v0.7.7</p><p>หากเกิดการตัดบรรทัดในชื่อคลาสที่เขียนด้วยไวยากรณ์ที่ไม่ใช่นิพจน์ จะถูกแปลงเป็นไวยากรณ์แบบนิพจน์ การแปลงนี้ไม่รองรับการจัดรูปแบบย้อนกลับ</p><p><!-- prettier-ignore -->
-ค่าเริ่มต้น | การแทนที่ CLI&nbsp; | การแทนที่ API&nbsp;
+</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>การแปลงไวยากรณ์</h3></p><p>มีให้ใช้ครั้งแรกใน v0.7.7</p><p>หากเกิดการตัดบรรทัดในชื่อคลาสที่เขียนด้วยไวยากรณ์แบบไม่ใช่นิพจน์ จะถูกแปลงเป็นไวยากรณ์แบบนิพจน์ การแปลงนี้ไม่รองรับการจัดรูปแบบย้อนกลับ</p><p><!-- prettier-ignore -->
+ค่าเริ่มต้น | คำสั่ง CLI&nbsp;Override | คำสั่ง API&nbsp;Override
 --- | --- | ---
-</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h2>ความสัมพันธ์ของเวอร์ชันกับปลั๊กอินที่เกี่ยวข้อง</h2></p><p>เริ่มต้นตั้งแต่เวอร์ชัน </code>0.6.0<code> เมื่อมีการออกเวอร์ชันย่อยในฝั่งหนึ่ง ฉันมีแผนจะสะท้อนการเปลี่ยนแปลงนั้นไปยังอีกฝั่งหนึ่งด้วยหากเป็นไปได้</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="ความสัมพันธ์ของเวอร์ชัน"></p><h2>ความเข้ากันได้กับปลั๊กอิน Prettier อื่น ๆ</h2></p><p>หากมีปลั๊กอิน Prettier มากกว่าหนึ่งที่สามารถจัดรูปแบบข้อความที่คุณต้องการ Prettier จะใช้เฉพาะปลั๊กอินตัวสุดท้ายเท่านั้น</p><p>ในกรณีนี้ คุณสามารถกำหนดค่าได้ดังนี้โดยเพิ่ม <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> เพื่อให้ปลั๊กอินเหล่านั้นทำงานตามลำดับ</p><p>ตัวอย่าง JSON:</p><p><!-- prettier-ignore --></code></pre>json
+</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h3>ความกว้างในการพิมพ์ชื่อคลาส</h3></p><p>มีให้ใช้ครั้งแรกใน v0.10.0</p><p>กำหนดความกว้างในการพิมพ์ของชื่อคลาส หากไม่ได้ระบุค่า จะใช้ค่าของ </code>printWidth<code> เป็นค่าเริ่มต้น</p><p><!-- prettier-ignore -->
+ค่าเริ่มต้น | คำสั่ง CLI&nbsp;Override | คำสั่ง API&nbsp;Override
+--- | --- | ---
+</code>undefined<code> | </code>--classnames-print-width <number><code> | </code>classnamesPrintWidth: <number><code></p><h2>ความสัมพันธ์ของเวอร์ชันกับปลั๊กอินที่เกี่ยวข้อง</h2></p><p>เริ่มต้นที่ </code>0.6.0<code> เมื่อมี minor release ด้านใดด้านหนึ่ง มีแผนจะสะท้อนการเปลี่ยนแปลงนั้นไปอีกด้านด้วยหากสามารถทำได้</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="Version correlation."></p><h2>ความเข้ากันได้กับปลั๊กอิน Prettier อื่นๆ</h2></p><p>หากมีปลั๊กอิน Prettier มากกว่าหนึ่งที่สามารถจัดการข้อความที่คุณต้องการจัดรูปแบบ Prettier จะใช้เฉพาะปลั๊กอินตัวสุดท้ายเท่านั้น</p><p>ในกรณีนี้ คุณสามารถกำหนดค่าได้ดังตัวอย่างต่อไปนี้โดยเพิ่ม <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> เพื่อให้ปลั๊กอินเหล่านั้นทำงานตามลำดับ</p><p>ตัวอย่าง JSON:</p><p><!-- prettier-ignore --></code></pre>json
 {
   "plugins": [
     "prettier-plugin-tailwindcss",
@@ -376,7 +389,7 @@
 </code>``</p><h2>Stargazers over time</h2></p><p><a href="https://starchart.cc/ony3000/prettier-plugin-classnames" target="_blank" rel="noopener noreferrer"><img src="https://starchart.cc/ony3000/prettier-plugin-classnames.svg?variant=adaptive" alt="Stargazers over time"></a></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-07
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-03
 
 ---</p>
         </div>
@@ -388,7 +401,7 @@
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-02-07 
+        Last updated: 2026-06-03 
     </div>
     
 </body>

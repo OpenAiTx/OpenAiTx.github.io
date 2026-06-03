@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 194
+    "ratingCount": 205
   },
   "url": "https://OpenAiTx.github.io/projects/ony3000/prettier-plugin-classnames/README-pl.html",
   "sameAs": "https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/README.md",
-  "datePublished": "2026-02-07",
-  "dateModified": "2026-02-07"
+  "datePublished": "2026-06-03",
+  "dateModified": "2026-06-03"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 194 stars</span>
+                <span class="stars">⭐ 205 stars</span>
                 <span class="language">Polish</span>
                 <span>by ony3000</span>
             </div>
@@ -320,7 +320,18 @@
 };</code></pre></p><p>Przykład JS (moduł ES):</p><pre><code class="language-javascript">export default {
   plugins: ['prettier-plugin-classnames'],
   endingPosition: 'absolute',
-};</code></pre></p><h2>Opcje</h2></p><h3>Atrybuty niestandardowe</h3></p><p>Lista atrybutów, które zamykają nazwy klas.<br>
+};</code></pre></p><h3>Nadpisanie Markdown/MDX</h3></p><p>Ta wtyczka nie obsługuje Markdown ani MDX, ale jeśli obsługuje język wewnątrz bloków kodu (np. Vue), może wystąpić niezamierzone formatowanie wewnątrz tych bloków.</p><p>Aby zapobiec niezamierzonemu formatowaniu, możesz użyć nadpisania konfiguracji dla Markdown i MDX.</p><p>Przykład JSON:</p><pre><code class="language-json">{
+  "plugins": ["prettier-plugin-classnames"],
+  "customFunctions": ["clsx"],
+  "overrides": [
+    {
+      "files": ["<em>.md", "</em>.mdx"],
+      "options": {
+        "plugins": []
+      }
+    }
+  ]
+}</code></pre></p><h2>Opcje</h2></p><h3>Atrybuty niestandardowe</h3></p><p>Lista atrybutów, które zamykają nazwy klas.<br>
 Atrybuty <code>class</code> i <code>className</code> są zawsze obsługiwane, nawet jeśli nie określono żadnych opcji.</p><p><!-- prettier-ignore -->
 Domyślne | Nadpisanie CLI&nbsp; | Nadpisanie API&nbsp;
 --- | --- | ---
@@ -331,41 +342,43 @@ Domyślne | Nadpisanie CLI&nbsp; | Nadpisanie API&nbsp;
 <code>[]</code> | <code>--custom-functions <string></code> | <code>customFunctions: ["<string>"]</code></p><h3>Pozycja końcowa</h3></p><p>Po raz pierwszy dostępne w wersji v0.5.0.<br>
 <code>absolute-with-indent</code> zostało dodane w wersji v0.6.0.<br>
 <code>absolute-with-indent</code> zostało usunięte w wersji v0.8.0, ale ten sam wynik można uzyskać za pomocą <code>absolute</code>.<br>
-Wartość domyślna została zmieniona z <code>relative</code> na <code>absolute</code> w wersji v0.8.0.</p><p>To jest kryterium kończenia nazwy klasy w każdej linii podczas zamiany oryginalnej nazwy klasy na wieloliniową nazwę klasy.</p><ul><li>przykład <code>absolute</code>:</li></p><p>  </ul><pre><code class="language-">  --------------------------------------------------| printWidth=50
+Wartość domyślna została zmieniona z <code>relative</code> na <code>absolute</code> w wersji v0.8.0.</p><p>To jest kryterium kończenia nazwy klasy w każdej linii podczas zamiany oryginalnej nazwy klasy na wieloliniową nazwę klasy.</p><ul><li>przykład <code>absolute</code>:</li></p><p>  </ul><pre><code class="language-">  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-        className="bg-gray-100/50 border
-          border-zinc-400/30 dark:bg-neutral-900/50
-          dark:border-neutral-500/30 px-4 py-4
-          rounded-xl"
+        className="bg-gray-100/50 dark:bg-neutral-900/50
+          border border-zinc-400/30 dark:border-neutral-500/30
+          rounded-xl px-4 py-4"
       >
         {children}
       </div>
     );
   }
   ``<code></p><ul><li>Przykład </code>relative<code>:</li></p><p>  </ul></code>`<code>
-  --------------------------------------------------| printWidth=50
+  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-                  |--------------------------------------------------|
-        className="bg-gray-100/50 border border-zinc-400/30
-         |--------------------------------------------------|
-          dark:bg-neutral-900/50 dark:border-neutral-500/30
-          px-4 py-4 rounded-xl"
+       |------------------------------------------------------------|
+        className="bg-gray-100/50 dark:bg-neutral-900/50 border
+         |------------------------------------------------------------|
+          border-zinc-400/30 dark:border-neutral-500/30 rounded-xl
+          px-4 py-4"
       >
         {children}
       </div>
     );
   }
   </code>`<code></p><p><!-- prettier-ignore -->
-Domyślnie | Nadpisanie CLI&nbsp; | Nadpisanie API&nbsp;
+Domyślne | Nadpisanie CLI&nbsp; | Nadpisanie API&nbsp;
 --- | --- | ---
-</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>Transformacja składni</h3></p><p>Dostępne po raz pierwszy w wersji v0.7.7.</p><p>Jeśli zawijanie linii występuje w nazwie klasy zapisanej w składni niebędącej wyrażeniem, zostaje ona przekształcona na składnię wyrażenia. Ta transformacja nie obsługuje odwracalnego formatowania.</p><p><!-- prettier-ignore -->
-Domyślnie | Nadpisanie CLI&nbsp; | Nadpisanie API&nbsp;
+</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>Transformacja składni</h3></p><p>Po raz pierwszy dostępne w wersji v0.7.7.</p><p>Jeśli występuje zawijanie linii w nazwie klasy zapisanej w składni nie-wyrażeniowej, zostaje ona przekształcona w składnię wyrażeniową. Ta transformacja nie obsługuje odwracalnego formatowania.</p><p><!-- prettier-ignore -->
+Domyślne | Nadpisanie CLI&nbsp; | Nadpisanie API&nbsp;
 --- | --- | ---
-</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h2>Korelacja wersji z bliźniaczymi wtyczkami</h2></p><p>Począwszy od wersji </code>0.6.0<code>, gdy następuje wydanie wersji pomocniczej po jednej stronie, planuję odzwierciedlić tę zmianę również po drugiej stronie, jeśli to możliwe.</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="Korelacja wersji."></p><h2>Kompatybilność z innymi wtyczkami Prettier</h2></p><p>Jeśli więcej niż jedna wtyczka Prettier może obsłużyć tekst, który chcesz sformatować, Prettier użyje tylko ostatniej z tych wtyczek.</p><p>W takim przypadku możesz skonfigurować to w następujący sposób, dodając <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a>, aby zastosować te wtyczki kolejno.</p><p>Przykład JSON:</p><p><!-- prettier-ignore --></code></pre>json
+</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h3>Szerokość druku nazw klas</h3></p><p>Po raz pierwszy dostępne w wersji v0.10.0.</p><p>Określ szerokość druku dla nazwy klasy. Jeśli nie zostanie podana wartość, jako domyślna zostanie użyta wartość </code>printWidth<code>.</p><p><!-- prettier-ignore -->
+Domyślne | Nadpisanie CLI&nbsp; | Nadpisanie API&nbsp;
+--- | --- | ---
+</code>undefined<code> | </code>--classnames-print-width <number><code> | </code>classnamesPrintWidth: <number><code></p><h2>Korelacja wersji z pokrewnymi pluginami</h2></p><p>Od wersji </code>0.6.0<code>, gdy pojawia się wydanie typu minor po jednej stronie, planuję odzwierciedlić tę zmianę po drugiej stronie również, jeśli to możliwe.</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="Korelacja wersji."></p><h2>Kompatybilność z innymi pluginami Prettier</h2></p><p>Jeśli więcej niż jeden plugin Prettier może obsłużyć tekst, który chcesz sformatować, Prettier użyje tylko ostatniego z tych pluginów.</p><p>W takim przypadku możesz skonfigurować to w następujący sposób, dodając <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a>, aby zastosować te pluginy kolejno.</p><p>Przykład JSON:</p><p><!-- prettier-ignore --></code></pre>json
 {
   "plugins": [
     "prettier-plugin-tailwindcss",
@@ -376,7 +389,7 @@ Domyślnie | Nadpisanie CLI&nbsp; | Nadpisanie API&nbsp;
 </code>``</p><h2>Stargazers over time</h2></p><p><a href="https://starchart.cc/ony3000/prettier-plugin-classnames" target="_blank" rel="noopener noreferrer"><img src="https://starchart.cc/ony3000/prettier-plugin-classnames.svg?variant=adaptive" alt="Stargazers over time"></a></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-07
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-03
 
 ---</p>
         </div>
@@ -388,7 +401,7 @@ Domyślnie | Nadpisanie CLI&nbsp; | Nadpisanie API&nbsp;
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-02-07 
+        Last updated: 2026-06-03 
     </div>
     
 </body>

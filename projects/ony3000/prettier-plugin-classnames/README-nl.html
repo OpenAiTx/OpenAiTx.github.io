@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 194
+    "ratingCount": 205
   },
   "url": "https://OpenAiTx.github.io/projects/ony3000/prettier-plugin-classnames/README-nl.html",
   "sameAs": "https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/README.md",
-  "datePublished": "2026-02-07",
-  "dateModified": "2026-02-07"
+  "datePublished": "2026-06-03",
+  "dateModified": "2026-06-03"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 194 stars</span>
+                <span class="stars">⭐ 205 stars</span>
                 <span class="language">Dutch</span>
                 <span>by ony3000</span>
             </div>
@@ -320,7 +320,18 @@
 };</code></pre></p><p>JS-voorbeeld (ES-module):</p><pre><code class="language-javascript">export default {
   plugins: ['prettier-plugin-classnames'],
   endingPosition: 'absolute',
-};</code></pre></p><h2>Opties</h2></p><h3>Aangepaste Attributen</h3></p><p>Lijst van attributen die omliggende klassennamen bevatten.<br>
+};</code></pre></p><h3>Markdown/MDX Override</h3></p><p>Deze plugin ondersteunt geen Markdown en MDX, maar als deze plugin een taal binnen codeblokken ondersteunt (bijv. Vue), kan onbedoelde opmaak optreden binnen de codeblokken.</p><p>Om onbedoelde opmaak te voorkomen, kun je configuratie-overrides gebruiken voor Markdown en MDX.</p><p>JSON-voorbeeld:</p><pre><code class="language-json">{
+  "plugins": ["prettier-plugin-classnames"],
+  "customFunctions": ["clsx"],
+  "overrides": [
+    {
+      "files": ["<em>.md", "</em>.mdx"],
+      "options": {
+        "plugins": []
+      }
+    }
+  ]
+}</code></pre></p><h2>Opties</h2></p><h3>Aangepaste Attributen</h3></p><p>Lijst van attributen die omliggende klassennamen bevatten.<br>
 De attributen <code>class</code> en <code>className</code> worden altijd ondersteund, zelfs als er geen opties zijn opgegeven.</p><p><!-- prettier-ignore -->
 Standaard | CLI&nbsp;Override | API&nbsp;Override
 --- | --- | ---
@@ -331,29 +342,28 @@ Standaard | CLI&nbsp;Override | API&nbsp;Override
 <code>[]</code> | <code>--custom-functions <string></code> | <code>customFunctions: ["<string>"]</code></p><h3>Eindpositie</h3></p><p>Eerst beschikbaar in v0.5.0.<br>
 <code>absolute-with-indent</code> werd toegevoegd in v0.6.0.<br>
 <code>absolute-with-indent</code> werd verwijderd in v0.8.0, maar je kunt dezelfde uitvoer krijgen met <code>absolute</code>.<br>
-Standaardwaarde veranderd van <code>relative</code> naar <code>absolute</code> in v0.8.0.</p><p>Dit is het criterium voor het beëindigen van de klassenaam op elke regel wanneer de originele klassenaam wordt vervangen door een meerregelige klassenaam.</p><ul><li><code>absolute</code> voorbeeld:</li></p><p>  </ul><pre><code class="language-">  --------------------------------------------------| printWidth=50
+Standaardwaarde veranderd van <code>relative</code> naar <code>absolute</code> in v0.8.0.</p><p>Dit is het criterium voor het beëindigen van de klassenaam op elke regel wanneer de originele klassenaam wordt vervangen door een meerregelige klassenaam.</p><ul><li><code>absolute</code> voorbeeld:</li></p><p>  </ul><pre><code class="language-">  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-        className="bg-gray-100/50 border
-          border-zinc-400/30 dark:bg-neutral-900/50
-          dark:border-neutral-500/30 px-4 py-4
-          rounded-xl"
+        className="bg-gray-100/50 dark:bg-neutral-900/50
+          border border-zinc-400/30 dark:border-neutral-500/30
+          rounded-xl px-4 py-4"
       >
         {children}
       </div>
     );
   }
   ``<code></p><ul><li></code>relative<code> voorbeeld:</li></p><p>  </ul></code>`<code>
-  --------------------------------------------------| printWidth=50
+  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-                  |--------------------------------------------------|
-        className="bg-gray-100/50 border border-zinc-400/30
-         |--------------------------------------------------|
-          dark:bg-neutral-900/50 dark:border-neutral-500/30
-          px-4 py-4 rounded-xl"
+       |------------------------------------------------------------|
+        className="bg-gray-100/50 dark:bg-neutral-900/50 border
+         |------------------------------------------------------------|
+          border-zinc-400/30 dark:border-neutral-500/30 rounded-xl
+          px-4 py-4"
       >
         {children}
       </div>
@@ -362,10 +372,13 @@ Standaardwaarde veranderd van <code>relative</code> naar <code>absolute</code> i
   </code>`<code></p><p><!-- prettier-ignore -->
 Standaard | CLI&nbsp;Override | API&nbsp;Override
 --- | --- | ---
-</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>Syntaxistransformatie</h3></p><p>Eerst beschikbaar in v0.7.7.</p><p>Als een regelomloop optreedt in een classnaam geschreven in niet-expressie syntaxis, wordt deze getransformeerd naar expressie syntaxis. Deze transformatie ondersteunt geen omkeerbare opmaak.</p><p><!-- prettier-ignore -->
+</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>Syntaxis Transformatie</h3></p><p>Eerst beschikbaar in v0.7.7.</p><p>Als een regelafbreking plaatsvindt in een klassennaam geschreven in niet-expressie syntaxis, wordt deze getransformeerd naar expressie syntaxis. Deze transformatie ondersteunt geen omkeerbare opmaak.</p><p><!-- prettier-ignore -->
 Standaard | CLI&nbsp;Override | API&nbsp;Override
 --- | --- | ---
-</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h2>Versiecorrelatie met zuster-plugins</h2></p><p>Vanaf versie </code>0.6.0<code>, wanneer er een minor release is aan de ene kant, ben ik van plan die wijziging indien mogelijk ook aan de andere kant te reflecteren.</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="Versiecorrelatie."></p><h2>Compatibiliteit met andere Prettier-plugins</h2></p><p>Als meer dan één Prettier-plugin de tekst die je wilt formatteren kan verwerken, zal Prettier alleen de laatste van die plugins gebruiken.</p><p>In dat geval kun je het als volgt configureren door <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> toe te voegen om die plugins opeenvolgend toe te passen.</p><p>JSON-voorbeeld:</p><p><!-- prettier-ignore --></code></pre>json
+</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h3>Printbreedte van klassenamen</h3></p><p>Eerst beschikbaar in v0.10.0.</p><p>Specificeer de printbreedte van de klassennaam. Als er geen waarde wordt opgegeven, wordt de waarde van </code>printWidth<code> als standaard gebruikt.</p><p><!-- prettier-ignore -->
+Standaard | CLI&nbsp;Override | API&nbsp;Override
+--- | --- | ---
+</code>undefined<code> | </code>--classnames-print-width <number><code> | </code>classnamesPrintWidth: <number><code></p><h2>Versiecorrelatie met verwante plugins</h2></p><p>Vanaf versie </code>0.6.0<code>, wanneer er een minor release is aan één kant, is het de bedoeling om die wijziging indien mogelijk ook aan de andere kant te reflecteren.</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="Versiecorrelatie."></p><h2>Compatibiliteit met andere Prettier-plugins</h2></p><p>Als meer dan één Prettier-plugin de tekst die u wilt formatteren kan verwerken, zal Prettier alleen de laatste van deze plugins gebruiken.</p><p>In dat geval kunt u het als volgt configureren door <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> toe te voegen, zodat deze plugins opeenvolgend worden toegepast.</p><p>JSON-voorbeeld:</p><p><!-- prettier-ignore --></code></pre>json
 {
   "plugins": [
     "prettier-plugin-tailwindcss",
@@ -376,7 +389,7 @@ Standaard | CLI&nbsp;Override | API&nbsp;Override
 </code>``</p><h2>Stargazers over time</h2></p><p><a href="https://starchart.cc/ony3000/prettier-plugin-classnames" target="_blank" rel="noopener noreferrer"><img src="https://starchart.cc/ony3000/prettier-plugin-classnames.svg?variant=adaptive" alt="Stargazers over time"></a></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-07
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-03
 
 ---</p>
         </div>
@@ -388,7 +401,7 @@ Standaard | CLI&nbsp;Override | API&nbsp;Override
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-02-07 
+        Last updated: 2026-06-03 
     </div>
     
 </body>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>prettier-plugin-classnames - یک افزونه Prettier که نام‌های کلاس طولانی را بر اساس گزینه `printWidth` می‌شکند.</title>
-    <meta name="description" content="یک افزونه Prettier که نام‌های کلاس طولانی را بر اساس گزینه `printWidth` می‌شکند.">
+    <title>prettier-plugin-classnames - یک افزونه Prettier که نام کلاس‌های طولانی را بر اساس گزینه `printWidth` می‌شکند.</title>
+    <meta name="description" content="یک افزونه Prettier که نام کلاس‌های طولانی را بر اساس گزینه `printWidth` می‌شکند.">
     <meta name="keywords" content="prettier-plugin-classnames, Persian, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "prettier-plugin-classnames",
-  "description": "یک افزونه Prettier که نام‌های کلاس طولانی را بر اساس گزینه `printWidth` می‌شکند.",
+  "description": "یک افزونه Prettier که نام کلاس‌های طولانی را بر اساس گزینه `printWidth` می‌شکند.",
   "author": {
     "@type": "Person",
     "name": "ony3000"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 194
+    "ratingCount": 205
   },
   "url": "https://OpenAiTx.github.io/projects/ony3000/prettier-plugin-classnames/README-fa.html",
   "sameAs": "https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/README.md",
-  "datePublished": "2026-02-07",
-  "dateModified": "2026-02-07"
+  "datePublished": "2026-06-03",
+  "dateModified": "2026-06-03"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 194 stars</span>
+                <span class="stars">⭐ 205 stars</span>
                 <span class="language">Persian</span>
                 <span>by ony3000</span>
             </div>
@@ -320,7 +320,18 @@
 };</code></pre></p><p>مثال JS (ماژول ES):</p><pre><code class="language-javascript">export default {
   plugins: ['prettier-plugin-classnames'],
   endingPosition: 'absolute',
-};</code></pre></p><h2>گزینه‌ها</h2></p><h3>ویژگی‌های سفارشی</h3></p><p>فهرستی از ویژگی‌ها که نام کلاس‌های محصورکننده را شامل می‌شوند.<br>
+};</code></pre></p><h3>جایگزینی Markdown/MDX</h3></p><p>این افزونه از Markdown و MDX پشتیبانی نمی‌کند، اما اگر این افزونه از یک زبان درون بلوک‌های کد (مثلاً Vue) پشتیبانی کند، فرمت‌بندی ناخواسته ممکن است درون بلوک‌های کد رخ دهد.</p><p>برای جلوگیری از فرمت‌بندی ناخواسته، می‌توانید از تنظیمات جایگزین برای Markdown و MDX استفاده کنید.</p><p>نمونه JSON:</p><pre><code class="language-json">{
+  "plugins": ["prettier-plugin-classnames"],
+  "customFunctions": ["clsx"],
+  "overrides": [
+    {
+      "files": ["<em>.md", "</em>.mdx"],
+      "options": {
+        "plugins": []
+      }
+    }
+  ]
+}</code></pre></p><h2>گزینه‌ها</h2></p><h3>ویژگی‌های سفارشی</h3></p><p>فهرستی از ویژگی‌ها که نام کلاس‌های محصورکننده را شامل می‌شوند.<br>
 ویژگی‌های <code>class</code> و <code>className</code> همواره پشتیبانی می‌شوند، حتی اگر هیچ گزینه‌ای تعیین نشده باشد.</p><p><!-- prettier-ignore -->
 پیش‌فرض | جایگزینی&nbsp;CLI | جایگزینی&nbsp;API
 --- | --- | ---
@@ -331,41 +342,43 @@
 <code>[]</code> | <code>--custom-functions <string></code> | <code>customFunctions: ["<string>"]</code></p><h3>موقعیت پایانی</h3></p><p>برای اولین بار در نسخه v0.5.0 ارائه شد.<br>
 <code>absolute-with-indent</code> در نسخه v0.6.0 اضافه شد.<br>
 <code>absolute-with-indent</code> در نسخه v0.8.0 حذف شد، اما می‌توانید همان خروجی را با <code>absolute</code> دریافت کنید.<br>
-مقدار پیش‌فرض از <code>relative</code> به <code>absolute</code> در نسخه v0.8.0 تغییر کرد.</p><p>این معیار برای پایان نام کلاس در هر خط هنگام جایگزینی نام کلاس اصلی با نام کلاس چندخطی است.</p><ul><li>مثال <code>absolute</code>:</li></p><p>  </ul><pre><code class="language-">  --------------------------------------------------| printWidth=50
+مقدار پیش‌فرض از <code>relative</code> به <code>absolute</code> در نسخه v0.8.0 تغییر کرد.</p><p>این معیار برای پایان نام کلاس در هر خط هنگام جایگزینی نام کلاس اصلی با نام کلاس چندخطی است.</p><ul><li>مثال <code>absolute</code>:</li></p><p>  </ul><pre><code class="language-">  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-        className="bg-gray-100/50 border
-          border-zinc-400/30 dark:bg-neutral-900/50
-          dark:border-neutral-500/30 px-4 py-4
-          rounded-xl"
+        className="bg-gray-100/50 dark:bg-neutral-900/50
+          border border-zinc-400/30 dark:border-neutral-500/30
+          rounded-xl px-4 py-4"
       >
         {children}
       </div>
     );
   }
   ``<code></p><ul><li>مثال </code>relative<code>:</li></p><p>  </ul></code>`<code>
-  --------------------------------------------------| printWidth=50
+  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-                  |--------------------------------------------------|
-        className="bg-gray-100/50 border border-zinc-400/30
-         |--------------------------------------------------|
-          dark:bg-neutral-900/50 dark:border-neutral-500/30
-          px-4 py-4 rounded-xl"
+       |------------------------------------------------------------|
+        className="bg-gray-100/50 dark:bg-neutral-900/50 border
+         |------------------------------------------------------------|
+          border-zinc-400/30 dark:border-neutral-500/30 rounded-xl
+          px-4 py-4"
       >
         {children}
       </div>
     );
   }
   </code>`<code></p><p><!-- prettier-ignore -->
-پیش‌فرض | جایگزینی CLI&nbsp; | جایگزینی API&nbsp;
+پیش‌فرض | جایگزینی&nbsp;CLI | جایگزینی&nbsp;API
 --- | --- | ---
-</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>تبدیل نحو</h3></p><p>اولین بار در نسخه v0.7.7 ارائه شد.</p><p>اگر در یک نام کلاس نوشته‌شده به صورت نحو غیرعبارتی، شکست خط رخ دهد، به نحو عبارتی تبدیل می‌شود. این تبدیل از قالب‌بندی برگشت‌پذیر پشتیبانی نمی‌کند.</p><p><!-- prettier-ignore -->
-پیش‌فرض | جایگزینی CLI&nbsp; | جایگزینی API&nbsp;
+</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>تبدیل نحو (Syntax Transformation)</h3></p><p>اولین بار در نسخه v0.7.7 ارائه شد.</p><p>اگر شکست خط در نام کلاس نوشته شده با نحو غیر-عبارتی رخ دهد، به نحو عبارتی تبدیل می‌شود. این تبدیل از قالب‌بندی معکوس پشتیبانی نمی‌کند.</p><p><!-- prettier-ignore -->
+پیش‌فرض | جایگزینی&nbsp;CLI | جایگزینی&nbsp;API
 --- | --- | ---
-</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h2>همبستگی نسخه با پلاگین‌های هم‌خانواده</h2></p><p>از نسخه </code>0.6.0<code>، در صورت انتشار یک نسخه کوچک در یک طرف، در صورت امکان آن تغییر را در طرف دیگر نیز اعمال خواهم کرد.</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="همبستگی نسخه."></p><h2>سازگاری با سایر پلاگین‌های Prettier</h2></p><p>اگر بیش از یک پلاگین Prettier بتواند متنی را که می‌خواهید قالب‌بندی کنید مدیریت کند، Prettier فقط آخرین پلاگین از آن‌ها را استفاده خواهد کرد.</p><p>در این حالت، می‌توانید با افزودن <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> آن را طوری پیکربندی کنید که این پلاگین‌ها به صورت متوالی اعمال شوند.</p><p>نمونه JSON:</p><p><!-- prettier-ignore --></code></pre>json
+</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h3>عرض چاپ نام کلاس‌ها (Classnames Print Width)</h3></p><p>اولین بار در نسخه v0.10.0 ارائه شد.</p><p>عرض چاپ نام کلاس را مشخص کنید. اگر مقداری ارائه نشود، مقدار </code>printWidth<code> به عنوان پیش‌فرض استفاده می‌شود.</p><p><!-- prettier-ignore -->
+پیش‌فرض | جایگزینی&nbsp;CLI | جایگزینی&nbsp;API
+--- | --- | ---
+</code>undefined<code> | </code>--classnames-print-width <number><code> | </code>classnamesPrintWidth: <number><code></p><h2>همبستگی نسخه با افزونه‌های هم‌خانواده</h2></p><p>از نسخه </code>0.6.0<code>، زمانی که یک انتشار جزئی در یک طرف باشد، در صورت امکان آن تغییر را در طرف دیگر نیز منعکس خواهم کرد.</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="همبستگی نسخه."></p><h2>سازگاری با سایر افزونه‌های Prettier</h2></p><p>اگر بیش از یک افزونه Prettier بتواند متنی که می‌خواهید قالب‌بندی کنید را مدیریت کند، Prettier فقط آخرین افزونه از آن‌ها را استفاده می‌کند.</p><p>در این حالت، می‌توانید آن را به صورت زیر با افزودن <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> تنظیم کنید تا افزونه‌ها به صورت متوالی اعمال شوند.</p><p>مثال JSON:</p><p><!-- prettier-ignore --></code></pre>json
 {
   "plugins": [
     "prettier-plugin-tailwindcss",
@@ -376,7 +389,7 @@
 </code>``</p><h2>Stargazers over time</h2></p><p><a href="https://starchart.cc/ony3000/prettier-plugin-classnames" target="_blank" rel="noopener noreferrer"><img src="https://starchart.cc/ony3000/prettier-plugin-classnames.svg?variant=adaptive" alt="Stargazers over time"></a></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-07
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-03
 
 ---</p>
         </div>
@@ -388,7 +401,7 @@
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-02-07 
+        Last updated: 2026-06-03 
     </div>
     
 </body>

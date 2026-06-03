@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>prettier-plugin-classnames - एक Prettier प्लगइन जो `printWidth` विकल्प के आधार पर विस्तृत क्लास नामों को रैप करता है।</title>
-    <meta name="description" content="एक Prettier प्लगइन जो `printWidth` विकल्प के आधार पर विस्तृत क्लास नामों को रैप करता है।">
+    <title>prettier-plugin-classnames - एक प्रीटियर प्लगइन जो `printWidth` विकल्प के आधार पर लंबे क्लास नामों को लपेटता है।</title>
+    <meta name="description" content="एक प्रीटियर प्लगइन जो `printWidth` विकल्प के आधार पर लंबे क्लास नामों को लपेटता है।">
     <meta name="keywords" content="prettier-plugin-classnames, Hindi, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "prettier-plugin-classnames",
-  "description": "एक Prettier प्लगइन जो `printWidth` विकल्प के आधार पर विस्तृत क्लास नामों को रैप करता है।",
+  "description": "एक प्रीटियर प्लगइन जो `printWidth` विकल्प के आधार पर लंबे क्लास नामों को लपेटता है।",
   "author": {
     "@type": "Person",
     "name": "ony3000"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 194
+    "ratingCount": 205
   },
   "url": "https://OpenAiTx.github.io/projects/ony3000/prettier-plugin-classnames/README-hi.html",
   "sameAs": "https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/README.md",
-  "datePublished": "2026-02-07",
-  "dateModified": "2026-02-07"
+  "datePublished": "2026-06-03",
+  "dateModified": "2026-06-03"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 194 stars</span>
+                <span class="stars">⭐ 205 stars</span>
                 <span class="language">Hindi</span>
                 <span>by ony3000</span>
             </div>
@@ -320,7 +320,18 @@
 };</code></pre></p><p>JS उदाहरण (ES मॉड्यूल):</p><pre><code class="language-javascript">export default {
   plugins: ['prettier-plugin-classnames'],
   endingPosition: 'absolute',
-};</code></pre></p><h2>विकल्प</h2></p><h3>कस्टम एट्रिब्यूट्स</h3></p><p>उन एट्रिब्यूट्स की सूची जो वर्ग नाम को समेटते हैं।<br>
+};</code></pre></p><h3>मार्कडाउन/MDX ओवरराइड</h3></p><p>यह प्लगइन मार्कडाउन और MDX का समर्थन नहीं करता है, लेकिन यदि यह प्लगइन कोड ब्लॉक्स के अंदर किसी भाषा का समर्थन करता है (जैसे Vue), तो कोड ब्लॉक्स के अंदर अनजाने में फॉर्मेटिंग हो सकती है।</p><p>अनचाही फॉर्मेटिंग को रोकने के लिए, आप मार्कडाउन और MDX के लिए कॉन्फ़िगरेशन ओवरराइड्स का उपयोग कर सकते हैं।</p><p>JSON उदाहरण:</p><pre><code class="language-json">{
+  "plugins": ["prettier-plugin-classnames"],
+  "customFunctions": ["clsx"],
+  "overrides": [
+    {
+      "files": ["<em>.md", "</em>.mdx"],
+      "options": {
+        "plugins": []
+      }
+    }
+  ]
+}</code></pre></p><h2>विकल्प</h2></p><h3>कस्टम एट्रिब्यूट्स</h3></p><p>उन एट्रिब्यूट्स की सूची जो वर्ग नाम को समेटते हैं।<br>
 <code>class</code> और <code>className</code> एट्रिब्यूट्स हमेशा समर्थित हैं, भले ही कोई विकल्प निर्दिष्ट न हो।</p><p><!-- prettier-ignore -->
 डिफ़ॉल्ट | CLI&nbsp;ओवरराइड | API&nbsp;ओवरराइड
 --- | --- | ---
@@ -331,41 +342,43 @@
 <code>[]</code> | <code>--custom-functions <string></code> | <code>customFunctions: ["<string>"]</code></p><h3>समाप्ति स्थिति</h3></p><p>v0.5.0 में पहली बार उपलब्ध।<br>
 <code>absolute-with-indent</code> v0.6.0 में जोड़ा गया था।<br>
 <code>absolute-with-indent</code> v0.8.0 में हटा दिया गया, लेकिन आप <code>absolute</code> के साथ वही आउटपुट प्राप्त कर सकते हैं।<br>
-डिफ़ॉल्ट मान v0.8.0 में <code>relative</code> से बदलकर <code>absolute</code> कर दिया गया है।</p><p>यह प्रत्येक पंक्ति पर मूल वर्ग नाम को बहु-पंक्ति वर्ग नाम से बदलते समय वर्ग नाम समाप्त करने का मानदंड है।</p><ul><li><code>absolute</code> उदाहरण:</li></p><p>  </ul><pre><code class="language-">  --------------------------------------------------| printWidth=50
+डिफ़ॉल्ट मान v0.8.0 में <code>relative</code> से बदलकर <code>absolute</code> कर दिया गया है।</p><p>यह प्रत्येक पंक्ति पर मूल वर्ग नाम को बहु-पंक्ति वर्ग नाम से बदलते समय वर्ग नाम समाप्त करने का मानदंड है।</p><ul><li><code>absolute</code> उदाहरण:</li></p><p>  </ul><pre><code class="language-">  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-        className="bg-gray-100/50 border
-          border-zinc-400/30 dark:bg-neutral-900/50
-          dark:border-neutral-500/30 px-4 py-4
-          rounded-xl"
+        className="bg-gray-100/50 dark:bg-neutral-900/50
+          border border-zinc-400/30 dark:border-neutral-500/30
+          rounded-xl px-4 py-4"
       >
         {children}
       </div>
     );
   }
   ``<code></p><ul><li></code>relative<code> उदाहरण:</li></p><p>  </ul></code>`<code>
-  --------------------------------------------------| printWidth=50
+  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-                  |--------------------------------------------------|
-        className="bg-gray-100/50 border border-zinc-400/30
-         |--------------------------------------------------|
-          dark:bg-neutral-900/50 dark:border-neutral-500/30
-          px-4 py-4 rounded-xl"
+       |------------------------------------------------------------|
+        className="bg-gray-100/50 dark:bg-neutral-900/50 border
+         |------------------------------------------------------------|
+          border-zinc-400/30 dark:border-neutral-500/30 rounded-xl
+          px-4 py-4"
       >
         {children}
       </div>
     );
   }
   </code>`<code></p><p><!-- prettier-ignore -->
-डिफ़ॉल्ट | CLI&nbsp;ओवरराइड | API&nbsp;ओवरराइड
+डिफ़ॉल्ट | CLI ओवरराइड | API ओवरराइड
 --- | --- | ---
-</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>सिंटैक्स ट्रांसफॉर्मेशन</h3></p><p>पहली बार v0.7.7 में उपलब्ध।</p><p>अगर किसी क्लास नाम में नॉन-एक्सप्रेशन सिंटैक्स में लाइन रैपिंग होती है, तो उसे एक्सप्रेशन सिंटैक्स में बदल दिया जाता है। यह ट्रांसफॉर्मेशन रिवर्सिबल फॉर्मेटिंग को सपोर्ट नहीं करता।</p><p><!-- prettier-ignore -->
-डिफ़ॉल्ट | CLI&nbsp;ओवरराइड | API&nbsp;ओवरराइड
+</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>सिंटैक्स ट्रांसफॉर्मेशन</h3></p><p>पहली बार v0.7.7 में उपलब्ध।</p><p>यदि गैर-एक्सप्रेशन सिंटैक्स में लिखे गए क्लास नाम में लाइन रैपिंग होती है, तो इसे एक्सप्रेशन सिंटैक्स में ट्रांसफॉर्म कर दिया जाता है। यह ट्रांसफॉर्मेशन रिवर्सिबल फॉर्मेटिंग का समर्थन नहीं करता है।</p><p><!-- prettier-ignore -->
+डिफ़ॉल्ट | CLI ओवरराइड | API ओवरराइड
 --- | --- | ---
-</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h2>संस्करण संबंध भाई-बहन प्लगइन्स के साथ</h2></p><p></code>0.6.0<code> से शुरू करते हुए, जब एक तरफ माइनर रिलीज़ होती है, तो मैं संभव हो तो उस बदलाव को दूसरी तरफ भी दर्शाने की योजना बनाता हूँ।</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="संस्करण संबंध."></p><h2>अन्य Prettier प्लगइन्स के साथ कम्पैटिबिलिटी</h2></p><p>अगर एक से अधिक Prettier प्लगइन उस टेक्स्ट को फॉर्मेट कर सकते हैं जिसे आप फॉर्मेट करना चाहते हैं, तो Prettier केवल उन प्लगइन्स में से अंतिम वाले का उपयोग करेगा।</p><p>इस स्थिति में, आप <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> जोड़कर उन प्लगइन्स को क्रमशः लागू करने के लिए इसे इस प्रकार कॉन्फ़िगर कर सकते हैं।</p><p>JSON उदाहरण:</p><p><!-- prettier-ignore --></code></pre>json
+</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h3>क्लासनेम्स प्रिंट चौड़ाई</h3></p><p>पहली बार v0.10.0 में उपलब्ध।</p><p>क्लास नाम की प्रिंट चौड़ाई निर्दिष्ट करें। यदि कोई मान नहीं दिया गया है, तो डिफ़ॉल्ट रूप में </code>printWidth<code> मान का उपयोग किया जाता है।</p><p><!-- prettier-ignore -->
+डिफ़ॉल्ट | CLI ओवरराइड | API ओवरराइड
+--- | --- | ---
+</code>undefined<code> | </code>--classnames-print-width <number><code> | </code>classnamesPrintWidth: <number><code></p><h2>समकक्ष प्लगइन्स के साथ संस्करण सहसंबंध</h2></p><p></code>0.6.0<code> से शुरू करते हुए, जब एक ओर माइनर रिलीज़ होती है, तो मैं संभव हो तो उस बदलाव को दूसरी ओर भी दर्शाने का प्रयास करूंगा।</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="संस्करण सहसंबंध।"></p><h2>अन्य प्रिटियर प्लगइन्स के साथ संगतता</h2></p><p>यदि एक से अधिक प्रिटियर प्लगइन उस टेक्स्ट को हैंडल कर सकते हैं जिसे आप फॉर्मेट करना चाहते हैं, तो प्रिटियर केवल उन प्लगइन्स में से अंतिम का उपयोग करेगा।</p><p>इस स्थिति में, आप उन प्लगइन्स को क्रमिक रूप से लागू करने के लिए <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> जोड़कर इसे निम्नानुसार कॉन्फ़िगर कर सकते हैं।</p><p>JSON उदाहरण:</p><p><!-- prettier-ignore --></code></pre>json
 {
   "plugins": [
     "prettier-plugin-tailwindcss",
@@ -376,7 +389,7 @@
 </code>``</p><h2>Stargazers over time</h2></p><p><a href="https://starchart.cc/ony3000/prettier-plugin-classnames" target="_blank" rel="noopener noreferrer"><img src="https://starchart.cc/ony3000/prettier-plugin-classnames.svg?variant=adaptive" alt="Stargazers over time"></a></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-07
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-03
 
 ---</p>
         </div>
@@ -388,7 +401,7 @@
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-02-07 
+        Last updated: 2026-06-03 
     </div>
     
 </body>

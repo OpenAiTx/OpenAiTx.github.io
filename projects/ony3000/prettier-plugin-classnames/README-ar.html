@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>prettier-plugin-classnames - إضافة Prettier تقوم بتقسيم أسماء الأصناف الطويلة بناءً على خيار `printWidth`.</title>
-    <meta name="description" content="إضافة Prettier تقوم بتقسيم أسماء الأصناف الطويلة بناءً على خيار `printWidth`.">
+    <title>prettier-plugin-classnames - إضافة لـ Prettier تقوم بتقسيم أسماء الأصناف الطويلة استنادًا إلى خيار `printWidth`.</title>
+    <meta name="description" content="إضافة لـ Prettier تقوم بتقسيم أسماء الأصناف الطويلة استنادًا إلى خيار `printWidth`.">
     <meta name="keywords" content="prettier-plugin-classnames, Arabic, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "prettier-plugin-classnames",
-  "description": "إضافة Prettier تقوم بتقسيم أسماء الأصناف الطويلة بناءً على خيار `printWidth`.",
+  "description": "إضافة لـ Prettier تقوم بتقسيم أسماء الأصناف الطويلة استنادًا إلى خيار `printWidth`.",
   "author": {
     "@type": "Person",
     "name": "ony3000"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 194
+    "ratingCount": 205
   },
   "url": "https://OpenAiTx.github.io/projects/ony3000/prettier-plugin-classnames/README-ar.html",
   "sameAs": "https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/README.md",
-  "datePublished": "2026-02-07",
-  "dateModified": "2026-02-07"
+  "datePublished": "2026-06-03",
+  "dateModified": "2026-06-03"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 194 stars</span>
+                <span class="stars">⭐ 205 stars</span>
                 <span class="language">Arabic</span>
                 <span>by ony3000</span>
             </div>
@@ -320,7 +320,18 @@
 };</code></pre></p><p>مثال JS (وحدة ES):</p><pre><code class="language-javascript">export default {
   plugins: ['prettier-plugin-classnames'],
   endingPosition: 'absolute',
-};</code></pre></p><h2>الخيارات</h2></p><h3>السمات المخصصة</h3></p><p>قائمة السمات التي تحتوي على أسماء الفئات المغلقة.<br>
+};</code></pre></p><h3>تجاوز Markdown/MDX</h3></p><p>لا يدعم هذا البرنامج الإضافي Markdown و MDX، ولكن إذا كان هذا البرنامج الإضافي يدعم لغة داخل كتل الشيفرة (مثل Vue)، فقد يحدث تنسيق غير مقصود داخل كتل الشيفرة.</p><p>لمنع التنسيق غير المقصود، يمكنك استخدام تجاوزات التكوين لـ Markdown و MDX.</p><p>مثال JSON:</p><pre><code class="language-json">{
+  "plugins": ["prettier-plugin-classnames"],
+  "customFunctions": ["clsx"],
+  "overrides": [
+    {
+      "files": ["<em>.md", "</em>.mdx"],
+      "options": {
+        "plugins": []
+      }
+    }
+  ]
+}</code></pre></p><h2>الخيارات</h2></p><h3>السمات المخصصة</h3></p><p>قائمة السمات التي تحتوي على أسماء الفئات المغلقة.<br>
 سمتا <code>class</code> و <code>className</code> مدعومتان دائمًا، حتى لو لم يتم تحديد أي خيارات.</p><p><!-- prettier-ignore -->
 القيمة الافتراضية | تجاوز CLI | تجاوز API
 --- | --- | ---
@@ -331,29 +342,28 @@
 <code>[]</code> | <code>--custom-functions <string></code> | <code>customFunctions: ["<string>"]</code></p><h3>وضع النهاية</h3></p><p>ظهرت لأول مرة في الإصدار v0.5.0.<br>
 تمت إضافة <code>absolute-with-indent</code> في v0.6.0.<br>
 تمت إزالة <code>absolute-with-indent</code> في v0.8.0، لكن يمكنك الحصول على نفس الناتج باستخدام <code>absolute</code>.<br>
-تم تغيير القيمة الافتراضية من <code>relative</code> إلى <code>absolute</code> في v0.8.0.</p><p>هذا هو المعيار لإنهاء اسم الفئة في كل سطر عند استبدال اسم الفئة الأصلي باسم فئة متعدد الأسطر.</p><ul><li>مثال على <code>absolute</code>:</li></p><p>  </ul><pre><code class="language-">  --------------------------------------------------| printWidth=50
+تم تغيير القيمة الافتراضية من <code>relative</code> إلى <code>absolute</code> في v0.8.0.</p><p>هذا هو المعيار لإنهاء اسم الفئة في كل سطر عند استبدال اسم الفئة الأصلي باسم فئة متعدد الأسطر.</p><ul><li>مثال على <code>absolute</code>:</li></p><p>  </ul><pre><code class="language-">  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-        className="bg-gray-100/50 border
-          border-zinc-400/30 dark:bg-neutral-900/50
-          dark:border-neutral-500/30 px-4 py-4
-          rounded-xl"
+        className="bg-gray-100/50 dark:bg-neutral-900/50
+          border border-zinc-400/30 dark:border-neutral-500/30
+          rounded-xl px-4 py-4"
       >
         {children}
       </div>
     );
   }
   ``<code></p><ul><li>مثال على </code>relative<code>:</li></p><p>  </ul></code>`<code>
-  --------------------------------------------------| printWidth=50
+  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-                  |--------------------------------------------------|
-        className="bg-gray-100/50 border border-zinc-400/30
-         |--------------------------------------------------|
-          dark:bg-neutral-900/50 dark:border-neutral-500/30
-          px-4 py-4 rounded-xl"
+       |------------------------------------------------------------|
+        className="bg-gray-100/50 dark:bg-neutral-900/50 border
+         |------------------------------------------------------------|
+          border-zinc-400/30 dark:border-neutral-500/30 rounded-xl
+          px-4 py-4"
       >
         {children}
       </div>
@@ -362,10 +372,13 @@
   </code>`<code></p><p><!-- prettier-ignore -->
 الافتراضي | تجاوز CLI&nbsp; | تجاوز API&nbsp;
 --- | --- | ---
-</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>تحويل البنية النحوية</h3></p><p>متوفر لأول مرة في الإصدار v0.7.7.</p><p>إذا حدث التفاف للسطر في اسم الصنف المكتوب بصيغة غير تعبيرية، يتم تحويله إلى صيغة تعبيرية. هذا التحويل لا يدعم التنسيق العكسي.</p><p><!-- prettier-ignore -->
+</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>تحويل الصياغة النحوية</h3></p><p>متوفر لأول مرة في الإصدار v0.7.7.</p><p>إذا حدث التفاف للسطر في اسم صنف مكتوب بصياغة غير تعبيرية، يتم تحويله إلى صياغة تعبيرية. هذا التحويل لا يدعم التنسيق العكسي.</p><p><!-- prettier-ignore -->
 الافتراضي | تجاوز CLI&nbsp; | تجاوز API&nbsp;
 --- | --- | ---
-</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h2>ارتباط الإصدارات مع الإضافات الشقيقة</h2></p><p>بدءًا من الإصدار </code>0.6.0<code>، عندما يكون هناك إصدار فرعي على أحد الجانبين، أخطط لعكس هذا التغيير على الجانب الآخر أيضًا إذا أمكن ذلك.</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="ارتباط الإصدارات."></p><h2>التوافق مع إضافات Prettier الأخرى</h2></p><p>إذا كان هناك أكثر من إضافة Prettier يمكنها معالجة النص الذي تريد تنسيقه، سيستخدم Prettier فقط آخر إضافة من تلك الإضافات.</p><p>في هذه الحالة، يمكنك تكوين ذلك كما يلي بإضافة <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> لتطبيق تلك الإضافات بشكل متسلسل.</p><p>مثال JSON:</p><p><!-- prettier-ignore --></code></pre>json
+</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h3>عرض الطباعة لأسماء الأصناف</h3></p><p>متوفر لأول مرة في الإصدار v0.10.0.</p><p>حدد عرض الطباعة لاسم الصنف. إذا لم يتم توفير قيمة، سيتم استخدام قيمة </code>printWidth<code> كافتراضية.</p><p><!-- prettier-ignore -->
+الافتراضي | تجاوز CLI&nbsp; | تجاوز API&nbsp;
+--- | --- | ---
+</code>undefined<code> | </code>--classnames-print-width <number><code> | </code>classnamesPrintWidth: <number><code></p><h2>الارتباط بين الإصدارات والإضافات الشقيقة</h2></p><p>بدءًا من الإصدار </code>0.6.0<code>، عند وجود إصدار فرعي في أحد الجانبين، أخطط لعكس هذا التغيير على الجانب الآخر أيضًا إذا أمكن.</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="الارتباط بين الإصدارات."></p><h2>التوافق مع إضافات Prettier الأخرى</h2></p><p>إذا كان بإمكان أكثر من إضافة Prettier التعامل مع النص الذي تريد تنسيقه، فسيستخدم Prettier فقط آخر إضافة من هذه الإضافات.</p><p>في هذه الحالة، يمكنك تهيئتها كما يلي عن طريق إضافة <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> لتطبيق هذه الإضافات بالتسلسل.</p><p>مثال JSON:</p><p><!-- تجاهل التنسيق --></code></pre>json
 {
   "plugins": [
     "prettier-plugin-tailwindcss",
@@ -376,7 +389,7 @@
 </code>``</p><h2>Stargazers over time</h2></p><p><a href="https://starchart.cc/ony3000/prettier-plugin-classnames" target="_blank" rel="noopener noreferrer"><img src="https://starchart.cc/ony3000/prettier-plugin-classnames.svg?variant=adaptive" alt="Stargazers over time"></a></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-07
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-03
 
 ---</p>
         </div>
@@ -388,7 +401,7 @@
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-02-07 
+        Last updated: 2026-06-03 
     </div>
     
 </body>

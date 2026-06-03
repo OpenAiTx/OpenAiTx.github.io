@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>prettier-plugin-classnames - `printWidth` বিকল্পৰ আধাৰত দীঘল class name সমূহক মোহাৰি দিয়া এজন Prettier প্লাগইন।</title>
-    <meta name="description" content="`printWidth` বিকল্পৰ আধাৰত দীঘল class name সমূহক মোহাৰি দিয়া এজন Prettier প্লাগইন।">
+    <title>prettier-plugin-classnames - এটা Prettier প্লাগইন যি `printWidth` বিকল্পৰ আধাৰত দীঘল class name সমূহক ৰেপ কৰে।</title>
+    <meta name="description" content="এটা Prettier প্লাগইন যি `printWidth` বিকল্পৰ আধাৰত দীঘল class name সমূহক ৰেপ কৰে।">
     <meta name="keywords" content="prettier-plugin-classnames, Assamese, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "prettier-plugin-classnames",
-  "description": "`printWidth` বিকল্পৰ আধাৰত দীঘল class name সমূহক মোহাৰি দিয়া এজন Prettier প্লাগইন।",
+  "description": "এটা Prettier প্লাগইন যি `printWidth` বিকল্পৰ আধাৰত দীঘল class name সমূহক ৰেপ কৰে।",
   "author": {
     "@type": "Person",
     "name": "ony3000"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 194
+    "ratingCount": 205
   },
   "url": "https://OpenAiTx.github.io/projects/ony3000/prettier-plugin-classnames/README-as.html",
   "sameAs": "https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/README.md",
-  "datePublished": "2026-02-07",
-  "dateModified": "2026-02-07"
+  "datePublished": "2026-06-03",
+  "dateModified": "2026-06-03"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 194 stars</span>
+                <span class="stars">⭐ 205 stars</span>
                 <span class="language">Assamese</span>
                 <span>by ony3000</span>
             </div>
@@ -320,7 +320,18 @@
 };</code></pre></p><p>JS উদাহৰণ (ES মডিউল):</p><pre><code class="language-javascript">export default {
   plugins: ['prettier-plugin-classnames'],
   endingPosition: 'absolute',
-};</code></pre></p><h2>বিকল্পসমূহ</h2></p><h3>কাষ্টম এট্ৰিবিউটসমূহ</h3></p><p>এনক্ল'জিং ক্লাছ নামসমূহৰ এট্ৰিবিউটৰ তালিকা।<br>
+};</code></pre></p><h3>Markdown/MDX অ'ভাৰাইড</h3></p><p>এই প্লাগইনটোৱে Markdown আৰু MDX সমৰ্থন নকৰে, কিন্তু যদি এই প্লাগইনটোৱে ক'ড ব্লকসমূহৰ ভিতৰত কোনো ভাষা সমৰ্থন কৰে (উদাহৰণস্বৰূপে Vue), তেন্তে ক'ড ব্লকসমূহৰ ভিতৰত অনিচ্ছাকৃত ফৰ্মেটিং ঘটিব পাৰে।</p><p>অনিচ্ছাকৃত ফৰ্মেটিং ৰোধ কৰিবলৈ, আপুনি Markdown আৰু MDX-ৰ বাবে কনফিগাৰেচন অ'ভাৰাইড ব্যৱহাৰ কৰিব পাৰে।</p><p>JSON উদাহৰণ:</p><pre><code class="language-json">{
+  "plugins": ["prettier-plugin-classnames"],
+  "customFunctions": ["clsx"],
+  "overrides": [
+    {
+      "files": ["<em>.md", "</em>.mdx"],
+      "options": {
+        "plugins": []
+      }
+    }
+  ]
+}</code></pre></p><h2>বিকল্পসমূহ</h2></p><h3>কাষ্টম এট্ৰিবিউটসমূহ</h3></p><p>এনক্ল'জিং ক্লাছ নামসমূহৰ এট্ৰিবিউটৰ তালিকা।<br>
 <code>class</code> আৰু <code>className</code> এট্ৰিবিউট সদায় সমৰ্থিত, বিকল্প নিৰ্ধাৰণ নকৰিলেও।</p><p><!-- prettier-ignore -->
 ডিফ'ল্ট | CLI&nbsp;ওভাৰ্ৰাইড | API&nbsp;ওভাৰ্ৰাইড
 --- | --- | ---
@@ -331,41 +342,45 @@
 <code>[]</code> | <code>--custom-functions <string></code> | <code>customFunctions: ["<string>"]</code></p><h3>সমাপ্তিৰ অৱস্থান</h3></p><p>প্ৰথমবাৰৰ বাবে v0.5.0-ত উপলব্ধ।<br>
 <code>absolute-with-indent</code> v0.6.0-ত যোগ কৰা হৈছিল।<br>
 <code>absolute-with-indent</code> v0.8.0-ত আঁতৰ কৰা হৈছিল, কিন্তু আপুনি <code>absolute</code> ব্যৱহাৰ কৰি একে আউটপুট পাব পাৰে।<br>
-ডিফ'ল্ট মান v0.8.0-ত <code>relative</code>ৰ পৰা <code>absolute</code>লৈ সলনি কৰা হৈছিল।</p><p>এইটো হৈছে প্ৰতিটো শাৰীত ক্লাছ নাম শেষ কৰাৰ মানদণ্ড, যেতিয়া মূল ক্লাছ নামক বহু-শাৰীৰ ক্লাছ নামৰ সৈতে প্ৰতিস্থাপন কৰা হয়।</p><ul><li><code>absolute</code> উদাহৰণ:</li></p><p>  </ul><pre><code class="language-">  --------------------------------------------------| printWidth=50
+ডিফ'ল্ট মান v0.8.0-ত <code>relative</code>ৰ পৰা <code>absolute</code>লৈ সলনি কৰা হৈছিল।</p><p>এইটো হৈছে প্ৰতিটো শাৰীত ক্লাছ নাম শেষ কৰাৰ মানদণ্ড, যেতিয়া মূল ক্লাছ নামক বহু-শাৰীৰ ক্লাছ নামৰ সৈতে প্ৰতিস্থাপন কৰা হয়।</p><ul><li><code>absolute</code> উদাহৰণ:</li></p><p>  </ul><pre><code class="language-">  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-        className="bg-gray-100/50 border
-          border-zinc-400/30 dark:bg-neutral-900/50
-          dark:border-neutral-500/30 px-4 py-4
-          rounded-xl"
+        className="bg-gray-100/50 dark:bg-neutral-900/50
+          border border-zinc-400/30 dark:border-neutral-500/30
+          rounded-xl px-4 py-4"
       >
         {children}
       </div>
     );
   }
   ``<code></p><ul><li></code>relative<code> উদাহৰণ:</li></p><p>  </ul></code>`<code>
-  --------------------------------------------------| printWidth=50
+  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-                  |--------------------------------------------------|
-        className="bg-gray-100/50 border border-zinc-400/30
-         |--------------------------------------------------|
-          dark:bg-neutral-900/50 dark:border-neutral-500/30
-          px-4 py-4 rounded-xl"
+       |------------------------------------------------------------|
+        className="bg-gray-100/50 dark:bg-neutral-900/50 border
+         |------------------------------------------------------------|
+          border-zinc-400/30 dark:border-neutral-500/30 rounded-xl
+          px-4 py-4"
       >
         {children}
       </div>
     );
   }
-  </code>`<code></p><p><!-- prettier-ignore -->
-Default | CLI&nbsp;Override | API&nbsp;Override
+  </code>`<code>
+<!-- prettier-ignore -->
+ডিফল্ট | CLI&nbsp;অভাৰাইড | API&nbsp;অভাৰাইড
 --- | --- | ---
-</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>Syntax Transformation</h3></p><p>প্ৰথমবাৰৰ বাবে v0.7.7-ত উপলব্ধ।</p><p>যদি একোটা শ্ৰেণী নামত (class name) non-expression syntax-ত line wrapping হয়, তেতিয়া সেইটো expression syntax-লৈ ৰূপান্তৰিত কৰা হয়। এই ৰূপান্তৰ reversible formatting-ৰ সমৰ্থন নকৰে।</p><p><!-- prettier-ignore -->
-Default | CLI&nbsp;Override | API&nbsp;Override
+</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>সিন্টেক্স ৰূপান্তৰ</h3></p><p>প্ৰথমবাৰ v0.7.7-ত উপলব্ধ।</p><p>যদি কোনো শ্ৰেণী নামত ন-এক্সপ্ৰেশন সিন্টেক্সত লিখা হলে লাইনৰ মোচন ঘটে, তেন্তে সেইটো এক্সপ্ৰেশন সিন্টেক্সলৈ ৰূপান্তৰিত হয়। এই ৰূপান্তৰ reversible formatting সমৰ্থন নকৰে।</p><p><!-- prettier-ignore -->
+ডিফল্ট | CLI&nbsp;অভাৰাইড | API&nbsp;অভাৰাইড
 --- | --- | ---
-</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h2>Version correlation with sibling plugins</h2></p><p></code>0.6.0<code>-ৰ পৰা আৰম্ভ কৰি, যদি এফালে minor release হয়, তেন্তে সম্ভৱ হলে সেই পৰিৱর্তন আনফালতো প্ৰতিফলিত কৰাৰ পৰিকল্পনা আছে।</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="Version correlation."></p><h2>Compatibility with other Prettier plugins</h2></p><p>যদি একাধিক Prettier plugin-এ আপোনাৰ format কৰিবলগীয়া পাঠ্য হেণ্ডল কৰিব পাৰে, তেন্তে Prettier কেৱল শেষ plugin-টো ব্যৱহাৰ কৰিব।</p><p>এই ক্ষেত্ৰত, <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> যোগ কৰি তলত দেখুওৱা দৰে sequentially plugins-বোৰ apply কৰিব পাৰে।</p><p>JSON উদাহৰণ:</p><p><!-- prettier-ignore --></code></pre>json
+</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h3>শ্ৰেণী নাম প্ৰিন্ট উইড্থ</h3></p><p>প্ৰথমবাৰ v0.10.0-ত উপলব্ধ।</p><p>শ্ৰেণী নামৰ প্ৰিন্ট উইড্থ নিৰ্ধাৰণ কৰক। যদি কোনো মান দিয়া নহয়, </code>printWidth<code> মানটো ডিফল্ট হিচাপে ব্যৱহাৰ কৰা হয়।</p><p><!-- prettier-ignore -->
+ডিফল্ট | CLI&nbsp;অভাৰাইড | API&nbsp;অভাৰাইড
+--- | --- | ---
+</code>undefined<code> | </code>--classnames-print-width <number><code> | </code>classnamesPrintWidth: <number><code></p><h2>সংস্কৰণৰ সম্পৰ্ক সibling প্লাগইনৰ সৈতে</h2></p><p></code>0.6.0<code>-ৰ পৰা আৰম্ভ কৰি, যদি কোনো এটা দিশত minor release থাকে, সম্ভৱ হলে সেই পৰিবর্তন আন দিশতো প্রতিফলিত কৰাৰ পৰিকল্পনা আছে।</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="সংস্কৰণৰ সম্পৰ্ক।"></p><h2>আন Prettier প্লাগইনৰ সৈতে সামঞ্জস্যতা</h2></p><p>যদি একাধিক Prettier প্লাগইনে আপোনাৰ ফৰ্মেট কৰিবলৈ চোৱা টেক্সটটো হেণ্ডল কৰিব পাৰে, Prettier কেৱল সেই প্লাগইনৰ অন্তিমটোহে ব্যৱহাৰ কৰে।</p><p>এই ক্ষেত্ৰত, <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> যোগ কৰি সেই প্লাগইনবোৰক ক্ৰমে প্রয়োগ কৰিবলৈ তলত দেখুৱোৱা মতে কনফিগাৰ কৰিব পাৰি।</p><p>
+JSON উদাহৰণ:</p><p><!-- prettier-ignore --></code></pre>json
 {
   "plugins": [
     "prettier-plugin-tailwindcss",
@@ -376,7 +391,7 @@ Default | CLI&nbsp;Override | API&nbsp;Override
 </code>``</p><h2>Stargazers over time</h2></p><p><a href="https://starchart.cc/ony3000/prettier-plugin-classnames" target="_blank" rel="noopener noreferrer"><img src="https://starchart.cc/ony3000/prettier-plugin-classnames.svg?variant=adaptive" alt="Stargazers over time"></a></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-07
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-03
 
 ---</p>
         </div>
@@ -388,7 +403,7 @@ Default | CLI&nbsp;Override | API&nbsp;Override
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-02-07 
+        Last updated: 2026-06-03 
     </div>
     
 </body>

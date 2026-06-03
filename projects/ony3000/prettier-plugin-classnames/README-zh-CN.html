@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>prettier-plugin-classnames - 一个 Prettier 插件，根据 `printWidth` 选项换行冗长的类名。</title>
-    <meta name="description" content="一个 Prettier 插件，根据 `printWidth` 选项换行冗长的类名。">
+    <title>prettier-plugin-classnames - 一个基于 `printWidth` 选项自动换行冗长类名的 Prettier 插件。</title>
+    <meta name="description" content="一个基于 `printWidth` 选项自动换行冗长类名的 Prettier 插件。">
     <meta name="keywords" content="prettier-plugin-classnames, Simplified Chinese, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "prettier-plugin-classnames",
-  "description": "一个 Prettier 插件，根据 `printWidth` 选项换行冗长的类名。",
+  "description": "一个基于 `printWidth` 选项自动换行冗长类名的 Prettier 插件。",
   "author": {
     "@type": "Person",
     "name": "ony3000"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 194
+    "ratingCount": 205
   },
   "url": "https://OpenAiTx.github.io/projects/ony3000/prettier-plugin-classnames/README-zh-CN.html",
   "sameAs": "https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/README.md",
-  "datePublished": "2026-02-07",
-  "dateModified": "2026-02-07"
+  "datePublished": "2026-06-03",
+  "dateModified": "2026-06-03"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 194 stars</span>
+                <span class="stars">⭐ 205 stars</span>
                 <span class="language">Simplified Chinese</span>
                 <span>by ony3000</span>
             </div>
@@ -320,7 +320,18 @@
 };</code></pre></p><p>JS 示例（ES 模块）：</p><pre><code class="language-javascript">export default {
   plugins: ['prettier-plugin-classnames'],
   endingPosition: 'absolute',
-};</code></pre></p><h2>选项</h2></p><h3>自定义属性</h3></p><p>包含类名的属性列表。<br>
+};</code></pre></p><h3>Markdown/MDX 覆盖</h3></p><p>该插件不支持 Markdown 和 MDX，但如果该插件支持代码块中的某种语言（例如 Vue），则代码块内部可能会发生非预期的格式化。</p><p>为防止非预期的格式化，您可以对 Markdown 和 MDX 使用配置覆盖。</p><p>JSON 示例：</p><pre><code class="language-json">{
+  "plugins": ["prettier-plugin-classnames"],
+  "customFunctions": ["clsx"],
+  "overrides": [
+    {
+      "files": ["<em>.md", "</em>.mdx"],
+      "options": {
+        "plugins": []
+      }
+    }
+  ]
+}</code></pre></p><h2>选项</h2></p><h3>自定义属性</h3></p><p>包含类名的属性列表。<br>
 即使未指定任何选项，也始终支持 <code>class</code> 和 <code>className</code> 属性。</p><p><!-- prettier-ignore -->
 默认值 | CLI&nbsp;覆盖 | API&nbsp;覆盖
 --- | --- | ---
@@ -331,41 +342,43 @@
 <code>[]</code> | <code>--custom-functions <string></code> | <code>customFunctions: ["<string>"]</code></p><h3>结束位置</h3></p><p>首次在 v0.5.0 中提供。<br>
 <code>absolute-with-indent</code> 于 v0.6.0 添加。<br>
 <code>absolute-with-indent</code> 于 v0.8.0 移除，但使用 <code>absolute</code> 可获得相同输出。<br>
-默认值在 v0.8.0 中从 <code>relative</code> 更改为 <code>absolute</code>。</p><p>这是替换原始类名为多行类名时，每行结束类名的标准。</p><ul><li><code>absolute</code> 示例：</li></p><p>  </ul><pre><code class="language-">  --------------------------------------------------| printWidth=50
+默认值在 v0.8.0 中从 <code>relative</code> 更改为 <code>absolute</code>。</p><p>这是替换原始类名为多行类名时，每行结束类名的标准。</p><ul><li><code>absolute</code> 示例：</li></p><p>  </ul><pre><code class="language-">  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-        className="bg-gray-100/50 border
-          border-zinc-400/30 dark:bg-neutral-900/50
-          dark:border-neutral-500/30 px-4 py-4
-          rounded-xl"
+        className="bg-gray-100/50 dark:bg-neutral-900/50
+          border border-zinc-400/30 dark:border-neutral-500/30
+          rounded-xl px-4 py-4"
       >
         {children}
       </div>
     );
   }
   ``<code></p><ul><li></code>relative<code> 示例：</li></p><p>  </ul></code>`<code>
-  --------------------------------------------------| printWidth=50
+  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-                  |--------------------------------------------------|
-        className="bg-gray-100/50 border border-zinc-400/30
-         |--------------------------------------------------|
-          dark:bg-neutral-900/50 dark:border-neutral-500/30
-          px-4 py-4 rounded-xl"
+       |------------------------------------------------------------|
+        className="bg-gray-100/50 dark:bg-neutral-900/50 border
+         |------------------------------------------------------------|
+          border-zinc-400/30 dark:border-neutral-500/30 rounded-xl
+          px-4 py-4"
       >
         {children}
       </div>
     );
   }
   </code>`<code></p><p><!-- prettier-ignore -->
-默认 | CLI&nbsp;覆盖 | API&nbsp;覆盖
+默认值 | CLI&nbsp;覆盖 | API&nbsp;覆盖
 --- | --- | ---
-</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>语法转换</h3></p><p>首次在 v0.7.7 中提供。</p><p>如果在非表达式语法中编写的类名出现换行，则会转换为表达式语法。此转换不支持可逆格式化。</p><p><!-- prettier-ignore -->
-默认 | CLI&nbsp;覆盖 | API&nbsp;覆盖
+</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>语法转换</h3></p><p>首次在 v0.7.7 中提供。</p><p>如果非表达式语法书写的类名发生换行，将转换为表达式语法。此转换不支持可逆格式化。</p><p><!-- prettier-ignore -->
+默认值 | CLI&nbsp;覆盖 | API&nbsp;覆盖
 --- | --- | ---
-</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h2>与同类插件的版本关联</h2></p><p>从 </code>0.6.0<code> 开始，当一方有小版本发布时，我计划如果可能，也将该更改反映到另一方。</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="版本关联。"></p><h2>与其他 Prettier 插件的兼容性</h2></p><p>如果多个 Prettier 插件都能处理您想格式化的文本，Prettier 只会使用这些插件中的最后一个。</p><p>在这种情况下，您可以通过添加 <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> 来按顺序应用这些插件，从而进行如下配置。</p><p>JSON 示例：</p><p><!-- prettier-ignore --></code></pre>json
+</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h3>类名打印宽度</h3></p><p>首次在 v0.10.0 中提供。</p><p>指定类名的打印宽度。如果未提供值，则默认使用 </code>printWidth<code> 的值。</p><p><!-- prettier-ignore -->
+默认值 | CLI&nbsp;覆盖 | API&nbsp;覆盖
+--- | --- | ---
+</code>undefined<code> | </code>--classnames-print-width <number><code> | </code>classnamesPrintWidth: <number><code></p><h2>与兄弟插件的版本关联</h2></p><p>从 </code>0.6.0<code> 开始，如果一方有次要版本发布，我计划在可能的情况下将该变更反映到另一方。</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="版本关联."></p><h2>与其他 Prettier 插件的兼容性</h2></p><p>如果有多个 Prettier 插件可以处理你要格式化的文本，Prettier 只会使用这些插件中的最后一个。</p><p>在这种情况下，你可以通过添加 <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> 来按顺序应用这些插件，配置如下。</p><p>JSON 示例：</p><p><!-- prettier-ignore --></code></pre>json
 {
   "plugins": [
     "prettier-plugin-tailwindcss",
@@ -376,7 +389,7 @@
 </code>``</p><h2>Stargazers over time</h2></p><p><a href="https://starchart.cc/ony3000/prettier-plugin-classnames" target="_blank" rel="noopener noreferrer"><img src="https://starchart.cc/ony3000/prettier-plugin-classnames.svg?variant=adaptive" alt="Stargazers over time"></a></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-07
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-03
 
 ---</p>
         </div>
@@ -388,7 +401,7 @@
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-02-07 
+        Last updated: 2026-06-03 
     </div>
     
 </body>

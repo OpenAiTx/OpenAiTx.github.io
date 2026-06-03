@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>prettier-plugin-classnames - Một plugin Prettier gi&#250;p tự động xuống d&#242;ng t&#234;n lớp d&#224;i dựa tr&#234;n t&#249;y chọn `printWidth`.</title>
-    <meta name="description" content="Một plugin Prettier gi&#250;p tự động xuống d&#242;ng t&#234;n lớp d&#224;i dựa tr&#234;n t&#249;y chọn `printWidth`.">
+    <title>prettier-plugin-classnames - Một plugin Prettier gi&#250;p tự động xuống d&#242;ng c&#225;c t&#234;n lớp d&#224;i dựa tr&#234;n t&#249;y chọn `printWidth`.</title>
+    <meta name="description" content="Một plugin Prettier gi&#250;p tự động xuống d&#242;ng c&#225;c t&#234;n lớp d&#224;i dựa tr&#234;n t&#249;y chọn `printWidth`.">
     <meta name="keywords" content="prettier-plugin-classnames, Vietnamese, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "prettier-plugin-classnames",
-  "description": "Một plugin Prettier giúp tự động xuống dòng tên lớp dài dựa trên tùy chọn `printWidth`.",
+  "description": "Một plugin Prettier giúp tự động xuống dòng các tên lớp dài dựa trên tùy chọn `printWidth`.",
   "author": {
     "@type": "Person",
     "name": "ony3000"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 194
+    "ratingCount": 205
   },
   "url": "https://OpenAiTx.github.io/projects/ony3000/prettier-plugin-classnames/README-vi.html",
   "sameAs": "https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/README.md",
-  "datePublished": "2026-02-07",
-  "dateModified": "2026-02-07"
+  "datePublished": "2026-06-03",
+  "dateModified": "2026-06-03"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 194 stars</span>
+                <span class="stars">⭐ 205 stars</span>
                 <span class="language">Vietnamese</span>
                 <span>by ony3000</span>
             </div>
@@ -320,7 +320,18 @@
 };</code></pre></p><p>Ví dụ JS (ES module):</p><pre><code class="language-javascript">export default {
   plugins: ['prettier-plugin-classnames'],
   endingPosition: 'absolute',
-};</code></pre></p><h2>Tùy chọn</h2></p><h3>Thuộc tính Tùy chỉnh</h3></p><p>Danh sách các thuộc tính của tên lớp bao quanh.<br>
+};</code></pre></p><h3>Ghi đè Markdown/MDX</h3></p><p>Plugin này không hỗ trợ Markdown và MDX, nhưng nếu plugin này hỗ trợ một ngôn ngữ bên trong các khối mã (ví dụ: Vue), định dạng không mong muốn có thể xảy ra bên trong các khối mã.</p><p>Để ngăn chặn định dạng không mong muốn, bạn có thể sử dụng các cấu hình ghi đè cho Markdown và MDX.</p><p>Ví dụ JSON:</p><pre><code class="language-json">{
+  "plugins": ["prettier-plugin-classnames"],
+  "customFunctions": ["clsx"],
+  "overrides": [
+    {
+      "files": ["<em>.md", "</em>.mdx"],
+      "options": {
+        "plugins": []
+      }
+    }
+  ]
+}</code></pre></p><h2>Tùy chọn</h2></p><h3>Thuộc tính Tùy chỉnh</h3></p><p>Danh sách các thuộc tính của tên lớp bao quanh.<br>
 Các thuộc tính <code>class</code> và <code>className</code> luôn được hỗ trợ, ngay cả khi không có tùy chọn nào được chỉ định.</p><p><!-- prettier-ignore -->
 Mặc định | Ghi đè CLI&nbsp; | Ghi đè API&nbsp;
 --- | --- | ---
@@ -331,29 +342,28 @@ Mặc định | Ghi đè CLI&nbsp; | Ghi đè API&nbsp;
 <code>[]</code> | <code>--custom-functions <string></code> | <code>customFunctions: ["<string>"]</code></p><h3>Vị trí Kết thúc</h3></p><p>Lần đầu xuất hiện ở v0.5.0.<br>
 <code>absolute-with-indent</code> được thêm vào trong v0.6.0.<br>
 <code>absolute-with-indent</code> đã bị loại bỏ ở v0.8.0, nhưng bạn có thể nhận được đầu ra tương tự với <code>absolute</code>.<br>
-Giá trị mặc định đã thay đổi từ <code>relative</code> sang <code>absolute</code> trong v0.8.0.</p><p>Đây là tiêu chí để kết thúc tên lớp trên mỗi dòng khi thay thế tên lớp gốc bằng tên lớp nhiều dòng.</p><ul><li>ví dụ về <code>absolute</code>:</li></p><p>  </ul><pre><code class="language-">  --------------------------------------------------| printWidth=50
+Giá trị mặc định đã thay đổi từ <code>relative</code> sang <code>absolute</code> trong v0.8.0.</p><p>Đây là tiêu chí để kết thúc tên lớp trên mỗi dòng khi thay thế tên lớp gốc bằng tên lớp nhiều dòng.</p><ul><li>ví dụ về <code>absolute</code>:</li></p><p>  </ul><pre><code class="language-">  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-        className="bg-gray-100/50 border
-          border-zinc-400/30 dark:bg-neutral-900/50
-          dark:border-neutral-500/30 px-4 py-4
-          rounded-xl"
+        className="bg-gray-100/50 dark:bg-neutral-900/50
+          border border-zinc-400/30 dark:border-neutral-500/30
+          rounded-xl px-4 py-4"
       >
         {children}
       </div>
     );
   }
   ``<code></p><ul><li>ví dụ về </code>relative<code>:</li></p><p>  </ul></code>`<code>
-  --------------------------------------------------| printWidth=50
+  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-                  |--------------------------------------------------|
-        className="bg-gray-100/50 border border-zinc-400/30
-         |--------------------------------------------------|
-          dark:bg-neutral-900/50 dark:border-neutral-500/30
-          px-4 py-4 rounded-xl"
+       |------------------------------------------------------------|
+        className="bg-gray-100/50 dark:bg-neutral-900/50 border
+         |------------------------------------------------------------|
+          border-zinc-400/30 dark:border-neutral-500/30 rounded-xl
+          px-4 py-4"
       >
         {children}
       </div>
@@ -362,10 +372,13 @@ Giá trị mặc định đã thay đổi từ <code>relative</code> sang <code>
   </code>`<code></p><p><!-- prettier-ignore -->
 Mặc định | Ghi đè CLI&nbsp; | Ghi đè API&nbsp;
 --- | --- | ---
-</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>Biến đổi cú pháp</h3></p><p>Lần đầu tiên có mặt ở v0.7.7.</p><p>Nếu một dòng bị ngắt trong tên lớp được viết ở cú pháp không phải biểu thức, nó sẽ được chuyển thành cú pháp biểu thức. Sự biến đổi này không hỗ trợ định dạng đảo ngược.</p><p><!-- prettier-ignore -->
+</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>Biến đổi cú pháp</h3></p><p>Có mặt lần đầu trong v0.7.7.</p><p>Nếu có hiện tượng ngắt dòng trong tên lớp viết theo cú pháp không phải biểu thức, nó sẽ được chuyển đổi sang cú pháp biểu thức. Việc chuyển đổi này không hỗ trợ định dạng đảo ngược.</p><p><!-- prettier-ignore -->
 Mặc định | Ghi đè CLI&nbsp; | Ghi đè API&nbsp;
 --- | --- | ---
-</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h2>Tương quan phiên bản với các plugin cùng loại</h2></p><p>Bắt đầu từ </code>0.6.0<code>, khi có một bản phát hành nhỏ ở một phía, tôi dự định sẽ phản ánh thay đổi đó sang phía còn lại nếu có thể.</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="Tương quan phiên bản."></p><h2>Tương thích với các plugin Prettier khác</h2></p><p>Nếu có nhiều hơn một plugin Prettier có thể xử lý đoạn văn bản bạn muốn định dạng, Prettier sẽ chỉ sử dụng plugin cuối cùng trong số đó.</p><p>Trong trường hợp này, bạn có thể cấu hình như sau bằng cách thêm <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> để áp dụng các plugin đó tuần tự.</p><p>Ví dụ JSON:</p><p><!-- prettier-ignore --></code></pre>json
+</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h3>Độ rộng in tên lớp</h3></p><p>Có mặt lần đầu trong v0.10.0.</p><p>Chỉ định độ rộng in của tên lớp. Nếu không cung cấp giá trị, giá trị </code>printWidth<code> sẽ được sử dụng làm mặc định.</p><p><!-- prettier-ignore -->
+Mặc định | Ghi đè CLI&nbsp; | Ghi đè API&nbsp;
+--- | --- | ---
+</code>undefined<code> | </code>--classnames-print-width <number><code> | </code>classnamesPrintWidth: <number><code></p><h2>Liên hệ phiên bản với các plugin cùng loại</h2></p><p>Bắt đầu từ </code>0.6.0<code>, khi có một bản phát hành nhỏ ở một bên, tôi dự định sẽ phản ánh sự thay đổi đó ở bên còn lại nếu có thể.</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="Mối liên hệ phiên bản."></p><h2>Tương thích với các plugin Prettier khác</h2></p><p>Nếu có nhiều hơn một plugin Prettier có thể xử lý đoạn văn bản bạn muốn định dạng, Prettier chỉ sử dụng plugin cuối cùng trong số đó.</p><p>Trong trường hợp này, bạn có thể cấu hình như sau bằng cách thêm <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> để áp dụng các plugin đó lần lượt.</p><p>Ví dụ JSON:</p><p><!-- prettier-ignore --></code></pre>json
 {
   "plugins": [
     "prettier-plugin-tailwindcss",
@@ -376,7 +389,7 @@ Mặc định | Ghi đè CLI&nbsp; | Ghi đè API&nbsp;
 </code>``</p><h2>Stargazers over time</h2></p><p><a href="https://starchart.cc/ony3000/prettier-plugin-classnames" target="_blank" rel="noopener noreferrer"><img src="https://starchart.cc/ony3000/prettier-plugin-classnames.svg?variant=adaptive" alt="Stargazers over time"></a></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-07
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-03
 
 ---</p>
         </div>
@@ -388,7 +401,7 @@ Mặc định | Ghi đè CLI&nbsp; | Ghi đè API&nbsp;
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-02-07 
+        Last updated: 2026-06-03 
     </div>
     
 </body>

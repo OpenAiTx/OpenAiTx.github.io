@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>prettier-plugin-classnames - `printWidth`オプションに基づいて冗長なクラス名を折り返すPrettierプラグインです。</title>
-    <meta name="description" content="`printWidth`オプションに基づいて冗長なクラス名を折り返すPrettierプラグインです。">
+    <title>prettier-plugin-classnames - `printWidth` オプションに基づいて冗長なクラス名を折り返す Prettier プラグインです。</title>
+    <meta name="description" content="`printWidth` オプションに基づいて冗長なクラス名を折り返す Prettier プラグインです。">
     <meta name="keywords" content="prettier-plugin-classnames, Japanese, documentation, GitHub, open source">
     <meta name="author" content="OpenAiTx">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "prettier-plugin-classnames",
-  "description": "`printWidth`オプションに基づいて冗長なクラス名を折り返すPrettierプラグインです。",
+  "description": "`printWidth` オプションに基づいて冗長なクラス名を折り返す Prettier プラグインです。",
   "author": {
     "@type": "Person",
     "name": "ony3000"
@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 194
+    "ratingCount": 205
   },
   "url": "https://OpenAiTx.github.io/projects/ony3000/prettier-plugin-classnames/README-ja.html",
   "sameAs": "https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/README.md",
-  "datePublished": "2026-02-07",
-  "dateModified": "2026-02-07"
+  "datePublished": "2026-06-03",
+  "dateModified": "2026-06-03"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 194 stars</span>
+                <span class="stars">⭐ 205 stars</span>
                 <span class="language">Japanese</span>
                 <span>by ony3000</span>
             </div>
@@ -320,7 +320,18 @@
 };</code></pre></p><p>JS例（ESモジュール）:</p><pre><code class="language-javascript">export default {
   plugins: ['prettier-plugin-classnames'],
   endingPosition: 'absolute',
-};</code></pre>
+};</code></pre></p><h3>Markdown/MDX オーバーライド</h3></p><p>このプラグインはMarkdownおよびMDXをサポートしていませんが、もしこのプラグインがコードブロック内の言語（例：Vue）をサポートしている場合、コードブロック内で意図しない書式設定が発生することがあります。</p><p>意図しない書式設定を防ぐために、MarkdownおよびMDX用の設定オーバーライドを使用できます。</p><p>JSON例:</p><pre><code class="language-json">{
+  "plugins": ["prettier-plugin-classnames"],
+  "customFunctions": ["clsx"],
+  "overrides": [
+    {
+      "files": ["<em>.md", "</em>.mdx"],
+      "options": {
+        "plugins": []
+      }
+    }
+  ]
+}</code></pre>
 <h2>オプション</h2></p><h3>カスタム属性</h3></p><p>囲むクラス名の属性のリスト。<br>
 <code>class</code> と <code>className</code> 属性は、オプションが指定されていなくても常にサポートされます。</p><p><!-- prettier-ignore -->
 デフォルト | CLI上書き | API上書き
@@ -333,29 +344,28 @@
 <code>absolute-with-indent</code> はv0.6.0で追加されました。<br>
 <code>absolute-with-indent</code> はv0.8.0で削除されましたが、同じ出力は <code>absolute</code> で得られます。<br>
 デフォルト値はv0.8.0で <code>relative</code> から <code>absolute</code> に変更されました。</p><p>これは、元のクラス名を複数行のクラス名に置き換える際に、各行のクラス名を終了する基準です。</p><ul><li><code>absolute</code> の例:</li></p><p>
-  </ul><pre><code class="language-">  --------------------------------------------------| printWidth=50
+  </ul><pre><code class="language-">  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-        className="bg-gray-100/50 border
-          border-zinc-400/30 dark:bg-neutral-900/50
-          dark:border-neutral-500/30 px-4 py-4
-          rounded-xl"
+        className="bg-gray-100/50 dark:bg-neutral-900/50
+          border border-zinc-400/30 dark:border-neutral-500/30
+          rounded-xl px-4 py-4"
       >
         {children}
       </div>
     );
   }
   ``<code></p><ul><li></code>relative<code> の例:</li></p><p>  </ul></code>`<code>
-  --------------------------------------------------| printWidth=50
+  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-                  |--------------------------------------------------|
-        className="bg-gray-100/50 border border-zinc-400/30
-         |--------------------------------------------------|
-          dark:bg-neutral-900/50 dark:border-neutral-500/30
-          px-4 py-4 rounded-xl"
+       |------------------------------------------------------------|
+        className="bg-gray-100/50 dark:bg-neutral-900/50 border
+         |------------------------------------------------------------|
+          border-zinc-400/30 dark:border-neutral-500/30 rounded-xl
+          px-4 py-4"
       >
         {children}
       </div>
@@ -364,10 +374,13 @@
   </code>`<code></p><p><!-- prettier-ignore -->
 デフォルト | CLI&nbsp;オーバーライド | API&nbsp;オーバーライド
 --- | --- | ---
-</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>構文変換</h3></p><p>v0.7.7で初めて利用可能。</p><p>非式構文で記述されたクラス名に改行が発生した場合、それは式構文に変換されます。この変換は可逆的なフォーマットをサポートしません。</p><p><!-- prettier-ignore -->
+</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>構文変換</h3></p><p>v0.7.7から利用可能。</p><p>非式構文で記述されたクラス名で改行が発生した場合、式構文に変換されます。この変換は可逆的なフォーマットをサポートしません。</p><p><!-- prettier-ignore -->
 デフォルト | CLI&nbsp;オーバーライド | API&nbsp;オーバーライド
 --- | --- | ---
-</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h2>同期プラグインとのバージョン相関</h2></p><p></code>0.6.0<code>以降、片方でマイナーリリースがあった場合、可能な限りもう片方にも反映する予定です。</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="バージョン相関。"></p><h2>他のPrettierプラグインとの互換性</h2></p><p>複数のPrettierプラグインがフォーマット対象のテキストを処理できる場合、Prettierはその中の最後のプラグインのみを使用します。</p><p>この場合、<a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a>を追加して、これらのプラグインを順次適用するように設定できます。</p><p>JSON例:</p><p><!-- prettier-ignore --></code></pre>json
+</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h3>クラス名のプリント幅</h3></p><p>v0.10.0から利用可能。</p><p>クラス名のプリント幅を指定します。値が指定されていない場合は、</code>printWidth<code>の値がデフォルトとして使用されます。</p><p><!-- prettier-ignore -->
+デフォルト | CLI&nbsp;オーバーライド | API&nbsp;オーバーライド
+--- | --- | ---
+</code>undefined<code> | </code>--classnames-print-width <number><code> | </code>classnamesPrintWidth: <number><code></p><h2>兄弟プラグインとのバージョン相関</h2></p><p></code>0.6.0<code>以降、一方でマイナーリリースがあった場合、可能であればもう一方にもその変更を反映する予定です。</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="バージョン相関。"></p><h2>他のPrettierプラグインとの互換性</h2></p><p>フォーマットしたいテキストを複数のPrettierプラグインが処理できる場合、Prettierはそれらのプラグインのうち最後のものだけを使用します。</p><p>この場合、それらのプラグインを順番に適用するために <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> を追加して次のように設定できます。</p><p>JSONの例：</p><p><!-- prettier-ignore --></code></pre>json
 {
   "plugins": [
     "prettier-plugin-tailwindcss",
@@ -378,7 +391,7 @@
 </code>``</p><h2>Stargazers over time</h2></p><p><a href="https://starchart.cc/ony3000/prettier-plugin-classnames" target="_blank" rel="noopener noreferrer"><img src="https://starchart.cc/ony3000/prettier-plugin-classnames.svg?variant=adaptive" alt="Stargazers over time"></a></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-07
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-03
 
 ---</p>
         </div>
@@ -390,7 +403,7 @@
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-02-07 
+        Last updated: 2026-06-03 
     </div>
     
 </body>

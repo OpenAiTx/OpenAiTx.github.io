@@ -30,12 +30,12 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
-    "ratingCount": 194
+    "ratingCount": 205
   },
   "url": "https://OpenAiTx.github.io/projects/ony3000/prettier-plugin-classnames/README-tr.html",
   "sameAs": "https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/README.md",
-  "datePublished": "2026-02-07",
-  "dateModified": "2026-02-07"
+  "datePublished": "2026-06-03",
+  "dateModified": "2026-06-03"
 }
     </script>
     
@@ -275,7 +275,7 @@
                 </a>
             </h1>
             <div class="project-meta">
-                <span class="stars">⭐ 194 stars</span>
+                <span class="stars">⭐ 205 stars</span>
                 <span class="language">Turkish</span>
                 <span>by ony3000</span>
             </div>
@@ -320,7 +320,18 @@
 };</code></pre></p><p>JS örneği (ES modülü):</p><pre><code class="language-javascript">export default {
   plugins: ['prettier-plugin-classnames'],
   endingPosition: 'absolute',
-};</code></pre></p><h2>Seçenekler</h2></p><h3>Özel Nitelikler</h3></p><p>Sınıf adlarını kapsayan niteliklerin listesi.<br>
+};</code></pre></p><h3>Markdown/MDX Geçersiz Kılma</h3></p><p>Bu eklenti Markdown ve MDX'i desteklemez, ancak bu eklenti kod bloklarının içinde bir dili destekliyorsa (ör. Vue), kod bloklarının içinde istenmeyen biçimlendirme oluşabilir.</p><p>İstenmeyen biçimlendirmeyi önlemek için, Markdown ve MDX için yapılandırma geçersiz kılmalarını kullanabilirsiniz.</p><p>JSON örneği:</p><pre><code class="language-json">{
+  "plugins": ["prettier-plugin-classnames"],
+  "customFunctions": ["clsx"],
+  "overrides": [
+    {
+      "files": ["<em>.md", "</em>.mdx"],
+      "options": {
+        "plugins": []
+      }
+    }
+  ]
+}</code></pre></p><h2>Seçenekler</h2></p><h3>Özel Nitelikler</h3></p><p>Sınıf adlarını kapsayan niteliklerin listesi.<br>
 <code>class</code> ve <code>className</code> nitelikleri, hiçbir seçenek belirtilmese bile her zaman desteklenir.</p><p><!-- prettier-ignore -->
 Varsayılan | CLI&nbsp;Geçersiz Kılma | API&nbsp;Geçersiz Kılma
 --- | --- | ---
@@ -331,29 +342,28 @@ Varsayılan | CLI&nbsp;Geçersiz Kılma | API&nbsp;Geçersiz Kılma
 <code>[]</code> | <code>--custom-functions <string></code> | <code>customFunctions: ["<string>"]</code></p><h3>Bitiş Pozisyonu</h3></p><p>İlk kez v0.5.0 sürümünde mevcut.<br>
 <code>absolute-with-indent</code> v0.6.0 sürümünde eklendi.<br>
 <code>absolute-with-indent</code> v0.8.0 sürümünde kaldırıldı, ancak aynı çıktıyı <code>absolute</code> ile alabilirsiniz.<br>
-Varsayılan değer v0.8.0’da <code>relative</code>’dan <code>absolute</code>’a değiştirildi.</p><p>Bu, orijinal sınıf adını çok satırlı bir sınıf adıyla değiştirirken, her satırda sınıf adının bitiş kriteridir.</p><ul><li><code>absolute</code> örneği:</li></p><p>  </ul><pre><code class="language-">  --------------------------------------------------| printWidth=50
+Varsayılan değer v0.8.0’da <code>relative</code>’dan <code>absolute</code>’a değiştirildi.</p><p>Bu, orijinal sınıf adını çok satırlı bir sınıf adıyla değiştirirken, her satırda sınıf adının bitiş kriteridir.</p><ul><li><code>absolute</code> örneği:</li></p><p>  </ul><pre><code class="language-">  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-        className="bg-gray-100/50 border
-          border-zinc-400/30 dark:bg-neutral-900/50
-          dark:border-neutral-500/30 px-4 py-4
-          rounded-xl"
+        className="bg-gray-100/50 dark:bg-neutral-900/50
+          border border-zinc-400/30 dark:border-neutral-500/30
+          rounded-xl px-4 py-4"
       >
         {children}
       </div>
     );
   }
   ``<code></p><ul><li></code>relative<code> örneği:</li></p><p>  </ul></code>`<code>
-  --------------------------------------------------| printWidth=50
+  ------------------------------------------------------------| printWidth=60
   export function Callout({ children }) {
     return (
       <div
-                  |--------------------------------------------------|
-        className="bg-gray-100/50 border border-zinc-400/30
-         |--------------------------------------------------|
-          dark:bg-neutral-900/50 dark:border-neutral-500/30
-          px-4 py-4 rounded-xl"
+       |------------------------------------------------------------|
+        className="bg-gray-100/50 dark:bg-neutral-900/50 border
+         |------------------------------------------------------------|
+          border-zinc-400/30 dark:border-neutral-500/30 rounded-xl
+          px-4 py-4"
       >
         {children}
       </div>
@@ -362,10 +372,13 @@ Varsayılan değer v0.8.0’da <code>relative</code>’dan <code>absolute</code>
   </code>`<code></p><p><!-- prettier-ignore -->
 Varsayılan | CLI&nbsp;Geçersiz Kılma | API&nbsp;Geçersiz Kılma
 --- | --- | ---
-</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>Söz Dizimi Dönüşümü</h3></p><p>İlk olarak v0.7.7'de mevcut.</p><p>Eğer bir sınıf adı ifade olmayan söz diziminde yazılmışsa ve satır sonu kayması olursa, bu ifade söz dizimine dönüştürülür. Bu dönüşüm, geri alınabilir biçimlendirmeyi desteklemez.</p><p><!-- prettier-ignore -->
+</code>"absolute"<code> | </code>--ending-position <absolute\|relative><code> | </code>endingPosition: "<absolute\|relative>"<code></p><h3>Sözdizimi Dönüşümü</h3></p><p>İlk olarak v0.7.7’de kullanılabilir.</p><p>Bir sınıf adı ifadesiz sözdizimi ile yazıldığında ve satır kırılması gerçekleşirse, bu ifade sözdizimi haline dönüştürülür. Bu dönüşüm geri döndürülebilir biçimlendirmeyi desteklemez.</p><p><!-- prettier-ignore -->
 Varsayılan | CLI&nbsp;Geçersiz Kılma | API&nbsp;Geçersiz Kılma
 --- | --- | ---
-</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h2>Kardeş eklentilerle sürüm korelasyonu</h2></p><p></code>0.6.0<code> sürümünden itibaren, bir tarafta küçük bir sürüm çıkarsa, mümkünse bu değişikliği diğer tarafa da yansıtmayı planlıyorum.</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="Sürüm korelasyonu."></p><h2>Diğer Prettier eklentileriyle uyumluluk</h2></p><p>Biçimlendirmek istediğiniz metni birden fazla Prettier eklentisi işleyebiliyorsa, Prettier yalnızca bu eklentilerin sonuncusunu kullanır.</p><p>Bu durumda, bu eklentileri sırasıyla uygulamak için <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> ekleyerek aşağıdaki şekilde yapılandırabilirsiniz.</p><p>JSON örneği:</p><p><!-- prettier-ignore --></code></pre>json
+</code>false<code> | </code>--syntax-transformation<code> | </code>syntaxTransformation: <boolean><code></p><h3>Classnames Yazdırma Genişliği</h3></p><p>İlk olarak v0.10.0’de kullanılabilir.</p><p>Sınıf adının yazdırma genişliğini belirtin. Eğer bir değer girilmezse, varsayılan olarak </code>printWidth<code> değeri kullanılır.</p><p><!-- prettier-ignore -->
+Varsayılan | CLI&nbsp;Geçersiz Kılma | API&nbsp;Geçersiz Kılma
+--- | --- | ---
+</code>undefined<code> | </code>--classnames-print-width <number><code> | </code>classnamesPrintWidth: <number><code></p><h2>Sibling eklentilerle sürüm korelasyonu</h2></p><p></code>0.6.0<code> ile birlikte, bir tarafta minör bir sürüm çıktığında, mümkünse bu değişikliği diğer tarafta da yansıtmayı planlıyorum.</p><p><img src="https://raw.githubusercontent.com/ony3000/prettier-plugin-classnames/master/.github/correlation.png" alt="Sürüm korelasyonu."></p><h2>Diğer Prettier eklentileriyle uyumluluk</h2></p><p>Formatlamak istediğiniz metni birden fazla Prettier eklentisi işleyebiliyorsa, Prettier yalnızca bu eklentilerin sonuncusunu kullanır.</p><p>Bu durumda, eklentileri sıralı olarak uygulamak için <a href="https://github.com/ony3000/prettier-plugin-merge" target="_blank" rel="noopener noreferrer">prettier-plugin-merge</a> ekleyerek aşağıdaki gibi yapılandırabilirsiniz.</p><p>JSON örneği:</p><p><!-- prettier-ignore --></code></pre>json
 {
   "plugins": [
     "prettier-plugin-tailwindcss",
@@ -376,7 +389,7 @@ Varsayılan | CLI&nbsp;Geçersiz Kılma | API&nbsp;Geçersiz Kılma
 </code>``</p><h2>Stargazers over time</h2></p><p><a href="https://starchart.cc/ony3000/prettier-plugin-classnames" target="_blank" rel="noopener noreferrer"><img src="https://starchart.cc/ony3000/prettier-plugin-classnames.svg?variant=adaptive" alt="Stargazers over time"></a></p><p>
 ---
 
-Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-02-07
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-03
 
 ---</p>
         </div>
@@ -388,7 +401,7 @@ Varsayılan | CLI&nbsp;Geçersiz Kılma | API&nbsp;Geçersiz Kılma
     
     <div class="footer">
         <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
-        Last updated: 2026-02-07 
+        Last updated: 2026-06-03 
     </div>
     
 </body>

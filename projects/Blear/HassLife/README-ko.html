@@ -1,0 +1,367 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HassLife - 티몰 지니, 샤오아이, 샤오두 스피커를 통한 HomeAssistant 장치 제어 및 속성 보고 조회</title>
+    <meta name="description" content="티몰 지니, 샤오아이, 샤오두 스피커를 통한 HomeAssistant 장치 제어 및 속성 보고 조회">
+    <meta name="keywords" content="HassLife, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "HassLife",
+  "description": "티몰 지니, 샤오아이, 샤오두 스피커를 통한 HomeAssistant 장치 제어 및 속성 보고 조회",
+  "author": {
+    "@type": "Person",
+    "name": "Blear"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 196
+  },
+  "url": "https://OpenAiTx.github.io/projects/Blear/HassLife/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/Blear/HassLife/master/README.md",
+  "datePublished": "2026-06-03",
+  "dateModified": "2026-06-03"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Blear/HassLife" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    HassLife
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 196 stars</span>
+                <span class="language">Korean</span>
+                <span>by Blear</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h2>소개</h2></p><p><strong>교류 QQ 그룹: 528735636</strong></p><p>Home Assistant의 컴포넌트</p><p><a href="https://github.com/hacs/integration" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge" alt="hacs_badge"></a></p><p>이 Home Assistant 컴포넌트는 티몰 지니, 샤오아이, 샤오두 스피커를 HomeAssistant 플랫폼의 장비와 연동하여 장비를 제어하고 장비 상태를 조회 및 보고할 수 있습니다.</p><p>주의: 이 플러그인은 제어 명령 전송과 장비 상태 보고만 담당하며, 장비 추가는 <a href="https://hass.blear.cn" target="_blank" rel="noopener noreferrer">HassLife</a> 플랫폼에서 설정해야 합니다.</p><h2>설치</h2></p><h3>1. 플러그인 설치</h3></p><p>##### 방법1: hacs 설치【추천!】
+>>사이드바 HACS -> 통합 -> hasslife 검색 후 다운로드 클릭</p><p>##### 방법2: 수동 다운로드 <a href="https://gitee.com/blear/HassLife" target="_blank" rel="noopener noreferrer">플러그인 다운로드</a>
+>><code>hasslife</code> 폴더를 다운로드하여 <code><homeassistant 구성 디렉터리>/custom_components/</code> 경로에 저장합니다. <code>custom_components</code> 폴더가 없으면 직접 생성 후 HomeAssistant를 재시작합니다.
+<ul><li>homeassistant 구성 디렉터리는 어디인가요?</li></p><p></ul>>><strong>Windows 사용자:</strong> <code>%APPDATA%\.homeassistant</code></p><p>>><strong>Linux 기반 사용자:</strong> <code>locate .homeassistant/configuration.yaml</code> 명령어 실행 후 찾은 <code>.homeassistant</code> 폴더가 구성 디렉터리입니다.</p><p>>><strong>Synology Docker 사용자:</strong> Docker - 이미지 - homeassistant - 고급 설정 - 볼륨에서 <code>/config</code>에 매핑된 경로가 구성 디렉터리입니다.</p><h3>2. 플러그인 구성</h3>
+##### 방법1: 통합 UI 구성
+>><strong>HomeAssistant 사이드바의 구성 -> 통합 -> 우측 하단 통합 추가 -> hasslife 검색 후 클릭 -> 등록한 hasslife 계정과 비밀번호 입력 후 제출 클릭, 플러그인 최초 실행 시 시간이 필요하니 기다려 주세요.</strong></p><p>해당 통합이 UI 구성을 지원하지 않는 경우, Home Assistant 웹사이트에서 링크로 접속했다면 최신 버전의 Home Assistant를 실행 중인지 확인하세요.
+수동으로 계정 구성을 추가한 후 HomeAssistant를 재시작할 수 있습니다.</p><h2>사용 단계：</h2>
+	<ul><li>HassLife 계정 등록 https://hass.blear.cn 에 접속하여 계정을 등록하고 로그인</li>
+	<li>플러그인 설치: 설치 후 HomeAssistant 재시작, 통합 추가 페이지로 이동하여 HassLife 통합을 추가하고 HassLife 계정으로 로그인합니다.</li>
+	<li>HassLife 웹사이트 페이지로 다시 돌아가서, 플러그인 설정에 문제가 없다면 개인 센터 페이지에 플러그인 상태가 <code>온라인</code>으로 표시됩니다.</li>
+	<li>장치 관리 메뉴를 클릭하고, 오른쪽 녹색의 <code>Homeassistant 장치 추가</code> 버튼을 클릭한 후, 추가하려는 장치를 선택하고 제출하세요.</li>
+	<li>장치 목록에서 구성하려는 장치를 선택하고 <code>구성</code>을 클릭한 후 필요에 따라 접속할 스마트 스피커 플랫폼을 선택하고 장치 유형 및 음성 제어 이름을 설정하세요.</li>
+	<li>해당 플랫폼의 스킬 바인딩 페이지로 이동하여 HassLife 계정을 바인딩하면, 문제 없이 추가한 장치를 볼 수 있습니다.</li></p><p></ul><h2>티엔마오 정령 구성 예시</h2>
+<ul><li>최신 버전의 <code>티엔마오 정령</code> 앱을 설치하세요.</li>
+<li>모바일 브라우저에서 <a href="https://hass.blear.cn" target="_blank" rel="noopener noreferrer">HassLife https://hass.blear.cn</a> 에 접속하여 HassLife 계정으로 로그인하세요.</li>
+<li>개인 센터 페이지에서 <code>티엔마오 정령 스킬入口</code>를 클릭하세요.</li>
+<li><code>플랫폼 계정 바인딩</code>을 클릭하세요.</li>
+<li>HassLife 계정으로 로그인하세요.</li>
+<li>권한을 확인하고 정령 집 탭으로 돌아가면 추가한 장치를 확인할 수 있습니다.</li></p><p></ul><h2>샤오아이 구성 예시</h2>
+<ul><li>HassLife 장치 목록 페이지에 들어가 필요한 장치를 추가하고 해당 장치 유형과 이름을 설정하세요.</li>
+<li>최신 버전의 <code>미지아</code> 앱을 설치하세요.</li>
+<li><code>미지아</code> 앱을 실행하세요.</li>
+<li><code>내</code> 탭을 클릭하세요.</li>
+<li><code>기타 플랫폼 장치</code>를 클릭하세요.</li>
+<li>오른쪽 상단의 <code>추가</code> 버튼을 클릭하세요.</li>
+<li><code>HassLife</code>를 찾아 클릭하세요.</li>
+<li><code>계정 바인딩</code>을 클릭하세요.</li>
+<li>HassLife 계정으로 로그인하세요.</li>
+<li>권한을 확인하고 장치를 동기화하세요.</li></p><p></ul><h2>샤오두 구성 예시</h2>
+<ul><li>HassLife 장치 목록 페이지에 들어가 필요한 장치를 추가하고 해당 장치 유형과 이름을 설정하세요.</li>
+<li>최신 버전의 <code>샤오두</code> 앱을 설치하세요.</li>
+<li><code>샤오두</code> 앱을 실행하세요.</li>
+<li>오른쪽 상단의 더하기 버튼을 클릭하세요.</li>
+<li><code>장치 추가</code>를 클릭하세요.</li>
+<li><code>HassLife</code>를 검색하여 클릭하세요.</li>
+<li>HassLife 계정으로 로그인하세요.</li>
+<li>권한을 확인하고 장치를 동기화하세요.</li></p><p></ul><h2>티엔마오 정령 지원 장치 및 속성</h2></p><p>현재 지원되는 장치 유형은 다음과 같습니다: 조명, 스위치, 빨래 건조대, 커튼, TV, 온수기, 선풍기, 센서, 에어컨, 이원 선택기입니다.</p><p>    장치의 켜기/끄기 상태를 지원하는 장치: 조명, 스위치, 빨래 건조대, 커튼, TV, 온수기, 선풍기, 센서, 에어컨, 이원 선택기.
+    
+    조명 지원 조절: 색상, 밝기, 색온도
+    
+    에어컨 지원 모드 변경: 냉방, 난방, 송풍, 제습, 자동, 온도 조절. 풍속 지원: 약풍, 중풍, 강풍, 자동
+    
+	빨래건조대 지원: 건조봉 제어, 전원 스위치 제어
+    
+	커튼 지원: 커튼 열기 및 닫기
+    
+	선풍기 지원: 전원 제어(선풍기 켜기/끄기), 풍속 제어(1-100단계(백분율 풍속), 최고단계, 저단계, 중저단계, 중고단계, 고단계, 초강력단계, 미풍단계, 자동단계), 좌우 회전/흔들기/바람 조절</p><h2>샤오아이 동상 지원 기기 및 속성</h2></p><p>현재 지원하는 기기 유형: 조명, 스위치, 커튼, 선풍기, 에어컨.</p><p>    기기의 전원 상태 지원 기기: 조명, 스위치, 커튼, 선풍기, 에어컨.
+    
+	조명 지원 조절: 색상, 밝기, 색온도
+    
+	에어컨 지원 모드 변경: 냉방, 난방, 송풍, 제습, 자동, 온도 조절. 풍속 지원: 약풍, 중풍, 강풍, 자동
+    
+	커튼 지원: 커튼 열기 및 닫기
+    
+	선풍기 지원: 전원 제어(선풍기 켜기/끄기), 풍속 제어(1-100단계(백분율 풍속), 좌우 회전/흔들기/바람 조절
+	</p><h2>샤오두 스피커 지원 기기 및 속성</h2></p><p>    기기의 전원 상태 지원 기기: 조명, 스위치, 커튼, 선풍기, 에어컨.
+    
+	조명 지원 조절: 전원 스위치
+    
+	에어컨 지원 모드 변경: 냉방, 난방, 송풍, 제습, 자동, 온도 조절. 풍속 지원: 약풍, 중풍, 강풍, 자동
+    
+	커튼 지원: 커튼 열기 및 닫기
+    
+	선풍기 지원: 전원 제어(선풍기 켜기/끄기), 풍속 제어(1-10단계)</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-03
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Blear/HassLife/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-03 
+    </div>
+    
+</body>
+</html>
