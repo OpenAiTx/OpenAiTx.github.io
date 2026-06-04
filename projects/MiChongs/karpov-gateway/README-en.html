@@ -1,0 +1,386 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>karpov-gateway - Karpov Gateway — REST API gateway + Next.js console. Built with Go (Gin+gRPC) + PostgreSQL + Redis + OAuth2 (Linux.do) + TOTP 2FA + encrypted credential pool.</title>
+    <meta name="description" content="Karpov Gateway — REST API gateway + Next.js console. Built with Go (Gin+gRPC) + PostgreSQL + Redis + OAuth2 (Linux.do) + TOTP 2FA + encrypted credential pool.">
+    <meta name="keywords" content="karpov-gateway, English, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "karpov-gateway",
+  "description": "Karpov Gateway — REST API gateway + Next.js console. Built with Go (Gin+gRPC) + PostgreSQL + Redis + OAuth2 (Linux.do) + TOTP 2FA + encrypted credential pool.",
+  "author": {
+    "@type": "Person",
+    "name": "MiChongs"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 153
+  },
+  "url": "https://OpenAiTx.github.io/projects/MiChongs/karpov-gateway/README-en.html",
+  "sameAs": "https://raw.githubusercontent.com/MiChongs/karpov-gateway/main/README.md",
+  "datePublished": "2026-06-04",
+  "dateModified": "2026-06-04"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/MiChongs/karpov-gateway" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    karpov-gateway
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 153 stars</span>
+                <span class="language">English</span>
+                <span>by MiChongs</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Karpov Gateway</h1></p><blockquote>Integrated API Gateway + Console. Go backend (Gin + gRPC) + Next.js frontend (App Router + shadcn/ui), comes with credential pool, email verification, Linux.do OAuth2 SSO, quota billing, TOTP two-factor authentication.</blockquote></p><p><a href="./LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+<a href="https://go.dev/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Go-1.24+-00ADD8?logo=go" alt="Go"></a>
+<a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Next.js-16-black?logo=next.js" alt="Next.js"></a></p><h2>✨ Features</h2></p><ul><li><strong>Unified REST Gateway</strong> — Single process or multi-service mode, gateway → auth/music/pool/quota/billing/worker gRPC backends can be deployed independently</li>
+<li><strong>Credential Pool (encrypted)</strong> — KEK + DEK envelope encryption, AES-256-GCM with AAD, POOL_KEK_HEX master key derivation</li>
+<li><strong>Email Registration + Activation</strong> — SMTP code sending / activation links, double insurance (verification code + email link), auto demote to LogSender if SMTP not configured</li>
+<li><strong>OAuth2 Third-Party Login</strong> — Linux.do SSO (PKCE S256 + HMAC signed state cookie), login / bind / unbind tri-state decision, token encrypted storage</li>
+<li><strong>Quota / Billing</strong> — PlanQuotaMiddleware fallback at gateway layer, business service internal secondary validation by plan + scope</li>
+<li><strong>TOTP Two-Factor</strong> — <code>pquerna/otp</code> + Redis replay protection</li>
+<li><strong>Audit Logs</strong> — Structured JSON, split by type, rotated daily</li>
+<li><strong>CSRF + Session</strong> — <code>sid</code> httpOnly cookie + <code>X-CSRF-Token</code> header double verification</li>
+<li><strong>shadcn/ui Console</strong> — Next.js 16 App Router + Radix + Tailwind v4</li></p><p></ul><h2>🏗 Repository Structure</h2></p><pre><code class="language-">karpov-gateway/
+├── gateway/             # Go 后端 (Gin + gRPC)
+│   ├── cmd/             # 各 service 入口 (gateway/auth/music/pool/...)
+│   ├── internal/        # 业务实现 (private)
+│   ├── api/             # protobuf 定义
+│   ├── migrations/      # PostgreSQL schema
+│   ├── go.mod           # Go 模块 (go 1.24+)
+│   └── Dockerfile
+├── web/                 # Next.js 16 前端控制台
+│   ├── src/             # App Router pages + components
+│   ├── middleware.ts    # CSRF / session / CSP nonce
+│   ├── package.json     # pnpm workspace
+│   └── Dockerfile
+├── deploy/
+│   ├── compose/         # 本地开发 (PG + Redis + pgAdmin)
+│   └── compose-prod/    # 生产单机 (gateway + web + PG + Redis 全栈)
+└── .github/workflows/   # GitHub Actions CI (lint / test / build / govulncheck / gosec)</code></pre></p><h2>🚀 Quick Start</h2></p><h3>1. Prerequisites</h3></p><p>| Tool       | Version |
+| ---------- | ------- |
+| Go         | 1.24+   |
+| Node.js    | 20.11+  |
+| pnpm       | 9+      |
+| Docker     | 24+     |
+| PostgreSQL | 14+     |
+| Redis      | 7+      |</p><h3>2. Start Dependencies (Postgres + Redis + pgAdmin)</h3></p><pre><code class="language-bash">cd deploy/compose
+cp .env.example .env       # 改强密码！
+docker compose up -d</code></pre></p><h3>3. Starting the Gateway Backend</h3></p><pre><code class="language-bash">cd gateway
+cp .env.example .env       # 与 deploy/compose/.env 的 PG/Redis 密码保持一致
+go mod download
+go run ./cmd/qqmusic-gateway
+<h1>默认 :8080 (HTTP) + :9000 (gRPC)</h1>
+<h1>首次启动会在 stderr 打印一个 superadmin 账号 + 临时密码</code></pre></h1></p><h3>4. Start the Web Console</h3></p><pre><code class="language-bash">cd web
+cp .env.example .env.local
+pnpm install
+pnpm dev
+<h1>http://localhost:3000</code></pre></h1></p><h2>🐳 Production Deployment (Docker Compose Standalone)</h2></p><pre><code class="language-bash">cd deploy/compose-prod
+cp .env.example .env
+<h1>编辑 .env：填入真域名 / 强密码 / SMTP 凭据 / OAuth client</h1>
+nano .env</p><h1>生成 KEK</h1>
+openssl rand -hex 32     # → 写到 POOL_KEK_HEX=</p><p>docker compose up -d --build
+docker compose logs -f gateway</code></pre></p><p>Notes:</p><ul><li>If <code>NEXT_PUBLIC_APP_URL</code> is changed, you <strong>must</strong> run <code>docker compose build --no-cache web</code> because it will be inlined into the client bundle.</li>
+<li>When using a reverse proxy (Nginx/Caddy), <code>TRUST_PROXY=true</code> must be enabled, otherwise X-Forwarded-Proto will not work.</li>
+<li>Once the KEK changes, all old credential pools / old OAuth tokens become <strong>unreadable</strong>.</li></p><p></ul><h2>🔐 OAuth2 (Linux.do) Integration</h2></p><ul><li>Go to <a href="https://connect.linux.do" target="_blank" rel="noopener noreferrer">https://connect.linux.do</a> to apply for an application.</li>
+<li>Set the callback URL to: <code>https://your-domain/v1/auth/oauth/linuxdo/callback</code></li>
+<li>Write the obtained client_id / client_secret into <code>.env</code>:</li>
+   </ul><pre><code class="language-">   OAUTH_LINUXDO_ENABLED=true
+   OAUTH_LINUXDO_CLIENT_ID=...
+   OAUTH_LINUXDO_CLIENT_SECRET=...
+   OAUTH_LINUXDO_MIN_TRUST_LEVEL=1
+   OAUTH_PUBLIC_BASE=https://your-domain
+   OAUTH_FRONTEND_BASE=https://your-domain
+   ``<code>
+<ul><li>Restart the gateway, and the login page / registration page will automatically display "Linux.do One-Click Login"</li></p><p></ul><h2>🧪 Test / Lint</h2>
+</code></pre>bash
+<h1>Go</h1>
+cd gateway
+go vet ./...
+go test -race ./...
+golangci-lint run --timeout=5m</p><h1>Web</h1>
+cd web
+pnpm lint
+pnpm typecheck
+</code>`<code></p><h2>📦 Key Dependencies</h2></p><p><strong>Backend</strong>：</p><ul><li><a href="https://github.com/gin-gonic/gin" target="_blank" rel="noopener noreferrer">gin-gonic/gin</a> — HTTP framework</li>
+<li><a href="https://github.com/grpc-ecosystem" target="_blank" rel="noopener noreferrer">grpc-ecosystem</a> — gRPC + gateway</li>
+<li><a href="https://github.com/jackc/pgx/v5" target="_blank" rel="noopener noreferrer">jackc/pgx</a> — PostgreSQL driver</li>
+<li><a href="https://github.com/redis/go-redis" target="_blank" rel="noopener noreferrer">redis/go-redis</a> — Redis client</li>
+<li><a href="https://pkg.go.dev/golang.org/x/oauth2" target="_blank" rel="noopener noreferrer">golang.org/x/oauth2</a> — OAuth2 / PKCE</li>
+<li><a href="https://github.com/pquerna/otp" target="_blank" rel="noopener noreferrer">pquerna/otp</a> — TOTP</li></p><p></ul><strong>Frontend</strong>：</p><ul><li><a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer">Next.js 16</a> (App Router + Turbopack)</li>
+<li><a href="https://ui.shadcn.com/" target="_blank" rel="noopener noreferrer">shadcn/ui</a> + <a href="https://www.radix-ui.com/" target="_blank" rel="noopener noreferrer">Radix</a></li>
+<li><a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer">Tailwind CSS v4</a></li>
+<li><a href="https://github.com/edge-runtime/" target="_blank" rel="noopener noreferrer">next-auth-csrf</a> edge-safe CSRF</li></p><p></ul><h2>📜 License</h2></p><p>MIT — see <a href="./LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a></p><h2>🤝 Contributing</h2></p><p>PR / Issue welcome. Before submitting PR, please:</p><ul><li></code>golangci-lint run<code> + </code>gofmt -l .<code> all green</li>
+<li></code>go test -race ./...<code> all green</li>
+<li>For web changes run </code>pnpm lint && pnpm typecheck<code></li>
+<li>Do not commit </code>.env<code> / </code>data/.kek` or any files containing real passwords</li></p><p></ul><h2>🔒 Security</h2></p><p>If you find security issues, please contact the maintainer directly, <strong>do not</strong> open a public issue.</p><hr></p><p>Built with ❤️ by <a href="https://github.com/MiChongs" target="_blank" rel="noopener noreferrer">MiChongs</a></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-04
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/MiChongs/karpov-gateway/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-04 
+    </div>
+    
+</body>
+</html>
