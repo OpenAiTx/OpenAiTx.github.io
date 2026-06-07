@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wg-cmd - 用于管理 WireGuard 配置文件的终端用户界面（TUI）</title>
+    <meta name="description" content="用于管理 WireGuard 配置文件的终端用户界面（TUI）">
+    <meta name="keywords" content="wg-cmd, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "wg-cmd",
+  "description": "用于管理 WireGuard 配置文件的终端用户界面（TUI）",
+  "author": {
+    "@type": "Person",
+    "name": "AndrianBdn"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 216
+  },
+  "url": "https://OpenAiTx.github.io/projects/AndrianBdn/wg-cmd/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/AndrianBdn/wg-cmd/main/README.md",
+  "datePublished": "2026-06-07",
+  "dateModified": "2026-06-07"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/AndrianBdn/wg-cmd" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    wg-cmd
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 216 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by AndrianBdn</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>WG Commander </h1></p><p>也称为 "wg-cmd" — 用于管理 WireGuard 配置文件的终端用户界面（TUI）</p><p><a href="https://github.com/andrianbdn/wg-cmd/releases/latest"><img src="https://img.shields.io/github/v/release/andrianbdn/wg-cmd" /></a>
+<a href="./LICENSE"><img src="https://img.shields.io/github/license/andrianbdn/wg-cmd" /></a>
+<a href="./go.mod"><img src="https://img.shields.io/github/go-mod/go-version/andrianbdn/wg-cmd" /></a>
+<a href="https://goreportcard.com/report/github.com/andrianbdn/wg-cmd" target="_blank" rel="noopener noreferrer"><img src="https://goreportcard.com/badge/github.com/andrianbdn/wg-cmd" alt="Go Report Card"></a></p><p><img src="https://user-images.githubusercontent.com/994900/218720566-e5b3ab22-d7fc-4df7-a777-ad9b6280ada8.png" alt="截图"></p><h1>特性</h1>
+<ul><li>无需浏览器或 HTTP 端口 - 可在终端中使用，也支持 SSH</li>
+<li>配备了友好的安装向导</li>
+<li>基于文本的用户界面，用于管理节点</li>
+<li>在终端中查看二维码</li>
+<li>复制配置到剪贴板（OSC 52）</li>
+<li>自动配置 sysctl、systemd、NAT</li></p><p></ul><h2>当前限制</h2>
+<ul><li>支持简单的客户端-服务器 WireGuard 设置</li>
+<li>主要适用于 Linux（假设可用 iptables、systemd、sysctl）— 参见 <a href="#other-os-besides-linux" target="_blank" rel="noopener noreferrer">其他操作系统</a> 部分</li>
+<li>不能管理已有的 WireGuard 配置（但可以在同一主机上创建新的 WireGuard 接口）</li></p><p></ul><h1>安装 </h1></p><p>确保已安装 WireGuard 和 iptables  
+（Ubuntu / Debian 中运行 <code>apt install wireguard-tools</code>，Rocky/Alma 9 中运行 <code>dnf install wireguard-tools iptables</code>）。</p><p>使用 curl 下载请运行：
+<pre><code class="language-shell"># for x86_64 
+curl -SL https://github.com/andrianbdn/wg-cmd/releases/download/v0.1.7/wg-cmd-0.1.7-linux-amd64 -o /usr/local/bin/wg-cmd</p><h1>for arm64 </h1>
+curl -SL https://github.com/andrianbdn/wg-cmd/releases/download/v0.1.7/wg-cmd-0.1.7-linux-arm64 -o /usr/local/bin/wg-cmd</code></pre></p><p>设置适当的权限并运行工具： 
+<pre><code class="language-">chmod 755 /usr/local/bin/wg-cmd
+wg-cmd</code></pre>
+如果你的 $PATH 中没有 <code>/usr/local/bin</code>，你需要使用完整路径运行 <code>/usr/local/bin/wg-cmd</code> 命令。</p><p>WG Commander 需要 root 权限以自动调整 sysctl，创建 systemd 单元，并写入 /etc/wireguard。</p><h1>使用说明</h1></p><p>首次运行时，WG Commander 会显示设置向导，允许你交互式配置新的 WireGuard 接口。</p><p>后续运行（如果向导成功完成）将直接显示管理 TUI。</p><p>关于二维码的说明：某些设备（安卓？）可能需要更高质量的二维码。WG Commander 会在你调整终端窗口分辨率变大（字体变小，窗口变大）时自动提高二维码质量。</p><h2>高级用法</h2></p><p>如果你手动更改了 /etc/wireguard 的权限并手动配置 sysctl/systemd，可以以非 root 用户身份运行 WG Commander。</p><p>WG Commander 会将其 UI 配置保存在 <code>~/.config/wg-cmd/wg-cmd.toml</code> 中。</p><p>最重要的选项有：</p><pre><code class="language-toml">WireguardDir = "/etc/wireguard"
+<h1>directory for WireGuard configuration files </h1></p><p>DatabaseDir = "/etc/wireguard"
+<h1>directory for WG Commander database files (wgc-<interface-name>)</code></pre></h1>
+您可以更改这些选项以指向您有写权限的目录。</p><h3>特殊选项 </h3></p><p>运行 <code>wg-cmd new</code> 启动新接口配置向导。</p><p>运行 <code>wg-cmd <wg-interface></code> 切换到特定接口（必须先用 wg-cmd 创建）。</p><p>运行 <code>wg-cmd <wg-interface> make</code> 生成 Wireguard 配置且不显示 UI。</p><h3>配置 </h3></p><p>WG Commander 使用目录作为其“数据库”。  
+它将接口配置存储在 /etc/wireguard/wgc-<interface-name> 目录中。</p><p>配置使用 <a href="https://toml.io" target="_blank" rel="noopener noreferrer">TOML</a> 文件格式存储。</p><p>大多数配置键与 WireGuard 的类似。</p><p>#### 服务器配置 (0001-server.toml)  
+此配置文件中的某些键实际上将用于生成  
+客户端配置文件。</p><p><code>ClientRoute</code> - 客户端配置的 AllowedIPs</p><p><code>ClientDNS</code> - 所有客户端的 DNS 配置值</p><p><code>ClientServerEndpoint</code> - 客户端配置的端点</p><p><code>ClientPersistentKeepalive</code> - 客户端配置的 PersistentKeepalive</p><p><code>MTU</code> - 服务器和客户端的 MTU（0 — 由 WireGuard 选择）</p><p>#### 客户端配置 (nnnn-%client%.toml)</p><p><code>ClientRoute</code> - 完全覆盖服务器配置中的 <code>ClientRoute</code></p><p><code>AddServerRoute</code> - 在服务器端为客户端的 AllowedIPs 添加额外网络（当您想通过服务器将一个客户端的流量路由到另一个客户端的网络时非常有用）</p><p>
+<code>MTU</code> - 为此客户端覆盖服务器的MTU值。设置为-1以从此WireGuard客户端配置中省略MTU。</p><p><code>DNS</code> - 覆盖服务器的<code>ClientDNS</code>设置，适用于所有客户端。指定以逗号分隔的IP列表。  
+设置为<code>no</code>或<code>none</code>以从此WireGuard客户端配置中省略DNS。</p><p>客户端配置文件包含<code>PrivateKey</code>字段。  
+如果您觉得不可接受，可以在导出配置（或二维码）到客户端后将其从文件中删除。</p><h3>除Linux外的其他操作系统</h3></p><p>WG Commander设计用于Linux，因为它使用procfs、systemd、iptables、sysctl。  
+不过，它是用纯Go编写的，因此应能在任何Go支持的操作系统上运行。</p><ul><li>您需要自行编译二进制文件。  </li>
+<li>设置环境变量<code>WG_CMD_NO_DEPS</code>为1以禁用启动时的任何Linux特定检查。  </li>
+<li>编辑0001-server.toml，在PostUp4/PostUp6/PostDown4/PostDown6字段中设置您的操作系统命令。  </li>
+<li>您需要重新加载WireGuard配置：更改时手动操作，  </li>
+</ul>或监视/etc/wireguard/wg*.conf文件的更改并自动重新加载WireGuard。</p><p>欢迎提交PR以添加对其他操作系统的支持。</p><h3>在Docker中运行</h3></p><p>虽然可以，但不建议在Docker中运行WG Commander。</p><p>设置向导将无法正常工作，因为它需要创建systemd单元并修改sysctl。</p><h3>卸载</h3></p><p>要卸载WG Commander，只需从/usr/local/bin/wg-cmd删除二进制文件。  
+您还可以删除目录/etc/wireguard/wgc-*和~/.config/wg-cmd</p><p>如果您创建了systemd单元，则需要手动删除它们。</p><p>下面是如何删除WG Commander管理的接口wg7的示例  
+（请更改为您需要删除的接口）：</p><pre><code class="language-sh">systemctl stop wgc-wg7.{path,service}
+systemctl disable wgc-wg7.{path,service}
+rm /etc/systemd/system/wgc-wg7.{path,service}
+systemctl stop wg-quick@wg7.service
+systemctl disable wg-quick@wg7.service
+rm /etc/wireguard/wg7.conf
+rm -Rf /etc/wireguard/wgc-wg7</code></pre></p><h1>测试环境  </h1>
+WG Commander 应该可以在任何基于 systemd 的 Linux 发行版上良好运行，前提是系统中包含 WireGuard、iptables、sysctl 和 procfs。  </p><p>测试过的系统包括：  
+<ul><li>Ubuntu 24.04（v0.1.7 版本测试于 2026 年 4 月 9 日）  </li>
+<li>Ubuntu 20.04  </li>
+<li>Ubuntu 22.04  </li>
+<li>Rocky Linux 9  </li>
+<li>Debian 11  </li>
+<li>Debian 12  </li></p><p></ul><h1>贡献  </h1></p><p>欢迎贡献代码。请参阅 <a href="https://raw.githubusercontent.com/AndrianBdn/wg-cmd/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">CONTRIBUTING.md</a> 获取指导，包括我们的 AI 公开政策。  </p><h1>说明  </h1>
+WG Commander 并无商业目的。  
+该项目采用  
+<a href="https://github.com/andrianbdn/wg-cmd/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">MIT 许可证</a> 许可。  </p><p>本项目与 WireGuard® 的创建者无关。  
+WG Commander 项目未获得 WireGuard® 或 WireGuard® 社区的批准、赞助或关联。</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-07
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/AndrianBdn/wg-cmd/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-07 
+    </div>
+    
+</body>
+</html>

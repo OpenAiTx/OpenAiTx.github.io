@@ -1,0 +1,404 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>next-transition-router - Next.js App Router와 선호하는 애니메이션 라이브러리를 사용하여 페이지 간 애니메이션 전환을 쉽게 추가하세요.</title>
+    <meta name="description" content="Next.js App Router와 선호하는 애니메이션 라이브러리를 사용하여 페이지 간 애니메이션 전환을 쉽게 추가하세요.">
+    <meta name="keywords" content="next-transition-router, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "next-transition-router",
+  "description": "Next.js App Router와 선호하는 애니메이션 라이브러리를 사용하여 페이지 간 애니메이션 전환을 쉽게 추가하세요.",
+  "author": {
+    "@type": "Person",
+    "name": "ismamz"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 359
+  },
+  "url": "https://OpenAiTx.github.io/projects/ismamz/next-transition-router/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/ismamz/next-transition-router/main/README.md",
+  "datePublished": "2026-06-07",
+  "dateModified": "2026-06-07"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/ismamz/next-transition-router" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    next-transition-router
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 359 stars</span>
+                <span class="language">Korean</span>
+                <span>by ismamz</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><div align="center">
+  <img src="https://raw.githubusercontent.com/ismamz/next-transition-router/main/example/app/icon.svg" alt="next-transition-router" width="100" height="100" />
+  <h1>next-transition-router</h1>
+</div></p><p>Next.js App Router와 좋아하는 애니메이션 라이브러리를 사용하여 페이지 간 애니메이션 전환을 쉽게 추가하세요.</p><ul><li><a href="https://next-transition-router.vercel.app" target="_blank" rel="noopener noreferrer"><strong>GSAP를 사용한 라이브 데모</strong></a> (소스 코드: <a href="/example" target="_blank" rel="noopener noreferrer">/example</a>).</li>
+<li><a href="https://stackblitz.com/edit/next-transition-router-framer-motion" target="_blank" rel="noopener noreferrer"><strong>Framer Motion을 사용한 Stackblitz 데모</strong></a>.</li></p><p></ul><h2>특징</h2></p><ul><li>페이지 전환을 처리하기 위해 내부 링크를 자동으로 감지 (<a href="#auto-enabled" target="_blank" rel="noopener noreferrer">선택적 <code>auto</code> 플래그</a>).</li>
+<li>사용자 정의 <code>Link</code> 컴포넌트를 사용하여 수동으로 페이지 전환 처리 (<a href="#handle-links-custom-link-component-vs-auto-detection" target="_blank" rel="noopener noreferrer"><code>auto</code>가 비활성화된 경우</a>).</li>
+<li><a href="https://nextjs.org/docs/app" target="_blank" rel="noopener noreferrer">Next.js App Router</a> (v14.0.0 이상)와 독점적으로 사용.</li>
+<li>JavaScript 또는 CSS를 사용하여 페이지 간 애니메이션 전환을 빠르게 추가.</li>
+<li><a href="https://gsap.com/resources/React/" target="_blank" rel="noopener noreferrer">GSAP</a> 또는 원하는 다른 애니메이션 라이브러리와 원활하게 통합 (자세한 내용은 <a href="#minimal-example-using-gsap" target="_blank" rel="noopener noreferrer">최소 GSAP 예제</a> 참조).</li>
+<li>JavaScript가 비활성화된 경우에도 라우터의 접근성 손상 없음.</li>
+<li>매우 가벼우며 번들 크기가 8 KB 미만임.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API" target="_blank" rel="noopener noreferrer">View Transitions API</a>를 목표로 하지 않고 맞춤형 애니메이션에 집중.</li></p><p></ul>View Transitions API를 사용하려면 <a href="https://github.com/shuding/next-view-transitions" target="_blank" rel="noopener noreferrer">next-view-transitions</a>를 확인하세요.</p><blockquote>[!WARNING]</blockquote>
+<blockquote>이 프로젝트는 현재 베타 버전입니다. 기능이 개선되고 정제됨에 따라 API가 변경될 수 있음을 참고하세요.</blockquote></p><h2>설치</h2></p><p>선호하는 패키지 관리자를 사용하여 패키지를 설치하세요:</p><pre><code class="language-sh">pnpm add next-transition-router</code></pre></p><pre><code class="language-sh">yarn add next-transition-router</code></pre></p><pre><code class="language-sh">npm install next-transition-router</code></pre></p><pre><code class="language-sh">bun add next-transition-router</code></pre>
+<h2>사용법</h2></p><h3><code>TransitionRouter</code></h3></p><p><code>TransitionRouter</code> 프로바이더를 사용하기 위해 클라이언트 컴포넌트(예: <code>app/providers.tsx</code>)를 생성합니다:</p><pre><code class="language-tsx">"use client";</p><p>import { TransitionRouter } from "next-transition-router";</p><p>export function Providers({ children }: { children: React.ReactNode }) {
+  return (
+    <TransitionRouter
+      leave={(next) => {
+        someAnimation().then(next);
+      }}
+      enter={(next) => {
+        anotherAnimation().then(next);
+      }}
+    >
+      {children}
+    </TransitionRouter>
+  );
+}</code></pre></p><blockquote>[!NOTE]</blockquote>
+<blockquote>DOM 함수를 프로바이더에 props로 전달해야 하기 때문에 클라이언트 컴포넌트여야 합니다.</blockquote></p><p>그 후에, 해당 컴포넌트를 레이아웃 컴포넌트(e.g.: <code>app/layout.tsx</code>)에 임포트해야 합니다.</p><p>#### 비동기 콜백</p><p><code>leave</code>와 <code>enter</code> 콜백은 비동기 함수도 지원합니다.</p><pre><code class="language-tsx">"use client";</p><p>import { TransitionRouter } from "next-transition-router";</p><p>export function Providers({ children }: { children: React.ReactNode }) {
+  return (
+    <TransitionRouter
+      leave={async (next) => {
+        await someAsyncAnimation();
+        next();
+      }}
+      enter={async (next) => {
+        await anotherAsyncAnimation();
+        next();
+      }}
+    >
+      {children}
+    </TransitionRouter>
+  );
+}</code></pre></p><p>#### <code>leave</code> 콜백의 <code>from</code> 및 <code>to</code> 매개변수</p><p><code>leave</code> 콜백은 이전 페이지 경로와 다음 페이지 경로를 나타내는 문자열인 <code>from</code> 및 <code>to</code> 매개변수를 받습니다. 페이지에 따라 전환 애니메이션을 조건부로 적용하려는 경우에 유용합니다.</p><pre><code class="language-tsx">const onLeave = (next, from, to) => {
+  someAnimation(from, to).then(next);
+};</code></pre></p><blockquote>[!참고]</blockquote>
+<blockquote><code>router.back()</code> 메서드를 사용할 때 <code>to</code> 매개변수는 정의되지 않습니다. <a href="#programmatic-navigation" target="_blank" rel="noopener noreferrer">프로그래밍 방식 내비게이션</a>을 참조하세요.</blockquote></p><h3>링크 처리 (맞춤형 <code>Link</code> 컴포넌트 vs 자동 감지)</h3></p><p>링크를 처리하는 방법을 결정하기 위해 <code>TransitionRouter</code>는 <code>auto</code> 속성(<code>boolean</code>)을 받을 수 있습니다.</p><p>#### <code>auto</code> 비활성화(기본값)</p><p>전환을 트리거하기 위해 네이티브 <a href="https://nextjs.org/docs/app/api-reference/components/link" target="_blank" rel="noopener noreferrer"><code>Next.js의 Link</code> 컴포넌트</a> 대신 맞춤형 <code>Link</code> 컴포넌트를 사용하세요.</p><pre><code class="language-tsx">import { Link } from "next-transition-router";</p><p>export function Example() {
+  return <Link href="/about">About</Link>;
+}</code></pre></p><blockquote>[!TIP]</blockquote>
+<blockquote>이름 충돌을 피하기 위해 <code>import { Link as TransitionLink } from "next-transition-router"</code>를 사용하세요.</blockquote></p><p>#### <code>auto</code> 활성화</p><p><code>auto</code>가 활성화되면, <code>TransitionRouter</code>는 앵커 링크를 제외한 내부 링크의 클릭 이벤트를 가로채 페이지 전환을 트리거합니다. 이 경우 커스텀 <code>Link</code> 컴포넌트를 사용할 필요가 없습니다.</p><p>이 모드에서 링크를 무시하려면, 해당 링크에 <code>data-transition-ignore</code> 속성을 추가하세요.</p><h3>프로그래밍 방식 내비게이션</h3></p><p><code>useTransitionRouter</code> 훅을 사용하여 내비게이션(<code>push</code>, <code>replace</code>, <code>back</code>)을 관리하세요.</p><p>이는 전환 지원이 추가된 <a href="https://nextjs.org/docs/app/api-reference/functions/use-router" target="_blank" rel="noopener noreferrer">Next.js <code>useRouter</code></a>와 유사합니다.</p><pre><code class="language-tsx">"use client";</p><p>import { useTransitionRouter } from "next-transition-router";</p><p>export function Programmatic() {
+  const router = useTransitionRouter();</p><p>  return (
+    <button
+      onClick={() => {
+        alert("Do something before navigating away");
+        router.push("/about");
+      }}
+    >
+      Go to /about
+    </button>
+  );
+}</code></pre></p><blockquote>[!IMPORTANT]</blockquote>
+<blockquote>뒤로 가기 및 앞으로 가기 브라우저 탐색은 페이지 전환을 트리거하지 않으며, <a href="https://github.com/ismamz/next-transition-router/issues/2" target="_blank" rel="noopener noreferrer">이것은 의도된 동작입니다</a>.</blockquote></p><h3>전환 상태</h3></p><p><code>useTransitionState</code> 훅을 사용하여 전환의 현재 단계를 확인하세요.</p><p>가능한 <code>stage</code> 값: <code>'entering' | 'leaving' | 'none'</code>.</p><p>추가로, <code>isReady</code> 상태(<code>boolean</code>)가 있습니다.</p><pre><code class="language-tsx">"use client";</p><p>import { useTransitionState } from "next-transition-router";</p><p>export function Example() {
+  const { stage, isReady } = useTransitionState();</p><p>  return (
+    <div>
+      <p>Current stage: {stage}</p>
+      <p>Page ready: {isReady ? "Yes" : "No"}</p>
+    </div>
+  );
+}</code></pre></p><blockquote>[!TIP]</blockquote>
+<blockquote>예를 들어, 페이지 전환이 끝난 후 리빌 애니메이션을 트리거하고 싶을 때 유용합니다.</blockquote></p><h3>정리</h3></p><p><code>TransitionRouter</code>는 메모리 누수를 방지하기 위해 <code>leave</code> 및 <code>enter</code> 콜백에 대한 정리 함수를 관리합니다.</p><p>React의 <code>useEffect</code> 훅과 유사하게, 애니메이션을 취소하는 정리 함수를 반환할 수 있습니다.</p><p>#### GSAP을 사용한 최소 예제</p><pre><code class="language-tsx">"use client";</p><p>import { gsap } from "gsap";
+import { TransitionRouter } from "next-transition-router";</p><p>export function Providers({ children }: { children: React.ReactNode }) {
+  return (
+    <TransitionRouter
+      leave={(next) => {
+        const tween = gsap.fromTo("main", { autoAlpha: 1 }, { autoAlpha: 0, onComplete: next });
+        return () => tween.kill();
+      }}
+      enter={(next) => {
+        const tween = gsap.fromTo("main", { autoAlpha: 0 }, { autoAlpha: 1, onComplete: next });
+        return () => tween.kill();
+      }}
+    >
+      {children}
+    </TransitionRouter>
+  );
+}</code></pre></p><h2>성능 최적화</h2></p><p>종료 애니메이션과 페이지 로딩을 겹쳐 실행할 때(부드러운 전환을 위해 일반적임), React 렌더링이 애니메이션 끊김을 유발할 수 있습니다. <code>requestAnimationFrame</code>과 <code>startTransition</code>을 사용하여 애니메이션 성능에 우선순위를 부여하세요:</p><pre><code class="language-tsx">import { startTransition } from "react";</p><p>enter={(next) => {
+  const tl = gsap.timeline()
+    .to(".overlay", { y: "-100%", duration: 0.5 })
+    .call(() => {
+      requestAnimationFrame(() => startTransition(next));
+    }, undefined, "<50%"); // Overlap timing preserved
+    
+  return () => tl.kill();
+}}</code></pre>
+이것은 React 업데이트가 애니메이션 타임라인에 간섭하는 것을 방지하면서 시각적 타이밍을 유지합니다.</p><h2>API</h2></p><h3><code>TransitionRouter</code></h3></p><p>| Prop       | Type       | Default Value    | Description                                       |
+| ---------- | ---------- | ---------------- | ------------------------------------------------- |
+| <code>leave</code>    | <code>function</code> | <code>next => next()</code> | 떠나는 애니메이션을 처리하는 함수                  |
+| <code>enter</code>    | <code>function</code> | <code>next => next()</code> | 들어오는 애니메이션을 처리하는 함수                 |
+| <code>auto</code>     | <code>boolean</code>  | <code>false</code>          | 링크의 자동 감지 활성화/비활성화 플래그             |</p><h3><code>useTransitionState</code></h3></p><p>| Property  | Type                                | Description                                        |
+|-----------|-------------------------------------|----------------------------------------------------|
+| <code>stage</code>   | <code>'entering' \| 'leaving' \| 'none'</code> | 전환의 현재 단계를 나타냅니다.                       |
+| <code>isReady</code> | <code>boolean</code>                           | 새 페이지가 애니메이션 준비가 되었는지 나타냅니다.  |</p><h2>면책 조항</h2></p><p>이 패키지는 모든 사용 사례를 다루지 않을 수 있습니다. 특정 시나리오가 필요한 경우 <a href="https://github.com/ismamz/next-transition-router/issues/new/choose" target="_blank" rel="noopener noreferrer">이슈를 열어주세요</a>, 기능 확장 가능성을 모색할 수 있습니다.</p><h2>라이선스</h2></p><p>MIT.</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-07
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/ismamz/next-transition-router/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-07 
+    </div>
+    
+</body>
+</html>
