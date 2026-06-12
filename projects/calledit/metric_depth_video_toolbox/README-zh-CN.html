@@ -1,0 +1,359 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>metric_depth_video_toolbox - 用于渲染、查看和生成度量3D深度视频的Python工具。支持恢复和导出相机位姿及3D几何到常用格式，同时提供将深度视频投影为并排立体（SBS）3D立体视频的工具。</title>
+    <meta name="description" content="用于渲染、查看和生成度量3D深度视频的Python工具。支持恢复和导出相机位姿及3D几何到常用格式，同时提供将深度视频投影为并排立体（SBS）3D立体视频的工具。">
+    <meta name="keywords" content="metric_depth_video_toolbox, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "metric_depth_video_toolbox",
+  "description": "用于渲染、查看和生成度量3D深度视频的Python工具。支持恢复和导出相机位姿及3D几何到常用格式，同时提供将深度视频投影为并排立体（SBS）3D立体视频的工具。",
+  "author": {
+    "@type": "Person",
+    "name": "calledit"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 135
+  },
+  "url": "https://OpenAiTx.github.io/projects/calledit/metric_depth_video_toolbox/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/calledit/metric_depth_video_toolbox/main/README.md",
+  "datePublished": "2026-06-12",
+  "dateModified": "2026-06-12"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/calledit/metric_depth_video_toolbox" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    metric_depth_video_toolbox
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 135 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by calledit</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>公制深度视频工具箱 (MDVToolbox)</h1></p><p>用于生成和处理公制3D深度视频的工具。</p><p><img src="https://github.com/user-attachments/assets/4d737bb3-6fb6-4135-b01e-b35528371d22" alt="gif_banner"></p><p>_横幅由 3d_view_depthfile.py 创建_</p><h2>演示</h2></p><p><strong>展示视频：</strong> https://youtu.be/nEiUloZ591Q</p><p><strong>电影 → 3D 转换演示：</strong> https://www.youtube.com/watch?v=PLFjoNgkZDY</p><p><strong>示例立体剪辑：</strong>
+https://github.com/calledit/metric_depth_video_toolbox/releases/tag/Showcase</p><h2>特性</h2></p><h3>公制深度视频生成</h3></p><p>使用多种最先进模型将RGB视频转换为公制深度视频：</p><ul><li>Depth-Anything 系列（<code>video_metric_convert.py</code>）和（<code>videoanythingmetric_video.py</code>）</li>
+<li>MoGe  （<code>moge_video.py</code>）</li>
+<li>UniDepth  （<code>unidepth_video.py</code>）</li>
+<li>UniK3D  （<code>unik3d_video.py</code>）</li>
+<li>DepthPro  （<code>depthpro_video.py</code>）</li>
+<li>DepthCrafter  （<code>depthcrafter_video.py</code>）</li>
+<li>MVSAnywhere  （<code>video_mvsa.py</code>）</li></p><p></ul><h3>立体 / 3D 转换</h3></p><ul><li>2D 电影 → 3D（<code>movie_2_3D.py</code>）</li>
+<li>由深度和RGB视频生成立体渲染（<code>stereo_rerender.py</code>）</li>
+<li>视差填充和基于扩散的立体修复（<code>stereo_crafter_infill.py</code>）</li></p><p></ul><h3>可视化</h3></p><ul><li>实时3D查看器，用于度量深度视频（<code>3d_view_depthfile.py</code>）  </li>
+<li>来自深度视频的新视角渲染（<code>3d_view_depthfile.py</code>）  </li></p><p></ul><h3>相机跟踪与3D重建  </h3></p><ul><li>深度辅助相机跟踪（<code>sam_track_video.py</code>）和（<code>align_3d_points.py</code>）  </li>
+<li>长期点追踪（CoTracker3）（<code>track_points_in_video.py</code>）  </li>
+<li>姿态提取与对齐工具  </li></p><p></ul><h3>导出工具  </h3></p><p>将度量深度视频导出为标准格式以供其他工具使用：（<code>convert_metric_depth_video_to_other_format.py</code>）  </p><ul><li><code>.ply</code> 点云  </li>
+<li><code>.obj</code> 网格  </li>
+<li>Blender <code>.blend</code> 和 Alembic <code>.abc</code> 相机轨迹  </li>
+<li>8位 / 16位深度图  </li>
+<li>基于三角测量的深度重标定  </li></p><p></ul><h3>掩码与清理  </h3></p><ul><li>自动主体掩码生成（<code>generate_video_mask.py</code>）  </li>
+<li>字幕/徽标修复（<code>apply_inpainting.sh</code>）  </li></p><p>
+</ul><h2>文档  </h2></p><p>| 主题 | 链接 |  
+|---|---|  
+初学者指南 | <a href="https://raw.githubusercontent.com/calledit/metric_depth_video_toolbox/main/docs/HOWTO.md" target="_blank" rel="noopener noreferrer"><code>HOWTO.md</code></a>  
+电影→3D指南 | <a href="https://raw.githubusercontent.com/calledit/metric_depth_video_toolbox/main/docs/HOWTO_movie2_3d.md" target="_blank" rel="noopener noreferrer"><code>HOWTO_movie2_3d.md</code></a>  
+完整工具参考 | <a href="https://raw.githubusercontent.com/calledit/metric_depth_video_toolbox/main/docs/USAGE.md" target="_blank" rel="noopener noreferrer"><code>USAGE.md</code></a>  
+GUI教程视频 | https://youtu.be/BE_aJCI7DHI  </p><h2>深度视频格式  </h2></p><p>MDVT使用<strong>RGB编码的16位度量深度</strong>：  </p><ul><li><strong>红色 + 绿色</strong> = 高8位（为可见性重复）  </li>
+<li><strong>蓝色</strong> = 低8位  </li>
+<li>默认范围：<strong>100米</strong>  </li>
+<li>分辨率：<strong>~1.5毫米深度精度</strong>  </li></p><p></ul>未来将通过以下方式进行更高精度升级：<strong>24位深度</strong>或<strong>对数编码深度</strong>以实现远距离精度。  </p><p>---  </p><h2>安装  </h2></p><h3>Windows  </h3>
+<ul><li>安装 git https://git-scm.com/downloads/win  </li>
+<li>安装 miniconda https://docs.conda.io/en/latest/  </li>
+<li>从开始菜单打开 Anaconda 提示符（miniconda）  </li>
+<li>运行</li>
+</ul><pre><code class="language-batch">git clone https://github.com/calledit/metric_depth_video_toolbox
+cd metric_depth_video_toolbox
+windows_installer.bat</code></pre>
+<ul><li>使用 <code>conda activate mdvt</code> 激活 conda 并使用工具。一些机器学习模型不支持 Windows，但大多数核心模型如 Sterecrafter 和 depth anything 是支持的。</li></p><p></ul><h3>Ubuntu/Debian 和 OSX</h3></p><pre><code class="language-bash"></p><p>git clone https://github.com/calledit/metric_depth_video_toolbox
+cd metric_depth_video_toolbox</p><h1>on linux</h1>
+sudo apt-get install -y libgl1
+./install_mdvtoolbox.sh</p><p>#Optional (only required for some tools)
+./install_mdvtoolbox.sh -megasam
+./install_mdvtoolbox.sh -geometrycrafter
+./install_mdvtoolbox.sh -unik3d
+./install_mdvtoolbox.sh -depthpro
+./install_mdvtoolbox.sh -stereocrafter
+./install_mdvtoolbox.sh -madpose
+./install_mdvtoolbox.sh -unidepth
+./install_mdvtoolbox.sh -moge
+./install_mdvtoolbox.sh -promptda</p><h1>if using headless linux you need to start a virtual x11 server</h1>
+apt-get install xvfb
+Xvfb :2 &
+export DISPLAY=:2</p><h1>OSX (OSX only supports post processing of depth videos not generation of them. As the ML models need CUDA)</h1>
+<h1>(open3d requires python3.11 on OSX (as of 2025)))</h1>
+pip3.11 install open3d numpy opencv-python
+</code></pre></p><h3>需求</h3>
+需要机器学习模型的工具已在配备支持Cuda 12.4和Torch 2.5.1的nvidia 3090显卡的机器上测试，测试平台为<a href="https://cloud.vast.ai/?ref_id=148636" target="_blank" rel="noopener noreferrer">vast.ai</a>，使用“template PyTorch (cuDNN Devel)”</p><h3>下一步</h3>
+<ul><li>目前正在等待新的稳定且精确的深度模型。</li></p><p></ul><h3>贡献</h3>
+欢迎贡献。即使是拼写等简单的事项也非常感谢。</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-12
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/calledit/metric_depth_video_toolbox/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-12 
+    </div>
+    
+</body>
+</html>
