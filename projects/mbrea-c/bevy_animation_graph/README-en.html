@@ -1,0 +1,408 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bevy_animation_graph - Animation graphs in Bevy!</title>
+    <meta name="description" content="Animation graphs in Bevy!">
+    <meta name="keywords" content="bevy_animation_graph, English, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "bevy_animation_graph",
+  "description": "Animation graphs in Bevy!",
+  "author": {
+    "@type": "Person",
+    "name": "mbrea-c"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 192
+  },
+  "url": "https://OpenAiTx.github.io/projects/mbrea-c/bevy_animation_graph/README-en.html",
+  "sameAs": "https://raw.githubusercontent.com/mbrea-c/bevy_animation_graph/master/README.md",
+  "datePublished": "2026-06-13",
+  "dateModified": "2026-06-13"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/mbrea-c/bevy_animation_graph" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    bevy_animation_graph
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 192 stars</span>
+                <span class="language">English</span>
+                <span>by mbrea-c</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>_Library crate:_
+<a href="https://crates.io/crates/bevy_animation_graph" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/v/bevy_animation_graph" alt="Crates.io"></a>
+<a href="https://crates.io/crates/bevy_animation_graph" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/d/bevy_animation_graph" alt="Crates.io"></a></p><p>_Editor crate:_
+<a href="https://crates.io/crates/bevy_animation_graph_editor" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/v/bevy_animation_graph_editor" alt="Crates.io"></a>
+<a href="https://crates.io/crates/bevy_animation_graph_editor" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/crates/d/bevy_animation_graph_editor" alt="Crates.io"></a></p><p><a href="https://github.com/mbrea-c/bevy_animation_graph/actions/workflows/ci.yaml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/mbrea-c/bevy_animation_graph/actions/workflows/ci.yaml/badge.svg" alt="CI"></a></p><h1>Bevy Animation Graph</h1></p><blockquote><strong>_NOTICE:_</strong> If you're currently using version <code>0.8.0</code> or lower, note that</blockquote>
+<blockquote><code>0.9.0</code> has introduced a number of breaking changes. Check out the</blockquote>
+<blockquote><a href="https://mbrea-c.github.io/bevy_animation_graph/migration_guides/0.8_to_0.9.html" target="_blank" rel="noopener noreferrer">migration guide</a></blockquote>
+<blockquote>for upgrading.</blockquote></p><h2>Motivation</h2></p><p>Animation graphs are an essential tool for managing the complexity present in
+the animation pipelines for modern 3D games. When your game has tens of
+animations with complex blends and transitions, or you want to generate your
+animations procedurally from very few keyframes, simple animation clip playback
+is not enough.</p><p>This crate works as an alternative to most of <code>bevy_animation</code>, and aims to
+provide a complete animation system and development workflow including animation
+graphs, animation state machines (i.e. animation controllers) and a graphical
+editor to create your animation graphs and state machines.</p><p>_NOTE: This project is separate from the animation graphs introduced in
+<code>bevy_animation</code> in version 0.14._</p><p><img src="https://raw.githubusercontent.com/mbrea-c/bevy_animation_graph/master/locomotion_graph.png" alt="example usage screenshot"></p><h2>Current Features</h2></p><ul><li>Animation graphs are assets. They can be loaded from asset files, or created</li>
+  </ul>in code with an ergonomic API.
+<ul><li>Visual graph editor.</li>
+<li>Animation state machines:</li>
+  <li>Animation state machines are embedded as nodes in animation graphs.</li>
+  <li>Each state in a state machines plays back its own animation graph on demand.</li>
+  <li>Transitions also have their own animation graph, and they can query source</li>
+    </ul>and target states' animation graphs.
+<ul><li>Ragdoll support:</li>
+  <li>Visual ragdoll editing in the editor.</li>
+  <li>Support for _partial ragdolls_, where some bones are simulated and others</li>
+    </ul>kinematically driven by a target animation pose.
+<ul><li>Support for custom nodes written in Rust.</li>
+  <li>Users can create their own editor binary by adding the editor plugin and</li>
+    </ul>registering their additional custom nodes in the Bevy type registry. The
+    editor will automatically pick up all registered nodes.
+<ul><li>Available built-in nodes include:</li>
+  <li>Animation chaining (i.e. play one node after another).</li>
+  <li>Two-bone inverse kinematics.</li>
+  <li>Looping.</li>
+  <li>Linear Blending (in bone space).</li>
+  <li>2D Blend space node.</li>
+  <li>Mirror animation about the YZ plane.</li>
+  <li>Animation clip playback.</li>
+  <li>Apply a given rotation to some bones in a pose using a bone mask.</li>
+  <li>Speed up or slow down animation playback.</li>
+  <li>Animation graph node.</li>
+  <li>Animation state machine node.</li>
+  <li>Arithmetic nodes: a variety of common operations on f32, Vec3, Quat, etc.</li>
+<li>Nesting animation graphs as nodes within other graphs.</li>
+<li>Animation synchronization using event tracks.</li>
+<li>Output from graph nodes is cached to avoid unnecessary computations.</li></p><p></ul><h2>Planned Features</h2></p><ul><li>Ragdoll "pose following" modes, where a simulated ragdoll bones try to match</li>
+   </ul>a target pose using physical forces:
+   <ul><li>_Absolute_ matching mode, where the world space position/rotation of the</li>
+     </ul>target bone is tracked and use as an anchor for a spring force on the
+     ragdoll bone.
+   <ul><li>_Relative_ matching mode, where the ragdoll bone tries to match the</li>
+     </ul>target's position/rotation relative to its parent bone. We may need joint
+     motors support on Avian to implement this mode properly.</p><h2>Installation</h2></p><h3>Library</h3></p><p><a href="https://crates.io/crates/bevy_animation_graph" target="_blank" rel="noopener noreferrer">bevy_animation_graph</a> is the
+library part of this project. This should be added as a dependency to your
+project in order to use animation graphs. To install the latest published
+version from crates.io run</p><pre><code class="language-bash">cargo add bevy_animation_graph</code></pre></p><p>or manually add the latest version to your <code>Cargo.toml</code>.</p><p>To install the latest git master, add the following to <code>Cargo.toml</code>:</p><pre><code class="language-toml"># ...
+[dependencies]
+<h1>...</h1>
+bevy_animation_graph = { git = "https://github.com/mbrea-c/bevy_animation_graph.git" }
+<h1>...</code></pre></h1></p><h3>Editor</h3></p><p><a href="https://crates.io/crates/bevy_animation_graph_editor" target="_blank" rel="noopener noreferrer">bevy_animation_graph_editor</a>
+is the editor. You can install it like you would install any other Rust binary:</p><pre><code class="language-bash"># for the latest crates.io version
+cargo install bevy_animation_graph_editor
+<h1>for the latest master</h1>
+cargo install --git https://github.com/mbrea-c/bevy_animation_graph bevy_animation_graph_editor
+<h1>for the version from a local workspace</h1>
+cargo install --path <PATH_TO_WORKSPACE> bevy_animation_graph_editor</p><h1>use the --force flag to force reinstall</code></pre></h1>
+Alternatively, I recommend taking a look at the  
+<a href="https://github.com/mbrea-c/bevy_animation_graph/blob/master/examples/editor_as_a_plugin/examples/editor_as_a_plugin.rs" target="_blank" rel="noopener noreferrer">editor as a plugin example</a>  
+in order to set up your own editor binary in your crate/workspace, consuming the  
+same library version as your game. This will let you register custom animation  
+graph nodes, which are a powerful feature of this crate.  </p><h2>Getting started  </h2></p><p>Check out the tutorials in the  
+<a href="https://sarahihme.github.io/initial_book_bevy_animation_graph/" target="_blank" rel="noopener noreferrer">work in progress book</a>  
+(many thanks to @SarahIhme for getting this started!).  </p><p>Additional, up to date examples are included in the  
+<a href="https://github.com/mbrea-c/bevy_animation_graph/tree/master/examples" target="_blank" rel="noopener noreferrer">examples</a>  
+directory.  </p><p>The following resources may also be useful, but they are somewhat out of date:  </p><ul><li>The documentation in <a href="https://docs.rs/bevy_animation_graph" target="_blank" rel="noopener noreferrer">docs.rs</a> contains  </li>
+  </ul>an introduction of the library and editor and an explanation of a simple  
+  animation graph example. See also the video below for a demonstration of  
+  editor usage.  
+<ul><li>There is an outdated  </li>
+  </ul><a href="https://www.youtube.com/watch?v=q-JBSQJIcX0" target="_blank" rel="noopener noreferrer">usage video walkthrough</a>.  </p><h2>Contributing or getting help  </h2></p><p>If you run into a bug or want to discuss potential new features, feel free to  
+post an issue, open a PR or reach out to me in Discord (@mbreac in the Bevy  
+discord, there's a crate-help post for <code>bevy_animation_graph</code> there:  
+<a href="https://discord.com/channels/691052431525675048/1202998277482479616" target="_blank" rel="noopener noreferrer">link</a>).  </p><h2>FAQ  </h2></p><h3>Is this ready for production?  </h3></p><p>Depends.  </p><p>It can already be useful for small-ish projects, but I cannot guarantee API  </p><p>stability between different <code>0.x</code> versions (it is a big library, it is
+relatively young and I don't have previous experience with animation
+programming, so I'm still figuring out the best ways of doing things). This
+means that it will likely be necessary to go into your animation graph assets
+and manually migrate them between versions, at least until I find a better way
+to handle migrations.</p><p>Additionally, there ~~may~~ will be bugs and other issues. I try to get them
+fixed as they come up.</p><h3>Will you implement feature X?</h3></p><p>If it's a small feature (e.g. some additional vector or floating point
+arithmetic node) it's likely that I have just not got around to it. If you open
+an issue I will probably implement it quickly. PRs are also welcome.</p><p>For larger features, it's better to start by opening an issue for discussion or
+pinging me in the Bevy discord.</p><h2>Version table</h2></p><p>| <code>bevy</code> | <code>bevy_animation_graph</code> | 
+| ------ | ---------------------- | 
+| 0.18 | master | 
+| 0.18 | 0.10 | 
+| 0.17 | 0.9 | 
+| 0.17 | 0.8 | 
+| 0.16 | 0.7 | 
+| 0.15 | 0.6 | 
+| 0.14 | 0.5 | 
+| 0.13 | 0.4 | 
+| 0.13 | 0.3 | 
+| 0.12 | 0.2 |</p><h2>Acknowledgements</h2></p><p>Many thanks to <a href="https://www.youtube.com/@BobbyAnguelov" target="_blank" rel="noopener noreferrer">Bobby Anguelov</a> for his
+lectures on animation programming.</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-13
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/mbrea-c/bevy_animation_graph/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-13 
+    </div>
+    
+</body>
+</html>
