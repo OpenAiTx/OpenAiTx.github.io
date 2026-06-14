@@ -1,0 +1,433 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wsl-screenshot-cli - Windows 클립보드에서 스크린샷을 모니터링하는 CLI 도구로, Windows의 붙여넣기 기능을 유지하면서 WSL에서 붙여넣기가 가능하게 합니다.</title>
+    <meta name="description" content="Windows 클립보드에서 스크린샷을 모니터링하는 CLI 도구로, Windows의 붙여넣기 기능을 유지하면서 WSL에서 붙여넣기가 가능하게 합니다.">
+    <meta name="keywords" content="wsl-screenshot-cli, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "wsl-screenshot-cli",
+  "description": "Windows 클립보드에서 스크린샷을 모니터링하는 CLI 도구로, Windows의 붙여넣기 기능을 유지하면서 WSL에서 붙여넣기가 가능하게 합니다.",
+  "author": {
+    "@type": "Person",
+    "name": "Nailuu"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 125
+  },
+  "url": "https://OpenAiTx.github.io/projects/Nailuu/wsl-screenshot-cli/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/Nailuu/wsl-screenshot-cli/main/README.md",
+  "datePublished": "2026-06-14",
+  "dateModified": "2026-06-14"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Nailuu/wsl-screenshot-cli" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    wsl-screenshot-cli
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 125 stars</span>
+                <span class="language">Korean</span>
+                <span>by Nailuu</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>wsl-screenshot-cli</h1></p><p><a href="https://github.com/Nailuu/wsl-screenshot-cli/releases" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/downloads/Nailuu/wsl-screenshot-cli/total" alt="downloads"></a></p><p>스크린샷을 위해 Windows 클립보드를 모니터링하는 CLI 도구로, Windows의 붙여넣기 기능을 유지하면서 WSL(예: Claude Code CLI, Codex CLI 등)에서 붙여넣을 수 있게 합니다.</p><p>Windows에서 스크린샷을 찍고, WSL 터미널에 붙여넣으면 파일 경로를 받습니다. Paint에 붙여넣으면 이미지가 붙여지고, 탐색기에 붙여넣으면 파일이 붙여집니다. 모두 동시에 가능합니다.</p><p><img src="https://raw.githubusercontent.com/Nailuu/wsl-screenshot-cli/main/assets/demo.gif" alt="Demo"></p><h3>빠른 시작</h3></p><pre><code class="language-bash">wsl-screenshot-cli start --daemon   # start monitoring
+wsl-screenshot-cli status           # check it's running
+wsl-screenshot-cli stop             # stop monitoring
+wsl-screenshot-cli update           # update to latest version</code></pre>
+<h2>설치</h2></p><h3>빠른 설치 (권장)</h3></p><pre><code class="language-bash">curl -fsSL https://nailu.dev/wscli/install.sh | bash</code></pre>
+이 명령은 최신 바이너리를 <code>~/.local/bin/</code>에 다운로드합니다. Go 도구 체인이 필요 없습니다.</p><h3>Go를 통해</h3></p><pre><code class="language-bash">go install github.com/nailuu/wsl-screenshot-cli@latest</code></pre></p><h3>출처부터</h3></p><pre><code class="language-bash">git clone https://github.com/Nailuu/wsl-screenshot-cli.git
+cd wsl-screenshot-cli
+go build -o wsl-screenshot-cli .</code></pre></p><h3>자동 시작 옵션</h3></p><p><strong>옵션 1</strong> — 셸과 함께 자동 시작 (<code>~/.bashrc</code> 또는 <code>~/.zshrc</code>에 추가):</p><pre><code class="language-bash">wsl-screenshot-cli start --daemon --quiet</code></pre></p><blockquote><strong>팁:</strong> <code>--quiet</code> 플래그는 새 터미널을 열 때마다 <code>Polling process is already running</code> 메시지가 나타나지 않도록 합니다.</blockquote></p><blockquote><strong>참고:</strong> 설치 스크립트는 바이너리를 <code>~/.local/bin/</code>에 배치하며, 이는 일반적으로 <code>~/.profile</code>(로그인 쉘 전용)에 의해 PATH에 추가됩니다. <code>.bashrc</code>에서 <code>command not found</code> 오류가 발생하면 위 줄 <strong>앞에</strong> 다음을 추가하세요:</blockquote>
+<blockquote><pre><code class="language-bash">> if [ -d "$HOME/.local/bin" ] && [[ ":$PATH:" != <em>":$HOME/.local/bin:"</em> ]]; then</blockquote>
+<blockquote>    export PATH="$HOME/.local/bin:$PATH"</blockquote>
+<blockquote>fi</blockquote>
+<blockquote>``<code></blockquote></p><p><strong>옵션 2</strong> — Claude Code 후크로 자동 시작/중지 설정 (</code>~/.claude/settings.json<code>에 추가):
+</code></pre>json
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "wsl-screenshot-cli start --daemon --quiet 2>/dev/null; echo 'wsl-screenshot-cli started'"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "wsl-screenshot-cli stop 2>/dev/null"
+          }
+        ]
+      }
+    ]
+  }
+}
+<pre><code class="language-">
+<h2>작동 원리</h2>
+</code></pre>mermaid
+graph LR
+    subgraph WSL
+        CLI["wsl-screenshot-cli"]
+        Poller
+        GoClient["Clipboard Client"]
+    end</p><p>    subgraph Windows
+        PS["PowerShell · STA"]
+        DotNet[".NET Clipboard API"]
+        CB["Clipboard"]
+    end</p><p>    subgraph Output
+        PNG["SHA256.png"]
+    end</p><p>    CLI -- "start / stop / status" --> Poller
+    Poller -- "poll every 250ms" --> GoClient
+    GoClient -- "stdin / stdout" --> PS
+    PS -- "CHECK" --> DotNet
+    DotNet -- "read image" --> CB
+    Poller -- "save & dedup" --> PNG
+<pre><code class="language-">지속적인 </code>powershell.exe -STA<code> 하위 프로세스가 단순한 stdin/stdout 텍스트 프로토콜(</code>CHECK<code> / </code>UPDATE<code> / </code>EXIT<code>)을 통해 모든 클립보드 접근을 처리합니다. Go 쪽에서는 </code>CHECK<code> 명령을 보내 폴링하며; PowerShell은 변경 감지를 위해 사전 컴파일된 .NET 클립보드 API(</code>System.Windows.Forms.Clipboard<code>)를 사용합니다 — 런타임 C# 컴파일이 없으므로 EDR 제품(SentinelOne, CrowdStrike 등)이 </code>csc.exe<code>를 차단해도 작동합니다. </code>DoEvents()<code>는 Windows 메시지를 펌핑하여 STA 스레드의 응답성을 유지합니다 — 클립보드 작업 중 Explorer, 스니핑 도구, 기타 앱이 멈추는 것을 방지합니다.</p><p>새 스크린샷이 감지되면, 폴러는:</p><ul><li>PowerShell로부터 base64 PNG 이미지 수신</li>
+<li>SHA256 해시로 중복 제거 후 디스크에 저장</li>
+<li></code>wslpath -w<code>를 통해 WSL 경로를 Windows 경로로 변환</li>
+<li>PowerShell에 세 가지 클립보드 포맷을 동시에 설정하도록 지시</li></p><p></ul><h3>붙여넣기 시 동작</h3></p><p>스크린샷이 캡처된 후, 클립보드에는 세 가지 포맷이 동시에 포함됩니다:</p><p>| 붙여넣는 위치 | 클립보드 포맷 | 결과물 |
+|---|---|---|
+| WSL 터미널 (Ctrl+Shift+V) | </code>CF_UNICODETEXT<code> | 파일 경로: </code>/tmp/.wsl-screenshot-cli/<hash>.png<code> |
+| Windows 이미지 앱 (페인트 등) | </code>CF_BITMAP<code> | 이미지로서의 스크린샷 |
+| Windows 탐색기 / 파일 대화상자 | </code>CF_HDROP<code> | PNG 파일 (파일로 붙여넣기) |</p><h2>사용법</h2></p><h3>시작하기</h3></p><p></code></pre>bash
+<h1>Foreground (useful for debugging)</h1>
+wsl-screenshot-cli start</p><h1>Background daemon (typical usage)</h1>
+wsl-screenshot-cli start --daemon</p><h1>Custom interval and output directory</h1>
+wsl-screenshot-cli start --daemon --interval 1000 --output ~/screenshots/</p><h1>Debug mode — logs all PowerShell I/O</h1>
+wsl-screenshot-cli start --verbose
+<pre><code class="language-">| 플래그 | 축약형 | 기본값 | 설명 |
+|---|---|---|---|
+| </code>--daemon<code> | </code>-d<code> | </code>false<code> | 백그라운드 데몬으로 실행 |
+| </code>--interval<code> | </code>-i<code> | </code>250<code> | 폴링 간격(ms) (100–5000) |
+| </code>--output<code> | </code>-o<code> | </code>/tmp/.wsl-screenshot-cli/<code> | PNG 파일 저장 디렉터리 |
+| </code>--quiet<code> | </code>-q<code> | </code>false<code> | 정보 메시지 출력 억제 |
+| </code>--verbose<code> | </code>-v<code> | </code>false<code> | 디버깅을 위한 모든 PowerShell I/O 기록 |</p><h3>상태</h3></p><p></code></pre>bash
+$ wsl-screenshot-cli status
+Status:       running
+PID:          12345
+Uptime:       2h 15m 30s
+CPU usage:    2.5%
+Memory:       45.2 MB
+Screenshots:  127
+Output dir:   /tmp/.wsl-screenshot-cli/
+Log file:     /tmp/.wsl-screenshot-cli.log
+<pre><code class="language-">
+<h3>중지</h3>
+</code></pre>bash
+wsl-screenshot-cli stop
+<pre><code class="language-">
+<h3>업데이트</h3>
+</code></pre>bash
+wsl-screenshot-cli update
+<pre><code class="language-">GitHub에서 최신 릴리스로 업데이트합니다. 데몬이 실행 중인 경우 업데이트 전에 중지됩니다. 이미 최신 버전에서 설치 스크립트를 다시 실행하면 다운로드가 건너뜁니다.</p><h2>전제 조건</h2></p><ul><li>Windows 상호 운용이 활성화된 <strong>WSL2</strong></li>
+<li>WSL에서 접근 가능한 <strong>PowerShell</strong> (</code>powershell.exe<code>가 PATH에 있어야 함)</li>
+<li><strong>Go 1.25+</strong> (소스에서 빌드하는 경우에만 필요)</li></p><p></ul><h2>테스트</h2></p><h3>요구 사항</h3></p><ul><li><strong>Go 1.25+</strong></li>
+<li><strong>gcc</strong> — </code>-race<code> 플래그(cgo 의존성)에 필요합니다. 다음 명령어로 설치하세요:</li></p><p>  </ul></code>`<code>bash
+  sudo apt update && sudo apt install -y gcc
+  </code>`<code></p><h3>테스트 실행</h3></p><p>레이스 감지기와 함께 전체 테스트를 실행합니다:
+</code></pre>bash
+CGO_ENABLED=1 go test -race -count=1 -v ./...
+<pre><code class="language-">
+gcc 없이도 레이스 감지 없이 테스트를 실행할 수 있습니다:
+</code></pre>bash
+go test -count=1 -v ./...
+<pre><code class="language-">
+<h2>프로젝트 구조</h2>
+</code></pre>
+├── main.go                        # Entry point
+├── cmd/
+│   ├── root.go                    # Root cobra command
+│   ├── start.go                   # start command (flags, daemon/foreground)
+│   ├── status.go                  # status command (process diagnostics)
+│   ├── stop.go                    # stop command (SIGTERM)
+│   └── update.go                  # update command (self-update via install script)
+└── internal/
+    ├── clipboard/
+    │   ├── clipboard.go           # Go ↔ PowerShell client (stdin/stdout pipes)
+    │   └── clipboard.ps1          # Embedded PowerShell script (Win32 clipboard)
+    ├── daemon/
+    │   ├── daemon.go              # Daemonize, PID management, lifecycle
+    │   └── status.go              # /proc parsing (CPU, memory, uptime)
+    ├── platform/
+    │   └── platform.go            # WSL environment checks
+    └── poller/
+        └── poller.go              # Poll loop, SHA256 dedup, circuit breaker
+</code>``</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-14
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Nailuu/wsl-screenshot-cli/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-14 
+    </div>
+    
+</body>
+</html>

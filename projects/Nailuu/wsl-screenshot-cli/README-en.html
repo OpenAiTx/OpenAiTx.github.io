@@ -1,0 +1,433 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wsl-screenshot-cli - CLI tool that monitors the Windows clipboard for screenshots, enabling pasting in WSL while maintaining Windows paste functionality.</title>
+    <meta name="description" content="CLI tool that monitors the Windows clipboard for screenshots, enabling pasting in WSL while maintaining Windows paste functionality.">
+    <meta name="keywords" content="wsl-screenshot-cli, English, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "wsl-screenshot-cli",
+  "description": "CLI tool that monitors the Windows clipboard for screenshots, enabling pasting in WSL while maintaining Windows paste functionality.",
+  "author": {
+    "@type": "Person",
+    "name": "Nailuu"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 125
+  },
+  "url": "https://OpenAiTx.github.io/projects/Nailuu/wsl-screenshot-cli/README-en.html",
+  "sameAs": "https://raw.githubusercontent.com/Nailuu/wsl-screenshot-cli/main/README.md",
+  "datePublished": "2026-06-14",
+  "dateModified": "2026-06-14"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Nailuu/wsl-screenshot-cli" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    wsl-screenshot-cli
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 125 stars</span>
+                <span class="language">English</span>
+                <span>by Nailuu</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>wsl-screenshot-cli</h1></p><p><a href="https://github.com/Nailuu/wsl-screenshot-cli/releases" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/downloads/Nailuu/wsl-screenshot-cli/total" alt="downloads"></a></p><p>CLI tool that monitors the Windows clipboard for screenshots, making them pasteable in WSL (e.g. Claude Code CLI, Codex CLI, ...) while preserving Windows paste functionality.</p><p>Take a screenshot on Windows, then paste in your WSL terminal — you get a file path. Paste in Paint — you get the image. Paste in Explorer — you get the file. All at the same time.</p><p><img src="https://raw.githubusercontent.com/Nailuu/wsl-screenshot-cli/main/assets/demo.gif" alt="Demo"></p><h3>Quick Start</h3></p><pre><code class="language-bash">wsl-screenshot-cli start --daemon   # start monitoring
+wsl-screenshot-cli status           # check it's running
+wsl-screenshot-cli stop             # stop monitoring
+wsl-screenshot-cli update           # update to latest version</code></pre></p><h2>Installation</h2></p><h3>Quick install (recommended)</h3></p><pre><code class="language-bash">curl -fsSL https://nailu.dev/wscli/install.sh | bash</code></pre></p><p>This downloads the latest binary to <code>~/.local/bin/</code>. No Go toolchain required.</p><h3>Via Go</h3></p><pre><code class="language-bash">go install github.com/nailuu/wsl-screenshot-cli@latest</code></pre></p><h3>From source</h3></p><pre><code class="language-bash">git clone https://github.com/Nailuu/wsl-screenshot-cli.git
+cd wsl-screenshot-cli
+go build -o wsl-screenshot-cli .</code></pre></p><h3>Auto-start options</h3></p><p><strong>Option 1</strong> — Auto-start with your shell (add to <code>~/.bashrc</code> or <code>~/.zshrc</code>):</p><pre><code class="language-bash">wsl-screenshot-cli start --daemon --quiet</code></pre></p><blockquote><strong>Tip:</strong> The <code>--quiet</code> flag prevents the <code>Polling process is already running</code> message from appearing each time you open a new terminal.</blockquote></p><blockquote><strong>Note:</strong> The install script places the binary in <code>~/.local/bin/</code>, which is typically added to PATH by <code>~/.profile</code> (login shells only). If you get <code>command not found</code> in <code>.bashrc</code>, add this <strong>before</strong> the line above:</blockquote>
+<blockquote><pre><code class="language-bash">> if [ -d "$HOME/.local/bin" ] && [[ ":$PATH:" != <em>":$HOME/.local/bin:"</em> ]]; then</blockquote>
+<blockquote>    export PATH="$HOME/.local/bin:$PATH"</blockquote>
+<blockquote>fi</blockquote>
+<blockquote>``<code></blockquote></p><p><strong>Option 2</strong> — Auto-start/stop with Claude Code hooks (add to </code>~/.claude/settings.json<code>):
+</code></pre>json
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "wsl-screenshot-cli start --daemon --quiet 2>/dev/null; echo 'wsl-screenshot-cli started'"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "wsl-screenshot-cli stop 2>/dev/null"
+          }
+        ]
+      }
+    ]
+  }
+}
+<pre><code class="language-">
+<h2>How It Works</h2>
+</code></pre>mermaid
+graph LR
+    subgraph WSL
+        CLI["wsl-screenshot-cli"]
+        Poller
+        GoClient["Clipboard Client"]
+    end</p><p>    subgraph Windows
+        PS["PowerShell · STA"]
+        DotNet[".NET Clipboard API"]
+        CB["Clipboard"]
+    end</p><p>    subgraph Output
+        PNG["SHA256.png"]
+    end</p><p>    CLI -- "start / stop / status" --> Poller
+    Poller -- "poll every 250ms" --> GoClient
+    GoClient -- "stdin / stdout" --> PS
+    PS -- "CHECK" --> DotNet
+    DotNet -- "read image" --> CB
+    Poller -- "save & dedup" --> PNG
+<pre><code class="language-">A persistent </code>powershell.exe -STA<code> subprocess handles all clipboard access via a simple stdin/stdout text protocol (</code>CHECK<code> / </code>UPDATE<code> / </code>EXIT<code>). The Go side polls by sending </code>CHECK<code> commands; PowerShell uses pre-compiled .NET Clipboard APIs (</code>System.Windows.Forms.Clipboard<code>) for change detection — no runtime C# compilation, so it works even when EDR products (SentinelOne, CrowdStrike, etc.) block </code>csc.exe<code>. </code>DoEvents()<code> pumps Windows messages to keep the STA thread responsive — preventing freezes in Explorer, Snipping Tool, and other apps during clipboard operations.</p><p>When a new screenshot is detected, the poller:</p><ul><li>Receives the image as base64 PNG from PowerShell</li>
+<li>Deduplicates by SHA256 hash and saves to disk</li>
+<li>Converts the WSL path to a Windows path via </code>wslpath -w<code></li>
+<li>Tells PowerShell to set three clipboard formats at once</li></p><p></ul><h3>What Happens When You Paste</h3></p><p>After a screenshot is captured, the clipboard contains three formats simultaneously:</p><p>| Where you paste | Clipboard format | What you get |
+|---|---|---|
+| WSL terminal (Ctrl+Shift+V) | </code>CF_UNICODETEXT<code> | File path: </code>/tmp/.wsl-screenshot-cli/<hash>.png<code> |
+| Windows image app (Paint, etc.) | </code>CF_BITMAP<code> | The screenshot as an image |
+| Windows Explorer / file dialog | </code>CF_HDROP<code> | The PNG file (paste-as-file) |</p><h2>Usage</h2></p><h3>Start</h3></p><p></code></pre>bash
+<h1>Foreground (useful for debugging)</h1>
+wsl-screenshot-cli start</p><h1>Background daemon (typical usage)</h1>
+wsl-screenshot-cli start --daemon</p><h1>Custom interval and output directory</h1>
+wsl-screenshot-cli start --daemon --interval 1000 --output ~/screenshots/</p><h1>Debug mode — logs all PowerShell I/O</h1>
+wsl-screenshot-cli start --verbose
+<pre><code class="language-">
+| Flag | Short | Default | Description |
+|---|---|---|---|
+| </code>--daemon<code> | </code>-d<code> | </code>false<code> | Run as a background daemon |
+| </code>--interval<code> | </code>-i<code> | </code>250<code> | Polling interval in ms (100–5000) |
+| </code>--output<code> | </code>-o<code> | </code>/tmp/.wsl-screenshot-cli/<code> | Directory to store PNGs |
+| </code>--quiet<code> | </code>-q<code> | </code>false<code> | Suppress informational messages |
+| </code>--verbose<code> | </code>-v<code> | </code>false<code> | Log all PowerShell I/O for debugging |</p><h3>Status</h3>
+</code></pre>bash
+$ wsl-screenshot-cli status
+Status:       running
+PID:          12345
+Uptime:       2h 15m 30s
+CPU usage:    2.5%
+Memory:       45.2 MB
+Screenshots:  127
+Output dir:   /tmp/.wsl-screenshot-cli/
+Log file:     /tmp/.wsl-screenshot-cli.log
+<pre><code class="language-">### Stop</p><p></code></pre>bash
+wsl-screenshot-cli stop
+<pre><code class="language-">
+<h3>Update</h3>
+</code></pre>bash
+wsl-screenshot-cli update
+<pre><code class="language-">
+Updates to the latest release from GitHub. If the daemon is running, it will be stopped before updating. Re-running the install script when already on the latest version will skip the download.</p><h2>Prerequisites</h2></p><ul><li><strong>WSL2</strong> with Windows interop enabled</li>
+<li><strong>PowerShell</strong> accessible from WSL (</code>powershell.exe<code> must be in PATH)</li>
+<li><strong>Go 1.25+</strong> (only if building from source)</li></p><p></ul><h2>Tests</h2></p><h3>Requirements</h3></p><ul><li><strong>Go 1.25+</strong></li>
+<li><strong>gcc</strong> — required for the </code>-race<code> flag (cgo dependency). Install with:</li>
+  </ul></code>`<code>bash
+  sudo apt update && sudo apt install -y gcc
+  </code>`<code></p><h3>Running tests</h3></p><p>Run the full suite with the race detector:
+</code></pre>bash
+CGO_ENABLED=1 go test -race -count=1 -v ./...
+<pre><code class="language-">
+Without gcc, you can still run tests without race detection:
+</code></pre>bash
+go test -count=1 -v ./...
+<pre><code class="language-">
+<h2>Project Structure</h2>
+</code></pre>
+├── main.go                        # Entry point
+├── cmd/
+│   ├── root.go                    # Root cobra command
+│   ├── start.go                   # start command (flags, daemon/foreground)
+│   ├── status.go                  # status command (process diagnostics)
+│   ├── stop.go                    # stop command (SIGTERM)
+│   └── update.go                  # update command (self-update via install script)
+└── internal/
+    ├── clipboard/
+    │   ├── clipboard.go           # Go ↔ PowerShell client (stdin/stdout pipes)
+    │   └── clipboard.ps1          # Embedded PowerShell script (Win32 clipboard)
+    ├── daemon/
+    │   ├── daemon.go              # Daemonize, PID management, lifecycle
+    │   └── status.go              # /proc parsing (CPU, memory, uptime)
+    ├── platform/
+    │   └── platform.go            # WSL environment checks
+    └── poller/
+        └── poller.go              # Poll loop, SHA256 dedup, circuit breaker
+</code>``</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-14
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Nailuu/wsl-screenshot-cli/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-14 
+    </div>
+    
+</body>
+</html>
