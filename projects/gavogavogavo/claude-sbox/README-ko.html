@@ -1,0 +1,332 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>claude-sbox - s&amp;box 게임 개발을 위한 Claude Code 스킬. 스키마 검증 API 참조, 10개의 실행 가능한 예제, Unity 허위정보 없음</title>
+    <meta name="description" content="s&amp;box 게임 개발을 위한 Claude Code 스킬. 스키마 검증 API 참조, 10개의 실행 가능한 예제, Unity 허위정보 없음">
+    <meta name="keywords" content="claude-sbox, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "claude-sbox",
+  "description": "s&box 게임 개발을 위한 Claude Code 스킬. 스키마 검증 API 참조, 10개의 실행 가능한 예제, Unity 허위정보 없음",
+  "author": {
+    "@type": "Person",
+    "name": "gavogavogavo"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 41
+  },
+  "url": "https://OpenAiTx.github.io/projects/gavogavogavo/claude-sbox/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/gavogavogavo/claude-sbox/main/README.md",
+  "datePublished": "2026-06-15",
+  "dateModified": "2026-06-15"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/gavogavogavo/claude-sbox" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    claude-sbox
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 41 stars</span>
+                <span class="language">Korean</span>
+                <span>by gavogavogavo</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>claude-sbox</h1></p><p><a href="https://code.claude.com" target="_blank" rel="noopener noreferrer">Claude Code</a> 스킬로, Claude가 Unity 패턴에 의존하지 않고 관용적인 <a href="https://sbox.game" target="_blank" rel="noopener noreferrer">s&box</a> 코드 — C# 컴포넌트, Razor UI, 물리, 네트워킹 — 를 작성하도록 가르칩니다.</p><p>s&box는 Facepunch의 Source 2 게임 엔진에 C# 스크립팅 레이어가 추가된 것입니다. 이 엔진의 API, 생명주기, 네트워킹 모델은 Unity와 <em>전혀 다르기</em> 때문에, 일반 Claude는 <code>void Start()</code>, Unity식 <code>GetComponent<T>()</code>, <code>Physics.Raycast</code>, <code>[SerializeField]</code>, <code>StartCoroutine</code> 등을 자주 착각합니다 — s&box에서는 모두 틀렸습니다. 이 스킬은 s&box 코드를 작성할 때 로드되어 Claude를 엔진의 내보낸 스키마에 맞는 올바른 API로 안내합니다.</p><hr></p><h2>설치</h2></p><p><strong>개인용 (모든 프로젝트에서 사용 가능):</strong></p><pre><code class="language-bash">mkdir -p ~/.claude/skills
+git clone https://github.com/gavogavogavo/claude-sbox ~/.claude/skills/sbox</code></pre></p><p><strong>프로젝트 로컬 (이 게임에만 적용):</strong></p><pre><code class="language-bash">cd my-sbox-game
+mkdir -p .claude/skills
+git clone https://github.com/gavogavogavo/claude-sbox .claude/skills/sbox</code></pre>
+Claude Code는 스킬 파일 변경 사항을 실시간으로 감지합니다. 그러나 <code>~/.claude/skills/</code> 디렉터리가 Claude Code 세션 시작 시 존재하지 않았다면(즉, 첫 개인 스킬인 경우), <code>mkdir</code> 후에 <strong>Claude Code를 재시작</strong>해야 감시자가 새 디렉터리를 등록합니다.</p><blockquote><strong>왜 <code>sbox</code> 디렉터리 이름인가요 (<code>claude-sbox</code>가 아닌)?</strong> <code>SKILL.md</code>의 <code>name:</code> 프론트매터가 <code>sbox</code>로 되어 있어 <code>/sbox</code> 슬래시 명령어가 됩니다. <code>~/.claude/skills/sbox/</code>에 클론하면 디렉터리 이름과 호출 이름이 일치합니다.</blockquote></p><hr></p><h2>작동 여부 확인</h2></p><p>어떤 Claude Code 세션에서든 다음을 입력하세요:</p><pre><code class="language-">/sbox</code></pre>
+라우터가 로드됩니다. 또는 트리거 질문을 하고 Claude가 참조 파일을 찾는 것을 지켜보세요:</p><pre><code class="language-">How do I write a networked player controller in s&box?</code></pre>
+Claude는 답변하기 전에 <code>references/core-concepts.md</code>, <code>references/networking.md</code>, 그리고/또는 <code>references/patterns-and-examples.md</code>를 열어야 합니다 — <em>이것이 스킬이 작동 중임을 알리는 신호입니다</em>. 만약 파일을 읽지 않고 기억에서 답변한다면 문제가 있는 것이니 <a href="#troubleshooting" target="_blank" rel="noopener noreferrer">문제 해결</a>을 참조하세요.</p><hr></p><h2>내용 구성</h2></p><p><code>SKILL.md</code>는 참조 문서가 아니라 라우터입니다. Claude가 세부 사항이 필요할 때 다음 파일 중 하나를 엽니다:</p><p>| 파일 | 줄 수 | 내용 |
+|---|---:|---|
+| <code>SKILL.md</code> | 271 | 라우터 + Unity→s&box 변환표 + 10가지 규칙 |
+| <code>references/core-concepts.md</code> | 575 | 씬 시스템, 게임오브젝트, 컴포넌트, 생명주기, <code>[Property]</code>, 프리팹, 씬 이벤트, <code>GameObjectSystem</code>, 비동기 |
+| <code>references/components-builtin.md</code> | 729 | 144개 내장 컴포넌트 — 렌더러, 리지드바디, 콜라이더, <code>CharacterController</code>, <code>CameraComponent</code>, 조명, 오디오, UI, <code>NavMeshAgent</code>, <code>PlayerController</code>, 파티클, 후처리 |
+| <code>references/ui-razor.md</code> | 834 | Razor 패널, SCSS, 플렉스박스 레이아웃, 내장 컨트롤(Button / TextEntry / DropDown / SliderControl / VirtualGrid), <code>NavigationHost</code>, 전환 효과 |
+| <code>references/networking.md</code> | 672 | 로비, <code>Connection</code>, <code>[Sync]</code> + <code>SyncFlags</code>, <code>[Rpc.Broadcast/Host/Owner]</code>, 소유권, <code>INetworkListener</code>, <code>INetworkSpawn</code>, 스냅샷 데이터, 전용 서버 |
+| <code>references/input-and-physics.md</code> | 597 | 입력 시스템, <code>SceneTrace</code> 빌더 API, <code>PhysicsWorld</code>, 충돌, <code>Vector3</code>/<code>Rotation</code>/<code>Angles</code>/<code>Transform</code>/<code>BBox</code>/<code>Ray</code>/<code>Capsule</code>, <code>TimeSince</code>/<code>TimeUntil</code>, <code>Gizmo.Draw</code> |
+| <code>references/api-schema-core.md</code> | 930 | 가장 많이 사용되는 약 50개 타입의 전체 공개 시그니처 |
+| <code>references/api-schema-extended.md</code> | 2753 | 네임스페이스별로 정리된 738개 추가 타입 인덱스 |
+| <code>references/patterns-and-examples.md</code> | 1056 | 10가지 완전 실행 가능한 예제 (Health + <code>IDamageable</code>, 1인칭 <code>CharacterController</code>, 히트스캔 무기, 네트워크 게임 매니저, <code>[Sync]</code>/RPC가 적용된 플레이어, Razor HUD, 리지드바디 수류탄, NavMeshAgent AI 상태 머신, 프리팹 스포너, 트리거 픽업) |</p><p>모든 참조 파일의 API 시그니처는 s&box 엔진의 내보낸 스키마(<code>raw/api-schema.json</code>, 61개 네임스페이스에 걸친 약 1,850개 타입)와 대조 검증됩니다. 스키마는 유일한 진실의 원천입니다 — 문서와 스키마가 다를 경우 스키마가 우선합니다.</p><hr></p><h2>업데이트</h2></p><pre><code class="language-bash">cd ~/.claude/skills/sbox
+git pull</code></pre></p><p>Claude Code는 현재 세션 내에서 수정된 스킬 파일을 다시 로드합니다.</p><hr></p><h2>소스에서 재생성하기</h2></p><p>최종 사용자는 이 기능이 필요하지 않습니다. 최신 s&box 엔진에 맞춰 참조 파일을 다시 빌드하려는 유지보수 담당자를 위한 내용입니다:</p><pre><code class="language-bash">./scripts/fetch-raw.sh         # clones Facepunch/sbox-docs into raw/sbox-docs
+<h1>manually place raw/api-schema.json (see docs/DESIGN.md)</h1>
+node scripts/build_extended.js # rebuilds references/api-schema-extended.md</code></pre>
+전체 빌드 워크플로우 — 각 참조 파일이 어떻게 큐레이션되었는지, 스키마 검증 루프, 그리고 알려진 문제점들 — 은 <a href="https://raw.githubusercontent.com/gavogavogavo/claude-sbox/main/docs/DESIGN.md" target="_blank" rel="noopener noreferrer"><code>docs/DESIGN.md</code></a> 와 <a href="https://raw.githubusercontent.com/gavogavogavo/claude-sbox/main/docs/BUILD_LOG.md" target="_blank" rel="noopener noreferrer"><code>docs/BUILD_LOG.md</code></a> 에 문서화되어 있습니다.</p><hr></p><h2>문제 해결</h2></p><p><strong>Claude가 s&box 질문에서 스킬을 트리거하지 않습니다.</strong>
+디렉터리가 <code>~/.claude/skills/sbox/</code> 에 있는지 확인하세요 (<code>~/.claude/skills/claude-sbox/</code> 또는 <code>~/.claude/skills/sbox-skill/</code> 가 아님). 디렉터리 이름은 <code>name:</code> 프론트매터와 일치해야 합니다. 또한 <code>/sbox</code> 명령어로 명시적으로 호출해서 설치 여부를 확인해보세요.</p><p><strong>Claude가 참조 파일을 열지 않고 s&box 질문에 답변합니다.</strong>
+이는 Unity 근육 기억에서 환각을 일으키는 것입니다 — 이 스킬이 방지하기 위해 존재하는 정확한 실패 상황입니다. 스킬이 로드되지 않았거나 설명이 일치하지 않는 경우입니다. <code>/sbox</code> 로 강제 로드한 뒤 질문을 다시 시도해보세요.</p><p><strong>스킬은 로드되지만 컴파일되지 않는 API를 제안합니다.</strong>
+제안된 코드와 Claude가 참조했다고 주장하는 참조 파일을 포함하여 이슈를 여세요. 배포된 모든 시그니처는 스키마 검증을 거쳐야 합니다; 회귀는 버그입니다.</p><p><strong><code>~/.claude/skills/claude-sbox/</code> 에 클론했는데 이제 어떻게 하나요?</strong>
+디렉터리 이름을 <code>sbox</code> 로 변경하거나 <code>SKILL.md</code> 의 <code>name:</code> 필드를 <code>claude-sbox</code> 로 변경하여 일치시키세요. 프로젝트 로컬 설치도 마찬가지입니다.</p><hr></p><h2>기여하기</h2></p><p>이슈와 PR 환영합니다. 제출 전에:</p><ul><li><strong>새 API 시그니처를 <code>raw/api-schema.json</code> 과 검증하세요.</strong> 스키마가 진실의 근원입니다. 스키마에서 메서드를 찾을 수 없다면 추가하지 마세요.</li>
+<li><strong><code>SKILL.md</code> 를 500줄 이하로 유지하세요.</strong> 이 파일은 라우터입니다 — 참조 상세 내용은 <code>references/</code> 에 있습니다. 참조 파일을 열지 않고 <code>SKILL.md</code> 만으로 s&box 질문에 답할 수 있다면, 라우터에 너무 많은 상세가 들어간 것입니다.</li>
+<li><strong>사용자에게 보이는 변경사항은 <code>CHANGELOG.md</code> 에 업데이트하세요.</strong></li>
+<li><strong>기존 문체와 맞추세요</strong> — 간결하고 밀도 높으며, 튜토리얼 독자가 아닌 Claude를 위해 작성된 스타일입니다.</li></p><p></ul>---</p><h2>라이선스</h2></p><p>MIT — <a href="LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a> 참조.</p><p>이 프로젝트는 Facepunch 또는 Anthropic과 제휴하거나 승인받지 않았습니다. s&box는 Facepunch Studios의 제품입니다. Claude Code와 Agent Skills 포맷은 Anthropic의 제품입니다.</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-15
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/gavogavogavo/claude-sbox/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-15 
+    </div>
+    
+</body>
+</html>
