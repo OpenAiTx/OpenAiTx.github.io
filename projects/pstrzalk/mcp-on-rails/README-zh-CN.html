@@ -1,0 +1,402 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mcp-on-rails - 一个用于引导 Rails + MCP 应用的 Rails 应用模板</title>
+    <meta name="description" content="一个用于引导 Rails + MCP 应用的 Rails 应用模板">
+    <meta name="keywords" content="mcp-on-rails, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "mcp-on-rails",
+  "description": "一个用于引导 Rails + MCP 应用的 Rails 应用模板",
+  "author": {
+    "@type": "Person",
+    "name": "pstrzalk"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 142
+  },
+  "url": "https://OpenAiTx.github.io/projects/pstrzalk/mcp-on-rails/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/pstrzalk/mcp-on-rails/main/README.md",
+  "datePublished": "2026-06-17",
+  "dateModified": "2026-06-17"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/pstrzalk/mcp-on-rails" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    mcp-on-rails
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 142 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by pstrzalk</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>MCP on Rails（可选 OAuth）</h1></p><p>一个集成了<a href="https://github.com/anthropics/model-context-protocol" target="_blank" rel="noopener noreferrer">模型上下文协议（MCP）</a>与 Ruby on Rails 的 Rails 应用模板。设置过程中，模板会询问是否添加使用 <a href="https://github.com/heartcombo/devise" target="_blank" rel="noopener noreferrer">Devise</a> 和 <a href="https://github.com/doorkeeper-gem/doorkeeper" target="_blank" rel="noopener noreferrer">Doorkeeper</a> 的 OAuth 2.1 保护——因此一个模板支持纯 MCP 和完全认证的设置。</p><h2>快速开始</h2></p><pre><code class="language-bash">git clone https://github.com/pstrzalk/mcp-on-rails.git
+rails new myapp -m mcp-on-rails/mcp
+cd myapp
+rails db:migrate
+rails server</code></pre>
+模板将提示：</p><pre><code class="language-">Add Devise + Doorkeeper OAuth 2.1 authentication? (y/n)</code></pre></p><p>回答 <strong>n</strong> 表示普通 MCP 服务器，回答 <strong>y</strong> 表示完整的 OAuth 保护。</p><h3>将 MCP 模板添加到现有的 Rails 应用程序</h3></p><p>您也可以轻松地将此模板应用到现有的 Rails 应用程序。</p><pre><code class="language-bash">git clone https://github.com/pstrzalk/mcp-on-rails.git
+cd your-project/
+rails app:template LOCATION=../mcp-on-rails/mcp</code></pre></p><hr></p><h2>纯MCP（回答“n”）</h2></p><p>创建一个带有开放MCP服务器的Rails应用 — 无需身份验证。</p><h3>你将获得</h3></p><ul><li><strong><code>mcp</code> gem</strong> 被添加到Gemfile中</li>
+<li><strong><code>McpController</code></strong> 位于 <code>/mcp</code> — 继承自 <code>ActionController::API</code>，处理MCP协议</li>
+<li><strong>MCP路由</strong> — <code>POST /mcp</code>，<code>GET /mcp</code></li>
+<li><strong>脚手架钩子</strong> — <code>rails generate scaffold</code> 自动创建MCP工具</li>
+<li><strong>自定义工具生成器</strong> — <code>rails generate mcp_tool ToolName field:type</code></li>
+<li><strong>自定义提示生成器</strong> — <code>rails generate mcp_prompt PromptName arg arg:required</code></li>
+<li><strong><code>to_mcp_response</code></strong> 在ApplicationRecord上用于一致的文本格式化</li>
+<li><strong><code>rake mcp:tools</code></strong> 和 <strong><code>rake mcp:prompts</code></strong> 列出所有已注册的工具和提示（使用 <code>mcp:tools:verbose</code> / <code>mcp:prompts:verbose</code> 查看完整详情）</li></p><p></ul><h3>用法</h3></p><pre><code class="language-bash">rails new myapp -m mcp-on-rails/mcp   # answer n
+cd myapp && rails db:migrate</p><p>rails generate scaffold Post title:string body:text
+rails db:migrate
+rails server</code></pre>
+测试它：</p><pre><code class="language-bash"># MCP initialize
+curl -X POST http://localhost:3000/mcp \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"test","version":"1.0"}}}'</p><h1>List tools</h1>
+curl -X POST http://localhost:3000/mcp \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","id":2,"method":"tools/list"}'</code></pre></p><h3>项目结构（纯文本模式）</h3></p><pre><code class="language-">app/
+├── controllers/
+│   └── mcp_controller.rb              # Open MCP endpoint (no auth)
+├── models/
+│   └── application_record.rb          # Extended with to_mcp_response
+├── prompts/                           # MCP prompts (created via generator)
+└── tools/                             # MCP tools (auto-generated per scaffold)</p><p>config/
+├── initializers/
+│   └── mcp.rb                         # MCP tool and prompt autoloading
+└── routes.rb                          # MCP routes</p><p>lib/
+├── generators/                        # MCP tool and prompt generators
+└── tasks/
+    └── mcp.rake                       # rake mcp:tools, rake mcp:prompts (and verbose variants)</code></pre></p><h3>连接 AI 助手（纯文本模式）</h3></p><pre><code class="language-json">{
+  "name": "my-rails-app",
+  "type": "StreamableHttp",
+  "url": "http://localhost:3000/mcp"
+}</code></pre></p><p>无需认证 — <code>/mcp</code> 端点是开放的。</p><hr></p><h2>OAuth MCP（回答“y”）</h2></p><p>创建一个带有 OAuth 2.1 保护的 MCP 服务器的 Rails 应用，包括 PKCE、动态客户端注册和资源指示器支持 — MCP 的 OAuth 授权流程所需的一切。</p><h3>你将获得</h3></p><p>普通模式的所有功能，外加：</p><ul><li><strong><code>devise</code> + <code>doorkeeper</code> gems</strong> 已添加到 Gemfile</li>
+<li><strong>Devise</strong> 用户认证（注册、登录、密码重置）</li>
+<li><strong>Doorkeeper</strong> OAuth 2.1 提供者，强制执行 PKCE（S256）</li>
+<li><strong><code>McpController</code></strong> 由 <code>doorkeeper_authorize!</code> 保护，并进行令牌受众验证（RFC 8707）</li>
+<li><strong>动态客户端注册</strong> 于 <code>POST /oauth/register</code>（RFC 7591）</li>
+<li><strong>受保护资源元数据</strong> 于 <code>GET /.well-known/oauth-protected-resource</code>（RFC 9728）</li>
+<li><strong>授权服务器元数据</strong> 于 <code>GET /.well-known/oauth-authorization-server</code>（RFC 8414）</li>
+<li><strong>资源指示器</strong> — 令牌作用域限定为 <code>/mcp</code> 资源（RFC 8707）</li></p><p></ul><h3>使用方法</h3></p><pre><code class="language-bash">rails new myapp -m mcp-on-rails/mcp   # answer y
+cd myapp && rails db:migrate</p><p>rails generate scaffold Post title:string body:text
+rails db:migrate
+rails server</code></pre></p><p><code>/mcp</code> 端点现在需要 Bearer 令牌 — 未认证的请求返回 401。</p><h3>OAuth 流程</h3></p><p>完整的授权流程遵循 MCP 的 OAuth 规范：</p><ul><li><strong>发现</strong> — 客户端获取 <code>GET /.well-known/oauth-protected-resource</code> 以查找授权服务器</li>
+<li><strong>服务器元数据</strong> — 客户端获取 <code>GET /.well-known/oauth-authorization-server</code> 以获取端点和功能</li>
+<li><strong>客户端注册</strong> — 使用客户端元数据进行 <code>POST /oauth/register</code>（RFC 7591）</li>
+<li><strong>授权</strong> — 使用 PKCE <code>code_challenge</code>（S256）和 <code>resource</code> 参数进行 <code>GET /oauth/authorize</code></li>
+<li><strong>用户认证</strong> — Devise 处理登录/注册</li>
+<li><strong>令牌交换</strong> — 使用 <code>code_verifier</code> 和 <code>resource</code> 参数进行 <code>POST /oauth/token</code></li>
+<li><strong>MCP 请求</strong> — 使用 <code>Authorization: Bearer <token></code> 进行 <code>POST /mcp</code></li></p><p></ul><h3>支持的 RFC</h3></p><p>| RFC | 描述 | 端点 |
+|-----|-------------|----------|
+| OAuth 2.1 + PKCE | 使用代码交换的证明密钥授权（S256） | <code>/oauth/authorize</code>, <code>/oauth/token</code> |
+| RFC 7591 | 动态客户端注册 | <code>POST /oauth/register</code> |
+| RFC 8414 | 授权服务器元数据 | <code>GET /.well-known/oauth-authorization-server</code> |
+| RFC 8707 | 资源指示器 | 授权和令牌请求中的 <code>resource</code> 参数 |
+| RFC 9728 | 受保护资源元数据 | <code>GET /.well-known/oauth-protected-resource</code> |</p><h3>项目结构（OAuth 模式）</h3></p><pre><code class="language-">app/
+├── controllers/
+│   ├── mcp_controller.rb                              # OAuth-protected MCP endpoint
+│   ├── oauth_client_registration_controller.rb        # RFC 7591
+│   └── oauth_authorization_server_metadata_controller.rb  # RFC 8414 + 9728
+├── models/
+│   ├── user.rb                                        # Devise user with OAuth associations
+│   ├── oauth_application.rb
+│   ├── oauth_access_token.rb
+│   └── oauth_access_grant.rb
+├── prompts/                                           # MCP prompts (created via generator)
+├── tools/                                             # MCP tools (auto-generated per scaffold)
+└── views/
+    └── devise/                                        # Customizable auth views</p><p>config/
+├── initializers/
+│   ├── doorkeeper.rb                                  # OAuth + PKCE config
+│   ├── devise.rb                                      # User auth config
+│   └── mcp.rb                                         # MCP tool autoloading
+└── routes.rb                                          # All OAuth + MCP routes</p><p>db/migrate/
+├── *_devise_create_users.rb
+├── *_create_doorkeeper_tables.rb
+├── *_enable_pkce.rb
+└── *_add_resource_to_oauth_tables.rb</code></pre></p><h3>连接 AI 助手（OAuth 模式）</h3></p><pre><code class="language-json">{
+  "name": "my-rails-app",
+  "type": "StreamableHttp",
+  "url": "http://localhost:3000/mcp"
+}</code></pre>
+客户端必须完成 OAuth PKCE 流程后才能发起 MCP 请求 — <code>/mcp</code> 端点在没有有效 Bearer 令牌时返回 401。</p><hr></p><h2>通用功能（两种模式）</h2></p><h3>使用 MCP 工具搭建模型</h3></p><pre><code class="language-bash">rails generate scaffold Post title:string content:text
+rails db:migrate</code></pre></p><p>这将在 <code>app/tools/posts/</code> 中创建标准的 Rails 文件以及 5 个 MCP 工具：
+<ul><li><code>show_tool.rb</code> — 通过 ID 检索单个帖子</li>
+<li><code>index_tool.rb</code> — 分页列出帖子</li>
+<li><code>create_tool.rb</code> — 创建新帖子</li>
+<li><code>update_tool.rb</code> — 更新现有帖子</li>
+<li><code>delete_tool.rb</code> — 删除帖子</li></p><p></ul><h3>创建自定义 MCP 工具</h3></p><pre><code class="language-bash">rails generate mcp_tool WeatherCheck location:string</code></pre></p><h3>创建自定义MCP提示</h3></p><pre><code class="language-bash">rails generate mcp_prompt hotel_finder location:required check_in_date:required adults price_max</code></pre></p><p>这将创建 <code>app/prompts/hotel_finder.rb</code>，其中包含一个继承自 <code>MCP::Prompt</code> 的提示类。参数默认是可选的——添加 <code>:required</code> 可使其成为必需参数。</p><p>提示会自动从 <code>app/prompts/</code> 加载并注册到 MCP 服务器。与工具不同，提示<strong>不会</strong>在脚手架生成期间自动生成——它们需要通过生成器显式创建。</p><h3>列出可用的工具和提示</h3></p><pre><code class="language-bash">rake mcp:tools             # compact one-line-per-tool summary
+rake mcp:tools:verbose     # full details with schema
+rake mcp:prompts           # compact one-line-per-prompt summary
+rake mcp:prompts:verbose   # full details with arguments</code></pre></p><h2>许可协议</h2></p><p>MIT 许可证</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-17
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/pstrzalk/mcp-on-rails/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-17 
+    </div>
+    
+</body>
+</html>
