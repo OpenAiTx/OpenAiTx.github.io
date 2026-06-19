@@ -1,0 +1,378 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPARK - SIGGRAPH Asia 2024 論文「SPARK: Self-supervised Personalized Real-time Monocular Face Capture」の公式実装</title>
+    <meta name="description" content="SIGGRAPH Asia 2024 論文「SPARK: Self-supervised Personalized Real-time Monocular Face Capture」の公式実装">
+    <meta name="keywords" content="SPARK, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "SPARK",
+  "description": "SIGGRAPH Asia 2024 論文「SPARK: Self-supervised Personalized Real-time Monocular Face Capture」の公式実装",
+  "author": {
+    "@type": "Person",
+    "name": "KelianB"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 398
+  },
+  "url": "https://OpenAiTx.github.io/projects/KelianB/SPARK/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/KelianB/SPARK/main/README.md",
+  "datePublished": "2026-06-19",
+  "dateModified": "2026-06-19"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/KelianB/SPARK" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    SPARK
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 398 stars</span>
+                <span class="language">Japanese</span>
+                <span>by KelianB</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><p align="center">
+    <h1 align="center">SPARK: 自己教師ありパーソナライズドリアルタイム単眼顔キャプチャ</h1>
+    <p align="center">
+        <a href="mailto://kelian.baert@gmail.com"><strong>ケリアン・バート</strong></a>
+        ·
+        <a href="https://sbharadwajj.github.io/"><strong>シュリシャ・バラドワジ</strong></a>
+        ·
+        <a href="https://www.linkedin.com/in/fabien-castan/"><strong>ファビアン・カスタン</strong></a>
+        ·
+        <a href="https://www.linkedin.com/in/benoitmaujean/"><strong>ブノワ・モージャン</strong></a>
+        ·
+        <a href="https://people.irisa.fr/Marc.Christie/"><strong>マルク・クリスティ</strong></a>
+        ·
+        <a href="https://vabrevaya.github.io/"><strong>ビクトリア・フェルナンデス・アブレバヤ</strong></a>
+        ·
+        <a href="https://boukhayma.github.io/"><strong>アドナン・ブカイマ</strong></a>
+    </p>
+    <p align="center">
+        <a href="https://technicolor.com">テクニカラー</a> | <a href="https://is.mpg.de/">マックスプランク研究所</a> | <a href="https://www.inria.fr/en/inria-centre-rennes-university">INRIAレンヌ</a>
+        <br>
+        <strong>SIGGRAPH Asia 2024 会議論文</strong>
+    </p>
+    <p align="center">
+        <a href="https://kelianb.github.io/SPARK/" style="padding-left: 0.5rem;">
+            <img src="https://img.shields.io/badge/Project-Page-blue?style=flat&logo=Google%20chrome&logoColor=blue" alt="Project Page">
+        </a>
+        <a href="https://dl.acm.org/doi/10.1145/3680528">
+            <img src="https://img.shields.io/badge/Paper-red" alt="PDF">
+        </a>
+        <a href="https://arxiv.org/abs/2409.07984">
+            <img src="https://img.shields.io/badge/Arxiv-red" alt="arxiv PDF">
+        </a>
+    </p>
+    <p align="center">
+        <img src="https://raw.githubusercontent.com/KelianB/SPARK/main/assets/teaser.webp" width="98%" />
+    </p>
+</p></p><h2>引用</h2></p><p>もし私たちのコードや論文がお役に立てましたら、以下のように引用してください：</p><pre><code class="language-bibtex">@inproceedings{baert2024spark,
+  title = {{SPARK}: Self-supervised Personalized Real-time Monocular Face Capture},
+  author = {Baert, Kelian and Bharadwaj, Shrisha and Castan, Fabien and Maujean, Benoit and Christie, Marc and Abrevaya, Victoria and Boukhayma, Adnane},
+  year = {2024},
+  month = dec,
+  booktitle = {SIGGRAPH Asia 2024 Conference Proceedings},
+  articleno = {113},
+  doi = {10.1145/3680528.3687704},
+  isbn = {979-8-4007-1131-2/24/12},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  numpages = {12},
+  url = {https://kelianb.github.io/SPARK/},
+}</code></pre></p><h2>インストール</h2></p><p><details>
+    <summary>詳細</summary></p><ul><li><a href="https://raw.githubusercontent.com/KelianB/SPARK/main/./setup.sh" target="_blank" rel="noopener noreferrer">setup.sh</a> を使って環境を作成します。</li>
+<li><a href="https://raw.githubusercontent.com/KelianB/SPARK/main/./TrackerAdaptation/setup_submodules.sh" target="_blank" rel="noopener noreferrer">TrackerAdaptation/setup_submodules.sh</a> を実行します。数分かかる場合があります。</li>
+<li>MultiFLARE から EMOCA へ FLAME をリンクします: <code>ln TrackerAdaptation/submodules/EMOCA/assets/FLAME/geometry/generic_model.pkl MultiFLARE/assets/flame/flame2020.pkl</code></li>
+    <li>これは <a href="https://flame.is.tue.mpg.de/download.php" target="_blank" rel="noopener noreferrer">FLAME</a>（2020年版）をダウンロードし、解凍して <code>generic_model.pkl</code> を <code>./MultiFLARE/assets/flame/flame2020.pkl</code> にコピーするのと同等です。</li>
+<li>Basel Face Model のテクスチャ空間を FLAME に適合させたものを取得します。残念ながらライセンスの関係でテクスチャ空間の配布は許可されていません。そのため、この <a href="https://github.com/TimoBolkart/BFM_to_FLAME" target="_blank" rel="noopener noreferrer">リポジトリ</a> のツールを使ってテクスチャ空間を FLAME に変換してください。変換後のテクスチャモデルファイルを <code>TrackerAdaptation/submodules/EMOCA/assets/FLAME/texture/FLAME_albedo_from_BFM.npz</code> に置いてください。</li></p><p></ul>SPARK は NVIDIA RTX A5000（24GB）または RTX A4000（16GB）GPU でテストされています。バッチサイズを減らすことでメモリの少ないGPUでもトレーニング可能です。</p><p></details></p><h2>データセット</h2></p><p>独自データの前処理については <a href="https://github.com/KelianB/MonoFaceCompute" target="_blank" rel="noopener noreferrer">MonoFaceCompute</a> リポジトリを参照してください。</p><h2>使用方法</h2></p><p>SPARK は二段階のアプローチです。まず、<a href="./MultiFLARE/" target="_blank" rel="noopener noreferrer">MultiFLARE</a> を実行して複数の動画から3Dフェイスアバターを再構築します。次に、<a href="./TrackerAdaptation/" target="_blank" rel="noopener noreferrer">TrackerAdaptation</a> を使って既存の3Dフェイストラッカーをアバターに適応させ、転移学習によりリアルタイムトラッキングを行います。</p><p><details>
+    <summary>詳細</summary></p><h3>1. MultiFLARE</h3></p><pre><code class="language-bash">cd MultiFLARE
+python train.py --config configs/example.txt</p><h1>Export neutral mesh</h1>
+python export_mesh.py --config configs/example.txt --resume 3000 --out_dir /tmp/example_mesh --tex_type albedo</code></pre>
+提供されたサンプル設定ファイルから開始し、<code>input_dir</code>、<code>train_dir</code>、および <code>output_dir</code> を変更することをお勧めします。すべてのパラメータのリストについては、<a href="https://raw.githubusercontent.com/KelianB/SPARK/main/./MultiFLARE/arguments.py" target="_blank" rel="noopener noreferrer">arguments.py</a> または <code>python train.py --help</code> の出力を参照してください。パラメータは設定ファイルまたはコマンドライン引数のいずれかで渡すことができます。</p><h3>2. TrackerAdaptation</h3></p><pre><code class="language-bash">cd TrackerAdaptation
+<h1>DECA encoder + MultiFLARE decoder</h1>
+python train.py --config configs/example_deca.txt
+<h1>EMOCA encoder + MultiFLARE decoder</h1>
+python train.py --config configs/example_emoca.txt
+<h1>SMIRK encoder + MultiFLARE decoder (recommended!)</h1>
+python train.py --config configs/example_smirk.txt
+<h1>EMOCA encoder + EMOCA decoder (baseline)</h1>
+python train.py --config configs/example_emoca_baseline.txt</p><h1>Quantitative eval</h1>
+python evaluate.py --config configs/example_smirk.txt --tracker_resume 3000 --frame_interval 5 --num_frames 64</p><h1>Visualization videos</h1>
+python make_comparison_video.py --config configs/example_smirk.txt --tracker_resume 3000 --test_dirs 5 6 --n_frames 1000 --smooth_crops --framerate 24
+python make_overlay_video.py --config configs/example_smirk.txt --tracker_resume 3000 --test_dirs 2 --out test_beard --texture /path/to/texture.png --n_frames 1000 --smooth_crops --framerate 24</code></pre>
+</details></p><h2>ライセンス情報</h2></p><p>このリポジトリのコードは複数のライセンスの対象となっています。</p><ul><li><strong>オリジナルコード</strong>（Technicolor Group & INRIA Rennes）</li>
+   <li>特に指定のない限り、本リポジトリ内のすべてのコードは<a href="./LICENSE" target="_blank" rel="noopener noreferrer">CC BY-NC-SA ライセンス</a>の下でライセンスされています。</li></p><p><li><strong>サードパーティコード</strong>（マックス・プランク知能システム研究所）</li>
+   <li>場所：<code>./MultiFLARE/flame</code>、<code>./MultiFLARE/flare</code>、<code>./TrackerAdaptation/submodules</code></li>
+   <li>これらのディレクトリにはマックス・プランク研究所のコードが含まれており、一部改変が加えられています。<a href="./LICENSE_MPI" target="_blank" rel="noopener noreferrer">MPIライセンス</a>をよくお読みください。これは<strong>非営利の科学研究目的</strong>にのみ利用可能です。</li></p><p>
+
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-19
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/KelianB/SPARK/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-19 
+    </div>
+    
+</body>
+</html>
