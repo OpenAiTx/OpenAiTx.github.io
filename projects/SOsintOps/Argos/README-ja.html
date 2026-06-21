@@ -1,0 +1,391 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Argos - このスクリプトは、Ubuntu OSから始めてOSINTワークステーションを自動的にセットアップします。</title>
+    <meta name="description" content="このスクリプトは、Ubuntu OSから始めてOSINTワークステーションを自動的にセットアップします。">
+    <meta name="keywords" content="Argos, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Argos",
+  "description": "このスクリプトは、Ubuntu OSから始めてOSINTワークステーションを自動的にセットアップします。",
+  "author": {
+    "@type": "Person",
+    "name": "SOsintOps"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 165
+  },
+  "url": "https://OpenAiTx.github.io/projects/SOsintOps/Argos/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/SOsintOps/Argos/master/README.md",
+  "datePublished": "2026-06-21",
+  "dateModified": "2026-06-21"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/SOsintOps/Argos" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Argos
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 165 stars</span>
+                <span class="language">Japanese</span>
+                <span>by SOsintOps</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>ARGOS — ベータ版</h1>
+<img align="right" width="86" height="150" src="https://github.com/SOsintOps/Argos/blob/master/multimedia/images/scribblenauts-argos.png"></p><blockquote><strong>警告：ベータ版</strong></blockquote>
+<blockquote>このスクリプトはUbuntu 24.04 LTSおよびUbuntu Budgie 24.04 LTS向けに更新されています。</blockquote>
+<blockquote>現在テスト中です。実運用前に必ずクリーンなVMで実行してください。</blockquote>
+<blockquote>問題があればIssueを開いて報告してください。</blockquote></p><p>Argosは、クリーンなUbuntu 24.04 LTS仮想マシンからオープンソースのOSINTワークステーションを自動構成します。</p><p>ベストプラクティスとして、各OSINT調査ごとに専用のVMを使用することが推奨されます。
+このスクリプトは、Michael Bazzellの<a href="https://inteltechniques.com/book1.html" target="_blank" rel="noopener noreferrer">Open Source Intelligence Techniques</a>で説明されている手法に従っています。</p><h2>目次</h2>
+<ul><li><a href="#requirements" target="_blank" rel="noopener noreferrer">要件</a></li>
+<li><a href="#tools" target="_blank" rel="noopener noreferrer">ツール</a></li>
+<li><a href="#installation" target="_blank" rel="noopener noreferrer">インストール</a></li>
+<li><a href="#installation-log" target="_blank" rel="noopener noreferrer">インストールログ</a></li>
+<li><a href="#to-do" target="_blank" rel="noopener noreferrer">今後の予定</a></li>
+<li><a href="#resources" target="_blank" rel="noopener noreferrer">リソース</a></li>
+<li><a href="#credits" target="_blank" rel="noopener noreferrer">クレジット</a></li>
+<li><a href="#licences" target="_blank" rel="noopener noreferrer">ライセンス</a></li>
+<li><a href="https://raw.githubusercontent.com/SOsintOps/Argos/master/docs/VERSION_HISTORY.md" target="_blank" rel="noopener noreferrer">バージョン履歴</a></li>
+<li><a href="https://raw.githubusercontent.com/SOsintOps/Argos/master/docs/guidelines.md" target="_blank" rel="noopener noreferrer">OSINT解析ガイドライン</a></li>
+<li><a href="https://raw.githubusercontent.com/SOsintOps/Argos/master/docs/faq.md" target="_blank" rel="noopener noreferrer">FAQ</a></li></p><p></ul>---</p><h2>要件</h2></p><ul><li>Ubuntu <strong>24.04 LTS</strong> または <strong>Ubuntu Budgie 24.04 LTS</strong>（VMまたはワークステーション）</li>
+<li>任意のLinuxユーザー名（以前の<code>osint</code>ユーザー限定の要件は削除されました）</li>
+<li>システム言語：<strong>英語</strong></li>
+<li>インストール中に有効なインターネット接続</li>
+<li><strong>VirtualBox Guest Additionsが事前にインストール済み</strong> — スクリプトはこれをインストールしません。<code>setup.sh</code>を実行する前にGuest Additionsをインストールして、クリップボード共有、ドラッグ＆ドロップ、フルスクリーン対応を有効にしてください。</li></p><p></ul>> このスクリプトはVirtualBox向けに最適化されています。VMware Tools用のコードはコメント内にあります。</p><p><strong>テスト環境:</strong>
+<ul><li>Ubuntu Budgie 24.04 LTS（VM）</li>
+<li>Ubuntu 24.04 LTS (VM)</li></p><p></ul><strong>サポート終了:</strong>
+<ul><li>Ubuntu 22.04 LTS（一部依存関係が非互換）</li>
+<li>Ubuntu 20.04 LTS</li></p><p></ul>---</p><h2>ツール</h2></p><h3>OSINT</h3></p><p>| ツール | ステータス | 備考 |
+|------|--------|-------|
+| <a href="https://github.com/owasp-amass/amass" target="_blank" rel="noopener noreferrer">Amass</a> | 稼働中 | サブドメイン列挙 |
+| <a href="https://instaloader.github.io/" target="_blank" rel="noopener noreferrer">Instaloader</a> | 稼働中 | Instagram OSINT |
+| <a href="https://github.com/megadose/toutatis" target="_blank" rel="noopener noreferrer">Toutatis</a> | 制限あり | InstagramセッションIDが必要 |
+| <a href="https://www.httrack.com/" target="_blank" rel="noopener noreferrer">HTTrack</a> | 稼働中 | ウェブクロール＆ミラーリング |
+| <a href="https://mediaarea.net/en/MediaInfo" target="_blank" rel="noopener noreferrer">MediaInfo</a> | 稼働中 | メディアメタデータ解析 |
+| <a href="https://exiftool.org/" target="_blank" rel="noopener noreferrer">ExifTool</a> | 稼働中 | ドキュメント・画像のメタデータ |
+| <a href="https://github.com/FortyNorthSecurity/EyeWitness" target="_blank" rel="noopener noreferrer">EyeWitness</a> | 稼働中 | ウェブサイトのスクリーンショット |
+| <a href="https://github.com/laramies/theHarvester" target="_blank" rel="noopener noreferrer">The Harvester</a> | 稼働中 | メール・ドメイン情報収集 |
+| <a href="https://github.com/opsdisk/metagoofil" target="_blank" rel="noopener noreferrer">Metagoofil</a> | 稼働中 | 公開ドキュメントのメタデータ |
+| <a href="https://github.com/lanmaster53/recon-ng" target="_blank" rel="noopener noreferrer">recon-ng</a> | 稼働中 | モジュール式OSINTフレームワーク |
+| <a href="https://github.com/sherlock-project/sherlock" target="_blank" rel="noopener noreferrer">Sherlock</a> | 稼働中 | ユーザー名検索 |
+| <a href="https://github.com/smicallef/spiderfoot" target="_blank" rel="noopener noreferrer">SpiderFoot</a> | 稼働中 | OSINT自動化 |
+| <a href="https://github.com/p1ngul1n0/blackbird" target="_blank" rel="noopener noreferrer">blackbird</a> | 稼働中 | 高度なユーザー名検索 |
+| <a href="https://github.com/megadose/holehe" target="_blank" rel="noopener noreferrer">holehe</a> | 稼働中 | メールOSINT |
+| <a href="https://github.com/soxoj/maigret" target="_blank" rel="noopener noreferrer">maigret</a> | 稼働中 | ユーザー名検索（Sherlockの高度フォーク） |
+| <a href="https://www.maltego.com/" target="_blank" rel="noopener noreferrer">Maltego</a> | 稼働中 | リンク解析（アカウント要） |
+| <a href="https://github.com/yt-dlp/yt-dlp" target="_blank" rel="noopener noreferrer">yt-dlp</a> | 稼働中 | 動画ダウンローダー（youtube-dlの代替） |</p><p><strong>削除済みツール（放棄または終了）:</strong>
+<ul><li>~~Instalooter~~: Instaloaderを使用してください</li>
+<li>~~Sublist3r~~: Amassを使用してください</li>
+<li>~~Photon~~: KatanaまたはGoSpiderを使用してください</li>
+<li>~~youtube-dl~~: yt-dlpに置き換えられました</li>
+<li>~~Moriarty-Project~~: PhoneInfogaを使用してください</li>
+<li>~~Elasticsearch-Crawler~~: Shodan CLIを使用してください</li>
+<li>~~Atom Editor~~（2022年12月終了）: VSCodiumに置き換えられました</li>
+</ul><h3>一般ツール</h3></p><p>| ツール | ステータス |
+|------|--------|
+| <a href="https://www.videolan.org/vlc/" target="_blank" rel="noopener noreferrer">VLC</a> | アクティブ |
+| <a href="https://www.google.com/earth/versions/#earth-pro" target="_blank" rel="noopener noreferrer">Google Earth Pro</a> | アクティブ |
+| <a href="https://vscodium.com/" target="_blank" rel="noopener noreferrer">VSCodium</a> | アクティブ（Atomの代替） |
+| <a href="https://www.giuspen.com/cherrytree/" target="_blank" rel="noopener noreferrer">CherryTree</a> | アクティブ |
+| <a href="https://keepassxc.org/" target="_blank" rel="noopener noreferrer">KeePassXC</a> | アクティブ |
+| <a href="https://launchpad.net/kazam" target="_blank" rel="noopener noreferrer">Kazam</a> | アクティブ |
+| <a href="https://www.audacityteam.org/" target="_blank" rel="noopener noreferrer">Audacity</a> | アクティブ |
+| <a href="https://www.torproject.org/" target="_blank" rel="noopener noreferrer">Tor Browser</a> | アクティブ |
+| <a href="https://www.openshot.org/" target="_blank" rel="noopener noreferrer">OpenShot</a> | アクティブ |
+| <a href="https://obsidian.md/" target="_blank" rel="noopener noreferrer">Obsidian</a> | アクティブ（最新バージョンを動的に取得） |
+| <a href="https://github.com/BurntSushi/ripgrep" target="_blank" rel="noopener noreferrer">Ripgrep</a> | アクティブ |
+| <a href="https://github.com/pstirparo/threatintel-resources" target="_blank" rel="noopener noreferrer">Threat Intelligence Resources</a> | アクティブ |</p><hr></p><h2>インストール</h2></p><ul><li>ターミナルを開きます。</li></p><p><li>Gitがまだインストールされていない場合はインストールします：</li></p><p>    </ul><pre><code class="language-bash">    sudo apt install -y git
+    ``<code></p><ul><li>リポジトリを </code>Downloads<code> ディレクトリにクローンします:</li>
+    </ul></code>`<code>bash
+    git clone https://github.com/SOsintOps/Argos ~/Downloads/Argos
+    </code>`<code></p><ul><li>スクリプトを実行可能にする:</li>
+    </ul></code>`<code>bash
+    chmod +x ~/Downloads/Argos/setup.sh
+    </code>`<code></p><ul><li>スクリプトを実行します:</li>
+    </ul></code>`<code>bash
+    ~/Downloads/Argos/setup.sh
+    </code>`<code></p><p>    > Firefoxは手動で閉じたり開いたりする必要はありません。スクリプトは、まだ作成されていない場合、自動的にFirefoxプロファイルを初期化します。</p><hr></p><h2>インストールログ</h2></p><p>スクリプトは自動的にダウンロードディレクトリにログファイルを生成します：
+</code></pre>
+~/Downloads/argos_install_YYYYMMDD_HHMMSS.log
+</code>``
+ログにはタイムスタンプ付きの完全なインストール出力が含まれています。エラーが発生した場合、正確な行番号がログに記録されます。</p><hr></p><h2>やること</h2></p><ul><li>Moriarty-Projectの代替としてPhoneInfogaを追加</li>
+<li>Photonの代替としてKatanaまたはGoSpiderを追加</li>
+<li>OSINT調査用のLibreOfficeレポートテンプレートを更新</li>
+<li>Ubuntu Budgie 24.04 LTS VMでのエンドツーエンドテストを完了</li>
+<li>holehe、maigretスタンドアロン、blackbirdスタンドアロンのショートカットを追加</li></p><p></ul>---</p><h2>リソース</h2></p><ul><li><a href="https://osintops.com/en/" target="_blank" rel="noopener noreferrer">OSIntOpsウェブサイト</a></li>
+<li><a href="https://osintops.com/progetto-argos/" target="_blank" rel="noopener noreferrer">Argosプロジェクト紹介（イタリア語）</a></li>
+<li><a href="https://t.me/Osintlatestnews" target="_blank" rel="noopener noreferrer">OSIntデイリーニュース</a></li>
+<li><a href="https://inteltechniques.com/book1.html" target="_blank" rel="noopener noreferrer">Michael BazzellによるOpen Source Intelligence Techniques</a></li></p><p></ul>---</p><h2>クレジット</h2></p><ul><li>オリジナルのOSINT_VM_Setupスクリプト作成者 Skykn0t</li>
+<li>スクリプト名提供者 <a href="https://github.com/oh6hay" target="_blank" rel="noopener noreferrer">oh6hay</a></li>
+<li>壁紙スクリプト作成者 <a href="https://github.com/pinkevilpimp" target="_blank" rel="noopener noreferrer">pinkevilpimp</a></li></p><p></ul>---</p><h2>ライセンス</h2></p><p>リポジトリに含まれるライセンスファイルをご覧ください。</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-21
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/SOsintOps/Argos/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-21 
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,391 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Argos - This script will automatically set up an OSINT workstation starting from an Ubuntu OS.</title>
+    <meta name="description" content="This script will automatically set up an OSINT workstation starting from an Ubuntu OS.">
+    <meta name="keywords" content="Argos, English, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Argos",
+  "description": "This script will automatically set up an OSINT workstation starting from an Ubuntu OS.",
+  "author": {
+    "@type": "Person",
+    "name": "SOsintOps"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 165
+  },
+  "url": "https://OpenAiTx.github.io/projects/SOsintOps/Argos/README-en.html",
+  "sameAs": "https://raw.githubusercontent.com/SOsintOps/Argos/master/README.md",
+  "datePublished": "2026-06-21",
+  "dateModified": "2026-06-21"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/SOsintOps/Argos" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    Argos
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 165 stars</span>
+                <span class="language">English</span>
+                <span>by SOsintOps</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>ARGOS — Beta</h1>
+<img align="right" width="86" height="150" src="https://github.com/SOsintOps/Argos/blob/master/multimedia/images/scribblenauts-argos.png"></p><blockquote><strong>WARNING: BETA VERSION</strong></blockquote>
+<blockquote>This script has been updated for Ubuntu 24.04 LTS and Ubuntu Budgie 24.04 LTS.</blockquote>
+<blockquote>It is under active testing. Always run it on a clean VM before using it in production.</blockquote>
+<blockquote>Report any problems by opening an issue.</blockquote></p><p>Argos automatically configures an open-source OSINT workstation from a clean Ubuntu 24.04 LTS virtual machine.</p><p>Best practice recommends using a dedicated VM for each OSINT investigation.
+This script follows the methods described by Michael Bazzell in <a href="https://inteltechniques.com/book1.html" target="_blank" rel="noopener noreferrer">Open Source Intelligence Techniques</a>.</p><h2>Contents</h2>
+<ul><li><a href="#requirements" target="_blank" rel="noopener noreferrer">Requirements</a></li>
+<li><a href="#tools" target="_blank" rel="noopener noreferrer">Tools</a></li>
+<li><a href="#installation" target="_blank" rel="noopener noreferrer">Installation</a></li>
+<li><a href="#installation-log" target="_blank" rel="noopener noreferrer">Installation Log</a></li>
+<li><a href="#to-do" target="_blank" rel="noopener noreferrer">To Do</a></li>
+<li><a href="#resources" target="_blank" rel="noopener noreferrer">Resources</a></li>
+<li><a href="#credits" target="_blank" rel="noopener noreferrer">Credits</a></li>
+<li><a href="#licences" target="_blank" rel="noopener noreferrer">Licences</a></li>
+<li><a href="https://raw.githubusercontent.com/SOsintOps/Argos/master/docs/VERSION_HISTORY.md" target="_blank" rel="noopener noreferrer">Version History</a></li>
+<li><a href="https://raw.githubusercontent.com/SOsintOps/Argos/master/docs/guidelines.md" target="_blank" rel="noopener noreferrer">OSINT Analysis Guidelines</a></li>
+<li><a href="https://raw.githubusercontent.com/SOsintOps/Argos/master/docs/faq.md" target="_blank" rel="noopener noreferrer">FAQ</a></li></p><p></ul>---</p><h2>Requirements</h2></p><ul><li>Ubuntu <strong>24.04 LTS</strong> or <strong>Ubuntu Budgie 24.04 LTS</strong> (VM or workstation)</li>
+<li>Any Linux username (the previous requirement to use <code>osint</code> has been removed)</li>
+<li>System language: <strong>English</strong></li>
+<li>Active internet connection during installation</li>
+<li><strong>VirtualBox Guest Additions already installed</strong> — the script does not install them. Install Guest Additions before running <code>setup.sh</code> to enable clipboard sharing, drag-and-drop, and fullscreen support.</li></p><p></ul>> The script is optimised for VirtualBox. Code for VMware Tools is available in the comments.</p><p><strong>Tested on:</strong>
+<ul><li>Ubuntu Budgie 24.04 LTS (VM)</li>
+<li>Ubuntu 24.04 LTS (VM)</li></p><p></ul><strong>No longer supported:</strong>
+<ul><li>Ubuntu 22.04 LTS (some dependencies are incompatible)</li>
+<li>Ubuntu 20.04 LTS</li></p><p></ul>---</p><h2>Tools</h2></p><h3>OSINT</h3></p><p>| Tool | Status | Notes |
+|------|--------|-------|
+| <a href="https://github.com/owasp-amass/amass" target="_blank" rel="noopener noreferrer">Amass</a> | Active | Subdomain enumeration |
+| <a href="https://instaloader.github.io/" target="_blank" rel="noopener noreferrer">Instaloader</a> | Active | Instagram OSINT |
+| <a href="https://github.com/megadose/toutatis" target="_blank" rel="noopener noreferrer">Toutatis</a> | Limited | Requires Instagram session ID |
+| <a href="https://www.httrack.com/" target="_blank" rel="noopener noreferrer">HTTrack</a> | Active | Web crawling and mirroring |
+| <a href="https://mediaarea.net/en/MediaInfo" target="_blank" rel="noopener noreferrer">MediaInfo</a> | Active | Media metadata analysis |
+| <a href="https://exiftool.org/" target="_blank" rel="noopener noreferrer">ExifTool</a> | Active | Metadata from documents and images |
+| <a href="https://github.com/FortyNorthSecurity/EyeWitness" target="_blank" rel="noopener noreferrer">EyeWitness</a> | Active | Website screenshots |
+| <a href="https://github.com/laramies/theHarvester" target="_blank" rel="noopener noreferrer">The Harvester</a> | Active | Email and domain recon |
+| <a href="https://github.com/opsdisk/metagoofil" target="_blank" rel="noopener noreferrer">Metagoofil</a> | Active | Metadata from public documents |
+| <a href="https://github.com/lanmaster53/recon-ng" target="_blank" rel="noopener noreferrer">recon-ng</a> | Active | Modular OSINT framework |
+| <a href="https://github.com/sherlock-project/sherlock" target="_blank" rel="noopener noreferrer">Sherlock</a> | Active | Username search |
+| <a href="https://github.com/smicallef/spiderfoot" target="_blank" rel="noopener noreferrer">SpiderFoot</a> | Active | OSINT automation |
+| <a href="https://github.com/p1ngul1n0/blackbird" target="_blank" rel="noopener noreferrer">blackbird</a> | Active | Advanced username search |
+| <a href="https://github.com/megadose/holehe" target="_blank" rel="noopener noreferrer">holehe</a> | Active | Email OSINT |
+| <a href="https://github.com/soxoj/maigret" target="_blank" rel="noopener noreferrer">maigret</a> | Active | Username search (advanced Sherlock fork) |
+| <a href="https://www.maltego.com/" target="_blank" rel="noopener noreferrer">Maltego</a> | Active | Link analysis (requires account) |
+| <a href="https://github.com/yt-dlp/yt-dlp" target="_blank" rel="noopener noreferrer">yt-dlp</a> | Active | Video downloader (replaces youtube-dl) |</p><p><strong>Removed tools (abandoned or discontinued):</strong>
+<ul><li>~~Instalooter~~: use Instaloader</li>
+<li>~~Sublist3r~~: use Amass</li>
+<li>~~Photon~~: use Katana or GoSpider</li>
+<li>~~youtube-dl~~: replaced by yt-dlp</li>
+<li>~~Moriarty-Project~~: use PhoneInfoga</li>
+<li>~~Elasticsearch-Crawler~~: use Shodan CLI</li>
+<li>~~Atom Editor~~ (discontinued December 2022): replaced by VSCodium</li></p><p></ul><h3>General Tools</h3></p><p>| Tool | Status |
+|------|--------|
+| <a href="https://www.videolan.org/vlc/" target="_blank" rel="noopener noreferrer">VLC</a> | Active |
+| <a href="https://www.google.com/earth/versions/#earth-pro" target="_blank" rel="noopener noreferrer">Google Earth Pro</a> | Active |
+| <a href="https://vscodium.com/" target="_blank" rel="noopener noreferrer">VSCodium</a> | Active (replaces Atom) |
+| <a href="https://www.giuspen.com/cherrytree/" target="_blank" rel="noopener noreferrer">CherryTree</a> | Active |
+| <a href="https://keepassxc.org/" target="_blank" rel="noopener noreferrer">KeePassXC</a> | Active |
+| <a href="https://launchpad.net/kazam" target="_blank" rel="noopener noreferrer">Kazam</a> | Active |
+| <a href="https://www.audacityteam.org/" target="_blank" rel="noopener noreferrer">Audacity</a> | Active |
+| <a href="https://www.torproject.org/" target="_blank" rel="noopener noreferrer">Tor Browser</a> | Active |
+| <a href="https://www.openshot.org/" target="_blank" rel="noopener noreferrer">OpenShot</a> | Active |
+| <a href="https://obsidian.md/" target="_blank" rel="noopener noreferrer">Obsidian</a> | Active (latest version fetched dynamically) |
+| <a href="https://github.com/BurntSushi/ripgrep" target="_blank" rel="noopener noreferrer">Ripgrep</a> | Active |
+| <a href="https://github.com/pstirparo/threatintel-resources" target="_blank" rel="noopener noreferrer">Threat Intelligence Resources</a> | Active |</p><hr></p><h2>Installation</h2></p><ul><li>Open a terminal.</li></p><p><li>Install Git if it is not already present:</li>
+    </ul><pre><code class="language-bash">    sudo apt install -y git
+    ``<code>
+<ul><li>Clone the repository into the </code>Downloads<code> directory:</li></p><p>    </ul></code>`<code>bash
+    git clone https://github.com/SOsintOps/Argos ~/Downloads/Argos
+    </code>`<code></p><ul><li>Make the script executable:</li>
+    </ul></code>`<code>bash
+    chmod +x ~/Downloads/Argos/setup.sh
+    </code>`<code></p><ul><li>Run the script:</li>
+    </ul></code>`<code>bash
+    ~/Downloads/Argos/setup.sh
+    </code>`<code></p><p>    > Firefox does not need to be closed or opened manually. The script initializes the Firefox profile automatically if it has not been created yet.</p><hr></p><h2>Installation Log</h2></p><p>The script automatically generates a log file in the Downloads directory:
+</code></pre>
+~/Downloads/argos_install_YYYYMMDD_HHMMSS.log
+</code>``
+The log contains the full installation output with timestamps. If an error occurs, the exact line number is recorded in the log.</p><hr></p><h2>To Do</h2></p><ul><li>Add PhoneInfoga as a replacement for Moriarty-Project</li>
+<li>Add Katana or GoSpider as a replacement for Photon</li>
+<li>Update LibreOffice report templates for OSINT investigations</li>
+<li>Complete end-to-end testing on Ubuntu Budgie 24.04 LTS VM</li>
+<li>Add shortcuts for holehe, maigret standalone, and blackbird standalone</li></p><p></ul>---</p><h2>Resources</h2></p><ul><li><a href="https://osintops.com/en/" target="_blank" rel="noopener noreferrer">OSIntOps website</a></li>
+<li><a href="https://osintops.com/progetto-argos/" target="_blank" rel="noopener noreferrer">Argos project presentation (Italian)</a></li>
+<li><a href="https://t.me/Osintlatestnews" target="_blank" rel="noopener noreferrer">OSInt Daily News</a></li>
+<li><a href="https://inteltechniques.com/book1.html" target="_blank" rel="noopener noreferrer">Open Source Intelligence Techniques by Michael Bazzell</a></li></p><p></ul>---</p><h2>Credits</h2></p><ul><li>Skykn0t for the original OSINT_VM_Setup script</li>
+<li><a href="https://github.com/oh6hay" target="_blank" rel="noopener noreferrer">oh6hay</a> for the script name</li>
+<li><a href="https://github.com/pinkevilpimp" target="_blank" rel="noopener noreferrer">pinkevilpimp</a> for the wallpaper script</li></p><p></ul>---</p><h2>Licences</h2></p><p>See the licence files included in the repository.</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-21
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/SOsintOps/Argos/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-21 
+    </div>
+    
+</body>
+</html>
