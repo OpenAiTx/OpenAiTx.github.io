@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fansly-scraper - An all-in-one scraper/downloader for Fansly written in Go with AI assistance. Download content, record live streams, and interact with posts from your favorite creators. Available as standalone binaries for all platforms.</title>
+    <meta name="description" content="An all-in-one scraper/downloader for Fansly written in Go with AI assistance. Download content, record live streams, and interact with posts from your favorite creators. Available as standalone binaries for all platforms.">
+    <meta name="keywords" content="fansly-scraper, English, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "fansly-scraper",
+  "description": "An all-in-one scraper/downloader for Fansly written in Go with AI assistance. Download content, record live streams, and interact with posts from your favorite creators. Available as standalone binaries for all platforms.",
+  "author": {
+    "@type": "Person",
+    "name": "agnosto"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 125
+  },
+  "url": "https://OpenAiTx.github.io/projects/agnosto/fansly-scraper/README-en.html",
+  "sameAs": "https://raw.githubusercontent.com/agnosto/fansly-scraper/main/README.md",
+  "datePublished": "2026-06-22",
+  "dateModified": "2026-06-22"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/agnosto/fansly-scraper" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    fansly-scraper
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 125 stars</span>
+                <span class="language">English</span>
+                <span>by agnosto</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Fansly Scraper</h1></p><blockquote>[!IMPORTANT]</blockquote>
+<blockquote><strong>Project Status Update</strong></blockquote>
+>
+<blockquote>Due to a recent health scare, this project is taking a very far backseat priority in my life. Updates and support will be very minimal for the foreseeable future. Thank you for your understanding.</blockquote>
+>
+<blockquote>If you're looking for a more actively maintained alternative with a full WebUI, live dashboard and VOD player, and automatic background monitoring and archiving, check out <strong><a href="https://accesro.one" target="_blank" rel="noopener noreferrer">Accerso</a></strong>.</blockquote></p><blockquote>[!WARNING]</blockquote>
+<blockquote><strong>‼️ Windows Defender False Positive</strong> (literally no idea why or where this came from)</blockquote>
+>
+<blockquote>The Windows executable of this program is frequently being flagged as <strong><code>Trojan:Script/Wacatac.B!ml</code></strong> by Windows Defender and other AV. This is a <strong>false positive</strong>.</blockquote>
+>
+<blockquote><strong>Why is this happening?</strong></blockquote>
+<blockquote>The <code>!ml</code> in the detection name means it was flagged by a Machine Learning model, not a human. Because this is an unsigned, open-source scraper tool that makes many internet requests, the automated system incorrectly flags it as suspicious. This is a common issue for many Go and Rust-based command-line tools.</blockquote>
+>
+<blockquote><strong>Recommended Solution - Install via Go (should hopefully bypass AV issues):</strong></blockquote>
+<blockquote><pre><code class="language-bash">> go install github.com/agnosto/fansly-scraper/cmd/fansly-scraper@latest</blockquote>
+<blockquote>``<code></blockquote>
+>
+<blockquote><strong>What you can do:</strong></blockquote>
+<blockquote>1.  <strong>Trust the program:</strong> You can temporarily disable Windows Defender to download and run the program, and then add it as an exception.</blockquote>
+<blockquote>2.  <strong>Build from source:</strong> If you have Go installed, you can build it yourself. The program is not flagged when you compile it locally or install via go.</blockquote>
+>
+<blockquote>The code is fully open-source for you to inspect. It is safe to use. but I understand if the AV warnings are concerning.</blockquote></p><p>A simple all in one tool to download and monitor content from Fansly creators.</p><blockquote><strong>⚠️ Currently in development</strong> - Some features may not work perfectly. See <a href="#known-issues" target="_blank" rel="noopener noreferrer">known issues</a> below.</blockquote></p><h2>Requirements</h2></p><ul><li><strong>Optional but highly recommended</strong>: <a href="https://ffmpeg.org/" target="_blank" rel="noopener noreferrer">ffmpeg</a> for livestream recording and saving higher quality videos. Follow <a href="https://phoenixnap.com/kb/ffmpeg-windows" target="_blank" rel="noopener noreferrer">this guide</a> for installing to system path on windows.</li>
+<li><strong>Optional</strong>: <a href="https://github.com/mutschler/mt" target="_blank" rel="noopener noreferrer">mt</a> for better contact sheets</li></p><p></ul><h2>Quick Start</h2></p><h3>1. Download</h3>
+<ul><li><strong>Easy way</strong>: Visit the <a href="https://agnosto.github.io/projects/fansly-scraper/" target="_blank" rel="noopener noreferrer">download page</a> (auto-detects your system)</li>
+<li><strong>Manual way</strong>: Get from <a href="https://github.com/agnosto/fansly-scraper/releases" target="_blank" rel="noopener noreferrer">GitHub releases</a></li>
+<li><strong>Install Via Go</strong>:</code></pre>bash</li>
+</ul>go install github.com/agnosto/fansly-scraper/cmd/fansly-scraper@latest
+<pre><code class="language-">
+<h3>2. Run the Program</code></pre>bash</h3>
+./fansly-scraper
+<pre><code class="language-">
+On first run, the setup wizard helps you configure everything. Press 'a' to use auto login: it opens Fansly and provides a one‑line snippet to paste in DevTools Console. Your token and user‑agent are captured automatically and saved to the config.</p><h2>Basic Usage</h2></p><h3>Interactive Mode (Recommended for beginners)</code></pre>bash</h3>
+./fansly-scraper
+<pre><code class="language-">
+From the main menu you can:
+<ul><li>Run setup wizard (choose save location, auto login)</li>
+<li>Reset configuration (restore defaults, re-run wizard)</li></p><p></ul><h3>Command Line Mode</code></pre>bash</h3>
+<h1>Download all content from a creator</h1>
+./fansly-scraper -u {creator-name}</p><h1>Download specific content types</h1>
+./fansly-scraper -u {creator-name} -d [all|timeline|messages|stories]</p><h1>Monitor for live streams</h1>
+./fansly-scraper -m {creator-name}</p><h1>Start/stop monitoring</h1>
+./fansly-scraper monitor [start|stop]
+<pre><code class="language-">
+<strong>Note</strong>: Live monitoring requires keeping your terminal session active. To run monitoring in the background, consider using terminal multiplexers like <a href="https://github.com/tmux/tmux/wiki" target="_blank" rel="noopener noreferrer">tmux</a> or <a href="https://github.com/zellij-org/zellij" target="_blank" rel="noopener noreferrer">zellij</a> on Linux/WSL. Starting from v0.6.3, you can monitor additional creators by running </code>-m creator<code> in separate terminal instances without restarting the existing monitor process.</p><h3>Update the Program</code></pre>bash</h3>
+./fansly-scraper update
+</code>`<code></p><h2>Project Roadmap & Advanced Setup</h2></p><p>Our development is tracked publicly on our <strong><a href="https://github.com/users/agnosto/projects/1" target="_blank" rel="noopener noreferrer">Project Roadmap</a></strong>. You can see what we're working on, what's planned for the future, and contribute to the discussion.</p><ul><li><strong>Configuration Guide</strong>: See the <strong><a href="https://github.com/agnosto/fansly-scraper/wiki" target="_blank" rel="noopener noreferrer">Official Wiki</a></strong></li>
+<li><strong>Build from source</strong>:</li>
+  </ul></code>`<code>bash
+  git clone https://github.com/agnosto/fansly-scraper && cd fansly-scraper
+  go build -v -ldflags "-w -s" -o fansly-scraper ./cmd/fansly-scraper
+  </code>`<code>
+<h2>Contributing</h2></p><p>Contributions are welcome and greatly appreciated! Whether it's reporting a bug, proposing a feature, or submitting a pull request, your help is valued.</p><p><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="alt text"></p><p><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square" alt="alt text"></p><p>Please read our <a href="https://raw.githubusercontent.com/agnosto/fansly-scraper/main/./CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contributing Guidelines</a> before you start.
+Check the <a href="https://github.com/agnosto/fansly-scraper/issues" target="_blank" rel="noopener noreferrer">Issues tab</a> to see if there's a task you'd like to take on.</p><h2>Known Issues</h2></p><ul><li><strong>Redownloading</strong>: As of v0.8.3, file naming convention was changed causing redownloading of media.</li>
+<li><strong>Chat recording</strong>: May occasionally miss messages during reconnections</li>
+<li><strong>MacOS users</strong>: May need to allow notifications in <a href="https://github.com/gen2brain/beeep/issues/67#issuecomment-2646474049" target="_blank" rel="noopener noreferrer">system settings</a></li>
+<li><strong>Live status</strong>: Press </code>r<code> in TUI to refresh live status</li>
+<li><strong>Duplicate files</strong>: Sometimes the same image may appear twice due to Fansly's API structure</li>
+<li><strong>Date formats for livestream filename</strong>: In the event a stream gets interrupted and reattempts to record, if the date format isn't specific enough (ie, no timestamp), it may fail to save the stream after as both vods will be the same name, for now use one of these: </code>2006-01-02_15:04:05<code> or </code>20060102_150405`</li></p><p></ul><h2>Support the Project</h2></p><p>If this tool helps you, consider sponsoring on github:</p><p><a href="https://github.com/sponsors/agnosto" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Sponsor-%23EA4AAA?style=for-the-badge&logo=githubsponsors" alt="Sponsor agnosto on GitHub"></a></p><p>Alternatively, you can make a one-time donation via cryptocurrency:</p><p><table>
+  <tr>
+    <td align="center"><strong>Bitcoin (BTC)</strong></td>
+    <td align="center"><strong>Solana (SOL)</strong></td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/agnosto/fansly-scraper/main/./assets/btc_qr.png" alt="Bitcoin QR Code" width="200"/>
+      <p><code>bc1q0e78wrtc9ezp6tqv000wfewgqf2ue4tpzdk7ee</code></p>
+    </td>
+    <td align="center"></p><p>      <img src="https://raw.githubusercontent.com/agnosto/fansly-scraper/main/./assets/sol_qr.png" alt="Solana QR Code" width="200"/>
+      <p><code>Bv3kYZcwSTHXAQtnPddTF27D3F6Gc29v2MfFLqmGF6Gf</code></p>
+    </td>
+  </tr>
+</table></p><hr></p><blockquote>[!CAUTION]</blockquote>
+<blockquote><strong>Disclaimer</strong>: This tool is not affiliated with Fansly or Select Media LLC. Use at your own risk. The developer of this script is not responsible for the end users' actions or any outcomes that may be taken upon the end users' account. Use at your own risk.</blockquote></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-22
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/agnosto/fansly-scraper/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-22 
+    </div>
+    
+</body>
+</html>

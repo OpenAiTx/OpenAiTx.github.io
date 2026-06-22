@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fansly-scraper - 一个基于Go语言并借助人工智能的Fansly全能爬取/下载工具。下载内容、录制直播、与喜爱创作者的帖子互动。提供适用于所有平台的独立二进制文件。</title>
+    <meta name="description" content="一个基于Go语言并借助人工智能的Fansly全能爬取/下载工具。下载内容、录制直播、与喜爱创作者的帖子互动。提供适用于所有平台的独立二进制文件。">
+    <meta name="keywords" content="fansly-scraper, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "fansly-scraper",
+  "description": "一个基于Go语言并借助人工智能的Fansly全能爬取/下载工具。下载内容、录制直播、与喜爱创作者的帖子互动。提供适用于所有平台的独立二进制文件。",
+  "author": {
+    "@type": "Person",
+    "name": "agnosto"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 125
+  },
+  "url": "https://OpenAiTx.github.io/projects/agnosto/fansly-scraper/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/agnosto/fansly-scraper/main/README.md",
+  "datePublished": "2026-06-22",
+  "dateModified": "2026-06-22"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/agnosto/fansly-scraper" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    fansly-scraper
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 125 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by agnosto</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Fansly 爬取工具</h1></p><blockquote>[!IMPORTANT]</blockquote>
+<blockquote><strong>项目状态更新</strong></blockquote>
+>
+<blockquote>由于最近的健康问题，该项目在我生活中的优先级大幅下降。未来可预见的一段时间内，更新和支持将非常有限。感谢您的理解。</blockquote>
+>
+<blockquote>如果您正在寻找一个维护更积极、具有完整 WebUI、实时仪表盘和点播播放器，并支持自动后台监控和归档的替代方案，请查看 <strong><a href="https://accesro.one" target="_blank" rel="noopener noreferrer">Accerso</a></strong>。</blockquote></p><blockquote>[!WARNING]</blockquote>
+<blockquote><strong>‼️ Windows Defender 误报</strong>（完全不清楚为什么或从哪里来的）</blockquote>
+>
+<blockquote>本程序的 Windows 可执行文件经常被 Windows Defender 及其他杀毒软件标记为 <strong><code>Trojan:Script/Wacatac.B!ml</code></strong>。这是一个<strong>误报</strong>。</blockquote>
+>
+<blockquote><strong>为什么会这样？</strong></blockquote>
+<blockquote>检测名称中的 <code>!ml</code> 表示这是由机器学习模型标记的，而非人工。由于这是一个未签名的开源爬取工具，会进行大量网络请求，自动系统误判其为可疑。这是许多基于 Go 和 Rust 的命令行工具常见的问题。</blockquote>
+>
+<blockquote><strong>推荐方案 - 通过 Go 安装（希望能绕过杀毒问题）：</strong></blockquote>
+<blockquote><pre><code class="language-bash">> go install github.com/agnosto/fansly-scraper/cmd/fansly-scraper@latest</blockquote>
+<blockquote>``<code></blockquote>
+>
+<blockquote><strong>您可以这样做：</strong></blockquote>
+<blockquote>1.  <strong>信任程序：</strong> 您可以临时禁用 Windows Defender 来下载和运行程序，然后将其添加为例外。</blockquote>
+<blockquote>2.  <strong>从源码构建：</strong> 如果您安装了 Go，可以自行编译。程序在本地编译或通过 go 安装时不会被标记。</blockquote>
+>
+<blockquote>代码完全开源，供您检查。使用安全，但我理解杀毒警告可能让人担忧。</blockquote></p><p>一个简单的全能工具，用于下载和监控 Fansly 创作者的内容。</p><blockquote><strong>⚠️ 当前开发中</strong> - 部分功能可能无法完美运行。请参见下方<a href="#known-issues" target="_blank" rel="noopener noreferrer">已知问题</a>。</blockquote></p><h2>需求</h2></p><ul><li><strong>可选但强烈推荐</strong>：<a href="https://ffmpeg.org/" target="_blank" rel="noopener noreferrer">ffmpeg</a> 用于直播录制和保存更高质量视频。请参阅 <a href="https://phoenixnap.com/kb/ffmpeg-windows" target="_blank" rel="noopener noreferrer">此指南</a> 在 Windows 上安装到系统路径。</li>
+<li><strong>可选</strong>：<a href="https://github.com/mutschler/mt" target="_blank" rel="noopener noreferrer">mt</a> 用于生成更好的联系表</li></p><p></ul><h2>快速开始</h2></p><h3>1. 下载</h3>
+<ul><li><strong>简便方式</strong>：访问<a href="https://agnosto.github.io/projects/fansly-scraper/" target="_blank" rel="noopener noreferrer">下载页面</a>（自动检测您的系统）</li>
+<li><strong>手动方式</strong>：从<a href="https://github.com/agnosto/fansly-scraper/releases" target="_blank" rel="noopener noreferrer">GitHub发布页面</a>获取</li>
+<li><strong>通过Go安装</strong>：</code></pre>bash</li>
+</ul>go install github.com/agnosto/fansly-scraper/cmd/fansly-scraper@latest
+<pre><code class="language-">
+<h3>2. 运行程序</code></pre>bash</h3>
+./fansly-scraper
+<pre><code class="language-">首次运行时，安装向导将帮助您完成所有配置。按 'a' 使用自动登录：它会打开 Fansly 并提供一行代码片段，供您粘贴到 DevTools 控制台中。您的令牌和用户代理会被自动捕获并保存到配置文件中。</p><h2>基本用法</h2></p><h3>交互模式（推荐初学者）</h3>
+</code></pre>bash
+./fansly-scraper
+<pre><code class="language-">从主菜单您可以：
+<ul><li>运行设置向导（选择保存位置，自动登录）</li>
+<li>重置配置（恢复默认，重新运行向导）</li></p><p></ul><h3>命令行模式</h3>
+</code></pre>bash
+<h1>Download all content from a creator</h1>
+./fansly-scraper -u {creator-name}</p><h1>Download specific content types</h1>
+./fansly-scraper -u {creator-name} -d [all|timeline|messages|stories]</p><h1>Monitor for live streams</h1>
+./fansly-scraper -m {creator-name}</p><h1>Start/stop monitoring</h1>
+./fansly-scraper monitor [start|stop]
+<pre><code class="language-">
+<strong>注意</strong>：实时监控需要保持终端会话处于活动状态。要在后台运行监控，可以考虑在 Linux/WSL 上使用类似 <a href="https://github.com/tmux/tmux/wiki" target="_blank" rel="noopener noreferrer">tmux</a> 或 <a href="https://github.com/zellij-org/zellij" target="_blank" rel="noopener noreferrer">zellij</a> 的终端复用器。从 v0.6.3 开始，您可以通过在不同的终端实例中运行 </code>-m creator<code> 来监控额外的创作者，而无需重启现有的监控进程。</p><h3>更新程序</code></pre>bash</h3>
+./fansly-scraper update
+</code>`<code></p><h2>项目路线图与高级设置</h2></p><p>我们的开发进度公开记录在<strong><a href="https://github.com/users/agnosto/projects/1" target="_blank" rel="noopener noreferrer">项目路线图</a></strong>。您可以查看我们正在做什么，未来的计划，以及参与讨论。</p><ul><li><strong>配置指南</strong>：请参阅<strong><a href="https://github.com/agnosto/fansly-scraper/wiki" target="_blank" rel="noopener noreferrer">官方维基</a></strong></li>
+<li><strong>从源码构建</strong>：</li>
+  </ul></code>`<code>bash
+  git clone https://github.com/agnosto/fansly-scraper && cd fansly-scraper
+  go build -v -ldflags "-w -s" -o fansly-scraper ./cmd/fansly-scraper
+  </code>`<code>
+<h2>贡献</h2></p><p>欢迎并非常感谢您的贡献！无论是报告错误、提出功能建议还是提交拉取请求，您的帮助都非常宝贵。</p><p><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="alt text"></p><p><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square" alt="alt text"></p><p>在开始之前，请阅读我们的<a href="https://raw.githubusercontent.com/agnosto/fansly-scraper/main/./CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">贡献指南</a>。  
+查看<a href="https://github.com/agnosto/fansly-scraper/issues" target="_blank" rel="noopener noreferrer">问题标签</a>看看是否有您想接手的任务。</p><h2>已知问题</h2></p><ul><li><strong>重新下载</strong>：自 v0.8.3 版本起，文件命名规则发生更改，导致媒体文件被重新下载。  </li>
+<li><strong>聊天记录</strong>：重连时可能偶尔会漏掉消息。  </li>
+<li><strong>MacOS 用户</strong>：可能需要在<a href="https://github.com/gen2brain/beeep/issues/67#issuecomment-2646474049" target="_blank" rel="noopener noreferrer">系统设置</a>中允许通知。  </li>
+<li><strong>直播状态</strong>：在 TUI 界面按 </code>r<code> 刷新直播状态。  </li>
+<li><strong>重复文件</strong>：由于 Fansly API 结构，有时相同图片可能出现两次。  </li>
+<li><strong>直播文件名日期格式</strong>：如果直播流被中断并尝试重新录制，且日期格式不够具体（如无时间戳），可能无法保存后续录像，因为两个 VOD 文件名相同。目前请使用以下格式之一：</code>2006-01-02_15:04:05<code> 或 </code>20060102_150405`。</li></p><p></ul><h2>支持项目</h2></p><p>如果这个工具对您有帮助，请考虑在 GitHub 上赞助：</p><p><a href="https://github.com/sponsors/agnosto" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Sponsor-%23EA4AAA?style=for-the-badge&logo=githubsponsors" alt="Sponsor agnosto on GitHub"></a></p><p>或者，您也可以通过加密货币进行一次性捐赠：</p><p><table>
+  <tr>
+    <td align="center"><strong>比特币 (BTC)</strong></td>
+    <td align="center"><strong>索拉纳 (SOL)</strong></td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/agnosto/fansly-scraper/main/./assets/btc_qr.png" alt="Bitcoin QR Code" width="200"/>
+      <p><code>bc1q0e78wrtc9ezp6tqv000wfewgqf2ue4tpzdk7ee</code></p>
+    </td>
+    <td align="center"></p><p>      <img src="https://raw.githubusercontent.com/agnosto/fansly-scraper/main/./assets/sol_qr.png" alt="Solana 二维码" width="200"/>
+      <p><code>Bv3kYZcwSTHXAQtnPddTF27D3F6Gc29v2MfFLqmGF6Gf</code></p>
+    </td>
+  </tr>
+</table></p><hr></p><blockquote>[!CAUTION]</blockquote>
+<blockquote><strong>免责声明</strong>：此工具与 Fansly 或 Select Media LLC 无关。请自行承担风险使用。此脚本的开发者对最终用户的行为或最终用户账户可能产生的任何后果不承担责任。请自行承担风险。</blockquote></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-22
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/agnosto/fansly-scraper/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-22 
+    </div>
+    
+</body>
+</html>
