@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cursor-deepseek-v4-proxy - R&#233;solution de l&#39;erreur `reasoning_content must be passed back` lors de l&#39;utilisation du mod&#232;le DeepSeek V4 avec Cursor</title>
+    <meta name="description" content="R&#233;solution de l&#39;erreur `reasoning_content must be passed back` lors de l&#39;utilisation du mod&#232;le DeepSeek V4 avec Cursor">
+    <meta name="keywords" content="cursor-deepseek-v4-proxy, French, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "cursor-deepseek-v4-proxy",
+  "description": "Résolution de l'erreur `reasoning_content must be passed back` lors de l'utilisation du modèle DeepSeek V4 avec Cursor",
+  "author": {
+    "@type": "Person",
+    "name": "wustghj"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 131
+  },
+  "url": "https://OpenAiTx.github.io/projects/wustghj/cursor-deepseek-v4-proxy/README-fr.html",
+  "sameAs": "https://raw.githubusercontent.com/wustghj/cursor-deepseek-v4-proxy/main/README.md",
+  "datePublished": "2026-06-24",
+  "dateModified": "2026-06-24"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/wustghj/cursor-deepseek-v4-proxy" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    cursor-deepseek-v4-proxy
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 131 stars</span>
+                <span class="language">French</span>
+                <span>by wustghj</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>🧠 Proxy Cursor DeepSeek V4</h1></p><blockquote><strong>Correction en un clic de l'erreur <code>reasoning_content</code> lors de l'utilisation de DeepSeek V4 avec Cursor, fini le <code>Rate limit exceeded</code>, pour un fonctionnement stable du mode Agent IA.</strong></blockquote></p><p><a href="https://github.com/你的用户名/cursor-deepseek-v4-proxy" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/stars/你的用户名/cursor-deepseek-v4-proxy?style=social" alt="GitHub stars"></a>
+<a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></p><hr></p><h2>📌 Quels problèmes ce projet peut-il résoudre ?</h2></p><p>Si vous rencontrez fréquemment l’une des erreurs suivantes lors de l’appel de DeepSeek V4 (Pro / Flash) dans Cursor :</p><ul><li><code>Provider returned error: The reasoning_content in the thinking mode must be passed back to the API.</code></li>
+<li><code>User API Key Rate limit exceeded</code> (alors que le quota est encore largement disponible)</li>
+<li><code>AI Model Not Found: deepseek-v4-pro</code> (le nom du modèle est invalide dans les tâches en arrière-plan)</li>
+<li>Premier tour de chat normal, deuxième tour commence à générer des erreurs ou des interruptions</li></p><p></ul><strong>Plus besoin de galérer, suivez ce guide 5 minutes et c’est réglé.</strong></p><blockquote>⚠️  <strong>Correction du 14-05-2026</strong> : le modèle texte brut filtre désormais automatiquement les images, résolvant l’erreur 502. Voir <a href="#changelog" target="_blank" rel="noopener noreferrer">journal des modifications</a></blockquote></p><hr></p><h2>✨ Fonctionnalités principales</h2></p><ul><li>✅ <strong>Mise en cache automatique & renvoi de la chaîne de raisonnement</strong> : plus d’erreur liée à l’absence de <code>reasoning_content</code>.</li>
+<li>✅ <strong>Limitation intelligente</strong> : seau de jetons intégré, évitant les pics de requêtes qui saturent la limite gratuite.</li>
+<li>✅ <strong>Support de sortie en flux continu</strong> : sans impacter l’effet machine à écrire de Cursor.</li>
+<li>✅ <strong>Script de démarrage en un clic</strong> : compatible Windows / macOS / Linux, double-cliquez pour lancer.</li>
+<li>✅ <strong>Logs transparents</strong> : affichage en temps réel des statuts de requête dans le terminal, pour faciliter le débogage.</li>
+<li>✅ <strong>Zéro intrusion</strong> : aucune modification des fichiers du programme Cursor, seul l’URL de base est modifiée.</li></p><p></ul>---</p><h2>🖥️ Environnements compatibles</h2></p><p>| Système d’exploitation | Support |
+| :--- | :--- |
+| <strong>Windows 10 / 11</strong> | ✅ Supporté |
+| <strong>macOS</strong> | ✅ Pris en charge |
+| <strong>Linux</strong> | ✅ Pris en charge |</p><blockquote><strong>Exigence unique</strong> : Installez <strong>Python 3.8</strong> ou une version ultérieure (assurez-vous de cocher <code>Add Python to PATH</code> lors de l'installation).</blockquote></p><hr></p><h2>🚀 Guide détaillé en trois étapes (pour débutants)</h2></p><h3>Étape 1 : Télécharger le projet et installer les dépendances</h3></p><ul><li> Téléchargez le fichier ZIP du dépôt du projet, décompressez-le localement (<strong>le chemin ne doit pas contenir de caractères chinois</strong>).</li>
+<li> Accédez au dossier décompressé, tapez <code>cmd</code> dans la barre d'adresse du dossier et appuyez sur Entrée pour ouvrir la fenêtre de commande.</li>
+<li> Exécutez la commande suivante pour installer les dépendances :</li>
+    </ul>``<code>bash
+    pip install -r requirements.txt
+    </code>`<code>
+    <em>Si le message </code>pip n'est pas une commande interne<code> apparaît, veuillez réinstaller Python en cochant </code>Add to PATH<code>.</em></p><h3>Étape 2 : Démarrer le proxy local + le tunnel</h3></p><p>Vous avez besoin d'un tunnel pour générer une adresse publique (Cursor limite l'accès à localhost).</p><p>#### 🪟 Utilisateurs Windows
+<ul><li> Assurez-vous que le dossier contient </code>cloudflared-windows-amd64.exe<code> (sinon, téléchargez-le sur le <a href="https://github.com/cloudflare/cloudflared/releases" target="_blank" rel="noopener noreferrer">site officiel de Cloudflare</a>).</li>
+<li> Double-cliquez pour lancer <strong></code>start_proxy.bat<code></strong>.</li>
+<li> Deux fenêtres vont s’ouvrir. Dans la <strong>fenêtre du tunnel</strong>, trouvez une adresse </code>https://xxx.trycloudflare.com<code> et <strong>copiez-la</strong>.</li></p><p></ul>#### 🍎 Utilisateurs macOS / Linux
+<ul><li> Ouvrez un terminal dans le répertoire du projet et exécutez :</li>
+    </ul></code>`<code>bash
+    bash start_proxy.sh
+    </code>`<code>
+<ul><li> Attendez un instant, copiez l'adresse </code>https://xxx.trycloudflare.com<code> affichée dans le terminal.</li></p><p></ul>> ⚠️ <strong>Attention</strong> : La fenêtre ne doit pas être fermée. L'adresse du tunnel change à chaque redémarrage, elle reste valide tant que la fenêtre reste ouverte.</p><h3>Troisième étape : configurer Cursor</h3></p><ul><li> Ouvrez les paramètres de Cursor : appuyez sur </code>Ctrl+Shift+P<code> → tapez </code>Cursor Settings<code>.</li>
+<li> Allez dans l’onglet <strong>Models</strong>.</li>
+<li> Dans <strong>"Override OpenAI Base URL"</strong>, collez l’adresse copiée précédemment, <strong>en ajoutant </code>/v1<code> à la fin</strong> :</li>
+    <li>Par exemple : </code>https://xxxxxx.trycloudflare.com/v1<code></li>
+<li> Saisissez votre <strong>clé API DeepSeek</strong> dans le champ API Key.</li>
+<li> <strong>Fermez complètement et redémarrez Cursor</strong>.</li></p><p></ul>---</p><h2>🛡️ Résoudre l’erreur "Model name not valid"</h2></p><p>Si une erreur survient lors de l’exécution d’Apply ou d’une tâche en arrière-plan, procédez comme suit :</p><ul><li> Appuyez sur </code>Ctrl+Shift+P<code>, tapez </code>Preferences: Open User Settings (JSON)<code> puis validez.</li>
+<li> Ajoutez la configuration suivante entre les accolades </code>{}<code> du fichier JSON :</li>
+    </ul></code>`<code>json
+    "cursor.models": {
+        "deepseek-v4-pro": {
+            "provider": "openai",
+            "apiBase": "<a href="https://你的隧道地址.trycloudflare.com/v1" target="_blank" rel="noopener noreferrer">https://你的隧道地址.trycloudflare.com/v1</a>",
+            "apiKey": "你的DeepSeek API Key"
+        }
+    }
+    </code>`<code>
+<ul><li> Enregistrez et redémarrez Cursor.</li></p><p></ul>---</p><h2>❓ Questions fréquentes (FAQ)</h2></p><p><details>
+<summary>🔁 Que faire si l'adresse du tunnel change ?</summary>
+Chaque redémarrage du script génère une nouvelle adresse. Il vous suffit de récupérer la nouvelle adresse et de la mettre à jour dans l'URL de base de Cursor.
+</details></p><p><details>
+<summary>💸 Toujours le message "Rate limit exceeded" ?</summary>
+Le niveau gratuit de DeepSeek a une fréquence très basse. Vous pouvez éditer </code>proxy.py<code> et réduire le </code>5<code> dans </code>TokenBucket(rate=5/60.0, capacity=5)<code> (par exemple à </code>3<code>) pour forcer une fréquence de requêtes plus basse.
+</details></p><p><details>
+<summary>🚫 Le tunnel est-il obligatoire ? Peut-on se connecter en localhost ?</summary>
+Pour des raisons de sécurité, Cursor interdit la connexion directe à </code>localhost<code>. Cloudflare Tunnel est actuellement la solution la plus simple, gratuite et sans inscription pour le tunneling.
+</details></p><p><details>
+<summary>🧪 Le proxy affecte-t-il l’intelligence du modèle ?</summary>
+Dans 99% des cas, cela passe inaperçu. Le proxy complète automatiquement la chaîne de pensée lorsque le modèle "oublie" de la renvoyer, garantissant une conversation fluide.
+</details></p><p><details>
+<summary>🧪 Pourquoi seulement 200k context et pas 1M ?</summary>
+C’est la limite par défaut de Cursor, ce n’est pas un problème du proxy.</p><p>Cursor utilise par défaut une fenêtre de contexte de 200k.
+Pour activer le support du contexte 1M du modèle, il faut activer le </code>Max Mode<code> dans Cursor Chat.
+Chemin :
+Chat -> Sélecteur de modèle -> Max Mode
+</details></p><hr></p><h2>⚙️ Personnalisation avancée</h2></p><ul><li><strong>Changer l'upstream</strong> : modifier </code>UPSTREAM_URL<code> dans </code>proxy.py<code>.</li>
+<li><strong>Nom de domaine fixe</strong> : si vous avez votre propre domaine, vous pouvez configurer un tunnel nommé Cloudflare (Tunnel Persistant).</li></p><p></ul><a name="changelog"></a>
+<h2>🆕 Journal des modifications</h2></p><h3>2026-05-14 : Correction de la compatibilité des images dans le modèle texte pur</h3></p><p><strong>Contenu de la correction</strong>
+Lorsque des clients comme Cursor envoient des messages contenant des images à </code>deepseek-v4-pro<code> (modèle texte pur), la couche proxy filtre désormais automatiquement les blocs </code>image_url<code>, ne conservant que la partie texte. Si un message est entièrement composé d’images (sans texte), il est remplacé par un texte d’avertissement, évitant que le modèle reçoive un message vide.
+Cette correction résout l’erreur 502 causée par l’API DeepSeek retournant </code>"unknown variant image_url, expected text"<code>.</p><p><strong>Améliorations supplémentaires</strong></p><ul><li>Uniformisation du format de retour des erreurs upstream, le client reçoit désormais une erreur JSON structurée (et non plus une erreur brute ou une page blanche).</li>
+<li>La logique de compatibilité des images n’affecte pas le cache d’inférence (</code>reasoning_content<code>), le traitement des messages historiques reste normal.</li></p><p></ul>------</p><h3>Remerciements</h3></p><p>Merci à <a href="https://github.com/BG-ah" target="_blank" rel="noopener noreferrer">@BG-ah</a> pour avoir signalé le problème de limitation de débit dans l’issue <a href="https://github.com/wustghj/cursor-deepseek-v4-proxy/issues/4" target="_blank" rel="noopener noreferrer">#4</a>, ainsi qu’à <a href="https://github.com/CH-nolyn" target="_blank" rel="noopener noreferrer">@CH-nolyn</a> pour sa participation aux discussions. Vos retours ont directement permis cette correction de compatibilité, rendant le proxy plus stable avec le modèle texte pur.</p><p>------</p><blockquote>💡 <strong>Conseil</strong> : si vous souhaitez que le modèle comprenne réellement le contenu des images, modifiez le champ </code>model<code> dans la requête en </code>deepseek-chat` qui supporte le multimodal, et assurez-vous que votre compte DeepSeek a les permissions nécessaires.</blockquote></p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-24
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/wustghj/cursor-deepseek-v4-proxy/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-24 
+    </div>
+    
+</body>
+</html>
