@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dblp-to-csv - DBLP XML 파일을 CSV 형식으로 변환합니다.</title>
+    <meta name="description" content="DBLP XML 파일을 CSV 형식으로 변환합니다.">
+    <meta name="keywords" content="dblp-to-csv, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "dblp-to-csv",
+  "description": "DBLP XML 파일을 CSV 형식으로 변환합니다.",
+  "author": {
+    "@type": "Person",
+    "name": "ThomHurks"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 51
+  },
+  "url": "https://OpenAiTx.github.io/projects/ThomHurks/dblp-to-csv/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/ThomHurks/dblp-to-csv/master/README.md",
+  "datePublished": "2026-06-26",
+  "dateModified": "2026-06-26"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/ThomHurks/dblp-to-csv" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    dblp-to-csv
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 51 stars</span>
+                <span class="language">Korean</span>
+                <span>by ThomHurks</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>dblp-to-csv</h1>
+DBLP(컴퓨터 과학 참고 문헌) XML 파일을 CSV 형식으로 변환합니다.</p><h2>사용법</h2>
+XML 파일의 각 요소, 예를 들어 article, book, phdthesis 등에 대해 이 도구는 출력 파일을 생성합니다.
+각 요소 출력 파일은 해당 요소에 필요한 열만 포함하며, 각 열은 적어도 한 행에서 비어 있지 않습니다.
+요소에서 여러 유사 속성 태그가 발견되면, 예를 들어 논문의 여러 저자, 해당 값들은 배열 "[item1|item2|...|itemN]"로 포함됩니다.
+도구를 호출할 때 입력 XML 파일, DTD 파일 및 원하는 출력 파일 이름 형식을 매개변수로 전달합니다; 예를 들어 output.csv는 output_article.csv, output_book.csv 등을 생성합니다.</p><h2>선택적 타입 주석 헤더</h2>
+선택적으로 --annotate를 사용하여 타입 주석을 활성화할 수 있습니다. 요소별로, 이 옵션은 주석이 달린 헤더가 포함된 한 줄짜리 추가 헤더 파일을 생성합니다. 이 주석 헤더는 각 열에 대해 name:type 형식 또는 배열 항목이 하나 이상 있는 열에 대해 name:type[] 형식입니다. 타입은 integer, float, boolean 또는 string일 수 있습니다.</p><h2>명령줄 옵션</h2>
+<pre><code class="language-">usage: XMLToCSV.py [-h] [--annotate] [--neo4j]
+                   [--relations RELATIONS [RELATIONS ...]]
+                   xml_filename dtd_filename outputfile</p><p>Parse the DBLP XML file and convert it to CSV</p><p>positional arguments:
+  xml_filename          The XML file that will be parsed
+  dtd_filename          The DTD file used to parse the XML file
+  outputfile            The output CSV file</p><p>optional arguments:
+  -h, --help            show this help message and exit
+  --annotate            Write a separate annotated header with type
+                        information
+  --neo4j               Headers become more Neo4J-specific and a neo4j-import
+                        shell script is generated for easy importing. Implies
+                        --annotate.
+  --relations RELATIONS [RELATIONS ...]
+                        The element attributes that will be treated as
+                        elements, and for which a relation to the parent
+                        element will be created. For example, in order to turn
+                        the author attribute of the article element into an
+                        element with a relation, use "author:authors". The
+                        part after the colon is used as the name of the
+                        relation.
+</code></pre>
+<h2>예제</h2></p><pre><code class="language-">chmod +x XMLToCSV.py
+./XMLToCSV.py --annotate --neo4j dblp.xml dblp.dtd output.csv --relations author:authored_by journal:published_in publisher:published_by school:submitted_at editor:edited_by cite:has_citation series:is_part_of</code></pre>
+이 명령어는 DTD 파일 dblp.dtd를 사용하여 DBLP XML 파일 dblp.xml을 파싱합니다. ``<code>--annotate</code>`<code> 옵션이 사용되었기 때문에 타입 주석도 생성됩니다. </code>`<code>--relations</code>`<code> 옵션이 주어졌으므로, author, journal, publisher, school, editor 요소 속성들이 노드로 처리되고, 이 노드들과 이를 포함하는 요소들 사이에 관계가 생성됩니다. 문자열 </code>`<code>output.csv</code>`<code>가 패턴으로 사용되어 생성된 파일들은 </code>`<code>output_article.csv</code>`<code> 등으로 이름이 지정됩니다. 타입 주석은 유사한 이름의 파일들, 예를 들어 </code>`<code>output_article_header.csv</code>`<code>에 저장됩니다. 또한 </code>`<code>--neo4j</code>`<code> 옵션도 전달되었기 때문에 타입 주석은 Neo4j 호환 형식으로 생성되며, 도구는 </code>`<code>neo4j-admin import</code>`<code> 대량 가져오기 도구를 사용하여 생성된 CSV 파일들을 Neo4j 그래프 데이터베이스에 가져오기 위해 실행할 수 있는 </code>`<code>neo4j_import.sh</code>`<code>라는 셸 스크립트를 생성합니다.</p><h2>요구사항</h2>
+<ul><li>Python 3.7+ (확인을 위해 </code>`<code>python3 --version</code>`<code> 사용)</li>
+<li>lxml (</code>`<code>pip3 install lxml</code>`<code> )</li>
+<li>또는: </code>`<code>pip3 install -r requirements.txt</code>`<code></li></p><p></ul><h2>링크</h2>
+<ul><li>DBLP에 대해 더 알아보기: https://dblp.dagstuhl.de</li>
+<li>DBLP XML 파일 다운로드: https://dblp.dagstuhl.de/xml/</li>
+  <li>gzipped XML 파일 압축 해제: </code>`<code>gunzip dblp.xml.gz</code>``</li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-26
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/ThomHurks/dblp-to-csv/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-26 
+    </div>
+    
+</body>
+</html>
