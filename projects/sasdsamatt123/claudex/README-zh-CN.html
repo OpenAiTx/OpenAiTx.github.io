@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>claudex - 多提供商、多配置文件的Claude Code命令行工具。支持自带密钥。支持免费模型（Z.ai、MiniMax、OpenRouter、DeepSeek、Moonshot、Anthropic）。</title>
+    <meta name="description" content="多提供商、多配置文件的Claude Code命令行工具。支持自带密钥。支持免费模型（Z.ai、MiniMax、OpenRouter、DeepSeek、Moonshot、Anthropic）。">
+    <meta name="keywords" content="claudex, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "claudex",
+  "description": "多提供商、多配置文件的Claude Code命令行工具。支持自带密钥。支持免费模型（Z.ai、MiniMax、OpenRouter、DeepSeek、Moonshot、Anthropic）。",
+  "author": {
+    "@type": "Person",
+    "name": "sasdsamatt123"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 177
+  },
+  "url": "https://OpenAiTx.github.io/projects/sasdsamatt123/claudex/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/sasdsamatt123/claudex/main/README.md",
+  "datePublished": "2026-06-30",
+  "dateModified": "2026-06-30"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/sasdsamatt123/claudex" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    claudex
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 177 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by sasdsamatt123</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><p align="center">
+  <img src="https://raw.githubusercontent.com/sasdsamatt123/claudex/main/docs/cover.jpg" alt="claudex — one terminal, six providers, bring your own key" width="100%">
+</p></p><h1>claudex</h1></p><blockquote><strong>通过单一终端使用 Claude Code 的多账户+多供应商（Anthropic、Z.ai、MiniMax、DeepSeek、Moonshot、OpenRouter…），自带密钥。</strong></blockquote></p><p><code>claudex</code> 构建于 <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener noreferrer">Claude Code</a> 自有的 <code>ANTHROPIC_BASE_URL</code> / <code>CLAUDE_CONFIG_DIR</code> 环境变量覆盖机制之上 — <strong>无代理，无路由</strong>。一条命令即可新增一个 <code>claudeX</code> 别名：输入你的 API key，选择供应商+模型，即刻准备就绪。</p><p><a href="#english" target="_blank" rel="noopener noreferrer">英文版本见下方 ↓</a></p><hr></p><h2>🇹🇷 土耳其语</h2></p><h3>为什么？</h3></p><ul><li>通过 Claude Code 使用 DeepSeek / Z.ai / MiniMax 等 <strong>更便宜或免费的</strong> Anthropic 兼容供应商</li>
+<li>在单个终端中使用独立的 <code>CLAUDE_CONFIG_DIR</code> 管理多个 <strong>独立计费</strong> 的 API 账户（例如个人+公司）</li>
+<li>所有操作均在 Claude Code 自身的 UI/skill/MCP/agent 生态中，背后仅更换模型和密钥</li></p><p></ul>> ⚠️ <strong>此工具不是用于将 Anthropic Pro/Max 订阅共享给多用户或绕过账户限制速率。</strong> Anthropic <a href="https://www.anthropic.com/legal/consumer-terms" target="_blank" rel="noopener noreferrer">消费者条款</a> 和 <a href="https://www.anthropic.com/legal/aup" target="_blank" rel="noopener noreferrer">使用政策</a> 禁止此类行为。<code>claudex</code> 仅管理<strong>独立授权</strong>的供应商账户/API key，作为互不干扰的配置文件。</p><h3>前提条件</h3></p><p>| 必需项 | 如何安装 |
+|---|---|
+| Node.js 20+ | https://nodejs.org/ |
+| Claude Code | <code>npm install -g @anthropic-ai/claude-code</code> |
+| zsh 或 bash | macOS / Linux 默认 |</p><h3>安装（30 秒）</h3></p><pre><code class="language-bash">git clone https://github.com/sasdsamatt123/claudex.git
+cd claudex
+npm install && npm run build && npm link
+claudex init</code></pre></p><blockquote>ℹ️ <code>npm install -g claudex</code> 即将发布。暂时请使用 <code>git clone</code>。</blockquote></p><h3>第一个配置文件（带指导）</h3></p><pre><code class="language-bash">claudex quickstart</code></pre></p><p>Z.ai → MiniMax → OpenRouter 按顺序进行。每一步：
+<ul><li>显示密钥的 URL（注册 → 创建 API 密钥）</li>
+<li>粘贴密钥（保密）</li>
+<li>选择“我想跳过” → 回车 → 跳过</li>
+</ul>完成后执行 <code>source ~/.zshrc</code> → 输入 <code>claude-zai</code>（或 <code>claude-minimax</code>，<code>claude-or</code>）即可启动 Claude Code。</p><h3>我应该选择哪个模型？</h3></p><pre><code class="language-bash">claudex recommend</code></pre>
+交互式：“你想做什么？”→ 8个用例（快速代码/重构/长上下文/视觉/……）。显示带有理由的前三个建议，并打印你将执行的命令。</p><p>或者非交互式：</p><pre><code class="language-bash">claudex recommend coding-fast --json</code></pre></p><h3>决策树</h3></p><pre><code class="language-">Ücretsiz?
+├── Süresiz ücretsiz model → claudex add <name> --provider zai
+├── 32 ücretsiz modelin biri → claudex add <name> --provider openrouter
+└── Trial (Kasım 7 2026'a kadar) → claudex add <name> --provider minimax</p><p>Ucuz ödemeli?
+└── DeepSeek (~10x Sonnet'ten ucuz) → claudex add <name> --provider deepseek</p><p>Birden fazla ayrı-faturalı Anthropic API hesabı (kişisel/şirket/proje izolasyonu)?
+└── claudex add <name> --provider anthropic --no-share</code></pre></p><h3>所有命令</h3></p><pre><code class="language-bash">claudex init                       # ilk kurulum (~/.claudex + shell rc block)
+claudex quickstart                 # 3 ücretsiz sağlayıcı için kılavuzlu setup
+claudex recommend [<intent>]       # ne yapmak istediğine göre top-3 model önerisi
+claudex add <isim> [-p <provider>] # yeni alias (interactive)
+claudex validate <isim>            # 1-token ping ile key + model doğrula
+claudex list                       # tüm profilleri listele
+claudex remove <isim>              # alias kaldır
+claudex providers [info <id>]      # sağlayıcı kataloğu
+claudex export <isim> [-o file]    # redacted JSON template (key olmadan)
+claudex import <file>              # template'i yükle, key sor, profil oluştur
+claudex doctor                     # kurulum sağlığı
+claudex --lang en                  # İngilizce output</code></pre></p><h3>内置提供商</h3></p><p>| ID | 等级 | 站点 | 默认 |
+|----|------|------|---------|
+| <code>anthropic</code> | 官方 | https://console.anthropic.com | （默认） |
+| <code>zai</code> | <strong>永久免费</strong> | https://z.ai | GLM-4.7-Flash |
+| <code>minimax</code> | <strong>免费试用</strong>（2026年11月7日） | https://platform.minimax.io | M2.7 |
+| <code>deepseek</code> | 低价付费 | https://platform.deepseek.com | deepseek-v4-pro |
+| <code>moonshot</code> | 付费（长上下文专家） | https://platform.moonshot.ai | Kimi K2.5 |
+| <code>openrouter</code> | 32个免费模型 | https://openrouter.ai | qwen3-coder:free |</p><p>所有都拥有<strong>Anthropic兼容</strong>的端点 —— 无需代理。详情 → <a href="https://raw.githubusercontent.com/sasdsamatt123/claudex/main/docs/PROVIDERS.md" target="_blank" rel="noopener noreferrer">docs/PROVIDERS.md</a>。</p><h3>工作原理？</h3></p><p>Claude Code 查看5个环境变量：
+<ul><li><code>CLAUDE_CONFIG_DIR</code> — 会话、历史、用户状态写入位置</li>
+<li><code>ANTHROPIC_BASE_URL</code> — API端点（默认：api.anthropic.com）</li>
+<li><code>ANTHROPIC_AUTH_TOKEN</code> — 端点密钥</li>
+<li><code>ANTHROPIC_MODEL</code>，<code>ANTHROPIC_SMALL_FAST_MODEL</code> — 主模型 + 小型模型</li></p><p></ul><code>claudex add</code> 为每个配置文件生成一个 shell 函数。函数从 <code>.env</code> 读取密钥，设置环境变量，调用 <code>claude</code> 二进制文件。密钥不会出现在命令行参数，也不会保存到历史记录。</p><h3>文件结构</h3></p><pre><code class="language-">~/.claudex/
+├── profiles/<isim>/
+│   ├── .env                # API key (mode 0600)
+│   └── (CLAUDE_CONFIG_DIR — symlink veya isolated)
+├── generated/aliases.sh    # ~/.zshrc tarafından source edilir
+└── backups/                # her rc edit'inde otomatik backup</code></pre></p><p>与现有的 <code>~/.claude/</code> 共享：默认情况下，agents/commands/skills/plugins/CLAUDE.md/settings.json/mcp.json 会被 <strong>符号链接</strong> → 每个配置文件使用相同的工具链。使用 <code>--no-share</code> 则完全隔离配置文件。</p><h3>安全</h3></p><ul><li>密钥存储在 <code>~/.claudex/profiles/<名称>/.env</code>，权限为 0600</li>
+<li><code>claudex</code> 仓库中不会提交任何密钥（自动 <code>.gitignore</code>）</li>
+<li>详情 → <a href="https://raw.githubusercontent.com/sasdsamatt123/claudex/main/docs/SECURITY.md" target="_blank" rel="noopener noreferrer">docs/SECURITY.md</a></li></p><p></ul><h3>添加新提供商</h3></p><p>向 <a href="https://raw.githubusercontent.com/sasdsamatt123/claudex/main/src/templates/providers.json" target="_blank" rel="noopener noreferrer"><code>src/templates/providers.json</code></a> 添加 JSON 条目，提交 PR。代码无需更改。详情 → <a href="https://raw.githubusercontent.com/sasdsamatt123/claudex/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">CONTRIBUTING.md</a>。</p><h3>路线图 (v0.3+)</h3></p><ul><li><code>claudex bench</code> — 比较配置文件的延迟和成本</li>
+<li>macOS 钥匙串加密的秘密（可选加入）</li>
+<li>成本追踪 — 从 Claude Code 日志中统计 token 数量</li>
+<li>Tab 补全（zsh/bash/fish）</li>
+<li>Anthropic 不兼容提供商（Groq、Gemini 直连）支持 claude-code-router 代理模式</li></p><p></ul><h3>法律声明</h3></p><p><code>claudex</code> 是一个<strong>独立</strong>的开源工具。未得到 Anthropic、Z.ai、MiniMax、DeepSeek、Moonshot、OpenRouter 或任何其他提供商的支持或认可。遵守提供商的使用条款是你的责任。</p><hr></p><h2>English</h2></p><h3>Why?</h3></p><ul><li>Use <strong>much cheaper or free</strong> Anthropic-compatible providers (DeepSeek, Z.ai, MiniMax, OpenRouter…) through Claude Code</li>
+<li>Manage multiple <strong>separately-billed</strong> API accounts (e.g., personal + company) in one terminal with isolated <code>CLAUDE_CONFIG_DIR</code>s</li>
+<li>Everything stays in Claude Code's UI/skills/MCP/agent ecosystem — only the model + key behind it changes</li></p><p></ul>> ⚠️ <strong>This is NOT a way to share or duplicate an Anthropic Pro/Max subscription across users, nor to circumvent per-account rate limits.</strong> Anthropic's <a href="https://www.anthropic.com/legal/consumer-terms" target="_blank" rel="noopener noreferrer">Consumer Terms</a> and <a href="https://www.anthropic.com/legal/aup" target="_blank" rel="noopener noreferrer">Usage Policy</a> prohibit that. <code>claudex</code> only manages <strong>separately authorized</strong> provider accounts / API keys as independent profiles.</p><h3>Prerequisites</h3></p><ul><li>Node.js 20+ — https://nodejs.org/</li>
+<li>Claude Code — <code>npm install -g @anthropic-ai/claude-code</code></li>
+<li>zsh 或 bash</li></p><p></ul><h3>安装（30秒）</h3></p><pre><code class="language-bash">git clone https://github.com/sasdsamatt123/claudex.git
+cd claudex
+npm install && npm run build && npm link
+claudex init</code></pre></p><blockquote>ℹ️ <code>npm install -g claudex</code> 发布即将推出。目前：git clone。</blockquote></p><h3>第一个配置文件（引导式）</h3></p><pre><code class="language-bash">claudex quickstart</code></pre></p><p>引导您完成 Z.ai → MiniMax → OpenRouter（可跳过任意步骤）。完成后：<code>source ~/.zshrc</code>，然后输入 <code>claude-zai</code>（或 <code>claude-minimax</code>、<code>claude-or</code>）启动带有新模型的 Claude Code。</p><h3>使用哪个模型？</h3></p><pre><code class="language-bash">claudex recommend</code></pre>
+交互式：“你想做什么？” → 8 个用例（快速编码 / 重构 / 长上下文 / 视觉 / …）。显示前三名及其理由和安装命令。</p><p>非交互式：</p><pre><code class="language-bash">claudex recommend coding-fast --json</code></pre></p><h3>决策树</h3></p><pre><code class="language-">Free?
+├── Forever-free model → claudex add <name> --provider zai
+├── One of 32 free models → claudex add <name> --provider openrouter
+└── Trial (until Nov 7 2026) → claudex add <name> --provider minimax</p><p>Cheap paid?
+└── DeepSeek (~10x cheaper than Sonnet) → claudex add <name> --provider deepseek</p><p>Multiple separately-billed Anthropic API accounts (personal/company/project isolation)?
+└── claudex add <name> --provider anthropic --no-share</code></pre></p><h3>命令</h3></p><pre><code class="language-bash">claudex init                        # initial setup (~/.claudex + shell rc block)
+claudex quickstart                  # guided setup of 3 free providers
+claudex recommend [<intent>]        # top-3 model suggestions per use case
+claudex add <name> [-p <provider>]  # add an alias (interactive)
+claudex validate <name>             # ping the provider with a 1-token test
+claudex list                        # list all profiles
+claudex remove <name>               # remove alias
+claudex providers [info <id>]       # provider catalog
+claudex export <name> [-o file]     # redacted JSON template (no key)
+claudex import <file>               # load template, prompt for key
+claudex doctor                      # health check
+claudex --lang tr                   # Turkish output</code></pre></p><h3>免责声明</h3></p><p><code>claudex</code> 是一个独立的开源工具。<strong>与 Anthropic、Z.ai、MiniMax、DeepSeek、Moonshot、OpenRouter 或任何其他提供商无任何关联、认可或赞助。</strong> 遵守各提供商的服务条款由您自行负责。</p><h3>许可证</h3></p><p><a href="LICENSE" target="_blank" rel="noopener noreferrer">MIT</a></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-06-30
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/sasdsamatt123/claudex/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-06-30 
+    </div>
+    
+</body>
+</html>
