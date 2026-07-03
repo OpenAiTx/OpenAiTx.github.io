@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlashVID - [ICLR 2026 オーラル] FlashVID: トレーニング不要の木構造時空間トークンマージによる効率的なビデオ大規模言語モデル</title>
+    <meta name="description" content="[ICLR 2026 オーラル] FlashVID: トレーニング不要の木構造時空間トークンマージによる効率的なビデオ大規模言語モデル">
+    <meta name="keywords" content="FlashVID, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "FlashVID",
+  "description": "[ICLR 2026 オーラル] FlashVID: トレーニング不要の木構造時空間トークンマージによる効率的なビデオ大規模言語モデル",
+  "author": {
+    "@type": "Person",
+    "name": "Fanziyang-v"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 109
+  },
+  "url": "https://OpenAiTx.github.io/projects/Fanziyang-v/FlashVID/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/Fanziyang-v/FlashVID/main/README.md",
+  "datePublished": "2026-07-03",
+  "dateModified": "2026-07-03"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Fanziyang-v/FlashVID" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    FlashVID
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 109 stars</span>
+                <span class="language">Japanese</span>
+                <span>by Fanziyang-v</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>FlashVID: トレーニング不要の木構造ベース時空間トークンマージによる効率的な動画大規模言語モデル</h1></p><p><div align="center">
+<a href="https://scholar.google.com/citations?user=myU7V58AAAAJ&hl=en">Ziyang Fan</a><sup>1</sup>,&nbsp; <a href="https://github.com/Mirei124">Keyu Chen</a><sup>1</sup>,&nbsp; <a href="https://github.com/xrlexpert">Ruilong Xing</a><sup>1</sup>,&nbsp; <a href="https://scholar.google.com/citations?user=dQssXVsAAAAJ&hl=en">Yulin Li</a><sup>1</sup>,&nbsp; <a href="https://scholar.google.com/citations?user=5cIodxsAAAAJ&hl=en">Li Jiang</a><sup>2,3</sup>,&nbsp; <a href="https://scholar.google.com/citations?user=mEjhz-IAAAAJ&hl=en">Zhuotao Tian</a><sup>1,3*</sup>&nbsp;
+<br>
+<sup>1</sup> ハルビン工業大学（深セン） &nbsp;&nbsp;&nbsp; <sup>2</sup> 香港中文大学（深セン）<br> <sup>3</sup> 深圳ループエリア研究所
+<br>
+<sup>*</sup>責任著者
+<br>
+<a href='https://iclr.cc/'><img src='https://img.shields.io/badge/ICLR-2026-78CA2E.svg'></a> &nbsp;
+<a href='https://openreview.net/forum?id=H6rDX4w6Al'><img src='https://img.shields.io/badge/Paper-Openreview-8D1B12.svg'></a> &nbsp;
+<a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License"></a> &nbsp;
+<a href='https://fanziyang-v.github.io/FlashVID/'><img src='https://img.shields.io/badge/Project-Page-Green'></a> &nbsp;
+<a href="https://arxiv.org/abs/2602.08024"><img src="https://img.shields.io/badge/arXiv-2602.08024-b31b1b.svg"></a> &nbsp;
+<a href="https://huggingface.co/"><img src="https://img.shields.io/badge/transformers-4.57-FFD21E.svg" alt="transformers"></a> &nbsp;
+<!-- <a href="https://python.org/"><img src="https://img.shields.io/badge/Python-3.10%2B-3776ab.svg" alt="Python"></a> &nbsp; -->
+<!-- <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-2.5%2B-DF3411.svg" alt="PyTorch"></a> &nbsp; -->
+<!-- <a href="#"><img src="https://img.shields.io/badge/#.svg"></a> &nbsp; -->
+</div></p><h2>🔖目次</h2></p><ul><li><a href="#news" target="_blank" rel="noopener noreferrer">ニュース</a></li>
+<li><a href="#todo-list" target="_blank" rel="noopener noreferrer">やることリスト</a></li>
+<li><a href="#highlights" target="_blank" rel="noopener noreferrer">ハイライト</a></li>
+<li><a href="#motivation" target="_blank" rel="noopener noreferrer">動機</a></li>
+<li><a href="#method" target="_blank" rel="noopener noreferrer">手法</a></li>
+<li><a href="#installation" target="_blank" rel="noopener noreferrer">インストール</a></li>
+<li><a href="#quickstart" target="_blank" rel="noopener noreferrer">クイックスタート</a></li>
+<li><a href="#evaluation" target="_blank" rel="noopener noreferrer">評価</a></li>
+<li><a href="#acknowledgement" target="_blank" rel="noopener noreferrer">謝辞</a></li>
+<li><a href="#citation" target="_blank" rel="noopener noreferrer">引用</a></li></p><p></ul><h2>🔥ニュース</h2></p><ul><li>[2026.05.01] 🔍Qwen2.5-VLおよびQwen3-VLにおける手動[CLS]アテンション抽出の潜在的OOMバグを修正。</li>
+<li>[2026.02.10] 🚀論文をarXivに公開。</li>
+<li>[2026.02.06] 🍾論文が<strong>ICLR 2026</strong>の<strong>口頭発表</strong>に選出されました。</li>
+<li>[2026.02.01] ✨FlashVIDのコードと推論デモを<em>Qwen2.5-VL</em>および<em>Qwen3-VL</em>で公開。</li>
+<li>[2026.01.31] 🚀本リポジトリを一般公開。</li>
+<li>[2026.01.30] ✨<em>LLaVA-OneVision</em> と <em>LLaVA-Video</em> 上での FlashVID コードおよび推論デモをリリースしました。</li>
+<li>[2026.01.30] 👏このGitHubリポジトリを初期化しました。</li>
+<li>[2026.01.26] 🎉トレーニング不要の推論高速化手法 <a href="https://openreview.net/forum?id=H6rDX4w6Al" target="_blank" rel="noopener noreferrer">FlashVID</a> が <strong>ICLR 2026</strong> に採択されました。</li>
+<li>[2025.12.06] 🌟<a href="https://github.com/yu-lin-li/DyToK" target="_blank" rel="noopener noreferrer">DyTok</a> のGitHubリポジトリを公開しました。</li>
+<li>[2025.09.18] 🎉トレーニング不要の推論高速化フレームワーク <a href="https://www.arxiv.org/abs/2512.06866" target="_blank" rel="noopener noreferrer">DyTok</a> が <strong>NeurIPS 2025</strong> に採択されました。</li></p><p></ul><h2>📋Todo リスト</h2></p><ul><li>[ ] コード効率の最適化</li>
+<li>[x] LLaVA-OneVision と LLaVA-Video で FlashVID コードをリリースする。</li>
+<li>[x] FlashVID を用いた異なる Video LLM の推論デモをリリースする。</li>
+<li>[x] <a href="https://github.com/EvolvingLMMs-Lab/lmms-eval" target="_blank" rel="noopener noreferrer">LMMs-Eval</a> を用いた評価をサポートする。</li>
+<li>[x] Qwen2.5-VL と Qwen3-VL で FlashVID コードをリリースする。</li>
+<li>[x] 論文を arXiv に公開する。</li></p><p></ul><h2>✨ハイライト</h2></p><p><img src="https://raw.githubusercontent.com/Fanziyang-v/FlashVID/main/assets/teaser.png" alt="FlashVID Teaser"></p><ul><li>FlashVID は、<strong>三つ</strong>の代表的な VLLMs（LLaVA-OneVision、LLaVA-Video、Qwen2.5-VL）において、<strong>五つ</strong>の広く使われる動画理解ベンチマーク（VideoMME、EgoSchema、LongVideoBench、MVBench、MLVU）上で、従来の最先端高速化フレームワーク（例：VisionZip、FastVID）を大幅に上回ります。</li>
+<li>FlashVID はトレーニング不要のプラグアンドプレイモジュールとして機能し、長尺動画フレームの拡張を可能にします。これにより Qwen2.5-VL への動画フレーム入力を <strong>10倍</strong> に増やし、同じ計算コスト内で <strong>8.6%</strong> の性能向上を実現します。</li>
+<li>既存の効率的な Video LLM 手法は、空間的および時間的冗長性を独立に圧縮することが多く、動画の本質的な時空間関係を見落としています。これに対処するために、我々は <strong>シンプルかつ効果的な</strong> 解決策として、細粒度の時空間冗長圧縮を実現するツリーベースの時空間トークンマージ（TSTM）を提案します。</li></p><p></ul><h2>💡動機</h2></p><p><img src="https://raw.githubusercontent.com/Fanziyang-v/FlashVID/main/assets/motivation.png" alt="Motivation"></p><p>本研究では、動画の時空間冗長性に関して二つの重要な観察を行いました：</p><ul><li><strong>時間的冗長性は固定された空間位置に縛られない。</strong> 動画内の意味的に一貫した要素は、動きやシーンの変化により空間的位置、スケール、外観が変化することが多く、フレーム間で厳密な空間対応は信頼できません。</li>
+<li><strong>空間的冗長性と時間的冗長性は本質的に結びついている。</strong> 一つのフレーム内の冗長な領域は複数のフレームにわたって持続することが多いです。時空間の冗長圧縮を切り離して行うと、本質的な時空間関係を見落とし、最適でない圧縮につながります。</li></p><p></ul>より良い時空間冗長圧縮を達成するために、我々は <strong>シンプルかつ効果的な</strong> 解決策として、細粒度の時空間冗長圧縮を実現する <strong>ツリーベースの時空間トークンマージ（TSTM）</strong> と、情報量の多いトークン選択のための <strong>注意力と多様性に基づくトークン選択（ADTS）</strong> モジュールを提案します。</p><h2>🌈手法</h2></p><p><img src="https://raw.githubusercontent.com/Fanziyang-v/FlashVID/main/assets/method.png" alt="Method"></p><p><strong>FlashVID の概要図</strong>。我々は二つの相乗効果を持つモジュールによって視覚トークンを圧縮します。</p><ul><li><strong>注意力と多様性に基づくトークン選択（ADTS）</strong> は、調整された最大最小多様性問題（MMDP）を解くことで、時空間的に情報量の多いトークンを優先しつつ特徴の多様性を確保します。  </li>
+<li><strong>ツリー型時空間トークンマージ（TSTM）</strong> は、時空間的冗長性ツリーによって冗長性をモデル化し、細粒度の動画ダイナミクスを効果的に捉えます。各冗長性ツリーは単一のトークン表現に集約されます。  </li></p><p></ul><h2>📦インストール  </h2></p><p>このプロジェクトでは、パッケージ管理に<a href="https://github.com/astral-sh/uv" target="_blank" rel="noopener noreferrer">uv</a>を使用します。  </p><ul><li><strong>このリポジトリをクローンし、FlashVIDフォルダに移動します：</strong></li></p><p>
+</ul><pre><code class="language-bash">git clone https://github.com/Fanziyang-v/FlashVID.git
+cd FlashVID</code></pre></p><ul><li><strong>推論パッケージをインストールします：</strong></li></p><p></ul><pre><code class="language-bash">uv sync</code></pre></p><h2>🚀クイックスタート</h2></p><p>FlashVIDのコードは使いやすく、そのまま動作します。モデルを<code>flashvid()</code>関数でラップするだけです。現在、FlashVIDはLLaVA-OneVision、LLaVA-Video、Qwen2.5-VL、Qwen3-VLをサポートしています。</p><pre><code class="language-python">from flashvid import flashvid</p><p>model = flashvid(
+    model,
+    retention_ratio=0.1,
+    alpha=0.7,
+    temporal_threshold=0.8,
+)</code></pre></p><p>📝<strong>注意</strong>: <code>flashvid()</code> ラッパー関数内でデフォルトパラメータ（例：保持率）を上書きできます。</p><p>推論デモは <code>playground/</code> に用意されています。以下は実行例です：</p><pre><code class="language-bash">python playground/llava_ov_infer.py \
+    --video-path assets/Qgr4dcsY-60.mp4 \
+    --question "Describe the video in detail." \
+    --num-frames 32 \
+    --enable-flashvid</code></pre></p><h2>📊評価</h2></p><p>このプロジェクトでは、すべての実験を<a href="https://github.com/EvolvingLMMs-Lab/lmms-eval" target="_blank" rel="noopener noreferrer">LMMs-Eval</a>を使用して実施しています。<code>scripts/</code>にFlashVID評価スクリプトを提供しており、LLaVA-OneVision、LLaVA-Video、Qwen2.5-VL、Qwen3-VLが含まれています。スクリプトを実行することで、私たちの実験結果を再現できます。</p><pre><code class="language-bash">bash scripts/llava_ov.sh</code></pre></p><p>📝<strong>注意</strong>: FlashVIDをLMMs-Evalに統合するのは非常に簡単で、<code>__init__()</code>に特定のパラメータを追加し、読み込んだモデルを<code>flashvid()</code>関数でラップするだけです。（詳細は<code>lmms_eval/models/simple/llava_onevision.py</code>を参照）</p><h2>👏謝辞</h2></p><p>本プロジェクトは以下の最近のオープンソース作品に基づいています：<a href="https://github.com/pkunlp-icler/FastV" target="_blank" rel="noopener noreferrer">FastV</a>、<a href="https://github.com/dvlab-research/VisionZip" target="_blank" rel="noopener noreferrer">VisionZip</a>、<a href="https://github.com/visual-ai/prunevid" target="_blank" rel="noopener noreferrer">PruneVID</a>、<a href="https://github.com/LunarShen/FastVID" target="_blank" rel="noopener noreferrer">FastVID</a>、<a href="https://github.com/LLaVA-VL/LLaVA-NeXT" target="_blank" rel="noopener noreferrer">LLaVA-NeXT</a>、<a href="https://github.com/QwenLM/Qwen3-VL" target="_blank" rel="noopener noreferrer">Qwen2.5-VL/Qwen3-VL</a>、<a href="https://github.com/EvolvingLMMs-Lab/lmms-eval" target="_blank" rel="noopener noreferrer">LMMs-Eval</a>。優れた成果に感謝します！</p><h2>📜引用</h2></p><p>本プロジェクトが研究に役立った場合は、ぜひ以下を引用してください：</p><pre><code class="language-bib">@inproceedings{
+    fan2026flashvid,
+    title={Flash{VID}: Efficient Video Large Language Models via Training-free Tree-based Spatiotemporal Token Merging},
+    author={Ziyang Fan and Keyu Chen and Ruilong Xing and Yulin Li and Li Jiang and Zhuotao Tian},
+    booktitle={The Fourteenth International Conference on Learning Representations},
+    year={2026},
+    url={https://openreview.net/forum?id=H6rDX4w6Al}
+}</code></pre></p><h2>⭐️Star History</h2></p><p><a href="https://star-history.com/#Fanziyang-v/FlashVID&Date" target="_blank" rel="noopener noreferrer"><img src="https://api.star-history.com/svg?repos=Fanziyang-v/FlashVID&type=Date" alt="Star History Chart"></a></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-07-03
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Fanziyang-v/FlashVID/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-07-03 
+    </div>
+    
+</body>
+</html>
