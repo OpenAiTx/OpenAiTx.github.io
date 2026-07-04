@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>claude-sh - Claude Code 重写为 bash 脚本。约1500行，无需 npm 包。仅使用 curl 和 jq。</title>
+    <meta name="description" content="Claude Code 重写为 bash 脚本。约1500行，无需 npm 包。仅使用 curl 和 jq。">
+    <meta name="keywords" content="claude-sh, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "claude-sh",
+  "description": "Claude Code 重写为 bash 脚本。约1500行，无需 npm 包。仅使用 curl 和 jq。",
+  "author": {
+    "@type": "Person",
+    "name": "jdcodes1"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 111
+  },
+  "url": "https://OpenAiTx.github.io/projects/jdcodes1/claude-sh/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/jdcodes1/claude-sh/main/README.md",
+  "datePublished": "2026-07-04",
+  "dateModified": "2026-07-04"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/jdcodes1/claude-sh" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    claude-sh
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 111 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by jdcodes1</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>claude.sh</h1></p><p>Claude 代码重写为 bash 脚本。约1,500行。零 npm 包。</p><h2>为什么</h2></p><p>原始 Claude 代码约38万行 TypeScript，依赖266个 npm 包。该脚本用 bash 仅依赖 <code>curl</code> 和 <code>jq</code> 实现相同核心功能。</p><h2>功能</h2></p><ul><li><strong>实时流式传输</strong> 通过 FIFO 管道 — 文本随着 Claude 生成实时显示</li>
+<li><strong>6个工具</strong>：Bash、Read、Edit、Write、Glob、Grep</li>
+<li><strong>工具链</strong> — 每轮最多调用25个工具</li>
+<li><strong>权限提示</strong> — 运行非安全命令前询问（<code>y/n/a</code>）</li>
+<li><strong>CLAUDE.md 加载</strong> — 从目录树上读取项目指令的 CLAUDE.md 文件</li>
+<li><strong>Git 感知上下文</strong> — 系统提示中包含分支、状态和最近提交</li>
+<li><strong>会话保存/恢复</strong> — 退出时自动保存，使用 <code>--resume <id></code> 恢复</li>
+<li><strong>带退避的重试</strong> — 对429/529速率限制进行指数重试</li>
+<li><strong>费用跟踪</strong> — 按轮次和会话总计</li>
+<li><strong>加载动画</strong> — 使用原版加载动画动词（Clauding, Flibbertigibbeting 等）</li>
+<li><strong>斜杠命令</strong> — <code>/help</code>、<code>/cost</code>、<code>/model</code>、<code>/clear</code>、<code>/save</code>、<code>/resume</code>、<code>/commit</code>、<code>/diff</code></li>
+<li><strong>管道模式</strong> — <code>echo "explain this" | ./claude.sh</code></li></p><p></ul><h2>安装</h2></p><pre><code class="language-bash">git clone https://github.com/jdcodes1/claude.sh.git
+cd claude.sh
+chmod +x claude.sh</code></pre></p><h2>依赖项</h2></p><ul><li><code>curl</code></li>
+<li><code>jq</code></li>
+<li>可选：<code>rg</code>（ripgrep）用于更好的搜索</li>
+<li>可选：<code>python3</code> 用于编辑工具</li></p><p></ul>运行时版本固定在 <code>.tool-versions</code> 中。使用 <a href="https://mise.jdx.dev/" target="_blank" rel="noopener noreferrer">mise</a> 安装它们：</p><pre><code class="language-bash">mise install</code></pre></p><h2>使用方法</h2></p><pre><code class="language-bash">export ANTHROPIC_API_KEY="sk-ant-..."
+./claude.sh</code></pre></p><h3>环境变量</h3></p><p>| 变量 | 默认值 | 描述 |
+| --- | --- | --- |
+| <code>ANTHROPIC_API_KEY</code> | （必填） | 您的 Anthropic API 密钥 |
+| <code>CLAUDE_MODEL</code> | <code>claude-sonnet-4-6</code> | 使用的模型 |
+| <code>CLAUDE_MAX_TOKENS</code> | <code>8192</code> | 最大输出令牌数 |
+| <code>ANTHROPIC_API_URL</code> | <code>https://api.anthropic.com</code> | API 基础 URL |
+| <code>CLAUDE_SH_PERMISSIONS</code> | <code>ask</code> | 权限模式：<code>ask</code>，<code>allow</code> 或 <code>deny</code> |</p><h3>命令</h3></p><pre><code class="language-txt">/help      — Show help
+/cost      — Show session cost
+/model     — Show/change model
+/clear     — Clear conversation
+/save      — Save current session
+/resume    — List/resume saved sessions
+/commit    — Auto-generate a git commit
+/diff      — Show git diff
+/quit      — Exit</code></pre></p><h3>恢复会话</h3></p><pre><code class="language-bash"># List saved sessions
+./claude.sh
+<blockquote>/resume</blockquote></p><h1>Resume by number</h1>
+<blockquote>/resume 1</blockquote></p><h1>Resume from CLI</h1>
+./claude.sh --resume 20240101-120000-12345</code></pre></p><h2>架构</h2></p><pre><code class="language-txt">claude.sh          # Main REPL loop, slash commands, process_turn()
+lib/
+  api.sh           # Anthropic API client, SSE streaming via FIFO, retry
+  json.sh          # Message construction, session persistence, CLAUDE.md, git context
+  tools.sh         # 6 tool implementations + permission system
+  tui.sh           # ANSI colors, spinner, display helpers</code></pre></p><h2>工作原理</h2></p><ul><li>读取用户输入</li>
+<li>使用 <code>jq</code> 构建 JSON 请求（消息、工具、系统提示）</li>
+<li>通过 FIFO 管道使用 <code>curl</code> 流式传输响应</li>
+<li>按行解析 SSE 事件，实时打印文本增量</li>
+<li>当收到 tool_use 块时，执行工具</li>
+<li>将工具结果作为消息反馈</li>
+<li>循环直到 Claude 停止调用工具</li></p><p></ul><h2>比较</h2></p><p>| | claude.sh | Claude Code (TypeScript) |
+| --- | --- | --- |
+| 代码行数 | ~1,500 | ~380,000 |
+| 依赖项 | curl, jq | 266 个 npm 包 |
+| 二进制大小 | 0（脚本） | ~200MB node_modules |
+| 启动时间 | 即时 | ~500ms |</p><h3>测试</h3></p><p>测试使用 <a href="https://github.com/bats-core/bats-core" target="_blank" rel="noopener noreferrer">bats</a>（Bash 自动化测试系统）：</p><pre><code class="language-bash">bats test/</code></pre></p><h2>License</h2></p><p><a href="LICENSE" target="_blank" rel="noopener noreferrer">MIT</a></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-07-04
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/jdcodes1/claude-sh/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-07-04 
+    </div>
+    
+</body>
+</html>
