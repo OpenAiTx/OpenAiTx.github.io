@@ -1,0 +1,352 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sqlite-online - 轻量级基于 WebAssembly 的 SQLite 查看器和编辑器，完全在浏览器中运行。</title>
+    <meta name="description" content="轻量级基于 WebAssembly 的 SQLite 查看器和编辑器，完全在浏览器中运行。">
+    <meta name="keywords" content="sqlite-online, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "sqlite-online",
+  "description": "轻量级基于 WebAssembly 的 SQLite 查看器和编辑器，完全在浏览器中运行。",
+  "author": {
+    "@type": "Person",
+    "name": "yzua"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 150
+  },
+  "url": "https://OpenAiTx.github.io/projects/yzua/sqlite-online/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/yzua/sqlite-online/main/README.md",
+  "datePublished": "2026-07-06",
+  "dateModified": "2026-07-06"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/yzua/sqlite-online" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    sqlite-online
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 150 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by yzua</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>SQLite 在线版</h1></p><p><div align="center">
+  <a href="https://yzua.github.io/sqlite-online/">
+    <img
+      src="https://github.com/user-attachments/assets/aef749bf-df08-4a84-8148-d34b796449d8"
+      alt="SQLite 在线版标志"
+      width="128"
+    />
+  </a>
+</div></p><p>一个基于 React、TypeScript、Vite 和 <code>sql.js</code> 构建的客户端 SQLite 编辑器。  
+它运行在浏览器中，默认初始化一个演示数据库，并且可以打开本地 SQLite 文件，无需后端支持。</p><h2>概述</h2></p><ul><li><strong>打开本地 <code>.db</code>、<code>.sqlite</code> 和 <code>.sqlite3</code> 文件</strong></li>
+<li><strong>使用 SQL 创建和修改表、视图和索引</strong></li>
+<li><strong>浏览、筛选、排序、分页、添加、编辑和删除行</strong></li>
+<li><strong>运行自定义 SQL 并导出结果为 CSV</strong></li></p><p></ul>大部分数据库操作在浏览器中通过 WebAssembly 和 web worker 本地运行。  
+可选功能如 URL 加载、CORS 代理回退、Google 字体和 Gemini 驱动的查询生成使用网络请求。</p><h2>功能</h2></p><ul><li><strong>本地优先的数据库编辑：</strong>从磁盘打开文件，将数据库拖放到页面中，并下载当前数据库为  </li>
+  </ul><code>database.sqlite</code>。
+<ul><li><strong>模式和数据工作流：</strong>查看模式、浏览表数据、编辑行、插入新行、删除行以及执行自定义 SQL 语句。</li>
+<li><strong>CSV 导出路径：</strong>导出整张表、当前表页或当前自定义查询结果集为 CSV。</li>
+<li><strong>附加用户体验功能：</strong>暗黑模式、高对比度模式、键盘快捷键、跳过链接和无障碍的实时区域。</li>
+<li><strong>可选集成：</strong>从 <code>?url=</code> 查询参数加载数据库，配置 Gemini API 密钥后通过 <code>/ai ...</code> 提示生成 SQL。</li></p><p>
+</ul><h2>开发</h2></p><pre><code class="language-bash">npm install
+npm run dev</code></pre>
+有用的项目命令：</p><ul><li><code>npm run build</code></li>
+<li><code>npm run build:pages</code></li>
+<li><code>npm run typecheck</code></li>
+<li><code>npm run check</code></li>
+<li><code>npm run check:fix</code></li>
+<li><code>npm run doctor</code></li>
+<li><code>npm run preview</code></li>
+<li><code>npm run preview:pages</code></li>
+<li><code>npm run lint</code></li>
+<li><code>npm run lint:fix</code></li>
+<li><code>npm run format</code></li>
+<li><code>npm run format:check</code></li>
+<li><code>npm test</code></li>
+<li><code>npm run test:watch</code></li>
+<li><code>npm run knip</code></li>
+<li><code>npm run deploy</code></li></p><p></ul><h2>键盘快捷键（热键）</h2></p><p>使用这些内置热键简化您的工作流程：</p><p>| 快捷键               | 操作                        |
+| -------------------- | --------------------------- |
+| <strong>Ctrl + s</strong>         | 下载数据库                  |
+| <strong>Ctrl + ArrowRight</strong>| 转到下一页                  |
+| <strong>Ctrl + ArrowUp</strong>   | 跳转到第一页                |
+| <strong>Ctrl + ArrowDown</strong> | 跳转到最后一页              |
+| <strong>Ctrl + ArrowLeft</strong> | 转到上一页                  |
+| <strong>Ctrl + \`</strong>        | 关闭编辑面板                |
+| <strong>Ctrl + i</strong>         | 插入模式 / 提交插入         |
+| <strong>Ctrl + u</strong>         | 提交更新编辑                |
+| <strong>Ctrl + d</strong>         | 提交删除编辑                |
+| <strong>Ctrl + q</strong>         | 执行 SQL 查询               |</p><h2>许可协议</h2></p><p>SQLite Online 采用 <a href="https://github.com/yzua/sqlite-online/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">GNU GPL v3.0</a> 许可发布。</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-07-06
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/yzua/sqlite-online/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-07-06 
+    </div>
+    
+</body>
+</html>

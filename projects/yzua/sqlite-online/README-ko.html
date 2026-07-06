@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sqlite-online - 경량 WebAssembly 기반 SQLite 뷰어 및 편집기. 브라우저에서 완전히 작동합니다.</title>
+    <meta name="description" content="경량 WebAssembly 기반 SQLite 뷰어 및 편집기. 브라우저에서 완전히 작동합니다.">
+    <meta name="keywords" content="sqlite-online, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "sqlite-online",
+  "description": "경량 WebAssembly 기반 SQLite 뷰어 및 편집기. 브라우저에서 완전히 작동합니다.",
+  "author": {
+    "@type": "Person",
+    "name": "yzua"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 150
+  },
+  "url": "https://OpenAiTx.github.io/projects/yzua/sqlite-online/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/yzua/sqlite-online/main/README.md",
+  "datePublished": "2026-07-06",
+  "dateModified": "2026-07-06"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/yzua/sqlite-online" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    sqlite-online
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 150 stars</span>
+                <span class="language">Korean</span>
+                <span>by yzua</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>SQLite 온라인</h1></p><p><div align="center">
+  <a href="https://yzua.github.io/sqlite-online/">
+    <img
+      src="https://github.com/user-attachments/assets/aef749bf-df08-4a84-8148-d34b796449d8"
+      alt="SQLite 온라인 로고"
+      width="128"
+    />
+  </a>
+</div></p><p>React, TypeScript, Vite, 그리고 <code>sql.js</code>로 구축된 클라이언트 사이드 SQLite 편집기입니다.
+브라우저에서 실행되며, 기본적으로 데모 데이터베이스를 초기화하고
+백엔드 없이 로컬 SQLite 파일을 열 수 있습니다.</p><h2>개요</h2></p><ul><li><strong>로컬 <code>.db</code>, <code>.sqlite</code>, <code>.sqlite3</code> 파일 열기</strong></li>
+<li><strong>SQL로 테이블, 뷰, 인덱스 생성 및 수정</strong></li>
+<li><strong>행 탐색, 필터링, 정렬, 페이지네이션, 추가, 편집, 삭제</strong></li>
+<li><strong>사용자 정의 SQL 실행 및 결과를 CSV로 내보내기</strong></li></p><p></ul>대부분의 데이터베이스 작업은 WebAssembly와 웹 워커를 통해 브라우저 내에서 로컬로 실행됩니다.
+URL 로딩, CORS 프록시 폴백, Google 폰트, Gemini 기반 쿼리 생성 같은 선택적 기능은 네트워크 요청을 사용합니다.</p><h2>기능</h2></p><ul><li><strong>로컬 우선 데이터베이스 편집:</strong> 디스크에서 파일 열기, 데이터베이스를 페이지에 드래그 앤 드롭, 현재 데이터베이스를</li>
+  </ul><code>database.sqlite</code>로 다운로드.
+<ul><li><strong>스키마 및 데이터 작업 흐름:</strong> 스키마 검사, 테이블 데이터 탐색, 행 편집,</li>
+  </ul>새 행 삽입, 행 삭제, 사용자 정의 SQL 문 실행.
+<ul><li><strong>CSV 내보내기 경로:</strong> 전체 테이블, 현재 테이블 페이지 또는</li>
+  </ul>현재 사용자 정의 쿼리 결과 세트를 CSV로 내보내기.
+<ul><li><strong>추가 UX 기능:</strong> 다크 모드, 고대비 모드, 키보드 단축키, 건너뛰기 링크, 접근성을 위한 라이브 영역.</li>
+<li><strong>선택적 통합:</strong> <code>?url=</code> 쿼리 매개변수로 데이터베이스 로드 및 Gemini API 키 구성 후 <code>/ai ...</code> 프롬프트를 통한 SQL 생성.</li></p><p></ul><h2>개발</h2></p><pre><code class="language-bash">npm install
+npm run dev</code></pre>
+유용한 프로젝트 명령어:</p><ul><li><code>npm run build</code></li>
+<li><code>npm run build:pages</code></li>
+<li><code>npm run typecheck</code></li>
+<li><code>npm run check</code></li>
+<li><code>npm run check:fix</code></li>
+<li><code>npm run doctor</code></li>
+<li><code>npm run preview</code></li>
+<li><code>npm run preview:pages</code></li>
+<li><code>npm run lint</code></li>
+<li><code>npm run lint:fix</code></li>
+<li><code>npm run format</code></li>
+<li><code>npm run format:check</code></li>
+<li><code>npm test</code></li>
+<li><code>npm run test:watch</code></li>
+<li><code>npm run knip</code></li>
+<li><code>npm run deploy</code></li></p><p></ul><h2>키보드 단축키 (핫키)</h2></p><p>이 내장 핫키로 작업 흐름을 간소화하세요:</p><p>| 단축키                 | 동작                        |
+| --------------------- | --------------------------- |
+| <strong>Ctrl + s</strong>          | 데이터베이스 다운로드         |
+| <strong>Ctrl + ArrowRight</strong> | 다음 페이지로 이동           |
+| <strong>Ctrl + ArrowUp</strong>    | 첫 페이지로 점프             |
+| <strong>Ctrl + ArrowDown</strong>  | 마지막 페이지로 점프         |
+| <strong>Ctrl + ArrowLeft</strong>  | 이전 페이지로 이동           |
+| <strong>Ctrl + \`</strong>         | 편집 패널 닫기              |
+| <strong>Ctrl + i</strong>          | 입력 모드 / 입력 제출        |
+| <strong>Ctrl + u</strong>          | 수정 편집 제출              |
+| <strong>Ctrl + d</strong>          | 삭제 편집 제출              |
+| <strong>Ctrl + q</strong>          | SQL 쿼리 실행               |</p><h2>라이선스</h2></p><p>SQLite Online은 <a href="https://github.com/yzua/sqlite-online/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">GNU GPL v3.0</a> 하에 배포됩니다.</p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-07-06
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/yzua/sqlite-online/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-07-06 
+    </div>
+    
+</body>
+</html>
