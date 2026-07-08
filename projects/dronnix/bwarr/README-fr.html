@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bwarr - Tableau Noir-Blanc : structure de donn&#233;es ordonn&#233;e et rapide bas&#233;e sur des tableaux avec des allocations m&#233;moire en O(log N)</title>
+    <meta name="description" content="Tableau Noir-Blanc : structure de donn&#233;es ordonn&#233;e et rapide bas&#233;e sur des tableaux avec des allocations m&#233;moire en O(log N)">
+    <meta name="keywords" content="bwarr, French, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "bwarr",
+  "description": "Tableau Noir-Blanc : structure de données ordonnée et rapide basée sur des tableaux avec des allocations mémoire en O(log N)",
+  "author": {
+    "@type": "Person",
+    "name": "dronnix"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 116
+  },
+  "url": "https://OpenAiTx.github.io/projects/dronnix/bwarr/README-fr.html",
+  "sameAs": "https://raw.githubusercontent.com/dronnix/bwarr/main/README.md",
+  "datePublished": "2026-07-08",
+  "dateModified": "2026-07-08"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/dronnix/bwarr" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    bwarr
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 116 stars</span>
+                <span class="language">French</span>
+                <span>by dronnix</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h2>Qu'est-ce que c'est ?</h2></p><p><a href="https://github.com/dronnix/bwarr/actions" target="_blank" rel="noopener noreferrer"><img src="https://github.com/dronnix/bwarr/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+<a href="https://codecov.io/gh/dronnix/bwarr" target="_blank" rel="noopener noreferrer"><img src="https://codecov.io/gh/dronnix/bwarr/branch/main/graph/badge.svg" alt="codecov"></a>
+<a href="https://pkg.go.dev/github.com/dronnix/bwarr" target="_blank" rel="noopener noreferrer"><img src="https://pkg.go.dev/badge/github.com/dronnix/bwarr.svg" alt="Go Reference"></a>
+<a href="https://goreportcard.com/report/github.com/dronnix/bwarr" target="_blank" rel="noopener noreferrer"><img src="https://goreportcard.com/badge/github.com/dronnix/bwarr" alt="Go Report Card"></a></p><p>Le Black-White Array (alias BWArr) est une structure de données ordonnée rapide basée sur des tableaux avec <strong><em>$O(\log N)$</strong></em> <strong>allocations mémoire</strong>.</p><h2>Structure de données</h2>
+L'idée du Black-White Array a été inventée et publiée par le professeur <a href="https://www.cs.brandeis.edu/~mou/" target="_blank" rel="noopener noreferrer">Z. George Mou</a> dans <a href="https://arxiv.org/abs/2004.09051" target="_blank" rel="noopener noreferrer">Black-White Array: A New Data Structure for
+Dynamic Data Sets</a>. Ce dépôt contient la première implémentation publique.</p><p><img src="https://www.cs.brandeis.edu/~mou/mou.gif" alt="Professeur Z. George Mou"></p><h3>Caractéristiques clés :</h3>
+<ul><li>$O(\log N)$ allocations mémoire pour les insertions - pas de pression sur le GC ;</li>
+<li>Opérations d'insertion, suppression et recherche rapides avec une complexité amortie en temps $O(\log N)$ ;</li>
+<li>Basé sur des tableaux et sans pointeurs, ce qui le rend adapté au CPU : localité du cache / itération séquentielle / etc ;</li>
+<li>Supporte nativement les éléments dupliqués (comportement multiset) - pas besoin d'encapsuler les valeurs dans des structures pour les rendre uniques ;</li>
+<li>Remplacement direct de <code>github.com/google/btree</code> et <code>github.com/petar/GoLLRB</code> ;</li>
+<li>Faible surcharge mémoire - pas de pointeurs par élément, représentation mémoire compacte ;</li>
+<li>Facilement sérialisable ;</li></p><p></ul><h3>Compromis</h3>
+<ul><li>Une opération sur $N$ insertions peut atteindre une complexité de $O(N)$, bien que l'amortissement reste $O(\log N)$. Pour les systèmes temps réel, cela peut provoquer des pics de latence pour des collections de millions d’éléments. Peut être atténué par des insertions asynchrones/en arrière-plan.</li>
+<li>Pour un petit nombre d’éléments, les opérations <code>Search()/Delete()</code> peuvent prendre $O((\log N)^2)$. 50% des éléments prennent $O(\log N)$ temps, 75% - $O(2\log N)$, 87,5% - $O(3\log N)$, etc.</li>
+<li>Lors de la suppression de longues séries d’éléments, une opération <code>Max()/Min()</code> peut prendre $O(N/4)$. La complexité amortie pour une série d’appels reste $O(\log N)$.</li>
+<li>Lors de la suppression de longues séries d’éléments, une étape d’itération peut prendre $O(N/4)$. La complexité amortie pour l’itération sur toute la collection reste $O(\log N)$ par élément.</li></p><p></ul><h3> Benchmarks</h3></p><p>Benchmarks en comparaison avec <a href="https://github.com/google/btree" target="_blank" rel="noopener noreferrer">Google BTree</a>.</p><p>#### Insertion 
+Mesure du temps, des allocations et des KB alloués pour insérer N valeurs int64 uniques et aléatoires dans une structure de données vide. BWArr et BTree commencent vides et insèrent toutes les valeurs une par une.</p><p><img src="https://github.com/dronnix/bwarr-bench/blob/main/images/insert_unique_values.png?raw=true" alt="Performance d'insertion">
+<img src="https://github.com/dronnix/bwarr-bench/blob/main/images/insert_unique_values_allocs.png?raw=true" alt="Allocations d'insertion">
+<img src="https://github.com/dronnix/bwarr-bench/blob/main/images/insert_unique_values_bytes.png?raw=true" alt="Octets alloués à l'insertion"></p><p>Allocations sur de plus petites valeurs : </p><p><img src="https://github.com/dronnix/bwarr-bench/blob/main/images/insert_performance_allocs_detailed.png?raw=true" alt="Insert Allocs small"></p><p>
+#### Get 
+Mesure le temps nécessaire pour rechercher N valeurs par leurs clés dans une structure de données pré-remplie. La structure de données est remplie avec toutes les valeurs avant le début du chronométrage, puis chaque valeur est récupérée par clé.</p><p><img src="https://github.com/dronnix/bwarr-bench/blob/main/images/get_all_values_by_key.png?raw=true" alt="Get performance"></p><p>#### Itérer
+Mesure le temps nécessaire pour itérer à travers toutes les N valeurs dans des ordres triés et non triés.
+<img src="https://github.com/dronnix/bwarr-bench/blob/main/images/ordered_iteration_over_all_values.png?raw=true" alt="Ordered Iterate performance">
+<img src="https://github.com/dronnix/bwarr-bench/blob/main/images/unordered_iteration_over_all_values.png?raw=true" alt="Unordered Iterate performance"></p><p>#### Plus de benchmarks
+Des benchmarks supplémentaires et des détails sont disponibles dans le dépôt <a href="https://github.com/dronnix/bwarr-bench" target="_blank" rel="noopener noreferrer">bwarr-bench</a>.
+D’autres méthodes seront ajoutées, attendez-vous également à des benchmarks séparés pour les architectures AMD64 et ARM64.</p><h2>Installation</h2></p><p>Nécessite Go 1.22 ou supérieur.</p><pre><code class="language-bash">go get github.com/dronnix/bwarr</code></pre></p><p>Puis importez dans votre code :</p><pre><code class="language-go">import "github.com/dronnix/bwarr"</code></pre></p><h2>Utilisation</h2></p><h3>Exemple de base</h3></p><pre><code class="language-go">package main</p><p>import (
+    "fmt"</p><p>    "github.com/dronnix/bwarr"
+)</p><p>func main() {
+    // Create a BWArr with an integer comparison function
+    // The second parameter (10) is the initial capacity hint
+    bwa := bwarr.New(func(a, b int64) int {
+        return int(a - b)
+    }, 10)</p><p>    // Insert elements
+    bwa.Insert(42)
+    bwa.Insert(17)
+    bwa.Insert(99)
+    bwa.Insert(23)
+    bwa.Insert(8)</p><p>    fmt.Printf("Length: %d\n", bwa.Len()) // Output: Length: 5</p><p>    // Get an element
+    val, found := bwa.Get(42)
+    if found {
+        fmt.Printf("Found: %d\n", val) // Output: Found: 42
+    }</p><p>    // Delete an element
+    deleted, found := bwa.Delete(17)
+    if found {
+        fmt.Printf("Deleted: %d\n", deleted) // Output: Deleted: 17
+    }</p><p>    // Iterate in ascending order
+    fmt.Println("Elements in sorted order:")
+    bwa.Ascend(func(item int64) bool {
+        fmt.Printf("  %d\n", item)
+        return true // return false to stop iteration early
+    })
+    // Output:
+    //   8
+    //   23
+    //   42
+    //   99
+}</code></pre></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-07-08
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/dronnix/bwarr/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-07-08 
+    </div>
+    
+</body>
+</html>
