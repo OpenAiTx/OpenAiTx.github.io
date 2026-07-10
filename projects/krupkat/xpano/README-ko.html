@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xpano - 자동 사진 스티칭 도구입니다. 이미지 디렉토리를 가져와 자동으로 감지된 파노라마를 내보낼 수 있습니다.</title>
+    <meta name="description" content="자동 사진 스티칭 도구입니다. 이미지 디렉토리를 가져와 자동으로 감지된 파노라마를 내보낼 수 있습니다.">
+    <meta name="keywords" content="xpano, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "xpano",
+  "description": "자동 사진 스티칭 도구입니다. 이미지 디렉토리를 가져와 자동으로 감지된 파노라마를 내보낼 수 있습니다.",
+  "author": {
+    "@type": "Person",
+    "name": "krupkat"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 363
+  },
+  "url": "https://OpenAiTx.github.io/projects/krupkat/xpano/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/krupkat/xpano/main/README.md",
+  "datePublished": "2026-07-10",
+  "dateModified": "2026-07-10"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/krupkat/xpano" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    xpano
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 363 stars</span>
+                <span class="language">Korean</span>
+                <span>by krupkat</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><a href="https://github.com/krupkat/xpano/actions/workflows/test.yml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/krupkat/xpano/actions/workflows/test.yml/badge.svg" alt="tests"></a>
+<a href="https://github.com/krupkat/xpano/actions/workflows/clang-format-check.yml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/krupkat/xpano/actions/workflows/clang-format-check.yml/badge.svg" alt="clang-format"></a>
+<a href="https://github.com/krupkat/xpano/actions/workflows/clang-tidy-check.yml" target="_blank" rel="noopener noreferrer"><img src="https://github.com/krupkat/xpano/actions/workflows/clang-tidy-check.yml/badge.svg" alt="clang-tidy"></a></p><h1>xpano</h1></p><p>Xpano는 단순함과 사용 편의성에 중점을 둔 파노라마 스티칭 도구로, 주요 기능은 다음과 같습니다:</p><ul><li>파노라마로 스티칭할 수 있는 이미지 그룹 자동 감지</li>
+<li>계산된 파노라마의 미리보기 + 확대 + 이동</li>
+<li>크롭 모드, 경계 자동 채우기, 선택 가능한 투영 유형</li>
+<li>투영 조정: 피치, 요, 롤</li>
+<li>Exif 메타데이터를 포함한 고해상도 파노라마 내보내기</li></p><p>
+</ul><h2>사용 기술</h2></p><p>이 앱은 이미지 조작을 위해 훌륭한 <a href="https://opencv.org/" target="_blank" rel="noopener noreferrer">OpenCV</a> 라이브러리와 파노라마 계산을 위한 <a href="https://docs.opencv.org/4.x/d1/d46/group__stitching.html" target="_blank" rel="noopener noreferrer">스티칭</a> 모듈을 사용합니다.</p><p>기타 의존성으로는 <a href="https://github.com/ocornut/imgui" target="_blank" rel="noopener noreferrer">imgui</a>, <a href="https://github.com/libsdl-org/SDL" target="_blank" rel="noopener noreferrer">SDL</a>, <a href="https://github.com/gabime/spdlog/" target="_blank" rel="noopener noreferrer">spdlog</a>, <a href="https://github.com/catchorg/Catch2" target="_blank" rel="noopener noreferrer">Catch2</a>, <a href="https://github.com/btzy/nativefiledialog-extended" target="_blank" rel="noopener noreferrer">nativefiledialog-extended</a>, <a href="https://github.com/p-ranav/alpaca" target="_blank" rel="noopener noreferrer">alpaca</a>, <a href="https://github.com/bshoshany/thread-pool" target="_blank" rel="noopener noreferrer">thread-pool</a>, <a href="https://github.com/TartanLlama/expected" target="_blank" rel="noopener noreferrer">expected</a>, <a href="https://github.com/Exiv2/exiv2" target="_blank" rel="noopener noreferrer">Exiv2</a>, <a href="https://horman.net/multiblend/" target="_blank" rel="noopener noreferrer">multiblend</a>, <a href="https://github.com/simd-everywhere/simde" target="_blank" rel="noopener noreferrer">SIMDe</a> 및 <a href="https://fonts.google.com/noto" target="_blank" rel="noopener noreferrer">Google Noto</a> 폰트가 포함됩니다.</p><h2>데모</h2></p><p><a href="https://youtu.be/MyiTC3i1hK0" target="_blank" rel="noopener noreferrer">YouTube</a>에서 데모를 확인하세요.</p><p><img src="https://gist.githubusercontent.com/krupkat/55ca0f085c944fb1ea2a7dc2a779f141/raw/f90afd675b1c0430db06a46984cbe5309908ddc1/1.webp" alt="Main Xpano gui"></p><h2>설치</h2></p><p>Flathub 또는 Microsoft Store에서 직접 설치하세요:</p><p><a href='https://flathub.org/apps/details/cz.krupkat.Xpano'><img height='70' alt='Download from Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>&nbsp;&nbsp;<a href='https://apps.microsoft.com/store/detail/9PGQ5X33L0SC?launch=true&mode=full'><img height='70' alt='Download from the Microsoft Store' src='https://get.microsoft.com/images/en-US%20dark.svg'/></a></p><p>추가 패키지 받기:</p><ul><li>Windows 및 MacOS 실행 파일은 <a href="https://github.com/krupkat/xpano/releases" target="_blank" rel="noopener noreferrer">GitHub</a>에서</li>
+<li>Ubuntu 패키지는 내 <a href="https://launchpad.net/~krupkat/+archive/ubuntu/code" target="_blank" rel="noopener noreferrer">Launchpad PPA</a>에서</li>
+<li>Nix 패키지는 <a href="https://search.nixos.org/packages?channel=unstable&show=xpano" target="_blank" rel="noopener noreferrer">nixpkgs</a>에서</li>
+<li>Archlinux AUR: <a href="https://aur.archlinux.org/packages/xpano-git" target="_blank" rel="noopener noreferrer">xpano-git</a>에서</li></p><p></ul><h2>명령줄</h2></p><p>Xpano는 기본 CLI 지원을 제공하며, 명령줄에서 완전 자동으로 실행하거나 <code>--gui</code> 플래그로 GUI를 실행할 수 있습니다.</p><pre><code class="language-">Xpano [<input files>] [--output=<path>] [--gui] [--help] [--version]</code></pre>
+<h2>개발</h2></p><p>프로젝트는 <code>misc/build</code> 디렉터리에서 단일 스크립트를 실행하여 빌드할 수 있습니다. CMake 3.21 이상, git, 그리고 C++20을 지원하는 컴파일러가 필요합니다.</p><h3>NixOS</h3></p><p>저장소 루트에서 빌드 스크립트를 실행하세요:</p><pre><code class="language-">nix-shell misc/build/nix/default.nix
+./misc/build/build-nixos.sh</code></pre>
+실행 시 발생할 수 있는 문제 - <a href="https://gist.github.com/krupkat/cd0adbd584e2bfe154accdb393076fc3" target="_blank" rel="noopener noreferrer">문제 해결</a>.</p><h3>MacOS</h3></p><p>라이브러리 필수 조건: SDL2, spdlog, catch2</p><p>brew로 설치: <code>brew install sdl2 spdlog catch2</code></p><p>macports로 설치: <code>sudo port install libsdl2 spdlog catch2</code> (자세한 내용: <a href="https://github.com/krupkat/xpano/pull/96#issuecomment-1575589249" target="_blank" rel="noopener noreferrer">#96</a>)</p><p>저장소 루트에서 빌드 스크립트를 실행하세요:</p><pre><code class="language-">./misc/build/build-macos.sh</code></pre>
+<h3>우분투 24.04</h3></p><p>라이브러리 전제 조건:</p><pre><code class="language-">sudo apt install libgtk-3-dev libopencv-dev libsdl2-dev libspdlog-dev catch2</code></pre></p><p>저장소 루트에서 빌드 스크립트를 실행합니다:</p><pre><code class="language-">./misc/build/build-ubuntu-24.sh</code></pre></p><h3>우분투 22.04</h3></p><p>라이브러리 전제 조건:</p><pre><code class="language-">sudo apt install libgtk-3-dev libopencv-dev libsdl2-dev libspdlog-dev</code></pre></p><p>저장소 루트에서 빌드 스크립트를 실행하세요:</p><pre><code class="language-">./misc/build/build-ubuntu-22.sh</code></pre></p><h3>Windows</h3></p><p>Windows 터미널에서 "Developer PowerShell for VS 2022" 프로필을 열고 저장소 루트에서 빌드 스크립트를 실행합니다:</p><pre><code class="language-">./misc/build/build-windows-latest.ps1</code></pre>
+<h2>기여</h2></p><p>기여는 언제나 환영합니다. <a href="https://github.com/krupkat/xpano/issues" target="_blank" rel="noopener noreferrer">오픈 이슈</a>에는 몇 가지 개선 아이디어가 있으며, 이 중 하나에 착수하시면 해당 이슈에 댓글을 남겨 주세요.</p><p>형식 및 코딩 스타일에 관한 자세한 내용은 <a href="https://github.com/krupkat/xpano/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">기여 가이드라인</a>을 확인해 주세요.</p><h2>라이선스</h2></p><p><em>GPL-3.0-or-later</em> 라이선스 하에 배포됩니다. 자세한 내용은 전체 <a href="https://github.com/krupkat/xpano/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">라이선스 텍스트</a>를 참고하세요.</p><h2>연락처</h2></p><p>토마스 크룹카 - <a href="https://krupkat.cz" target="_blank" rel="noopener noreferrer">krupkat.cz</a></p><p>
+
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-07-10
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/krupkat/xpano/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-07-10 
+    </div>
+    
+</body>
+</html>
