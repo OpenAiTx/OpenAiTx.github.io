@@ -1,0 +1,350 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocationJoystick - [XPOSED-NONXPOSED] オーバーレイジョイスティックを使用したリアルタイム位置偽装ツール。</title>
+    <meta name="description" content="[XPOSED-NONXPOSED] オーバーレイジョイスティックを使用したリアルタイム位置偽装ツール。">
+    <meta name="keywords" content="LocationJoystick, Japanese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "LocationJoystick",
+  "description": "[XPOSED-NONXPOSED] オーバーレイジョイスティックを使用したリアルタイム位置偽装ツール。",
+  "author": {
+    "@type": "Person",
+    "name": "fzer0x"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 151
+  },
+  "url": "https://OpenAiTx.github.io/projects/fzer0x/LocationJoystick/README-ja.html",
+  "sameAs": "https://raw.githubusercontent.com/fzer0x/LocationJoystick/main/README.md",
+  "datePublished": "2026-07-15",
+  "dateModified": "2026-07-15"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/fzer0x/LocationJoystick" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    LocationJoystick
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 151 stars</span>
+                <span class="language">Japanese</span>
+                <span>by fzer0x</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Location Joystick</h1></p><h2>日本語</h2></p><p>Location Joystickは位置情報のシミュレーション用に設計されたXposedモジュールです。ジョイスティックのオーバーレイと様々な位置情報関連の設定を提供し、シミュレーション体験を向上させます。</p><p>⚠️ <strong>[新機能] ルート/Xposed不要機能（モックロケーション）</strong> ⚠️</p><h1>最新リリース: https://github.com/fzer0x/LocationJoystick_V4/releases</h1></p><p><div align="center"></p><h2>🚀 コミュニティに参加しよう 🚀</h2></p><p><a href="https://t.me/+LTsF8mOwkRE3YzYy">
+  <img src="https://img.shields.io/badge/👉_CLICK_HERE_TO_JOIN-FF0000?style=for-the-badge&logo=telegram&logoColor=white" />
+</a></p><p>🔥 参加してサポートと最新情報をゲット！</p><p></div></p><p><img src="https://github.com/fzer0x/LocationJoystick/blob/main/screenshot3.jpg?raw=true" alt="スクリーンショット"></p><h2>機能</h2></p><ul><li><strong>ジョイスティックオーバーレイ:</strong> カスタマイズ可能なジョイスティックでリアルタイムにナビゲート。</li>
+<li><strong>位置情報シミュレーション:</strong> 精密にGPS位置をモック。</li>
+<li><strong>GNSSモック:</strong> 衛星数、SVID、C/N0などの完全なGNSS状態シミュレーションにより、リアルな位置特性を再現。</li>
+<li><strong>ランダム化:</strong> より自然な動きを実現するために位置にランダムなオフセット半径を追加。</li>
+<li><strong>お気に入り:</strong> お気に入りの場所を保存・管理し、素早く切り替え可能。</li>
+<li><strong>カスタマイズ可能なUI:</strong></li>
+    <li>ジョイスティックとミニマップの透明度（アルファ）を調整。</li>
+    <li>ジョイスティックの速度設定可能。</li>
+    <li>ジョイスティックの位置を永続的に保存。</li></p><p></ul><h2>動作要件</h2></p><ul><li><strong>Android:</strong> 10以上（最小SDK 30）</li>
+<li><strong>Root:</strong> Xposed Framework使用時に必要。</li>
+<li><strong>Xposed Framework:</strong> LSPosed が推奨されます。</li>
+<li><strong>[新機能] Root/Xposed 不要の機能（モック位置情報）</strong></li></p><p></ul><h2>インストールと LSPosed のスコープ設定</h2></p><ul><li>Location Joystick APK をインストールします。</li>
+<li>Xposed マネージャー（例：LSPosed）を開きます。</li>
+<li><strong>Location Joystick</strong> モジュールを有効にします。</li>
+<li><strong>重要:</strong> LSPosed でスコープを設定します：</li>
+    <li><strong>Android-System</strong>（GNSS とシステム全体のモックに必須）。</li>
+    <li><strong>対象アプリ</strong>（例：ポケモンGO、マップ）。</li>
+<li>デバイスを再起動するか（LSPosed 使用時は対象アプリと System UI を強制停止してください）。</li>
+<li>Location Joystick を開き、必要な権限（オーバーレイ、位置情報）を許可します。</li></p><p></ul><h2>使い方</h2></p><ul><li>アプリを開き、地図上で希望の開始地点を設定します。</li>
+<li>シミュレーション設定（速度、精度など）を調整します。</li>
+<li>サービスを開始して、ジョイスティックのオーバーレイを表示します。</li>
+<li>対象アプリを開いて、ジョイスティックで移動します。</li></p><p></ul><h2>免責事項</h2></p><p>このツールは教育および開発目的のみに使用してください。使用は自己責任でお願いします。</p><h2>ライセンス</h2></p><p>詳細は <a href="LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a> ファイルを参照してください。</p><hr></p><h1>Location Joystick</h1></p><h2>中文</h2></p><p>Location Joystick は位置情報を模擬するための Xposed モジュールです。仮想ジョイスティックの浮動ウィンドウや、位置情報に関連した多様な設定を提供し、模擬体験を強化します。</p><p>⚠️ <strong>[新機能] Root や Xposed 不要の模擬位置情報機能</strong> ⚠️</p><p>
+<div align="center"></p><h2>🚀 私たちのコミュニティに参加しよう 🚀</h2></p><p><a href="https://t.me/+LTsF8mOwkRE3YzYy">
+  <img src="https://img.shields.io/badge/👉_クリックして参加-FF0000?style=for-the-badge&logo=telegram&logoColor=white" />
+</a></p><p>🔥 参加すると無料特典と最新アップデートを入手可能！</p><h1>最新リリース: https://github.com/fzer0x/LocationJoystick_V4/releases</h1></p><p></div></p><p><img src="https://github.com/fzer0x/LocationJoystick/blob/main/screenshot3.jpg?raw=true" alt="スクリーンショット"></p><h2>機能</h2></p><ul><li><strong>仮想ジョイスティックのフローティングウィンドウ：</strong> カスタマイズ可能なジョイスティックでリアルタイム移動。</li>
+<li><strong>位置情報のシミュレーション：</strong> GPSの位置を正確にシミュレート。</li>
+<li><strong>GNSSシミュレーション：</strong> 完全なGNSS状態（衛星数、SVID、C/N0など）をシミュレートし、高度な位置検出対策に対応。</li>
+<li><strong>ランダマイズ：</strong> 位置にランダムな偏差範囲を追加し、移動軌跡をより自然に。</li>
+<li><strong>お気に入り：</strong> よく使う位置を保存・管理し、素早く切り替え可能。</li>
+<li><strong>カスタマイズ可能なインターフェース：</strong></li>
+    <li>ジョイスティックとミニマップの透明度（アルファ値）調整。</li>
+    <li>ジョイスティックの移動速度を設定可能。</li>
+    <li>ジョイスティックの位置を自動保存。</li></p><p></ul><h2>システム要件</h2></p><ul><li><strong>Android：</strong> 10以上（最低SDK 30）</li>
+<li><strong>Root：</strong> Xposedフレームワーク使用時はRoot権限が必要。</li>
+<li><strong>Xposedフレームワーク：</strong> LSPosedの使用を推奨。</li>
+<li><strong>[新機能] Root/Xposed不要の位置情報シミュレーション機能</strong></li></p><p></ul><h2>インストールとLSPosedスコープ設定</h2></p><ul><li>Location Joystick APKをインストール。</li>
+<li>Xposedマネージャー（例：LSPosed）を開く。</li></p><p><li><strong>Location Joystick</strong> モジュールを有効にします。  </li>
+<li><strong>重要：</strong> LSPosedでスコープを設定します：  </li>
+    <li><strong>Android-System</strong>（必ずチェック、GNSSとシステムレベルの位置情報偽装用）。  </li>
+    <li><strong>対象アプリ</strong>（例：Pokémon GO、地図アプリなど）。  </li>
+<li>デバイスを再起動します（LSPosed使用時は対象アプリとSystem UIを強制停止しても可）。  </li>
+<li>Location Joystickを開き、必要な権限（オーバーレイ、位置情報）を付与します。  </li></p><p></ul><h2>使用方法  </h2></p><ul><li>アプリを開き、地図上で開始位置を設定します。  </li>
+<li>シミュレーションパラメータ（速度、精度など）を設定します。  </li>
+<li>サービスを開始してジョイスティックのオーバーレイを表示します。  </li>
+<li>対象アプリを開き、ジョイスティックで移動操作を行います。  </li></p><p></ul><h2>免責事項  </h2></p><p>本ツールは学習および開発目的のみに使用してください。使用に伴うリスクは自己責任でお願いします。  </p><h2>ライセンス  </h2></p><p>ライセンスの詳細は <a href="LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a> ファイルをご参照ください。</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-07-15
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/fzer0x/LocationJoystick/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-07-15 
+    </div>
+    
+</body>
+</html>
