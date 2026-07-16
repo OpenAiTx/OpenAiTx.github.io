@@ -1,0 +1,404 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clip-save - 剪存-클립보드 히스토리 관리 도구</title>
+    <meta name="description" content="剪存-클립보드 히스토리 관리 도구">
+    <meta name="keywords" content="clip-save, Korean, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "clip-save",
+  "description": "剪存-클립보드 히스토리 관리 도구",
+  "author": {
+    "@type": "Person",
+    "name": "snsogbl"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 366
+  },
+  "url": "https://OpenAiTx.github.io/projects/snsogbl/clip-save/README-ko.html",
+  "sameAs": "https://raw.githubusercontent.com/snsogbl/clip-save/main/README.md",
+  "datePublished": "2026-07-16",
+  "dateModified": "2026-07-16"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/snsogbl/clip-save" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    clip-save
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 366 stars</span>
+                <span class="language">Korean</span>
+                <span>by snsogbl</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>剪存 - 클립보드 히스토리 관리 도구</h1></p><p>Wails + Vue 3 + TypeScript 기반의 다중 플랫폼 클립보드 히스토리 관리 도구입니다.</p><h2>App Store에 출시됨</h2>
+https://apps.apple.com/us/app/剪存/id6754015301</p><h2>기능 특징</h2>
+<ul><li><a href="https://raw.githubusercontent.com/snsogbl/clip-save/main/scriptingExample/README.md" target="_blank" rel="noopener noreferrer">새로운 사용자 정의 스크립트 - 클릭하여 보기</a></li>
+<li>클립보드 히스토리 자동 저장</li>
+<li>텍스트, 이미지, 파일 등 다양한 타입 지원</li>
+<li>실시간 검색 및 필터 기능 (이미지 내 OCR 텍스트 검색 지원)</li>
+<li>로컬 SQLite 데이터베이스 저장 (모든 데이터는 로컬에만 저장, 개인정보 보호 보장)</li>
+<li>개인화 설정: 비밀번호 보호, 자동 정리, 단축키 설정</li></p><p></ul><h2>프로젝트 스크린샷</h2></p><p><img src="https://raw.githubusercontent.com/snsogbl/clip-save/master/screenshots/clipboard-1.png" alt="Capture" width="960"></p><h2>기술 스택</h2></p><ul><li><strong>백엔드</strong>: Go + Wails v2</li>
+<li><strong>프론트엔드</strong>: Vue 3 + TypeScript + Vite</li>
+<li><strong>데이터베이스</strong>: SQLite3</li>
+<li><strong>클립보드</strong>: golang.design/x/clipboard</li></p><p></ul><h2>의존성 설치</h2></p><h3>1. Wails CLI 설치하기</h3></p><pre><code class="language-bash">go install github.com/wailsapp/wails/v2/cmd/wails@latest</code></pre></p><h3>2. 프로젝트 의존성 설치</h3></p><pre><code class="language-bash"># Go 依赖
+go mod tidy</p><h1>前端依赖</h1>
+cd frontend
+npm install</code></pre></p><h2>开发</h2></p><h3>启动开发服务器</h3></p><pre><code class="language-bash">wails dev</code></pre>
+이것은 핫 리로드 개발 서버를 시작합니다:  
+<ul><li>백엔드 Go 코드 수정 시 자동으로 재컴파일됨  </li>
+<li>프론트엔드 Vue 코드 수정 시 자동으로 핫 리로드됨  </li></p><p></ul><h3>개발 시 디버깅  </h3></p><p>개발 모드에서 애플리케이션은 자동으로 개발자 도구를 엽니다. 확인할 수 있는 내용:  
+<ul><li>콘솔 로그  </li>
+<li>네트워크 요청  </li>
+<li>프론트엔드 컴포넌트 상태  </li></p><p></ul><h2>빌드  </h2></p><h3>프로덕션 버전 빌드</h3></p><pre><code class="language-bash">wails build</code></pre>
+빌드가 완료되면 실행 파일은 <code>build/bin/</code> 디렉토리에 위치하게 됩니다.</p><h3>맞춤 스크립트 Cloudflare Pages에 배포하기</h3></p><p>프로젝트는 Cloudflare Pages를 사용하여 온라인 스크립트 목록을 호스팅하며, 사용자가 "스크립트 마켓"에서 직접 스크립트를 설치하고 업데이트할 수 있도록 지원합니다.</p><p>#### 1. Wrangler CLI 설치하기</p><pre><code class="language-bash">npm install -g wrangler</code></pre></p><p>#### 2. Cloudflare 로그인</p><pre><code class="language-bash">wrangler login</code></pre>
+이렇게 하면 브라우저가 열리고 Cloudflare 계정에 로그인합니다.</p><p>#### 3. 스크립트 배포</p><pre><code class="language-bash">wrangler pages deploy scriptingExample --project-name=clip-save-plugins</code></pre>
+배포가 완료된 후, 스크립트는 다음 URL을 통해 접근할 수 있습니다:
+<ul><li>플러그인 목록: <code>https://clip-save-plugins.pages.dev/plugins.json</code></li>
+<li>스크립트 파일: <code>https://clip-save-plugins.pages.dev/{스크립트파일명}.js</code></li></p><p></ul>#### 4. 스크립트 업데이트</p><p><code>scriptingExample</code> 디렉토리 내 파일을 수정할 때마다 배포 명령어를 다시 실행하세요:</p><pre><code class="language-bash">wrangler pages deploy scriptingExample --project-name=clip-save-plugins</code></pre>
+#### 5. 주의사항</p><ul><li><code>plugins.json</code>의 <code>scriptUrl</code>이 Cloudflare Pages의 URL을 사용하도록 확인하세요  </li>
+<li>배포 후 보통 몇 초 내에 적용됩니다(Cloudflare Pages 캐시 시간이 매우 짧음)  </li>
+<li>Cloudflare 대시보드에서 배포 이력과 로그를 확인할 수 있습니다  </li></p><p></ul><h3>macOS 빌드 옵션</h3></p><pre><code class="language-bash"># 构建 Intel 版本
+wails build -platform darwin/amd64</p><h1>构建 Apple Silicon 版本</h1>
+wails build -platform darwin/arm64</p><h1>构建通用二进制（推荐）</h1>
+wails build -platform darwin/universal</code></pre></p><h3>Windows 빌드</h3></p><pre><code class="language-bash">wails build -platform windows/amd64</code></pre></p><h3>Linux 빌드</h3></p><pre><code class="language-bash">wails build -platform linux/amd64</code></pre></p><h2>프로젝트 구조</h2></p><pre><code class="language-">.
+├── main.go                      # 主程序入口
+├── app.go                       # Wails 应用结构和 API
+├── wails.json                   # Wails 配置文件
+├── go.mod                       # Go 依赖管理
+├── common/                      # 共享代码
+│   ├── clipboard.go             # 剪贴板逻辑
+│   ├── clipboard_darwin.go      # macOS 特定代码
+│   └── db.go                    # 数据库操作
+├── frontend/                    # 前端代码
+│   ├── src/
+│   │   ├── App.vue              # 主应用组件
+│   │   ├── components/
+│   │   │   └── ClipboardHistory.vue  # 剪贴板历史组件
+│   │   ├── main.ts              # 前端入口
+│   │   └── style.css            # 全局样式
+│   ├── index.html               # HTML 模板
+│   ├── package.json             # 前端依赖
+│   ├── vite.config.ts           # Vite 配置
+│   └── tsconfig.json            # TypeScript 配置
+└── build/                       # 构建资源和输出
+    ├── bin/                     # 编译后的可执行文件
+    ├── appicon.png              # 应用图标
+    └── darwin/                  # macOS 特定配置</code></pre></p><h2>API 설명</h2></p><h3>백엔드 API (Go)</h3></p><p><code>app.go</code>에 정의된 메서드는 자동으로 프론트엔드에 노출됩니다:</p><ul><li><code>SearchClipboardItems(keyword, filterType, limit)</code> - 클립보드 항목 검색</li>
+<li><code>GetClipboardItems(limit)</code> - 클립보드 목록 가져오기</li>
+<li><code>GetClipboardItemByID(id)</code> - ID로 항목 가져오기</li>
+<li><code>CopyToClipboard(id)</code> - 항목을 클립보드로 복사</li>
+<li><code>DeleteClipboardItem(id)</code> - 항목 삭제</li>
+<li><code>GetStatistics()</code> - 통계 정보 가져오기</li></p><p></ul><h3>프론트엔드 호출 예시</h3></p><pre><code class="language-typescript">import { SearchClipboardItems } from '../wailsjs/go/main/App'</p><p>// 搜索剪贴板项目
+const items = await SearchClipboardItems('关键词', '所有类型', 100)</code></pre>
+<h2>사용 설명</h2></p><ul><li>앱을 실행하면 백그라운드에서 시스템 클립보드를 자동으로 저장합니다.</li>
+<li>복사할 때마다 내용이 자동으로 기록에 저장됩니다.</li>
+<li>상단 검색창을 사용하여 기록을 빠르게 검색할 수 있습니다(이미지 내 OCR 문자 검색 지원).</li>
+<li>필터를 사용하여 유형별로 내용을 필터링할 수 있습니다(텍스트/이미지/URL 등).</li>
+<li>기록 항목을 클릭하면 세부 정보를 볼 수 있습니다.</li>
+<li>이미지 유형의 경우 "문자 추출" 버튼을 클릭하여 OCR 인식 결과를 확인할 수 있습니다.</li>
+<li>"복사" 버튼을 클릭하면 내용을 클립보드에 다시 복사할 수 있습니다.</li>
+<li>"삭제" 버튼을 클릭하면 기록을 삭제할 수 있습니다.</li></p><p></ul><h3>OCR 문자 인식 기능</h3></p><ul><li><strong>자동 인식</strong>: 이미지를 복사하면 앱이 백그라운드에서 이미지 내 문자를 자동으로 인식합니다(macOS 10.15+).</li>
+<li><strong>스마트 검색</strong>: 인식된 문자는 자동으로 검색 인덱스에 추가되어 키워드를 입력하면 해당 문자를 포함한 이미지를 찾을 수 있습니다.</li>
+<li><strong>수동 추출</strong>: 이미지 상세 페이지에서 "문자 추출" 버튼을 클릭하면 완전한 OCR 인식 결과를 볼 수 있습니다.</li>
+<li><strong>지원 언어</strong>: 중국어(간체/번체) 및 영어 인식을 지원합니다.</li>
+<li><strong>성능 최적화</strong>: 동일한 이미지는 한 번만 인식하며 인식 결과를 자동 재사용하여 성능을 향상합니다.</li></p><p></ul><h2>데이터 저장</h2></p><p>클립보드 기록은 <code>~/.clipsave/clipboard.db</code>에 저장됩니다.</p><p>데이터베이스는 자동 생성되며 다음 필드를 포함합니다:
+<ul><li>ID - 고유 식별자</li>
+<li>Content - 내용 텍스트</li>
+<li>ContentType - 내용 유형</li>
+<li>ImageData - 이미지 데이터(PNG 형식)</li>
+<li>Timestamp - 타임스탬프</li>
+<li>Source - 출처</li>
+<li>CharCount - 문자 수</li>
+<li>WordCount - 단어 수</li>
+<li>OCRText - OCR 인식 문자 내용(이미지 유형 전용, 검색용)</li></p><p></ul><h2>시스템 요구 사항</h2></p><ul><li><strong>macOS</strong>: 10.15 Catalina 이상 버전(OCR 기능 필요)</li>
+<li><strong>Windows</strong>: Windows 10/11(1809 이상) + WebView2</li>
+<li><strong>Linux</strong>: WebKit2GTK를 지원하는 배포판</li></p><p><li><strong>Go</strong>: 1.21 이상 버전</li>
+<li><strong>Node.js</strong>: 16 이상 버전</li></p><p></ul><h2>개발 주의사항</h2></p><h3>Go API 업데이트 후</h3></p><p><code>app.go</code>의 메서드를 수정할 때마다 프론트엔드 바인딩을 다시 생성해야 합니다:</p><pre><code class="language-bash">wails generate module</code></pre>
+또는 개발 모드를 사용하면 자동으로 생성됩니다:</p><pre><code class="language-bash">wails dev</code></pre>
+<h3>프론트엔드 개발</h3></p><p>프론트엔드는 Vite + Vue 3 + TypeScript 사용:
+<ul><li>TypeScript 타입 검사 지원</li>
+<li>Composition API 사용</li>
+<li>Wails 바인딩 자동 임포트</li>
+<li>핫 모듈 교체(HMR)</li></p><p></ul><h3>CGO 의존성</h3></p><p>프로젝트는 CGO(SQLite 및 클립보드 작업용)를 사용하며, 빌드시 필요:
+<ul><li>macOS: Xcode Command Line Tools 필요</li>
+<li>Windows: MinGW-w64 필요</li>
+<li>Linux: gcc 필요</li></p><p></ul><h2>자주 묻는 질문</h2></p><h3>1. 빌드 실패</h3></p><p>모든 의존성이 설치되었는지 확인:</p><pre><code class="language-bash"># macOS
+xcode-select --install</p><h1>Windows</h1>
+<h1>安装 MSYS2 和 MinGW-w64</h1></p><h1>Linux</h1>
+sudo apt-get install build-essential libgtk-3-dev libwebkit2gtk-4.0-dev</code></pre>
+<h3>2. 프론트엔드에서 백엔드 API 호출 불가</h3></p><p><code>wails generate module</code> 명령어로 프론트엔드 바인딩이 생성되었는지 확인하세요.</p><h2>라이선스</h2></p><p>MIT 라이선스</p><h2>후원 지원</h2></p><p>💗 <strong>작가에게 커피 한 잔을</strong></p><p>이 소프트웨어가 시간을 절약해주었거나(적어도 스트레스를 덜어주었다면) 작가에게 커피 ☕ 또는 맥주 🍺 한 잔을 후원해 주세요!</p><p>모든 커피 한 잔은 신기하게도 새로운 기능, 적은 버그(최대한 노력 중), 그리고 작가가 밤새 코딩할 때 정신적 지주가 됩니다.</p><p>당신의 Star ⭐ 와 기부는 제가 버그를 고치고 새 기능을 추가하는 원동력입니다(또한 커피 구매 자금이기도 합니다)!</p><h3>위챗 스캔</h3></p><p><img src="https://raw.githubusercontent.com/snsogbl/clip-save/main/frontend/src/assets/static/zs.png" alt="후원 코드"></p><p><strong>"저에게 커피 한 잔 사주세요 ☕"</strong></p><h3>프로젝트에 Star ⭐ 주세요</h3></p><p>이 프로젝트가 도움이 되었다면 프로젝트에 Star ⭐ 를 눌러주세요. 그것이 저에게 가장 큰 응원입니다!</p><h2>감사의 말씀</h2></p><ul><li><a href="https://wails.io" target="_blank" rel="noopener noreferrer">Wails</a> - 데스크톱 애플리케이션 프레임워크</li>
+<li><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer">Vue 3</a> - 점진적 JavaScript 프레임워크</li>
+<li><a href="https://github.com/golang-design/clipboard" target="_blank" rel="noopener noreferrer">golang.design/x/clipboard</a> - 크로스 플랫폼 클립보드 라이브러리</li>
+<li><a href="https://github.com/cloydlau/json-editor-vue" target="_blank" rel="noopener noreferrer">json-editor-vue</a></li>
+<li><a href="https://github.com/highlightjs/highlight.js" target="_blank" rel="noopener noreferrer">highlight.js</a></li></p><p>
+</ul>---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-07-16
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/snsogbl/clip-save/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-07-16 
+    </div>
+    
+</body>
+</html>
