@@ -1,0 +1,406 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProteinView - 终端蛋白质结构查看器 — 交互式3D可视化PDB/mmCIF结构，支持卡通丝带、盲文渲染及Sixel/Kitty图形显示</title>
+    <meta name="description" content="终端蛋白质结构查看器 — 交互式3D可视化PDB/mmCIF结构，支持卡通丝带、盲文渲染及Sixel/Kitty图形显示">
+    <meta name="keywords" content="ProteinView, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ProteinView",
+  "description": "终端蛋白质结构查看器 — 交互式3D可视化PDB/mmCIF结构，支持卡通丝带、盲文渲染及Sixel/Kitty图形显示",
+  "author": {
+    "@type": "Person",
+    "name": "001TMF"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 286
+  },
+  "url": "https://OpenAiTx.github.io/projects/001TMF/ProteinView/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/001TMF/ProteinView/master/README.md",
+  "datePublished": "2026-07-17",
+  "dateModified": "2026-07-17"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/001TMF/ProteinView" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    ProteinView
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 286 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by 001TMF</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><p align="center">
+  <b>蛋白质视图</b>
+</p></p><p><p align="center">
+  <em>在终端中探索分子结构</em>
+</p></p><p><p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="许可协议：MIT"></a>
+  <a href="https://www.rust-lang.org/"><img src="https://img.shields.io/badge/Rust-1.85%2B-orange.svg" alt="Rust"></a>
+  <img src="https://img.shields.io/badge/version-0.3.0-green.svg" alt="版本">
+  <a href="https://github.com/001TMF/ProteinView/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="欢迎提交PR"></a>
+  <a href="https://www.linkedin.com/in/tristan-farmer-973b7a17a/"><img src="https://img.shields.io/badge/LinkedIn-Tristan%20Farmer-0A66C2?logo=linkedin" alt="LinkedIn"></a>
+</p></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/001TMF/ProteinView/master/assets/hero-histone.png" alt="以FullHD模式渲染的含组蛋白和DNA的核小体核心颗粒" width="700">
+</p></p><p><p align="center">
+  <sub>核小体核心颗粒 — 组蛋白八聚体包裹DNA，采用Kitty图形协议渲染</sub>
+</p></p><hr></p><p>终端分子结构查看器 — 直接在终端加载、旋转和探索蛋白质、核酸及小分子，支持PDB/CIF文件。无需浏览器、无需图形界面、无依赖。</p><h2>功能特点</h2></p><ul><li><strong>三级渲染模式</strong> — 点字模式、高清模式和全高清模式（Sixel/Kitty），自动检测SSH环境</li>
+<li><strong>PNG压缩的Kitty协议</strong> — 比原始RGBA小约10-20倍，使全高清模式在SSH下可用</li>
+<li><strong>卡通带状可视化</strong> — 采用朗伯阴影和深度雾效表现螺旋、折叠片和卷曲结构</li>
+<li><strong>RNA/DNA支持</strong> — 骨架、线框和卡通模式，配以碱基类型着色</li>
+<li><strong>小分子渲染</strong> — 配体以球棒模型显示，离子以球体显示</li>
+<li><strong>界面分析</strong> — 链间接触、结合口袋及相互作用可视化（氢键、盐桥、疏水接触）</li>
+<li><strong>7种配色方案</strong> — 结构、链、元素（CPK）、B因子、彩虹、pLDDT（AlphaFold）</li>
+<li><strong>交互式控制</strong> — 类vim风格旋转、缩放、平移及自动旋转</li>
+<li><strong>支持PDB与mmCIF格式</strong> — 支持两种格式，支持RCSB PDB文件下载（<code>--fetch</code>）</li>
+<li><strong>单文件静态二进制</strong> — 零运行时依赖</li>
+</ul><h2>渲染模式</h2></p><p>三种渲染等级以匹配您的终端和连接：</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/001TMF/ProteinView/master/assets/render-modes-grid.png" alt="盲文 vs 高清 vs 全高清渲染对比" width="700">
+</p></p><p><p align="center">
+  <sub>左：盲文（适用于所有环境，包括 SSH/tmux）· 中：高清（Lambert 阴影盲文）· 右：全高清（Kitty 像素图形）</sub>
+</p></p><p>| 模式 | 快捷键 | 质量 | SSH 性能 |
+|------|-------|-------|----------|
+| <strong>盲文</strong> | 默认 | 基于文本，单色每格 | 优秀 |
+| <strong>高清</strong> | <code>m</code> | 带光照和深度雾的阴影盲文 | 优秀 |
+| <strong>全高清</strong> | <code>M</code> | Sixel/Kitty 像素图形 | 良好（PNG 压缩） |</p><p><code>--hd</code> 支持 SSH：SSH 下默认使用高清，本地使用全高清。使用 <code>--fullhd</code> 强制像素图形。</p><h2>可视化模式</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/001TMF/ProteinView/master/assets/viz-modes-grid.png" alt="卡通、线框和骨架可视化模式" width="700">
+</p></p><p><p align="center">
+  <sub>左：卡通（丝带）· 中：线框（全原子）· 右：骨架（CA 轨迹）</sub>
+</p></p><p>| 模式 | 描述 |
+|------|-------|
+| <strong>卡通</strong> | 平滑丝带渲染——螺旋、β-折叠和卷曲，带 Lambert 阴影。默认。 |
+| <strong>线框</strong> | 包含残基间肽键和磷酸二酯键的全原子键。 |
+| <strong>骨架</strong> | CA 轨迹（蛋白质）/ C4' 轨迹（核酸），带球体和粗连接线。 |</p><h2>界面分析与交互</h2></p><p><p align="center"></p><p>  <img src="https://raw.githubusercontent.com/001TMF/ProteinView/master/assets/interface-grid.png" alt="界面分析与相互作用可视化" width="700">
+</p></p><p><p align="center">
+  <sub>左：界面残基着色及侧边栏面板 · 右：虚线相互作用线（氢键、盐桥、疏水接触）</sub>
+</p></p><p>按 <code>f</code> 切换界面模式 — 高亮显示链间接触残基并显示详细侧边栏。按 <code>I</code> 叠加相互作用线：</p><p>| 颜色 | 相互作用 | 距离 |
+|-------|-------------|----------|
+| 青色 | 氢键 | &le; 3.5 &Aring; |
+| 红色 | 盐桥 | &le; 4.0 &Aring; |
+| 黄色 | 疏水接触 | &le; 4.5 &Aring; |
+| 灰色 | 其他 | &le; 4.5 &Aring; |</p><h2>核酸</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/001TMF/ProteinView/master/assets/dna-element.png" alt="带元素（CPK）着色的B-DNA双螺旋" width="500">
+</p></p><p><p align="center">
+  <sub>线框模式下带CPK元素着色的B-DNA十二聚体</sub>
+</p></p><p>完全支持DNA和RNA结构 — 骨架轨迹、线框键及带核苷酸碱基类型着色的卡通带（A=红色，U/T=蓝色，G=绿色，C=黄色）。</p><h2>AlphaFold 与 pLDDT</h2></p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/001TMF/ProteinView/master/assets/plddt-cartoon.png" alt="带pLDDT置信度着色的AlphaFold预测" width="500">
+</p></p><p><p align="center">
+  <sub>带pLDDT置信度着色的AlphaFold预测 — 蓝色（高置信度）至橙色/黄色（低置信度）</sub>
+</p></p><p>自动检测AlphaFold结构并提供pLDDT置信度着色。使用 <code>c</code> 循环切换配色方案。</p><h2>安装</h2></p><p>需要 <a href="https://www.rust-lang.org/tools/install" target="_blank" rel="noopener noreferrer">Rust 1.85+</a>。如果你还没有安装 Rust，请使用以下命令安装：</p><pre><code class="language-bash">curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code></pre></p><p>然后安装proteinview：</p><pre><code class="language-bash">git clone https://github.com/001TMF/ProteinView.git
+cd ProteinView</p><h1>Basic install</h1>
+cargo install --path .</p><h1>With RCSB PDB fetch support</h1>
+cargo install --path . --features fetch</p><h1>Update an existing installation</h1>
+cargo install --path . --force</code></pre></p><h2>快速开始</h2></p><pre><code class="language-bash"># View a local PDB file
+proteinview examples/1AOI.pdb</p><h1>HD mode (fast text-based shading)</h1>
+proteinview examples/4HHB.pdb --hd</p><h1>FullHD pixel mode (Kitty/Sixel terminals)</h1>
+proteinview examples/4HHB.pdb --fullhd</p><h1>Fetch from RCSB PDB</h1>
+proteinview --fetch 1UBQ</p><h1>Choose color scheme and visualization</h1>
+proteinview examples/1UBQ.pdb --color rainbow --mode wireframe</code></pre>
+<h2>快捷键</h2></p><p>| 键 | 操作 |
+|-----|--------|
+| <code>h</code>/<code>l</code> | 绕Y轴旋转 |
+| <code>j</code>/<code>k</code> | 绕X轴旋转 |
+| <code>u</code>/<code>i</code> | 翻滚 |
+| <code>+</code>/<code>-</code> | 缩放 |
+| <code>w</code>/<code>a</code>/<code>s</code>/<code>d</code> | 平移 |
+| <code>r</code> | 重置视图 |
+| <code>c</code> | 循环颜色方案 |
+| <code>v</code> | 循环可视化模式 |
+| <code>m</code> | 盲文 / 高清 |
+| <code>M</code> | 高清 / 全高清 |
+| <code>f</code> | 界面分析 |
+| <code>I</code> | 界面交互 |
+| <code>g</code> | 切换配体显示 |
+| <code>[</code>/<code>]</code> | 上一个/下一个链 |
+| <code>Space</code> | 自动旋转 |
+| <code>?</code> | 帮助 |
+| <code>q</code> | 退出 |</p><h2>颜色方案</h2></p><p>| 方案 | 描述 |
+|--------|-------------|
+| <strong>结构</strong> | 螺旋（红色）、片层（黄色）、线圈（绿色）。默认。 |
+| <strong>链</strong> | 每条链不同颜色。 |
+| <strong>元素</strong> | CPK 着色（C、N、O、S、P、金属）。 |
+| <strong>B因子</strong> | 蓝色（刚性）到红色（柔性）。 |
+| <strong>彩虹</strong> | N 端（蓝色）到 C 端（红色）。 |
+| <strong>pLDDT</strong> | AlphaFold 置信度（蓝色=高，橙色=低）。 |</p><h2>终端支持</h2></p><p>| 终端 | 盲文 | 高清 | 全高清 |
+|----------|---------|-----|--------|
+| 任意 Unicode 终端 | 是 | 是 | -- |
+| Kitty | 是 | 是 | 是（PNG） |</p><p>| WezTerm | 是 | 是 | 是（Sixel） |
+| iTerm2 | 是 | 是 | 是 |
+| foot | 是 | 是 | 是（Sixel） |
+| tmux/screen | 是 | 是 | -- |</p><h2>构建</h2></p><pre><code class="language-bash">cargo build --release</p><h1>With RCSB fetch support</h1>
+cargo build --release --features fetch</code></pre></p><h2>贡献</h2></p><p>欢迎贡献！以下是入门指南：</p><ul><li>Fork 本仓库</li>
+<li>创建功能分支（<code>git checkout -b feature/my-feature</code>）</li>
+<li>进行修改并添加测试</li>
+<li>运行 <code>cargo test</code> 进行验证</li>
+<li>提交针对 <code>develop</code> 分支的拉取请求</li></p><p></ul>重大变更请先打开 issue 讨论方案。</p><h2>许可证</h2></p><p><a href="LICENSE" target="_blank" rel="noopener noreferrer">MIT</a></p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-07-17
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/001TMF/ProteinView/master/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-07-17 
+    </div>
+    
+</body>
+</html>
