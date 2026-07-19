@@ -1,0 +1,389 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dbslice - 从生产数据库中提取一个切片以在本地重现错误。将 dbslice 指向一个记录，它会跟踪外键，提供一个完整且可导入的子集。</title>
+    <meta name="description" content="从生产数据库中提取一个切片以在本地重现错误。将 dbslice 指向一个记录，它会跟踪外键，提供一个完整且可导入的子集。">
+    <meta name="keywords" content="dbslice, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "dbslice",
+  "description": "从生产数据库中提取一个切片以在本地重现错误。将 dbslice 指向一个记录，它会跟踪外键，提供一个完整且可导入的子集。",
+  "author": {
+    "@type": "Person",
+    "name": "nabroleonx"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 140
+  },
+  "url": "https://OpenAiTx.github.io/projects/nabroleonx/dbslice/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/nabroleonx/dbslice/main/README.md",
+  "datePublished": "2026-07-19",
+  "dateModified": "2026-07-19"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/nabroleonx/dbslice" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    dbslice
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 140 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by nabroleonx</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p><p align="center">
+  <img src="https://raw.githubusercontent.com/nabroleonx/dbslice/main/docs/assets/logo.png" alt="dbslice logo" width="128">
+</p></p><h1>dbslice</h1></p><p><a href="https://pypi.org/project/dbslice/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/pypi/v/dbslice" alt="PyPI version"></a>
+<a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
+<a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python 3.10+"></a></p><p>提取最小且参照完整的数据库子集，用于本地开发和调试。</p><h2>问题</h2></p><p>将整个生产数据库复制到您的机器上是不可行的。但复现一个错误通常需要拥有导致该错误的准确数据。<strong>dbslice</strong> 通过仅提取您需要的记录，沿着外键关系确保参照完整性，从而解决了这个问题。</p><p><p align="center">
+  <img src="https://raw.githubusercontent.com/nabroleonx/dbslice/main/docs/assets/dbslice-overview.png" alt="dbslice — seed to subset">
+</p></p><h2>快速开始</h2></p><pre><code class="language-bash"># Install globally
+uv tool install dbslice   # or: pip install dbslice</p><h1>Extract an order and all related records</h1>
+dbslice extract postgres://localhost/myapp --seed "orders.id=12345" > subset.sql</p><h1>Import into local database</h1>
+psql -d localdb < subset.sql</code></pre>
+<h2>特性</h2></p><ul><li><strong>零配置启动</strong> -- 自动检测模式，无需数据模型文件  </li>
+<li><strong>单命令操作</strong> -- 一条CLI命令提取完整数据子集  </li>
+<li><strong>默认安全</strong> -- 自动检测并匿名化敏感字段（邮件、电话、社会保障号等）  </li>
+<li><strong>合规配置文件</strong> -- 内置GDPR、HIPAA安全港和PCI-DSS配置文件，支持两阶段PII扫描  </li>
+<li><strong>列映射界面</strong> -- 本地浏览器UI，可视化映射列、应用合规配置并导出配置  </li>
+<li><strong>多种输出格式</strong> -- 支持SQL、JSON和CSV  </li>
+<li><strong>流式处理</strong> -- 内存高效，适合大数据集（10万+行）提取  </li>
+<li><strong>虚拟外键</strong> -- 支持Django的GenericForeignKeys及通过配置隐式关系  </li>
+<li><strong>配置文件</strong> -- 基于YAML的配置，实现可重复提取  </li>
+<li><strong>验证功能</strong> -- 检查提取数据的引用完整性  </li></p><p></ul><h3>数据库支持</h3></p><p>| 数据库     | 状态                  |
+|------------|-----------------------|
+| PostgreSQL | 完全支持              |
+| MySQL      | 计划中（尚未实现）     |
+| SQLite     | 计划中（尚未实现）     |</p><h2>安装  </h2></p><pre><code class="language-bash"># Install with uv (recommended)
+uv add dbslice</p><h1>Try without installing</h1>
+uvx dbslice --help</p><h1>Or with pip</h1>
+pip install dbslice</code></pre></p><h2>使用方法</h2></p><h3>基本提取</h3></p><pre><code class="language-bash"># Extract by primary key
+dbslice extract postgres://user:pass@host:5432/db --seed "orders.id=12345"</p><h1>Extract with WHERE clause</h1>
+dbslice extract postgres://localhost/db --seed "orders:status='failed' AND created_at > '2024-01-01'"</p><h1>Multiple seeds</h1>
+dbslice extract postgres://localhost/db \
+  --seed "orders.id=100" \
+  --seed "orders.id=101"</code></pre></p><h3>控制遍历</h3></p><pre><code class="language-bash"># Limit depth (default: 3)
+dbslice extract postgres://... --seed "orders.id=1" --depth 2</p><h1>Direction: up (parents only), down (children only), both (default)</h1>
+dbslice extract postgres://... --seed "orders.id=1" --direction up</code></pre></p><h3>匿名化</h3></p><pre><code class="language-bash"># Auto-anonymize detected sensitive fields
+dbslice extract postgres://... --seed "users.id=1" --anonymize</p><h1>Redact additional fields</h1>
+dbslice extract postgres://... --seed "users.id=1" --anonymize --redact "audit_logs.ip_address"</code></pre></p><h3>列映射界面</h3></p><p>可视化映射列，应用合规配置文件，并生成可直接使用的配置——全部通过本地浏览器界面完成。</p><pre><code class="language-bash">dbslice map postgres://localhost/myapp</p><h1>Custom port</h1>
+dbslice map postgres://localhost/myapp --port 8888</p><h1>Also works with uvx (no install needed)</h1>
+uvx dbslice map postgres://localhost/myapp</code></pre>
+<table>
+<tr>
+<td width="50%"><strong>将列映射到匿名化规则</strong></td>
+<td width="50%"><strong>生成并导出配置</strong></td>
+</tr>
+<tr>
+<td><img src="https://raw.githubusercontent.com/nabroleonx/dbslice/main/docs/assets/mapping.png" alt="列映射" width="100%"></td>
+<td><img src="https://raw.githubusercontent.com/nabroleonx/dbslice/main/docs/assets/mapping_instructions.png" alt="生成的配置" width="100%"></td>
+</tr>
+</table></p><p>运行于 <code>127.0.0.1:9473</code>，使用一次性会话令牌——数据不会离开您的机器。只需一键应用 GDPR、HIPAA 或 PCI-DSS 配置文件，审核将被屏蔽的内容，然后下载 YAML 文件。</p><h3>合规配置文件</h3></p><pre><code class="language-bash"># HIPAA Safe Harbor — auto-masks all 18 identifier types
+dbslice extract postgres://... --seed "patients.id=1" --compliance hipaa --compliance-strict</p><h1>Multiple profiles + audit manifest</h1>
+dbslice extract postgres://... --seed "users.id=1" --compliance gdpr --compliance pci-dss -f subset.sql
+<h1>Produces subset.sql + subset.manifest.json</code></pre></h1></p><h3>输出格式</h3></p><pre><code class="language-bash"># SQL (default)
+dbslice extract postgres://... --seed "orders.id=1" --output sql</p><h1>JSON fixtures</h1>
+dbslice extract postgres://... --seed "orders.id=1" --output json --out-file fixtures/</p><h1>CSV</h1>
+dbslice extract postgres://... --seed "orders.id=1" --output csv --out-file data/</code></pre></p><h3>虚拟外键</h3></p><p>对于数据库模式中未定义的关系（Django GenericForeignKeys，隐式关系）：</p><pre><code class="language-yaml"># dbslice.yaml
+database:
+  url: postgres://localhost:5432/myapp</p><p>virtual_foreign_keys:
+  <ul><li>source_table: notifications</li>
+    </ul>source_columns: [object_id]
+    target_table: orders
+    description: "Generic FK to orders via ContentType"</p><ul><li>source_table: audit_log</li>
+    </ul>source_columns: [user_id]
+    target_table: users
+    description: "Implicit FK without DB constraint"</code></pre></p><pre><code class="language-bash">dbslice extract --config dbslice.yaml --seed "users.id=1"</code></pre></p><h3>检查模式</h3></p><pre><code class="language-bash">dbslice inspect postgres://localhost/myapp</code></pre></p><h3>配置文件</h3></p><pre><code class="language-bash"># Generate config from database
+dbslice init postgres://localhost/myapp --out-file dbslice.yaml</p><h1>Use config</h1>
+dbslice extract --config dbslice.yaml --seed "orders.id=12345"</code></pre>
+<h2>工作原理</h2></p><ul><li><strong>内省</strong> -- 读取数据库模式以发现表和外键关系  </li>
+<li><strong>遍历</strong> -- 从种子记录开始，通过 BFS 追踪外键关系  </li>
+<li><strong>提取</strong> -- 获取所有识别出的记录  </li>
+<li><strong>排序</strong> -- 拓扑排序表以确保正确的 INSERT 顺序  </li>
+<li><strong>输出</strong> -- 生成带有适当转义的 SQL/JSON/CSV  </li></p><p></ul><h2>比较</h2></p><p>| 功能 | dbslice | Jailer | Greenmask | slice-db |
+|---------|---------|--------|-----------|----------|
+| 语言 | Python | Java | Go | Ruby |
+| 配置 | 零配置 | 需要模型文件 | 需要配置 | 手动 YAML |
+| 设置时间 | 几秒 | 几小时 | 中等 | 中等 |
+| 匿名化 | 内置（Faker） | 插件式 | 高级转换器 | 不支持 |
+| 合规配置 | GDPR, HIPAA, PCI-DSS | 无 | 无 | 无 |
+| 列映射界面 | 内置（本地） | 无 | 无 | 无 |
+| PII 值扫描 | 双阶段（掩码前后） | 无 | 无 | 无 |
+| 子集化 | 外键遍历 | 外键遍历 | 有限 | 外键遍历 |
+| 输出格式 | SQL, JSON, CSV | SQL, XML, CSV | SQL | 仅 SQL |
+| 循环处理 | 自动 | 手动配置 | 不适用 | 手动 |
+| 流式处理 | 内置 | 可配置 | 内置 | 不支持 |
+| 维护状态 | 活跃 | 活跃 | 活跃 | 不维护 |</p><p><strong>dbslice</strong> 是轻量级、零配置的 Python 选项：安装后一分钟内即可提取。</p><h2>开发</h2></p><pre><code class="language-bash">git clone https://github.com/nabroleonx/dbslice.git
+cd dbslice
+uv sync --dev
+uv run pytest</code></pre></p><h2>License</h2></p><p>MIT</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-07-19
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/nabroleonx/dbslice/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-07-19 
+    </div>
+    
+</body>
+</html>
