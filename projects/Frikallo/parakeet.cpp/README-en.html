@@ -1,0 +1,393 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>parakeet.cpp - Ultra-fast and portable Parakeet implementation for on-device inference in C++ using Axiom with MPS+Unified Memory</title>
+    <meta name="description" content="Ultra-fast and portable Parakeet implementation for on-device inference in C++ using Axiom with MPS+Unified Memory">
+    <meta name="keywords" content="parakeet.cpp, English, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "parakeet.cpp",
+  "description": "Ultra-fast and portable Parakeet implementation for on-device inference in C++ using Axiom with MPS+Unified Memory",
+  "author": {
+    "@type": "Person",
+    "name": "Frikallo"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 298
+  },
+  "url": "https://OpenAiTx.github.io/projects/Frikallo/parakeet.cpp/README-en.html",
+  "sameAs": "https://raw.githubusercontent.com/Frikallo/parakeet.cpp/main/README.md",
+  "datePublished": "2026-07-20",
+  "dateModified": "2026-07-20"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Frikallo/parakeet.cpp" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    parakeet.cpp
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 298 stars</span>
+                <span class="language">English</span>
+                <span>by Frikallo</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>parakeet.cpp</h1></p><p>Fast speech recognition with NVIDIA's <a href="https://huggingface.co/collections/nvidia/parakeet" target="_blank" rel="noopener noreferrer">Parakeet</a> models in pure C++.</p><p>Built on <a href="https://github.com/frikallo/axiom" target="_blank" rel="noopener noreferrer">axiom</a> — a lightweight tensor library with automatic Metal GPU acceleration. No ONNX runtime, no Python runtime, no heavyweight dependencies. Just C++ and one tensor library that outruns PyTorch MPS.</p><p><strong>~27ms encoder inference on Apple Silicon GPU</strong> for 10s audio (110M model) — 96x faster than CPU. FP16 support for ~2x memory reduction.</p><h2>Supported Models</h2></p><p>| Model | Class | Size | Type | Description |
+|-------|-------|------|------|-------------|
+| <code>tdt-ctc-110m</code> | <code>ParakeetTDTCTC</code> | 110M | Offline | English, dual CTC/TDT decoder heads |
+| <code>tdt-600m</code> | <code>ParakeetTDT</code> | 600M | Offline | Multilingual, TDT decoder |
+| <code>eou-120m</code> | <code>ParakeetEOU</code> | 120M | Streaming | English, RNNT with end-of-utterance detection |
+| <code>nemotron-600m</code> | <code>ParakeetNemotron</code> | 600M | Streaming | Multilingual, configurable latency (80ms–1120ms) |
+| <code>sortformer</code> | <code>Sortformer</code> | 117M | Streaming | Speaker diarization (up to 4 speakers) |
+| <code>diarized</code> | <code>DiarizedTranscriber</code> | 110M+117M | Offline | ASR + diarization → speaker-attributed words |</p><p>All ASR models share the same audio pipeline: 16kHz mono WAV → 80-bin Mel spectrogram → FastConformer encoder.</p><h2>Quick Start</h2></p><pre><code class="language-cpp">#include <parakeet/parakeet.hpp></p><p>parakeet::Transcriber t("model.safetensors", "vocab.txt");
+t.to_gpu();   // optional — Metal acceleration
+t.to_half();  // optional — FP16 inference (~2x memory reduction)</p><p>auto result = t.transcribe("audio.wav");
+std::cout << result.text << std::endl;</code></pre></p><h2>Features</h2></p><ul><li><strong>Multiple decoders</strong> — CTC greedy, TDT greedy, CTC beam search, TDT beam search (switch at call site)</li>
+<li><strong>Word timestamps</strong> — Per-word start/end times and confidence scores on all decoders</li>
+<li><strong>Beam search + LM</strong> — CTC and TDT beam search with optional ARPA n-gram language model fusion</li>
+<li><strong>Phrase boosting</strong> — Context biasing via token-level trie for domain-specific vocabulary</li>
+<li><strong>Batch transcription</strong> — Multiple files in one batched encoder forward pass</li>
+<li><strong>VAD preprocessing</strong> — Silero VAD strips silence before ASR; timestamps auto-remapped</li>
+<li><strong>GPU acceleration</strong> — Metal via axiom's MPSGraph compiler (96x speedup on Apple Silicon)</li>
+<li><strong>FP16 inference</strong> — Half-precision weights and compute (~2x memory reduction)</li>
+<li><strong>Streaming</strong> — EOU and Nemotron models with chunked audio input</li>
+<li><strong>Speaker diarization</strong> — Sortformer (up to 4 speakers), combinable with ASR for speaker-attributed words</li>
+<li><strong>C API</strong> — Flat <code>extern "C"</code> FFI for Python, Swift, Go, Rust, and other languages</li>
+<li><strong>Multi-format audio</strong> — WAV, FLAC, MP3, OGG with automatic resampling</li></p><p></ul>See <a href="examples/" target="_blank" rel="noopener noreferrer">examples/</a> for code demonstrating each feature.</p><h2>Install</h2></p><p>Prebuilt binaries are attached to each <a href="https://github.com/Frikallo/parakeet.cpp/releases" target="_blank" rel="noopener noreferrer">GitHub release</a> for macOS arm64, macOS x86_64, and Linux x86_64. Download the tarball for your platform and extract:</p><pre><code class="language-bash">tar -xzf parakeet-v0.1.0-macos-arm64.tar.gz
+cd parakeet-v0.1.0-macos-arm64
+<h1>On macOS, clear the Gatekeeper quarantine attribute first:</h1>
+xattr -dr com.apple.quarantine .
+./bin/parakeet --help</code></pre></p><p>The archive ships a self-contained <code>bin/parakeet</code> (and <code>bin/example-server</code>) plus <code>lib/libaxiom</code> with <code>@rpath</code>/<code>$ORIGIN</code> set so the binaries resolve their dependencies relative to the install dir — drop the directory anywhere. The C-API headers under <code>include/parakeet/</code> are included for embedders.</p><h2>Build from source</h2></p><pre><code class="language-bash">git clone --recursive https://github.com/frikallo/parakeet.cpp
+cd parakeet.cpp
+make build
+make test</code></pre></p><p>Requirements: C++20 (Clang 14+ or GCC 12+), CMake 3.20+, macOS 13+ for Metal GPU.</p><blockquote><strong>macOS:</strong> building requires the <strong>full Xcode</strong> install (not just Command Line Tools), because axiom compiles its Metal shaders with <code>xcrun metal</code> and <code>xcrun metallib</code> — those ship only with Xcode. If you just want to run parakeet, use the prebuilt tarball above; the <code>.metallib</code> is embedded into the shipped <code>libaxiom.dylib</code> and runs without any Xcode/CLT install on the user side.</blockquote></p><h2>Convert Weights</h2></p><pre><code class="language-bash"># Download from HuggingFace
+huggingface-cli download nvidia/parakeet-tdt_ctc-110m --include "*.nemo" --local-dir .</p><h1>Convert to safetensors</h1>
+pip install safetensors torch
+python scripts/convert_nemo.py parakeet-tdt_ctc-110m.nemo -o model.safetensors</code></pre></p><p>The converter supports all model types: <code>110m-tdt-ctc</code> (default), <code>600m-tdt</code>, <code>eou-120m</code>, <code>nemotron-600m</code>, <code>sortformer</code>.</p><pre><code class="language-bash">python scripts/convert_nemo.py checkpoint.nemo -o model.safetensors --model 600m-tdt</code></pre>
+Silero VAD weights:</p><pre><code class="language-bash">python scripts/convert_silero_vad.py -o silero_vad_v5.safetensors</code></pre></p><h2>Examples</h2></p><p>| Example | Description |
+|---------|-------------|
+| <a href="examples/basic/" target="_blank" rel="noopener noreferrer">basic</a> | Simplest transcription (~20 lines) |
+| <a href="examples/timestamps/" target="_blank" rel="noopener noreferrer">timestamps</a> | Word/token timestamps with confidence |
+| <a href="examples/beam-search/" target="_blank" rel="noopener noreferrer">beam-search</a> | CTC/TDT beam search with optional ARPA LM |
+| <a href="examples/phrase-boost/" target="_blank" rel="noopener noreferrer">phrase-boost</a> | Context biasing for domain vocabulary |
+| <a href="examples/batch/" target="_blank" rel="noopener noreferrer">batch</a> | Batch transcription of multiple files |
+| <a href="examples/vad/" target="_blank" rel="noopener noreferrer">vad</a> | Standalone VAD and ASR+VAD preprocessing |
+| <a href="examples/gpu/" target="_blank" rel="noopener noreferrer">gpu</a> | Metal GPU + FP16 with timing comparison |
+| <a href="examples/stream/" target="_blank" rel="noopener noreferrer">stream</a> | EOU streaming transcription |
+| <a href="examples/nemotron/" target="_blank" rel="noopener noreferrer">nemotron</a> | Nemotron streaming with latency modes |
+| <a href="examples/diarize/" target="_blank" rel="noopener noreferrer">diarize</a> | Sortformer speaker diarization |
+| <a href="examples/diarized-transcription/" target="_blank" rel="noopener noreferrer">diarized-transcription</a> | ASR + diarization combined |
+| <a href="examples/c-api/" target="_blank" rel="noopener noreferrer">c-api</a> | Pure C99 FFI usage |
+| <a href="examples/cli/" target="_blank" rel="noopener noreferrer">cli</a> | Full CLI with all options |</p><h2>Using as a Library</h2></p><h3>CMake <code>find_package</code></h3></p><p>After installing (<code>make install</code> or <code>cmake --install build</code>):</p><pre><code class="language-cmake">find_package(Parakeet REQUIRED)
+target_link_libraries(myapp PRIVATE Parakeet::parakeet)</code></pre></p><h3>CMake <code>add_subdirectory</code></h3></p><pre><code class="language-cmake">add_subdirectory(third_party/parakeet.cpp)
+target_link_libraries(myapp PRIVATE Parakeet::parakeet)</code></pre></p><h3>pkg-config</h3></p><pre><code class="language-bash">g++ -std=c++20 myapp.cpp $(pkg-config --cflags --libs parakeet) -o myapp</code></pre></p><h2>Architecture</h2></p><h3>Offline Models</h3></p><p>Built on a shared FastConformer encoder (Conv2d 8x subsampling → N Conformer blocks with relative positional attention):</p><p>| Model | Class | Decoder | Use case |
+|-------|-------|---------|----------|
+| CTC | <code>ParakeetCTC</code> | Greedy argmax or beam search (+LM) | Fast, English-only |
+| RNNT | <code>ParakeetRNNT</code> | Autoregressive LSTM | Streaming capable |
+| TDT | <code>ParakeetTDT</code> | LSTM + duration prediction, greedy or beam search (+LM) | Better accuracy than RNNT |
+| TDT-CTC | <code>ParakeetTDTCTC</code> | Both TDT and CTC heads | Switch decoder at inference |</p><h3>Streaming Models</h3></p><p>Built on a cache-aware streaming FastConformer encoder with causal convolutions and bounded-context attention:</p><p>| Model | Class | Decoder | Use case |
+|-------|-------|---------|----------|
+| EOU | <code>ParakeetEOU</code> | Streaming RNNT | End-of-utterance detection |
+| Nemotron | <code>ParakeetNemotron</code> | Streaming TDT | Configurable latency streaming |</p><h3>Diarization</h3></p><p>| Model | Class | Architecture | Use case |
+|-------|-------|-------------|----------|
+| Sortformer | <code>Sortformer</code> | NEST encoder → Transformer → sigmoid | Speaker diarization (up to 4 speakers) |</p><h2>Benchmarks</h2></p><p>Measured on Apple M3 16GB with simulated audio input (<code>Tensor::randn</code>). Times are per-encoder-forward-pass (Sortformer: full forward pass).</p><p><strong>Encoder throughput — 10s audio:</strong></p><p>| Model | Params | CPU (ms) | GPU (ms) | GPU Speedup |
+|-------|--------|----------|----------|-------------|
+| 110m (TDT-CTC) | 110M | 2,581 | 27 | <strong>96x</strong> |
+| tdt-600m | 600M | 10,779 | 520 | <strong>21x</strong> |
+| rnnt-600m | 600M | 10,648 | 1,468 | <strong>7x</strong> |
+| sortformer | 117M | 3,195 | 479 | <strong>7x</strong> |</p><p><strong>110m GPU scaling across audio lengths:</strong></p><p>| Audio | CPU (ms) | GPU (ms) | RTF | Throughput |
+|-------|----------|----------|-----|------------|
+| 1s | 262 | 24 | 0.024 | 41x |
+| 5s | 1,222 | 26 | 0.005 | 190x |
+| 10s | 2,581 | 27 | 0.003 | 370x |
+| 30s | 10,061 | 32 | 0.001 | 935x |
+| 60s | 26,559 | 72 | 0.001 | 833x |</p><p>GPU acceleration powered by axiom's Metal graph compiler which fuses the full encoder into optimized MPSGraph operations.</p><pre><code class="language-bash">make bench ARGS="--110m=models/model.safetensors --tdt-600m=models/tdt.safetensors"</code></pre>
+<h2>Roadmap</h2></p><h3>Tier 1 — High Impact</h3></p><ul><li>[x] <strong>Confidence scores</strong> — Per-token and per-word confidence from token log-probs</li>
+<li>[x] <strong>Phrase boosting</strong> — Token-level trie context biasing during decode</li>
+<li>[x] <strong>Beam search</strong> — CTC prefix beam search and TDT time-synchronous beam search</li>
+<li>[x] <strong>N-gram LM fusion</strong> — ARPA language models scored at word boundaries</li></p><p></ul><h3>Audio & I/O</h3></p><ul><li>[x] <strong>Multi-format audio</strong> — WAV, FLAC, MP3, OGG via dr_libs + stb_vorbis</li>
+<li>[x] <strong>Automatic resampling</strong> — Windowed sinc interpolation (Kaiser, 16-tap)</li>
+<li>[x] <strong>Load from memory</strong> — <code>read_audio(bytes, len)</code>, float/int16 buffers</li>
+<li>[ ] <strong>Audio duration query</strong> — Header-only duration without full decode</li>
+<li>[ ] <strong>Progress callbacks</strong> — Stage reporting for long files</li>
+<li>[ ] <strong>Streaming from raw PCM</strong> — Direct microphone buffer feeding</li></p><p></ul><h3>Tier 2 — Production Readiness</h3></p><ul><li>[x] <strong>Diarized transcription</strong> — ASR + Sortformer → speaker-attributed words</li>
+<li>[x] <strong>VAD</strong> — Silero VAD v5, standalone + ASR preprocessing</li>
+<li>[x] <strong>Batch inference</strong> — Padded multi-file encoder forward pass</li>
+<li>[ ] <strong>Long-form chunking</strong> — Overlapping windows for audio >30s</li>
+<li>[ ] <strong>Neural LM rescoring</strong> — N-best reranking with Transformer LM</li></p><p></ul><h3>Tier 3 — Ecosystem</h3></p><ul><li>[x] <strong>C API</strong> — Flat C interface for FFI from any language</li>
+<li>[x] <strong>FP16 inference</strong> — Half-precision weights and compute</li>
+<li>[ ] <strong>Model quantization</strong> — INT8/INT4 for mobile deployment</li>
+<li>[ ] <strong>Hotword detection</strong> — Trigger phrase detection</li>
+<li>[ ] <strong>Speaker embeddings</strong> — Speaker verification from Sortformer/TitaNet</li></p><p></ul><h2>Notes</h2></p><ul><li>Audio: 16kHz mono (WAV, FLAC, MP3, OGG — auto-detected and resampled)</li>
+<li>Offline models have ~4-5 minute audio length limits; use streaming models for longer audio</li>
+<li>GPU acceleration requires Apple Silicon with Metal support</li></p><p>
+</ul><h2>License</h2></p><p>MIT</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-07-20
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Frikallo/parakeet.cpp/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-07-20 
+    </div>
+    
+</body>
+</html>

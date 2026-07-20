@@ -1,0 +1,392 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>parakeet.cpp - 使用 Axiom 结合 MPS+统一内存的超快速便携式 Parakeet C++ 设备端推理实现</title>
+    <meta name="description" content="使用 Axiom 结合 MPS+统一内存的超快速便携式 Parakeet C++ 设备端推理实现">
+    <meta name="keywords" content="parakeet.cpp, Simplified Chinese, documentation, GitHub, open source">
+    <meta name="author" content="OpenAiTx">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "parakeet.cpp",
+  "description": "使用 Axiom 结合 MPS+统一内存的超快速便携式 Parakeet C++ 设备端推理实现",
+  "author": {
+    "@type": "Person",
+    "name": "Frikallo"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": 298
+  },
+  "url": "https://OpenAiTx.github.io/projects/Frikallo/parakeet.cpp/README-zh-CN.html",
+  "sameAs": "https://raw.githubusercontent.com/Frikallo/parakeet.cpp/main/README.md",
+  "datePublished": "2026-07-20",
+  "dateModified": "2026-07-20"
+}
+    </script>
+    
+    <!-- GitHub-style CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #ffffff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .project-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-title a {
+            color: #24292e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .project-title a:hover {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        .project-title .github-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .project-title a:hover .github-icon {
+            opacity: 1;
+        }
+        
+        .project-meta {
+            color: #586069;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            display: inline-block;
+            margin-right: 16px;
+        }
+        
+        .language {
+            display: inline-block;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background-color: transparent;
+            border: 0;
+            display: inline;
+            line-height: inherit;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            word-wrap: normal;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.25em;
+        }
+        
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            color: #586069;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #0366d6;
+        }
+        
+        .original-link {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 16px;
+            }
+            
+            .project-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Bing Count -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sh95yd6uwt");
+    </script>        
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+        var sc_project = 13142514;
+        var sc_invisible = 1;
+        var sc_security = "d03a31d8"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+                    class="statcounter" src="https://c.statcounter.com/13142514/0/d03a31d8/1/" alt="Web Analytics"
+                    referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="project-title">
+                <a href="https://github.com/Frikallo/parakeet.cpp" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    parakeet.cpp
+                </a>
+            </h1>
+            <div class="project-meta">
+                <span class="stars">⭐ 298 stars</span>
+                <span class="language">Simplified Chinese</span>
+                <span>by Frikallo</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>parakeet.cpp</h1></p><p>使用NVIDIA的<a href="https://huggingface.co/collections/nvidia/parakeet" target="_blank" rel="noopener noreferrer">Parakeet</a>模型实现纯C++的快速语音识别。</p><p>基于<a href="https://github.com/frikallo/axiom" target="_blank" rel="noopener noreferrer">axiom</a>构建 —— 一个轻量级张量库，支持自动Metal GPU加速。无ONNX运行时，无Python运行时，无重量级依赖。仅使用C++和一个比PyTorch MPS更快的张量库。</p><p><strong>Apple Silicon GPU上10秒音频的编码器推理约27毫秒</strong>（110M模型）——比CPU快96倍。支持FP16，内存减少约2倍。</p><h2>支持的模型</h2></p><p>| 模型 | 类别 | 规模 | 类型 | 说明 |
+|-------|-------|------|------|-------------|
+| <code>tdt-ctc-110m</code> | <code>ParakeetTDTCTC</code> | 110M | 离线 | 英语，双CTC/TDT解码头 |
+| <code>tdt-600m</code> | <code>ParakeetTDT</code> | 600M | 离线 | 多语言，TDT解码器 |
+| <code>eou-120m</code> | <code>ParakeetEOU</code> | 120M | 流式 | 英语，带结束语检测的RNNT |
+| <code>nemotron-600m</code> | <code>ParakeetNemotron</code> | 600M | 流式 | 多语言，可配置延迟（80ms–1120ms） |
+| <code>sortformer</code> | <code>Sortformer</code> | 117M | 流式 | 说话人分离（最多4个说话人） |
+| <code>diarized</code> | <code>DiarizedTranscriber</code> | 110M+117M | 离线 | 语音识别 + 说话人分离 → 说话人标注词汇 |</p><p>所有ASR模型共享相同的音频流水线：16kHz单声道WAV → 80箱Mel频谱图 → FastConformer编码器。</p><h2>快速开始</h2></p><pre><code class="language-cpp">#include <parakeet/parakeet.hpp></p><p>parakeet::Transcriber t("model.safetensors", "vocab.txt");
+t.to_gpu();   // optional — Metal acceleration
+t.to_half();  // optional — FP16 inference (~2x memory reduction)</p><p>auto result = t.transcribe("audio.wav");
+std::cout << result.text << std::endl;</code></pre></p><h2>功能特性</h2></p><ul><li><strong>多解码器</strong> — CTC 贪心，TDT 贪心，CTC 波束搜索，TDT 波束搜索（调用时切换）</li>
+<li><strong>词级时间戳</strong> — 所有解码器均提供每词的起止时间及置信度分数</li>
+<li><strong>波束搜索 + 语言模型</strong> — CTC 和 TDT 波束搜索支持可选 ARPA n-gram 语言模型融合</li>
+<li><strong>短语增强</strong> — 通过基于词元的字典树实现领域专用词汇的上下文偏置</li>
+<li><strong>批量转录</strong> — 多文件可在一次编码器前向传递中批量处理</li>
+<li><strong>VAD 预处理</strong> — Silero VAD 在 ASR 前剥离静音；时间戳自动重映射</li>
+<li><strong>GPU 加速</strong> — 通过 axiom 的 MPSGraph 编译器使用 Metal（Apple Silicon 上加速 96 倍）</li>
+<li><strong>FP16 推理</strong> — 半精度权重和计算（内存约减少一半）</li>
+<li><strong>流式处理</strong> — 支持 EOU 和 Nemotron 模型的分块音频输入</li>
+<li><strong>说话人分离</strong> — Sortformer（最多支持 4 位说话人），可与 ASR 结合实现说话人归属词</li>
+<li><strong>C API</strong> — 提供平坦的 <code>extern "C"</code> FFI，支持 Python、Swift、Go、Rust 等语言</li>
+<li><strong>多格式音频</strong> — 支持 WAV、FLAC、MP3、OGG，自动重采样</li></p><p></ul>请参见 <a href="examples/" target="_blank" rel="noopener noreferrer">examples/</a> 目录获取演示各项功能的代码示例。</p><h2>安装</h2></p><p>预编译二进制文件附带于每个 <a href="https://github.com/Frikallo/parakeet.cpp/releases" target="_blank" rel="noopener noreferrer">GitHub 发布</a>，支持 macOS arm64、macOS x86_64 和 Linux x86_64。下载对应平台的压缩包并解压：</p><pre><code class="language-bash">tar -xzf parakeet-v0.1.0-macos-arm64.tar.gz
+cd parakeet-v0.1.0-macos-arm64
+<h1>On macOS, clear the Gatekeeper quarantine attribute first:</h1>
+xattr -dr com.apple.quarantine .
+./bin/parakeet --help</code></pre></p><p>该归档包含一个自包含的 <code>bin/parakeet</code>（和 <code>bin/example-server</code>）以及带有设置了 <code>@rpath</code>/<code>$ORIGIN</code> 的 <code>lib/libaxiom</code>，使二进制文件能够相对于安装目录解析其依赖关系——可以将目录放置在任何地方。<code>include/parakeet/</code> 下的 C-API 头文件供嵌入使用。</p><h2>从源码构建</h2></p><pre><code class="language-bash">git clone --recursive https://github.com/frikallo/parakeet.cpp
+cd parakeet.cpp
+make build
+make test</code></pre></p><p>要求：C++20（Clang 14+ 或 GCC 12+），CMake 3.20+，macOS 13+ 以支持 Metal GPU。</p><blockquote><strong>macOS：</strong> 构建需要 <strong>完整的 Xcode</strong> 安装（不仅仅是命令行工具），因为 axiom 使用 <code>xcrun metal</code> 和 <code>xcrun metallib</code> 编译其 Metal 着色器 — 这些仅随 Xcode 一起提供。如果您只想运行 parakeet，请使用上面预构建的 tar 包；<code>.metallib</code> 已嵌入到随附的 <code>libaxiom.dylib</code> 中，用户端无需安装任何 Xcode/命令行工具即可运行。</blockquote></p><h2>转换权重</h2></p><pre><code class="language-bash"># Download from HuggingFace
+huggingface-cli download nvidia/parakeet-tdt_ctc-110m --include "*.nemo" --local-dir .</p><h1>Convert to safetensors</h1>
+pip install safetensors torch
+python scripts/convert_nemo.py parakeet-tdt_ctc-110m.nemo -o model.safetensors</code></pre>
+转换器支持所有模型类型：<code>110m-tdt-ctc</code>（默认）、<code>600m-tdt</code>、<code>eou-120m</code>、<code>nemotron-600m</code>、<code>sortformer</code>。</p><pre><code class="language-bash">python scripts/convert_nemo.py checkpoint.nemo -o model.safetensors --model 600m-tdt</code></pre>
+Silero VAD 权重：</p><pre><code class="language-bash">python scripts/convert_silero_vad.py -o silero_vad_v5.safetensors</code></pre></p><h2>示例</h2></p><p>| 示例 | 描述 |
+|---------|-------------|
+| <a href="examples/basic/" target="_blank" rel="noopener noreferrer">basic</a> | 最简单的转录（约20行） |
+| <a href="examples/timestamps/" target="_blank" rel="noopener noreferrer">timestamps</a> | 带置信度的单词/标记时间戳 |
+| <a href="examples/beam-search/" target="_blank" rel="noopener noreferrer">beam-search</a> | 具有可选ARPA语言模型的CTC/TDT束搜索 |
+| <a href="examples/phrase-boost/" target="_blank" rel="noopener noreferrer">phrase-boost</a> | 针对领域词汇的上下文偏置 |
+| <a href="examples/batch/" target="_blank" rel="noopener noreferrer">batch</a> | 多文件批量转录 |
+| <a href="examples/vad/" target="_blank" rel="noopener noreferrer">vad</a> | 独立VAD和ASR+VAD预处理 |
+| <a href="examples/gpu/" target="_blank" rel="noopener noreferrer">gpu</a> | Metal GPU + FP16及时间比较 |
+| <a href="examples/stream/" target="_blank" rel="noopener noreferrer">stream</a> | EOU流式转录 |
+| <a href="examples/nemotron/" target="_blank" rel="noopener noreferrer">nemotron</a> | 带有延迟模式的Nemotron流式 |
+| <a href="examples/diarize/" target="_blank" rel="noopener noreferrer">diarize</a> | Sortformer说话人分离 |
+| <a href="examples/diarized-transcription/" target="_blank" rel="noopener noreferrer">diarized-transcription</a> | ASR + 分离结合 |
+| <a href="examples/c-api/" target="_blank" rel="noopener noreferrer">c-api</a> | 纯C99 FFI用法 |
+| <a href="examples/cli/" target="_blank" rel="noopener noreferrer">cli</a> | 带所有选项的完整CLI |</p><h2>作为库使用</h2></p><h3>CMake <code>find_package</code></h3></p><p>安装后（<code>make install</code> 或 <code>cmake --install build</code>）：</p><pre><code class="language-cmake">find_package(Parakeet REQUIRED)
+target_link_libraries(myapp PRIVATE Parakeet::parakeet)</code></pre></p><h3>CMake <code>add_subdirectory</code></h3></p><pre><code class="language-cmake">add_subdirectory(third_party/parakeet.cpp)
+target_link_libraries(myapp PRIVATE Parakeet::parakeet)</code></pre></p><h3>pkg-config</h3></p><pre><code class="language-bash">g++ -std=c++20 myapp.cpp $(pkg-config --cflags --libs parakeet) -o myapp</code></pre>
+<h2>架构</h2></p><h3>离线模型</h3></p><p>基于共享的 FastConformer 编码器（Conv2d 8倍下采样 → N 个带相对位置注意力的 Conformer 块）构建：</p><p>| 模型 | 类别 | 解码器 | 使用场景 |
+|-------|-------|---------|----------|
+| CTC | <code>ParakeetCTC</code> | 贪婪最大值或束搜索（+语言模型） | 快速，仅限英语 |
+| RNNT | <code>ParakeetRNNT</code> | 自回归 LSTM | 支持流式 |
+| TDT | <code>ParakeetTDT</code> | LSTM + 时长预测，贪婪或束搜索（+语言模型） | 准确率优于 RNNT |
+| TDT-CTC | <code>ParakeetTDTCTC</code> | 同时具备 TDT 和 CTC 头 | 推理时切换解码器 |</p><h3>流式模型</h3></p><p>基于支持缓存的流式 FastConformer 编码器，带因果卷积和有界上下文注意力：</p><p>| 模型 | 类别 | 解码器 | 使用场景 |
+|-------|-------|---------|----------|
+| EOU | <code>ParakeetEOU</code> | 流式 RNNT | 语句结束检测 |
+| Nemotron | <code>ParakeetNemotron</code> | 流式 TDT | 可配置延迟流式 |</p><h3>说话人分离</h3></p><p>| 模型 | 类别 | 架构 | 使用场景 |
+|-------|-------|-------------|----------|
+| Sortformer | <code>Sortformer</code> | NEST 编码器 → Transformer → sigmoid | 说话人分离（最多4人） |</p><h2>基准测试</h2></p><p>在 Apple M3 16GB 上使用模拟音频输入（<code>Tensor::randn</code>）测量。时间为每次编码器前向传递（Sortformer：完整前向传递）。</p><p><strong>编码器吞吐量 — 10秒音频：</strong></p><p>| 模型 | 参数量 | CPU（毫秒） | GPU（毫秒） | GPU 加速比 |
+|-------|--------|----------|----------|-------------|
+| 110m (TDT-CTC) | 110M | 2,581 | 27 | <strong>96倍</strong> |
+| tdt-600m | 600M | 10,779 | 520 | <strong>21倍</strong> |
+| rnnt-600m | 600M | 10,648 | 1,468 | <strong>7倍</strong> |</p><p>| sortformer | 117M | 3,195 | 479 | <strong>7倍</strong> |</p><p><strong>110m GPU在不同音频长度下的扩展性能：</strong></p><p>| 音频长度 | CPU (毫秒) | GPU (毫秒) | 实时因子 | 吞吐量 |
+|-------|----------|----------|-----|------------|
+| 1秒 | 262 | 24 | 0.024 | 41倍 |
+| 5秒 | 1,222 | 26 | 0.005 | 190倍 |
+| 10秒 | 2,581 | 27 | 0.003 | 370倍 |
+| 30秒 | 10,061 | 32 | 0.001 | 935倍 |
+| 60秒 | 26,559 | 72 | 0.001 | 833倍 |</p><p>GPU加速由axiom的Metal图编译器驱动，将完整编码器融合为优化的MPSGraph操作。</p><pre><code class="language-bash">make bench ARGS="--110m=models/model.safetensors --tdt-600m=models/tdt.safetensors"</code></pre></p><h2>路线图</h2></p><h3>第一阶段 — 高影响力</h3></p><ul><li>[x] <strong>置信度分数</strong> — 通过令牌对数概率计算每个令牌和每个词的置信度</li>
+<li>[x] <strong>短语提升</strong> — 解码时的令牌级前缀树上下文偏置</li>
+<li>[x] <strong>束搜索</strong> — CTC前缀束搜索和TDT时间同步束搜索</li>
+<li>[x] <strong>N-gram语言模型融合</strong> — 在词边界计算的ARPA语言模型评分</li></p><p></ul><h3>音频与输入输出</h3></p><ul><li>[x] <strong>多格式音频</strong> — 通过dr_libs + stb_vorbis支持WAV、FLAC、MP3、OGG</li>
+<li>[x] <strong>自动重采样</strong> — 窗口化sinc插值（Kaiser，16抽头）</li>
+<li>[x] <strong>从内存加载</strong> — <code>read_audio(bytes, len)</code>，支持float/int16缓冲区</li>
+<li>[ ] <strong>音频时长查询</strong> — 仅头信息时长查询，无需完整解码</li>
+<li>[ ] <strong>进度回调</strong> — 长文件的阶段报告</li>
+<li>[ ] <strong>从原始PCM流式传输</strong> — 直接麦克风缓冲区输入</li></p><p></ul><h3>第二阶段 — 生产准备</h3></p><ul><li>[x] <strong>说话人分离转录</strong> — ASR + Sortformer → 带说话人标注的词</li>
+<li>[x] <strong>语音活动检测（VAD）</strong> — Silero VAD v5，独立及ASR预处理</li>
+<li>[x] <strong>批量推理</strong> — 填充多文件编码器前向传递</li>
+<li>[ ] <strong>长音频分块</strong> — 对超过30秒的音频使用重叠窗口</li>
+<li>[ ] <strong>神经语言模型重评分</strong> — 使用Transformer LM进行N-best重排序</li></p><p></ul><h3>第三阶段 — 生态系统</h3></p><ul><li>[x] <strong>C接口</strong> — 适用于任何语言的扁平C语言FFI接口</li>
+<li>[x] <strong>FP16推理</strong> — 半精度权重和计算</li>
+<li>[ ] <strong>模型量化</strong> — 用于移动端部署的INT8/INT4</li>
+<li>[ ] <strong>热词检测</strong> — 触发词检测</li>
+<li>[ ] <strong>说话人嵌入</strong> — 来自Sortformer/TitaNet的说话人验证</li></p><p></ul><h2>说明</h2></p><ul><li>音频：16kHz单声道（WAV、FLAC、MP3、OGG — 自动检测并重采样）</li>
+<li>离线模型支持约4-5分钟音频长度；更长音频请使用流式模型</li>
+<li>GPU加速需要支持Metal的Apple Silicon</li></p><p></ul><h2>License</h2></p><p>MIT</p><p>
+---
+
+Tranlated By <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">Open Ai Tx</a> | Last indexed: 2026-07-20
+
+---</p>
+        </div>
+        
+        <div class="original-link">
+            <strong>Original README:</strong> <a href="https://raw.githubusercontent.com/Frikallo/parakeet.cpp/main/README.md" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Translated by <a href="https://github.com/OpenAiTx/OpenAiTx" target="_blank" rel="noopener noreferrer">OpenAiTx</a> | 
+        Last updated: 2026-07-20 
+    </div>
+    
+</body>
+</html>
